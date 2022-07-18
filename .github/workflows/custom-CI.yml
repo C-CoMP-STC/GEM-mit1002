@@ -21,6 +21,7 @@ jobs:
       # Install everything I need
       - run: |
           echo Installing MEMOTE
+          pip install depinfo
           pip install memote
       - run: memote -h
   
