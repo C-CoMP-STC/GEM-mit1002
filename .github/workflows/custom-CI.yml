@@ -22,7 +22,7 @@ jobs:
       - run: |
           echo Installing MEMOTE
           pip install memote
-          memote -h
+      - run: memote -h
   
   # Second job runs MEMOTE
   memote:
