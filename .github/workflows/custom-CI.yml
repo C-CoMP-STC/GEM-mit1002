@@ -25,14 +25,15 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install depinfo
           python -m pip install memote
+          python -m pip install pytest
 
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
         run: memote report snapshot model.xml
 
       # Run the custom tests
-      - name: Run Custom Tests
-        run: echo YAY :D
+      - name: Run Custom Tests with pytest
+        run: pytest
 
       - name: Push to Remote
         run: |
