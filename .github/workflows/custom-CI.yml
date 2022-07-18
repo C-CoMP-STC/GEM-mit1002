@@ -21,8 +21,8 @@ jobs:
       # Install everything I need
       # Check I have python installed
       - run: |
-        echo Cheking python install
-        python --version
+          echo Cheking python install
+          python --version
 
       # Runs a single command using the runners shell
       # - name: Run a one-line script
