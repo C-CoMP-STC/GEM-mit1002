@@ -3,8 +3,6 @@ import unittest
 import cobra
 
 class TestGrowthWithNoCarbon(unittest.TestCase):
-    @unittest.expectedFailure # Fails because the model is so small that it is missing some of these metabolites
-    # Hopefully will work fine once I update the model to actually be MIT1002
     def test_growth_w_0_C(self):
         # Load the model with cobrapy
         model = cobra.io.read_sbml_model('../model.xml')
