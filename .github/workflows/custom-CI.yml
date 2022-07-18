@@ -25,14 +25,20 @@ jobs:
   
   # Second job runs MEMOTE
   memote:
+    # Set that is must run after build
+    needs: build
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
     steps:
-      - run: echo Running MEMOTE
+      - run: |
+        echo Running MEMOTE
+        memote
   
   # Third job runs my custom tests
   custom-tests:
+    # Set that it must run after builds
+    needs: build
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
