@@ -23,7 +23,7 @@ jobs:
           echo Installing MEMOTE
           python -m pip install --upgrade pip
           python -m pip install depinfo
-          python -m pip memote
+          python -m pip install memote
       - run: memote -h
   
   # Second job runs MEMOTE
