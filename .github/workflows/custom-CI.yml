@@ -18,12 +18,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      # Check the version of depinfo
+      - run: pip freeze | grep depinfo
+
       # Install everything I need
-      - run: |
-          echo Installing MEMOTE
-          pip install depinfo
-          pip install memote
-      - run: memote -h
+      # - run: |
+      #     echo Installing MEMOTE
+      #     pip install depinfo
+      #     pip install memote
+      # - run: memote -h
   
   # Second job runs MEMOTE
   memote:
