@@ -8,7 +8,7 @@ on: [push, pull_request, workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # First job builds the environment
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -18,12 +18,34 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # Install everything I need
+      # Check I have python installed
+      - run: |
+        echo Cheking python install
+        python --version
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      # Runs a single command using the runners shell
+      # - name: Run a one-line script
+      #   run: echo Hello, world!
+
+      # # Runs a set of commands using the runners shell
+      # - name: Run a multi-line script
+      #   run: |
+      #     echo Add other actions to build,
+      #     echo test, and deploy your project.
+  
+  # Second job runs MEMOTE
+  memote:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: echo Running MEMOTE
+  
+  # Third job runs my custom tests
+  custom-tests:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: echo Running Custom Tests
