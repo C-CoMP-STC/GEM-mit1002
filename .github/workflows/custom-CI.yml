@@ -32,8 +32,8 @@ jobs:
     
     steps:
       - run: |
-        echo Running MEMOTE
-        memote
+          echo Running MEMOTE
+          memote
   
   # Third job runs my custom tests
   custom-tests:
