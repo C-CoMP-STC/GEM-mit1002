@@ -28,7 +28,7 @@ jobs:
 
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
-        run: memote -h
+        run: memote report snapshot model.xml
 
       # Run the custom tests
       - name: Run Custom Tests
