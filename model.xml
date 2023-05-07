@@ -20525,7 +20525,7 @@
       <reaction metaid="meta_R_ATPM" sboTerm="SBO:0000176" id="R_ATPM" name="ATP maintenance requirement" reversible="false" fast="false" fbc:lowerFluxBound="R_ATPM_lower_bound" fbc:upperFluxBound="cobra_default_ub">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-            <rdf:Description rdf:about="#R_ATPM">
+            <rdf:Description rdf:about="#meta_R_ATPM">
               <bqbiol:is xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/bigg.reaction/ATPM"/>
