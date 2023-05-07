@@ -16367,7 +16367,7 @@
       <parameter sboTerm="SBO:0000626" id="cobra_0_bound" value="0" constant="true"/>
       <parameter sboTerm="SBO:0000626" id="minus_inf" value="-INF" constant="true"/>
       <parameter sboTerm="SBO:0000626" id="plus_inf" value="INF" constant="true"/>
-      <parameter sboTerm="SBO:0000625" id="R_ATPM_lower_bound" value="3.15" constant="true" units="mmol_per_gDW_per_hr"/>
+      <parameter sboTerm="SBO:0000625" id="R_ATPM_lower_bound" value="20.0" constant="true" units="mmol_per_gDW_per_hr"/>
     </listOfParameters>
     <listOfReactions>
       <reaction metaid="meta_R_rxn00247_c0" sboTerm="SBO:0000176" id="R_rxn00247_c0" name="ATP:oxaloacetate carboxy-lyase (transphosphorylating;phosphoenolpyruvate-forming)_c0" reversible="false" fast="false" fbc:lowerFluxBound="cobra_0_bound" fbc:upperFluxBound="cobra_default_ub">
