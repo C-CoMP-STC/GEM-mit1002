@@ -20623,8 +20623,6 @@
           <speciesReference species="M_cpd00067_c0" stoichiometry="1" constant="true"/>
           <speciesReference species="M_cpd00009_c0" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <fbc:geneProductAssociation>
-        </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="meta_R_rxn00695_c0" sboTerm="SBO:0000176" id="R_rxn00695_c0" name="ATP:alpha-D-glucose-1-phosphate adenylyltransferase_c0" reversible="false" fast="false" fbc:lowerFluxBound="cobra_0_bound" fbc:upperFluxBound="cobra_default_ub">
         <annotation>
