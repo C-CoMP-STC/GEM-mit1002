@@ -27,7 +27,8 @@ value_to_int = {'Unsure': 0, 'No': 1, 'Yes': 2}
 n = len(value_to_int)
 
 # Make a colormap of specified colors (in numerical order for the phenotypes)
-cmap = ['gray', '#F18F01', '#399E5A']
+# cmap = ['gray', '#F18F01', '#399E5A'] # Gray, orange, green
+cmap = ['#5E5E5E', '#FF7D0A', '#024064'] # C-CoMP gray, orange, and dark blue
 
 # Plot the heatmap
 ax = sns.heatmap(growth_phenotypes.replace(value_to_int),
