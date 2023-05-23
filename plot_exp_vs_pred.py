@@ -14,9 +14,6 @@ with open('ace_results.pkl', 'rb') as f:
 # Assuming you are running from the root of the repository
 results_path = '../../CUE/Zac txt data/'
 
-########################################################################
-# Experimental and Predicted Biomass
-########################################################################
 # Load the OD data
 od = pd.read_csv(os.path.join(results_path, 'MIT1002_singles_OD600.txt'),
                  sep='\t')

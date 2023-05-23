@@ -145,8 +145,6 @@ test_tube.add_model(alt)
 sim_params = c.params()
 
 sim_params.set_param('defaultVmax', 18.5)
-# Set a different Vmax for just the oxygen exchange reaction
-alt.change_vmax('EX_cpd00007_e0', 10)
 sim_params.set_param('defaultKm', 0.000015)
 sim_params.set_param('maxCycles', 2100) # To get a total of 21 hours
 sim_params.set_param('timeStep', 0.01) # In hours
