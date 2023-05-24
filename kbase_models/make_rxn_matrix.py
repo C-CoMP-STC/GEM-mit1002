@@ -13,6 +13,8 @@ gem_2_or_more = cobra.io.read_sbml_model('kbase_models/MIT1002_2OrMore.sbml')
 gem_majority_rule = cobra.io.read_sbml_model('kbase_models/MIT1002_MajorityRule.sbml')
 gem_priority_list = cobra.io.read_sbml_model('kbase_models/MIT1002_PriorityList.sbml')
 
+gem_bayesian_core = cobra.io.load_json_model('kbase_models/alteromonas_bayesian_core.json')
+
 models_with_names = {'DRAM': gem_dram,
                      'Prokka': gem_prokka,
                      'RASTtk': gem_dram,
@@ -21,6 +23,7 @@ models_with_names = {'DRAM': gem_dram,
                      'Priority List': gem_priority_list,
                      'Majority Rule': gem_majority_rule,
                      'Union': gem_union,
+                     'Bayesian Pangenome Core': gem_bayesian_core
                      }
 
 # Load the ModelSEED Pathways table
