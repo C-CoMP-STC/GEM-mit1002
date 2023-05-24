@@ -32,17 +32,29 @@ pathways_db = pd.read_csv('../../ModelSEEDDatabase/Biochemistry/Pathways/ModelSE
                           sep='\t')
 
 # Filter to only the reactions in the union model
-pathways_db = pathways_db[pathways_db['Reaction'].isin([r.id[0:-3] for r in gem_union.reactions])]
+# FIXME: To get the list of all possible reactions, combine the list from the
+# union model and the pangenome
+all_rxns = list(set([r.id[0:-3] for r in gem_union.reactions]) | set([r.id for r in gem_bayesian_core.reactions]))
+pathways_db = pathways_db[pathways_db['Reaction'].isin(all_rxns)]
 
 # Add if the reaction is present in the different models to the table
 for name in models_with_names:
     model = models_with_names[name]
     rxn_presence = []
-    for index, row in pathways_db.iterrows():
-        if row['Reaction'] + '_c0' in [r.id for r in model.reactions]:
-            rxn_presence.append(1)
-        else:
-            rxn_presence.append(0)
+    # Quick and dirty way to deal with the different nomenclature, just handle
+    # the Bayesian core model totally separated
+    if name == 'Bayesian Pangenome Core':
+        for index, row in pathways_db.iterrows():
+            if row['Reaction'] in [r.id for r in model.reactions]:
+                rxn_presence.append(1)
+            else:
+                rxn_presence.append(0)
+    else:
+        for index, row in pathways_db.iterrows():
+            if row['Reaction'] + '_c0' in [r.id for r in model.reactions]: # FIXME: The _c0 is what is making it think that there are no reactions in the bayesian core
+                rxn_presence.append(1)
+            else:
+                rxn_presence.append(0)
     pathways_db[name] = rxn_presence
 
 # Save as a CSV
