@@ -20,8 +20,9 @@ ax = sns.heatmap(plotting_matrix,
                  cmap=cmap)
 
 # modify colorbar:
-colorbar = ax.collections[0].colorbar 
-colorbar.set_ticks([0.25, 0.75]) # TODO: Remove magic numbers, these only work when the values are 0 and 1
+colorbar = ax.collections[0].colorbar
+# TODO: Remove magic numbers, these only work when the values are 0 and 1
+colorbar.set_ticks([0.25, 0.75])
 colorbar.set_ticklabels(['No', 'Yes'])
 
 # Move the x-axis labels to the top
