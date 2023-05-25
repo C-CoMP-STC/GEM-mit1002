@@ -3,14 +3,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load in the reaction matrix
-rxn_presence = pd.read_csv('kbase_models/pathway_reaction_presence.tsv',
+rxn_presence = pd.read_csv('kbase_models/reaction_presence.tsv',
                            header=0,
                            sep='\t')
 
-# Set the reaction matrix as the index and subset just the model columns
-# For easy plotting
-plotting_matrix = rxn_presence.set_index('Reaction')
-plotting_matrix = plotting_matrix[list(rxn_presence.columns)[5:]]
+# Set the reaction column as the index for easy plotting
+plotting_matrix = rxn_presence.set_index('Reactions')
 
 # Make a color map
 cmap = ['gray', 'green'] # TODO: Pick better colors
@@ -39,4 +37,4 @@ plt.tick_params(axis='both',
 plt.tight_layout()
 
 # Save the figure
-plt.savefig('kbase_models/rxns_in_models_by_pathway.png')
+plt.savefig('kbase_models/rxns_in_models.png')

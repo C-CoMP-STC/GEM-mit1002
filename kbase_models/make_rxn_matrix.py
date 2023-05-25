@@ -26,16 +26,12 @@ models_with_names = {'DRAM': gem_dram,
                      'Bayesian Pangenome Core': gem_bayesian_core
                      }
 
-# Load the ModelSEED Pathways table
-pathways_db = pd.read_csv('../../ModelSEEDDatabase/Biochemistry/Pathways/ModelSEED_Subsystems.tsv',
-                          header=0,
-                          sep='\t')
 
-# Filter to only the reactions in the union model
-# FIXME: To get the list of all possible reactions, combine the list from the
-# union model and the pangenome
+# Get a list of all the possible reactions in all of the models
+# ( Really just the combon of the union model and the pangenome)
 all_rxns = list(set([r.id[0:-3] for r in gem_union.reactions]) | set([r.id for r in gem_bayesian_core.reactions]))
-pathways_db = pathways_db[pathways_db['Reaction'].isin(all_rxns)]
+
+df = pd.DataFrame({'Reactions': all_rxns})
 
 # Add if the reaction is present in the different models to the table
 for name in models_with_names:
@@ -44,20 +40,20 @@ for name in models_with_names:
     # Quick and dirty way to deal with the different nomenclature, just handle
     # the Bayesian core model totally separated
     if name == 'Bayesian Pangenome Core':
-        for index, row in pathways_db.iterrows():
-            if row['Reaction'] in [r.id for r in model.reactions]:
+        for rxn in all_rxns:
+            if rxn in [r.id for r in model.reactions]:
                 rxn_presence.append(1)
             else:
                 rxn_presence.append(0)
     else:
-        for index, row in pathways_db.iterrows():
-            if row['Reaction'] + '_c0' in [r.id for r in model.reactions]: # FIXME: The _c0 is what is making it think that there are no reactions in the bayesian core
+        for rxn in all_rxns:
+            if rxn + '_c0' in [r.id for r in model.reactions]: # FIXME: The _c0 is what is making it think that there are no reactions in the bayesian core
                 rxn_presence.append(1)
             else:
                 rxn_presence.append(0)
-    pathways_db[name] = rxn_presence
+    df[name] = rxn_presence
 
 # Save as a CSV
-pathways_db.to_csv('kbase_models/pathway_reaction_presence.tsv',
-                   sep='\t',
-                   index=False)
+df.to_csv('kbase_models/reaction_presence.tsv',
+          sep='\t',
+          index=False)
