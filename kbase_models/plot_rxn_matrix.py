@@ -15,7 +15,8 @@ cmap = ['gray', 'green'] # TODO: Pick better colors
 
 # Plot the heatmap
 ax = sns.heatmap(plotting_matrix,
-                 cmap=cmap)
+                 cmap=cmap,
+                 yticklabels=False)
 
 # modify colorbar:
 colorbar = ax.collections[0].colorbar
