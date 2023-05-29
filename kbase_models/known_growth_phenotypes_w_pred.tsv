@@ -1,0 +1,12 @@
+c_source	met_id	exp_growth	notes	DRAM	Prokka	RASTtk	Intersection	2+ Annotations	Priority List	Majority Rule	Union	Bayesian Pangenome Core
+Glucose 	cpd00027	Yes		No	No	No	No	No	No	No	No	No Exchange
+Acetate	cpd00029	Yes		No Exchange	No Exchange	No Exchange	No	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange
+Glycolate	cpd00139	No		No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange
+Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange
+3-hydroxybutyrate	cpd29193	Yes		No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange
+Choline	cpd00098	No		No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No	No	No	No Exchange
+Ectoine	cpd03727	No		No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange
+Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	No	No	No	No	No	No	No	No	No Exchange
+Proline	cpd00129	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	No	No	No	No	No	No	No	No	No Exchange
+Sucrose	cpd00076	No		No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange
+Fructose	cpd00082	No		No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange	No Exchange
