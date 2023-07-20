@@ -1,0 +1,73 @@
+import json
+
+# Load the iJO1366.Central metabolism map
+with open('escher/iJO1366.Central metabolism.json') as f:
+    map = json.load(f)
+
+# Load the ModelSeed compound database
+with open('../../ModelSEEDDatabase/Biochemistry/compounds.json') as f:
+    compounds = json.load(f)
+
+# Load the ModelSeed reaction database
+with open('../../ModelSEEDDatabase/Biochemistry/reactions.json') as f:
+    reactions = json.load(f)
+
+# Helper functions
+# Convert the alias string into a dictionary
+def parse_aliases(alias_list):
+    alias_dict = {}
+    for meta_list in alias_list:
+        meta_name, meta_entries = meta_list.split(':')
+        alias_ids = [x.strip() for x in meta_entries.split(';')]
+        alias_dict[meta_name] = alias_ids
+    return alias_dict
+
+# For every node in the map
+for node in map[1]['nodes']:
+    node_info = map[1]['nodes'][node]
+    # Use the "node type" field to determine if it is a metabolite or a
+    # reaction
+    if node_info['node_type'] == 'metabolite':
+        # Remove the compartment from the metabolite name
+        # Hardcoding assuming that all compartments are 1 character long
+        # and are preceded by an underscore (i.e. _c, _e)
+        bigg_id = node_info['bigg_id'][:-2]
+        compartment = node_info['bigg_id'][-1]
+        # Search the ModelSeed compound database for the metabolite
+        potential_metabs = []
+        for met in compounds:
+            # Convert the alias string into a dictionary
+            alias_dict = parse_aliases(met['aliases'])
+            # If the bigg_id is in the alias dictionary, add it to the list
+            if 'BiGG' in alias_dict.keys() and bigg_id in alias_dict['BiGG']:
+                potential_metabs.append(met)
+        # If there is only one match, use it
+        if len(potential_metabs) == 1:
+            modelseed_id = potential_metabs[0]
+        # If there are multiple matches, give a warning and skip it
+        elif len(potential_metabs) > 1:
+            print("WARNING: Multiple matches for " + bigg_id)
+            continue
+        # Add the compartement information back to the ID, but in the new style
+        # (i.e. _c --> _c0)
+        if compartment == 'c':
+            modelseed_id = modelseed_id + '_c0'
+        elif compartment == 'e':
+            modelseed_id = modelseed_id + '_e0'
+        else:
+            print("WARNING: Unknown compartment " + compartment)
+            continue
+    elif node_info['node_type'] == 'reaction':
+        # If it is a metabolite, search the ModelSeed reaction database for
+        # the reaction
+        continue
+    else:
+        # If it's something else (i.e. a multimarker), skip it
+        continue
+    # Change the node name (bigg_id) to the ModelSeed ID
+    # FIXME: Can I call the ModelSeed ID something else so it isn't confusing?
+    node_info['bigg_id'] = modelseed_id
+
+# Save the new map
+with open('escher/iJO1366.Central metabolism.modelseed.json', 'w') as f:
+    json.dump(map, f, indent=2)
