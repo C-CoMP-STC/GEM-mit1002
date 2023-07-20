@@ -17,8 +17,12 @@ with open('../../ModelSEEDDatabase/Biochemistry/reactions.json') as f:
 def parse_aliases(alias_list):
     alias_dict = {}
     for meta_list in alias_list:
-        meta_name, meta_entries = meta_list.split(':')
+        # Stupid way to get around incase there are colons in the alias list
+        meta_name = meta_list.split(':')[0]
+        meta_entries = ':'.join(meta_list.split(':')[1:])
+        # Seperate the alias IDs by semicolons and remove whitespace
         alias_ids = [x.strip() for x in meta_entries.split(';')]
+        # Add the alias IDs to the dictionary
         alias_dict[meta_name] = alias_ids
     return alias_dict
 
@@ -37,13 +41,15 @@ for node in map[1]['nodes']:
         potential_metabs = []
         for met in compounds:
             # Convert the alias string into a dictionary
+            if 'aliases' not in met.keys() or met['aliases'] is None:
+                continue
             alias_dict = parse_aliases(met['aliases'])
             # If the bigg_id is in the alias dictionary, add it to the list
             if 'BiGG' in alias_dict.keys() and bigg_id in alias_dict['BiGG']:
                 potential_metabs.append(met)
         # If there is only one match, use it
         if len(potential_metabs) == 1:
-            modelseed_id = potential_metabs[0]
+            modelseed_met = potential_metabs[0]
         # If there are multiple matches, give a warning and skip it
         elif len(potential_metabs) > 1:
             print("WARNING: Multiple matches for " + bigg_id)
@@ -51,9 +57,9 @@ for node in map[1]['nodes']:
         # Add the compartement information back to the ID, but in the new style
         # (i.e. _c --> _c0)
         if compartment == 'c':
-            modelseed_id = modelseed_id + '_c0'
+            modelseed_id = modelseed_met['id'] + '_c0'
         elif compartment == 'e':
-            modelseed_id = modelseed_id + '_e0'
+            modelseed_id = modelseed_met['id'] + '_e0'
         else:
             print("WARNING: Unknown compartment " + compartment)
             continue
