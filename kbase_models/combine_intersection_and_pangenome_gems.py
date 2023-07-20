@@ -31,3 +31,4 @@ for rxn in gem_intersection.reactions:
 gem_bayesian_core.id = 'Alteromonas_bayesian_core'
 
 # Save the model file as a JSON file
+cobra.io.save_json_model(gem_bayesian_core, 'kbase_models/GEM-MIT1002_intersection_and_pangenome.json')
