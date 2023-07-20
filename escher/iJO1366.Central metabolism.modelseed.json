@@ -8127,7 +8127,7 @@
         }
       },
       "2075840": {
-        "bigg_id": "NTRIR3pp",
+        "bigg_id": "rxn13647",
         "gene_reaction_rule": "b4070 and b4071 and b4072 and b4073",
         "genes": [
           {
@@ -8549,7 +8549,7 @@
         }
       },
       "2075843": {
-        "bigg_id": "MALt3pp",
+        "bigg_id": "rxn13647",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 4609.3746015625,
@@ -8638,7 +8638,7 @@
         }
       },
       "2075844": {
-        "bigg_id": "D_LACt2pp",
+        "bigg_id": "rxn13647",
         "gene_reaction_rule": "b3603 or b2975",
         "genes": [
           {
@@ -8830,7 +8830,7 @@
         }
       },
       "2075846": {
-        "bigg_id": "ACONMT",
+        "bigg_id": "rxn04016",
         "gene_reaction_rule": "b1519",
         "genes": [
           {
@@ -8986,7 +8986,7 @@
         }
       },
       "2075848": {
-        "bigg_id": "GLYCTO3",
+        "bigg_id": "rxn08656",
         "gene_reaction_rule": "b2979 and b4467 and b4468",
         "genes": [
           {
@@ -9088,7 +9088,7 @@
         }
       },
       "2075849": {
-        "bigg_id": "ACONIs",
+        "bigg_id": "rxn01606",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -9792,7 +9792,7 @@
         }
       },
       "2075856": {
-        "bigg_id": "ETOHtrpp",
+        "bigg_id": "rxn01606",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -10442,7 +10442,7 @@
         }
       },
       "2075862": {
-        "bigg_id": "DSBAO1",
+        "bigg_id": "rxn08366",
         "gene_reaction_rule": "b3860 and b1185",
         "genes": [
           {
@@ -10968,7 +10968,7 @@
         }
       },
       "2075867": {
-        "bigg_id": "GLYCTO4",
+        "bigg_id": "rxn08657",
         "gene_reaction_rule": "b2979 and b4467 and b4468",
         "genes": [
           {
@@ -11182,7 +11182,7 @@
         }
       },
       "2075870": {
-        "bigg_id": "QMO3",
+        "bigg_id": "rxn09220",
         "gene_reaction_rule": "b3029",
         "genes": [
           {
@@ -12236,7 +12236,7 @@
         }
       },
       "2075883": {
-        "bigg_id": "GLYK",
+        "bigg_id": "rxn00615",
         "gene_reaction_rule": "b3926",
         "genes": [
           {
@@ -12673,7 +12673,7 @@
         }
       },
       "2075888": {
-        "bigg_id": "DMSOtpp",
+        "bigg_id": "rxn00615",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -13157,7 +13157,7 @@
         }
       },
       "2075892": {
-        "bigg_id": "GLDBRAN2",
+        "bigg_id": "rxn08605",
         "gene_reaction_rule": "b3431",
         "genes": [
           {
@@ -13355,7 +13355,7 @@
         }
       },
       "2075895": {
-        "bigg_id": "G1Ptex",
+        "bigg_id": "rxn08545",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -13479,7 +13479,7 @@
         }
       },
       "2075897": {
-        "bigg_id": "CYTBO3_4pp",
+        "bigg_id": "rxn30002",
         "gene_reaction_rule": "b0429 and b0430 and b0431 and b0432",
         "genes": [
           {
@@ -13837,7 +13837,7 @@
         }
       },
       "2075900": {
-        "bigg_id": "PPK2r",
+        "bigg_id": "rxn00104",
         "gene_reaction_rule": "b2501",
         "genes": [
           {
@@ -13931,7 +13931,7 @@
         }
       },
       "2075901": {
-        "bigg_id": "L_LACD2",
+        "bigg_id": "rxn08792",
         "gene_reaction_rule": "b3605 or (b0306 and b0307 and b0308)",
         "genes": [
           {
@@ -14151,7 +14151,7 @@
         }
       },
       "2075904": {
-        "bigg_id": "QMO2",
+        "bigg_id": "rxn09219",
         "gene_reaction_rule": "b3029",
         "genes": [
           {
@@ -14261,7 +14261,7 @@
         }
       },
       "2075905": {
-        "bigg_id": "L_LACt2rpp",
+        "bigg_id": "rxn09219",
         "gene_reaction_rule": "b3603 or b2975",
         "genes": [
           {
@@ -14359,7 +14359,7 @@
         }
       },
       "2075906": {
-        "bigg_id": "NADH10",
+        "bigg_id": "rxn08971",
         "gene_reaction_rule": "b1109",
         "genes": [
           {
@@ -14469,7 +14469,7 @@
         }
       },
       "2075907": {
-        "bigg_id": "GLYCDx",
+        "bigg_id": "rxn00762",
         "gene_reaction_rule": "b3945",
         "genes": [
           {
@@ -14677,7 +14677,7 @@
         }
       },
       "2075909": {
-        "bigg_id": "DHAPT",
+        "bigg_id": "rxn00745",
         "gene_reaction_rule": "b1200 and b1199 and b1198 and b2415 and b2416",
         "genes": [
           {
@@ -14975,7 +14975,7 @@
         }
       },
       "2075912": {
-        "bigg_id": "DSBAO2",
+        "bigg_id": "rxn08367",
         "gene_reaction_rule": "b3860 and b1185",
         "genes": [
           {
@@ -15337,7 +15337,7 @@
         }
       },
       "2075915": {
-        "bigg_id": "L_LACtex",
+        "bigg_id": "rxn08367",
         "gene_reaction_rule": "b0929 or b1377 or b2215 or b0241",
         "genes": [
           {
@@ -15905,7 +15905,7 @@
         }
       },
       "2075921": {
-        "bigg_id": "FRD3",
+        "bigg_id": "rxn08528",
         "gene_reaction_rule": "b4151 and b4152 and b4153 and b4154",
         "genes": [
           {
@@ -16011,7 +16011,7 @@
         }
       },
       "2075922": {
-        "bigg_id": "PPA2",
+        "bigg_id": "rxn00106",
         "gene_reaction_rule": "b2502 or b2744",
         "genes": [
           {
@@ -16984,7 +16984,7 @@
         }
       },
       "2075931": {
-        "bigg_id": "EDA",
+        "bigg_id": "rxn03884",
         "gene_reaction_rule": "b1850",
         "genes": [
           {
@@ -17880,7 +17880,7 @@
         }
       },
       "2075939": {
-        "bigg_id": "LCARR",
+        "bigg_id": "rxn02209",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 870.7397969726562,
@@ -18097,7 +18097,7 @@
         }
       },
       "2075942": {
-        "bigg_id": "FRD2",
+        "bigg_id": "rxn08527",
         "gene_reaction_rule": "b4151 and b4152 and b4153 and b4154",
         "genes": [
           {
@@ -18203,7 +18203,7 @@
         }
       },
       "2075943": {
-        "bigg_id": "NADPHQR3",
+        "bigg_id": "rxn08978",
         "gene_reaction_rule": "b3028",
         "genes": [
           {
@@ -18517,7 +18517,7 @@
         }
       },
       "2075946": {
-        "bigg_id": "GLBRAN2",
+        "bigg_id": "rxn08605",
         "gene_reaction_rule": "b3432",
         "genes": [
           {
@@ -18791,7 +18791,7 @@
         }
       },
       "2075949": {
-        "bigg_id": "TMAOR2",
+        "bigg_id": "rxn09315",
         "gene_reaction_rule": "b0894 and b0895 and b0896",
         "genes": [
           {
@@ -18925,7 +18925,7 @@
         }
       },
       "2075950": {
-        "bigg_id": "FDH5pp",
+        "bigg_id": "rxn13640",
         "gene_reaction_rule": "(b1474 and b1475 and b1476) or (b3892 and b3893 and b3894)",
         "genes": [
           {
@@ -19915,7 +19915,7 @@
         }
       },
       "2075961": {
-        "bigg_id": "D_LACtex",
+        "bigg_id": "rxn13640",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -19977,7 +19977,7 @@
         }
       },
       "2075962": {
-        "bigg_id": "MDH3",
+        "bigg_id": "rxn08901",
         "gene_reaction_rule": "b2210",
         "genes": [
           {
@@ -20205,7 +20205,7 @@
         }
       },
       "2075965": {
-        "bigg_id": "L_LACD3",
+        "bigg_id": "rxn08793",
         "gene_reaction_rule": "b3605 or (b0306 and b0307 and b0308)",
         "genes": [
           {
@@ -20311,7 +20311,7 @@
         }
       },
       "2075966": {
-        "bigg_id": "G3PT",
+        "bigg_id": "rxn00610",
         "gene_reaction_rule": "b0822",
         "genes": [
           {
@@ -20629,7 +20629,7 @@
         }
       },
       "2075969": {
-        "bigg_id": "RBK",
+        "bigg_id": "rxn30058",
         "gene_reaction_rule": "b3752",
         "genes": [
           {
@@ -20963,7 +20963,7 @@
         }
       },
       "2075972": {
-        "bigg_id": "CITt3pp",
+        "bigg_id": "rxn30058",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 4615.00790234375,
@@ -21711,7 +21711,7 @@
         }
       },
       "2075980": {
-        "bigg_id": "PFK_3",
+        "bigg_id": "rxn01343",
         "gene_reaction_rule": "b3916",
         "genes": [
           {
@@ -21821,7 +21821,7 @@
         }
       },
       "2075981": {
-        "bigg_id": "MGSA",
+        "bigg_id": "rxn00748",
         "gene_reaction_rule": "b0963",
         "genes": [
           {
@@ -22097,7 +22097,7 @@
         }
       },
       "2075984": {
-        "bigg_id": "NTRIR2x",
+        "bigg_id": "rxn00568",
         "gene_reaction_rule": "b3365 and b3366",
         "genes": [
           {
@@ -22321,7 +22321,7 @@
         }
       },
       "2075988": {
-        "bigg_id": "F6PA",
+        "bigg_id": "rxn08429",
         "gene_reaction_rule": "b0825 or b3946",
         "genes": [
           {
@@ -22674,7 +22674,7 @@
         }
       },
       "2075992": {
-        "bigg_id": "GLYCTO2",
+        "bigg_id": "rxn08655",
         "gene_reaction_rule": "b2979 and b4467 and b4468",
         "genes": [
           {
@@ -23004,7 +23004,7 @@
         }
       },
       "2075995": {
-        "bigg_id": "SUCCt3pp",
+        "bigg_id": "rxn09270",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 4559.5455,
@@ -23093,7 +23093,7 @@
         }
       },
       "2075996": {
-        "bigg_id": "PPKr",
+        "bigg_id": "rxn09176",
         "gene_reaction_rule": "b2501",
         "genes": [
           {
@@ -23367,7 +23367,7 @@
         }
       },
       "2075999": {
-        "bigg_id": "DMSOR2",
+        "bigg_id": "rxn08356",
         "gene_reaction_rule": "b0894 and b0895 and b0896",
         "genes": [
           {
@@ -23771,7 +23771,7 @@
         }
       },
       "2076003": {
-        "bigg_id": "NTRIR4pp",
+        "bigg_id": "rxn13648",
         "gene_reaction_rule": "b4070 and b4071 and b4072 and b4073",
         "genes": [
           {
@@ -23909,7 +23909,7 @@
         }
       },
       "2076004": {
-        "bigg_id": "CITL",
+        "bigg_id": "rxn00265",
         "gene_reaction_rule": "(b0615 and b0616 and b0617) and b0614",
         "genes": [
           {
@@ -24091,7 +24091,7 @@
         }
       },
       "2076006": {
-        "bigg_id": "GLCtex_copy1",
+        "bigg_id": "rxn00265",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -25197,7 +25197,7 @@
         }
       },
       "2076019": {
-        "bigg_id": "EDD",
+        "bigg_id": "rxn01477",
         "gene_reaction_rule": "b1851",
         "genes": [
           {
@@ -25379,7 +25379,7 @@
         }
       },
       "2076021": {
-        "bigg_id": "FDH4pp",
+        "bigg_id": "rxn13639",
         "gene_reaction_rule": "(b3892 and b3893 and b3894) or (b1474 and b1475 and b1476)",
         "genes": [
           {
@@ -25525,7 +25525,7 @@
         }
       },
       "2076023": {
-        "bigg_id": "MOX",
+        "bigg_id": "rxn13639",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 2740.043546875,
@@ -26084,7 +26084,7 @@
         }
       },
       "2076029": {
-        "bigg_id": "G3PD6",
+        "bigg_id": "rxn08557",
         "gene_reaction_rule": "b2241 and b2242 and b2243",
         "genes": [
           {
@@ -26406,7 +26406,7 @@
         }
       },
       "2076032": {
-        "bigg_id": "DMSOR1",
+        "bigg_id": "rxn08354",
         "gene_reaction_rule": "(b1587 and b1588 and b1589 and b1590) or (b0894 and b0895 and b0896)",
         "genes": [
           {
@@ -26642,7 +26642,7 @@
         }
       },
       "2076035": {
-        "bigg_id": "TMAOR1",
+        "bigg_id": "rxn09313",
         "gene_reaction_rule": "(b0894 and b0895 and b0896) or (b1587 and b1588 and b1589 and b1590)",
         "genes": [
           {
@@ -26872,7 +26872,7 @@
         }
       },
       "2076037": {
-        "bigg_id": "G6PP",
+        "bigg_id": "rxn00220",
         "gene_reaction_rule": "b0822",
         "genes": [
           {
@@ -27524,7 +27524,7 @@
         }
       },
       "2076043": {
-        "bigg_id": "GLCS1",
+        "bigg_id": "rxn08615",
         "gene_reaction_rule": "b3429",
         "genes": [
           {
@@ -27674,7 +27674,7 @@
         }
       },
       "2076045": {
-        "bigg_id": "OAADC",
+        "bigg_id": "rxn00162",
         "gene_reaction_rule": "b1850",
         "genes": [
           {
@@ -28070,7 +28070,7 @@
         }
       },
       "2076049": {
-        "bigg_id": "L_LACD2",
+        "bigg_id": "rxn08792",
         "gene_reaction_rule": "b3605 or (b0306 and b0307 and b0308)",
         "genes": [
           {
@@ -28298,7 +28298,7 @@
         }
       },
       "2076051": {
-        "bigg_id": "L_LACD3",
+        "bigg_id": "rxn08793",
         "gene_reaction_rule": "b3605 or (b0306 and b0307 and b0308)",
         "genes": [
           {

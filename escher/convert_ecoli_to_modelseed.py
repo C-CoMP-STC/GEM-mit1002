@@ -26,6 +26,31 @@ def parse_aliases(alias_list):
         alias_dict[meta_name] = alias_ids
     return alias_dict
 
+# For every reaction in the map
+for reaction in map[1]['reactions']:
+    rxn_info = map[1]['reactions'][reaction]
+    bigg_id = rxn_info['bigg_id']
+    # Search the ModelSeed reaction database for the reaction
+    potential_rxns = []
+    for rxn in reactions:
+        # Convert the alias string into a dictionary
+        if 'aliases' not in rxn.keys() or rxn['aliases'] is None:
+            continue
+        alias_dict = parse_aliases(rxn['aliases'])
+        # If the bigg_id is in the alias dictionary, add it to the list
+        if 'BiGG' in alias_dict.keys() and bigg_id in alias_dict['BiGG']:
+            potential_rxns.append(rxn)
+    # If there is only one match, use it
+    if len(potential_rxns) == 1:
+        print("Success: " + bigg_id)
+        modelseed_rxn = potential_rxns[0]
+    # If there are multiple matches, give a warning and skip it
+    elif len(potential_rxns) > 1:
+        print("WARNING: Multiple matches for " + bigg_id)
+        continue
+    # Change the reaction name (bigg_id) to the ModelSeed ID
+    rxn_info['bigg_id'] = modelseed_rxn['id']
+
 # For every node in the map
 for node in map[1]['nodes']:
     node_info = map[1]['nodes'][node]
@@ -63,10 +88,6 @@ for node in map[1]['nodes']:
         else:
             print("WARNING: Unknown compartment " + compartment)
             continue
-    elif node_info['node_type'] == 'reaction':
-        # If it is a metabolite, search the ModelSeed reaction database for
-        # the reaction
-        continue
     else:
         # If it's something else (i.e. a multimarker), skip it
         continue
