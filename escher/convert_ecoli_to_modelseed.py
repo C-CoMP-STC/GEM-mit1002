@@ -40,23 +40,27 @@ for node in map[1]['nodes']:
         # and are preceded by an underscore (i.e. _c, _e)
         bigg_id = node_info['bigg_id'][:-2]
         compartment = node_info['bigg_id'][-1]
-        # Search the ModelSeed compound database for the metabolite
-        potential_metabs = []
-        for met in compounds:
-            # Convert the alias string into a dictionary
-            if 'aliases' not in met.keys() or met['aliases'] is None:
+        # If the bigg ID is h2o hardcode it for water
+        if bigg_id == 'h2o':
+            modelseed_met = compounds[0]
+        else:
+            # Search the ModelSeed compound database for the metabolite
+            potential_metabs = []
+            for met in compounds:
+                # Convert the alias string into a dictionary
+                if 'aliases' not in met.keys() or met['aliases'] is None:
+                    continue
+                alias_dict = parse_aliases(met['aliases'])
+                # If the bigg_id is in the alias dictionary, add it to the list
+                if 'BiGG' in alias_dict.keys() and bigg_id in alias_dict['BiGG']:
+                    potential_metabs.append(met)
+            # If there is only one match, use it
+            if len(potential_metabs) == 1:
+                modelseed_met = potential_metabs[0]
+            # If there are multiple matches, give a warning and skip it
+            elif len(potential_metabs) > 1:
+                print("WARNING: Multiple matches for " + bigg_id)
                 continue
-            alias_dict = parse_aliases(met['aliases'])
-            # If the bigg_id is in the alias dictionary, add it to the list
-            if 'BiGG' in alias_dict.keys() and bigg_id in alias_dict['BiGG']:
-                potential_metabs.append(met)
-        # If there is only one match, use it
-        if len(potential_metabs) == 1:
-            modelseed_met = potential_metabs[0]
-        # If there are multiple matches, give a warning and skip it
-        elif len(potential_metabs) > 1:
-            print("WARNING: Multiple matches for " + bigg_id)
-            continue
         # Add the compartement information back to the ID, but in the new style
         # (i.e. _c --> _c0)
         if compartment == 'c':

@@ -95,7 +95,7 @@
         "y": 489.0491458879019
       },
       "2075299": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8159.109344392695,
         "label_y": 463.6603079528811,
         "name": "H2O",
@@ -315,7 +315,7 @@
         "y": 624.7302
       },
       "2075321": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 956.1685079101562,
         "label_y": 520.5748655273437,
         "name": "H2O",
@@ -455,7 +455,7 @@
         "y": 4066.0102960772874
       },
       "2075336": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 8167.111073806875,
         "label_y": 4010.3664826151917,
         "name": "H2O",
@@ -485,7 +485,7 @@
         "y": 3810.7302
       },
       "2075339": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 1957.270253515625,
         "label_y": 3732.255590625,
         "name": "H2O",
@@ -545,7 +545,7 @@
         "y": 1831.7302
       },
       "2075345": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 3609.051359375,
         "label_y": 3847.1686765625,
         "name": "H2O",
@@ -695,7 +695,7 @@
         "y": 1180.5543577148437
       },
       "2075360": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 8157.33846875,
         "label_y": 1406.3428098632812,
         "name": "H2O",
@@ -805,7 +805,7 @@
         "y": 3109.511028934426
       },
       "2075371": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8534.688722967983,
         "label_y": 3049.5465150556383,
         "name": "H2O",
@@ -895,7 +895,7 @@
         "y": 5163.16310546875
       },
       "2075380": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8296.25204296875,
         "label_y": 5373.16310546875,
         "name": "H2O",
@@ -925,7 +925,7 @@
         "y": 4379.73
       },
       "2075383": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 3042.858,
         "label_y": 4328.73,
         "name": "H2O",
@@ -1105,7 +1105,7 @@
         "y": 3454.337377734375
       },
       "2075401": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 1250.8579,
         "label_y": 3689.7302,
         "name": "H2O",
@@ -1205,7 +1205,7 @@
         "y": 5177.20509765625
       },
       "2075411": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 5093.47665234375,
         "label_y": 5094.20509765625,
         "name": "H2O",
@@ -1505,7 +1505,7 @@
         "y": 2752.7302
       },
       "2075443": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 2140.481679296875,
         "label_y": 1773.476049609375,
         "name": "H2O",
@@ -1625,7 +1625,7 @@
         "y": 969.7302
       },
       "2075455": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 4151.29110546875,
         "label_y": 1042.68576640625,
         "name": "H2O",
@@ -1815,7 +1815,7 @@
         "y": 886.2464963867187
       },
       "2075474": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 8151.7378828125,
         "label_y": 1107.1330930664062,
         "name": "H2O",
@@ -1845,7 +1845,7 @@
         "y": 3280.058080859375
       },
       "2075477": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8576.80182421875,
         "label_y": 3473.27756328125,
         "name": "H2O",
@@ -2205,7 +2205,7 @@
         "y": 1528.0023557617187
       },
       "2075516": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8373.32233203125,
         "label_y": 1748.0023557617187,
         "name": "H2O",
@@ -2245,7 +2245,7 @@
         "y": 3287.053198046875
       },
       "2075520": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 716.5265401367187,
         "label_y": 3149.374975390625,
         "name": "H2O",
@@ -2435,7 +2435,7 @@
         "y": 2058.7302
       },
       "2075539": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 4413.5542890625,
         "label_y": 1555.06174296875,
         "name": "H2O",
@@ -2515,7 +2515,7 @@
         "y": 3138.7302
       },
       "2075547": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 4895.3804609375,
         "label_y": 6466.0864453125,
         "name": "H2O",
@@ -2615,7 +2615,7 @@
         "y": 1648.4647581054687
       },
       "2075557": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 7029.83798046875,
         "label_y": 1570.6100217773437,
         "name": "H2O",
@@ -2675,7 +2675,7 @@
         "y": 1116.5554563476562
       },
       "2075563": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 3605.742765625,
         "label_y": 4400.4809765625,
         "name": "H2O",
@@ -2725,7 +2725,7 @@
         "y": 2009.186010546875
       },
       "2075568": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 4406.22567578125,
         "label_y": 1920.379369921875,
         "name": "H2O",
@@ -2785,7 +2785,7 @@
         "y": 2262.34348125
       },
       "2075574": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 3067.895109375,
         "label_y": 3337.306371875,
         "name": "H2O",
@@ -2835,7 +2835,7 @@
         "y": 4541.73
       },
       "2075579": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 5497.74325390625,
         "label_y": 6465.43703125,
         "name": "H2O",
@@ -2905,7 +2905,7 @@
         "y": 1852.1933958007812
       },
       "2075586": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 8191.76376171875,
         "label_y": 1784.2952024414062,
         "name": "H2O",
@@ -2955,7 +2955,7 @@
         "y": 3862.333715625
       },
       "2075591": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8556.43268359375,
         "label_y": 3802.333715625,
         "name": "H2O",
@@ -3155,7 +3155,7 @@
         "y": 4219.85744140625
       },
       "2075611": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 1464.890858984375,
         "label_y": 4163.20802734375,
         "name": "H2O",
@@ -3255,7 +3255,7 @@
         "y": 5322.16701171875
       },
       "2075621": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 7867.67098828125,
         "label_y": 5472.16701171875,
         "name": "H2O",
@@ -3415,7 +3415,7 @@
         "y": 2360.7302
       },
       "2075639": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 1465.309071875,
         "label_y": 2253.42893046875,
         "name": "H2O",
@@ -3555,7 +3555,7 @@
         "y": 5751.73
       },
       "2075653": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 1453.1136373046875,
         "label_y": 3760.7302,
         "name": "H2O",
@@ -3565,7 +3565,7 @@
         "y": 3760.7302
       },
       "2075656": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 1119.8579,
         "label_y": 2607.7302,
         "name": "H2O",
@@ -3595,7 +3595,7 @@
         "y": 1523.8525754882812
       },
       "2075659": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 5435.13925,
         "label_y": 1441.5283567382812,
         "name": "H2O",
@@ -3915,7 +3915,7 @@
         "y": 2438.7302
       },
       "2075691": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 4987.18954296875,
         "label_y": 2562.72189921875,
         "name": "H2O",
@@ -4105,7 +4105,7 @@
         "y": 5740.6333203125
       },
       "2075710": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 4919.87508984375,
         "label_y": 5638.15529296875,
         "name": "H2O",
@@ -4385,7 +4385,7 @@
         "y": 3301.7302
       },
       "2075740": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 7608.082609375,
         "label_y": 6066.50734375,
         "name": "H2O",
@@ -4415,7 +4415,7 @@
         "y": 5020.73
       },
       "2075743": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 2992.858,
         "label_y": 5060.73,
         "name": "H2O",
@@ -4515,7 +4515,7 @@
         "y": 2612.8275757653514
       },
       "2075753": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8100.736271145618,
         "label_y": 2585.0209792193914,
         "name": "H2O",
@@ -4695,7 +4695,7 @@
         "y": 4123.578507459013
       },
       "2075771": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 8042.27077571401,
         "label_y": 4019.615429662277,
         "name": "H2O",
@@ -4715,7 +4715,7 @@
         "y": 5255.73
       },
       "2075773": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 2952.858,
         "label_y": 5335.73,
         "name": "H2O",
@@ -4745,7 +4745,7 @@
         "y": 5255.73
       },
       "2075776": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 2296.45126171875,
         "label_y": 2199.978979296875,
         "name": "H2O",
@@ -5045,7 +5045,7 @@
         "y": 3508.21018046875
       },
       "2075806": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 7333.34774609375,
         "label_y": 3618.289037890625,
         "name": "H2O",
@@ -5095,7 +5095,7 @@
         "y": 3313.08518046875
       },
       "2075815": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 7543.83212109375,
         "label_y": 3463.08518046875,
         "name": "H2O",
@@ -5115,7 +5115,7 @@
         "y": 3533.08518046875
       },
       "2075817": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 1349.02586875,
         "label_y": 1587.0582029296875,
         "name": "H2O",
@@ -5215,7 +5215,7 @@
         "y": 694.7302
       },
       "2075827": {
-        "bigg_id": "h2o_c",
+        "bigg_id": "cpd00001_c0",
         "label_x": 4884.33602734375,
         "label_y": 877.1189939453125,
         "name": "H2O",
@@ -5315,7 +5315,7 @@
         "y": 4228.73
       },
       "2075837": {
-        "bigg_id": "h2o_p",
+        "bigg_id": "cpd00001_p",
         "label_x": 8317.358,
         "label_y": 6061.3784375,
         "name": "H2O",
@@ -8151,7 +8151,7 @@
         "label_y": 542.0664407649147,
         "metabolites": [
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 2
           },
           {
@@ -8756,7 +8756,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": -1
           },
           {
@@ -9166,7 +9166,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -9300,7 +9300,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           }
         ],
@@ -9492,7 +9492,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           }
         ],
@@ -9882,7 +9882,7 @@
             "coefficient": 2
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -10170,7 +10170,7 @@
         "label_y": 2989.3387505107053,
         "metabolites": [
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 1
           },
           {
@@ -10568,7 +10568,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 1
           },
           {
@@ -10710,7 +10710,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           }
         ],
@@ -11312,7 +11312,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -11578,7 +11578,7 @@
             "coefficient": -2
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 2
           },
           {
@@ -12554,7 +12554,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -12779,7 +12779,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -13519,7 +13519,7 @@
             "coefficient": 4
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -13633,7 +13633,7 @@
         "label_y": 3359.150121875,
         "metabolites": [
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 1
           },
           {
@@ -14889,7 +14889,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 1
           },
           {
@@ -15117,7 +15117,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -15799,7 +15799,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           }
         ],
@@ -16035,7 +16035,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -16376,7 +16376,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -16604,7 +16604,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -16790,7 +16790,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -16928,7 +16928,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -17194,7 +17194,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -17336,7 +17336,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           }
         ],
@@ -17542,7 +17542,7 @@
         "label_y": 3713.014623828125,
         "metabolites": [
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 1
           },
           {
@@ -18407,7 +18407,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -18823,7 +18823,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -19385,7 +19385,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -20149,7 +20149,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -20327,7 +20327,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -20421,7 +20421,7 @@
         "label_y": 1340.3223020507812,
         "metabolites": [
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": -1
           },
           {
@@ -21264,7 +21264,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -21621,7 +21621,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -22133,7 +22133,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 2
           }
         ],
@@ -23399,7 +23399,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -23513,7 +23513,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -23815,7 +23815,7 @@
             "coefficient": -2
           },
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 2
           }
         ],
@@ -24889,7 +24889,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -25103,7 +25103,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           }
         ],
@@ -25213,7 +25213,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -26454,7 +26454,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           },
           {
@@ -26698,7 +26698,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": 1
           }
         ],
@@ -26892,7 +26892,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           },
           {
@@ -27296,7 +27296,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_c",
+            "bigg_id": "cpd00001_c0",
             "coefficient": -1
           }
         ],
@@ -27796,7 +27796,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h2o_p",
+            "bigg_id": "cpd00001_p",
             "coefficient": 1
           },
           {
