@@ -65,7 +65,7 @@
         "y": 4170.73
       },
       "2075296": {
-        "bigg_id": "q8h2_c",
+        "bigg_id": "cpd15561_c0",
         "label_x": 7250.4468671875,
         "label_y": 586.0999509765625,
         "name": "Ubiquinol-8",
@@ -105,7 +105,7 @@
         "y": 482.9773245544436
       },
       "2075300": {
-        "bigg_id": "q8_c",
+        "bigg_id": "cpd15560_c0",
         "label_x": 7299.76376171875,
         "label_y": 2204.734167285156,
         "name": "Ubiquinone-8",
@@ -115,7 +115,7 @@
         "y": 2148.197546191406
       },
       "2075301": {
-        "bigg_id": "nh4_p",
+        "bigg_id": "cpd00013_p",
         "label_x": 8233.302868662944,
         "label_y": 500.38069746473525,
         "name": "Ammonium",
@@ -525,7 +525,7 @@
         "y": 3851.255590625
       },
       "2075343": {
-        "bigg_id": "f6p_e",
+        "bigg_id": "cpd00072_e0",
         "label_x": 92.95238479248047,
         "label_y": 1888.44748515625,
         "name": "D-Fructose 6-phosphate",
@@ -535,7 +535,7 @@
         "y": 1831.7302
       },
       "2075344": {
-        "bigg_id": "f6p_p",
+        "bigg_id": "cpd00072_p",
         "label_x": 309.54930625,
         "label_y": 1877.5964109375,
         "name": "D-Fructose 6-phosphate",
@@ -995,7 +995,7 @@
         "y": 1798.7302
       },
       "2075390": {
-        "bigg_id": "adpglc_c",
+        "bigg_id": "cpd00387_c0",
         "label_x": 798.6738790039062,
         "label_y": 1736.9382078125,
         "name": "ADPglucose",
@@ -1045,7 +1045,7 @@
         "y": 5263.5434765625
       },
       "2075395": {
-        "bigg_id": "g6p_c",
+        "bigg_id": "cpd00079_c0",
         "label_x": 1534.79393515625,
         "label_y": 1733.56223125,
         "name": "D-Glucose 6-phosphate",
@@ -1055,7 +1055,7 @@
         "y": 1692.7302
       },
       "2075396": {
-        "bigg_id": "f6p_c",
+        "bigg_id": "cpd00072_c0",
         "label_x": 1629.8211568359375,
         "label_y": 1949.3050291015625,
         "name": "D-Fructose 6-phosphate",
@@ -1715,7 +1715,7 @@
         "y": 1188.7302
       },
       "2075464": {
-        "bigg_id": "r5p_c",
+        "bigg_id": "cpd00101_c0",
         "label_x": 3097.288419921875,
         "label_y": 1974.48166484375,
         "name": "Alpha-D-Ribose 5-phosphate",
@@ -1745,7 +1745,7 @@
         "y": 1442.7302
       },
       "2075467": {
-        "bigg_id": "xyl__D_p",
+        "bigg_id": "cpd00154_p",
         "label_x": 4836.88290234375,
         "label_y": 1693.0562498046875,
         "name": "D-Xylose",
@@ -1755,7 +1755,7 @@
         "y": 1649.7302
       },
       "2075468": {
-        "bigg_id": "xyl__D_c",
+        "bigg_id": "cpd00154_c0",
         "label_x": 4136.904875,
         "label_y": 1619.7632810546875,
         "name": "D-Xylose",
@@ -1955,7 +1955,7 @@
         "y": 4667.73
       },
       "2075488": {
-        "bigg_id": "q8_c",
+        "bigg_id": "cpd15560_c0",
         "label_x": 1074.117665625,
         "label_y": 4850.75392578125,
         "name": "Ubiquinone-8",
@@ -1965,7 +1965,7 @@
         "y": 4819.3442578125
       },
       "2075489": {
-        "bigg_id": "q8h2_c",
+        "bigg_id": "cpd15561_c0",
         "label_x": 1307.2358296875,
         "label_y": 4857.19484375,
         "name": "Ubiquinol-8",
@@ -2685,7 +2685,7 @@
         "y": 4420.4809765625
       },
       "2075564": {
-        "bigg_id": "icit_c",
+        "bigg_id": "cpd00260_c0",
         "label_x": 3741.969328125,
         "label_y": 4406.3618359375,
         "name": "Isocitrate",
@@ -3405,7 +3405,7 @@
         "y": 3180.2096921875
       },
       "2075638": {
-        "bigg_id": "fdp_c",
+        "bigg_id": "cpd00290_c0",
         "label_x": 1647.8579,
         "label_y": 2363.7302,
         "name": "D-Fructose 1,6-bisphosphate",
@@ -4095,7 +4095,7 @@
         "y": 5840.6333203125
       },
       "2075709": {
-        "bigg_id": "nh4_c",
+        "bigg_id": "cpd00013_c0",
         "label_x": 4859.2027265625,
         "label_y": 5775.3501171875,
         "name": "Ammonium",
@@ -4155,7 +4155,7 @@
         "y": 4624.17970703125
       },
       "2075717": {
-        "bigg_id": "q8_c",
+        "bigg_id": "cpd15560_c0",
         "label_x": 2899.858,
         "label_y": 3773.458715625,
         "name": "Ubiquinone-8",
@@ -4165,7 +4165,7 @@
         "y": 3793.845434375
       },
       "2075718": {
-        "bigg_id": "q8h2_c",
+        "bigg_id": "cpd15561_c0",
         "label_x": 2882.4527265625,
         "label_y": 4053.9421140625,
         "name": "Ubiquinol-8",
@@ -4475,7 +4475,7 @@
         "y": 2608.7302
       },
       "2075749": {
-        "bigg_id": "xylu__D_c",
+        "bigg_id": "cpd00259_c0",
         "label_x": 3919.858,
         "label_y": 1618.7302,
         "name": "D-Xylulose",
@@ -4505,7 +4505,7 @@
         "y": 2613.4607905498115
       },
       "2075752": {
-        "bigg_id": "nh4_p",
+        "bigg_id": "cpd00013_p",
         "label_x": 8221.590904012777,
         "label_y": 2612.8275757653514,
         "name": "Ammonium",
@@ -4575,7 +4575,7 @@
         "y": 5961.73
       },
       "2075759": {
-        "bigg_id": "q8_c",
+        "bigg_id": "cpd15560_c0",
         "label_x": 3726.858,
         "label_y": 3481.7302,
         "name": "Ubiquinone-8",
@@ -4585,7 +4585,7 @@
         "y": 3461.7302
       },
       "2075760": {
-        "bigg_id": "q8h2_c",
+        "bigg_id": "cpd15561_c0",
         "label_x": 3347.4156171875,
         "label_y": 3488.923559375,
         "name": "Ubiquinol-8",
@@ -4595,7 +4595,7 @@
         "y": 3448.7302
       },
       "2075761": {
-        "bigg_id": "xyl__D_e",
+        "bigg_id": "cpd00154_e0",
         "label_x": 4981.5484296875,
         "label_y": 1693.72189921875,
         "name": "D-Xylose",
@@ -4925,7 +4925,7 @@
         "y": 981.7302
       },
       "2075794": {
-        "bigg_id": "g6p_p",
+        "bigg_id": "cpd00079_p",
         "label_x": 1890.0377095703125,
         "label_y": 650.8309080078125,
         "name": "D-Glucose 6-phosphate",
@@ -5285,7 +5285,7 @@
         "y": 1468.7302
       },
       "2075834": {
-        "bigg_id": "g6p_e",
+        "bigg_id": "cpd00079_e0",
         "label_x": 1871.8579,
         "label_y": 421.73022,
         "name": "D-Glucose 6-phosphate",
@@ -7880,7 +7880,7 @@
         "y": 4508.886191938423
       },
       "2076565": {
-        "bigg_id": "q8h2_c",
+        "bigg_id": "cpd15561_c0",
         "label_x": 1441.32227825802,
         "label_y": 4545.899511449526,
         "name": "Ubiquinol-8",
@@ -7890,7 +7890,7 @@
         "y": 4553.453222387026
       },
       "2076567": {
-        "bigg_id": "q8_c",
+        "bigg_id": "cpd15560_c0",
         "label_x": 1243.5402026394277,
         "label_y": 4544.231961386165,
         "name": "Ubiquinone-8",
@@ -7960,7 +7960,7 @@
         "y": 3990.103979296875
       },
       "2076579": {
-        "bigg_id": "g6p_c",
+        "bigg_id": "cpd00079_c0",
         "label_x": 1332.035634375,
         "label_y": 4249.0417234375,
         "name": "D-Glucose 6-phosphate",
@@ -8155,7 +8155,7 @@
             "coefficient": 2
           },
           {
-            "bigg_id": "nh4_p",
+            "bigg_id": "cpd00013_p",
             "coefficient": 1
           },
           {
@@ -8163,11 +8163,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": 3
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": -3
           },
           {
@@ -9418,11 +9418,11 @@
         "label_y": 1871.55978984375,
         "metabolites": [
           {
-            "bigg_id": "f6p_p",
+            "bigg_id": "cpd00072_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "f6p_e",
+            "bigg_id": "cpd00072_e0",
             "coefficient": -1
           }
         ],
@@ -9870,11 +9870,11 @@
             "coefficient": -2
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": -1
           },
           {
@@ -10462,7 +10462,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
@@ -10470,7 +10470,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           }
         ],
@@ -10828,7 +10828,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "adpglc_c",
+            "bigg_id": "cpd00387_c0",
             "coefficient": 1
           },
           {
@@ -11082,11 +11082,11 @@
         "label_y": 1867.371069140625,
         "metabolites": [
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": 1
           }
         ],
@@ -11868,7 +11868,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -11876,7 +11876,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -11962,7 +11962,7 @@
         "label_y": 1742.22629375,
         "metabolites": [
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": 1
           },
           {
@@ -12012,7 +12012,7 @@
         "label_y": 1654.3738767578125,
         "metabolites": [
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": -1
           },
           {
@@ -12953,11 +12953,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
@@ -13223,7 +13223,7 @@
         "label_y": 1838.6641599609375,
         "metabolites": [
           {
-            "bigg_id": "r5p_c",
+            "bigg_id": "cpd00101_c0",
             "coefficient": -1
           },
           {
@@ -13281,11 +13281,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "xyl__D_p",
+            "bigg_id": "cpd00154_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "xyl__D_c",
+            "bigg_id": "cpd00154_c0",
             "coefficient": 1
           }
         ],
@@ -13507,11 +13507,11 @@
             "coefficient": -4
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": -1
           },
           {
@@ -13959,7 +13959,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -13967,7 +13967,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -14167,11 +14167,11 @@
             "coefficient": 2
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": -1
           },
           {
@@ -14881,11 +14881,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": -1
           },
           {
@@ -15779,11 +15779,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "xyl__D_c",
+            "bigg_id": "cpd00154_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "xyl__D_p",
+            "bigg_id": "cpd00154_p",
             "coefficient": -1
           },
           {
@@ -16368,7 +16368,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -16380,7 +16380,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -16486,7 +16486,7 @@
         "label_y": 1323.0250608398437,
         "metabolites": [
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -16502,7 +16502,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -16608,7 +16608,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "icit_c",
+            "bigg_id": "cpd00260_c0",
             "coefficient": 1
           }
         ],
@@ -17324,7 +17324,7 @@
             "coefficient": -2
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": 1
           },
           {
@@ -17332,7 +17332,7 @@
             "coefficient": 2
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": -1
           },
           {
@@ -17680,11 +17680,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           }
         ],
@@ -18709,7 +18709,7 @@
         "label_y": 798.7682249023437,
         "metabolites": [
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": 1
           },
           {
@@ -19381,7 +19381,7 @@
         "label_y": 2148.7302,
         "metabolites": [
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": 1
           },
           {
@@ -19389,7 +19389,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "fdp_c",
+            "bigg_id": "cpd00290_c0",
             "coefficient": -1
           },
           {
@@ -19523,7 +19523,7 @@
         "label_y": 1807.6734983398437,
         "metabolites": [
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -19539,7 +19539,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -19753,7 +19753,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "icit_c",
+            "bigg_id": "cpd00260_c0",
             "coefficient": -1
           }
         ],
@@ -19829,7 +19829,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "icit_c",
+            "bigg_id": "cpd00260_c0",
             "coefficient": -1
           },
           {
@@ -20425,7 +20425,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -20433,7 +20433,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
@@ -20641,7 +20641,7 @@
         "label_y": 1969.4069578125,
         "metabolites": [
           {
-            "bigg_id": "r5p_c",
+            "bigg_id": "cpd00101_c0",
             "coefficient": 1
           },
           {
@@ -21340,7 +21340,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": -1
           },
           {
@@ -21348,7 +21348,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "fdp_c",
+            "bigg_id": "cpd00290_c0",
             "coefficient": 1
           },
           {
@@ -22019,7 +22019,7 @@
             "coefficient": 2
           },
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": 1
           },
           {
@@ -22027,7 +22027,7 @@
             "coefficient": -2
           },
           {
-            "bigg_id": "f6p_p",
+            "bigg_id": "cpd00072_p",
             "coefficient": -1
           }
         ],
@@ -22129,7 +22129,7 @@
             "coefficient": -3
           },
           {
-            "bigg_id": "nh4_c",
+            "bigg_id": "cpd00013_c0",
             "coefficient": 1
           },
           {
@@ -22341,7 +22341,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": -1
           },
           {
@@ -22413,7 +22413,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
@@ -22421,7 +22421,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           }
         ],
@@ -22694,7 +22694,7 @@
         "label_y": 1521.2247678710937,
         "metabolites": [
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -22706,7 +22706,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -22792,7 +22792,7 @@
         "label_y": 2195.1667234375,
         "metabolites": [
           {
-            "bigg_id": "r5p_c",
+            "bigg_id": "cpd00101_c0",
             "coefficient": -1
           },
           {
@@ -23733,11 +23733,11 @@
         "label_y": 1703.694311328125,
         "metabolites": [
           {
-            "bigg_id": "xyl__D_c",
+            "bigg_id": "cpd00154_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "xylu__D_c",
+            "bigg_id": "cpd00259_c0",
             "coefficient": 1
           }
         ],
@@ -23795,7 +23795,7 @@
         "label_y": 2652.53101518643,
         "metabolites": [
           {
-            "bigg_id": "nh4_p",
+            "bigg_id": "cpd00013_p",
             "coefficient": 1
           },
           {
@@ -24243,7 +24243,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -24251,7 +24251,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -24395,7 +24395,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": 1
           },
           {
@@ -24493,7 +24493,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": 1
           },
           {
@@ -24595,11 +24595,11 @@
         "label_y": 1611.7466794921875,
         "metabolites": [
           {
-            "bigg_id": "xyl__D_e",
+            "bigg_id": "cpd00154_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "xyl__D_p",
+            "bigg_id": "cpd00154_p",
             "coefficient": 1
           }
         ],
@@ -25289,7 +25289,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "fdp_c",
+            "bigg_id": "cpd00290_c0",
             "coefficient": 1
           },
           {
@@ -25419,11 +25419,11 @@
             "coefficient": -2
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
@@ -25798,7 +25798,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "xylu__D_c",
+            "bigg_id": "cpd00259_c0",
             "coefficient": -1
           },
           {
@@ -25904,7 +25904,7 @@
             "coefficient": 2
           },
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": 1
           },
           {
@@ -25912,7 +25912,7 @@
             "coefficient": -2
           },
           {
-            "bigg_id": "g6p_p",
+            "bigg_id": "cpd00079_p",
             "coefficient": -1
           }
         ],
@@ -26308,7 +26308,7 @@
         "label_y": 1421.7302,
         "metabolites": [
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": 1
           },
           {
@@ -26820,7 +26820,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "fdp_c",
+            "bigg_id": "cpd00290_c0",
             "coefficient": -1
           }
         ],
@@ -26884,7 +26884,7 @@
         "label_y": 1462.6817380859375,
         "metabolites": [
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": -1
           },
           {
@@ -27060,7 +27060,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "f6p_c",
+            "bigg_id": "cpd00072_c0",
             "coefficient": 1
           },
           {
@@ -27540,7 +27540,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "adpglc_c",
+            "bigg_id": "cpd00387_c0",
             "coefficient": -1
           },
           {
@@ -27636,11 +27636,11 @@
         "label_y": 521.5374814941406,
         "metabolites": [
           {
-            "bigg_id": "g6p_p",
+            "bigg_id": "cpd00079_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "g6p_e",
+            "bigg_id": "cpd00079_e0",
             "coefficient": -1
           }
         ],
@@ -27894,11 +27894,11 @@
         "label_y": 1342.8750364257812,
         "metabolites": [
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
@@ -27988,11 +27988,11 @@
         "label_y": 4473.180229906182,
         "metabolites": [
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           },
           {
@@ -28098,7 +28098,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "q8_c",
+            "bigg_id": "cpd15560_c0",
             "coefficient": -1
           },
           {
@@ -28106,7 +28106,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "q8h2_c",
+            "bigg_id": "cpd15561_c0",
             "coefficient": 1
           }
         ],
@@ -28216,7 +28216,7 @@
         "label_y": 4091.568090625,
         "metabolites": [
           {
-            "bigg_id": "g6p_c",
+            "bigg_id": "cpd00079_c0",
             "coefficient": 1
           },
           {
