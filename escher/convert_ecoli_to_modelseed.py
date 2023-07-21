@@ -90,12 +90,12 @@ for reaction in map[1]['reactions']:
         if 'BiGG' in alias_dict.keys() and bigg_id in alias_dict['BiGG']:
             # The value of the dictionary is the "is_obselete" field for that
             # reaction
-            potential_rxns[rxn] = reactions[rxn]['is_obsolete']
+            potential_rxns[rxn['id']] = rxn['is_obsolete']
     # If there is only one match, use it
     if len(potential_rxns) == 1:
         print("Success: " + bigg_id)
-        modelseed_rxn = potential_rxns[0]
-    # If there are multiple matches, give a warning and skip it
+        modelseed_rxn = list(potential_rxns.keys())[0]
+    # If there are multiple matches, we may still be able to pick one
     elif len(potential_rxns) > 1:
         # See if any of the matches are not obsolete
         non_obsolete = [x for x in potential_rxns if not potential_rxns[x]]
@@ -107,7 +107,7 @@ for reaction in map[1]['reactions']:
             print("WARNING: Multiple non-obselete matches for " + bigg_id)
             continue
     # Change the reaction name (bigg_id) to the ModelSeed ID
-    rxn_info['bigg_id'] = modelseed_rxn['id']
+    rxn_info['bigg_id'] = modelseed_rxn
     # Change the metabolite IDs in the reaction
     for metabolite in rxn_info['metabolites']:
         # If the metabolite is in the dictionary, change it

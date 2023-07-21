@@ -75,7 +75,7 @@
         "y": 638.1975461914062
       },
       "2075297": {
-        "bigg_id": "no2_p",
+        "bigg_id": "cpd00075_p",
         "label_x": 7762.76142703709,
         "label_y": 451.6534491382197,
         "name": "Nitrite",
@@ -255,7 +255,7 @@
         "y": 2696.7302
       },
       "2075315": {
-        "bigg_id": "mal__L_p",
+        "bigg_id": "cpd00130_p",
         "label_x": 4927.858,
         "label_y": 2843.7302,
         "name": "L-Malate",
@@ -265,7 +265,7 @@
         "y": 2817.7302
       },
       "2075316": {
-        "bigg_id": "lac__D_p",
+        "bigg_id": "cpd00221_p",
         "label_x": 323.8579,
         "label_y": 4349.73,
         "name": "D-Lactate",
@@ -395,7 +395,7 @@
         "y": 5961.73
       },
       "2075329": {
-        "bigg_id": "acald_p",
+        "bigg_id": "cpd00071_p",
         "label_x": 3102.858,
         "label_y": 5751.73,
         "name": "Acetaldehyde",
@@ -655,7 +655,7 @@
         "y": 2708.7302
       },
       "2075356": {
-        "bigg_id": "etoh_p",
+        "bigg_id": "cpd00363_p",
         "label_x": 3752.858,
         "label_y": 5751.73,
         "name": "Ethanol",
@@ -725,7 +725,7 @@
         "y": 2973.7302
       },
       "2075363": {
-        "bigg_id": "fum_p",
+        "bigg_id": "cpd00106_p",
         "label_x": 4930.858,
         "label_y": 3057.7302,
         "name": "Fumarate",
@@ -785,7 +785,7 @@
         "y": 1692.7302
       },
       "2075369": {
-        "bigg_id": "no3_p",
+        "bigg_id": "cpd00209_p",
         "label_x": 8545.284330933166,
         "label_y": 2889.6411447122014,
         "name": "Nitrate",
@@ -795,7 +795,7 @@
         "y": 2889.6411447122014
       },
       "2075370": {
-        "bigg_id": "no2_p",
+        "bigg_id": "cpd00075_p",
         "label_x": 8536.75199107479,
         "label_y": 3109.511028934426,
         "name": "Nitrite",
@@ -805,7 +805,7 @@
         "y": 3109.511028934426
       },
       "2075371": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 8534.688722967983,
         "label_y": 3049.5465150556383,
         "name": "H2O",
@@ -855,7 +855,7 @@
         "y": 5712.919453125
       },
       "2075376": {
-        "bigg_id": "dsbard_p",
+        "bigg_id": "cpd15447_p",
         "label_x": 5457.86532421875,
         "label_y": 2081.082311816406,
         "name": "Periplasmic protein disulfide isomerase I (reduced)",
@@ -865,7 +865,7 @@
         "y": 2061.7748166992187
       },
       "2075377": {
-        "bigg_id": "dsbaox_p",
+        "bigg_id": "cpd15446_p",
         "label_x": 5434.2671796875,
         "label_y": 1757.4842893554687,
         "name": "Periplasmic protein disulfide isomerase I (oxidized)",
@@ -875,7 +875,7 @@
         "y": 1761.7748166992187
       },
       "2075378": {
-        "bigg_id": "tmao_p",
+        "bigg_id": "cpd00811_p",
         "label_x": 8306.25204296875,
         "label_y": 5233.16310546875,
         "name": "Trimethylamine N-oxide",
@@ -895,7 +895,7 @@
         "y": 5163.16310546875
       },
       "2075380": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 8296.25204296875,
         "label_y": 5373.16310546875,
         "name": "H2O",
@@ -905,7 +905,7 @@
         "y": 5373.16310546875
       },
       "2075381": {
-        "bigg_id": "tma_p",
+        "bigg_id": "cpd00441_p",
         "label_x": 8301.25204296875,
         "label_y": 5453.16310546875,
         "name": "Trimethylamine",
@@ -925,7 +925,7 @@
         "y": 4379.73
       },
       "2075383": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 3042.858,
         "label_y": 4328.73,
         "name": "H2O",
@@ -1015,7 +1015,7 @@
         "y": 2336.7302
       },
       "2075392": {
-        "bigg_id": "glyc_p",
+        "bigg_id": "cpd00100_p",
         "label_x": 318.8738912109375,
         "label_y": 2386.6901609375,
         "name": "Glycerol",
@@ -1045,7 +1045,7 @@
         "y": 5263.5434765625
       },
       "2075395": {
-        "bigg_id": "cpd00079_c0",
+        "bigg_id": "g6p_c",
         "label_x": 1534.79393515625,
         "label_y": 1733.56223125,
         "name": "D-Glucose 6-phosphate",
@@ -1105,7 +1105,7 @@
         "y": 3454.337377734375
       },
       "2075401": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 1250.8579,
         "label_y": 3689.7302,
         "name": "H2O",
@@ -1205,7 +1205,7 @@
         "y": 5177.20509765625
       },
       "2075411": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 5093.47665234375,
         "label_y": 5094.20509765625,
         "name": "H2O",
@@ -1235,7 +1235,7 @@
         "y": 5961.73
       },
       "2075416": {
-        "bigg_id": "h2_p",
+        "bigg_id": "cpd11640_p",
         "label_x": 1602.8579,
         "label_y": 5751.73,
         "name": "H2",
@@ -1265,7 +1265,7 @@
         "y": 5320.11623046875
       },
       "2075419": {
-        "bigg_id": "o2s_p",
+        "bigg_id": "cpd00532_p",
         "label_x": 5220.3453046875,
         "label_y": 5288.829609375,
         "name": "Superoxide anion",
@@ -1275,7 +1275,7 @@
         "y": 5260.11623046875
       },
       "2075420": {
-        "bigg_id": "h2o2_p",
+        "bigg_id": "cpd00025_p",
         "label_x": 5588.3843671875,
         "label_y": 5358.7534375,
         "name": "Hydrogen peroxide",
@@ -1285,7 +1285,7 @@
         "y": 5330.11623046875
       },
       "2075421": {
-        "bigg_id": "o2_p",
+        "bigg_id": "cpd00007_p",
         "label_x": 5623.15530703125,
         "label_y": 5270.08023046875,
         "name": "O2",
@@ -1455,7 +1455,7 @@
         "y": 4188.73
       },
       "2075438": {
-        "bigg_id": "akg_p",
+        "bigg_id": "cpd00024_p",
         "label_x": 4857.858,
         "label_y": 4098.73,
         "name": "2-Oxoglutarate",
@@ -1505,7 +1505,7 @@
         "y": 2752.7302
       },
       "2075443": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 2140.481679296875,
         "label_y": 1773.476049609375,
         "name": "H2O",
@@ -1535,7 +1535,7 @@
         "y": 1758.48166484375
       },
       "2075446": {
-        "bigg_id": "12ppd__R_p",
+        "bigg_id": "cpd01861_p",
         "label_x": 300.4800008300781,
         "label_y": 3870.580541796875,
         "name": "(R)-Propane-1,2-diol",
@@ -1555,7 +1555,7 @@
         "y": 3824.7302
       },
       "2075448": {
-        "bigg_id": "dmso_p",
+        "bigg_id": "cpd08021_p",
         "label_x": 8308.2339765625,
         "label_y": 5737.37306640625,
         "name": "Dimethyl sulfoxide",
@@ -1625,7 +1625,7 @@
         "y": 969.7302
       },
       "2075455": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 4151.29110546875,
         "label_y": 1042.68576640625,
         "name": "H2O",
@@ -1815,7 +1815,7 @@
         "y": 886.2464963867187
       },
       "2075474": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 8151.7378828125,
         "label_y": 1107.1330930664062,
         "name": "H2O",
@@ -1835,7 +1835,7 @@
         "y": 1070.8315793945312
       },
       "2075476": {
-        "bigg_id": "dmso_p",
+        "bigg_id": "cpd08021_p",
         "label_x": 8566.12018359375,
         "label_y": 3273.618871875,
         "name": "Dimethyl sulfoxide",
@@ -1845,7 +1845,7 @@
         "y": 3280.058080859375
       },
       "2075477": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 8576.80182421875,
         "label_y": 3473.27756328125,
         "name": "H2O",
@@ -1855,7 +1855,7 @@
         "y": 3470.058080859375
       },
       "2075478": {
-        "bigg_id": "dms_p",
+        "bigg_id": "cpd00450_p",
         "label_x": 8573.58307421875,
         "label_y": 3416.8385984375,
         "name": "Dimethyl sulfide",
@@ -1875,7 +1875,7 @@
         "y": 2098.058325
       },
       "2075480": {
-        "bigg_id": "fru_p",
+        "bigg_id": "cpd00082_p",
         "label_x": 364.1539205078125,
         "label_y": 2070.970190234375,
         "name": "D-Fructose",
@@ -2045,7 +2045,7 @@
         "y": 4748.73
       },
       "2075500": {
-        "bigg_id": "lac__L_p",
+        "bigg_id": "cpd00159_p",
         "label_x": 326.8579,
         "label_y": 4637.73,
         "name": "L-Lactate",
@@ -2185,7 +2185,7 @@
         "y": 5954.73
       },
       "2075514": {
-        "bigg_id": "co2_p",
+        "bigg_id": "cpd00011_p",
         "label_x": 4267.858,
         "label_y": 5754.73,
         "name": "CO2",
@@ -2195,7 +2195,7 @@
         "y": 5754.73
       },
       "2075515": {
-        "bigg_id": "no3_p",
+        "bigg_id": "cpd00209_p",
         "label_x": 8374.04889453125,
         "label_y": 1528.0023557617187,
         "name": "Nitrate",
@@ -2205,7 +2205,7 @@
         "y": 1528.0023557617187
       },
       "2075516": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 8373.32233203125,
         "label_y": 1748.0023557617187,
         "name": "H2O",
@@ -2215,7 +2215,7 @@
         "y": 1748.0023557617187
       },
       "2075517": {
-        "bigg_id": "no2_p",
+        "bigg_id": "cpd00075_p",
         "label_x": 8390.48541796875,
         "label_y": 1820.1476194335937,
         "name": "Nitrite",
@@ -2225,7 +2225,7 @@
         "y": 1820.1476194335937
       },
       "2075518": {
-        "bigg_id": "dsbard_p",
+        "bigg_id": "cpd15447_p",
         "label_x": 5519.1617109375,
         "label_y": 3607.027075,
         "name": "Periplasmic protein disulfide isomerase I (reduced)",
@@ -2235,7 +2235,7 @@
         "y": 3591.935033984375
       },
       "2075519": {
-        "bigg_id": "dsbaox_p",
+        "bigg_id": "cpd15446_p",
         "label_x": 5526.43270703125,
         "label_y": 3246.088842578125,
         "name": "Periplasmic protein disulfide isomerase I (oxidized)",
@@ -2245,7 +2245,7 @@
         "y": 3287.053198046875
       },
       "2075520": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 716.5265401367187,
         "label_y": 3149.374975390625,
         "name": "H2O",
@@ -2255,7 +2255,7 @@
         "y": 3142.718237109375
       },
       "2075521": {
-        "bigg_id": "glyc3p_p",
+        "bigg_id": "cpd00080_p",
         "label_x": 353.7728169921875,
         "label_y": 3111.03879375,
         "name": "Glycerol 3-phosphate",
@@ -2435,7 +2435,7 @@
         "y": 2058.7302
       },
       "2075539": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 4413.5542890625,
         "label_y": 1555.06174296875,
         "name": "H2O",
@@ -2515,7 +2515,7 @@
         "y": 3138.7302
       },
       "2075547": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 4895.3804609375,
         "label_y": 6466.0864453125,
         "name": "H2O",
@@ -2555,7 +2555,7 @@
         "y": 5671.73
       },
       "2075551": {
-        "bigg_id": "ac_p",
+        "bigg_id": "cpd00029_p",
         "label_x": 2464.905119140625,
         "label_y": 5756.05275390625,
         "name": "Acetate",
@@ -2615,7 +2615,7 @@
         "y": 1648.4647581054687
       },
       "2075557": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 7029.83798046875,
         "label_y": 1570.6100217773437,
         "name": "H2O",
@@ -2675,7 +2675,7 @@
         "y": 1116.5554563476562
       },
       "2075563": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 3605.742765625,
         "label_y": 4400.4809765625,
         "name": "H2O",
@@ -2705,7 +2705,7 @@
         "y": 4751.17970703125
       },
       "2075566": {
-        "bigg_id": "cit_p",
+        "bigg_id": "cpd00137_p",
         "label_x": 4888.7242109375,
         "label_y": 4790.89650390625,
         "name": "Citrate",
@@ -2715,7 +2715,7 @@
         "y": 4751.17970703125
       },
       "2075567": {
-        "bigg_id": "rib__D_p",
+        "bigg_id": "cpd00105_p",
         "label_x": 4859.207609375,
         "label_y": 2047.840307421875,
         "name": "D-Ribose",
@@ -2725,7 +2725,7 @@
         "y": 2009.186010546875
       },
       "2075568": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 4406.22567578125,
         "label_y": 1920.379369921875,
         "name": "H2O",
@@ -2785,7 +2785,7 @@
         "y": 2262.34348125
       },
       "2075574": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 3067.895109375,
         "label_y": 3337.306371875,
         "name": "H2O",
@@ -2835,7 +2835,7 @@
         "y": 4541.73
       },
       "2075579": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 5497.74325390625,
         "label_y": 6465.43703125,
         "name": "H2O",
@@ -2905,7 +2905,7 @@
         "y": 1852.1933958007812
       },
       "2075586": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 8191.76376171875,
         "label_y": 1784.2952024414062,
         "name": "H2O",
@@ -2935,7 +2935,7 @@
         "y": 3552.333715625
       },
       "2075589": {
-        "bigg_id": "tmao_p",
+        "bigg_id": "cpd00811_p",
         "label_x": 8582.18951953125,
         "label_y": 3625.553198046875,
         "name": "Trimethylamine N-oxide",
@@ -2945,7 +2945,7 @@
         "y": 3622.333715625
       },
       "2075590": {
-        "bigg_id": "tma_p",
+        "bigg_id": "cpd00441_p",
         "label_x": 8563.43268359375,
         "label_y": 3861.333715625,
         "name": "Trimethylamine",
@@ -2955,7 +2955,7 @@
         "y": 3862.333715625
       },
       "2075591": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 8556.43268359375,
         "label_y": 3802.333715625,
         "name": "H2O",
@@ -3155,7 +3155,7 @@
         "y": 4219.85744140625
       },
       "2075611": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 1464.890858984375,
         "label_y": 4163.20802734375,
         "name": "H2O",
@@ -3255,7 +3255,7 @@
         "y": 5322.16701171875
       },
       "2075621": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 7867.67098828125,
         "label_y": 5472.16701171875,
         "name": "H2O",
@@ -3275,7 +3275,7 @@
         "y": 5562.16701171875
       },
       "2075623": {
-        "bigg_id": "for_p",
+        "bigg_id": "cpd00047_p",
         "label_x": 5641.647550781253,
         "label_y": 3989.123998828127,
         "name": "Formate",
@@ -3295,7 +3295,7 @@
         "y": 3979.5221921875027
       },
       "2075625": {
-        "bigg_id": "co2_p",
+        "bigg_id": "cpd00011_p",
         "label_x": 5550.231535156251,
         "label_y": 3839.5571042968736,
         "name": "CO2",
@@ -3355,7 +3355,7 @@
         "y": 5115.33888671875
       },
       "2075633": {
-        "bigg_id": "succ_p",
+        "bigg_id": "cpd00036_p",
         "label_x": 4946.858,
         "label_y": 3332.7302,
         "name": "Succinate",
@@ -3415,7 +3415,7 @@
         "y": 2360.7302
       },
       "2075639": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 1465.309071875,
         "label_y": 2253.42893046875,
         "name": "H2O",
@@ -3545,7 +3545,7 @@
         "y": 5961.73
       },
       "2075652": {
-        "bigg_id": "for_p",
+        "bigg_id": "cpd00047_p",
         "label_x": 2054.858,
         "label_y": 5751.73,
         "name": "Formate",
@@ -3555,7 +3555,7 @@
         "y": 5751.73
       },
       "2075653": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 1453.1136373046875,
         "label_y": 3760.7302,
         "name": "H2O",
@@ -3565,7 +3565,7 @@
         "y": 3760.7302
       },
       "2075656": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 1119.8579,
         "label_y": 2607.7302,
         "name": "H2O",
@@ -3595,7 +3595,7 @@
         "y": 1523.8525754882812
       },
       "2075659": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 5435.13925,
         "label_y": 1441.5283567382812,
         "name": "H2O",
@@ -3615,7 +3615,7 @@
         "y": 1187.8865110351562
       },
       "2075661": {
-        "bigg_id": "glcn_p",
+        "bigg_id": "cpd00222_p",
         "label_x": 5431.5064375,
         "label_y": 1095.3054563476562,
         "name": "D-Gluconate",
@@ -3915,7 +3915,7 @@
         "y": 2438.7302
       },
       "2075691": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 4987.18954296875,
         "label_y": 2562.72189921875,
         "name": "H2O",
@@ -4105,7 +4105,7 @@
         "y": 5740.6333203125
       },
       "2075710": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 4919.87508984375,
         "label_y": 5638.15529296875,
         "name": "H2O",
@@ -4145,7 +4145,7 @@
         "y": 4724.17970703125
       },
       "2075716": {
-        "bigg_id": "succ_p",
+        "bigg_id": "cpd00036_p",
         "label_x": 4829.00790234375,
         "label_y": 4604.17970703125,
         "name": "Succinate",
@@ -4205,7 +4205,7 @@
         "y": 5662.73
       },
       "2075722": {
-        "bigg_id": "pyr_p",
+        "bigg_id": "cpd00020_p",
         "label_x": 1282.8579,
         "label_y": 5743.73,
         "name": "Pyruvate",
@@ -4385,7 +4385,7 @@
         "y": 3301.7302
       },
       "2075740": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 7608.082609375,
         "label_y": 6066.50734375,
         "name": "H2O",
@@ -4415,7 +4415,7 @@
         "y": 5020.73
       },
       "2075743": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 2992.858,
         "label_y": 5060.73,
         "name": "H2O",
@@ -4495,7 +4495,7 @@
         "y": 2615.1631104686667
       },
       "2075751": {
-        "bigg_id": "no2_p",
+        "bigg_id": "cpd00075_p",
         "label_x": 7753.730558210575,
         "label_y": 2585.4886225810615,
         "name": "Nitrite",
@@ -4515,7 +4515,7 @@
         "y": 2612.8275757653514
       },
       "2075753": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 8100.736271145618,
         "label_y": 2585.0209792193914,
         "name": "H2O",
@@ -4695,7 +4695,7 @@
         "y": 4123.578507459013
       },
       "2075771": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 8042.27077571401,
         "label_y": 4019.615429662277,
         "name": "H2O",
@@ -4715,7 +4715,7 @@
         "y": 5255.73
       },
       "2075773": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 2952.858,
         "label_y": 5335.73,
         "name": "H2O",
@@ -4745,7 +4745,7 @@
         "y": 5255.73
       },
       "2075776": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 2296.45126171875,
         "label_y": 2199.978979296875,
         "name": "H2O",
@@ -4795,7 +4795,7 @@
         "y": 1387.4608518554687
       },
       "2075781": {
-        "bigg_id": "for_p",
+        "bigg_id": "cpd00047_p",
         "label_x": 5880.3238203125,
         "label_y": 1286.5321409179687,
         "name": "Formate",
@@ -4805,7 +4805,7 @@
         "y": 1307.9847776367187
       },
       "2075782": {
-        "bigg_id": "co2_p",
+        "bigg_id": "cpd00011_p",
         "label_x": 5855.9996015625,
         "label_y": 1120.8563596679687,
         "name": "CO2",
@@ -4925,7 +4925,7 @@
         "y": 981.7302
       },
       "2075794": {
-        "bigg_id": "cpd00079_p",
+        "bigg_id": "g6p_p",
         "label_x": 1890.0377095703125,
         "label_y": 650.8309080078125,
         "name": "D-Glucose 6-phosphate",
@@ -5045,7 +5045,7 @@
         "y": 3508.21018046875
       },
       "2075806": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 7333.34774609375,
         "label_y": 3618.289037890625,
         "name": "H2O",
@@ -5095,7 +5095,7 @@
         "y": 3313.08518046875
       },
       "2075815": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 7543.83212109375,
         "label_y": 3463.08518046875,
         "name": "H2O",
@@ -5115,7 +5115,7 @@
         "y": 3533.08518046875
       },
       "2075817": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 1349.02586875,
         "label_y": 1587.0582029296875,
         "name": "H2O",
@@ -5215,7 +5215,7 @@
         "y": 694.7302
       },
       "2075827": {
-        "bigg_id": "cpd00001_c0",
+        "bigg_id": "h2o_c",
         "label_x": 4884.33602734375,
         "label_y": 877.1189939453125,
         "name": "H2O",
@@ -5285,7 +5285,7 @@
         "y": 1468.7302
       },
       "2075834": {
-        "bigg_id": "cpd00079_e0",
+        "bigg_id": "g6p_e",
         "label_x": 1871.8579,
         "label_y": 421.73022,
         "name": "D-Glucose 6-phosphate",
@@ -5315,7 +5315,7 @@
         "y": 4228.73
       },
       "2075837": {
-        "bigg_id": "cpd00001_p",
+        "bigg_id": "h2o_p",
         "label_x": 8317.358,
         "label_y": 6061.3784375,
         "name": "H2O",
@@ -5325,7 +5325,7 @@
         "y": 6033.360859375
       },
       "2075838": {
-        "bigg_id": "dms_p",
+        "bigg_id": "cpd00450_p",
         "label_x": 8320.9878828125,
         "label_y": 5976.8618359375,
         "name": "Dimethyl sulfide",
@@ -7960,7 +7960,7 @@
         "y": 3990.103979296875
       },
       "2076579": {
-        "bigg_id": "cpd00079_c0",
+        "bigg_id": "g6p_c",
         "label_x": 1332.035634375,
         "label_y": 4249.0417234375,
         "name": "D-Glucose 6-phosphate",
@@ -8017,7 +8017,7 @@
     },
     "reactions": {
       "2075839": {
-        "bigg_id": "MDH",
+        "bigg_id": "rxn00248",
         "gene_reaction_rule": "b3236",
         "genes": [
           {
@@ -8029,23 +8029,23 @@
         "label_y": 3883.49973125,
         "metabolites": [
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           }
         ],
@@ -8159,7 +8159,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "no2_p",
+            "bigg_id": "cpd00075_p",
             "coefficient": -1
           },
           {
@@ -8171,7 +8171,7 @@
             "coefficient": -3
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -2
           }
         ],
@@ -8265,7 +8265,7 @@
         }
       },
       "2075841": {
-        "bigg_id": "NADPHQR4",
+        "bigg_id": "rxn08979",
         "gene_reaction_rule": "b3028",
         "genes": [
           {
@@ -8277,23 +8277,23 @@
         "label_y": 5631.57130859375,
         "metabolites": [
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": -1
           }
         ],
@@ -8375,7 +8375,7 @@
         }
       },
       "2075842": {
-        "bigg_id": "NADH17pp",
+        "bigg_id": "rxn08973",
         "gene_reaction_rule": "b2276 and b2277 and b2278 and b2279 and b2280 and b2281 and b2282 and b2283 and b2284 and b2285 and b2286 and b2287 and b2288",
         "genes": [
           {
@@ -8435,27 +8435,27 @@
         "label_y": 3276.438940234375,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -4
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 3
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           }
         ],
@@ -8549,26 +8549,26 @@
         }
       },
       "2075843": {
-        "bigg_id": "rxn13647",
+        "bigg_id": "rxn08973",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 4609.3746015625,
         "label_y": 2629.5182859375,
         "metabolites": [
           {
-            "bigg_id": "mal__L_p",
+            "bigg_id": "cpd00130_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": -1
           }
         ],
@@ -8638,7 +8638,7 @@
         }
       },
       "2075844": {
-        "bigg_id": "rxn13647",
+        "bigg_id": "rxn08973",
         "gene_reaction_rule": "b3603 or b2975",
         "genes": [
           {
@@ -8654,19 +8654,19 @@
         "label_y": 4354.33888671875,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lac__D_p",
+            "bigg_id": "cpd00221_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "lac__D_c",
+            "bigg_id": "cpd00221_c0",
             "coefficient": 1
           }
         ],
@@ -8736,7 +8736,7 @@
         }
       },
       "2075845": {
-        "bigg_id": "rxn29957",
+        "bigg_id": "rxn00221",
         "gene_reaction_rule": "b1002",
         "genes": [
           {
@@ -8748,11 +8748,11 @@
         "label_y": 667.3326169921875,
         "metabolites": [
           {
-            "bigg_id": "pi_p",
+            "bigg_id": "cpd00009_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "g1p_p",
+            "bigg_id": "cpd00089_p",
             "coefficient": -1
           },
           {
@@ -8760,7 +8760,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "glc__D_p",
+            "bigg_id": "cpd00027_p",
             "coefficient": 1
           }
         ],
@@ -8842,19 +8842,19 @@
         "label_y": 4921.25001953125,
         "metabolites": [
           {
-            "bigg_id": "ahcys_c",
+            "bigg_id": "cpd00019_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "amet_c",
+            "bigg_id": "cpd00017_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "aconm_c",
+            "bigg_id": "cpd08353_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "acon_T_c",
+            "bigg_id": "cpd01563_c0",
             "coefficient": -1
           }
         ],
@@ -8924,7 +8924,7 @@
         }
       },
       "2075847": {
-        "bigg_id": "ACALDtex",
+        "bigg_id": "rxn08032",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -8948,11 +8948,11 @@
         "label_y": 5841.73,
         "metabolites": [
           {
-            "bigg_id": "acald_e",
+            "bigg_id": "cpd00071_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "acald_p",
+            "bigg_id": "cpd00071_p",
             "coefficient": 1
           }
         ],
@@ -9006,19 +9006,19 @@
         "label_y": 3292.927709765625,
         "metabolites": [
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glyclt_c",
+            "bigg_id": "cpd00139_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glx_c",
+            "bigg_id": "cpd00040_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           }
         ],
@@ -9100,11 +9100,11 @@
         "label_y": 4661.89943359375,
         "metabolites": [
           {
-            "bigg_id": "acon_C_c",
+            "bigg_id": "cpd00331_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "acon_T_c",
+            "bigg_id": "cpd01563_c0",
             "coefficient": -1
           }
         ],
@@ -9138,7 +9138,7 @@
         }
       },
       "2075850": {
-        "bigg_id": "CYTBD2pp",
+        "bigg_id": "rxn08287",
         "gene_reaction_rule": "b0978 and b0979",
         "genes": [
           {
@@ -9154,15 +9154,15 @@
         "label_y": 4185.747696253634,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           },
           {
@@ -9170,11 +9170,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": -0.5
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 2
           }
         ],
@@ -9268,7 +9268,7 @@
         }
       },
       "2075851": {
-        "bigg_id": "PPC",
+        "bigg_id": "rxn00251",
         "gene_reaction_rule": "b3956",
         "genes": [
           {
@@ -9280,23 +9280,23 @@
         "label_y": 3794.255590625,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           },
           {
@@ -9394,7 +9394,7 @@
         }
       },
       "2075852": {
-        "bigg_id": "F6Ptex",
+        "bigg_id": "rxn08432",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -9456,7 +9456,7 @@
         }
       },
       "2075853": {
-        "bigg_id": "MALS",
+        "bigg_id": "rxn00330",
         "gene_reaction_rule": "b4014 or b2976",
         "genes": [
           {
@@ -9472,23 +9472,23 @@
         "label_y": 3744.1686765625,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "glx_c",
+            "bigg_id": "cpd00040_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "accoa_c",
+            "bigg_id": "cpd00022_c0",
             "coefficient": -1
           },
           {
@@ -9586,7 +9586,7 @@
         }
       },
       "2075854": {
-        "bigg_id": "HYD3pp",
+        "bigg_id": "rxn08736",
         "gene_reaction_rule": "(b0972 and b0973 and b0974) or (b2994 and b2995 and b2996 and b2997)",
         "genes": [
           {
@@ -9622,23 +9622,23 @@
         "label_y": 5447.446796875,
         "metabolites": [
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "h2_c",
+            "bigg_id": "cpd11640_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 2
           }
         ],
@@ -9720,7 +9720,7 @@
         }
       },
       "2075855": {
-        "bigg_id": "FBA3",
+        "bigg_id": "rxn01334",
         "gene_reaction_rule": "b2925",
         "genes": [
           {
@@ -9732,15 +9732,15 @@
         "label_y": 3093.550613678522,
         "metabolites": [
           {
-            "bigg_id": "s17bp_c",
+            "bigg_id": "cpd00349_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "e4p_c",
+            "bigg_id": "cpd00236_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": 1
           }
         ],
@@ -9792,7 +9792,7 @@
         }
       },
       "2075856": {
-        "bigg_id": "rxn01606",
+        "bigg_id": "rxn01334",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -9804,11 +9804,11 @@
         "label_y": 5454.73,
         "metabolites": [
           {
-            "bigg_id": "etoh_c",
+            "bigg_id": "cpd00363_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "etoh_p",
+            "bigg_id": "cpd00363_p",
             "coefficient": -1
           }
         ],
@@ -9842,7 +9842,7 @@
         }
       },
       "2075857": {
-        "bigg_id": "CYTBDpp",
+        "bigg_id": "rxn08288",
         "gene_reaction_rule": "(b0978 and b0979) or (b0733 and b0734)",
         "genes": [
           {
@@ -9866,7 +9866,7 @@
         "label_y": 1322.0989133789062,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
@@ -9878,7 +9878,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 2
           },
           {
@@ -9886,7 +9886,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": -0.5
           }
         ],
@@ -9980,7 +9980,7 @@
         }
       },
       "2075858": {
-        "bigg_id": "FUMt2_2pp",
+        "bigg_id": "rxn08542",
         "gene_reaction_rule": "b3528",
         "genes": [
           {
@@ -9992,19 +9992,19 @@
         "label_y": 2990.6335203125,
         "metabolites": [
           {
-            "bigg_id": "fum_p",
+            "bigg_id": "cpd00106_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "fum_c",
+            "bigg_id": "cpd00106_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -2
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           }
         ],
@@ -10074,7 +10074,7 @@
         }
       },
       "2075859": {
-        "bigg_id": "GLCP",
+        "bigg_id": "rxn13299",
         "gene_reaction_rule": "b3428 or b3417",
         "genes": [
           {
@@ -10090,15 +10090,15 @@
         "label_y": 1523.4422361328125,
         "metabolites": [
           {
-            "bigg_id": "glycogen_c",
+            "bigg_id": "cpd00155_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "g1p_c",
+            "bigg_id": "cpd00089_c0",
             "coefficient": 1
           }
         ],
@@ -10150,7 +10150,7 @@
         }
       },
       "2075860": {
-        "bigg_id": "NO3R2bpp",
+        "bigg_id": "rxn09002",
         "gene_reaction_rule": "(b2203 and b2206) and b2202",
         "genes": [
           {
@@ -10174,19 +10174,19 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "no3_p",
+            "bigg_id": "cpd00209_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "no2_p",
+            "bigg_id": "cpd00075_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           }
         ],
@@ -10268,7 +10268,7 @@
         }
       },
       "2075861": {
-        "bigg_id": "NADH18pp",
+        "bigg_id": "rxn08974",
         "gene_reaction_rule": "b2276 and b2277 and b2278 and b2279 and b2280 and b2281 and b2282 and b2283 and b2284 and b2285 and b2286 and b2287 and b2288",
         "genes": [
           {
@@ -10328,27 +10328,27 @@
         "label_y": 5814.9477734375,
         "metabolites": [
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -4
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 3
           }
         ],
@@ -10458,7 +10458,7 @@
         "label_y": 1905.3728391601562,
         "metabolites": [
           {
-            "bigg_id": "dsbaox_p",
+            "bigg_id": "cpd15446_p",
             "coefficient": 1
           },
           {
@@ -10466,7 +10466,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "dsbard_p",
+            "bigg_id": "cpd15447_p",
             "coefficient": -1
           },
           {
@@ -10540,7 +10540,7 @@
         }
       },
       "2075863": {
-        "bigg_id": "TMAOR2pp",
+        "bigg_id": "rxn09316",
         "gene_reaction_rule": "(b0996 and b0997) or (b1872 and b1873)",
         "genes": [
           {
@@ -10564,7 +10564,7 @@
         "label_y": 5326.3471875,
         "metabolites": [
           {
-            "bigg_id": "tma_p",
+            "bigg_id": "cpd00441_p",
             "coefficient": 1
           },
           {
@@ -10572,19 +10572,19 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "tmao_p",
+            "bigg_id": "cpd00811_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           }
         ],
@@ -10678,7 +10678,7 @@
         }
       },
       "2075864": {
-        "bigg_id": "CS",
+        "bigg_id": "rxn00256",
         "gene_reaction_rule": "b0720",
         "genes": [
           {
@@ -10690,23 +10690,23 @@
         "label_y": 4378.88625,
         "metabolites": [
           {
-            "bigg_id": "cit_c",
+            "bigg_id": "cpd00137_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "accoa_c",
+            "bigg_id": "cpd00022_c0",
             "coefficient": -1
           },
           {
@@ -10804,7 +10804,7 @@
         }
       },
       "2075865": {
-        "bigg_id": "GLGC",
+        "bigg_id": "rxn00695",
         "gene_reaction_rule": "b3430",
         "genes": [
           {
@@ -10816,15 +10816,15 @@
         "label_y": 1654.997778125,
         "metabolites": [
           {
-            "bigg_id": "ppi_c",
+            "bigg_id": "cpd00012_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "g1p_c",
+            "bigg_id": "cpd00089_c0",
             "coefficient": -1
           },
           {
@@ -10832,7 +10832,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           }
         ],
@@ -10914,7 +10914,7 @@
         }
       },
       "2075866": {
-        "bigg_id": "GLYCtpp",
+        "bigg_id": "rxn05581",
         "gene_reaction_rule": "b3927 or s0001",
         "genes": [
           {
@@ -10930,11 +10930,11 @@
         "label_y": 2383.76096171875,
         "metabolites": [
           {
-            "bigg_id": "glyc_c",
+            "bigg_id": "cpd00100_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glyc_p",
+            "bigg_id": "cpd00100_p",
             "coefficient": 1
           }
         ],
@@ -10988,19 +10988,19 @@
         "label_y": 5415.10353515625,
         "metabolites": [
           {
-            "bigg_id": "glyclt_c",
+            "bigg_id": "cpd00139_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glx_c",
+            "bigg_id": "cpd00040_c0",
             "coefficient": 1
           }
         ],
@@ -11070,7 +11070,7 @@
         }
       },
       "2075868": {
-        "bigg_id": "PGI",
+        "bigg_id": "rxn00558",
         "gene_reaction_rule": "b4025",
         "genes": [
           {
@@ -11120,7 +11120,7 @@
         }
       },
       "2075869": {
-        "bigg_id": "GLYCtex",
+        "bigg_id": "rxn05581",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -11144,11 +11144,11 @@
         "label_y": 2395.169653125,
         "metabolites": [
           {
-            "bigg_id": "glyc_e",
+            "bigg_id": "cpd00100_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glyc_p",
+            "bigg_id": "cpd00100_p",
             "coefficient": 1
           }
         ],
@@ -11194,23 +11194,23 @@
         "label_y": 3331.799780078125,
         "metabolites": [
           {
-            "bigg_id": "o2s_c",
+            "bigg_id": "cpd00532_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": -2
           }
         ],
@@ -11292,7 +11292,7 @@
         }
       },
       "2075871": {
-        "bigg_id": "GLYOX",
+        "bigg_id": "rxn01274",
         "gene_reaction_rule": "b0212",
         "genes": [
           {
@@ -11304,11 +11304,11 @@
         "label_y": 3805.7302,
         "metabolites": [
           {
-            "bigg_id": "gthrd_c",
+            "bigg_id": "cpd00042_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lac__D_c",
+            "bigg_id": "cpd00221_c0",
             "coefficient": 1
           },
           {
@@ -11316,11 +11316,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lgt__S_c",
+            "bigg_id": "cpd02182_c0",
             "coefficient": -1
           }
         ],
@@ -11402,7 +11402,7 @@
         }
       },
       "2075872": {
-        "bigg_id": "PGK",
+        "bigg_id": "rxn01100",
         "gene_reaction_rule": "b2926",
         "genes": [
           {
@@ -11414,19 +11414,19 @@
         "label_y": 3150.7302,
         "metabolites": [
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "13dpg_c",
+            "bigg_id": "cpd00203_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "3pg_c",
+            "bigg_id": "cpd00169_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           }
         ],
@@ -11496,7 +11496,7 @@
         }
       },
       "2075873": {
-        "bigg_id": "FUMtex",
+        "bigg_id": "rxn08544",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -11520,11 +11520,11 @@
         "label_y": 3005.1911375,
         "metabolites": [
           {
-            "bigg_id": "fum_e",
+            "bigg_id": "cpd00106_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "fum_p",
+            "bigg_id": "cpd00106_p",
             "coefficient": 1
           }
         ],
@@ -11558,7 +11558,7 @@
         }
       },
       "2075874": {
-        "bigg_id": "CAT",
+        "bigg_id": "rxn00006",
         "gene_reaction_rule": "b1732 or b3942",
         "genes": [
           {
@@ -11574,7 +11574,7 @@
         "label_y": 5148.49123046875,
         "metabolites": [
           {
-            "bigg_id": "h2o2_c",
+            "bigg_id": "cpd00025_c0",
             "coefficient": -2
           },
           {
@@ -11582,7 +11582,7 @@
             "coefficient": 2
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": 1
           }
         ],
@@ -11634,7 +11634,7 @@
         }
       },
       "2075875": {
-        "bigg_id": "ETOHtex",
+        "bigg_id": "rxn08428",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -11658,11 +11658,11 @@
         "label_y": 5841.73,
         "metabolites": [
           {
-            "bigg_id": "etoh_e",
+            "bigg_id": "cpd00363_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "etoh_p",
+            "bigg_id": "cpd00363_p",
             "coefficient": 1
           }
         ],
@@ -11696,7 +11696,7 @@
         }
       },
       "2075877": {
-        "bigg_id": "H2tpp",
+        "bigg_id": "rxn08691",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -11708,11 +11708,11 @@
         "label_y": 5489.73,
         "metabolites": [
           {
-            "bigg_id": "h2_p",
+            "bigg_id": "cpd11640_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h2_c",
+            "bigg_id": "cpd11640_c0",
             "coefficient": 1
           }
         ],
@@ -11746,7 +11746,7 @@
         }
       },
       "2075878": {
-        "bigg_id": "SPODMpp",
+        "bigg_id": "rxn00206",
         "gene_reaction_rule": "b1646",
         "genes": [
           {
@@ -11758,19 +11758,19 @@
         "label_y": 5230.683125,
         "metabolites": [
           {
-            "bigg_id": "h2o2_p",
+            "bigg_id": "cpd00025_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "o2_p",
+            "bigg_id": "cpd00007_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "o2s_p",
+            "bigg_id": "cpd00532_p",
             "coefficient": -2
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -2
           }
         ],
@@ -11840,7 +11840,7 @@
         }
       },
       "2075879": {
-        "bigg_id": "G3PD5",
+        "bigg_id": "rxn08556",
         "gene_reaction_rule": "(b2241 and b2242 and b2243) or b3426",
         "genes": [
           {
@@ -11864,7 +11864,7 @@
         "label_y": 1352.9304563476562,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": -1
           },
           {
@@ -11872,7 +11872,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": 1
           },
           {
@@ -11946,7 +11946,7 @@
         }
       },
       "2075880": {
-        "bigg_id": "PGMT",
+        "bigg_id": "rxn00704",
         "gene_reaction_rule": "b2690 or b0688",
         "genes": [
           {
@@ -11966,7 +11966,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "g1p_c",
+            "bigg_id": "cpd00089_c0",
             "coefficient": -1
           }
         ],
@@ -12000,7 +12000,7 @@
         }
       },
       "2075881": {
-        "bigg_id": "G6PDH2r",
+        "bigg_id": "rxn00604",
         "gene_reaction_rule": "b1852",
         "genes": [
           {
@@ -12016,19 +12016,19 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "6pgl_c",
+            "bigg_id": "cpd00911_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": -1
           }
         ],
@@ -12110,7 +12110,7 @@
         }
       },
       "2075882": {
-        "bigg_id": "ACS",
+        "bigg_id": "rxn00175",
         "gene_reaction_rule": "b4069",
         "genes": [
           {
@@ -12122,27 +12122,27 @@
         "label_y": 4784.9653515625,
         "metabolites": [
           {
-            "bigg_id": "ppi_c",
+            "bigg_id": "cpd00012_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "ac_c",
+            "bigg_id": "cpd00029_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "amp_c",
+            "bigg_id": "cpd00018_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "accoa_c",
+            "bigg_id": "cpd00022_c0",
             "coefficient": 1
           }
         ],
@@ -12248,23 +12248,23 @@
         "label_y": 2484.251440234375,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glyc_c",
+            "bigg_id": "cpd00100_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -12346,7 +12346,7 @@
         }
       },
       "2075884": {
-        "bigg_id": "AKGt2rpp",
+        "bigg_id": "rxn05493",
         "gene_reaction_rule": "b2587",
         "genes": [
           {
@@ -12358,19 +12358,19 @@
         "label_y": 4034.064428515625,
         "metabolites": [
           {
-            "bigg_id": "akg_c",
+            "bigg_id": "cpd00024_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "akg_p",
+            "bigg_id": "cpd00024_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -12440,7 +12440,7 @@
         }
       },
       "2075885": {
-        "bigg_id": "MALt2_2pp",
+        "bigg_id": "rxn08865",
         "gene_reaction_rule": "b3528",
         "genes": [
           {
@@ -12452,19 +12452,19 @@
         "label_y": 2776.1911375,
         "metabolites": [
           {
-            "bigg_id": "mal__L_p",
+            "bigg_id": "cpd00130_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -2
           },
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": 1
           }
         ],
@@ -12534,7 +12534,7 @@
         }
       },
       "2075886": {
-        "bigg_id": "PGL",
+        "bigg_id": "rxn01476",
         "gene_reaction_rule": "b0767",
         "genes": [
           {
@@ -12546,11 +12546,11 @@
         "label_y": 1648.5474607421875,
         "metabolites": [
           {
-            "bigg_id": "6pgc_c",
+            "bigg_id": "cpd00284_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
@@ -12558,7 +12558,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "6pgl_c",
+            "bigg_id": "cpd00911_c0",
             "coefficient": -1
           }
         ],
@@ -12628,18 +12628,18 @@
         }
       },
       "2075887": {
-        "bigg_id": "12PPDRtpp",
+        "bigg_id": "rxn07919",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 477.8579,
         "label_y": 3780.7302,
         "metabolites": [
           {
-            "bigg_id": "12ppd__R_c",
+            "bigg_id": "cpd01861_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "12ppd__R_p",
+            "bigg_id": "cpd01861_p",
             "coefficient": -1
           }
         ],
@@ -12673,7 +12673,7 @@
         }
       },
       "2075888": {
-        "bigg_id": "rxn00615",
+        "bigg_id": "rxn07919",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -12685,11 +12685,11 @@
         "label_y": 5681.8501171875,
         "metabolites": [
           {
-            "bigg_id": "dmso_p",
+            "bigg_id": "cpd08021_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "dmso_c",
+            "bigg_id": "cpd08021_c0",
             "coefficient": 1
           }
         ],
@@ -12723,7 +12723,7 @@
         }
       },
       "2075889": {
-        "bigg_id": "ATPS4rpp",
+        "bigg_id": "rxn08173",
         "gene_reaction_rule": "((b3736 and b3737 and b3738) and (b3731 and b3732 and b3733 and b3734 and b3735) and b3739) or ((b3736 and b3737 and b3738) and (b3731 and b3732 and b3733 and b3734 and b3735))",
         "genes": [
           {
@@ -12767,15 +12767,15 @@
         "label_y": 815.9915525390625,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 3
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": 1
           },
           {
@@ -12783,11 +12783,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -4
           }
         ],
@@ -12881,7 +12881,7 @@
         }
       },
       "2075890": {
-        "bigg_id": "NADH16pp",
+        "bigg_id": "rxn08972",
         "gene_reaction_rule": "b2276 and b2277 and b2278 and b2279 and b2280 and b2281 and b2282 and b2283 and b2284 and b2285 and b2286 and b2287 and b2288",
         "genes": [
           {
@@ -12941,15 +12941,15 @@
         "label_y": 898.7110959960937,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -4
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           },
           {
@@ -12961,7 +12961,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 3
           }
         ],
@@ -13055,7 +13055,7 @@
         }
       },
       "2075891": {
-        "bigg_id": "ACKr",
+        "bigg_id": "rxn00225",
         "gene_reaction_rule": "b3115 or b2296 or b1849",
         "genes": [
           {
@@ -13075,19 +13075,19 @@
         "label_y": 4923.73,
         "metabolites": [
           {
-            "bigg_id": "ac_c",
+            "bigg_id": "cpd00029_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "actp_c",
+            "bigg_id": "cpd00196_c0",
             "coefficient": 1
           }
         ],
@@ -13169,11 +13169,11 @@
         "label_y": 1308.6915037109375,
         "metabolites": [
           {
-            "bigg_id": "bglycogen_c",
+            "bigg_id": "cpd15413_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glycogen_c",
+            "bigg_id": "cpd00155_c0",
             "coefficient": 1
           }
         ],
@@ -13207,7 +13207,7 @@
         }
       },
       "2075893": {
-        "bigg_id": "RPI",
+        "bigg_id": "rxn15114",
         "gene_reaction_rule": "b2914 or b4090",
         "genes": [
           {
@@ -13227,7 +13227,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "ru5p__D_c",
+            "bigg_id": "cpd00171_c0",
             "coefficient": 1
           }
         ],
@@ -13261,7 +13261,7 @@
         }
       },
       "2075894": {
-        "bigg_id": "XYLt2pp",
+        "bigg_id": "rxn05671",
         "gene_reaction_rule": "b4031",
         "genes": [
           {
@@ -13273,11 +13273,11 @@
         "label_y": 1475.741186328125,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
@@ -13379,11 +13379,11 @@
         "label_y": 538.6266233398437,
         "metabolites": [
           {
-            "bigg_id": "g1p_p",
+            "bigg_id": "cpd00089_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "g1p_e",
+            "bigg_id": "cpd00089_e0",
             "coefficient": -1
           }
         ],
@@ -13417,7 +13417,7 @@
         }
       },
       "2075896": {
-        "bigg_id": "MALtex",
+        "bigg_id": "rxn08868",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -13441,11 +13441,11 @@
         "label_y": 2791.8639890625,
         "metabolites": [
           {
-            "bigg_id": "mal__L_p",
+            "bigg_id": "cpd00130_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "mal__L_e",
+            "bigg_id": "cpd00130_e0",
             "coefficient": -1
           }
         ],
@@ -13503,7 +13503,7 @@
         "label_y": 957.8072874023437,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -4
           },
           {
@@ -13515,7 +13515,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 4
           },
           {
@@ -13523,7 +13523,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": -0.5
           }
         ],
@@ -13617,7 +13617,7 @@
         }
       },
       "2075898": {
-        "bigg_id": "DMSOR1pp",
+        "bigg_id": "rxn08355",
         "gene_reaction_rule": "b1872 and b1873",
         "genes": [
           {
@@ -13637,19 +13637,19 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "dmso_p",
+            "bigg_id": "cpd08021_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "dms_p",
+            "bigg_id": "cpd00450_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           }
         ],
@@ -13731,7 +13731,7 @@
         }
       },
       "2075899": {
-        "bigg_id": "FRUptspp",
+        "bigg_id": "rxn05560",
         "gene_reaction_rule": "b2167 and b2169 and b2415 and b2416",
         "genes": [
           {
@@ -13755,19 +13755,19 @@
         "label_y": 2183.458471484375,
         "metabolites": [
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "f1p_c",
+            "bigg_id": "cpd00802_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "fru_p",
+            "bigg_id": "cpd00082_p",
             "coefficient": -1
           }
         ],
@@ -13849,19 +13849,19 @@
         "label_y": 6173.60939453125,
         "metabolites": [
           {
-            "bigg_id": "ppi_c",
+            "bigg_id": "cpd00012_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pppi_c",
+            "bigg_id": "cpd00421_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           }
         ],
@@ -13955,7 +13955,7 @@
         "label_y": 4804.0376171875,
         "metabolites": [
           {
-            "bigg_id": "lac__L_c",
+            "bigg_id": "cpd00159_c0",
             "coefficient": -1
           },
           {
@@ -13963,7 +13963,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
@@ -14037,7 +14037,7 @@
         }
       },
       "2075902": {
-        "bigg_id": "PYK",
+        "bigg_id": "rxn00148",
         "gene_reaction_rule": "b1854 or b1676",
         "genes": [
           {
@@ -14053,23 +14053,23 @@
         "label_y": 4097.091572265625,
         "metabolites": [
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": 1
           }
         ],
@@ -14163,7 +14163,7 @@
         "label_y": 1532.2246458007812,
         "metabolites": [
           {
-            "bigg_id": "o2s_c",
+            "bigg_id": "cpd00532_c0",
             "coefficient": 2
           },
           {
@@ -14175,11 +14175,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           }
         ],
@@ -14277,19 +14277,19 @@
         "label_y": 4634.64357421875,
         "metabolites": [
           {
-            "bigg_id": "lac__L_c",
+            "bigg_id": "cpd00159_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "lac__L_p",
+            "bigg_id": "cpd00159_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -14371,23 +14371,23 @@
         "label_y": 3295.950170703125,
         "metabolites": [
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           }
         ],
@@ -14481,23 +14481,23 @@
         "label_y": 2297.673559375,
         "metabolites": [
           {
-            "bigg_id": "dha_c",
+            "bigg_id": "cpd00157_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glyc_c",
+            "bigg_id": "cpd00100_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           }
         ],
@@ -14579,7 +14579,7 @@
         }
       },
       "2075908": {
-        "bigg_id": "MALt2_3pp",
+        "bigg_id": "rxn08866",
         "gene_reaction_rule": "b4123 or b4138",
         "genes": [
           {
@@ -14595,19 +14595,19 @@
         "label_y": 2884.0983640625,
         "metabolites": [
           {
-            "bigg_id": "mal__L_p",
+            "bigg_id": "cpd00130_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 3
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -3
           },
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": 1
           }
         ],
@@ -14705,19 +14705,19 @@
         "label_y": 2510.70627421875,
         "metabolites": [
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "dha_c",
+            "bigg_id": "cpd00157_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           }
         ],
@@ -14787,7 +14787,7 @@
         }
       },
       "2075910": {
-        "bigg_id": "CO2tex",
+        "bigg_id": "rxn05467",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -14811,11 +14811,11 @@
         "label_y": 5844.73,
         "metabolites": [
           {
-            "bigg_id": "co2_p",
+            "bigg_id": "cpd00011_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_e",
+            "bigg_id": "cpd00011_e0",
             "coefficient": -1
           }
         ],
@@ -14849,7 +14849,7 @@
         }
       },
       "2075911": {
-        "bigg_id": "NO3R1bpp",
+        "bigg_id": "rxn09000",
         "gene_reaction_rule": "(b2203 and b2206) and b2202 and b2205 and b2204",
         "genes": [
           {
@@ -14877,7 +14877,7 @@
         "label_y": 1658.1975461914062,
         "metabolites": [
           {
-            "bigg_id": "no3_p",
+            "bigg_id": "cpd00209_p",
             "coefficient": -1
           },
           {
@@ -14893,7 +14893,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "no2_p",
+            "bigg_id": "cpd00075_p",
             "coefficient": 1
           }
         ],
@@ -14991,19 +14991,19 @@
         "label_y": 3427.76193828125,
         "metabolites": [
           {
-            "bigg_id": "dsbaox_p",
+            "bigg_id": "cpd15446_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "dsbard_p",
+            "bigg_id": "cpd15447_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           }
         ],
@@ -15073,7 +15073,7 @@
         }
       },
       "2075913": {
-        "bigg_id": "GLYC3Pabcpp",
+        "bigg_id": "rxn05158",
         "gene_reaction_rule": "b3452 and b3453 and b3450 and b3451",
         "genes": [
           {
@@ -15097,23 +15097,23 @@
         "label_y": 3004.7302,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "glyc3p_p",
+            "bigg_id": "cpd00080_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
@@ -15121,7 +15121,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -15227,7 +15227,7 @@
         }
       },
       "2075914": {
-        "bigg_id": "PPCK",
+        "bigg_id": "rxn00247",
         "gene_reaction_rule": "b3403",
         "genes": [
           {
@@ -15239,23 +15239,23 @@
         "label_y": 3922.255590625,
         "metabolites": [
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           }
         ],
@@ -15337,7 +15337,7 @@
         }
       },
       "2075915": {
-        "bigg_id": "rxn08367",
+        "bigg_id": "rxn00247",
         "gene_reaction_rule": "b0929 or b1377 or b2215 or b0241",
         "genes": [
           {
@@ -15361,11 +15361,11 @@
         "label_y": 4626.43361328125,
         "metabolites": [
           {
-            "bigg_id": "lac__L_e",
+            "bigg_id": "cpd00159_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "lac__L_p",
+            "bigg_id": "cpd00159_p",
             "coefficient": 1
           }
         ],
@@ -15399,7 +15399,7 @@
         }
       },
       "2075916": {
-        "bigg_id": "PDH",
+        "bigg_id": "rxn00154",
         "gene_reaction_rule": "b0114 and b0115 and b0116",
         "genes": [
           {
@@ -15419,27 +15419,27 @@
         "label_y": 4291.5766796875,
         "metabolites": [
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "accoa_c",
+            "bigg_id": "cpd00022_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           }
         ],
@@ -15533,7 +15533,7 @@
         }
       },
       "2075917": {
-        "bigg_id": "ME2",
+        "bigg_id": "rxn00161",
         "gene_reaction_rule": "b2463",
         "genes": [
           {
@@ -15545,23 +15545,23 @@
         "label_y": 3753.448217578125,
         "metabolites": [
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": 1
           }
         ],
@@ -15643,7 +15643,7 @@
         }
       },
       "2075918": {
-        "bigg_id": "ACALDtpp",
+        "bigg_id": "rxn08032",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -15655,11 +15655,11 @@
         "label_y": 5453.73,
         "metabolites": [
           {
-            "bigg_id": "acald_c",
+            "bigg_id": "cpd00071_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "acald_p",
+            "bigg_id": "cpd00071_p",
             "coefficient": -1
           }
         ],
@@ -15693,7 +15693,7 @@
         }
       },
       "2075919": {
-        "bigg_id": "FRUtex",
+        "bigg_id": "rxn08537",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -15717,11 +15717,11 @@
         "label_y": 2110.368139453125,
         "metabolites": [
           {
-            "bigg_id": "fru_e",
+            "bigg_id": "cpd00082_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "fru_p",
+            "bigg_id": "cpd00082_p",
             "coefficient": 1
           }
         ],
@@ -15755,7 +15755,7 @@
         }
       },
       "2075920": {
-        "bigg_id": "XYLabcpp",
+        "bigg_id": "rxn05167",
         "gene_reaction_rule": "b3566 and b3567 and b3568",
         "genes": [
           {
@@ -15775,7 +15775,7 @@
         "label_y": 1669.14572734375,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
@@ -15787,15 +15787,15 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           },
           {
@@ -15929,19 +15929,19 @@
         "label_y": 3198.7302,
         "metabolites": [
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "fum_c",
+            "bigg_id": "cpd00106_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": 1
           }
         ],
@@ -16027,11 +16027,11 @@
         "label_y": 6334.3159375,
         "metabolites": [
           {
-            "bigg_id": "pppi_c",
+            "bigg_id": "cpd00421_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "ppi_c",
+            "bigg_id": "cpd00012_c0",
             "coefficient": 1
           },
           {
@@ -16039,11 +16039,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -16125,26 +16125,26 @@
         }
       },
       "2075923": {
-        "bigg_id": "ACt2rpp",
+        "bigg_id": "rxn05488",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 2432.858,
         "label_y": 5453.73,
         "metabolites": [
           {
-            "bigg_id": "ac_c",
+            "bigg_id": "cpd00029_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "ac_p",
+            "bigg_id": "cpd00029_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -16214,7 +16214,7 @@
         }
       },
       "2075924": {
-        "bigg_id": "HYD2pp",
+        "bigg_id": "rxn08735",
         "gene_reaction_rule": "(b0972 and b0973 and b0974) or (b2994 and b2995 and b2996 and b2997)",
         "genes": [
           {
@@ -16250,23 +16250,23 @@
         "label_y": 3021.11818069281,
         "metabolites": [
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h2_c",
+            "bigg_id": "cpd11640_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 2
           }
         ],
@@ -16348,7 +16348,7 @@
         }
       },
       "2075925": {
-        "bigg_id": "POX",
+        "bigg_id": "rxn09167",
         "gene_reaction_rule": "b0871",
         "genes": [
           {
@@ -16360,11 +16360,11 @@
         "label_y": 1450.6100217773437,
         "metabolites": [
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": -1
           },
           {
@@ -16372,7 +16372,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "ac_c",
+            "bigg_id": "cpd00029_c0",
             "coefficient": 1
           },
           {
@@ -16474,7 +16474,7 @@
         }
       },
       "2075926": {
-        "bigg_id": "NADPHQR2",
+        "bigg_id": "rxn08977",
         "gene_reaction_rule": "b3028",
         "genes": [
           {
@@ -16490,15 +16490,15 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": 1
           },
           {
@@ -16584,7 +16584,7 @@
         }
       },
       "2075927": {
-        "bigg_id": "ACONTb",
+        "bigg_id": "rxn01388",
         "gene_reaction_rule": "b0118 or b1276",
         "genes": [
           {
@@ -16600,7 +16600,7 @@
         "label_y": 4513.6372265625,
         "metabolites": [
           {
-            "bigg_id": "acon_C_c",
+            "bigg_id": "cpd00331_c0",
             "coefficient": -1
           },
           {
@@ -16660,7 +16660,7 @@
         }
       },
       "2075928": {
-        "bigg_id": "CITtex",
+        "bigg_id": "rxn08217",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -16684,11 +16684,11 @@
         "label_y": 4721.7466015625,
         "metabolites": [
           {
-            "bigg_id": "cit_e",
+            "bigg_id": "cpd00137_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "cit_p",
+            "bigg_id": "cpd00137_p",
             "coefficient": 1
           }
         ],
@@ -16722,7 +16722,7 @@
         }
       },
       "2075929": {
-        "bigg_id": "RIBabcpp",
+        "bigg_id": "rxn05160",
         "gene_reaction_rule": "(b4231 and b4227 and b4485 and b4230) or (b3749 and b3751 and b3750 and b3748) or (b4087 and b4088 and b4086)",
         "genes": [
           {
@@ -16774,19 +16774,19 @@
         "label_y": 2116.605932421875,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "rib__D_p",
+            "bigg_id": "cpd00105_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
@@ -16794,11 +16794,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "rib__D_c",
+            "bigg_id": "cpd00105_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -16904,7 +16904,7 @@
         }
       },
       "2075930": {
-        "bigg_id": "FUM",
+        "bigg_id": "rxn00799",
         "gene_reaction_rule": "b1612 or b4122 or b1611",
         "genes": [
           {
@@ -16924,7 +16924,7 @@
         "label_y": 3518.03879375,
         "metabolites": [
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": 1
           },
           {
@@ -16932,7 +16932,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "fum_c",
+            "bigg_id": "cpd00106_c0",
             "coefficient": -1
           }
         ],
@@ -16996,15 +16996,15 @@
         "label_y": 2263.7448484375,
         "metabolites": [
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "2ddg6p_c",
+            "bigg_id": "cpd02711_c0",
             "coefficient": -1
           }
         ],
@@ -17056,7 +17056,7 @@
         }
       },
       "2075932": {
-        "bigg_id": "PFL",
+        "bigg_id": "rxn00157",
         "gene_reaction_rule": "(b0902 and b0903) or (b0902 and b3114) or (b3951 and b3952) or ((b0902 and b0903) and b2579)",
         "genes": [
           {
@@ -17088,19 +17088,19 @@
         "label_y": 4470.73,
         "metabolites": [
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "accoa_c",
+            "bigg_id": "cpd00022_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "for_c",
+            "bigg_id": "cpd00047_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": -1
           }
         ],
@@ -17170,7 +17170,7 @@
         }
       },
       "2075933": {
-        "bigg_id": "PPA",
+        "bigg_id": "rxn00001",
         "gene_reaction_rule": "b2744 or b4226 or b2502",
         "genes": [
           {
@@ -17190,7 +17190,7 @@
         "label_y": 6327.845234375,
         "metabolites": [
           {
-            "bigg_id": "ppi_c",
+            "bigg_id": "cpd00012_c0",
             "coefficient": -1
           },
           {
@@ -17198,11 +17198,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -17272,7 +17272,7 @@
         }
       },
       "2075934": {
-        "bigg_id": "NO3R1pp",
+        "bigg_id": "rxn09001",
         "gene_reaction_rule": "(b1465 and b1466 and b1467 and b1468) or (b1224 and b1225 and b1226 and b1227)",
         "genes": [
           {
@@ -17312,15 +17312,15 @@
         "label_y": 1713.2219602539062,
         "metabolites": [
           {
-            "bigg_id": "no2_c",
+            "bigg_id": "cpd00075_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "no3_c",
+            "bigg_id": "cpd00209_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
@@ -17328,7 +17328,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 2
           },
           {
@@ -17442,7 +17442,7 @@
         }
       },
       "2075935": {
-        "bigg_id": "GLCP2",
+        "bigg_id": "rxn13299",
         "gene_reaction_rule": "b3417 or b3428",
         "genes": [
           {
@@ -17458,15 +17458,15 @@
         "label_y": 1114.3956052734375,
         "metabolites": [
           {
-            "bigg_id": "bglycogen_c",
+            "bigg_id": "cpd15413_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "g1p_c",
+            "bigg_id": "cpd00089_c0",
             "coefficient": 1
           }
         ],
@@ -17518,7 +17518,7 @@
         }
       },
       "2075936": {
-        "bigg_id": "TMAOR1pp",
+        "bigg_id": "rxn09314",
         "gene_reaction_rule": "(b0996 and b0997) or (b1872 and b1873)",
         "genes": [
           {
@@ -17546,23 +17546,23 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "tma_p",
+            "bigg_id": "cpd00441_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "tmao_p",
+            "bigg_id": "cpd00811_p",
             "coefficient": -1
           }
         ],
@@ -17656,7 +17656,7 @@
         }
       },
       "2075937": {
-        "bigg_id": "NADH5",
+        "bigg_id": "rxn08975",
         "gene_reaction_rule": "b1109",
         "genes": [
           {
@@ -17668,15 +17668,15 @@
         "label_y": 1324.6708127929687,
         "metabolites": [
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           },
           {
@@ -17766,7 +17766,7 @@
         }
       },
       "2075938": {
-        "bigg_id": "LDH_D",
+        "bigg_id": "rxn00500",
         "gene_reaction_rule": "b2133 or b1380",
         "genes": [
           {
@@ -17782,23 +17782,23 @@
         "label_y": 4344.5454296875,
         "metabolites": [
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "lac__D_c",
+            "bigg_id": "cpd00221_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           }
         ],
@@ -17887,23 +17887,23 @@
         "label_y": 3722.1081296875,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lald__D_c",
+            "bigg_id": "cpd00693_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "12ppd__R_c",
+            "bigg_id": "cpd01861_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           }
         ],
@@ -17985,7 +17985,7 @@
         }
       },
       "2075940": {
-        "bigg_id": "PGM",
+        "bigg_id": "rxn01106",
         "gene_reaction_rule": "b3612 or b4395 or b0755",
         "genes": [
           {
@@ -18005,11 +18005,11 @@
         "label_y": 3420.7302,
         "metabolites": [
           {
-            "bigg_id": "2pg_c",
+            "bigg_id": "cpd00482_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "3pg_c",
+            "bigg_id": "cpd00169_c0",
             "coefficient": 1
           }
         ],
@@ -18043,7 +18043,7 @@
         }
       },
       "2075941": {
-        "bigg_id": "RPE",
+        "bigg_id": "rxn01116",
         "gene_reaction_rule": "b4301 or b3386",
         "genes": [
           {
@@ -18059,11 +18059,11 @@
         "label_y": 1846.349340625,
         "metabolites": [
           {
-            "bigg_id": "xu5p__D_c",
+            "bigg_id": "cpd00198_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "ru5p__D_c",
+            "bigg_id": "cpd00171_c0",
             "coefficient": -1
           }
         ],
@@ -18121,19 +18121,19 @@
         "label_y": 3303.7302,
         "metabolites": [
           {
-            "bigg_id": "fum_c",
+            "bigg_id": "cpd00106_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           }
         ],
@@ -18215,23 +18215,23 @@
         "label_y": 3587.444311328125,
         "metabolites": [
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": 1
           }
         ],
@@ -18313,7 +18313,7 @@
         }
       },
       "2075944": {
-        "bigg_id": "GLYC3Ptex",
+        "bigg_id": "rxn08643",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -18337,11 +18337,11 @@
         "label_y": 3100.444311328125,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_p",
+            "bigg_id": "cpd00080_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "glyc3p_e",
+            "bigg_id": "cpd00080_e0",
             "coefficient": -1
           }
         ],
@@ -18375,7 +18375,7 @@
         }
       },
       "2075945": {
-        "bigg_id": "PPS",
+        "bigg_id": "rxn00147",
         "gene_reaction_rule": "b1702",
         "genes": [
           {
@@ -18387,23 +18387,23 @@
         "label_y": 4106.05197734375,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "amp_c",
+            "bigg_id": "cpd00018_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": 1
           },
           {
@@ -18411,7 +18411,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -18529,11 +18529,11 @@
         "label_y": 1303.701147265625,
         "metabolites": [
           {
-            "bigg_id": "bglycogen_c",
+            "bigg_id": "cpd15413_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "glycogen_c",
+            "bigg_id": "cpd00155_c0",
             "coefficient": -1
           }
         ],
@@ -18567,7 +18567,7 @@
         }
       },
       "2075947": {
-        "bigg_id": "G3PD7",
+        "bigg_id": "rxn08558",
         "gene_reaction_rule": "b2241 and b2242 and b2243",
         "genes": [
           {
@@ -18587,19 +18587,19 @@
         "label_y": 5729.45900390625,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": 1
           }
         ],
@@ -18669,7 +18669,7 @@
         }
       },
       "2075948": {
-        "bigg_id": "rxn08612",
+        "bigg_id": "rxn05226",
         "gene_reaction_rule": "(b2417 and b1621 and b2415 and b2416) or (b2417 and b1101 and b2415 and b2416) or (b1817 and b1818 and b1819 and b2415 and b2416)",
         "genes": [
           {
@@ -18713,15 +18713,15 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "glc__D_p",
+            "bigg_id": "cpd00027_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": -1
           }
         ],
@@ -18811,15 +18811,15 @@
         "label_y": 5382.16701171875,
         "metabolites": [
           {
-            "bigg_id": "tmao_c",
+            "bigg_id": "cpd00811_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": -1
           },
           {
@@ -18827,11 +18827,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "tma_c",
+            "bigg_id": "cpd00441_c0",
             "coefficient": 1
           }
         ],
@@ -18957,27 +18957,27 @@
         "label_y": 3921.886938281251,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "for_p",
+            "bigg_id": "cpd00047_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "co2_p",
+            "bigg_id": "cpd00011_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 1
           }
         ],
@@ -19071,7 +19071,7 @@
         }
       },
       "2075952": {
-        "bigg_id": "SPODM",
+        "bigg_id": "rxn00206",
         "gene_reaction_rule": "b3908 or b1656",
         "genes": [
           {
@@ -19087,19 +19087,19 @@
         "label_y": 5166.8774609375,
         "metabolites": [
           {
-            "bigg_id": "h2o2_c",
+            "bigg_id": "cpd00025_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "o2s_c",
+            "bigg_id": "cpd00532_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           }
         ],
@@ -19169,7 +19169,7 @@
         }
       },
       "2075953": {
-        "bigg_id": "SUCCt2_2pp",
+        "bigg_id": "rxn09269",
         "gene_reaction_rule": "b3528",
         "genes": [
           {
@@ -19181,19 +19181,19 @@
         "label_y": 3290.96066875,
         "metabolites": [
           {
-            "bigg_id": "succ_p",
+            "bigg_id": "cpd00036_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -2
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           }
         ],
@@ -19263,7 +19263,7 @@
         }
       },
       "2075954": {
-        "bigg_id": "SUCCt2_3pp",
+        "bigg_id": "rxn10157",
         "gene_reaction_rule": "b4123 or b4138",
         "genes": [
           {
@@ -19279,19 +19279,19 @@
         "label_y": 3202.9010984375,
         "metabolites": [
           {
-            "bigg_id": "succ_p",
+            "bigg_id": "cpd00036_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -3
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 3
           }
         ],
@@ -19361,7 +19361,7 @@
         }
       },
       "2075955": {
-        "bigg_id": "FBP",
+        "bigg_id": "rxn00549",
         "gene_reaction_rule": "b3925 or b4232 or b2930",
         "genes": [
           {
@@ -19393,7 +19393,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -19463,7 +19463,7 @@
         }
       },
       "2075956": {
-        "bigg_id": "HYD1pp",
+        "bigg_id": "rxn08734",
         "gene_reaction_rule": "(b0972 and b0973 and b0974) or (b2994 and b2995 and b2996 and b2997) or (b2719 and b2720 and b2721 and b2722 and b2723 and b2724)",
         "genes": [
           {
@@ -19527,15 +19527,15 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 2
           },
           {
-            "bigg_id": "h2_c",
+            "bigg_id": "cpd11640_c0",
             "coefficient": -1
           },
           {
@@ -19621,7 +19621,7 @@
         }
       },
       "2075957": {
-        "bigg_id": "TPI",
+        "bigg_id": "rxn00747",
         "gene_reaction_rule": "b3919",
         "genes": [
           {
@@ -19633,11 +19633,11 @@
         "label_y": 2746.65842265625,
         "metabolites": [
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": -1
           }
         ],
@@ -19671,7 +19671,7 @@
         }
       },
       "2075958": {
-        "bigg_id": "12PPDRtex",
+        "bigg_id": "rxn07919",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -19695,11 +19695,11 @@
         "label_y": 3786.7302,
         "metabolites": [
           {
-            "bigg_id": "12ppd__R_e",
+            "bigg_id": "cpd01861_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "12ppd__R_p",
+            "bigg_id": "cpd01861_p",
             "coefficient": 1
           }
         ],
@@ -19733,7 +19733,7 @@
         }
       },
       "2075959": {
-        "bigg_id": "ICL",
+        "bigg_id": "rxn00336",
         "gene_reaction_rule": "b4015",
         "genes": [
           {
@@ -19745,11 +19745,11 @@
         "label_y": 4288.73,
         "metabolites": [
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "glx_c",
+            "bigg_id": "cpd00040_c0",
             "coefficient": 1
           },
           {
@@ -19805,7 +19805,7 @@
         }
       },
       "2075960": {
-        "bigg_id": "ICDHyr",
+        "bigg_id": "rxn00198",
         "gene_reaction_rule": "b1136",
         "genes": [
           {
@@ -19817,15 +19817,15 @@
         "label_y": 4329.3286328125,
         "metabolites": [
           {
-            "bigg_id": "akg_c",
+            "bigg_id": "cpd00024_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           },
           {
@@ -19833,7 +19833,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": -1
           }
         ],
@@ -19915,7 +19915,7 @@
         }
       },
       "2075961": {
-        "bigg_id": "rxn13640",
+        "bigg_id": "rxn00198",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -19939,11 +19939,11 @@
         "label_y": 4345.388203125,
         "metabolites": [
           {
-            "bigg_id": "lac__D_p",
+            "bigg_id": "cpd00221_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "lac__D_e",
+            "bigg_id": "cpd00221_e0",
             "coefficient": -1
           }
         ],
@@ -19989,19 +19989,19 @@
         "label_y": 3933.0983640625,
         "metabolites": [
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           }
         ],
@@ -20071,7 +20071,7 @@
         }
       },
       "2075963": {
-        "bigg_id": "FORtex",
+        "bigg_id": "rxn08525",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -20095,11 +20095,11 @@
         "label_y": 5833.24220703125,
         "metabolites": [
           {
-            "bigg_id": "for_p",
+            "bigg_id": "cpd00047_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "for_e",
+            "bigg_id": "cpd00047_e0",
             "coefficient": -1
           }
         ],
@@ -20133,7 +20133,7 @@
         }
       },
       "2075964": {
-        "bigg_id": "ENO",
+        "bigg_id": "rxn00459",
         "gene_reaction_rule": "b2779",
         "genes": [
           {
@@ -20145,7 +20145,7 @@
         "label_y": 3650.7302,
         "metabolites": [
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": 1
           },
           {
@@ -20153,7 +20153,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "2pg_c",
+            "bigg_id": "cpd00482_c0",
             "coefficient": -1
           }
         ],
@@ -20229,19 +20229,19 @@
         "label_y": 3436.49924296875,
         "metabolites": [
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lac__L_c",
+            "bigg_id": "cpd00159_c0",
             "coefficient": -1
           }
         ],
@@ -20323,7 +20323,7 @@
         "label_y": 2477.7302,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": -1
           },
           {
@@ -20331,11 +20331,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "glyc_c",
+            "bigg_id": "cpd00100_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -20405,7 +20405,7 @@
         }
       },
       "2075967": {
-        "bigg_id": "GLCDpp",
+        "bigg_id": "rxn08608",
         "gene_reaction_rule": "b0124 or b0837",
         "genes": [
           {
@@ -20429,7 +20429,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "glc__D_p",
+            "bigg_id": "cpd00027_p",
             "coefficient": -1
           },
           {
@@ -20437,11 +20437,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "glcn_p",
+            "bigg_id": "cpd00222_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 1
           }
         ],
@@ -20535,7 +20535,7 @@
         }
       },
       "2075968": {
-        "bigg_id": "rxn08616",
+        "bigg_id": "rxn05573",
         "gene_reaction_rule": "b2943",
         "genes": [
           {
@@ -20547,19 +20547,19 @@
         "label_y": 858.256811328125,
         "metabolites": [
           {
-            "bigg_id": "glc__D_c",
+            "bigg_id": "cpd00027_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "glc__D_p",
+            "bigg_id": "cpd00027_p",
             "coefficient": -1
           }
         ],
@@ -20645,19 +20645,19 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "rib__D_c",
+            "bigg_id": "cpd00105_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -20739,7 +20739,7 @@
         }
       },
       "2075970": {
-        "bigg_id": "PTAr",
+        "bigg_id": "rxn00173",
         "gene_reaction_rule": "b2297 or b2458",
         "genes": [
           {
@@ -20755,19 +20755,19 @@
         "label_y": 4573.73,
         "metabolites": [
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "accoa_c",
+            "bigg_id": "cpd00022_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "actp_c",
+            "bigg_id": "cpd00196_c0",
             "coefficient": 1
           }
         ],
@@ -20837,7 +20837,7 @@
         }
       },
       "2075971": {
-        "bigg_id": "GAPD",
+        "bigg_id": "rxn00781",
         "gene_reaction_rule": "b1779",
         "genes": [
           {
@@ -20849,27 +20849,27 @@
         "label_y": 2894.698217578125,
         "metabolites": [
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "13dpg_c",
+            "bigg_id": "cpd00203_c0",
             "coefficient": 1
           }
         ],
@@ -20963,26 +20963,26 @@
         }
       },
       "2075972": {
-        "bigg_id": "rxn30058",
+        "bigg_id": "rxn00781",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 4615.00790234375,
         "label_y": 4910.17970703125,
         "metabolites": [
           {
-            "bigg_id": "cit_p",
+            "bigg_id": "cpd00137_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "cit_c",
+            "bigg_id": "cpd00137_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -21052,7 +21052,7 @@
         }
       },
       "2075973": {
-        "bigg_id": "SUCOAS",
+        "bigg_id": "rxn00285",
         "gene_reaction_rule": "b0728 and b0729",
         "genes": [
           {
@@ -21068,27 +21068,27 @@
         "label_y": 3466.7302,
         "metabolites": [
           {
-            "bigg_id": "succoa_c",
+            "bigg_id": "cpd00078_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -21182,7 +21182,7 @@
         }
       },
       "2075974": {
-        "bigg_id": "H2tex",
+        "bigg_id": "rxn08691",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -21206,11 +21206,11 @@
         "label_y": 5830.4770703125,
         "metabolites": [
           {
-            "bigg_id": "h2_p",
+            "bigg_id": "cpd11640_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "h2_e",
+            "bigg_id": "cpd11640_e0",
             "coefficient": -1
           }
         ],
@@ -21244,7 +21244,7 @@
         }
       },
       "2075975": {
-        "bigg_id": "ACONTa",
+        "bigg_id": "rxn00974",
         "gene_reaction_rule": "b0118 or b1276",
         "genes": [
           {
@@ -21260,7 +21260,7 @@
         "label_y": 4536.4253125,
         "metabolites": [
           {
-            "bigg_id": "acon_C_c",
+            "bigg_id": "cpd00331_c0",
             "coefficient": 1
           },
           {
@@ -21268,7 +21268,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "cit_c",
+            "bigg_id": "cpd00137_c0",
             "coefficient": -1
           }
         ],
@@ -21320,7 +21320,7 @@
         }
       },
       "2075976": {
-        "bigg_id": "PFK",
+        "bigg_id": "rxn00545",
         "gene_reaction_rule": "b3916 or b1723",
         "genes": [
           {
@@ -21336,7 +21336,7 @@
         "label_y": 2148.7302,
         "metabolites": [
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
@@ -21344,7 +21344,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
@@ -21352,7 +21352,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -21434,7 +21434,7 @@
         }
       },
       "2075977": {
-        "bigg_id": "LALDO2x",
+        "bigg_id": "rxn01831",
         "gene_reaction_rule": "b3945",
         "genes": [
           {
@@ -21446,23 +21446,23 @@
         "label_y": 3444.7302,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mthgxl_c",
+            "bigg_id": "cpd00428_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lald__D_c",
+            "bigg_id": "cpd00693_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           }
         ],
@@ -21544,7 +21544,7 @@
         }
       },
       "2075978": {
-        "bigg_id": "ACtex",
+        "bigg_id": "rxn08063",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -21568,11 +21568,11 @@
         "label_y": 5834.0005078125,
         "metabolites": [
           {
-            "bigg_id": "ac_e",
+            "bigg_id": "cpd00029_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "ac_p",
+            "bigg_id": "cpd00029_p",
             "coefficient": 1
           }
         ],
@@ -21606,18 +21606,18 @@
         }
       },
       "2075979": {
-        "bigg_id": "ATPM",
+        "bigg_id": "rxn00062",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 5057.89657421875,
         "label_y": 2415.404028125,
         "metabolites": [
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
@@ -21625,11 +21625,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           }
         ],
@@ -21723,23 +21723,23 @@
         "label_y": 2833.560945326842,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "s7p_c",
+            "bigg_id": "cpd00238_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "s17bp_c",
+            "bigg_id": "cpd00349_c0",
             "coefficient": 1
           }
         ],
@@ -21833,15 +21833,15 @@
         "label_y": 2865.290991015625,
         "metabolites": [
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mthgxl_c",
+            "bigg_id": "cpd00428_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -21893,7 +21893,7 @@
         }
       },
       "2075982": {
-        "bigg_id": "NADH9",
+        "bigg_id": "rxn08976",
         "gene_reaction_rule": "b1109",
         "genes": [
           {
@@ -21905,23 +21905,23 @@
         "label_y": 5452.0962109375,
         "metabolites": [
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           }
         ],
@@ -22003,7 +22003,7 @@
         }
       },
       "2075983": {
-        "bigg_id": "F6Pt6_2pp",
+        "bigg_id": "rxn08432",
         "gene_reaction_rule": "b3666",
         "genes": [
           {
@@ -22015,7 +22015,7 @@
         "label_y": 1755.7981931640625,
         "metabolites": [
           {
-            "bigg_id": "pi_p",
+            "bigg_id": "cpd00009_p",
             "coefficient": 2
           },
           {
@@ -22023,7 +22023,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -2
           },
           {
@@ -22113,19 +22113,19 @@
         "label_y": 5713.40236328125,
         "metabolites": [
           {
-            "bigg_id": "no2_c",
+            "bigg_id": "cpd00075_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 3
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -5
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -3
           },
           {
@@ -22227,7 +22227,7 @@
         }
       },
       "2075987": {
-        "bigg_id": "CITt7pp",
+        "bigg_id": "rxn08216",
         "gene_reaction_rule": "b0612",
         "genes": [
           {
@@ -22239,19 +22239,19 @@
         "label_y": 4620.17970703125,
         "metabolites": [
           {
-            "bigg_id": "succ_p",
+            "bigg_id": "cpd00036_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "cit_c",
+            "bigg_id": "cpd00137_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "cit_p",
+            "bigg_id": "cpd00137_p",
             "coefficient": -1
           }
         ],
@@ -22337,7 +22337,7 @@
         "label_y": 2143.7096921875,
         "metabolites": [
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": 1
           },
           {
@@ -22345,7 +22345,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "dha_c",
+            "bigg_id": "cpd00157_c0",
             "coefficient": 1
           }
         ],
@@ -22397,7 +22397,7 @@
         }
       },
       "2075989": {
-        "bigg_id": "MDH2",
+        "bigg_id": "rxn08900",
         "gene_reaction_rule": "b2210",
         "genes": [
           {
@@ -22409,7 +22409,7 @@
         "label_y": 3921.154028125,
         "metabolites": [
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": -1
           },
           {
@@ -22417,7 +22417,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": 1
           },
           {
@@ -22491,7 +22491,7 @@
         }
       },
       "2075990": {
-        "bigg_id": "GLYC3Pt6pp",
+        "bigg_id": "rxn08642",
         "gene_reaction_rule": "b2240",
         "genes": [
           {
@@ -22503,19 +22503,19 @@
         "label_y": 3256.7302,
         "metabolites": [
           {
-            "bigg_id": "pi_p",
+            "bigg_id": "cpd00009_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glyc3p_p",
+            "bigg_id": "cpd00080_p",
             "coefficient": -1
           }
         ],
@@ -22585,26 +22585,26 @@
         }
       },
       "2075991": {
-        "bigg_id": "PYRt2rpp",
+        "bigg_id": "rxn05469",
         "gene_reaction_rule": "",
         "genes": [],
         "label_x": 1256.8579,
         "label_y": 5455.73,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_p",
+            "bigg_id": "cpd00020_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           }
         ],
@@ -22698,11 +22698,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "glyclt_c",
+            "bigg_id": "cpd00139_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "glx_c",
+            "bigg_id": "cpd00040_c0",
             "coefficient": 1
           },
           {
@@ -22776,7 +22776,7 @@
         }
       },
       "2075993": {
-        "bigg_id": "TKT1",
+        "bigg_id": "rxn15228",
         "gene_reaction_rule": "b2935 or b2465",
         "genes": [
           {
@@ -22796,15 +22796,15 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "s7p_c",
+            "bigg_id": "cpd00238_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "xu5p__D_c",
+            "bigg_id": "cpd00198_c0",
             "coefficient": -1
           }
         ],
@@ -22874,7 +22874,7 @@
         }
       },
       "2075994": {
-        "bigg_id": "THD2pp",
+        "bigg_id": "rxn09295",
         "gene_reaction_rule": "b1602 and b1603",
         "genes": [
           {
@@ -22890,27 +22890,27 @@
         "label_y": 935.9888059570312,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -2
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": 1
           }
         ],
@@ -23011,19 +23011,19 @@
         "label_y": 3524.8718015625,
         "metabolites": [
           {
-            "bigg_id": "succ_p",
+            "bigg_id": "cpd00036_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -23105,19 +23105,19 @@
         "label_y": 6171.845234375,
         "metabolites": [
           {
-            "bigg_id": "ppi_c",
+            "bigg_id": "cpd00012_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           }
         ],
@@ -23187,7 +23187,7 @@
         }
       },
       "2075997": {
-        "bigg_id": "ALCD2x",
+        "bigg_id": "rxn00543",
         "gene_reaction_rule": "b1478 or b1241 or b0356",
         "genes": [
           {
@@ -23207,23 +23207,23 @@
         "label_y": 5210.19923828125,
         "metabolites": [
           {
-            "bigg_id": "etoh_c",
+            "bigg_id": "cpd00363_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "acald_c",
+            "bigg_id": "cpd00071_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           }
         ],
@@ -23305,7 +23305,7 @@
         }
       },
       "2075998": {
-        "bigg_id": "SUCCtex",
+        "bigg_id": "rxn09271",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -23329,11 +23329,11 @@
         "label_y": 3280.1911375,
         "metabolites": [
           {
-            "bigg_id": "succ_p",
+            "bigg_id": "cpd00036_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "succ_e",
+            "bigg_id": "cpd00036_e0",
             "coefficient": -1
           }
         ],
@@ -23387,15 +23387,15 @@
         "label_y": 5836.6352734375,
         "metabolites": [
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "dms_c",
+            "bigg_id": "cpd00450_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "dmso_c",
+            "bigg_id": "cpd08021_c0",
             "coefficient": -1
           },
           {
@@ -23403,7 +23403,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": 1
           }
         ],
@@ -23485,7 +23485,7 @@
         }
       },
       "2076000": {
-        "bigg_id": "ALDD2x",
+        "bigg_id": "rxn00506",
         "gene_reaction_rule": "b1300",
         "genes": [
           {
@@ -23497,19 +23497,19 @@
         "label_y": 5072.2680859375,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "acald_c",
+            "bigg_id": "cpd00071_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "ac_c",
+            "bigg_id": "cpd00029_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
@@ -23517,7 +23517,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           }
         ],
@@ -23611,7 +23611,7 @@
         }
       },
       "2076001": {
-        "bigg_id": "G3PD2",
+        "bigg_id": "rxn00612",
         "gene_reaction_rule": "b3608",
         "genes": [
           {
@@ -23623,23 +23623,23 @@
         "label_y": 2746.65842265625,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": 1
           }
         ],
@@ -23721,7 +23721,7 @@
         }
       },
       "2076002": {
-        "bigg_id": "XYLI1",
+        "bigg_id": "rxn01044",
         "gene_reaction_rule": "b3565",
         "genes": [
           {
@@ -23799,19 +23799,19 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -3
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 3
           },
           {
-            "bigg_id": "no2_p",
+            "bigg_id": "cpd00075_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -2
           },
           {
@@ -23933,15 +23933,15 @@
         "label_y": 4281.536640625,
         "metabolites": [
           {
-            "bigg_id": "ac_c",
+            "bigg_id": "cpd00029_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "cit_c",
+            "bigg_id": "cpd00137_c0",
             "coefficient": -1
           }
         ],
@@ -23993,7 +23993,7 @@
         }
       },
       "2076005": {
-        "bigg_id": "FORt2pp",
+        "bigg_id": "rxn05559",
         "gene_reaction_rule": "b0904 or b2492",
         "genes": [
           {
@@ -24009,19 +24009,19 @@
         "label_y": 5451.73,
         "metabolites": [
           {
-            "bigg_id": "for_c",
+            "bigg_id": "cpd00047_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "for_p",
+            "bigg_id": "cpd00047_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -24091,7 +24091,7 @@
         }
       },
       "2076006": {
-        "bigg_id": "rxn00265",
+        "bigg_id": "rxn05559",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -24115,11 +24115,11 @@
         "label_y": 523.2718259765625,
         "metabolites": [
           {
-            "bigg_id": "glc__D_p",
+            "bigg_id": "cpd00027_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "glc__D_e",
+            "bigg_id": "cpd00027_e0",
             "coefficient": -1
           }
         ],
@@ -24153,7 +24153,7 @@
         }
       },
       "2076007": {
-        "bigg_id": "PYRtex",
+        "bigg_id": "rxn09218",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -24177,11 +24177,11 @@
         "label_y": 5835.028828125,
         "metabolites": [
           {
-            "bigg_id": "pyr_p",
+            "bigg_id": "cpd00020_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_e",
+            "bigg_id": "cpd00020_e0",
             "coefficient": -1
           }
         ],
@@ -24215,7 +24215,7 @@
         }
       },
       "2076008": {
-        "bigg_id": "SUCDi",
+        "bigg_id": "rxn09272",
         "gene_reaction_rule": "b0721 and b0722 and b0723 and b0724",
         "genes": [
           {
@@ -24239,7 +24239,7 @@
         "label_y": 3430.937963671875,
         "metabolites": [
           {
-            "bigg_id": "fum_c",
+            "bigg_id": "cpd00106_c0",
             "coefficient": 1
           },
           {
@@ -24247,7 +24247,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "succ_c",
+            "bigg_id": "cpd00036_c0",
             "coefficient": -1
           },
           {
@@ -24321,7 +24321,7 @@
         }
       },
       "2076009": {
-        "bigg_id": "FORtppi",
+        "bigg_id": "rxn08525",
         "gene_reaction_rule": "b0904 or b2492",
         "genes": [
           {
@@ -24337,11 +24337,11 @@
         "label_y": 5434.43849609375,
         "metabolites": [
           {
-            "bigg_id": "for_p",
+            "bigg_id": "cpd00047_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "for_c",
+            "bigg_id": "cpd00047_c0",
             "coefficient": -1
           }
         ],
@@ -24375,7 +24375,7 @@
         }
       },
       "2076010": {
-        "bigg_id": "TALA",
+        "bigg_id": "rxn01333",
         "gene_reaction_rule": "b2464 or b0008",
         "genes": [
           {
@@ -24391,7 +24391,7 @@
         "label_y": 2336.693470664108,
         "metabolites": [
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": -1
           },
           {
@@ -24399,11 +24399,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "s7p_c",
+            "bigg_id": "cpd00238_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "e4p_c",
+            "bigg_id": "cpd00236_c0",
             "coefficient": 1
           }
         ],
@@ -24473,7 +24473,7 @@
         }
       },
       "2076011": {
-        "bigg_id": "TKT2",
+        "bigg_id": "rxn00785",
         "gene_reaction_rule": "b2935 or b2465",
         "genes": [
           {
@@ -24489,7 +24489,7 @@
         "label_y": 1986.204809375,
         "metabolites": [
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": 1
           },
           {
@@ -24497,11 +24497,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "e4p_c",
+            "bigg_id": "cpd00236_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "xu5p__D_c",
+            "bigg_id": "cpd00198_c0",
             "coefficient": -1
           }
         ],
@@ -24571,7 +24571,7 @@
         }
       },
       "2076012": {
-        "bigg_id": "XYLtex",
+        "bigg_id": "rxn09385",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -24633,7 +24633,7 @@
         }
       },
       "2076013": {
-        "bigg_id": "AKGDH",
+        "bigg_id": "rxn08094",
         "gene_reaction_rule": "b0116 and b0726 and b0727",
         "genes": [
           {
@@ -24653,27 +24653,27 @@
         "label_y": 3832.7302,
         "metabolites": [
           {
-            "bigg_id": "succoa_c",
+            "bigg_id": "cpd00078_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "akg_c",
+            "bigg_id": "cpd00024_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           }
         ],
@@ -24767,7 +24767,7 @@
         }
       },
       "2076014": {
-        "bigg_id": "AKGtex",
+        "bigg_id": "rxn08096",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -24791,11 +24791,11 @@
         "label_y": 4037.85910625,
         "metabolites": [
           {
-            "bigg_id": "akg_p",
+            "bigg_id": "cpd00024_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "akg_e",
+            "bigg_id": "cpd00024_e0",
             "coefficient": -1
           }
         ],
@@ -24829,7 +24829,7 @@
         }
       },
       "2076016": {
-        "bigg_id": "NO3R2pp",
+        "bigg_id": "rxn09003",
         "gene_reaction_rule": "(b1465 and b1466 and b1467 and b1468) or (b1224 and b1225 and b1226 and b1227)",
         "genes": [
           {
@@ -24869,23 +24869,23 @@
         "label_y": 4192.22535715021,
         "metabolites": [
           {
-            "bigg_id": "no2_c",
+            "bigg_id": "cpd00075_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "no3_c",
+            "bigg_id": "cpd00209_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           },
           {
@@ -24893,7 +24893,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 2
           }
         ],
@@ -24999,7 +24999,7 @@
         }
       },
       "2076017": {
-        "bigg_id": "LGTHL",
+        "bigg_id": "rxn01834",
         "gene_reaction_rule": "b1651",
         "genes": [
           {
@@ -25011,15 +25011,15 @@
         "label_y": 3432.7302,
         "metabolites": [
           {
-            "bigg_id": "gthrd_c",
+            "bigg_id": "cpd00042_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mthgxl_c",
+            "bigg_id": "cpd00428_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "lgt__S_c",
+            "bigg_id": "cpd02182_c0",
             "coefficient": 1
           }
         ],
@@ -25071,7 +25071,7 @@
         }
       },
       "2076018": {
-        "bigg_id": "ALDD2y",
+        "bigg_id": "rxn00507",
         "gene_reaction_rule": "b3588",
         "genes": [
           {
@@ -25083,23 +25083,23 @@
         "label_y": 5179.64015625,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 2
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "ac_c",
+            "bigg_id": "cpd00029_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "acald_c",
+            "bigg_id": "cpd00071_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": -1
           },
           {
@@ -25209,7 +25209,7 @@
         "label_y": 2067.638647265625,
         "metabolites": [
           {
-            "bigg_id": "6pgc_c",
+            "bigg_id": "cpd00284_c0",
             "coefficient": -1
           },
           {
@@ -25217,7 +25217,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "2ddg6p_c",
+            "bigg_id": "cpd02711_c0",
             "coefficient": 1
           }
         ],
@@ -25269,7 +25269,7 @@
         }
       },
       "2076020": {
-        "bigg_id": "FRUK",
+        "bigg_id": "rxn01492",
         "gene_reaction_rule": "b2168",
         "genes": [
           {
@@ -25281,11 +25281,11 @@
         "label_y": 2111.537084765625,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
@@ -25293,11 +25293,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "f1p_c",
+            "bigg_id": "cpd00802_c0",
             "coefficient": -1
           }
         ],
@@ -25411,11 +25411,11 @@
         "label_y": 1227.2921506835937,
         "metabolites": [
           {
-            "bigg_id": "for_p",
+            "bigg_id": "cpd00047_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -2
           },
           {
@@ -25427,11 +25427,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_p",
+            "bigg_id": "cpd00011_p",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": 1
           }
         ],
@@ -25532,19 +25532,19 @@
         "label_y": 3950.0983640625,
         "metabolites": [
           {
-            "bigg_id": "h2o2_c",
+            "bigg_id": "cpd00025_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "o2_c",
+            "bigg_id": "cpd00007_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": -1
           }
         ],
@@ -25614,7 +25614,7 @@
         }
       },
       "2076024": {
-        "bigg_id": "CO2tpp",
+        "bigg_id": "rxn05467",
         "gene_reaction_rule": "s0001",
         "genes": [
           {
@@ -25626,11 +25626,11 @@
         "label_y": 5474.73,
         "metabolites": [
           {
-            "bigg_id": "co2_p",
+            "bigg_id": "cpd00011_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           }
         ],
@@ -25664,7 +25664,7 @@
         }
       },
       "2076025": {
-        "bigg_id": "ME1",
+        "bigg_id": "rxn00159",
         "gene_reaction_rule": "b1479",
         "genes": [
           {
@@ -25676,23 +25676,23 @@
         "label_y": 3665.27316875,
         "metabolites": [
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mal__L_c",
+            "bigg_id": "cpd00130_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           }
         ],
@@ -25774,7 +25774,7 @@
         }
       },
       "2076026": {
-        "bigg_id": "XYLK",
+        "bigg_id": "rxn01199",
         "gene_reaction_rule": "b0063 or b3564",
         "genes": [
           {
@@ -25790,11 +25790,11 @@
         "label_y": 1703.02853984375,
         "metabolites": [
           {
-            "bigg_id": "xu5p__D_c",
+            "bigg_id": "cpd00198_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
@@ -25802,11 +25802,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           }
         ],
@@ -25888,7 +25888,7 @@
         }
       },
       "2076027": {
-        "bigg_id": "rxn13641",
+        "bigg_id": "rxn08570",
         "gene_reaction_rule": "b3666",
         "genes": [
           {
@@ -25900,7 +25900,7 @@
         "label_y": 868.0166379882812,
         "metabolites": [
           {
-            "bigg_id": "pi_p",
+            "bigg_id": "cpd00009_p",
             "coefficient": 2
           },
           {
@@ -25908,7 +25908,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": -2
           },
           {
@@ -25982,7 +25982,7 @@
         }
       },
       "2076028": {
-        "bigg_id": "NADTRHD",
+        "bigg_id": "rxn00083",
         "gene_reaction_rule": "b3962 or (b1602 and b1603)",
         "genes": [
           {
@@ -26002,19 +26002,19 @@
         "label_y": 1293.6412107421875,
         "metabolites": [
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           }
         ],
@@ -26104,19 +26104,19 @@
         "label_y": 3466.830541796875,
         "metabolites": [
           {
-            "bigg_id": "glyc3p_c",
+            "bigg_id": "cpd00080_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           }
         ],
@@ -26186,7 +26186,7 @@
         }
       },
       "2076030": {
-        "bigg_id": "GND",
+        "bigg_id": "rxn01115",
         "gene_reaction_rule": "b2029",
         "genes": [
           {
@@ -26198,23 +26198,23 @@
         "label_y": 1640.813940234375,
         "metabolites": [
           {
-            "bigg_id": "6pgc_c",
+            "bigg_id": "cpd00284_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "ru5p__D_c",
+            "bigg_id": "cpd00171_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nadp_c",
+            "bigg_id": "cpd00006_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadph_c",
+            "bigg_id": "cpd00005_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           }
         ],
@@ -26312,19 +26312,19 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "atp_c",
+            "bigg_id": "cpd00002_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "glc__D_c",
+            "bigg_id": "cpd00027_c0",
             "coefficient": -1
           }
         ],
@@ -26442,15 +26442,15 @@
         "label_y": 3424.08225078125,
         "metabolites": [
           {
-            "bigg_id": "dms_c",
+            "bigg_id": "cpd00450_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
@@ -26458,7 +26458,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "dmso_c",
+            "bigg_id": "cpd08021_c0",
             "coefficient": -1
           }
         ],
@@ -26540,7 +26540,7 @@
         }
       },
       "2076033": {
-        "bigg_id": "FUMt2_3pp",
+        "bigg_id": "rxn08543",
         "gene_reaction_rule": "b4138 or b4123 or b0621",
         "genes": [
           {
@@ -26560,19 +26560,19 @@
         "label_y": 3086.0983640625,
         "metabolites": [
           {
-            "bigg_id": "fum_p",
+            "bigg_id": "cpd00106_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "fum_c",
+            "bigg_id": "cpd00106_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_p",
+            "bigg_id": "cpd00067_p",
             "coefficient": -3
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 3
           }
         ],
@@ -26678,23 +26678,23 @@
         "label_y": 3379.33322734375,
         "metabolites": [
           {
-            "bigg_id": "tmao_c",
+            "bigg_id": "cpd00811_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "tma_c",
+            "bigg_id": "cpd00441_c0",
             "coefficient": 1
           },
           {
@@ -26792,7 +26792,7 @@
         }
       },
       "2076036": {
-        "bigg_id": "FBA",
+        "bigg_id": "rxn00786",
         "gene_reaction_rule": "b2097 or b1773 or b2925",
         "genes": [
           {
@@ -26812,11 +26812,11 @@
         "label_y": 2459.7302,
         "metabolites": [
           {
-            "bigg_id": "g3p_c",
+            "bigg_id": "cpd00102_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "dhap_c",
+            "bigg_id": "cpd00095_c0",
             "coefficient": 1
           },
           {
@@ -26888,7 +26888,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "glc__D_c",
+            "bigg_id": "cpd00027_c0",
             "coefficient": 1
           },
           {
@@ -26896,7 +26896,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pi_c",
+            "bigg_id": "cpd00009_c0",
             "coefficient": 1
           }
         ],
@@ -26966,7 +26966,7 @@
         }
       },
       "2076038": {
-        "bigg_id": "RIBtex",
+        "bigg_id": "rxn09228",
         "gene_reaction_rule": "b0241 or b0929 or b1377 or b2215",
         "genes": [
           {
@@ -26990,11 +26990,11 @@
         "label_y": 1979.1971189453125,
         "metabolites": [
           {
-            "bigg_id": "rib__D_e",
+            "bigg_id": "cpd00105_e0",
             "coefficient": -1
           },
           {
-            "bigg_id": "rib__D_p",
+            "bigg_id": "cpd00105_p",
             "coefficient": 1
           }
         ],
@@ -27028,7 +27028,7 @@
         }
       },
       "2076039": {
-        "bigg_id": "FRUpts2pp",
+        "bigg_id": "rxn08535",
         "gene_reaction_rule": "b1817 and b1818 and b1819 and b2415 and b2416",
         "genes": [
           {
@@ -27056,7 +27056,7 @@
         "label_y": 1951.865209765625,
         "metabolites": [
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": -1
           },
           {
@@ -27064,11 +27064,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "fru_p",
+            "bigg_id": "cpd00082_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           }
         ],
@@ -27138,7 +27138,7 @@
         }
       },
       "2076040": {
-        "bigg_id": "ACALD",
+        "bigg_id": "rxn00171",
         "gene_reaction_rule": "b0351 or b1241",
         "genes": [
           {
@@ -27154,27 +27154,27 @@
         "label_y": 4871.73,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "acald_c",
+            "bigg_id": "cpd00071_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "coa_c",
+            "bigg_id": "cpd00010_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "nadh_c",
+            "bigg_id": "cpd00004_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "accoa_c",
+            "bigg_id": "cpd00022_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "nad_c",
+            "bigg_id": "cpd00003_c0",
             "coefficient": -1
           }
         ],
@@ -27268,7 +27268,7 @@
         }
       },
       "2076041": {
-        "bigg_id": "HCO3E",
+        "bigg_id": "rxn00102",
         "gene_reaction_rule": "b0126 or b0339",
         "genes": [
           {
@@ -27284,15 +27284,15 @@
         "label_y": 724.6875364257812,
         "metabolites": [
           {
-            "bigg_id": "hco3_c",
+            "bigg_id": "cpd00242_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": -1
           },
           {
@@ -27366,7 +27366,7 @@
         }
       },
       "2076042": {
-        "bigg_id": "FHL",
+        "bigg_id": "rxn08518",
         "gene_reaction_rule": "(b4079 and (b2481 and b2482 and b2483 and b2484 and b2485 and b2486 and b2487 and b2488 and b2489 and b2490)) or (b4079 and (b2719 and b2720 and b2721 and b2722 and b2723 and b2724))",
         "genes": [
           {
@@ -27442,19 +27442,19 @@
         "label_y": 4942.6753125,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "h2_c",
+            "bigg_id": "cpd11640_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "for_c",
+            "bigg_id": "cpd00047_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           }
         ],
@@ -27536,7 +27536,7 @@
         "label_y": 1620.5062009765625,
         "metabolites": [
           {
-            "bigg_id": "glycogen_c",
+            "bigg_id": "cpd00155_c0",
             "coefficient": 1
           },
           {
@@ -27544,11 +27544,11 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "adp_c",
+            "bigg_id": "cpd00008_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": 1
           }
         ],
@@ -27686,19 +27686,19 @@
         "label_y": 4136.23537109375,
         "metabolites": [
           {
-            "bigg_id": "h_c",
+            "bigg_id": "cpd00067_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "co2_c",
+            "bigg_id": "cpd00011_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "oaa_c",
+            "bigg_id": "cpd00032_c0",
             "coefficient": -1
           }
         ],
@@ -27768,7 +27768,7 @@
         }
       },
       "2076046": {
-        "bigg_id": "DMSOR2pp",
+        "bigg_id": "rxn08357",
         "gene_reaction_rule": "b1872 and b1873",
         "genes": [
           {
@@ -27784,15 +27784,15 @@
         "label_y": 5855.8188671875,
         "metabolites": [
           {
-            "bigg_id": "2dmmq8_c",
+            "bigg_id": "cpd15352_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "dmso_p",
+            "bigg_id": "cpd08021_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "2dmmql8_c",
+            "bigg_id": "cpd15353_c0",
             "coefficient": -1
           },
           {
@@ -27800,7 +27800,7 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "dms_p",
+            "bigg_id": "cpd00450_p",
             "coefficient": 1
           }
         ],
@@ -27882,7 +27882,7 @@
         }
       },
       "2076047": {
-        "bigg_id": "LDH_D2",
+        "bigg_id": "rxn08783",
         "gene_reaction_rule": "b2133",
         "genes": [
           {
@@ -27902,11 +27902,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lac__D_c",
+            "bigg_id": "cpd00221_c0",
             "coefficient": -1
           }
         ],
@@ -27976,7 +27976,7 @@
         }
       },
       "2076048": {
-        "bigg_id": "LDH_D2",
+        "bigg_id": "rxn08783",
         "gene_reaction_rule": "b2133",
         "genes": [
           {
@@ -27996,11 +27996,11 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lac__D_c",
+            "bigg_id": "cpd00221_c0",
             "coefficient": -1
           }
         ],
@@ -28094,7 +28094,7 @@
         "label_y": 1328.5994016359803,
         "metabolites": [
           {
-            "bigg_id": "lac__L_c",
+            "bigg_id": "cpd00159_c0",
             "coefficient": -1
           },
           {
@@ -28102,7 +28102,7 @@
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
@@ -28176,7 +28176,7 @@
         }
       },
       "2076050": {
-        "bigg_id": "rxn08612",
+        "bigg_id": "rxn05226",
         "gene_reaction_rule": "(b2417 and b1621 and b2415 and b2416) or (b2417 and b1101 and b2415 and b2416) or (b1817 and b1818 and b1819 and b2415 and b2416)",
         "genes": [
           {
@@ -28220,15 +28220,15 @@
             "coefficient": 1
           },
           {
-            "bigg_id": "glc__D_p",
+            "bigg_id": "cpd00027_p",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "pep_c",
+            "bigg_id": "cpd00061_c0",
             "coefficient": -1
           }
         ],
@@ -28322,19 +28322,19 @@
         "label_y": 4608.19630859375,
         "metabolites": [
           {
-            "bigg_id": "mqn8_c",
+            "bigg_id": "cpd15500_c0",
             "coefficient": -1
           },
           {
-            "bigg_id": "pyr_c",
+            "bigg_id": "cpd00020_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "mql8_c",
+            "bigg_id": "cpd15499_c0",
             "coefficient": 1
           },
           {
-            "bigg_id": "lac__L_c",
+            "bigg_id": "cpd00159_c0",
             "coefficient": -1
           }
         ],
