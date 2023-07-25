@@ -15,6 +15,18 @@ gem_priority_list = cobra.io.read_sbml_model('kbase_models/MIT1002_PriorityList.
 
 gem_bayesian_core = cobra.io.load_json_model('kbase_models/alteromonas_bayesian_core.json')
 
+# Load the model seed database for the gram negative bacteria template
+gram_neg_db = pd.read_csv('../../ModelSEEDDatabase/Templates/GramNegative/Reactions.tsv',
+                          sep='\t',
+                          header=0)
+
+# Filter the bayesian core model to only include reactions that are in the
+# gram negative database
+rxns_to_remove = [r.id for r in gem_bayesian_core.reactions if
+                  r.id not in gram_neg_db['id'].tolist() and
+                  not r.id.startswith('EX_')]
+gem_bayesian_core.remove_reactions(rxns_to_remove)
+
 models_with_names = {'DRAM': gem_dram,
                      'Prokka': gem_prokka,
                      'RASTtk': gem_dram,
@@ -25,7 +37,6 @@ models_with_names = {'DRAM': gem_dram,
                      'Union': gem_union,
                      'Bayesian Pangenome Core': gem_bayesian_core
                      }
-
 
 # Get a list of all the possible reactions in all of the models
 # ( Really just the combon of the union model and the pangenome)
