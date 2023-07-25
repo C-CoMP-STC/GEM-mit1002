@@ -11,7 +11,7 @@ rxn_presence = pd.read_csv('kbase_models/reaction_presence.tsv',
 plotting_matrix = rxn_presence.set_index('Reactions')
 
 # Make a color map
-cmap = ['gray', 'green'] # TODO: Pick better colors
+cmap = ['gray', 'green', 'orange'] # TODO: Pick better colors
 
 # Plot the heatmap
 ax = sns.heatmap(plotting_matrix,
@@ -21,8 +21,8 @@ ax = sns.heatmap(plotting_matrix,
 # modify colorbar:
 colorbar = ax.collections[0].colorbar
 # TODO: Remove magic numbers, these only work when the values are 0 and 1
-colorbar.set_ticks([0.25, 0.75])
-colorbar.set_ticklabels(['No', 'Yes'])
+colorbar.set_ticks([0.33, 1, 1.66])
+colorbar.set_ticklabels(['No', 'Yes', 'Yes (Exchange)'])
 
 # Move the x-axis labels to the top
 plt.tick_params(axis='both',

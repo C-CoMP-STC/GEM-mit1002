@@ -24,7 +24,7 @@ gram_neg_db = pd.read_csv('../../ModelSEEDDatabase/Templates/GramNegative/Reacti
 # gram negative database
 rxns_to_remove = [r.id for r in gem_bayesian_core.reactions if
                   r.id not in gram_neg_db['id'].tolist() and
-                  not r.id.startswith('EX_')]
+                  not r.id.startswith('EX_')] # Don't think this was necessary, since it didn't have any exchange reactions to begin with
 gem_bayesian_core.remove_reactions(rxns_to_remove)
 
 models_with_names = {'DRAM': gem_dram,
@@ -40,7 +40,7 @@ models_with_names = {'DRAM': gem_dram,
 
 # Get a list of all the possible reactions in all of the models
 # ( Really just the combon of the union model and the pangenome)
-all_rxns = list(set([r.id[0:-3] for r in gem_union.reactions]) | set([r.id for r in gem_bayesian_core.reactions]))
+all_rxns = list(set([r.id[0:-3] for r in gem_union.reactions if not r.id.endswith("_b")]) | set([r.id for r in gem_bayesian_core.reactions]))
 
 df = pd.DataFrame({'Reactions': all_rxns})
 
@@ -58,8 +58,21 @@ for name in models_with_names:
                 rxn_presence.append(0)
     else:
         for rxn in all_rxns:
-            if rxn + '_c0' in [r.id for r in model.reactions]: # FIXME: The _c0 is what is making it think that there are no reactions in the bayesian core
-                rxn_presence.append(1)
+            if rxn + '_c0' in [r.id for r in model.reactions]:
+                if rxn.startswith('EX_'):
+                    rxn_presence.append(2)
+                else:
+                    rxn_presence.append(1)
+            elif rxn + '_e0' in [r.id for r in model.reactions]:
+                if rxn.startswith('EX_'):
+                    rxn_presence.append(2)
+                else:
+                    rxn_presence.append(1)
+            elif rxn in [r.id for r in model.reactions]:
+                if rxn.startswith('EX_'):
+                    rxn_presence.append(2)
+                else:
+                    rxn_presence.append(1)
             else:
                 rxn_presence.append(0)
     df[name] = rxn_presence
