@@ -30,8 +30,8 @@ for node in map_file[1]['nodes']:
     # and the same x and y coordinates
     add_text_label(map_file,
                    str(max_id + 1),
-                   node_info['x'] + 26, # Offset for the difference in font size
-                   node_info['y'] - 19, # So the text label is above the ID
+                   node_info['label_x'],
+                   node_info['label_y'] - 20, # So the text label is above the ID
                    node_info['name'])
     max_id += 1
 
@@ -42,8 +42,8 @@ for reaction in map_file[1]['reactions']:
     # Add a text label with the same name and the same x and y coordinates
     add_text_label(map_file,
                    str(max_id + 1),
-                   rxn_info['label_x'] + 26,
-                   rxn_info['label_y'] - 19,
+                   rxn_info['label_x'],
+                   rxn_info['label_y'] - 20,
                    rxn_info['name'])
     max_id += 1
 
