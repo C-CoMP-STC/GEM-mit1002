@@ -2,8 +2,11 @@ import json
 
 # Read in the map file, assume that the human readable names are already
 # in the "name" field
-with open('escher/handmade_random_map.json') as f:
+with open('escher/iJO1366.Central metabolism.modelseed.json') as f:
     map_file = json.load(f)
+
+# Set if you want to add text labels to the reactions (as well as the metabolites)
+rxn_labels = False
 
 # Function
 def add_text_label(map_file, id, x, y, name):
@@ -35,18 +38,19 @@ for node in map_file[1]['nodes']:
                    node_info['name'])
     max_id += 1
 
-# Loop through all the reactions
-for reaction in map_file[1]['reactions']:
-    rxn_info = map_file[1]['reactions'][reaction]
-    # All reactions should have a name, but maybe good to check
-    # Add a text label with the same name and the same x and y coordinates
-    add_text_label(map_file,
-                   str(max_id + 1),
-                   rxn_info['label_x'],
-                   rxn_info['label_y'] - 20,
-                   rxn_info['name'])
-    max_id += 1
+# Loop through all the reactions (if rxn_labels is True)
+if rxn_labels:
+    for reaction in map_file[1]['reactions']:
+        rxn_info = map_file[1]['reactions'][reaction]
+        # All reactions should have a name, but maybe good to check
+        # Add a text label with the same name and the same x and y coordinates
+        add_text_label(map_file,
+                    str(max_id + 1),
+                    rxn_info['label_x'],
+                    rxn_info['label_y'] - 20,
+                    rxn_info['name'])
+        max_id += 1
 
 # Write out the map file
-with open('escher/handmade_random_map_with_text_labels.json', 'w') as f:
+with open('escher/iJO1366.Central metabolism.modelseed.json', 'w') as f:
     json.dump(map_file, f, indent=4)
