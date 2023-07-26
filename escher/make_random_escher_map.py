@@ -52,8 +52,15 @@ for reaction in model['reactions']:
     # TODO: Stop hardocoding the starting positions
     starting_x = 500
     starting_y = 500
-    # Make a node for each reactant and product
+    # Determine the center of the reaction
+    reactants_x = starting_x + len(reactants) * 10
+    products_x = starting_x + len(products) * 10
+    if len(reactants) > len(products):
+        
+    # Make a node for each reactant
     for idx, met in enumerate(reactants):
+        # Get the metabolite info
+        met_info = [met for met in model['metabolites'] if met['id'] == met]
         map_file[1]['nodes'][met] = { # Not sure if the node id should be the metabolite id or the node counter
                 "bigg_id": met,
                 "label_x": starting_x + idx * 10,
@@ -64,6 +71,8 @@ for reaction in model['reactions']:
                 "x": starting_x + idx * 10,
                 "y": starting_y
             }
+    # Get the center of the all the reactant nodes
+
     # Determine the position for the nodes
     # Make the reaction dictionary
 
