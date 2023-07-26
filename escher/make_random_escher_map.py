@@ -3,6 +3,7 @@
 # Also add text fields for human-readable reaction and metabolite names
 
 import json
+import cobra
 
 # Make the start of the escher map dictionary
 map_file = []
@@ -27,13 +28,45 @@ map_file.append({"canvas": {
 with open('model.json') as f:
     model = json.load(f)
 
+# Start a node counter
+node_counter = 1
+
 # For a reaction
-# Are there multiple reactants
-    # If there is only one reactant, can go straight from metabolite to midmarker
-    # If there are multiple reactants, need to go from metabolite to multimarker to midmarker
-# Are there multiple products
-    # If there is only one product, can go straight from midmarker to metabolite
-    # If there are multiple products, need to go from midmarker to multimarker to metabolite
+for reaction in model['reactions']:
+    # Determine the number of reactants and products using the sign of the
+    # stoichiometric coefficients (negative is a reactant, positive is a
+    # product)
+    reactants = [met for met in reaction['metabolites'] if reaction['metabolites'][met] < 0]
+    products = [met for met in reaction['metabolites'] if reaction['metabolites'][met] > 0]
+    # Determine the number of interior segments needed for the reaction
+    # arrow.
+    n_segments = 1 # Every reaction has to have a mid marker
+    if len(reactants) > 1:
+        # If there are multiple reactants, need a multimarker to connect
+        # all of the reactants to the mid-marker
+        n_segments += 1 
+    if len(products) > 1:
+        # If there are multiple products, need a multimarker to connect
+        # all of the products to the mid-marker
+        n_segments += 1
+    # TODO: Stop hardocoding the starting positions
+    starting_x = 500
+    starting_y = 500
+    # Make a node for each reactant and product
+    for idx, met in enumerate(reactants):
+        map_file[1]['nodes'][met] = { # Not sure if the node id should be the metabolite id or the node counter
+                "bigg_id": met,
+                "label_x": starting_x + idx * 10,
+                "label_y": starting_y + 10,
+                "name": model.metabolites[met]['name'],
+                "node_is_primary": True,
+                "node_type": "metabolite",
+                "x": starting_x + idx * 10,
+                "y": starting_y
+            }
+    # Determine the position for the nodes
+    # Make the reaction dictionary
+
 
 # Save the escher map json file
 with open('escher/random_map.json', 'w') as f:
