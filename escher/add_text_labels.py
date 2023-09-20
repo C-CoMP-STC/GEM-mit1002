@@ -2,7 +2,7 @@ import json
 
 # Read in the map file, assume that the human readable names are already
 # in the "name" field
-with open('escher/iJO1366.Central metabolism.modelseed.json') as f:
+with open('escher/e_coli.Core metabolism.modelseed.json') as f:
     map_file = json.load(f)
 
 # Set if you want to add text labels to the reactions (as well as the metabolites)
@@ -52,5 +52,5 @@ if rxn_labels:
         max_id += 1
 
 # Write out the map file
-with open('escher/iJO1366.Central metabolism.modelseed.json', 'w') as f:
+with open('escher/e_coli_core.Coremetabolism.modelseed.With labels.json', 'w') as f:
     json.dump(map_file, f, indent=4)

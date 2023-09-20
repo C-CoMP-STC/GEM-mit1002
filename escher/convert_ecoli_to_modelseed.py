@@ -1,7 +1,7 @@
 import json
 
 # Load the iJO1366.Central metabolism map
-with open('escher/iJO1366.Central metabolism.json') as f:
+with open('escher/e_coli_core.Core metabolism.json') as f:
     map = json.load(f)
 
 # Load the ModelSeed compound database
@@ -122,5 +122,5 @@ for reaction in map[1]['reactions']:
             print("WARNING: " + metabolite['bigg_id'] + " not in dictionary")
 
 # Save the new map
-with open('escher/iJO1366.Central metabolism.modelseed.json', 'w') as f:
+with open('escher/e_coli.Core metabolism.modelseed.json', 'w') as f:
     json.dump(map, f, indent=2)
