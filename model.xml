@@ -16367,7 +16367,6 @@
       <parameter sboTerm="SBO:0000626" id="cobra_0_bound" value="0" constant="true"/>
       <parameter sboTerm="SBO:0000626" id="minus_inf" value="-INF" constant="true"/>
       <parameter sboTerm="SBO:0000626" id="plus_inf" value="INF" constant="true"/>
-      <parameter sboTerm="SBO:0000625" id="R_ATPM_lower_bound" value="3.15" constant="true" units="mmol_per_gDW_per_hr"/>
     </listOfParameters>
     <listOfReactions>
       <reaction metaid="meta_R_rxn00247_c0" sboTerm="SBO:0000176" id="R_rxn00247_c0" name="ATP:oxaloacetate carboxy-lyase (transphosphorylating;phosphoenolpyruvate-forming)_c0" reversible="false" fast="false" fbc:lowerFluxBound="cobra_0_bound" fbc:upperFluxBound="cobra_default_ub">
@@ -20522,7 +20521,7 @@
           <fbc:geneProductRef fbc:geneProduct="G_GCF_001077695__46__1_assembly_NZ_JXRW01000050__46__1_13_CDS"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="meta_R_ATPM" sboTerm="SBO:0000176" id="R_ATPM" name="ATP maintenance requirement" reversible="false" fast="false" fbc:lowerFluxBound="R_ATPM_lower_bound" fbc:upperFluxBound="cobra_default_ub">
+      <reaction metaid="meta_R_ATPM" sboTerm="SBO:0000176" id="R_ATPM" name="ATP maintenance requirement" reversible="false" fast="false" fbc:lowerFluxBound=3.15 fbc:upperFluxBound="cobra_default_ub">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
             <rdf:Description rdf:about="#meta_R_ATPM">
