@@ -11,3 +11,5 @@ for reaction in model['reactions']:
 # Save the model file
 with open('model.json', 'w') as f:
     json.dump(model, f, indent=4)
+
+# Once the subsystem field has been added, fill it in
