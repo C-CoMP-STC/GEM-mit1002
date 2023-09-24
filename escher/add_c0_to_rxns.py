@@ -1,7 +1,7 @@
 import json
 
 # Load the map
-with open('escher/e_coli_core.Core metabolism.modelseed.json') as f:
+with open('escher/e_coli.Core metabolism.modelseed.json') as f:
     map = json.load(f)
 
 # Loop through all the reactions
@@ -11,5 +11,5 @@ for reaction in map[1]['reactions']:
     map[1]['reactions'][reaction]['bigg_id'] += '_c0'
 
 # Save the new map
-with open('escher/e_coli_core.Coremetabolism.modelseed.json', 'w') as f:
+with open('escher/e_coli.Core metabolism.modelseed.json', 'w') as f:
     json.dump(map, f, indent=4)
