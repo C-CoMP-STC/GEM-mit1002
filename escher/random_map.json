@@ -1,0 +1,20 @@
+[
+    {
+        "homepage": "https://escher.github.io",
+        "map_description": "Randomly generated locations for all reactions in the ALT model",
+        "map_id": "",
+        "map_name": "MIT1002.Random map",
+        "schema": "https://escher.github.io/escher/jsonschema/1-0-0#"
+    },
+    {
+        "canvas": {
+            "height": 6642.899758,
+            "width": 9047.498999,
+            "x": -286.3920445,
+            "y": 132.78023100000001
+        },
+        "nodes": {},
+        "reactions": {},
+        "text_labels": {}
+    }
+]
