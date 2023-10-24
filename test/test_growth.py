@@ -1,3 +1,4 @@
+import os
 import unittest
 import warnings
 
@@ -5,6 +6,9 @@ import cobra
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+
+# Set path to the `test_files` directory
+TESTFILE_DIR = os.path.join(os.path.dirname(__file__), "test_files")
 
 # Define a minimal media, but remove any carbon sources. This will be used
 # to test that there is no growth when there is no carbon source present. And
@@ -53,7 +57,9 @@ class TestGrowthPhenotypes(unittest.TestCase):
     # phenotypes.
     def test_expected_growth_phenotypes(self):
         # Load the TSV of the growth phenotypes
-        growth_phenotypes = pd.read_csv("known_growth_phenotypes.tsv", sep="\t")
+        growth_phenotypes = pd.read_csv(
+            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+        )
 
         # Load the model
         model = cobra.io.read_sbml_model("model.xml")
@@ -108,7 +114,9 @@ class TestGrowthPhenotypes(unittest.TestCase):
 
         # Save the dataframe as a TSV
         growth_phenotypes.to_csv(
-            "known_growth_phenotypes_w_pred.tsv", sep="\t", index=False
+            os.path.join(TESTFILE_DIR, "known_growth_phenotypes_w_pred.tsv"),
+            sep="\t",
+            index=False,
         )
 
         # Plot a categorical heatmap of the growth phenotypes, where the rows
@@ -169,7 +177,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
         plt.tight_layout()
 
         # Save the figure
-        plt.savefig("exp_vs_pred_growth_phenotypes.png")
+        plt.savefig(os.path.join(TESTFILE_DIR, "exp_vs_pred_growth_phenotypes.png"))
 
 
 if __name__ == "__main__":
