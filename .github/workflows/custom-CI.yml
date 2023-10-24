@@ -36,6 +36,10 @@ jobs:
       - name: Run Custom Tests with pytest
         run: pytest
 
+      # Export model file as json file
+      - name: Export Model as JSON
+        run: python export_model.py
+
       - name: Push to Remote
         run: |
           git config --global user.name "${{ github.actor }}"
