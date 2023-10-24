@@ -1,4 +1,5 @@
 import unittest
+import warnings
 
 import cobra
 import matplotlib.pyplot as plt
@@ -74,12 +75,33 @@ class TestGrowthPhenotypes(unittest.TestCase):
                 if sol.objective_value > 0:
                     # If it does, add 'Y' to the list
                     pred_growth.append("Yes")
+                    # Give a warning if growth was not expected
+                    if row["growth"] == "No":
+                        warnings.warn(
+                            "Model grew on "
+                            + row["c_source"]
+                            + ", but growth was not expected."
+                        )
                 else:
                     # If it doesn't, add 'N' to the list
                     pred_growth.append("No")
+                    # Give a warning if growth was expected
+                    if row["growth"] == "Yes":
+                        warnings.warn(
+                            "Model did not grow on "
+                            + row["c_source"]
+                            + ", but growth was expected."
+                        )
             else:
                 # If it doesn't have the exchange reaction, add None to the list
                 pred_growth.append("No Exchange")
+                # Give a warning if growth was expected
+                if row["growth"] == "Yes":
+                    warnings.warn(
+                        "Model did not have an exchange reaction for "
+                        + row["c_source"]
+                        + ", but growth was expected."
+                    )
 
         # Add the list as a new column in the dataframe
         growth_phenotypes["pred_growth"] = pred_growth
