@@ -28,6 +28,7 @@ jobs:
           python -m pip install git+https://github.com/hgscott/memote@cycles_met_ids
           python -m pip install pytest
           python -m pip install matplotlib
+          python -m pip install seaborn
 
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
