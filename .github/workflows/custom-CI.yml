@@ -25,7 +25,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install importlib-resources==5.13.0
           python -m pip install memote
-          python -m pip install depinfo==1.7.0
           python -m pip install cobra==0.27
           python -m pip install pytest
           python -m pip install matplotlib
