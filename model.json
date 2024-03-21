@@ -45324,30 +45324,6 @@
 }
 },
 {
-"id":"rxn05206_c0",
-"name":"TRANS-RXN-187.ce [c0]",
-"metabolites":{
-"cpd00205_c0":1.0,
-"cpd00205_e0":-1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":0.0,
-"gene_reaction_rule":"MIT1002_03754 and MIT1002_01599 and MIT1002_01761 and MIT1002_03343 and MIT1002_02492",
-"annotation":{
-"bigg.reaction":"Ktex",
-"biocyc":[
-"META:TRANS-RXN-190",
-"META:TRANS-RXN-187",
-"META:TRANS-RXN-186",
-"META:TRANS-RXN-185"
-],
-"ec-code":"1.A.1.-.-",
-"metanetx.reaction":"MNXR100950",
-"sbo":"SBO:0000655",
-"seed.reaction":"rxn05206"
-}
-},
-{
 "id":"rxn03031_c0",
 "name":"Succinyl-CoA:2,3,4,5-tetrahydropyridine-2,6-dicarboxylate N-succinyltransferase [c0]",
 "metabolites":{
