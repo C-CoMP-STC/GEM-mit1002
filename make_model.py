@@ -7,8 +7,8 @@ from modelseedpy import FBAHelper, KBaseMediaPkg, MSBuilder, MSGenome, RastClien
 from modelseedpy.core.msbuilder import build_biomass, core_atp
 from modelseedpy.helpers import get_classifier, get_template
 
-# FIXME: Find the real genome file that Michelle has been using
-genome = MSGenome.from_fasta("GCF_000005845.2_ASM584v2_protein.faa", split=" ")
+# TODO: Check that this genome file is the correct one to be using
+genome = MSGenome.from_fasta("genome/MIT1002_anvio_prot_seqs.fa", split=" ")
 
 # Annotate the genome
 # FIXME: Do I need this? Can I use the exact same annotations as Michelle?
@@ -26,9 +26,9 @@ genome_class = genome_classifier.classify(genome)
 # Get the template model
 if genome_class == "G":
     # Not actually sure if G is gram positive, but that is what copilot says
-    template = get_template("gram_pos")
+    template = get_template("template_gram_pos")
 elif genome_class == "N":
-    template = get_template("gram_neg")
+    template = get_template("template_gram_neg")
 else:
     # Throw an error if the classifier returns something unexpected
     raise ValueError(f"Unexpected genome class: {genome_class}")
@@ -51,3 +51,6 @@ base_model = model_builder.build(
 base_model.add_reactions(
     [build_biomass("bio2", base_model, cobra_template, core_atp, "0")]
 )
+
+# Save the model
+cobra.io.write_sbml_model(base_model, "modelseedpy_model.xml")
