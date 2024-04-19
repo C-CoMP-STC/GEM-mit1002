@@ -41,7 +41,7 @@ for reaction_id in union_reactions:
 # reactions in both models
 reaction_df = pd.DataFrame(reaction_data)
 reaction_df = reaction_df.sort_values(
-    by=["ModelSEEDpy Model", "KBase Model"], ascending=[True, True]
+    by=["ModelSEEDpy Model", "KBase Model", "ID"], ascending=[True, True, True]
 )
 
 # Save the dataframe to a CSV file
