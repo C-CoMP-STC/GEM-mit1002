@@ -4,20 +4,31 @@ import cobra
 modelseedpy_model = cobra.io.read_sbml_model("modelseedpy_model.xml")
 kbase_model = cobra.io.read_sbml_model("model.xml")
 
-# Make a list of the reactions that the two models do not share
-modelseedpy_unique_reactions = []
-kbase_unique_reactions = []
-for reaction in modelseedpy_model.reactions:
-    if reaction.id not in kbase_model.reactions:
-        modelseedpy_unique_reactions.append(reaction)
-for reaction in kbase_model.reactions:
-    if reaction.id not in modelseedpy_model.reactions:
-        kbase_unique_reactions.append(reaction)
+# Make a set of the reactions IDs for any reaction that is in either model
+modelseedpy_reactions = set([reaction.id for reaction in modelseedpy_model.reactions])
+kbase_reactions = set([reaction.id for reaction in kbase_model.reactions])
+union_reactions = modelseedpy_reactions.union(kbase_reactions)
 
-# Save the unique reactions to a file
-with open("modelseedpy_unique_reactions.txt", "w") as f:
-    for reaction in modelseedpy_unique_reactions:
-        f.write(reaction.id + "\n")
-with open("kbase_unique_reactions.txt", "w") as f:
-    for reaction in kbase_unique_reactions:
-        f.write(reaction.id + "\n")
+# Make a table of the union reactions with the reacion ID,
+# if the reaction is present in each model, the reaction name,
+# and the reaction equation
+with open("union_reactions.tsv", "w") as f:
+    f.write("ID\tKBase Model\tModelSEEDpy Model\tName\tEquation\n")
+    for reaction_id in union_reactions:
+        f.write(f"{reaction_id}\t")
+        # Check if the reaction is in each model
+        if reaction_id in kbase_reactions:
+            f.write("Y\t")
+        else:
+            f.write("\t")
+        if reaction_id in modelseedpy_reactions:
+            f.write("Y\t")
+        else:
+            f.write("\t")
+        # Get the reaction name and equation
+        if reaction_id in modelseedpy_reactions:
+            reaction = modelseedpy_model.reactions.get_by_id(reaction_id)
+            f.write(f"{reaction.id}\t{reaction.name}\t{reaction.reaction}\n")
+        else:
+            reaction = kbase_model.reactions.get_by_id(reaction_id)
+            f.write(f"{reaction.id}\t{reaction.name}\t{reaction.reaction}\n")
