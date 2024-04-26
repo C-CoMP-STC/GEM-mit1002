@@ -41,3 +41,8 @@ def add_all_mnx_ids(model, source):
 model = cobra.io.read_sbml_model("model.xml")
 model = add_all_mnx_ids(model, 'seed.reaction')
 cobra.io.write_sbml_model(model, "model.xml")
+
+# Do the same for the ModelSEEDpy model
+modelseedpy_model = cobra.io.read_sbml_model("modelseedpy_model.xml")
+modelseedpy_model = add_all_mnx_ids(modelseedpy_model, 'seed.reaction')
+cobra.io.write_sbml_model(modelseedpy_model, "modelseedpy_model.xml")
