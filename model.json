@@ -34424,6 +34424,7 @@
 "3.A.1.8.-",
 "3.6.3.29"
 ],
+"metanetx.reaction":"MNXR101689",
 "sbo":"SBO:0000655",
 "seed.reaction":"rxn05619"
 }
@@ -35082,6 +35083,7 @@
 "annotation":{
 "bigg.reaction":"3HAD180",
 "ec-code":"4.2.1.61",
+"metanetx.reaction":"MNXR152631",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn07979"
 }
@@ -37989,6 +37991,7 @@
 ],
 "biocyc":"META:3.6.3.25-RXN",
 "ec-code":"3.6.3.25",
+"metanetx.reaction":"MNXR104655",
 "sbo":"SBO:0000655",
 "seed.reaction":"rxn05153"
 }
@@ -39339,6 +39342,7 @@
 "biocyc":"META:6.3.2.10-RXN",
 "ec-code":"6.3.2.10",
 "kegg.reaction":"R04573",
+"metanetx.reaction":"MNXR148804",
 "rhea":"16086",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn03141"
@@ -48193,6 +48197,7 @@
 "gene_reaction_rule":"MIT1002_02538 or MIT1002_01735",
 "annotation":{
 "biocyc":"META:RXN-11474",
+"metanetx.reaction":"MNXR187624",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn47768"
 }
@@ -49003,6 +49008,7 @@
 "annotation":{
 "biocyc":"META:RXN-11361",
 "ec-code":"2.7.7.80",
+"metanetx.reaction":"MNXR175999",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn21729"
 }
@@ -49042,6 +49048,7 @@
 "gene_reaction_rule":"MIT1002_01465",
 "annotation":{
 "kegg.reaction":"R04199",
+"metanetx.reaction":"MNXR148597",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn39452"
 }
@@ -49204,6 +49211,7 @@
 "annotation":{
 "ec-code":"5.3.1.14",
 "kegg.reaction":"R02437",
+"metanetx.reaction":"MNXR173299",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn15338"
 }
@@ -49223,6 +49231,7 @@
 "annotation":{
 "biocyc":"META:RXN-11475",
 "ec-code":"2.1.1.197",
+"metanetx.reaction":"MNXR184064",
 "rhea":[
 "17106",
 "34900"
@@ -49272,6 +49281,7 @@
 "annotation":{
 "ec-code":"1.17.1.8",
 "kegg.reaction":"R04198",
+"metanetx.reaction":"MNXR108727",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn39451"
 }
@@ -49354,6 +49364,7 @@
 "annotation":{
 "biocyc":"META:RXN-8342",
 "ec-code":"2.8.1.12",
+"metanetx.reaction":"MNXR177186",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn24830"
 }
@@ -49399,6 +49410,7 @@
 "biocyc":"META:RXN-6201",
 "ec-code":"4.1.1.97",
 "kegg.reaction":"R06604",
+"metanetx.reaction":"MNXR110386",
 "rhea":"26302",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn24134"
@@ -49607,6 +49619,7 @@
 "annotation":{
 "ec-code":"4.2.1.12",
 "kegg.reaction":"R02036",
+"metanetx.reaction":"MNXR173273",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn15296"
 }
@@ -49624,6 +49637,7 @@
 "annotation":{
 "ec-code":"5.3.1.12",
 "kegg.reaction":"R01983",
+"metanetx.reaction":"MNXR145149",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn15293"
 }
@@ -49645,6 +49659,7 @@
 "biocyc":"META:GALACTOKIN-RXN",
 "ec-code":"2.7.1.6",
 "kegg.reaction":"R01092",
+"metanetx.reaction":"MNXR192436",
 "rhea":"13556",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn15121"
@@ -49707,6 +49722,7 @@
 "annotation":{
 "biocyc":"META:1.8.4.8-RXN",
 "ec-code":"1.8.4.8",
+"metanetx.reaction":"MNXR173985",
 "rhea":"11727",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn17275"
@@ -49847,6 +49863,7 @@
 "annotation":{
 "biocyc":"META:RXN-13037",
 "ec-code":"2.3.1.181",
+"metanetx.reaction":"MNXR176573",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn23336"
 }
@@ -49931,6 +49948,7 @@
 "biocyc":"META:PHOSPHOGLUCMUT-RXN",
 "ec-code":"5.4.2.2",
 "kegg.reaction":"R00959",
+"metanetx.reaction":"MNXR145963",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn20583"
 }
@@ -49976,6 +49994,7 @@
 "annotation":{
 "biocyc":"META:THIOREDOXIN-REDUCT-NADPH-RXN",
 "ec-code":"1.8.1.9",
+"metanetx.reaction":"MNXR178018",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn27318"
 }
@@ -50195,6 +50214,7 @@
 "annotation":{
 "biocyc":"META:RXN-11482",
 "ec-code":"1.3.1.10",
+"metanetx.reaction":"MNXR176058",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn21863"
 }
@@ -50237,6 +50257,7 @@
 "annotation":{
 "biocyc":"META:RXN-11478",
 "ec-code":"1.3.1.10",
+"metanetx.reaction":"MNXR176056",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn21859"
 }
@@ -50261,6 +50282,7 @@
 "biocyc":"META:PYRIMSYN1-RXN",
 "ec-code":"4.1.99.17",
 "kegg.reaction":"R03472",
+"metanetx.reaction":"MNXR175676",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn20643"
 }
@@ -50314,6 +50336,7 @@
 "annotation":{
 "biocyc":"META:2.8.1.6-RXN",
 "ec-code":"2.8.1.6",
+"metanetx.reaction":"MNXR174220",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn17731"
 }
@@ -50518,6 +50541,7 @@
 "gene_reaction_rule":"MIT1002_00578",
 "annotation":{
 "biocyc":"META:TRANS-RXN-346",
+"metanetx.reaction":"MNXR105981",
 "sbo":"SBO:0000655",
 "seed.reaction":"rxn43657"
 }
@@ -58927,7 +58951,7 @@
 }
 }
 ],
-"id":"",
+"id":"iHS4106",
 "compartments":{
 "c0":"",
 "e0":""
