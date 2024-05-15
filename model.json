@@ -16540,6 +16540,34 @@
 }
 },
 {
+"id":"rxn05488_c0",
+"name":"acetate reversible transport via proton symport_c0",
+"metabolites":{
+"cpd00029_c0":1.0,
+"cpd00029_e0":-1.0,
+"cpd00067_c0":1.0,
+"cpd00067_e0":-1.0
+},
+"lower_bound":0.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"",
+"annotation":{
+"bigg.reaction":[
+"BPH1",
+"ACt2rpp",
+"ACt6",
+"ACt2r",
+"ACt2pp",
+"ADY2"
+],
+"biocyc":"META:TRANS-RXN0-571",
+"ec-code":"2.A.1.13.-",
+"metanetx.reaction":"MNXR95429",
+"sbo":"SBO:0000655",
+"seed.reaction":"rxn05488"
+}
+},
+{
 "id":"rxn14422_c0",
 "name":"cytochrome-bd oxidase (2 protons translocated)_c0",
 "metabolites":{
