@@ -7,6 +7,6 @@ Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelS
 Choline	cpd00098	No		No Exchange
 Ectoine	cpd03727	No		No Exchange
 Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	Yes
-Proline	cpd00129	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	Yes
+Proline	cpd00129	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	No
 Sucrose	cpd00076	No		No Exchange
 Fructose	cpd00082	No		No Exchange
