@@ -28,11 +28,11 @@ def search_dict(dictionary, search):
 # db = pd.read_csv('Pangenome from Michelle/Database_MIT1002GeneCalls.csv')
 
 # Load in my KBase model
-model = cobra.io.read_sbml_model("model.xml")
+# model = cobra.io.read_sbml_model("model.xml")
 
 # Read in the MetaNetX reactions xref spreadsheet
-mnx_xref = pd.read_csv('reac_xref.tsv', sep='\t', comment='#', header=None)
-mnx_xref.columns = ['source', 'ID', 'description']
+# mnx_xref = pd.read_csv('reac_xref.tsv', sep='\t', comment='#', header=None)
+# mnx_xref.columns = ['source', 'ID', 'description']
 
 # Add a column for the MetaNetX reaction ID
 # db['MetaNetX Reaction ID'] = None
@@ -52,20 +52,56 @@ mnx_xref.columns = ['source', 'ID', 'description']
 #     if len(mnx_id) > 1:
 #         db.at[index, 'MetaNetX Reaction ID'] = [id for id in mnx_id]
 
-# Load in the cleaned up database
-db = pd.read_csv('Pangenome from Michelle/database_w_MNX.csv')
+# # Load in the cleaned up database
+# db = pd.read_csv('Pangenome from Michelle/database_w_MNX.csv')
+
+# # Add a column for presence in the KBase model
+# db['In KBase Model'] = 0
+# db['ModelSEED ID'] = None
+# db['Gene Call in KBase Model'] = None
+
+# # Make a dictionary of the KBase Model's reaction where the key is the reaction ID
+# # and the value is the MetaNetX ID from the annotation
+# model_reactions = {}
+# for reaction in model.reactions:
+#     if 'metanetx.reaction' in reaction.annotation:
+#         model_reactions[reaction.id] = reaction.annotation['metanetx.reaction']
+
+# # Check if each reaction in the database is in the dictionary of the KBase model's reactions
+# # and if it is, mark it as present in the KBase model, and save the reaction's
+# # ID and gene call
+# for index, row in db.iterrows():
+#     if pd.isnull(row['MetaNetX Reaction ID']):
+#         continue
+#     seed_ids = search_dict(model_reactions, row['MetaNetX Reaction ID'])
+#     if len(seed_ids) > 1:
+#         print('HELEN HELP')
+#     if not seed_ids:
+#         continue
+#     db.at[index, 'In KBase Model'] = 1
+#     db.at[index, 'ModelSEED ID'] = seed_ids
+#     db.at[index, 'Gene Call in KBase Model'] = [model.reactions.get_by_id(seed_id).gene_reaction_rule for seed_id in seed_ids]
+
+# # Save the database with the new columns
+# db.to_csv('Pangenome from Michelle/database_w_KBase.csv', index=False)
+
+# Load in the database with the KBase model information
+db = pd.read_csv('Pangenome from Michelle/database_w_KBase.csv')
+
+# Do the same comparison with the ModelSEEDpy model
+# Load in the ModelSEEDpy model
+modelseedpy_model = cobra.io.read_sbml_model("modelseedpy_model.xml")
 
 # Add a column for presence in the KBase model
-db['In KBase Model'] = 0
-db['ModelSEED ID'] = None
-db['Gene Call in KBase Model'] = None
+db['In ModelSEEDpy Model'] = 0
+db['Gene Call in ModelSEEDpy Model'] = None
 
-# Make a dictionary of the KBase Model's reaction where the key is the reaction ID
+# Make a dictionary of the ModelSEEDpy Model's reaction where the key is the reaction ID
 # and the value is the MetaNetX ID from the annotation
-model_reactions = {}
-for reaction in model.reactions:
+msp_model_reactions = {}
+for reaction in modelseedpy_model.reactions:
     if 'metanetx.reaction' in reaction.annotation:
-        model_reactions[reaction.id] = reaction.annotation['metanetx.reaction']
+        msp_model_reactions[reaction.id] = reaction.annotation['metanetx.reaction']
 
 # Check if each reaction in the database is in the dictionary of the KBase model's reactions
 # and if it is, mark it as present in the KBase model, and save the reaction's
@@ -73,14 +109,13 @@ for reaction in model.reactions:
 for index, row in db.iterrows():
     if pd.isnull(row['MetaNetX Reaction ID']):
         continue
-    seed_ids = search_dict(model_reactions, row['MetaNetX Reaction ID'])
+    seed_ids = search_dict(msp_model_reactions, row['MetaNetX Reaction ID'])
     if len(seed_ids) > 1:
         print('HELEN HELP')
     if not seed_ids:
         continue
-    db.at[index, 'In KBase Model'] = 1
-    db.at[index, 'ModelSEED ID'] = seed_ids
-    db.at[index, 'Gene Call in KBase Model'] = [model.reactions.get_by_id(seed_id).gene_reaction_rule for seed_id in seed_ids]
+    db.at[index, 'In ModelSEEDpy Model'] = 1
+    db.at[index, 'Gene Call in ModelSEEDpy Model'] = [modelseedpy_model.reactions.get_by_id(seed_id).gene_reaction_rule for seed_id in seed_ids]
 
 # Save the database with the new columns
-db.to_csv('Pangenome from Michelle/database_w_KBase.csv', index=False)
+db.to_csv('Pangenome from Michelle/database_w_MSP.csv', index=False)
