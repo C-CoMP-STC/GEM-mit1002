@@ -1,12 +1,21 @@
-c_source	met_id	growth	notes
-Glucose 	cpd00027	Yes	
-Acetate	cpd00029	Yes	
-Glycolate	cpd00139	No	
-Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.
-3-hydroxybutyrate	cpd29193	Yes	
-Choline	cpd00098	No	
-Ectoine	cpd03727	No	
-Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.
-Proline	cpd00129	Unsure	"Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline."
-Sucrose	cpd00076	No	
-Fructose	cpd00082	No	
+minimal_media	c_source	met_id	growth	notes
+ZAC	Glucose 	cpd00027	Yes	
+L1	Glucose 	cpd00027	Yes	
+ZAC	Acetate	cpd00029	Yes	
+L1	Acetate	cpd00029	Yes	
+ZAC	Glycolate	cpd00139	No	
+ZAC	Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.
+ZAC	3-hydroxybutyrate	cpd29193	Yes	
+ZAC	Choline	cpd00098	No	
+ZAC	Ectoine	cpd03727	No	
+ZAC	Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.
+L1	Alanine	cpd00035	Yes	
+ZAC	Proline	cpd00129	Unsure	"Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline."
+L1	Proline	cpd00129	Yes	
+ZAC	Sucrose	cpd00076	No	
+ZAC	Fructose	cpd00082	No	
+L1	Glycerol-3-phosphate	cpd00080	Yes	
+L1	DHPS (dihydroxypropanesulfonate)	cpd23538	Yes	
+L1	Tyrosine	cpd00069	Yes	Assumed we wanted L-tyrosine.
+L1	Glutamate	cpd00023	Yes	Assumed we wanted L-glutamate.
+L1	Valine	cpd00156	Yes	Assumed we wanted L-valine.

@@ -16,7 +16,8 @@ TESTFILE_DIR = os.path.join(os.path.dirname(__file__), "test_files")
 # is added to the media (e.g. glucose).
 # The reactions listed here must be present in the model, so this may change
 # if the model is updated.
-NO_C_MEDIA = {
+# TOOD: Check that this is actually the media composition for what Zac used
+ZAC = {
     "EX_cpd00058_e0": 1000,  # Cu2+_e0
     "EX_cpd00007_e0": 20,  # O2_e0
     "EX_cpd00971_e0": 1000,  # Na+_e0
@@ -36,6 +37,9 @@ NO_C_MEDIA = {
     'EX_cpd00149_e0': 1000,  # Co2+_e0
 }
 
+# L1 Minimal Media
+L1 = {}
+
 
 class TestGrowthPhenotypes(unittest.TestCase):
     # Check that there is no growth on a media with no carbon sources
@@ -44,7 +48,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
         model = cobra.io.read_sbml_model("model.xml")
 
         # Set the media so that there are no carbon sources
-        model.medium = NO_C_MEDIA
+        model.medium = ZAC
 
         # Run the model
         sol = model.optimize()
@@ -70,8 +74,8 @@ class TestGrowthPhenotypes(unittest.TestCase):
         for index, row in growth_phenotypes.iterrows():
             # Check if the model has an exchange reaction for the metabolite
             if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
-                # If it does, add the exchange reaction to the minimal media
-                minimal_media = NO_C_MEDIA.copy()
+                # If it does, add the exchange reaction to the minimal media used
+                minimal_media = eval(row['minimal_media']).copy()
                 minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
                 # Set the media
                 model.medium = minimal_media
@@ -121,15 +125,21 @@ class TestGrowthPhenotypes(unittest.TestCase):
 
         # Plot a categorical heatmap of the growth phenotypes, where the rows
         # are the metabolites and the columns are the experimental and predicted
-        # growth phenotypes. Show growth as green and no growth as red, unsure
-        # as yellow, and no exchange reaction as gray.
+        # growth phenotypes. Show growth as blue and no growth as orange, and
+        # unsure as gray
         # First, make a new dataframe with the metabolites as the rows and the
         # experimental and predicted growth phenotypes as the columns
+        # Combine the values of "minimal_media" and "c_source" into one column
+        growth_phenotypes["c_source"] = (
+            growth_phenotypes["minimal_media"] + " " + growth_phenotypes["c_source"]
+        )
+        # And set it as the index
         growth_phenotypes = growth_phenotypes.set_index("c_source")
+        # Subset the other columns, to have just the growth and predicted growth
         growth_phenotypes = growth_phenotypes[["growth", "pred_growth"]]
 
         # Rename the columns and the index to be longer/more descriptive
-        growth_phenotypes.index.name = "Carbon Source"
+        growth_phenotypes.index.name = "Media/Carbon Source"
         growth_phenotypes = growth_phenotypes.rename(
             columns={
                 "growth": "Experimental Growth",
