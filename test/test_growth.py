@@ -66,7 +66,9 @@ L1 = {"EX_cpd00007_e0": 20,  # O2_e0
       "EX_cpd00104_e0": 1000,  # Biotin (Vitamin H)
       # "EX_cpd01826_e0": 1000,  # Cyanocobalamin (Vitamin B12) EXCHANGE REACTION NOT IN MODEL
       # Not in L1, but needed to grow
-      "EX_cpd00013_e0": 1000,  # NH3_e0
+      "EX_cpd00013_e0": 1000,  # NH3_e0 (Needed for growth on glucose and acetate)
+      "EX_cpd00063_e0": 1000,  # Ca2+_e0 (Needed for growth on alanine)
+      "EX_cpd00254_e0": 1000,  # Mg_e0 (Needed for growth on alanine)
       }
 
 
