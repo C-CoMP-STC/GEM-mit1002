@@ -24,17 +24,17 @@ ZAC = {
     "EX_cpd00063_e0": 1000,  # Ca2+_e0
     "EX_cpd00048_e0": 1000,  # Sulfate_e0
     "EX_cpd10516_e0": 1000,  # fe3_e0
-    'EX_cpd00254_e0': 1000,  # Mg_e0
+    "EX_cpd00254_e0": 1000,  # Mg_e0
     "EX_cpd00009_e0": 1000,  # Phosphate_e0
     "EX_cpd00205_e0": 1000,  # K+_e0
     "EX_cpd00013_e0": 1000,  # NH3_e0
-    'EX_cpd00099_e0': 1000,  # Cl-_e0
+    "EX_cpd00099_e0": 1000,  # Cl-_e0
     "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    'EX_cpd00075_e0': 1000,  # Nitrite_e0
+    "EX_cpd00075_e0": 1000,  # Nitrite_e0
     "EX_cpd00001_e0": 1000,  # H2O_e0
     "EX_cpd00635_e0": 1000,  # Cbl_e0
     "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    'EX_cpd00149_e0': 1000,  # Co2+_e0
+    "EX_cpd00149_e0": 1000,  # Co2+_e0
 }
 
 # L1 Minimal Media
@@ -75,7 +75,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
             # Check if the model has an exchange reaction for the metabolite
             if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
                 # If it does, add the exchange reaction to the minimal media used
-                minimal_media = eval(row['minimal_media']).copy()
+                minimal_media = eval(row["minimal_media"]).copy()
                 minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
                 # Set the media
                 model.medium = minimal_media
