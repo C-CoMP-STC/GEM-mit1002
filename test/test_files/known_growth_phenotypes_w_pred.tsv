@@ -1,8 +1,8 @@
 minimal_media	c_source	met_id	growth	notes	pred_growth
 ZAC	Glucose 	cpd00027	Yes		Yes
-L1	Glucose 	cpd00027	Yes		No
+L1	Glucose 	cpd00027	Yes		Yes
 ZAC	Acetate	cpd00029	Yes		Yes
-L1	Acetate	cpd00029	Yes		No
+L1	Acetate	cpd00029	Yes		Yes
 ZAC	Glycolate	cpd00139	No		No Exchange
 ZAC	Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No Exchange
 ZAC	3-hydroxybutyrate	cpd29193	Yes		No Exchange
