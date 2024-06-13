@@ -30,7 +30,7 @@ jobs:
           python -m pip install matplotlib
           python -m pip install seaborn
           # FIXME: Once this branch/fork is merged with the original macaw repo, update this
-          python -m pip install https://github.com/hgscott/macaw.git@package-structure
+          python -m pip install git+https://github.com/hgscott/macaw.git@package-structure
 
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
