@@ -31,6 +31,9 @@ jobs:
           python -m pip install seaborn
           # FIXME: Once this branch/fork is merged with the original macaw repo, update this
           python -m pip install git+https://github.com/hgscott/macaw.git@package-structure
+          # FIXME: These are dependencies for macaw, remove once the setup.py
+          # file includes the install requirements
+          python -m pip install Pebble==5.0.7
 
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
