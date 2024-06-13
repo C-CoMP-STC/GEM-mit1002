@@ -34,6 +34,7 @@ jobs:
           # FIXME: These are dependencies for macaw, remove once the setup.py
           # file includes the install requirements
           python -m pip install Pebble==5.0.7
+          python -m pip install networkx==3.1
 
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
