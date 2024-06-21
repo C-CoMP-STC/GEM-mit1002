@@ -29,10 +29,20 @@ jobs:
           python -m pip install pytest
           python -m pip install matplotlib
           python -m pip install seaborn
+          # FIXME: Once this branch/fork is merged with the original macaw repo, update this
+          python -m pip install git+https://github.com/hgscott/macaw.git@package-structure
+          # FIXME: These are dependencies for macaw, remove once the setup.py
+          # file includes the install requirements
+          python -m pip install Pebble==5.0.7
+          python -m pip install networkx==3.1
 
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
         run: memote report snapshot model.xml
+
+      # Run the macaw tests
+      - name: Run MACAW tests
+        run: python run_macaw.py
 
       # Run the custom tests
       - name: Run Custom Tests with pytest
