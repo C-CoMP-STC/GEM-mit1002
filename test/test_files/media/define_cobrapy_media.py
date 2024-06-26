@@ -90,9 +90,9 @@ l1_media = {
     # L1 salts
     "EX_cpd00971_e0": 1000,  # Na+_e0 (in NaNO3, NaH2PO4, NaSiO3, Na2EDTA, NaMoO4, Na3VO4)
     "EX_cpd00009_e0": 1000,  # Phosphate (HO4P) (in NaH2PO4)
-    # "EX_cpd20826_e0": 1000,  # Silica (O2Si) (in NaSiO3) EXCHANGE REACTION NOT IN MODEL
+    "EX_cpd20826_e0": 1000,  # Silica (O2Si) (in NaSiO3)
     # Trace element solution
-    # "EX_cpd00240_e0": 1000,  # EDTA (in Na2EDTA) EXCHANGE REACTION NOT IN MODEL
+    "EX_cpd00240_e0": 1000,  # EDTA (in Na2EDTA)
     "EX_cpd10516_e0": 1000,  # fe3_e0 (in FeCl3)
     "EX_cpd00099_e0": 1000,  # Cl- (in FeCl3, MnCl2, CoCl2)
     "EX_cpd00030_e0": 1000,  # Mn2+ (in MnCl2)
@@ -100,16 +100,16 @@ l1_media = {
     "EX_cpd00048_e0": 1000,  # Sulfate (O4S) (in ZnSO4, CuSO4, NiSO4)
     "EX_cpd00149_e0": 1000,  # Co2+ (in CoCl2)
     "EX_cpd00058_e0": 1000,  # Cu2+_e0 (in CuSO4)
-    # "EX_cpd11574_e0": 1000,  # Molybdate (MoO4) (in NaMoO4) EXCHANGE REACTION NOT IN MODEL
-    # "EX_cpd03387_e0": 1000,  # Selenite (O3Se) (in H2SeO3) EXCHANGE REACTION NOT IN MODEL
-    # "EX_cpd00244_e0": 1000,  # Ni2+ (in NiSO4) EXCHANGE REACTION NOT IN MODEL
-    # "EX_cpd08438_e0": 1000,  # Ortho-vanadate (H2O4V) (in Na3VO4) EXCHANGE REACTION NOT IN MODEL
+    "EX_cpd11574_e0": 1000,  # Molybdate (MoO4) (in NaMoO4)
+    "EX_cpd03387_e0": 1000,  # Selenite (O3Se) (in H2SeO3)
+    "EX_cpd00244_e0": 1000,  # Ni2+ (in NiSO4)
+    "EX_cpd08438_e0": 1000,  # Ortho-vanadate (H2O4V) (in Na3VO4)
     "EX_cpd00205_e0": 1000,  # K+ (in K2CrO4)
-    # "EX_cpd11595_e0": 1000,  # Chromate (H2CrO4) (in K2CrO4) EXCHANGE REACTION NOT IN MODEL
+    "EX_cpd11595_e0": 1000,  # Chromate (H2CrO4) (in K2CrO4)
     # Vitamin solution
     "EX_cpd00305_e0": 1000,  # Thiamine HCl (Vitamin B1)
     "EX_cpd00104_e0": 1000,  # Biotin (Vitamin H)
-    # "EX_cpd01826_e0": 1000,  # Cyanocobalamin (Vitamin B12) EXCHANGE REACTION NOT IN MODEL
+    "EX_cpd01826_e0": 1000,  # Cyanocobalamin (Vitamin B12)
     # Not in L1, but needed to grow
     # "EX_cpd00013_e0": 1000,  # NH3_e0 (Needed for growth on glucose and acetate)
     "EX_cpd00063_e0": 1000,  # Ca2+_e0 (Needed for growth on alanine)
