@@ -1,21 +1,21 @@
 minimal_media	c_source	met_id	growth	notes	pred_growth
-ZAC	Glucose 	cpd00027	Yes		Yes
-L1	Glucose 	cpd00027	Yes		Yes
-ZAC	Acetate	cpd00029	Yes		Yes
-L1	Acetate	cpd00029	Yes		Yes
-ZAC	Glycolate	cpd00139	No		No Exchange
-ZAC	Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No Exchange
-ZAC	3-hydroxybutyrate	cpd29193	Yes		No Exchange
-ZAC	Choline	cpd00098	No		No Exchange
-ZAC	Ectoine	cpd03727	No		No Exchange
-ZAC	Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	Yes
-L1	Alanine	cpd00035	Yes		Yes
-ZAC	Proline	cpd00129	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	No
-L1	Proline	cpd00129	Yes		No
-ZAC	Sucrose	cpd00076	No		No Exchange
-ZAC	Fructose	cpd00082	No		No Exchange
-L1	Glycerol-3-phosphate	cpd00080	Yes		No Exchange
-L1	DHPS (dihydroxypropanesulfonate)	cpd23538	Yes		No Exchange
-L1	Tyrosine	cpd00069	Yes	Assumed we wanted L-tyrosine.	No
-L1	Glutamate	cpd00023	Yes	Assumed we wanted L-glutamate.	No
-L1	Valine	cpd00156	Yes	Assumed we wanted L-valine.	No
+mbm_media	Glucose 	cpd00027	Yes		No
+l1_media	Glucose 	cpd00027	Yes		Yes
+mbm_media	Acetate	cpd00029	Yes		No
+l1_media	Acetate	cpd00029	Yes		Yes
+mbm_media	Glycolate	cpd00139	No		No Exchange
+mbm_media	Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No Exchange
+mbm_media	3-hydroxybutyrate	cpd29193	Yes		No Exchange
+mbm_media	Choline	cpd00098	No		No Exchange
+mbm_media	Ectoine	cpd03727	No		No Exchange
+mbm_media	Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	No
+l1_media	Alanine	cpd00035	Yes		Yes
+mbm_media	Proline	cpd00129	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	No
+l1_media	Proline	cpd00129	Yes		No
+mbm_media	Sucrose	cpd00076	No		No Exchange
+mbm_media	Fructose	cpd00082	No		No Exchange
+l1_media	Glycerol-3-phosphate	cpd00080	Yes		No Exchange
+l1_media	DHPS (dihydroxypropanesulfonate)	cpd23538	Yes		No Exchange
+l1_media	Tyrosine	cpd00069	Yes	Assumed we wanted L-tyrosine.	No
+l1_media	Glutamate	cpd00023	Yes	Assumed we wanted L-glutamate.	No
+l1_media	Valine	cpd00156	Yes	Assumed we wanted L-valine.	No

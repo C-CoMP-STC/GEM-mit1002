@@ -1,4 +1,5 @@
 import os
+import pickle
 import unittest
 import warnings
 
@@ -6,7 +7,6 @@ import cobra
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import pickle
 
 # Set path to the `test_files` directory
 TESTFILE_DIR = os.path.join(os.path.dirname(__file__), "test_files")
@@ -56,7 +56,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
                 minimal_media = eval(row["minimal_media"]).copy()
                 minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
                 # Set the media
-                model.medium = minimal_media
+                model.medium = clean_media(model, minimal_media)
                 # Run the model
                 sol = model.optimize()
                 # Check if the model grows
@@ -166,6 +166,43 @@ class TestGrowthPhenotypes(unittest.TestCase):
 
         # Save the figure
         plt.savefig(os.path.join(TESTFILE_DIR, "exp_vs_pred_growth_phenotypes.png"))
+
+
+# Helper function for setting the media regardless if the exchange reaction is
+# present in the model
+def clean_media(model, media):
+    """clean_media
+    Removes exchange reactions from the media that are not present in the model
+
+    Parameters
+    ----------
+    model : cobra.Model
+        The model to set the media for.
+    media : dict
+        A dictionary where the keys are the exchange reactions for the metabolites
+        in the media, and the values are the lower bound for the exchange reaction.
+
+    Returns
+    -------
+    dict
+        A dictionary where the keys are the exchange reactions for the metabolites
+        in the media, and the values are the lower bound for the exchange reaction
+    """
+    # Make an empty dictionary for the media
+    clean_medium = {}
+    # Loop through the media and set the exchange reactions that are present
+    for ex_rxn, lb in media.items():
+        if ex_rxn in [r.id for r in model.reactions]:
+            clean_medium[ex_rxn] = lb
+        else:
+            warnings.warn(
+                "Model does not have the exchange reaction "
+                + ex_rxn
+                + ", so it was not set in the media."
+            )
+
+    # Return the clean medium
+    return clean_medium
 
 
 if __name__ == "__main__":
