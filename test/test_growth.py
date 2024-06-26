@@ -12,7 +12,7 @@ import pickle
 TESTFILE_DIR = os.path.join(os.path.dirname(__file__), "test_files")
 
 # Load the media definitions
-with open(os.path.join(TESTFILE_DIR, "media_definitions.pkl"), "rb") as f:
+with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
 minimal_media = media_definitions["minimal_media"]
 mbm_media = media_definitions["mbm_media"]
