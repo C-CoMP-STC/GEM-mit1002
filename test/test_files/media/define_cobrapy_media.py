@@ -45,7 +45,39 @@ minimal_media = {
 # C-equivalents (e.g. 2 mM glucose = 12 mM C-equivalent)
 mbm_media = {
     "EX_cpd00007_e0": 20,  # O2_e0
-    "": 1000,  # No carbon source
+    # Artificial Sea Water (ASW) Solution
+    "EX_cpd00971_e0": 1000,  # Na+_e0 (in NaCl, Na2SO4, NaF, and NaHCO3)
+    "EX_cpd00099_e0": 1000,  # Cl-_e0 (in NaCl, MgCl2, CaCl2, and SrCl2)
+    "EX_cpd00048_e0": 1000,  # Sulfate (O4S) (in Na2SO4)
+    "EX_cpd00205_e0": 1000,  # K+ (in KCl, and KBr)
+    "EX_cpd09225_e0": 1000,  # Boric acid (H3BO3) (in H3BO3)
+    "EX_cpd00552_e0": 1000,  # Fluoride (F-) (in NaF)
+    "EX_cpd00242_e0": 1000,  # Biocarbonate (HCO3-) (in NaHCO3)
+    "EX_cpd00254_e0": 1000,  # Mg_e0 (in MgCl2)
+    "EX_cpd00063_e0": 1000,  # Ca2+_e0 (in CaCl2)
+    "EX_cpd09695_e0": 1000,  # Strontium (Sr2+) (in SrCl2)
+    # FeEDTA (Is a chelating agent)
+    # TODO: Check if I chould use uncharge Fe instead of Fe3+
+    "EX_cpd10516_e0": 1000,  # fe3_e0 (in FeEDTA)
+    "EX_cpd00240_e0": 1000,  # EDTA (in FeEDTA)
+    # Basal Medium
+    "EX_cpd28238_e0": 1000,  # tris-hydrochloride (tris-HCl)
+    "EX_cpd00013_e0": 1000,  # Ammonia (in NH4Cl)
+    # Cl (from NH4Cl) already included
+    # K (from K2HPO4) already included
+    "EX_cpd00009_e0": 1000,  # Phosphate (HO4P) (in K2HPO4)
+    # Water # FIXME: Is this needed?
+    # Vitamin Supplement
+    # Water (see above)
+    "EX_cpd00104_e0": 1000,  # Biotin (Vitamin H)
+    "EX_cpd00393_e0": 1000,  # Folate (Folic acid)
+    "EX_cpd00263_e0": 1000,  # Pyridoxine (Pyridoxol)
+    "EX_cpd00220_e0": 1000,  # Riboflavin
+    "EX_cpd00305_e0": 1000,  # Thiamine
+    "EX_cpd00133_e0": 1000,  # Nicotinic acid (Niacinamide)
+    "EX_cpd00644_e0": 1000,  # Pantothenic acid (Pantothenate)
+    "EX_cpd01826_e0": 1000,  # Cyanocobalamin (Dicopac)
+    "EX_cpd00443_e0": 1000,  # p-Aminobenzoic acid (ABEE)
 }
 
 # l1_media
