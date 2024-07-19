@@ -50,43 +50,44 @@ class TestGrowthPhenotypes(unittest.TestCase):
         # minimal media, run FBA and check if the model grows
         pred_growth = []
         for index, row in growth_phenotypes.iterrows():
+            minimal_media = eval(row["minimal_media"]).copy()
             # Check if the model has an exchange reaction for the metabolite
             if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
                 # If it does, add the exchange reaction to the minimal media used
-                minimal_media = eval(row["minimal_media"]).copy()
                 minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
-                # Set the media
-                model.medium = clean_media(model, minimal_media)
-                # Run the model
-                sol = model.optimize()
-                # Check if the model grows
-                if sol.objective_value > 0:
-                    # If it does, add 'Y' to the list
-                    pred_growth.append("Yes")
-                    # Give a warning if growth was not expected
-                    if row["growth"] == "No":
-                        warnings.warn(
-                            "Model grew on "
-                            + row["c_source"]
-                            + ", but growth was not expected."
-                        )
-                else:
-                    # If it doesn't, add 'N' to the list
-                    pred_growth.append("No")
-                    # Give a warning if growth was expected
-                    if row["growth"] == "Yes":
-                        warnings.warn(
-                            "Model did not grow on "
-                            + row["c_source"]
-                            + ", but growth was expected."
-                        )
             else:
-                # If it doesn't have the exchange reaction, add None to the list
+                # If it doesn't have the exchange reaction, add "No Exchange"
                 pred_growth.append("No Exchange")
                 # Give a warning if growth was expected
                 if row["growth"] == "Yes":
                     warnings.warn(
                         "Model did not have an exchange reaction for "
+                        + row["c_source"]
+                        + ", but growth was expected."
+                    )
+                continue
+            # Set the media
+            model.medium = clean_media(model, minimal_media)
+            # Run the model
+            sol = model.optimize()
+            # Check if the model grows
+            if sol.objective_value > 0:
+                # If it does, add 'Y' to the list
+                pred_growth.append("Yes")
+                # Give a warning if growth was not expected
+                if row["growth"] == "No":
+                    warnings.warn(
+                        "Model grew on "
+                        + row["c_source"]
+                        + ", but growth was not expected."
+                    )
+            else:
+                # If it doesn't, add 'N' to the list
+                pred_growth.append("No")
+                # Give a warning if growth was expected
+                if row["growth"] == "Yes":
+                    warnings.warn(
+                        "Model did not grow on "
                         + row["c_source"]
                         + ", but growth was expected."
                     )
