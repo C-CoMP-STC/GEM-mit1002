@@ -79,6 +79,11 @@ mbm_media = {
     "EX_cpd00644_e0": 1000,  # Pantothenic acid (Pantothenate)
     "EX_cpd01826_e0": 1000,  # Cyanocobalamin (Dicopac)
     "EX_cpd00443_e0": 1000,  # p-Aminobenzoic acid (ABEE)
+    # Not in the media definition, but needed for growth
+    "EX_cpd00058_e0": 1000,  # Cu2+_e0  NOT IN MBM MEDIA
+    "EX_cpd00030_e0": 1000,  # Mn2+_e0  NOT IN MBM MEDIA
+    "EX_cpd00034_e0": 1000,  # Zn2+_e0  NOT IN MBM MEDIA
+    "EX_cpd00149_e0": 1000,  # Co2+_e0  NOT IN MBM MEDIA
 }
 
 # l1_media

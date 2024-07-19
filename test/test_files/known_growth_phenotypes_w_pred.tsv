@@ -1,14 +1,14 @@
 minimal_media	c_source	met_id	growth	notes	pred_growth
-mbm_media	Glucose 	cpd00027	Yes		No
-l1_media	Glucose 	cpd00027	Yes		Yes
-mbm_media	Acetate	cpd00029	Yes		No
-l1_media	Acetate	cpd00029	Yes		Yes
+mbm_media	Glucose 	cpd00027	Yes		Yes
+l1_media	Glucose 	cpd00027	Yes		No
+mbm_media	Acetate	cpd00029	Yes		Yes
+l1_media	Acetate	cpd00029	Yes		No
 mbm_media	Glycolate	cpd00139	No		No Exchange
 mbm_media	Homarine	cpd00737	Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No Exchange
 mbm_media	3-hydroxybutyrate	cpd29193	Yes		No Exchange
 mbm_media	Choline	cpd00098	No		No Exchange
 mbm_media	Ectoine	cpd03727	No		No Exchange
-mbm_media	Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	No
+mbm_media	Alanine	cpd00035	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	Yes
 l1_media	Alanine	cpd00035	Yes		Yes
 mbm_media	Proline	cpd00129	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	No
 l1_media	Proline	cpd00129	Yes		No
