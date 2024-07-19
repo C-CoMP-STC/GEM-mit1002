@@ -50,6 +50,7 @@ mbm_media = {
     "EX_cpd00099_e0": 1000,  # Cl-_e0 (in NaCl, MgCl2, CaCl2, and SrCl2)
     "EX_cpd00048_e0": 1000,  # Sulfate (O4S) (in Na2SO4)
     "EX_cpd00205_e0": 1000,  # K+ (in KCl, and KBr)
+    "EX_cpd00966_e0": 1000,  # Bromide (Br-) (in KBr)
     "EX_cpd09225_e0": 1000,  # Boric acid (H3BO3) (in H3BO3)
     "EX_cpd00552_e0": 1000,  # Fluoride (F-) (in NaF)
     "EX_cpd00242_e0": 1000,  # Biocarbonate (HCO3-) (in NaHCO3)
@@ -66,9 +67,9 @@ mbm_media = {
     # Cl (from NH4Cl) already included
     # K (from K2HPO4) already included
     "EX_cpd00009_e0": 1000,  # Phosphate (HO4P) (in K2HPO4)
-    # Water # FIXME: Is this needed?
+    "EX_cpd00001_e0": 1000,  # H2O (in H2O)
     # Vitamin Supplement
-    # Water (see above)
+    # Water already included
     "EX_cpd00104_e0": 1000,  # Biotin (Vitamin H)
     "EX_cpd00393_e0": 1000,  # Folate (Folic acid)
     "EX_cpd00263_e0": 1000,  # Pyridoxine (Pyridoxol)
