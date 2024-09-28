@@ -1,0 +1,115 @@
+{
+    "metadata": [
+        [
+            16,
+            "mit1002_rast_omegga.mdl",
+            "KBaseFBA.FBAModel-15.0",
+            "2024-09-28T17:23:30+0000",
+            1,
+            "hgsco",
+            191918,
+            "hgsco:narrative_1726668344695",
+            "02f400b955123ad8f9c3a01f62dad566",
+            999038,
+            {
+                "Genome": "191918/12/1",
+                "Name": "unknown_taxon",
+                "Number biomasses": "1",
+                "Number compartments": "2",
+                "Number compounds": "870",
+                "Number gapfills": "0",
+                "Number gapgens": "0",
+                "Number reactions": "767",
+                "Source": "",
+                "Source ID": "",
+                "Type": ""
+            }
+        ]
+    ],
+    "provenance": [
+        {
+            "copy_source_inaccessible": 0,
+            "created": "2024-09-28T17:23:29+0000",
+            "creator": "hgsco",
+            "epoch": 1727544209465,
+            "extracted_ids": {},
+            "info": [
+                16,
+                "mit1002_rast_omegga.mdl",
+                "KBaseFBA.FBAModel-15.0",
+                "2024-09-28T17:23:30+0000",
+                1,
+                "hgsco",
+                191918,
+                "hgsco:narrative_1726668344695",
+                "02f400b955123ad8f9c3a01f62dad566",
+                999038,
+                {
+                    "Genome": "191918/12/1",
+                    "Name": "unknown_taxon",
+                    "Number biomasses": "1",
+                    "Number compartments": "2",
+                    "Number compounds": "870",
+                    "Number gapfills": "0",
+                    "Number gapgens": "0",
+                    "Number reactions": "767",
+                    "Source": "",
+                    "Source ID": "",
+                    "Type": ""
+                }
+            ],
+            "orig_wsid": 191918,
+            "path": [
+                "191918/16/1"
+            ],
+            "provenance": [
+                {
+                    "custom": {},
+                    "description": "build_metabolic_models",
+                    "external_data": [],
+                    "input_ws_objects": [
+                        "262/536/1",
+                        "12998/20/6",
+                        "191918/12/1",
+                        "12998/21/19"
+                    ],
+                    "intermediate_incoming": [],
+                    "intermediate_outgoing": [],
+                    "method": "build_metabolic_models",
+                    "method_params": [
+                        {
+                            "atp_safe": 1,
+                            "change_to_complete": 0,
+                            "core_template_ref": null,
+                            "expression_conditions": [],
+                            "expression_refs": [],
+                            "forced_atp_list": [],
+                            "gapfilling_media_list": [],
+                            "gapfilling_mode": "Sequential",
+                            "genome_refs": [
+                                "191918/12/1"
+                            ],
+                            "gs_template": "gramneg",
+                            "gs_template_ref": null,
+                            "run_gapfilling": 0,
+                            "suffix": "_omegga.mdl",
+                            "workspace": "hgsco:narrative_1726668344695"
+                        }
+                    ],
+                    "resolved_ws_objects": [
+                        "262/536/1",
+                        "12998/20/6",
+                        "191918/12/1",
+                        "12998/21/19"
+                    ],
+                    "service": "ModelSEEDReconstruction",
+                    "service_ver": "0.1.1.msr",
+                    "subactions": []
+                }
+            ],
+            "refs": [
+                "191918/12/1"
+            ]
+        }
+    ]
+}
