@@ -1,6 +1,10 @@
 import os
 import pandas as pd
 
+# WARNING
+# There is something that throws an error when I just try to run the script.
+# But, if I start it in debug mode and run it line by line, it works.
+
 # Set the output directory (where the results.pkl file will be saved)
 OUT_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -29,6 +33,18 @@ df_melted.dropna(subset=['Metabolite'], inplace=True)
 
 # Create a pivot table where each column is a model and each row is a metabolite, indicating presence (1) or absence (0)
 df_pivot = pd.pivot_table(df_melted, index='Metabolite', columns='Model', aggfunc='size', fill_value=0)
+
+# Fix two typos
+# There are two metabolites that I needed to manually fix.
+# "_Diglucosyl_1,2 diisohexadecanoylglycerol" and
+# "_Monoglucosyl_1,2 diisohexadecanoylglycerol" do not match the nomenclature
+# used elsewhere in the table. They should be renamed to:
+# _Diglucosyl_1_2_diisohexadecanoylglycerol and
+# _Monoglucosyl_1_2_diisohexadecanoylglycerol
+df_pivot = df_pivot.rename(index={
+    "_Diglucosyl_1,2 diisohexadecanoylglycerol": "_Diglucosyl_1_2_diisohexadecanoylglycerol",
+    "_Monoglucosyl_1,2 diisohexadecanoylglycerol": "_Monoglucosyl_1_2_diisohexadecanoylglycerol"
+})
 
 # Extract just the metabolite name column
 met_names = df_pivot.index
