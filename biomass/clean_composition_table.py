@@ -71,11 +71,11 @@ group_metabolite_ids['Metabolite'] = group_metabolite_ids['Metabolite'].str.lowe
 # Add a row called 'Group' to the pivot table, which will contain the metabolite group for each metabolite
 df_pivot['Group'] = df_pivot.index.map(group_metabolite_ids.set_index('Metabolite')['Group'])
 
-# Reorder to match the order of the metabolite groups
-df_pivot = df_pivot.sort_values('Group')
-
 # Reset the metabolite names to have the orignal capitalization
 df_pivot.index = met_names
+
+# Reorder to match the order of the metabolite groups
+df_pivot = df_pivot.sort_values('Group')
 
 # Save the result to a CSV file
 output_path = os.path.join(OUT_DIR, 'standardized_compositions.csv')
