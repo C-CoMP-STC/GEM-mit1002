@@ -1,0 +1,107 @@
+ModelSEED ID,Xavier et al. ID,BiGG IDs,Human names
+cpd00002,_atp,,
+cpd00003,_nad,,
+cpd00004,_nadh,,NADH
+cpd00005,_nadph,,NADPH
+cpd00006,_nadp,,
+cpd00009,_pi,pi,Phosphate
+cpd00010,_coa,,
+cpd00015,_fad,,
+cpd00016,_pydx5p,,
+cpd00017,_amet,,
+cpd00020,,pyr,Pyruvate
+cpd00022,,accoa,Acetyl-CoA
+cpd00023,,glu__L,L-Glutamate
+cpd00024,,akg,2-oxoglutarate
+cpd00028,,pheme,Heme
+cpd00030,_mn2,,
+cpd00032,,oaa,Oxaloacetate
+cpd00033,,gly,Glycine
+cpd00034,_zn2,,
+cpd00035,,ala__L,L-alanine
+cpd00038,_gtp,,
+cpd00039,,lys__L,L-lysine
+cpd00041,,asp__L,L-aspartate
+cpd00042,,gthrd,GSH (glutathione)
+cpd00048,_so4,,
+cpd00051,,arg__L,L-arginine
+cpd00052,_ctp,,
+cpd00053,,gln__L,L-glutamine
+cpd00054,,ser__L,L-serine
+cpd00056,,thmpp,TPP (thiamine-pyrophosphate)
+cpd00058,_cu2,,
+cpd00060,,met__L,
+cpd00061,,pep,
+cpd00062,,utp,
+cpd00063,_ca2,,
+cpd00065,,trp__L,
+cpd00066,,phe__L,
+cpd00069,,tyr__L,
+cpd00072,,f6p;f6p_B,
+cpd00079,,g6p,
+cpd00084,,cys__L,
+cpd00087,,thf,
+cpd00099,_cl,,
+cpd00101,,r5p,
+cpd00102,,g3p,
+cpd00107,,leu__L,
+cpd00115,,datp,
+cpd00118,,ptrc,
+cpd00119,,his__L,
+cpd00129,,pro__L,
+cpd00132,,asn__L,
+cpd00149,_cobalt2,,
+cpd00156,,val__L,
+cpd00161,,thr__L,
+cpd00166,,adocbl,
+cpd00169,,3pg,
+cpd00201,,10fthf,
+cpd00205,_k,,
+cpd00220,_ribflv,,
+cpd00236,,e4p,
+cpd00241,,dgtp,
+cpd00254,_mg2,,
+cpd00264,,spmd,
+cpd00322,,ile__L,
+cpd00345,,5mthf,
+cpd00356,,dctp,
+cpd00357,,dttp,
+cpd00557,,sheme,
+cpd02229,,udcpdp,
+cpd10515,_fe2,,
+cpd10516,_fe3,,
+cpd11416,,,BIOMASS
+cpd11459,,tcam,
+cpd11493,_acp,,
+cpd15352,,2dmmq9,
+cpd15432,,colipa,
+cpd15500,,mqn8,
+cpd15533,,pe180,
+cpd15540,,pg180,
+cpd15560,,q8;q8h2,
+cpd15665,,,Peptiodoglycan polymer
+cpd15667,,,"Glycerol teichoic acic (n=45), linked, unsubstituted"
+cpd15668,,,"Glycerol teichoic acic (n=45), linked, D-ala substituted"
+cpd15669,,,"Glycerol teichoic acic (n=45), linked, glucose substituted"
+cpd15695,,,Diisoheptadecanoylphosphatidylethanolamine
+cpd15696,,,Dianteisoheptadecanoylphosphatidylethanolamine
+cpd15722,,,Diisoheptadecanoylphosphatidylglycerol
+cpd15723,,,Dianteisoheptadecanoylphosphatidylglycerol
+cpd15748,,,"Stearoyllipoteichoic acid (n=24), linked, unsubstituted"
+cpd15749,,,"Isoheptadecanoyllipoteichoic acid (n=24), linked, unsubstituted"
+cpd15750,,,"Anteisoheptadecanoyllipoteichoic acid (n=24), linked, unsubstituted"
+cpd15757,,,"Stearoyllipoteichoic acid (n=24), linked, glucose substituted"
+cpd15758,,,"Isoheptadecanoyllipoteichoic acid (n=24), linked, glucose substituted"
+cpd15759,,,"Anteisoheptadecanoyllipoteichoic acid (n=24), linked, glucose substituted"
+cpd15766,,,"Stearoyllipoteichoic acid (n=24), linked, N-acetyl-D-glucosamine"
+cpd15767,,,"Isoheptadecanoyllipoteichoic acid (n=24), linked, N-acetyl-D-glucosamine"
+cpd15768,,,"Anteisoheptadecanoyllipoteichoic acid (n=24), linked, N-acetyl-D-glucosamine"
+cpd15775,,,"Stearoyllipoteichoic acid (n=24), linked, D-alanine substituted"
+cpd15776,,,"Isoheptadecanoyllipoteichoic acid (n=24), linked, D-alanine substituted"
+cpd15777,,,"Anteisoheptadecanoyllipoteichoic acid (n=24), linked, D-alanine substituted"
+cpd15793,,,Stearoylcardiolipin (B. subtilis)
+cpd15794,,,Isoheptadecanoylcardiolipin (B. subtilis)
+cpd15795,,,Anteisoheptadecanoylcardiolipin (B. subtilis)
+cpd17041,,,Protein biosynthesis
+cpd17042,,,DNA replication
+cpd17043,,,RNA transcription
