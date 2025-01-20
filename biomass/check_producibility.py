@@ -48,6 +48,31 @@ def clean_media(model, media):
     return clean_medium
 
 
+# Broke out the function for actually testing the component producibility on a given medium
+def test_medium(medium_dict, biomass_compounds, model):
+    """Runs FBA for each biomass_compound as objective under `medium_dict`.
+    Returns a dict {compound_id: True/False}."""
+    results = {}
+    # Set the medium
+    model.medium = clean_media(model, medium_dict)
+
+    # Loop over each biomass compound
+    for cpd_id in biomass_compounds:
+        # Set the objective to the sink/demand for cpd_id
+        # e.g., "SK_cpd_id"
+        model.objective = {model.reactions.get_by_id("SK_" + cpd_id): 1}
+
+        # Optimize
+        sol = model.optimize()
+
+        # Check feasibility
+        if (sol.status == "optimal") and (sol.objective_value > 1e-6):
+            results[cpd_id] = True
+        else:
+            results[cpd_id] = False
+    return results
+
+
 # Load the model
 model = cobra.io.read_sbml_model(
     os.path.join(REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase.xml")
@@ -93,21 +118,37 @@ for index, row in growth_phenotypes.iterrows():
     medium["EX_" + row["met_id"] + "_e0"] = (
         1000.0  # FIXME: I should set this to a consistent, lower value
     )
-    model.medium = clean_media(model, medium)
-    # Loop through the biomass compounds and check if they are producible
-    for cpd_id in biomass_compounds:
-        # Set the objective to be the sink reaction for the compound
-        model.objective = {model.reactions.get_by_id("SK_" + cpd_id): 1}
-        # Run FBA
-        sol = model.optimize()
-        # Check if solution is feasible
-        if sol.status != "optimal":
-            biomass_producibility[c_source][cpd_id] = False
-        # Check if the compound is producible
-        if sol.objective_value > 1e-6:
-            biomass_producibility[c_source][cpd_id] = True
-        else:
-            biomass_producibility[c_source][cpd_id] = False
+    # Test it
+    biomass_producibility[c_source] = test_medium(medium, biomass_compounds, model)
+
+# Add negative controls
+# Create some custom dicts for the "control" conditions:
+# 1) An empty medium
+empty_media = {}
+
+# 2) mbm minus carbon sources (assuming your minimal media has some "EX_CARBON" keys)
+#    This just filters out any exchange that might be for the primary carbon.
+mbm_no_carbon = {
+    ex: lb
+    for ex, lb in mbm_media.items()
+    if not ex.startswith("EX_") or "glc" not in ex.lower()
+}
+
+# 3) l1 minus carbon sources
+l1_no_carbon = {
+    ex: lb
+    for ex, lb in l1_media.items()
+    if not ex.startswith("EX_") or "glc" not in ex.lower()
+}
+
+# Combine the negative controls into a dictionary
+controls = {"empty": empty_media, "mbm_noC": mbm_no_carbon, "l1_noC": l1_no_carbon}
+
+# Test the negative controls
+for ctrl_name, ctrl_medium in controls.items():
+    biomass_producibility[ctrl_name] = test_medium(
+        ctrl_medium, biomass_compounds, model
+    )
 
 # Make a dataframe of the producibility results and save it to a TSV file
 df = pd.DataFrame.from_dict(biomass_producibility)
