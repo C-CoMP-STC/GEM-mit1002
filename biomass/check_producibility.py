@@ -1,59 +1,114 @@
 import os
+import pickle
+import warnings
 
 import cobra
 import pandas as pd
 
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_DIR = os.path.dirname(FILE_DIR)
+TESTFILE_DIR = os.path.join(REPO_DIR, "test", "test_files")
+
+
+# Helper function for setting the media regardless if the exchange reaction is
+# present in the model
+# TODO: Move this to a helper file, and remove from the test growth file too
+def clean_media(model, media):
+    """clean_media
+    Removes exchange reactions from the media that are not present in the model
+
+    Parameters
+    ----------
+    model : cobra.Model
+        The model to set the media for.
+    media : dict
+        A dictionary where the keys are the exchange reactions for the metabolites
+        in the media, and the values are the lower bound for the exchange reaction.
+
+    Returns
+    -------
+    dict
+        A dictionary where the keys are the exchange reactions for the metabolites
+        in the media, and the values are the lower bound for the exchange reaction
+    """
+    # Make an empty dictionary for the media
+    clean_medium = {}
+    # Loop through the media and set the exchange reactions that are present
+    for ex_rxn, lb in media.items():
+        if ex_rxn in [r.id for r in model.reactions]:
+            clean_medium[ex_rxn] = lb
+        else:
+            warnings.warn(
+                "Model does not have the exchange reaction "
+                + ex_rxn
+                + ", so it was not set in the media."
+            )
+
+    # Return the clean medium
+    return clean_medium
+
+
 # Load the model
-model = cobra.io.read_sbml_model("2025-01-08_Scott_draft-model-from-KBase.xml")
+model = cobra.io.read_sbml_model(
+    os.path.join(REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase.xml")
+)
 
 # Add exchange reactions for all metabolites
 for metabolite in model.metabolites:
     model.add_boundary(metabolite, type="sink")
 
-###############################
-# Get the biomass compositions
-###############################
-model_seed_path = "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Templates"
+# Load the growth pheonotype results
+growth_phenotypes = pd.read_csv(
+    os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+    sep="\t",
+    header=0,
+)
 
-# Load the biomass compositions from the TSV files
-biomass_compositions = {}
-biomass_compositions["core"] = pd.read_csv(os.path.join(model_seed_path, "Core", "BiomassCompounds.tsv"), sep="\t", header=0)['id'].tolist()
-biomass_compositions["gram_positive"] = pd.read_csv(os.path.join(model_seed_path, "GramPositive", "BiomassCompounds.tsv"), sep="\t", header=0)['id'].tolist()
-biomass_compositions["gram_negative"] = pd.read_csv(os.path.join(model_seed_path, "GramNegative", "BiomassCompounds.tsv"), sep="\t", header=0)['id'].tolist()
+# Filter the growth phenotypes to only include the carbon sources that it can grow on
+growth_phenotypes = growth_phenotypes[growth_phenotypes["growth"] == "Yes"]
 
-# Combine the biomass compositions, and keep only the unique values
-biomass_compositions_all = set(biomass_compositions["core"] + biomass_compositions["gram_positive"] + biomass_compositions["gram_negative"])
+# Load the media definitions
+with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
+    media_definitions = pickle.load(f)
+minimal_media = media_definitions["minimal_media"]
+mbm_media = media_definitions["mbm_media"]
+l1_media = media_definitions["l1_media"]
 
-# Check the producibility of the biomass compositions
+# Get the biomass composition from the model
+biomass_compounds = [
+    met.id
+    for met in model.reactions.bio1_biomass.metabolites
+    if model.reactions.bio1_biomass.metabolites[met] < 0
+]
+
+# Check the producibility of the biomass componets on the different carbon sources
 biomass_producibility = {}
-for biomass_compound in biomass_compositions_all:
-    cpd_id = biomass_compound + "_c0"
-    # Check if the compound is in the model
-    try:
-        model.metabolites.get_by_id(cpd_id)
-    except KeyError:
-        biomass_producibility[biomass_compound] = False
-    # Check if the compound is producible
-    else:
+for index, row in growth_phenotypes.iterrows():
+    # Make an ID for the results that is combination of the minimal media name and the carbon source
+    c_source = row["minimal_media"] + "_" + row["c_source"]
+    # Make a dictionary to store the results for just this carbon source
+    biomass_producibility[c_source] = {}
+    # Set the model media to match the experimental media
+    medium = eval(row["minimal_media"]).copy()
+    medium["EX_" + row["met_id"] + "_e0"] = (
+        1000.0  # FIXME: I should set this to a consistent, lower value
+    )
+    model.medium = clean_media(model, medium)
+    # Loop through the biomass compounds and check if they are producible
+    for cpd_id in biomass_compounds:
         # Set the objective to be the sink reaction for the compound
         model.objective = {model.reactions.get_by_id("SK_" + cpd_id): 1}
         # Run FBA
         sol = model.optimize()
         # Check if solution is feasible
         if sol.status != "optimal":
-            biomass_producibility[biomass_compound] = False
+            biomass_producibility[c_source][cpd_id] = False
         # Check if the compound is producible
         if sol.objective_value > 1e-6:
-            biomass_producibility[biomass_compound] = True
+            biomass_producibility[c_source][cpd_id] = True
         else:
-            biomass_producibility[biomass_compound] = False
-
-# Split the producibility results into the different biomass compositions
-biomass_producibility_split = {}
-biomass_producibility_split["core"] = {k: v for k, v in biomass_producibility.items() if k in biomass_compositions["core"]}
-biomass_producibility_split["gram_positive"] = {k: v for k, v in biomass_producibility.items() if k in biomass_compositions["gram_positive"]}
-biomass_producibility_split["gram_negative"] = {k: v for k, v in biomass_producibility.items() if k in biomass_compositions["gram_negative"]}
+            biomass_producibility[c_source][cpd_id] = False
 
 # Make a dataframe of the producibility results and save it to a TSV file
-df = pd.DataFrame.from_dict(biomass_producibility_split)
-df.to_csv("biomass/biomass_producibility.csv")
+df = pd.DataFrame.from_dict(biomass_producibility)
+df.to_csv(os.path.join(FILE_DIR, "biomass_producibility.csv"))
