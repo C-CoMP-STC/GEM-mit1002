@@ -80,7 +80,7 @@ model = cobra.io.read_sbml_model(
 
 # Add exchange reactions for all metabolites
 for metabolite in model.metabolites:
-    model.add_boundary(metabolite, type="sink")
+    model.add_boundary(metabolite, type="sink", lb=0)
 
 # Load the growth pheonotype results
 growth_phenotypes = pd.read_csv(
