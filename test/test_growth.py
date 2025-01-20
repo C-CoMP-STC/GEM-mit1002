@@ -171,6 +171,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
 
 # Helper function for setting the media regardless if the exchange reaction is
 # present in the model
+# TODO: Move this to a helper file
 def clean_media(model, media):
     """clean_media
     Removes exchange reactions from the media that are not present in the model
