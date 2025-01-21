@@ -73,12 +73,8 @@ for index, row in db.iterrows():
     # If there is no ModelSEED ID, do nothing
     if len(seed_id) == 0:
         continue
-    # If there is only one ModelSEED ID, add it to the annotation
-    if len(seed_id) == 1:
-        db.at[index, 'ModelSEED ID'] = seed_id[0]
-    # If there are multiple ModelSEED IDs, add them all as a list
-    if len(seed_id) > 1:
-        db.at[index, 'ModelSEED ID'] = [id for id in seed_id]
+    # Otherwise, add the whole list to the database
+    db.at[index, 'ModelSEED ID'] = seed_id
 
 # Save the database with the new columns
 db.to_csv('Pangenome from Michelle/database_w_MNX_SEED.csv', index=False)
