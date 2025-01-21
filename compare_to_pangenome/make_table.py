@@ -74,7 +74,8 @@ for index, row in db.iterrows():
     if len(seed_id) == 0:
         continue
     # Otherwise, add the whole list to the database
-    db.at[index, 'ModelSEED ID'] = seed_id
+    # Have to make a python list, rather than a numpy array, to save it as a list in the csv
+    db.at[index, 'ModelSEED ID'] = list(seed_id)
 
 # Save the database with the new columns
 db.to_csv('Pangenome from Michelle/database_w_MNX_SEED.csv', index=False)
