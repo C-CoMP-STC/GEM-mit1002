@@ -207,14 +207,16 @@ def plot_prodcubility(model, df):
 
     # Plot the producibility results as a heatmap
     plt.figure(figsize=(10, 10))
-    sns.heatmap(
+    ax = sns.heatmap(
         df_binary,
         annot=False,
         cmap=my_palette,
-        cbar_kws=dict(
-            ticks=[-0.66, 0.0, 0.66], label=["N/A", "Not producible", "Producible"]
-        ),
+        cbar_kws={"ticks": [0.25, 0.75], "label": "Producibile"},
     )
+
+    # Now fix the colorbar tick labels
+    cbar = ax.collections[0].colorbar
+    cbar.set_ticklabels(["No", "Yes"])
 
     # Add white lines to separate the different cells
     for i in range(df_binary.shape[0]):
