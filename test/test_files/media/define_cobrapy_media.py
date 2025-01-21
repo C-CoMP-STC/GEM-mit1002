@@ -1,5 +1,8 @@
+import json
 import os
 import pickle
+
+import pandas as pd
 
 # This file is for defining the different minimal media with no carbon sources
 # for the growth tests. These media are defined as dictionaries, where the keys
@@ -128,3 +131,37 @@ with open(os.path.join(os.path.dirname(__file__), "media_definitions.pkl"), "wb"
         {"minimal_media": minimal_media, "mbm_media": mbm_media, "l1_media": l1_media},
         f,
     )
+
+# Need to load in the ModelSEED database first
+modelseed_db = json.load(
+    open(
+        "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/compounds.json"
+    )
+)
+# Convert to a dictionary with the ModelSEED IDs as the keys for easier searching
+modelseed_db = {met["id"]: met for met in modelseed_db}
+
+
+# Convert to a TSV file to upload to KBase
+def write_media_tsv(media_dict, media_name, modelseed_db):
+    media_df = pd.DataFrame.from_dict(media_dict, orient="index", columns=["minFlux"])
+    # Fix the names of the compounds
+    media_df.index = media_df.index.str.replace("EX_", "").str.replace("_e0", "")
+    media_df.index.name = "compounds"
+    # Make the min flux negative
+    media_df["minFlux"] = -1 * media_df["minFlux"]
+    # Set the max flux for everything to be 1000
+    media_df["maxFlux"] = 1000
+    # Add the names of the compounds
+    media_df["name"] = media_df.index.map(lambda x: modelseed_db[x]["name"])
+    # Add the formula of the compounds
+    media_df["formula"] = media_df.index.map(lambda x: modelseed_db[x]["formula"])
+    # Set the concentration to be something?
+    # TODO: Does the concentration matter?
+    media_df["concentration"] = 1
+    # Save
+    media_df.to_csv(os.path.join(os.path.dirname(__file__), media_name + "_media.tsv"), sep="\t")
+
+
+write_media_tsv(mbm_media, "mbm", modelseed_db)
+write_media_tsv(l1_media, "l1", modelseed_db)
