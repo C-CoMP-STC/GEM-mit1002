@@ -1,44 +1,44 @@
 ,empty,mbm_noC,l1_noC,mbm_media_Glucose ,l1_media_Glucose ,mbm_media_Acetate,l1_media_Acetate,mbm_media_3-hydroxybutyrate,l1_media_Alanine,l1_media_Proline,l1_media_Glycerol-3-phosphate,l1_media_DHPS (dihydroxypropanesulfonate),l1_media_Tyrosine,l1_media_Glutamate,l1_media_Valine
-cpd11461_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd11463_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd11462_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00010_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd11493_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00003_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00006_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00205_c0,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
-cpd00254_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd10516_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00063_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00099_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00149_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00058_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00015_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd10515_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00030_c0,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
-cpd00048_c0,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
-cpd00034_c0,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
-cpd00016_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00220_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00017_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00201_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00087_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00345_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00042_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00028_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00557_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00264_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00118_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00056_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd15560_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd15352_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd15500_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00166_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd15793_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd15540_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd15533_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd03736_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd02229_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd15665_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00002_c0,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-cpd00001_c0,False,True,False,True,False,True,False,True,False,True,False,False,False,False,False
+DNA [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Protein [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+mRNA [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+CoA [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+ACP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+NAD [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+NADP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+K+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Mg [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+fe3 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Ca2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Cl- [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Co2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Cu2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+FAD [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Fe2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Mn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Sulfate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Zn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Pyridoxal phosphate [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Riboflavin [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+S-Adenosyl-L-methionine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+10-Formyltetrahydrofolate [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Tetrahydrofolate [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+5-Methyltetrahydrofolate [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+GSH [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Heme [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Siroheme [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Spermidine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Putrescine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+TPP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Ubiquinone-8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+2-Demethylmenaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Menaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Calomide [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Stearoylcardiolipin (B. subtilis) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Phosphatidylglycerol dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+phosphatidylethanolamine dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Lauroyl-KDO2-lipid IV(A) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Bactoprenyl diphosphate [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Peptidoglycan polymer (n subunits) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+ATP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+H2O [c0],False,True,False,True,False,True,False,True,False,True,False,False,False,False,False

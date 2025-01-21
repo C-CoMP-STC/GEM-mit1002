@@ -93,6 +93,9 @@ def test_medium(medium_dict, biomass_compounds, model):
 
     # Loop over each biomass compound
     for cpd_id in biomass_compounds:
+        # Get the human-friendly name of the metabolite
+        cpd_name = model.metabolites.get_by_id(cpd_id).name
+
         # Set the objective to the sink/demand for cpd_id
         # e.g., "SK_cpd_id"
         model.objective = {model.reactions.get_by_id("SK_" + cpd_id): 1}
@@ -102,9 +105,9 @@ def test_medium(medium_dict, biomass_compounds, model):
 
         # Check feasibility
         if (sol.status == "optimal") and (sol.objective_value > 1e-6):
-            results[cpd_id] = True
+            results[cpd_name] = True
         else:
-            results[cpd_id] = False
+            results[cpd_name] = False
     return results
 
 
@@ -140,6 +143,7 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
     biomass_producibility = {}
 
     # Add negative controls
+    # TODO: Create the list of controls programmatically from the growth phenotypes data
     # Create some custom dicts for the "control" conditions:
     # 1) An empty medium
     empty_media = {}
@@ -198,12 +202,6 @@ def plot_prodcubility(model, df):
 
     # Define my own color palette
     my_palette = sns.color_palette(["red", "green"])
-
-    # Re-name the index to use the names of the metabolites
-    df_binary.index = [
-        model.metabolites.get_by_id(x).name if x in model.metabolites else x
-        for x in df_binary.index
-    ]
 
     # Plot the producibility results as a heatmap
     plt.figure(figsize=(10, 10))
