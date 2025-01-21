@@ -9,6 +9,39 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR = os.path.dirname(FILE_DIR)
 TESTFILE_DIR = os.path.join(REPO_DIR, "test", "test_files")
 
+OUT_DIR = os.path.join(FILE_DIR, "component_producibility_results")
+# If the output directory doesn't exist, create it
+if not os.path.exists(OUT_DIR):
+    os.makedirs(OUT_DIR)
+
+
+def main():
+    # Load the model
+    model = cobra.io.read_sbml_model(
+        os.path.join(REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase.xml")
+    )
+
+    # Set the model ID
+    # This is used in the result filenames
+    model.id = "KBase-nongapfilled"
+
+    # Load the growth pheonotype results
+    growth_phenotypes = pd.read_csv(
+        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+        sep="\t",
+        header=0,
+    )
+
+    # Filter the growth phenotypes to only include the carbon sources that it can grow on
+    growth_phenotypes = growth_phenotypes[growth_phenotypes["growth"] == "Yes"]
+
+    # Load the media definitions
+    with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
+        media_definitions = pickle.load(f)
+
+    # Run my function on the model
+    test_model(model, growth_phenotypes, media_definitions)
+
 
 # Helper function for setting the media regardless if the exchange reaction is
 # present in the model
@@ -73,83 +106,85 @@ def test_medium(medium_dict, biomass_compounds, model):
     return results
 
 
-# Load the model
-model = cobra.io.read_sbml_model(
-    os.path.join(REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase.xml")
-)
+def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_biomass"):
+    """
+    Add exchange reactions for all metabolites in the model and test the producibility of the biomass components on the given media
 
-# Add exchange reactions for all metabolites
-for metabolite in model.metabolites:
-    model.add_boundary(metabolite, type="sink", lb=0)
+    Args:
+    model (cobra.Model): The model to test
+    biomass_rxn (str): The ID of the biomass reaction in the model. Default is "bio1_biomass" (which is used in KBase models).
+    """
+    # Check that the growth phenotypes dataframe has the expected columns
+    expected_columns = ["minimal_media", "c_source", "met_id", "growth"]
+    if not all(col in growth_phenotypes.columns for col in expected_columns):
+        raise ValueError(
+            "growth_phenotypes dataframe must have columns "
+            + ", ".join(expected_columns)
+        )
 
-# Load the growth pheonotype results
-growth_phenotypes = pd.read_csv(
-    os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
-    sep="\t",
-    header=0,
-)
+    # Add sink reactions for all metabolites, but set the lower bound to 0
+    # because by default the sink reactions are reversible, and so can be
+    # used to import metabolites that are not in the media
+    for metabolite in model.metabolites:
+        model.add_boundary(metabolite, type="sink", lb=0)
 
-# Filter the growth phenotypes to only include the carbon sources that it can grow on
-growth_phenotypes = growth_phenotypes[growth_phenotypes["growth"] == "Yes"]
+    # Get the biomass composition from the model
+    biomass_rxn = model.reactions.get_by_id(biomass_rxn)
+    biomass_compounds = [
+        met.id for met in biomass_rxn.metabolites if biomass_rxn.metabolites[met] < 0
+    ]
 
-# Load the media definitions
-with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
-    media_definitions = pickle.load(f)
-minimal_media = media_definitions["minimal_media"]
-mbm_media = media_definitions["mbm_media"]
-l1_media = media_definitions["l1_media"]
+    # Make a dictionary to store the producibility results
+    biomass_producibility = {}
 
-# Get the biomass composition from the model
-biomass_compounds = [
-    met.id
-    for met in model.reactions.bio1_biomass.metabolites
-    if model.reactions.bio1_biomass.metabolites[met] < 0
-]
+    # Add negative controls
+    # Create some custom dicts for the "control" conditions:
+    # 1) An empty medium
+    empty_media = {}
 
-# Check the producibility of the biomass componets on the different carbon sources
-biomass_producibility = {}
-for index, row in growth_phenotypes.iterrows():
-    # Make an ID for the results that is combination of the minimal media name and the carbon source
-    c_source = row["minimal_media"] + "_" + row["c_source"]
-    # Make a dictionary to store the results for just this carbon source
-    biomass_producibility[c_source] = {}
-    # Set the model media to match the experimental media
-    medium = eval(row["minimal_media"]).copy()
-    medium["EX_" + row["met_id"] + "_e0"] = (
-        1000.0  # FIXME: I should set this to a consistent, lower value
-    )
-    # Test it
-    biomass_producibility[c_source] = test_medium(medium, biomass_compounds, model)
+    # 2) mbm minus carbon sources (assuming your minimal media has some "EX_CARBON" keys)
+    #    This just filters out any exchange that might be for the primary carbon.
+    mbm_no_carbon = {
+        ex: lb
+        for ex, lb in media_definitions["mbm_media"].items()
+        if not ex.startswith("EX_") or "glc" not in ex.lower()
+    }
 
-# Add negative controls
-# Create some custom dicts for the "control" conditions:
-# 1) An empty medium
-empty_media = {}
+    # 3) l1 minus carbon sources
+    l1_no_carbon = {
+        ex: lb
+        for ex, lb in media_definitions["l1_media"].items()
+        if not ex.startswith("EX_") or "glc" not in ex.lower()
+    }
 
-# 2) mbm minus carbon sources (assuming your minimal media has some "EX_CARBON" keys)
-#    This just filters out any exchange that might be for the primary carbon.
-mbm_no_carbon = {
-    ex: lb
-    for ex, lb in mbm_media.items()
-    if not ex.startswith("EX_") or "glc" not in ex.lower()
-}
+    # Combine the negative controls into a dictionary
+    controls = {"empty": empty_media, "mbm_noC": mbm_no_carbon, "l1_noC": l1_no_carbon}
 
-# 3) l1 minus carbon sources
-l1_no_carbon = {
-    ex: lb
-    for ex, lb in l1_media.items()
-    if not ex.startswith("EX_") or "glc" not in ex.lower()
-}
+    # Test the negative controls
+    for ctrl_name, ctrl_medium in controls.items():
+        biomass_producibility[ctrl_name] = test_medium(
+            ctrl_medium, biomass_compounds, model
+        )
 
-# Combine the negative controls into a dictionary
-controls = {"empty": empty_media, "mbm_noC": mbm_no_carbon, "l1_noC": l1_no_carbon}
+    # Check the producibility of the biomass componets on the different carbon sources
+    for index, row in growth_phenotypes.iterrows():
+        # Make an ID for the results that is combination of the minimal media name and the carbon source
+        c_source = row["minimal_media"] + "_" + row["c_source"]
+        # Make a dictionary to store the results for just this carbon source
+        biomass_producibility[c_source] = {}
+        # Set the model media to match the experimental media
+        medium = eval(row["minimal_media"]).copy()
+        medium["EX_" + row["met_id"] + "_e0"] = (
+            1000.0  # FIXME: I should set this to a consistent, lower value
+        )
+        # Test it
+        biomass_producibility[c_source] = test_medium(medium, biomass_compounds, model)
 
-# Test the negative controls
-for ctrl_name, ctrl_medium in controls.items():
-    biomass_producibility[ctrl_name] = test_medium(
-        ctrl_medium, biomass_compounds, model
-    )
+    # Make a dataframe of the producibility results and save it to a CSV file
+    df = pd.DataFrame.from_dict(biomass_producibility)
+    # Save the dataframe to a CSV file and make the file name specific the the model.id
+    df.to_csv(os.path.join(OUT_DIR, model.id + "_biomass_producibility.csv"))
 
-# Make a dataframe of the producibility results and save it to a TSV file
-df = pd.DataFrame.from_dict(biomass_producibility)
-df.to_csv(os.path.join(FILE_DIR, "biomass_producibility.csv"))
+
+if __name__ == "__main__":
+    main()
