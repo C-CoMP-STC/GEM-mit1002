@@ -26,6 +26,12 @@ def main():
         "MBM + Glucose Gapfilled": os.path.join(
             REPO_DIR, "2025-01-21-mbm-glucose-gf.xml"
         ),
+        "All Gapfilled (Sequential)": os.path.join(
+            REPO_DIR, "2025-01-21-gap-filled-all-sequential.xml"
+        ),
+        "All Gapfilled (Independent)": os.path.join(
+            REPO_DIR, "2025-01-21-gap-filled-all-independent.xml"
+        ),
     }
 
     # Load the models and update their IDs (used in the result filenames) and store in a list for easy access
