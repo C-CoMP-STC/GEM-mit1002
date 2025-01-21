@@ -18,14 +18,23 @@ if not os.path.exists(OUT_DIR):
 
 
 def main():
-    # Load the model
-    model = cobra.io.read_sbml_model(
-        os.path.join(REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase.xml")
-    )
+    # Make a dctionary of the model IDs and the file paths
+    model_files = {
+        "KBase-nongapfilled": os.path.join(
+            REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase.xml"
+        ),
+        "MBM + Glucose Gapfilled": os.path.join(
+            REPO_DIR, "2025-01-21-mbm-glucose-gf.xml"
+        ),
+    }
 
-    # Set the model ID
-    # This is used in the result filenames
-    model.id = "KBase-nongapfilled"
+    # Load the models and update their IDs (used in the result filenames) and store in a list for easy access
+    models = []
+    for model_id, model_file in model_files.items():
+        # Load the model
+        model = cobra.io.read_sbml_model(model_file)
+        model.id = model_id
+        models.append(model)
 
     # Load the growth pheonotype results
     growth_phenotypes = pd.read_csv(
@@ -41,8 +50,9 @@ def main():
     with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
         media_definitions = pickle.load(f)
 
-    # Run my function on the model
-    test_model(model, growth_phenotypes, media_definitions)
+    # Run my function on each of the models
+    for model in models:
+        test_model(model, growth_phenotypes, media_definitions)
 
 
 # Helper function for setting the media regardless if the exchange reaction is
