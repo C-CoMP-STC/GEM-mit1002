@@ -3,7 +3,9 @@ import pickle
 import warnings
 
 import cobra
+import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR = os.path.dirname(FILE_DIR)
@@ -184,6 +186,54 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
     df = pd.DataFrame.from_dict(biomass_producibility)
     # Save the dataframe to a CSV file and make the file name specific the the model.id
     df.to_csv(os.path.join(OUT_DIR, model.id + "_biomass_producibility.csv"))
+
+    # Plot the producibility results
+    plot_prodcubility(model, df)
+
+
+# Function for plotting the producibility results
+def plot_prodcubility(model, df):
+    # Convert the producibility results to a boolean
+    df_binary = df.replace({True: 1, False: 0})
+
+    # Define my own color palette
+    my_palette = sns.color_palette(["red", "green"])
+
+    # Re-name the index to use the names of the metabolites
+    df_binary.index = [
+        model.metabolites.get_by_id(x).name if x in model.metabolites else x
+        for x in df_binary.index
+    ]
+
+    # Plot the producibility results as a heatmap
+    plt.figure(figsize=(10, 10))
+    sns.heatmap(
+        df_binary,
+        annot=False,
+        cmap=my_palette,
+        cbar_kws=dict(
+            ticks=[-0.66, 0.0, 0.66], label=["N/A", "Not producible", "Producible"]
+        ),
+    )
+
+    # Add white lines to separate the different cells
+    for i in range(df_binary.shape[0]):
+        plt.axhline(i, color="white", linewidth=0.5)
+    for i in range(df_binary.shape[1]):
+        plt.axvline(i, color="white", linewidth=1)
+
+    # Make sure all y ticks/component names are shown
+    plt.yticks(
+        [x + 0.5 for x in range(df_binary.shape[0])], df_binary.index, fontsize=5
+    )
+
+    plt.xlabel("Biomass composition")
+    plt.ylabel("Biomass compound")
+
+    plt.tight_layout()
+
+    # Save the plot
+    plt.savefig(os.path.join(OUT_DIR, model.id + "_biomass_producibility_heatmap.png"))
 
 
 if __name__ == "__main__":
