@@ -12,6 +12,18 @@ def get_mnx_id(id, source):
     # If there is more than one match, return all of them
     return mnx_xref[mnx_xref['source'] == combo_id]['ID'].values
 
+def get_seed_id(mnx_id):
+    # Check if there is a match in the xref file, if not, do nothing
+    # This should always be true, since I just got the ID from this database
+    if mnx_id not in mnx_xref['ID'].values:
+        return None
+    # Get the rows that match the MetaNetX ID
+    other_ids = mnx_xref[mnx_xref['ID'] == mnx_id]
+    # Get just the IDs that start with "seed.reaction:" for the source
+    seed_xrefs = other_ids[other_ids['source'].str.startswith('seed.reaction:')]
+    # Remove the "seed.reaction:" from the source and return all of the IDs
+    return seed_xrefs['source'].str.replace('seed.reaction:', '').values
+
 
 # Define a function that searches the values of a dictionary (which are both
 # strings and lists) for a string, and return the key(s) that have it as a
@@ -25,32 +37,51 @@ def search_dict(dictionary, search):
 
 
 # Read in Michelle's pangenome table
-# db = pd.read_csv('Pangenome from Michelle/Database_MIT1002GeneCalls.csv')
+db = pd.read_csv('Pangenome from Michelle/Database_MIT1002GeneCalls.csv')
 
 # Load in my KBase model
-# model = cobra.io.read_sbml_model("model.xml")
+model = cobra.io.read_sbml_model("model.xml")
 
 # Read in the MetaNetX reactions xref spreadsheet
-# mnx_xref = pd.read_csv('reac_xref.tsv', sep='\t', comment='#', header=None)
-# mnx_xref.columns = ['source', 'ID', 'description']
+mnx_xref = pd.read_csv('reac_xref.tsv', sep='\t', comment='#', header=None)
+mnx_xref.columns = ['source', 'ID', 'description']
 
 # Add a column for the MetaNetX reaction ID
-# db['MetaNetX Reaction ID'] = None
+db['MetaNetX Reaction ID'] = None
 
 # Get the MetaNetX ID for each reaction in the database
-# for index, row in db.iterrows():
-#     if pd.isnull(row['KEGG.Reaction']):
-#         continue
-#     mnx_id = get_mnx_id(row['KEGG.Reaction'], 'kegg.reaction')
-#     # If there is no MetaNetX ID, do nothing
-#     if not mnx_id:
-#         continue
-#     # If there is only one MetaNetX ID, add it to the annotation
-#     if len(mnx_id) == 1:
-#         db.at[index, 'MetaNetX Reaction ID'] = mnx_id[0]
-#     # If there are multiple MetaNetX IDs, add them all as a list
-#     if len(mnx_id) > 1:
-#         db.at[index, 'MetaNetX Reaction ID'] = [id for id in mnx_id]
+for index, row in db.iterrows():
+    if pd.isnull(row['KEGG.Reaction']):
+        continue
+    mnx_id = get_mnx_id(row['KEGG.Reaction'], 'kegg.reaction')
+    # If there is no MetaNetX ID, do nothing
+    if not mnx_id:
+        continue
+    # If there is only one MetaNetX ID, add it to the annotation
+    if len(mnx_id) == 1:
+        db.at[index, 'MetaNetX Reaction ID'] = mnx_id[0]
+    # If there are multiple MetaNetX IDs, add them all as a list
+    if len(mnx_id) > 1:
+        db.at[index, 'MetaNetX Reaction ID'] = [id for id in mnx_id]
+
+# Get the Seed ID for each reaction in the database
+db['ModelSEED ID'] = None
+for index, row in db.iterrows():
+    if pd.isnull(row['MetaNetX Reaction ID']):
+        continue
+    seed_id = get_seed_id(row['MetaNetX Reaction ID'])
+    # If there is no ModelSEED ID, do nothing
+    if len(seed_id) == 0:
+        continue
+    # If there is only one ModelSEED ID, add it to the annotation
+    if len(seed_id) == 1:
+        db.at[index, 'ModelSEED ID'] = seed_id[0]
+    # If there are multiple ModelSEED IDs, add them all as a list
+    if len(seed_id) > 1:
+        db.at[index, 'ModelSEED ID'] = [id for id in seed_id]
+
+# Save the database with the new columns
+db.to_csv('Pangenome from Michelle/database_w_MNX_SEED.csv', index=False)
 
 # # Load in the cleaned up database
 # db = pd.read_csv('Pangenome from Michelle/database_w_MNX.csv')
