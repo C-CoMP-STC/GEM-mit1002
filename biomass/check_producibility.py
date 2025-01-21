@@ -173,7 +173,7 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
         # Make a dictionary to store the results for just this carbon source
         biomass_producibility[c_source] = {}
         # Set the model media to match the experimental media
-        medium = eval(row["minimal_media"]).copy()
+        medium = media_definitions[row["minimal_media"]].copy()
         medium["EX_" + row["met_id"] + "_e0"] = (
             1000.0  # FIXME: I should set this to a consistent, lower value
         )
