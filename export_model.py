@@ -47,6 +47,22 @@ rxn_df = rxn_df[
     + [col for col in rxn_df.columns if col not in ["id", "name", "reaction"]]
 ]
 
+
+# Write a function to expand the annotation dictionary into sub-columns
+def expand_annoation_column(df, column_name="annotation"):
+    expanded = pd.json_normalize(df[column_name])
+    expanded.columns = pd.MultiIndex.from_arrays(
+        [[column_name] * len(expanded.columns), expanded.columns]
+    )
+    expanded_df = pd.concat([df.drop(columns=[column_name]), expanded], axis=1)
+    return expanded_df
+
+
+# Apply the function to the metabolites and reactions data frames
+met_df = expand_annoation_column(met_df)
+rxn_df = expand_annoation_column(rxn_df)
+
+
 # Save to excel
 with pd.ExcelWriter("model.xlsx") as writer:
     met_df.to_excel(writer, sheet_name="metabolites", index=False)
