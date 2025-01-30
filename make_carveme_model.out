@@ -1,6 +1,28 @@
-The input genome did not match sufficient genes/reactions in the database.
-/var/spool/sge/scc-mc7/job_scripts/2403872: line 18: -o: command not found
-Loading universe model...
-Loading media library...
-Scoring reactions...
-The input genome did not match sufficient genes/reactions in the database.
+
+-------------------------------------------------------------------------------
+ERROR: cplex/12.8 requires a Python module to be loaded.
+Run ONE of the following commands to load a supported Python version:
+  module load python2/2.7.X
+OR
+  module load python3/3.6.Y
+where X or Y is the PATCH number of your choice, e.g.:
+  module load python3/3.6.12
+
+After a Python module is loaded this can now be loaded:
+module load cplex/12.8_ac
+-------------------------------------------------------------------------------
+
+Lmod has detected the following error: 
+While processing the following module(s):
+    Module fullname  Module Filename
+    ---------------  ---------------
+    cplex/12.8_ac    /share/module.8/programming/cplex/12.8_ac.lua
+
+Traceback (most recent call last):
+  File "/projectnb/cometsfba/hscott/envs/carveme/bin/carve", line 8, in <module>
+    sys.exit(main())
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.7/site-packages/carveme/cli/carve.py", line 351, in main
+    set_default_solver(config.get('solver', 'default_solver'))
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.7/site-packages/reframed/solvers/__init__.py", line 88, in set_default_solver
+    raise RuntimeError(f"Solver {solvername} not available.")
+RuntimeError: Solver cplex not available.
