@@ -160,8 +160,73 @@ def write_media_tsv(media_dict, media_name, modelseed_db):
     # TODO: Does the concentration matter?
     media_df["concentration"] = 1
     # Save
-    media_df.to_csv(os.path.join(os.path.dirname(__file__), media_name + "_media.tsv"), sep="\t")
+    media_df.to_csv(
+        os.path.join(os.path.dirname(__file__), media_name + "_media.tsv"), sep="\t"
+    )
 
 
 write_media_tsv(mbm_media, "mbm", modelseed_db)
 write_media_tsv(l1_media, "l1", modelseed_db)
+
+
+# Write a function to conver the alias strings to a dictionary
+def convert_aliases_to_dict(alias_string):
+    return {
+        alias.split(":")[0]: [ak.strip() for ak in alias.split(":")[1].split(";")]
+        for alias in alias_string
+        if alias
+    }
+
+
+# Make a new dataframe for the carveme database
+media_db = pd.DataFrame(columns=["medium", "description", "compound", "name"])
+
+
+# Define a function to make the carveme media database
+def make_carveme_media(media_dict, media_id, media_name, modelseed_db, media_db):
+    for ex_rxn, min_flux in media_dict.items():
+        met = ex_rxn.replace("EX_", "").replace("_e0", "")
+        name = modelseed_db[met]["name"]
+        aliases = convert_aliases_to_dict(modelseed_db[met]["aliases"])
+        if "BiGG" not in aliases:
+            print(f"No BiGG ID for {name}")
+            bigg_to_use = met
+        else:
+            bigg_id = aliases["BiGG"]
+            if len(bigg_id) == 0:
+                print(f"No BiGG ID for {name}")
+                bigg_to_use = met
+            if len(bigg_id) > 1:
+                print(f"Multiple BiGG IDs for {name}: {bigg_id}")
+            bigg_to_use = bigg_id[0]
+        media_db = pd.concat(
+            [
+                media_db,
+                pd.DataFrame(
+                    {
+                        "medium": media_id,
+                        "description": media_name,
+                        "compound": bigg_to_use,
+                        "name": modelseed_db[met]["name"],
+                    },
+                    index=[0],
+                ),
+            ],
+            ignore_index=True,
+        )
+    return media_db
+
+
+media_db = make_carveme_media(
+    mbm_media, "mbm", "Minimal Basal Medium (Moran Lab)", modelseed_db, media_db
+)
+media_db = make_carveme_media(
+    l1_media, "l1", "L1 Minimal Medium", modelseed_db, media_db
+)
+
+# Save the media database
+media_db.to_csv(
+    os.path.join(os.path.dirname(__file__), "no_c_media_database.tsv"),
+    sep="\t",
+    index=False,
+)
