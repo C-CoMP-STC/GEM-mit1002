@@ -1,28 +1,53 @@
+diamond v0.9.24.125 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU GPL <https://www.gnu.org/licenses/gpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
 
--------------------------------------------------------------------------------
-ERROR: cplex/12.8 requires a Python module to be loaded.
-Run ONE of the following commands to load a supported Python version:
-  module load python2/2.7.X
-OR
-  module load python3/3.6.Y
-where X or Y is the PATCH number of your choice, e.g.:
-  module load python3/3.6.12
-
-After a Python module is loaded this can now be loaded:
-module load cplex/12.8_ac
--------------------------------------------------------------------------------
-
-Lmod has detected the following error: 
-While processing the following module(s):
-    Module fullname  Module Filename
-    ---------------  ---------------
-    cplex/12.8_ac    /share/module.8/programming/cplex/12.8_ac.lua
-
+#CPU threads: 20
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Database file: /projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/data/generated/bigg_proteins.faa
+Opening the database file...  [0.023643s]
+Loading sequences...  [0.108607s]
+Masking sequences...  [0.521098s]
+Writing sequences...  [0.013503s]
+Hashing sequences...  [0.005311s]
+Loading sequences...  [1.5e-05s]
+Writing trailer...  [0.000431s]
+Closing the input file...  [2.2e-05s]
+Closing the database file...  [0.013742s]
+Database hash = a092441c8b119bca543410d1f98fc9f7
+Processed 26727 sequences, 11170577 letters.
+Total time = 0.686685s
+Running diamond for the first time, please wait while we build the internal database...
+Loading universe model...
+Loading media library...
+Scoring reactions...
 Traceback (most recent call last):
   File "/projectnb/cometsfba/hscott/envs/carveme/bin/carve", line 8, in <module>
     sys.exit(main())
-  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.7/site-packages/carveme/cli/carve.py", line 351, in main
-    set_default_solver(config.get('solver', 'default_solver'))
-  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.7/site-packages/reframed/solvers/__init__.py", line 88, in set_default_solver
-    raise RuntimeError(f"Solver {solvername} not available.")
-RuntimeError: Solver cplex not available.
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/cli/carve.py", line 380, in main
+    ref_score=args.reference_score
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/cli/carve.py", line 181, in maincall
+    scores, gene2gene = reaction_scoring(annotations, gprs, debug_output=debug_output)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/reconstruction/scoring.py", line 106, in reaction_scoring
+    .agg({'query_gene': merge_subunits, 'score': merge_subunit_scores})
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/groupby/generic.py", line 951, in aggregate
+    result, how = self._aggregate(func, *args, **kwargs)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/base.py", line 416, in _aggregate
+    result = _agg(arg, _agg_1dim)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/base.py", line 383, in _agg
+    result[fname] = func(fname, agg_how)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/base.py", line 367, in _agg_1dim
+    return colg.aggregate(how)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/groupby/generic.py", line 256, in aggregate
+    func, *args, engine=engine, engine_kwargs=engine_kwargs, **kwargs
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/groupby/groupby.py", line 1094, in _python_agg_general
+    return self._python_apply_general(f, self._selected_obj)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/groupby/groupby.py", line 892, in _python_apply_general
+    keys, values, mutated = self.grouper.apply(f, data, self.axis)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/groupby/ops.py", line 220, in apply
+    res = f(group)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/pandas/core/groupby/groupby.py", line 1062, in <lambda>
+    f = lambda x: func(x, *args, **kwargs)
+  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/reconstruction/scoring.py", line 19, in merge_subunits
+    protein = ' and '.join(sorted(genes))
+TypeError: sequence item 0: expected str instance, float found
