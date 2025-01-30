@@ -161,7 +161,7 @@ def write_media_tsv(media_dict, media_name, modelseed_db):
     media_df["concentration"] = 1
     # Save
     media_df.to_csv(
-        os.path.join(os.path.dirname(__file__), media_name + "_media.tsv"), sep="\t"
+        os.path.join(os.path.dirname(__file__), 'kbase_tsvs', media_name + "_media.tsv"), sep="\t"
     )
 
 
