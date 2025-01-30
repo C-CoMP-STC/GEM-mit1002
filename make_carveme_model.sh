@@ -5,10 +5,12 @@
 #$ -o make_carveme_model.out
 #$ -j y  # Merge the error and output streams into a single file
 
-module load python3/3.6.12
 module load cplex
 module load diamond
-module load carveme/1.5.1
+module load miniconda
+
+# Activate the CarveMe environment
+conda activate /projectnb/cometsfba/hscott/envs/carveme
 
 # Run CarveMe
 carve --egg genome/eggnog_output.emapper.annotations \
