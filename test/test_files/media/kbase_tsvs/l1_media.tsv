@@ -1,6 +1,7 @@
 compounds	minFlux	maxFlux	name	formula	concentration
 cpd00007	-20	1000	O2	O2	1
 cpd00971	-1000	1000	Na+	Na	1
+cpd00209	-1000	1000	Nitrate	NO3	1
 cpd00009	-1000	1000	Phosphate	HO4P	1
 cpd20826	-1000	1000	Silica	O2Si	1
 cpd00240	-1000	1000	EDTA	C10H13N2O8	1
