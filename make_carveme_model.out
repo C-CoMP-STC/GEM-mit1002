@@ -3,15 +3,5 @@ Loading media library...
 Scoring reactions...
 Reconstructing a single model
 Gap filling for mbm_glc__D, l1_glc__D, mbm_ac, l1_ac, mbm_ala__L, l1_ala__L, mbm_pro__L, l1_pro__L, l1_glyc3p, l1_tyr__L, l1_glu__L, l1_val__L...
-Traceback (most recent call last):
-  File "/projectnb/cometsfba/hscott/envs/carveme/bin/carve", line 8, in <module>
-    sys.exit(main())
-  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/cli/carve.py", line 380, in main
-    ref_score=args.reference_score
-  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/cli/carve.py", line 240, in maincall
-    multiGapFill(model, universe_model, media, media_db, scores=scores, max_uptake=max_uptake, inplace=True)
-  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/reconstruction/gapfilling.py", line 140, in multiGapFill
-    scores=scores, inplace=True, bigM=bigM, tag=medium_name)#,solver=solver, )
-  File "/projectnb/cometsfba/hscott/envs/carveme/lib/python3.6/site-packages/carveme/reconstruction/gapfilling.py", line 74, in gapFill
-    raise RuntimeError('Failed to gapfill model for medium {}'.format(tag))
-RuntimeError: Failed to gapfill model for medium l1_glc__D
+Added 100 reactions and 53 metabolites
+Done.
