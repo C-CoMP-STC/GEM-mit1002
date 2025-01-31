@@ -28,6 +28,7 @@ mbm_glc__D	Minimal Basal Medium (Moran Lab) with Glucose	cobalt2	Co2+
 mbm_glc__D	Minimal Basal Medium (Moran Lab) with Glucose	glc__D	Glucose 
 l1_glc__D	L1 Minimal Medium with Glucose	o2	O2
 l1_glc__D	L1 Minimal Medium with Glucose	na1	Na+
+l1_glc__D	L1 Minimal Medium with Glucose	no3	Nitrate
 l1_glc__D	L1 Minimal Medium with Glucose	pi	Phosphate
 l1_glc__D	L1 Minimal Medium with Glucose	fe3	Fe+3
 l1_glc__D	L1 Minimal Medium with Glucose	cl	Cl-
@@ -76,6 +77,7 @@ mbm_ac	Minimal Basal Medium (Moran Lab) with Acetate	cobalt2	Co2+
 mbm_ac	Minimal Basal Medium (Moran Lab) with Acetate	ac	Acetate
 l1_ac	L1 Minimal Medium with Acetate	o2	O2
 l1_ac	L1 Minimal Medium with Acetate	na1	Na+
+l1_ac	L1 Minimal Medium with Acetate	no3	Nitrate
 l1_ac	L1 Minimal Medium with Acetate	pi	Phosphate
 l1_ac	L1 Minimal Medium with Acetate	fe3	Fe+3
 l1_ac	L1 Minimal Medium with Acetate	cl	Cl-
@@ -205,6 +207,7 @@ mbm_ala__L	Minimal Basal Medium (Moran Lab) with Alanine	cobalt2	Co2+
 mbm_ala__L	Minimal Basal Medium (Moran Lab) with Alanine	ala__L	Alanine
 l1_ala__L	L1 Minimal Medium with Alanine	o2	O2
 l1_ala__L	L1 Minimal Medium with Alanine	na1	Na+
+l1_ala__L	L1 Minimal Medium with Alanine	no3	Nitrate
 l1_ala__L	L1 Minimal Medium with Alanine	pi	Phosphate
 l1_ala__L	L1 Minimal Medium with Alanine	fe3	Fe+3
 l1_ala__L	L1 Minimal Medium with Alanine	cl	Cl-
@@ -253,6 +256,7 @@ mbm_pro__L	Minimal Basal Medium (Moran Lab) with Proline	cobalt2	Co2+
 mbm_pro__L	Minimal Basal Medium (Moran Lab) with Proline	pro__L	Proline
 l1_pro__L	L1 Minimal Medium with Proline	o2	O2
 l1_pro__L	L1 Minimal Medium with Proline	na1	Na+
+l1_pro__L	L1 Minimal Medium with Proline	no3	Nitrate
 l1_pro__L	L1 Minimal Medium with Proline	pi	Phosphate
 l1_pro__L	L1 Minimal Medium with Proline	fe3	Fe+3
 l1_pro__L	L1 Minimal Medium with Proline	cl	Cl-
@@ -328,6 +332,7 @@ mbm_fru	Minimal Basal Medium (Moran Lab) with Fructose	cobalt2	Co2+
 mbm_fru	Minimal Basal Medium (Moran Lab) with Fructose	fru	Fructose
 l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	o2	O2
 l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	na1	Na+
+l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	no3	Nitrate
 l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	pi	Phosphate
 l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	fe3	Fe+3
 l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	cl	Cl-
@@ -349,6 +354,7 @@ l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	mg2	Mg
 l1_glyc3p	L1 Minimal Medium with Glycerol-3-phosphate	glyc3p	Glycerol-3-phosphate
 l1_tyr__L	L1 Minimal Medium with Tyrosine	o2	O2
 l1_tyr__L	L1 Minimal Medium with Tyrosine	na1	Na+
+l1_tyr__L	L1 Minimal Medium with Tyrosine	no3	Nitrate
 l1_tyr__L	L1 Minimal Medium with Tyrosine	pi	Phosphate
 l1_tyr__L	L1 Minimal Medium with Tyrosine	fe3	Fe+3
 l1_tyr__L	L1 Minimal Medium with Tyrosine	cl	Cl-
@@ -370,6 +376,7 @@ l1_tyr__L	L1 Minimal Medium with Tyrosine	mg2	Mg
 l1_tyr__L	L1 Minimal Medium with Tyrosine	tyr__L	Tyrosine
 l1_glu__L	L1 Minimal Medium with Glutamate	o2	O2
 l1_glu__L	L1 Minimal Medium with Glutamate	na1	Na+
+l1_glu__L	L1 Minimal Medium with Glutamate	no3	Nitrate
 l1_glu__L	L1 Minimal Medium with Glutamate	pi	Phosphate
 l1_glu__L	L1 Minimal Medium with Glutamate	fe3	Fe+3
 l1_glu__L	L1 Minimal Medium with Glutamate	cl	Cl-
@@ -391,6 +398,7 @@ l1_glu__L	L1 Minimal Medium with Glutamate	mg2	Mg
 l1_glu__L	L1 Minimal Medium with Glutamate	glu__L	Glutamate
 l1_val__L	L1 Minimal Medium with Valine	o2	O2
 l1_val__L	L1 Minimal Medium with Valine	na1	Na+
+l1_val__L	L1 Minimal Medium with Valine	no3	Nitrate
 l1_val__L	L1 Minimal Medium with Valine	pi	Phosphate
 l1_val__L	L1 Minimal Medium with Valine	fe3	Fe+3
 l1_val__L	L1 Minimal Medium with Valine	cl	Cl-
