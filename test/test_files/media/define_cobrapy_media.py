@@ -98,6 +98,7 @@ l1_media = {
     "EX_cpd00007_e0": 20,  # O2_e0
     # L1 salts
     "EX_cpd00971_e0": 1000,  # Na+_e0 (in NaNO3, NaH2PO4, NaSiO3, Na2EDTA, NaMoO4, Na3VO4)
+    "EX_cpd00209_e0": 1000,  # NO3- (in NaNO3)
     "EX_cpd00009_e0": 1000,  # Phosphate (HO4P) (in NaH2PO4)
     "EX_cpd20826_e0": 1000,  # Silica (O2Si) (in NaSiO3)
     # Trace element solution
@@ -161,7 +162,10 @@ def write_media_tsv(media_dict, media_name, modelseed_db):
     media_df["concentration"] = 1
     # Save
     media_df.to_csv(
-        os.path.join(os.path.dirname(__file__), 'kbase_tsvs', media_name + "_media.tsv"), sep="\t"
+        os.path.join(
+            os.path.dirname(__file__), "kbase_tsvs", media_name + "_media.tsv"
+        ),
+        sep="\t",
     )
 
 
