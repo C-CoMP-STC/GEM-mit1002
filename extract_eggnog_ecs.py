@@ -37,6 +37,9 @@ eggnog_annotations.columns = [
 # Get the EC column
 eggnog_annotations["EC"]
 
+# Print the EC numbers (to share with Daniel)
+print(list(eggnog_annotations["EC"].unique()))
+
 # Check the number of bigg reactions in the dataset
 eggnog_annotations["BiGG_Reaction"].nunique()
 # 421 unique BiGG reactions
