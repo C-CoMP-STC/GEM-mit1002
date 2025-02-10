@@ -13,7 +13,7 @@ module unload python3/3.6.12
 
 # Activate the CarveMe environment
 module load miniconda
-conda activate /projectnb/cometsfba/hscott/envs/carveme
+conda activate /projectnb/cometsfba/hscott/envs/carveme-dev
 
 
 # Run CarveMe
@@ -22,4 +22,4 @@ carve --egg genome/clean_eggnog_output.emapper.annotations \
     --mediadb test/test_files/media/media_database.tsv \
     --fbc2 \
     -o carveme_model.xml \
-    -v
+    -v --debug
