@@ -1,7 +1,13 @@
-usage: carve [-h] [--dna | --egg | --refseq] [--diamond-args DIAMOND_ARGS]
+'usage: carve [-h] [--dna | --egg | --refseq] [--diamond-args DIAMOND_ARGS]
              [-r] [-o OUTPUT] [-u UNIVERSE | --universe-file UNIVERSE_FILE]
              [--cobra | --fbc2] [-n ENSEMBLE] [-g GAPFILL] [-i INIT]
              [--mediadb MEDIADB] [-v] [-d] [--soft SOFT] [--hard HARD]
              [--reference REFERENCE] [--solver SOLVER]
              INPUT [INPUT ...]
 carve: error: Gap fill and ensemble generation cannot currently be combined (not implemented yet).
+In maincall:
+verbose: True
+debug: True
+Loading universe model...
+Scoring reactions...
+Building an ensemble of 60 models
