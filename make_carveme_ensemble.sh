@@ -22,6 +22,6 @@ conda activate /projectnb/cometsfba/hscott/envs/carveme-dev
 #     -v --debug -n 60
 
 # Run CarveMe with Diamond on the protein sequences directly
-carve genome/MIT1002_anvio_prot_seqs.faa \
+carve genome/MIT1002_anvio_prot_seqs.fa \
     -o carveme_ensemble_diamond.xml \
     -v --debug -n 60
