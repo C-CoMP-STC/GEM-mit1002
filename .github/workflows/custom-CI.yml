@@ -4,7 +4,9 @@ name: Custom-CI
 
 # Controls when the workflow will run
 # Run for pushes and pulls on every branch and manually from the Actions tab
-on: [push, pull_request, workflow_dispatch]
+# on: [push, pull_request, workflow_dispatch]
+# Just keep the button in the Actions tab for now, we can use the above to add all the triggers later
+on: [workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
