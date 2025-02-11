@@ -16,7 +16,12 @@ module load miniconda
 conda activate /projectnb/cometsfba/hscott/envs/carveme-dev
 
 
-# Run CarveMe
-carve --egg genome/clean_eggnog_output.emapper.annotations \
-    -o carveme_ensemble.xml \
+# Run CarveMe on the eggNOG annotations
+# carve --egg genome/clean_eggnog_output.emapper.annotations \
+#     -o carveme_ensemble.xml \
+#     -v --debug -n 60
+
+# Run CarveMe with Diamond on the protein sequences directly
+carve genome/MIT1002_anvio_prot_seqs.faa \
+    -o carveme_ensemble_diamond.xml \
     -v --debug -n 60

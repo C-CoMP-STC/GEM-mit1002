@@ -11,3 +11,11 @@ debug: True
 Loading universe model...
 Scoring reactions...
 Building an ensemble of 60 models
+
+Error opening file genome/MIT1002_anvio_prot_seqs.faa: No such file or directory
+In maincall:
+verbose: True
+debug: True
+Running diamond...
+diamond blastp -d /projectnb/cometsfba/hscott/carveme/carveme/data/generated/bigg_proteins.dmnd -q genome/MIT1002_anvio_prot_seqs.faa -o genome/MIT1002_anvio_prot_seqs.tsv --more-sensitive --top 10 --quiet
+Failed to run diamond.
