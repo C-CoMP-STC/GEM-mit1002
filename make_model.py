@@ -1,8 +1,6 @@
 import sys
 
 import cobra
-import cobrakbase
-import sklearn.neighbors
 from cobrakbase.core.kbasefba.newmodeltemplate_builder import NewModelTemplateBuilder
 from modelseedpy import FBAHelper, KBaseMediaPkg, MSBuilder, MSGenome, RastClient
 from modelseedpy.core.msbuilder import build_biomass, core_atp
