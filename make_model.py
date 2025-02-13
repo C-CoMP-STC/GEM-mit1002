@@ -1,7 +1,7 @@
 import sys
 
 import cobra
-from cobrakbase.core.kbasefba.newmodeltemplate_builder import NewModelTemplateBuilder
+from modelseedpy.core.mstemplate import MSTemplateBuilder
 from modelseedpy import FBAHelper, KBaseMediaPkg, MSBuilder, MSGenome, RastClient
 from modelseedpy.core.msbuilder import build_biomass, core_atp
 from modelseedpy.helpers import get_classifier, get_template
@@ -46,7 +46,7 @@ template = get_template("template_gram_neg")
 
 # Convert to Cobra?
 # Not sure what this is doing
-cobra_template = NewModelTemplateBuilder.from_dict(template, None).build()
+cobra_template = MSTemplateBuilder.from_dict(template, None).build()
 
 # Make the model
 model_builder = MSBuilder(genome, cobra_template)
