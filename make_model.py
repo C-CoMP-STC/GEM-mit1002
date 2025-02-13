@@ -1,9 +1,9 @@
 import sys
 
 import cobra
-from modelseedpy.core.mstemplate import MSTemplateBuilder
 from modelseedpy import FBAHelper, KBaseMediaPkg, MSBuilder, MSGenome, RastClient
 from modelseedpy.core.msbuilder import build_biomass, core_atp
+from modelseedpy.core.mstemplate import MSTemplateBuilder
 from modelseedpy.helpers import get_classifier, get_template
 
 # TODO: Check that this genome file is the correct one to be using
