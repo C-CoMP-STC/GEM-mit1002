@@ -6,7 +6,7 @@ and save intermediate SBML files.
 
 import ast
 import json
-import os
+import osg
 import pickle
 
 import cobra
@@ -314,6 +314,11 @@ def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_
 final_model = gapfill_and_annotate_biomass_components(
     base_model, template, media_definitions["mbm_media"], "bio1"
 )
+
+for rxn in final_model.reactions:
+    if "gapfill_results" in rxn.annotation:
+        # Convert the gapfill_results dictionary into a JSON string
+        rxn.annotation["gapfill_results"] = json.dumps(rxn.annotation["gapfill_results"])
 
 # Save the final gap-filled model
 cobra.io.write_sbml_model(final_model, "modelseedpy_model_03.xml")
