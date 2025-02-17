@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!~/opt/miniconda3/envs/modelseedpy-dev/bin/python
 """
 Script to build a ModelSEED model from a genome, add biomass and gap‐filled reactions,
 and save intermediate SBML files.
@@ -65,7 +65,9 @@ def parse_gff(gff_path):
 
 
 # Load GFF annotations and attach them to genome features
-gff_annotations = parse_gff("genome/Michelle's 4106 gene calls/2738541267_genecalls.gff")
+gff_annotations = parse_gff(
+    "genome/Michelle's 4106 gene calls/2738541267_genecalls.gff"
+)
 for feature in genome.features:
     if feature.id in gff_annotations:
         feature.annotation = gff_annotations[feature.id]
@@ -109,10 +111,14 @@ cobra.io.write_sbml_model(base_model, "modelseedpy_model_01.xml")
 # =============================================================================
 # Load ModelSEED reaction and compound databases
 rxn_db = json.load(
-    open("/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/reactions.json")
+    open(
+        "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/reactions.json"
+    )
 )
 met_db = json.load(
-    open("/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/compounds.json")
+    open(
+        "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/compounds.json"
+    )
 )
 
 # Get the list of reaction IDs from the template (remove the trailing compartment tag)
@@ -132,13 +138,20 @@ michelle_rxns = pd.read_csv(
 
 # Filter for inferred reactions with a valid ModelSEED ID and convert the IDs from string to list
 rxns_to_add = michelle_rxns[
-    (michelle_rxns["Inferred Presence"] == 1) & (michelle_rxns["ModelSEED ID"].notnull())
+    (michelle_rxns["Inferred Presence"] == 1)
+    & (michelle_rxns["ModelSEED ID"].notnull())
 ].copy()
 rxns_to_add["ModelSEED ID"] = rxns_to_add["ModelSEED ID"].apply(ast.literal_eval)
 
 # Combine the lists of reaction IDs and get unique values, then subset to those in the template DB
 lists_of_rxn_ids = rxns_to_add["ModelSEED ID"].tolist()
-rxn_ids = list({x for item in lists_of_rxn_ids for x in (item if isinstance(item, list) else [item])})
+rxn_ids = list(
+    {
+        x
+        for item in lists_of_rxn_ids
+        for x in (item if isinstance(item, list) else [item])
+    }
+)
 rxn_ids = [rxn_id for rxn_id in rxn_ids if rxn_id in template_rxn_db]
 
 
@@ -192,7 +205,9 @@ def create_cobra_reaction(model, modelseed_db, rxn_id):
 
         # Add metabolite if not present
         if met_id not in model.metabolites:
-            met_obj = cobra.Metabolite(id=met_id, name=met_name, compartment=compartment)
+            met_obj = cobra.Metabolite(
+                id=met_id, name=met_name, compartment=compartment
+            )
             model.add_metabolites([met_obj])
         else:
             met_obj = model.metabolites.get_by_id(met_id)
@@ -268,7 +283,9 @@ def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_
 
         # Determine added reactions by comparing reaction IDs.
         temp_rxn_ids = {r.id for r in temp_model.reactions}
-        added_rxn_ids = [r.id for r in gapfilled_model.reactions if r.id not in temp_rxn_ids]
+        added_rxn_ids = [
+            r.id for r in gapfilled_model.reactions if r.id not in temp_rxn_ids
+        ]
         gapfill_results[met.id] = added_rxn_ids
 
         # Add new gap-filled reactions to the final model and annotate them.
