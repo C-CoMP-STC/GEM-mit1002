@@ -1,17 +1,18 @@
 import ast
 import json
 import os
+import pickle
 import sys
 
 import cobra
-import cobrakbase
 import pandas as pd
 from modelseedpy import FBAHelper, KBaseMediaPkg, MSBuilder, MSGenome, RastClient
 from modelseedpy.core.msbuilder import build_biomass, core_atp
 from modelseedpy.core.mstemplate import MSTemplateBuilder
 from modelseedpy.helpers import get_classifier, get_template
 
-kbase_api = cobrakbase.KBaseAPI()
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+TESTFILE_DIR = os.path.join(FILE_DIR, "test", "test_files")
 
 # Load the genome (From Michelle's anvi'o gene calls)
 genome = MSGenome.from_fasta(
@@ -288,7 +289,9 @@ for rxn_id in rxn_ids:
 cobra.io.write_sbml_model(base_model, "modelseedpy_model_02.xml")
 
 # Load my media
-media = kbase_api.get_from_ws("Carbon-D-Glucose", "KBaseMedia")
+# Load the media definitions
+with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
+    media_definitions = pickle.load(f)
 
 
 def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_id):
@@ -384,14 +387,11 @@ def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_
             if rxn.id in added_rxn_ids:
                 rxn.annotation["gapfill_results"][met.id] = 1
 
-        # Reset the objective of the temporary model (optional here).
-        temp_model.objective = original_objective
-
     # (Optionally, you could remove the temporary demand reactions from final_model.)
     # For example, to remove all reactions with IDs starting with "DM_":
-    dm_rxn_ids = [rxn.id for rxn in final_model.reactions if rxn.id.startswith("DM_")]
-    if dm_rxn_ids:
-        final_model.remove_reactions(dm_rxn_ids, remove_orphans=True)
+    sk_rxn_ids = [rxn.id for rxn in final_model.reactions if rxn.id.startswith("SK_")]
+    if sk_rxn_ids:
+        final_model.remove_reactions(sk_rxn_ids, remove_orphans=True)
 
     # Now, each reaction in final_model.annotation["gapfill_results"] is a dictionary, for example:
     #   {"cpd00001_c0": 1, "cpd00012_c0": 0, ...}
@@ -413,7 +413,7 @@ def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_
 # And your biomass reaction ID is "bio1". Then, you can do:
 #
 final_model = gapfill_and_annotate_biomass_components(
-    base_model, template, media, "bio1"
+    base_model, template, media_definitions["mbm_media"], "bio1"
 )
 #
 # Now, for any reaction in final_model, you can inspect:
