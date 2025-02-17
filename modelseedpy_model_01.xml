@@ -19,7 +19,6 @@
     <listOfCompartments>
       <compartment id="c0" name="Cytosol" constant="true"/>
       <compartment id="e0" name="Extracellular" constant="true"/>
-      <compartment constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
       <species id="M_cpd00443_c0" name="ABEE [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="C7H6NO2">
