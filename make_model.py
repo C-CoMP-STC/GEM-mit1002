@@ -426,4 +426,4 @@ final_model = gapfill_and_annotate_biomass_components(
 # and each reaction’s annotation carries the binary ensemble state information.
 
 # Save the final model
-cobra.io.write_sbml_model(final_model, "modelseedpy_model_02.xml")
+cobra.io.write_sbml_model(final_model, "modelseedpy_model_03.xml")
