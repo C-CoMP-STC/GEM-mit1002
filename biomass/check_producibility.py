@@ -20,17 +20,9 @@ if not os.path.exists(OUT_DIR):
 def main():
     # Make a dctionary of the model IDs and the file paths
     model_files = {
-        "KBase-nongapfilled": os.path.join(
-            REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase.xml"
-        ),
-        "MBM + Glucose Gapfilled": os.path.join(
-            REPO_DIR, "2025-01-21-mbm-glucose-gf.xml"
-        ),
-        "All Gapfilled (Sequential)": os.path.join(
-            REPO_DIR, "2025-01-21-gap-filled-all-sequential.xml"
-        ),
-        "All Gapfilled (Independent)": os.path.join(
-            REPO_DIR, "2025-01-21-gap-filled-all-independent.xml"
+        "Base Model (ModelSEEDpy)": os.path.join(REPO_DIR, "modelseedpy_model_01.xml"),
+        "Glucose Gapfilled (ModelSEEDpy)": os.path.join(
+            REPO_DIR, "modelseedpy_model_04.xml"
         ),
     }
 
@@ -58,7 +50,7 @@ def main():
 
     # Run my function on each of the models
     for model in models:
-        test_model(model, growth_phenotypes, media_definitions)
+        test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1")
 
 
 # Helper function for setting the media regardless if the exchange reaction is
@@ -147,7 +139,9 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
     # because by default the sink reactions are reversible, and so can be
     # used to import metabolites that are not in the media
     for metabolite in model.metabolites:
-        model.add_boundary(metabolite, type="sink", lb=0)
+        # Check if there is already a sink reaction for this metabolite
+        if "SK_" + metabolite.id not in [r.id for r in model.reactions]:
+            model.add_boundary(metabolite, type="sink", lb=0)
 
     # Get the biomass composition from the model
     biomass_rxn = model.reactions.get_by_id(biomass_rxn)
