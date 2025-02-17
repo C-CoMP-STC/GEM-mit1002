@@ -237,6 +237,38 @@ with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as
 media_definitions["mbm_media"]["EX_cpd00027_e0"] = 10
 
 
+# Define my own classed to match the KBaseMediaPkg class
+class MediaCompound:
+    def __init__(self, compound_id, maxFlux, minFlux, concentration=0.001):
+        self.id = compound_id
+        self.maxFlux = maxFlux
+        self.minFlux = minFlux
+        self.concentration = concentration
+
+
+class CustomMedia:
+    def __init__(self, name, compounds):
+        self.name = name
+        self.mediacompounds = compounds
+
+
+# Convert the dictionary of media definitions to a list of MediaCompound objects
+# Convert the COBRApy media dictionary into a list of MediaCompound objects.
+mediacompounds = []
+for exch_id, flux in media_definitions["mbm_media"].items():
+    # Convert exchange reaction ID (e.g., "EX_cpd00007_e0") to a metabolite ID.
+    # This example assumes your model’s metabolites have IDs like "cpd00007_e0".
+    if exch_id.startswith("EX_"):
+        met_id = exch_id[3:]
+    else:
+        met_id = exch_id
+    # Here we use the flux as the maximum uptake (maxFlux) and set minFlux to 0.
+    mediacompounds.append(MediaCompound(met_id, maxFlux=flux, minFlux=0))
+
+# Create the custom media object.
+my_media = CustomMedia("Custom Media", mediacompounds)
+
+
 def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_id):
     """
     For each biomass component in the biomass reaction, run gap filling by adding a temporary sink
@@ -331,9 +363,7 @@ def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_
 # =============================================================================
 #   Gapfill for growth (really just testing the gapfilling)
 # =============================================================================
-gapfilled_model = MSBuilder.gapfill_model(
-    base_model, "bio1", template, media_definitions["mbm_media"]
-)
+gapfilled_model = MSBuilder.gapfill_model(base_model, "bio1", cobra_template, my_media)
 
 # Save the final gap-filled model
 cobra.io.write_sbml_model(gapfilled_model, "modelseedpy_model_04.xml")
