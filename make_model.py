@@ -233,6 +233,9 @@ cobra.io.write_sbml_model(base_model, "modelseedpy_model_02.xml")
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
 
+# Add glucose to the mbm media
+media_definitions["mbm_media"]["EX_cpd00027_e0"] = 10
+
 
 def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_id):
     """
