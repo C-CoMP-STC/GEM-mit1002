@@ -6,7 +6,7 @@ and save intermediate SBML files.
 
 import ast
 import json
-import osg
+import os
 import pickle
 
 import cobra
