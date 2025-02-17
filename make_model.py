@@ -310,15 +310,27 @@ def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_
     return final_model
 
 
-# Run gap filling for each biomass component in the biomass reaction "bio1"
-final_model = gapfill_and_annotate_biomass_components(
-    base_model, template, media_definitions["mbm_media"], "bio1"
+# # Run gap filling for each biomass component in the biomass reaction "bio1"
+# final_model = gapfill_and_annotate_biomass_components(
+#     base_model, template, media_definitions["mbm_media"], "bio1"
+# )
+
+# for rxn in final_model.reactions:
+#     if "gapfill_results" in rxn.annotation:
+#         # Convert the gapfill_results dictionary into a JSON string
+#         rxn.annotation["gapfill_results"] = json.dumps(
+#             rxn.annotation["gapfill_results"]
+#         )
+
+# # Save the final gap-filled model
+# cobra.io.write_sbml_model(final_model, "modelseedpy_model_03.xml")
+
+# =============================================================================
+#   Gapfill for growth (really just testing the gapfilling)
+# =============================================================================
+gapfilled_model = MSBuilder.gapfill_model(
+    base_model, "bio1", template, media_definitions["mbm_media"]
 )
 
-for rxn in final_model.reactions:
-    if "gapfill_results" in rxn.annotation:
-        # Convert the gapfill_results dictionary into a JSON string
-        rxn.annotation["gapfill_results"] = json.dumps(rxn.annotation["gapfill_results"])
-
 # Save the final gap-filled model
-cobra.io.write_sbml_model(final_model, "modelseedpy_model_03.xml")
+cobra.io.write_sbml_model(gapfilled_model, "modelseedpy_model_04.xml")
