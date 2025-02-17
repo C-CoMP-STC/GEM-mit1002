@@ -4,11 +4,14 @@ import os
 import sys
 
 import cobra
+import cobrakbase
 import pandas as pd
 from modelseedpy import FBAHelper, KBaseMediaPkg, MSBuilder, MSGenome, RastClient
 from modelseedpy.core.msbuilder import build_biomass, core_atp
 from modelseedpy.core.mstemplate import MSTemplateBuilder
 from modelseedpy.helpers import get_classifier, get_template
+
+kbase_api = cobrakbase.KBaseAPI()
 
 # Load the genome (From Michelle's anvi'o gene calls)
 genome = MSGenome.from_fasta(
@@ -284,5 +287,143 @@ for rxn_id in rxn_ids:
 # Save the model
 cobra.io.write_sbml_model(base_model, "modelseedpy_model_02.xml")
 
-# Gapfill for the production of alanine
+# Load my media
+media = kbase_api.get_from_ws("Carbon-D-Glucose", "KBaseMedia")
 
+
+def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_id):
+    """
+    For each biomass component in the biomass reaction, run gap filling by
+    adding a temporary demand reaction for that component. Then, union all gap filled
+    reactions into the final model and update each reaction's annotation with a
+    dictionary mapping biomass component IDs to a binary flag (1 = gap filled
+    for that component, 0 = not gap filled).
+
+    Parameters:
+      model (cobra.Model): The original COBRApy model.
+      template: A template (e.g., from KBase) needed by MSBuilder.gapfill_model.
+      media: A media object (e.g., from KBaseMedia).
+      biomass_rxn_id (str): The ID of the biomass reaction in the model.
+
+    Returns:
+      cobra.Model: The final model containing the union of gap filled reactions,
+                   with each reaction annotated with its gap fill results.
+    """
+    # Make a copy of the original model to serve as the base.
+    base_model = model.copy()
+
+    # Add sink reactions for all metabolites, but set the lower bound to 0
+    # because by default the sink reactions are reversible, and so can be
+    # used to import metabolites that are not in the media
+    for metabolite in model.metabolites:
+        base_model.add_boundary(metabolite, type="sink", lb=0)
+
+    # Get the biomass reaction and the list of biomass components (metabolites).
+    try:
+        biomass_rxn = base_model.reactions.get_by_id(biomass_rxn_id)
+    except KeyError:
+        raise ValueError(f"Biomass reaction {biomass_rxn_id} not found in the model.")
+    biomass_components = list(biomass_rxn.metabolites.keys())
+
+    # Prepare a dictionary to store gap filling results for each biomass component.
+    # Each key will be a biomass metabolite ID and the value will be a list of reaction IDs
+    # that were added by gap filling.
+    gapfill_results = {}
+
+    # For unioning gap filled reactions we start with the base model.
+    final_model = base_model.copy()
+
+    # Initialize each reaction's annotation field for gap fill results.
+    # We will add a dictionary under reaction.annotation["gapfill_results"] where keys
+    # are biomass component metabolite IDs and values are 0 (by default).
+    for rxn in final_model.reactions:
+        # If the reaction already has an annotation dict, leave it;
+        # otherwise, initialize an empty dict.
+        rxn.annotation.setdefault("gapfill_results", {})
+        for met in biomass_components:
+            # Use the metabolite's ID as key.
+            rxn.annotation["gapfill_results"].setdefault(met.id, 0)
+
+    # Process each biomass component individually.
+    for met in biomass_components:
+        # Create a temporary model that starts from the current union (final_model).
+        temp_model = final_model.copy()
+
+        # Use the sink reaction for the current biomass component as the objective
+        sink_id = f"SK_{met.id}"
+        temp_model.objective = sink_id
+
+        # Run gap filling on the temporary model for this demand reaction.
+        # (MSBuilder.gapfill_model returns a gap filled model.)
+        gapfilled_model = MSBuilder.gapfill_model(temp_model, sink_id, template, media)
+
+        # Identify which reactions were added by comparing gapfilled_model to temp_model.
+        temp_rxn_ids = {r.id for r in temp_model.reactions}
+        added_rxn_ids = [
+            r.id for r in gapfilled_model.reactions if r.id not in temp_rxn_ids
+        ]
+        gapfill_results[met.id] = added_rxn_ids
+
+        # Add any gap filled reactions that are new to the union (final_model).
+        for rxn_id in added_rxn_ids:
+            if rxn_id not in final_model.reactions:
+                # Copy the reaction from the gap filled model.
+                gap_rxn = gapfilled_model.reactions.get_by_id(rxn_id)
+                # Ensure that the gapfill_results annotation exists.
+                gap_rxn.annotation.setdefault("gapfill_results", {})
+                # Initialize the binary flags for all biomass components.
+                for bm in biomass_components:
+                    gap_rxn.annotation["gapfill_results"].setdefault(bm.id, 0)
+                # Add the reaction to the final model.
+                final_model.add_reactions([gap_rxn.copy()])
+
+        # For all reactions in the final model, mark those that were added in this gap fill
+        # run (i.e. their IDs appear in added_rxn_ids) with a 1 for this biomass component.
+        for rxn in final_model.reactions:
+            # (We already initialized each reaction's gapfill_results for this met to 0.)
+            if rxn.id in added_rxn_ids:
+                rxn.annotation["gapfill_results"][met.id] = 1
+
+        # Reset the objective of the temporary model (optional here).
+        temp_model.objective = original_objective
+
+    # (Optionally, you could remove the temporary demand reactions from final_model.)
+    # For example, to remove all reactions with IDs starting with "DM_":
+    dm_rxn_ids = [rxn.id for rxn in final_model.reactions if rxn.id.startswith("DM_")]
+    if dm_rxn_ids:
+        final_model.remove_reactions(dm_rxn_ids, remove_orphans=True)
+
+    # Now, each reaction in final_model.annotation["gapfill_results"] is a dictionary, for example:
+    #   {"cpd00001_c0": 1, "cpd00012_c0": 0, ...}
+    # which tells you whether that reaction was added during gap filling for each biomass component.
+    return final_model
+
+
+# =============================================================================
+# === Example usage ==========================================================
+# =============================================================================
+# Assume you already have a COBRApy model, a template (e.g., from KBase),
+# and a media object (e.g., from KBaseMedia):
+#
+#     from modelseedpy import MSBuilder
+#     model = ...      # your existing model
+#     template = ...   # e.g., kbase_api.get_from_ws("GramNegModelTemplateV3", "NewKBaseModelTemplates")
+#     media = ...      # e.g., kbase_api.get_from_ws("Carbon-D-Glucose", "KBaseMedia")
+#
+# And your biomass reaction ID is "bio1". Then, you can do:
+#
+final_model = gapfill_and_annotate_biomass_components(
+    base_model, template, media, "bio1"
+)
+#
+# Now, for any reaction in final_model, you can inspect:
+#    print(final_model.reactions.get_by_id("R_12DGR120tipp").annotation["gapfill_results"])
+#
+# which might print something like:
+#    {'cpd00001_c0': 1, 'cpd00012_c0': 0, ...}
+#
+# This final model (which is the union of all gap filled reactions) can be saved to file,
+# and each reaction’s annotation carries the binary ensemble state information.
+
+# Save the final model
+cobra.io.write_sbml_model(final_model, "modelseedpy_model_02.xml")
