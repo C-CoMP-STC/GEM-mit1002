@@ -316,49 +316,17 @@ def gapfill_and_annotate_biomass_components(model, template, media, biomass_rxn_
         # Run gap filling (MSBuilder.gapfill_model returns a gap-filled model).
         gapfilled_model = MSBuilder.gapfill_model(temp_model, sink_id, template, media)
 
-        # Determine added reactions by comparing reaction IDs.
-        temp_rxn_ids = {r.id for r in temp_model.reactions}
-        added_rxn_ids = [
-            r.id for r in gapfilled_model.reactions if r.id not in temp_rxn_ids
-        ]
-        gapfill_results[met.id] = added_rxn_ids
-
-        # Add new gap-filled reactions to the final model and annotate them.
-        for rxn_id in added_rxn_ids:
-            if rxn_id not in final_model.reactions:
-                gap_rxn = gapfilled_model.reactions.get_by_id(rxn_id)
-                gap_rxn.annotation.setdefault("gapfill_results", {})
-                for bm in biomass_components:
-                    gap_rxn.annotation["gapfill_results"].setdefault(bm.id, 0)
-                final_model.add_reactions([gap_rxn.copy()])
-
-        # Mark reactions added in this gap-fill run.
-        for rxn in final_model.reactions:
-            if rxn.id in added_rxn_ids:
-                rxn.annotation["gapfill_results"][met.id] = 1
-
-    # Optionally remove temporary sink reactions.
-    sk_rxn_ids = [rxn.id for rxn in final_model.reactions if rxn.id.startswith("SK_")]
-    if sk_rxn_ids:
-        final_model.remove_reactions(sk_rxn_ids, remove_orphans=True)
-
-    return final_model
+        # Save the gapfilled model
+        cobra.io.write_sbml_model(
+            gapfilled_model,
+            f"modelseedpy_gapfill_per_biomass_cmpt/gapfilled_{met.id}.xml",
+        )
 
 
 # # Run gap filling for each biomass component in the biomass reaction "bio1"
 final_model = gapfill_and_annotate_biomass_components(
     base_model, cobra_template, my_media, "bio1"
 )
-
-for rxn in final_model.reactions:
-    if "gapfill_results" in rxn.annotation:
-        # Convert the gapfill_results dictionary into a JSON string
-        rxn.annotation["gapfill_results"] = json.dumps(
-            rxn.annotation["gapfill_results"]
-        )
-
-# Save the final gap-filled model
-cobra.io.write_sbml_model(final_model, "modelseedpy_model_03.xml")
 
 # =============================================================================
 #   Gapfill for growth (really just testing the gapfilling)
