@@ -10,6 +10,8 @@ import seaborn as sns
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR = os.path.dirname(FILE_DIR)
 TESTFILE_DIR = os.path.join(REPO_DIR, "test", "test_files")
+# Define the directory containing the files
+gapfill_dir = os.path.join(REPO_DIR, "modelseedpy_gapfill_per_biomass_cmpt")
 
 OUT_DIR = os.path.join(FILE_DIR, "component_producibility_results")
 # If the output directory doesn't exist, create it
@@ -20,11 +22,29 @@ if not os.path.exists(OUT_DIR):
 def main():
     # Make a dctionary of the model IDs and the file paths
     model_files = {
-        "Base Model (ModelSEEDpy)": os.path.join(REPO_DIR, "modelseedpy_model_01.xml"),
-        "Glucose Gapfilled (ModelSEEDpy)": os.path.join(
-            REPO_DIR, "modelseedpy_model_04.xml"
+        # "Base Model (ModelSEEDpy)": os.path.join(REPO_DIR, "modelseedpy_model_01.xml"),
+        # "Glucose Gapfilled (ModelSEEDpy)": os.path.join(
+        #     REPO_DIR, "modelseedpy_model_04.xml"
+        # ),
+        "KBase Model, ModelSEEDpy Gapfilled": os.path.join(
+            REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase-MSP-gapfilled.xml"
         ),
     }
+
+    # # Load the base model into COBRA
+    # # Needed to get the metabolite names
+    # base_model = cobra.io.read_sbml_model(model_files["Base Model (ModelSEEDpy)"])
+
+    # # Add all of the models that were gpafilled (on mbm + glucose) for a single biomass component to the dictionart
+    # # Iterate through files and add to dictionary
+    # for filename in os.listdir(gapfill_dir):
+    #     if filename.startswith("gapfilled_cpd") and filename.endswith(".xml"):
+    #         # Extract cpdXXXXX_c0 from the filename (remove "gapfilled_" and ".xml")
+    #         compound_id = filename[10:-4]
+    #         # Get the human-friendly name of the metabolite
+    #         met_name = base_model.metabolites.get_by_id(compound_id).name
+    #         key = f"Gapfilled for {met_name}"
+    #         model_files[key] = os.path.join(gapfill_dir, filename)
 
     # Load the models and update their IDs (used in the result filenames) and store in a list for easy access
     models = []
@@ -50,7 +70,9 @@ def main():
 
     # Run my function on each of the models
     for model in models:
-        test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1")
+        test_model(
+            model, growth_phenotypes, media_definitions, biomass_rxn="bio1_biomass"
+        )
 
 
 # Helper function for setting the media regardless if the exchange reaction is
