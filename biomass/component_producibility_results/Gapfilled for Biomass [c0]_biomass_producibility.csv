@@ -44,4 +44,4 @@ core oligosaccharide lipid A [c0],False,False,False,True,False,False,False,False
 Bactoprenyl diphosphate [c0],False,False,False,True,True,False,False,False,True,True,False,False,False,True,False
 Peptidoglycan polymer (n subunits) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 ATP [c0],False,False,False,True,False,False,False,False,True,True,False,False,False,True,False
-H2O [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+H2O [c0],True,True,True,True,True,True,True,True,True,True,True,True,True,True,True

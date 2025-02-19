@@ -1,0 +1,47 @@
+,empty,mbm_noC,l1_noC,mbm_media_Glucose ,l1_media_Glucose ,mbm_media_Acetate,l1_media_Acetate,mbm_media_3-hydroxybutyrate,l1_media_Alanine,l1_media_Proline,l1_media_Glycerol-3-phosphate,l1_media_DHPS (dihydroxypropanesulfonate),l1_media_Tyrosine,l1_media_Glutamate,l1_media_Valine
+DNA [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Protein [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+mRNA [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+CoA [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+ACP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+NAD [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+NADP [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+K+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Mg [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+fe3 [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Ca2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Cl- [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Co2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Cu2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+FAD [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Fe2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Mn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Sulfate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Zn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Pyridoxal phosphate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Riboflavin [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+S-Adenosyl-L-methionine [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+10-Formyltetrahydrofolate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Tetrahydrofolate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+5-Methyltetrahydrofolate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+GSH [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Heme [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Siroheme [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Spermidine [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Putrescine [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+TPP [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Ubiquinone-8 [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+2-Demethylmenaquinone 8 [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Menaquinone 8 [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Calomide [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+BIOT [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+UDP-N-acetylglucosamine [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+FMN [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Stearoylcardiolipin (B. subtilis) [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Phosphatidylglycerol dioctadecanoyl [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+phosphatidylethanolamine dioctadecanoyl [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+core oligosaccharide lipid A [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Bactoprenyl diphosphate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Peptidoglycan polymer (n subunits) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+ATP [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+H2O [c0],True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
