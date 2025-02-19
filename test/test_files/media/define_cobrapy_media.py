@@ -169,7 +169,7 @@ write_media_tsv(mbm_media, "mbm", modelseed_db)
 write_media_tsv(l1_media, "l1", modelseed_db)
 
 
-# Write a function to conver the alias strings to a dictionary
+# Write a function to convert the alias strings to a dictionary
 def convert_aliases_to_dict(alias_string):
     return {
         alias.split(":")[0]: [ak.strip() for ak in alias.split(":")[1].split(";")]
