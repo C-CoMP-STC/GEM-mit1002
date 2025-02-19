@@ -12,10 +12,6 @@ import pandas as pd
 # The exchange reactions listed here must be present in the model, so not
 # every metabolite in the experimental media can actuually be in the media.
 # Where the exchange reaction is missing, I've commented out that line.
-# TODO: Instead of setting the media with cobrapy's model.medium(), I could
-# write a new function that only sets the exchange reactions that are present
-# so that the model doesn't throw an error if the exchange reaction is missing.
-# if the model is updated.
 # All exchange reactions are defined using the standard modelSEED nomenclature
 
 # minimal_media
