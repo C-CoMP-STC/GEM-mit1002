@@ -122,6 +122,58 @@ l1_media = {
     "EX_cpd00254_e0": 1000,  # Mg_e0 (Needed for growth on alanine)
 }
 
+bashir_c_free = {
+    "EX_cpd00007_e0": 20,  # O2_e0
+    # Nitrogen Source
+    ##################
+    # NH4Cl
+    "EX_cpd00013_e0": 1000,  # Ammonia
+    "EX_cpd00099_e0": 1000,  # Cl-
+    # Phosphorus Source
+    ####################
+    # NaHPo4.H2O
+    "EX_cpd00009_e0": 1000,  # Phosphate (HO4P) (in NaH2PO4)
+    "EX_cpd00971_e0": 1000,  # Na+_e0
+    # Assuming I do not need to add H or H2O
+    # Trace Metal Mix (TMM)
+    #################
+    # ZnSO4*7H2O
+    "EX_cpd00034_e0": 1000,  # Zn2+
+    "EX_cpd00048_e0": 1000,  # Sulfate (O4S)
+    # CoCl2*6H2O
+    "EX_cpd00149_e0": 1000,  # Co2+
+    # Cl- already included in NH4Cl
+    # MnCl2*4H2O
+    "EX_cpd00030_e0": 1000,  # Mn2+
+    # Cl- already included in NH4Cl
+    # Na2MoO4*2H2O
+    "EX_cpd11574_e0": 1000,  # Molybdate (MoO4)
+    # Na+ already included in phosphorus source
+    # Na2SeO3
+    "EX_cpd03387_e0": 1000,  # Selenite (O3Se)
+    # Na+ already included in phosphorus source
+    # NiCl2*6H2O
+    "EX_cpd00244_e0": 1000,  # Ni2+
+    # Cl- already included in NH4C
+    # Artificial Sea Water (ASW) Base
+    ##################################
+    # NaCl
+    # Na+ already included in phosphorus source
+    # Cl- already included in NH4Cl
+    # KCl
+    "EX_cpd00205_e0": 1000,  # K+
+    # Cl- already included in NH4Cl
+    # CaCl2
+    "EX_cpd00063_e0": 1000,  # Ca2+
+    # Cl- already included in NH4Cl
+    # MgCl2*6H2O
+    "EX_cpd00254_e0": 1000,  # Mg2+
+    # Cl- already included in NH4Cl
+    # MgSO4*7H2O
+    # Mg2+ already included in MgCl2
+    # Sulfate already included in ZnSO4
+}
+
 # Save a pickle file with the media definitions
 with open(os.path.join(os.path.dirname(__file__), "media_definitions.pkl"), "wb") as f:
     pickle.dump(
