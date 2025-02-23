@@ -268,6 +268,136 @@ marine_broth_wo_yeast_and_peptone = {
     "EX_cpd00244_e0": 1000,  # Ni2+
 }
 
+# ProMM
+# Media definition from Osnat's KBase narrative
+# TODO: Check the media composition, by comparing to the media protocol
+promm = {
+    "EX_cpd00034_e0": 1000,  # Zn2+
+    "EX_cpd03387_e0": 1000,  # Selenite
+    "EX_cpd00020_e0": 1000,  # Pyruvate    # Is this a problem?
+    "EX_cpd00029_e0": 1000,  # Acetate  # Is this a problem?
+    "EX_cpd00007_e0": 20,  # O2
+    "EX_cpd00244_e0": 1000,  # Ni2+
+    "EX_cpd00971_e0": 1000,  # Na+
+    "EX_cpd11574_e0": 1000,  # Molybdate
+    "EX_cpd00030_e0": 1000,  # Mn2+
+    "EX_cpd00254_e0": 1000,  # Mg
+    "EX_cpd00205_e0": 1000,  # K+
+    "EX_cpd00100_e0": 1000,  # Glycerol
+    "EX_cpd00104_e0": 1000,  # BIOT
+    "EX_cpd00048_e0": 1000,  # Sulfate
+    "EX_cpd00009_e0": 1000,  # Phosphate
+    "EX_cpd00001_e0": 1000,  # H2O
+    "EX_cpd00067_e0": 1000,  # H+
+    "EX_cpd00121_e0": 1000,  # L-Inositol
+    "EX_cpd00133_e0": 1000,  # Nicotinamide
+    "EX_cpd10516_e0": 1000,  # Fe+3
+    "EX_cpd10515_e0": 1000,  # Fe+2
+    "EX_cpd00159_e0": 1000,  # L-Lactate
+    "EX_cpd00263_e0": 1000,  # Pyridoxol
+    "EX_cpd00149_e0": 1000,  # Co2+
+    "EX_cpd00058_e0": 1000,  # Cu2+
+    "EX_cpd00099_e0": 1000,  # Cl-
+    "EX_cpd00305_e0": 1000,  # Thiamin
+    "EX_cpd00063_e0": 1000,  # Ca2+
+    "EX_cpd00013_e0": 1000,  # NH3
+    "EX_cpd00393_e0": 1000,  # Folate
+    "EX_cpd00242_e0": 1000,  # H2CO3  # Is this a problem?
+    "EX_cpd00644_e0": 1000,  # PAN
+    "EX_cpd03424_e0": 1000,  # Vitamin B12
+}
+
+# HMB
+# Media definition from Osnat's KBase narrative
+# TODO: Check the media composition, by comparing to the media protocol
+hmb = {
+    "EX_cpd00034_e0": 100,  # Zn2+
+    "EX_cpd03387_e0": 100,  # Selenite
+    "EX_cpd00007_e0": 100,  # O2
+    "EX_cpd00244_e0": 100,  # Ni2+
+    "EX_cpd00971_e0": 100,  # Na+
+    "EX_cpd11574_e0": 100,  # Molybdate
+    "EX_cpd00030_e0": 100,  # Mn2+
+    "EX_cpd00254_e0": 100,  # Mg
+    "EX_cpd00205_e0": 100,  # K+
+    "EX_cpd00104_e0": 0.1,  # BIOT
+    "EX_cpd00048_e0": 100,  # Sulfate
+    "EX_cpd00009_e0": 100,  # Phosphate
+    "EX_cpd00001_e0": 100,  # H2O
+    "EX_cpd00067_e0": 100,  # H+
+    "EX_cpd00121_e0": 0.1,  # L-Inositol
+    "EX_cpd00133_e0": 0.1,  # Nicotinamide
+    "EX_cpd10516_e0": 100,  # Fe+3
+    "EX_cpd10515_e0": 100,  # Fe+2
+    "EX_cpd00209_e0": 10,  # Nitrate
+    "EX_cpd00263_e0": 0.1,  # Pyridoxol
+    "EX_cpd00149_e0": 100,  # Co2+
+    "EX_cpd00058_e0": 100,  # Cu2+
+    "EX_cpd00099_e0": 100,  # Cl-
+    "EX_cpd00305_e0": 0.1,  # Thiamin
+    "EX_cpd00063_e0": 100,  # Ca2+
+    "EX_cpd00013_e0": 10,  # NH3
+    "EX_cpd00393_e0": 0.1,  # Folate
+    "EX_cpd00242_e0": 100,  # H2CO3
+    "EX_cpd00644_e0": 0.1,  # PAN
+    "EX_cpd03424_e0": 0.1,  # Vitamin B12
+}
+
+# MMB
+# Media definition from Osnat's KBase narrative
+# TODO: Check the media composition, by comparing to the media protocol
+mmb = {
+    "EX_cpd00034_e0": 100,  # Zn2+
+    "EX_cpd03387_e0": 100,  # Selenite
+    "EX_cpd00007_e0": 100,  # O2
+    "EX_cpd00244_e0": 100,  # Ni2+
+    "EX_cpd00971_e0": 100,  # Na+
+    "EX_cpd11574_e0": 100,  # Molybdate
+    "EX_cpd00030_e0": 100,  # Mn2+
+    "EX_cpd00254_e0": 100,  # Mg
+    "EX_cpd00205_e0": 100,  # K+
+    "EX_cpd00048_e0": 100,  # Sulfate
+    "EX_cpd00009_e0": 100,  # Phosphate
+    "EX_cpd00001_e0": 100,  # H2O
+    "EX_cpd00067_e0": 100,  # H+
+    "EX_cpd10516_e0": 100,  # Fe+3
+    "EX_cpd10515_e0": 100,  # Fe+2
+    "EX_cpd00209_e0": 10,  # Nitrate
+    "EX_cpd00149_e0": 100,  # Co2+
+    "EX_cpd00058_e0": 100,  # Cu2+
+    "EX_cpd00099_e0": 100,  # Cl-
+    "EX_cpd00063_e0": 100,  # Ca2+
+    "EX_cpd00013_e0": 10,  # NH3
+    "EX_cpd00242_e0": 100,  # H2CO3
+}
+
+# PRO99
+# Media definition from Osnat's KBase narrative
+# TODO: Check the media composition, by comparing to the media protocol
+pro99 = {
+    "EX_cpd00034_e0": 1000,  # Zn2+
+    "EX_cpd03387_e0": 1000,  # Selenite
+    "EX_cpd00007_e0": 1000,  # O2
+    "EX_cpd00244_e0": 1000,  # Ni2+
+    "EX_cpd00971_e0": 1000,  # Na+
+    "EX_cpd11574_e0": 1000,  # Molybdate
+    "EX_cpd00030_e0": 1000,  # Mn2+
+    "EX_cpd00254_e0": 1000,  # Mg
+    "EX_cpd00205_e0": 1000,  # K+
+    "EX_cpd00048_e0": 1000,  # Sulfate
+    "EX_cpd00009_e0": 1000,  # Phosphate
+    "EX_cpd00001_e0": 1000,  # H2O
+    "EX_cpd00067_e0": 1000,  # H+
+    "EX_cpd10516_e0": 1000,  # Fe+3
+    "EX_cpd10515_e0": 1000,  # Fe+2
+    "EX_cpd00149_e0": 1000,  # Co2+
+    "EX_cpd00058_e0": 1000,  # Cu2+
+    "EX_cpd00099_e0": 1000,  # Cl-
+    "EX_cpd00063_e0": 1000,  # Ca2+
+    "EX_cpd00013_e0": 1000,  # NH3
+    "EX_cpd00242_e0": 1000,  # H2CO3
+}
+
 # Save a pickle file with the media definitions
 with open(os.path.join(os.path.dirname(__file__), "media_definitions.pkl"), "wb") as f:
     pickle.dump(
