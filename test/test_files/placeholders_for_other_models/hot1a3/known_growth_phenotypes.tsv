@@ -1,9 +1,9 @@
 minimal_media	c_source	met_id	bigg_id	growth	notes
-PROMM	glycerol	cpd		1	
-PROMM	lactate			1	
-PROMM	acetate			1	
-PROMM	pyruvate			1	
-PROMM				1	
+promm	glycerol	cpd		1	
+promm	lactate			1	
+promm	acetate			1	
+promm	pyruvate			1	
+promm				1	
 PRO99				0	
 HMB				0	
 HMB	cmpt			1	Not sure if we can define this
