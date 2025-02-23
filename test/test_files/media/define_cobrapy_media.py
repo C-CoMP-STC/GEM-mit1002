@@ -124,51 +124,55 @@ l1_media = {
 
 bashir_c_free = {
     "EX_cpd00007_e0": 20,  # O2_e0
+    ##################
     # Nitrogen Source
     ##################
     # NH4Cl
     "EX_cpd00013_e0": 1000,  # Ammonia
     "EX_cpd00099_e0": 1000,  # Cl-
+    ####################
     # Phosphorus Source
     ####################
     # NaHPo4.H2O
+    # Assuming I do not need to add H or H2O
     "EX_cpd00009_e0": 1000,  # Phosphate (HO4P) (in NaH2PO4)
     "EX_cpd00971_e0": 1000,  # Na+_e0
-    # Assuming I do not need to add H or H2O
+    ########################
     # Trace Metal Mix (TMM)
-    #################
+    ########################
     # ZnSO4*7H2O
     "EX_cpd00034_e0": 1000,  # Zn2+
     "EX_cpd00048_e0": 1000,  # Sulfate (O4S)
     # CoCl2*6H2O
+    # Cl- already included in NH4Cl
     "EX_cpd00149_e0": 1000,  # Co2+
-    # Cl- already included in NH4Cl
     # MnCl2*4H2O
-    "EX_cpd00030_e0": 1000,  # Mn2+
     # Cl- already included in NH4Cl
+    "EX_cpd00030_e0": 1000,  # Mn2+
     # Na2MoO4*2H2O
+    # Na+ already included in phosphorus source
     "EX_cpd11574_e0": 1000,  # Molybdate (MoO4)
-    # Na+ already included in phosphorus source
     # Na2SeO3
-    "EX_cpd03387_e0": 1000,  # Selenite (O3Se)
     # Na+ already included in phosphorus source
+    "EX_cpd03387_e0": 1000,  # Selenite (O3Se)
     # NiCl2*6H2O
-    "EX_cpd00244_e0": 1000,  # Ni2+
     # Cl- already included in NH4C
+    "EX_cpd00244_e0": 1000,  # Ni2+
+    ##################################
     # Artificial Sea Water (ASW) Base
     ##################################
     # NaCl
     # Na+ already included in phosphorus source
     # Cl- already included in NH4Cl
     # KCl
+    # Cl- already included in NH4Cl
     "EX_cpd00205_e0": 1000,  # K+
-    # Cl- already included in NH4Cl
     # CaCl2
+    # Cl- already included in NH4Cl
     "EX_cpd00063_e0": 1000,  # Ca2+
-    # Cl- already included in NH4Cl
     # MgCl2*6H2O
-    "EX_cpd00254_e0": 1000,  # Mg2+
     # Cl- already included in NH4Cl
+    "EX_cpd00254_e0": 1000,  # Mg2+
     # MgSO4*7H2O
     # Mg2+ already included in MgCl2
     # Sulfate already included in ZnSO4
@@ -177,6 +181,7 @@ bashir_c_free = {
 # Define Franzi's media
 # Based on 2024-02-19_Kratzl_Marine_Pro_Medium.xlsx
 marine_broth_wo_yeast_and_peptone = {
+    "EX_cpd00007_e0": 20,  # O2_e0
     ################
     # Salt Solution
     ################
@@ -190,38 +195,38 @@ marine_broth_wo_yeast_and_peptone = {
     # Mg2+ already included in MgSO4*7H2O
     # Cl- already included in NaCl
     # KCl
+    # Cl- already included in NaCl
     "EX_cpd00205_e0": 1000,  # K+
-    # Cl- already included in NaCl
     # CaCl2
-    "EX_cpd00063_e0": 1000,  # Ca2+
     # Cl- already included in NaCl
+    "EX_cpd00063_e0": 1000,  # Ca2+
     # Boric acid
     "EX_cpd09225_e0": 1000,  # Boric acid (H3BO3)
     # NaHCO3
+    # Na+ already included in NaCl
     "EX_cpd00242_e0": 1000,  # Biocarbonate (HCO3-)
-    # Na+ already included in NaCl
     # Na2PO4
-    "EX_cpd00009_e0": 1000,  # Phosphate (HO4P)
     # Na+ already included in NaCl
+    "EX_cpd00009_e0": 1000,  # Phosphate (HO4P)
     # FeCl3*6H2O
-    "EX_cpd10516_e0": 1000,  # fe3_e0
     # Cl- already included in NaCl
+    "EX_cpd10516_e0": 1000,  # fe3_e0
     ####################
     # Nitrogen Solution
     ####################
     # NH4Cl
-    "EX_cpd00013_e0": 1000,  # Ammonia
     # Cl- already included in NaCl
+    "EX_cpd00013_e0": 1000,  # Ammonia
     # KNO3
-    "EX_cpd00209_e0": 1000,  # NO3-
     # K+ already included in KCl
+    "EX_cpd00209_e0": 1000,  # NO3-
     ###########
     # Vitamins
     ###########
     # Thiamine HCl
-    "EX_cpd00305_e0": 1000,  # Thiamine
     # Cl- already included in NaCl
     # Assuming I do not need to add H
+    "EX_cpd00305_e0": 1000,  # Thiamine
     # Biotin
     "EX_cpd00104_e0": 1000,  # Biotin
     # B12 (cyanocobalamin)
@@ -235,32 +240,32 @@ marine_broth_wo_yeast_and_peptone = {
     # Inositol
     "EX_cpd00121_e0": 1000,  # Inositol
     # Ca Pantothanate
-    "EX_cpd00644_e0": 1000,  # Pantothenic acid
     # Ca2+ already included in CaCl2
+    "EX_cpd00644_e0": 1000,  # Pantothenic acid
     # Pyridoxine HCl
-    "EX_cpd00263_e0": 1000,  # Pyridoxine
     # Cl- already included in NaCl
+    "EX_cpd00263_e0": 1000,  # Pyridoxine
     #################
     # Trace Elements
     #################
     # ZnSO4*7H2O
-    "EX_cpd00034_e0": 1000,  # Zn2+
     # Sulfate already included in MgSO4
+    "EX_cpd00034_e0": 1000,  # Zn2+
     # CoCl2*6H2O
+    # Cl- already included in NaCl
     "EX_cpd00149_e0": 1000,  # Co2+
-    # Cl- already included in NaCl
     # MnCl2*4H2O
+    # Cl- already included in NaCl
     "EX_cpd00030_e0": 1000,  # Mn2+
-    # Cl- already included in NaCl
     # Na2MoO4*2H2O
+    # Na+ already included in NaCl
     "EX_cpd11574_e0": 1000,  # Molybdate (MoO4)
-    # Na+ already included in NaCl
     # Na2SeO3
-    "EX_cpd03387_e0": 1000,  # Selenite (O3Se)
     # Na+ already included in NaCl
+    "EX_cpd03387_e0": 1000,  # Selenite (O3Se)
     # NiCl2*6H2O
-    "EX_cpd00244_e0": 1000,  # Ni2+
     # Cl- already included in NaCl
+    "EX_cpd00244_e0": 1000,  # Ni2+
 }
 
 # Save a pickle file with the media definitions
