@@ -1,8 +1,8 @@
 minimal_media	c_source	met_id	bigg_id	growth	notes
-promm	glycerol	cpd		1	
-promm	lactate			1	
-promm	acetate			1	
-promm	pyruvate			1	
+promm	glycerol	cpd00100		1	
+promm	lactate		cpd00159	1	
+promm	acetate		cpd00029	1	
+promm	pyruvate	cpd00020		1	
 promm				1	
 PRO99				0	
 HMB				0	
