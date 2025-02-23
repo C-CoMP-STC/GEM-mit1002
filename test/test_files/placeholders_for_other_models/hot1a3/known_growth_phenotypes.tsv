@@ -1,34 +1,34 @@
 minimal_media	c_source	met_id	bigg_id	growth	notes
 promm	glycerol	cpd00100		1	
-promm	lactate		cpd00159	1	
-promm	acetate		cpd00029	1	
+promm	lactate	cpd00159		1	
+promm	acetate	cpd00029		1	
 promm	pyruvate	cpd00020		1	
 promm				1	
 pro99				0	
 hmb				0	
 hmb	cmpt			1	Not sure if we can define this
-hmb	pep			1	Not sure if we can define this
-hmb	aa			1	
+hmb	pep	cpd11879;cpd30698		1	Was unsure what ModelSEED cpd to use for gelatin (there were multiple types)
+hmb	aa	cpd00023;cpd00033;cpd00035;cpd00039;cpd00041;cpd00051;cpd00053;cpd00054;cpd00060;cpd00065;cpd00066;cpd00069;cpd00084;cpd00107;cpd00117;cpd00119;cpd00129;cpd00132;cpd00156;cpd00161;cpd00186;cpd00320;cpd00322;cpd00549;cpd00550;cpd00587;cpd00611;cpd00637;cpd01308;cpd03840		1	"Osnat defined, not sure how there are more compounds in this list than when I looked at Elena's list"
 hmb	lips			0	Not sure if we can define this
-hmb	oligo			1	
+hmb	oligo	cpd00076;cpd00179;cpd00208;cpd00794		1	
 hmb	org			0	
-hmb	ntrl			0	
-hmb	amisug			1	
-hmb	acdsug			0	
-MMB				0	
-MMB	pyruvate			1	
-MMB	aa			1	
-bashir_c_free	3-methyl-2-oxobtanoic acid			0	
-bashir_c_free	glutathione oxidized			0	
-bashir_c_free	acetate			1	
-bashir_c_free	glycolate			0	
-bashir_c_free	adenine			0	
-bashir_c_free	guanine			0	
-bashir_c_free	formate			0	
-bashir_c_free	guanosine			0	
-bashir_c_free	glucose			1	
-bashir_c_free	methanol			0	
-bashir_c_free	glutathione (reduced)			0	
-bashir_c_free	pantotheic acid			0	
-bashir_c_free	xanthosine			0	
-bashir_c_free	pyruvate			1	
+hmb	ntrl	cpd00027;cpd00138;cpd00750;cpd00185;cpd00154;cpd00108;cpd00368		0	
+hmb	amisug	cpd00276;cpd01524;cpd00122		1	
+hmb	acdsug	cpd00280;cpd16224;cpd00222		0	"Assumed that ""galact. acid"" meant Galacturonic acid, that ""glucor. acid"" was D-glucoronate, and that ""glucon. acid"" meant gluconic acid"
+mmb				0	
+mmb	pyruvate	cpd00020		1	
+mmb	aa	cpd00023;cpd00033;cpd00035;cpd00039;cpd00041;cpd00051;cpd00053;cpd00054;cpd00060;cpd00065;cpd00066;cpd00069;cpd00084;cpd00107;cpd00117;cpd00119;cpd00129;cpd00132;cpd00156;cpd00161;cpd00186;cpd00320;cpd00322;cpd00549;cpd00550;cpd00587;cpd00611;cpd00637;cpd01308;cpd03840		1	
+bashir_c_free	3-methyl-2-oxobutanoic acid	cpd00123		0	
+bashir_c_free	glutathione oxidized	cpd00111		0	
+bashir_c_free	acetate	cpd00029		1	
+bashir_c_free	glycolate	cpd00139		0	
+bashir_c_free	adenine	cpd00128		0	
+bashir_c_free	guanine	cpd00207		0	
+bashir_c_free	formate	cpd00047		0	
+bashir_c_free	guanosine	cpd00311		0	
+bashir_c_free	glucose	cpd00027		1	
+bashir_c_free	methanol	cpd00116		0	
+bashir_c_free	glutathione (reduced)	cpd00042		0	
+bashir_c_free	pantothenic acid	cpd00644		0	
+bashir_c_free	xanthosine	cpd01217		0	
+bashir_c_free	pyruvate	cpd00020		1	
