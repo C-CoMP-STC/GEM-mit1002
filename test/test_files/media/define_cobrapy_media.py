@@ -398,12 +398,22 @@ pro99 = {
     "EX_cpd00242_e0": 1000,  # H2CO3
 }
 
+# Make a dictionary of all the media
+media = {
+    "minimal": minimal_media,
+    "mbm": mbm_media,
+    "l1": l1_media,
+    "bashir_c_free": bashir_c_free,
+    "marine_broth_wo_yeast_and_peptone": marine_broth_wo_yeast_and_peptone,
+    "promm": promm,
+    "hmb": hmb,
+    "mmb": mmb,
+    "pro99": pro99,
+}
+
 # Save a pickle file with the media definitions
 with open(os.path.join(os.path.dirname(__file__), "media_definitions.pkl"), "wb") as f:
-    pickle.dump(
-        {"minimal_media": minimal_media, "mbm_media": mbm_media, "l1_media": l1_media},
-        f,
-    )
+    pickle.dump(media, f)
 
 # Need to load in the ModelSEED database first
 modelseed_db = json.load(
@@ -441,8 +451,9 @@ def write_media_tsv(media_dict, media_name, modelseed_db):
     )
 
 
-write_media_tsv(mbm_media, "mbm", modelseed_db)
-write_media_tsv(l1_media, "l1", modelseed_db)
+# Write the media TSV files
+for media_name, media_dict in media.items():
+    write_media_tsv(media_dict, media_name, modelseed_db)
 
 
 # Write a function to convert the alias strings to a dictionary
