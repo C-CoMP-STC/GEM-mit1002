@@ -1,0 +1,34 @@
+minimal_media	c_source	met_id	bigg_id	growth	notes
+PROMM	glycerol	cpd		1	
+PROMM	lactate			1	
+PROMM	acetate			1	
+PROMM	pyruvate			1	
+PROMM				1	
+PRO99				0	
+HMB				0	
+HMB	cmpt			1	Not sure if we can define this
+HMB	pep			1	Not sure if we can define this
+HMB	aa			1	
+HMB	lips			0	Not sure if we can define this
+HMB	oligo			1	
+HMB	org			0	
+HMB	ntrl			0	
+HMB	amisug			1	
+HMB	acdsug			0	
+MMB				0	
+MMB	pyruvate			1	
+MMB	aa			1	
+bashir_c_free	3-methyl-2-oxobtanoic acid			0	
+bashir_c_free	glutathione oxidized			0	
+bashir_c_free	acetate			1	
+bashir_c_free	glycolate			0	
+bashir_c_free	adenine			0	
+bashir_c_free	guanine			0	
+bashir_c_free	formate			0	
+bashir_c_free	guanosine			0	
+bashir_c_free	glucose			1	
+bashir_c_free	methanol			0	
+bashir_c_free	glutathione (reduced)			0	
+bashir_c_free	pantotheic acid			0	
+bashir_c_free	xanthosine			0	
+bashir_c_free	pyruvate			1	
