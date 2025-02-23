@@ -174,6 +174,95 @@ bashir_c_free = {
     # Sulfate already included in ZnSO4
 }
 
+# Define Franzi's media
+# Based on 2024-02-19_Kratzl_Marine_Pro_Medium.xlsx
+marine_broth_wo_yeast_and_peptone = {
+    ################
+    # Salt Solution
+    ################
+    # NaCl
+    "EX_cpd00971_e0": 1000,  # Na+
+    "EX_cpd00099_e0": 1000,  # Cl-
+    # MgSO4*7H2O
+    "EX_cpd00254_e0": 1000,  # Mg2+
+    "EX_cpd00048_e0": 1000,  # Sulfate (O4S)
+    # MgCl2
+    # Mg2+ already included in MgSO4*7H2O
+    # Cl- already included in NaCl
+    # KCl
+    "EX_cpd00205_e0": 1000,  # K+
+    # Cl- already included in NaCl
+    # CaCl2
+    "EX_cpd00063_e0": 1000,  # Ca2+
+    # Cl- already included in NaCl
+    # Boric acid
+    "EX_cpd09225_e0": 1000,  # Boric acid (H3BO3)
+    # NaHCO3
+    "EX_cpd00242_e0": 1000,  # Biocarbonate (HCO3-)
+    # Na+ already included in NaCl
+    # Na2PO4
+    "EX_cpd00009_e0": 1000,  # Phosphate (HO4P)
+    # Na+ already included in NaCl
+    # FeCl3*6H2O
+    "EX_cpd10516_e0": 1000,  # fe3_e0
+    # Cl- already included in NaCl
+    ####################
+    # Nitrogen Solution
+    ####################
+    # NH4Cl
+    "EX_cpd00013_e0": 1000,  # Ammonia
+    # Cl- already included in NaCl
+    # KNO3
+    "EX_cpd00209_e0": 1000,  # NO3-
+    # K+ already included in KCl
+    ###########
+    # Vitamins
+    ###########
+    # Thiamine HCl
+    "EX_cpd00305_e0": 1000,  # Thiamine
+    # Cl- already included in NaCl
+    # Assuming I do not need to add H
+    # Biotin
+    "EX_cpd00104_e0": 1000,  # Biotin
+    # B12 (cyanocobalamin)
+    "EX_cpd01826_e0": 1000,  # Cyanocobalamin
+    # Folic acid
+    "EX_cpd00393_e0": 1000,  # Folate
+    # PABA
+    "EX_cpd00443_e0": 1000,  # p-Aminobenzoic acid
+    # Nicotinic acid (niacin)
+    "EX_cpd00133_e0": 1000,  # Nicotinic acid
+    # Inositol
+    "EX_cpd00121_e0": 1000,  # Inositol
+    # Ca Pantothanate
+    "EX_cpd00644_e0": 1000,  # Pantothenic acid
+    # Ca2+ already included in CaCl2
+    # Pyridoxine HCl
+    "EX_cpd00263_e0": 1000,  # Pyridoxine
+    # Cl- already included in NaCl
+    #################
+    # Trace Elements
+    #################
+    # ZnSO4*7H2O
+    "EX_cpd00034_e0": 1000,  # Zn2+
+    # Sulfate already included in MgSO4
+    # CoCl2*6H2O
+    "EX_cpd00149_e0": 1000,  # Co2+
+    # Cl- already included in NaCl
+    # MnCl2*4H2O
+    "EX_cpd00030_e0": 1000,  # Mn2+
+    # Cl- already included in NaCl
+    # Na2MoO4*2H2O
+    "EX_cpd11574_e0": 1000,  # Molybdate (MoO4)
+    # Na+ already included in NaCl
+    # Na2SeO3
+    "EX_cpd03387_e0": 1000,  # Selenite (O3Se)
+    # Na+ already included in NaCl
+    # NiCl2*6H2O
+    "EX_cpd00244_e0": 1000,  # Ni2+
+    # Cl- already included in NaCl
+}
+
 # Save a pickle file with the media definitions
 with open(os.path.join(os.path.dirname(__file__), "media_definitions.pkl"), "wb") as f:
     pickle.dump(
