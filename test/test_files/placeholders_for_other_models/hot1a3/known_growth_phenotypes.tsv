@@ -5,16 +5,16 @@ promm	acetate		cpd00029	1
 promm	pyruvate	cpd00020		1	
 promm				1	
 pro99				0	
-HMB				0	
-HMB	cmpt			1	Not sure if we can define this
-HMB	pep			1	Not sure if we can define this
-HMB	aa			1	
-HMB	lips			0	Not sure if we can define this
-HMB	oligo			1	
-HMB	org			0	
-HMB	ntrl			0	
-HMB	amisug			1	
-HMB	acdsug			0	
+hmb				0	
+hmb	cmpt			1	Not sure if we can define this
+hmb	pep			1	Not sure if we can define this
+hmb	aa			1	
+hmb	lips			0	Not sure if we can define this
+hmb	oligo			1	
+hmb	org			0	
+hmb	ntrl			0	
+hmb	amisug			1	
+hmb	acdsug			0	
 MMB				0	
 MMB	pyruvate			1	
 MMB	aa			1	
