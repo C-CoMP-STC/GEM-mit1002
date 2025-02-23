@@ -1,0 +1,79 @@
+id	id	coefficient	coefficient_type	class	linked_compounds	compartment	name	formula	mass	charge
+cpd00002	cpd00002	-0.262	MOLFRACTION	rna	cpd00012:-1	c	ATP	C10H13N5O13P3	504.0	-3
+cpd00002	cpd00002	-1.0	MULTIPLIER	energy	cpd00001:1|cpd00008:-1|cpd00009:-1|cpd00067:-1	c	ATP	C10H13N5O13P3	504.0	-3
+cpd00003	cpd00003	-1.0	MOLSPLIT	cofactor		c	NAD	C21H26N7O14P2	662.0	-1
+cpd00006	cpd00006	-1.0	MOLSPLIT	cofactor		c	NADP	C21H25N7O17P3	741.0	-3
+cpd00009	cpd00009	-1.0	MOLSPLIT	cofactor		c	Phosphate	HO4P	96.0	-2
+cpd00010	cpd00010	-1.0	MOLSPLIT	cofactor		c	CoA	C21H32N7O16P3S	764.0	-4
+cpd00015	cpd00015	-1.0	MOLSPLIT	cofactor		c	FAD	C27H31N9O15P2	783.0	-2
+cpd00016	cpd00016	-1.0	MOLSPLIT	cofactor		c	Pyridoxal phosphate	C8H8NO6P	246.0	-2
+cpd00017	cpd00017	-1.0	MOLSPLIT	cofactor		c	S-Adenosyl-L-methionine	C15H23N6O5S	399.0	1
+cpd00023	cpd00023	-0.0492	MOLFRACTION	protein	cpd00001:-1	c	L-Glutamate	C5H8NO4	146.0	-1
+cpd00028	cpd00028	-1.0	MOLSPLIT	cofactor		c	Heme	C34H30FeN4O4	614.0	-2
+cpd00030	cpd00030	-1.0	MOLSPLIT	cofactor		c	Mn2+	Mn	55.0	2
+cpd00033	cpd00033	-0.1145	MOLFRACTION	protein	cpd00001:-1	c	Glycine	C2H5NO2	75.0	0
+cpd00034	cpd00034	-1.0	MOLSPLIT	cofactor		c	Zn2+	Zn	65.0	2
+cpd00035	cpd00035	-0.0961	MOLFRACTION	protein	cpd00001:-1	c	L-Alanine	C3H7NO2	89.0	0
+cpd00038	cpd00038	-0.322	MOLFRACTION	rna	cpd00012:-1	c	GTP	C10H13N5O14P3	520.0	-3
+cpd00039	cpd00039	-0.0641	MOLFRACTION	protein	cpd00001:-1	c	L-Lysine	C6H15N2O2	147.0	1
+cpd00041	cpd00041	-0.0451	MOLFRACTION	protein	cpd00001:-1	c	L-Aspartate	C4H6NO4	132.0	-1
+cpd00042	cpd00042	-1.0	MOLSPLIT	cofactor		c	GSH	C10H16N3O6S	306.0	-1
+cpd00048	cpd00048	-1.0	MOLSPLIT	cofactor		c	Sulfate	O4S	96.0	-2
+cpd00051	cpd00051	-0.0554	MOLFRACTION	protein	cpd00001:-1	c	L-Arginine	C6H15N4O2	175.0	1
+cpd00052	cpd00052	-0.2	MOLFRACTION	rna	cpd00012:-1	c	CTP	C9H13N3O14P3	480.0	-3
+cpd00053	cpd00053	-0.0492	MOLFRACTION	protein	cpd00001:-1	c	L-Glutamine	C5H10N2O3	146.0	0
+cpd00054	cpd00054	-0.0403	MOLFRACTION	protein	cpd00001:-1	c	L-Serine	C3H7NO3	105.0	0
+cpd00056	cpd00056	-1.0	MOLSPLIT	cofactor		c	TPP	C12H17N4O7P2S	423.0	-1
+cpd00058	cpd00058	-1.0	MOLSPLIT	cofactor		c	Cu2+	Cu	63.0	2
+cpd00060	cpd00060	-0.0287	MOLFRACTION	protein	cpd00001:-1	c	L-Methionine	C5H11NO2S	149.0	0
+cpd00062	cpd00062	-0.216	MOLFRACTION	rna	cpd00012:-1	c	UTP	C9H12N2O15P3	481.0	-3
+cpd00063	cpd00063	-1.0	MOLSPLIT	cofactor		c	Ca2+	Ca	40.0	2
+cpd00065	cpd00065	-0.0106	MOLFRACTION	protein	cpd00001:-1	c	L-Tryptophan	C11H12N2O2	204.0	0
+cpd00066	cpd00066	-0.0347	MOLFRACTION	protein	cpd00001:-1	c	L-Phenylalanine	C9H11NO2	165.0	0
+cpd00069	cpd00069	-0.0271	MOLFRACTION	protein	cpd00001:-1	c	L-Tyrosine	C9H11NO3	181.0	0
+cpd00084	cpd00084	-0.0171	MOLFRACTION	protein	cpd00001:-1	c	L-Cysteine	C3H7NO2S	121.0	0
+cpd00087	cpd00087	-1.0	MOLSPLIT	cofactor		c	Tetrahydrofolate	C19H21N7O6	443.0	-2
+cpd00099	cpd00099	-1.0	MOLSPLIT	cofactor		c	Cl-	Cl	35.0	-1
+cpd00107	cpd00107	-0.0843	MOLFRACTION	protein	cpd00001:-1	c	L-Leucine	C6H13NO2	131.0	0
+cpd00115	cpd00115	-1.0	AT	dna	cpd00012:-1	c	dATP	C10H13N5O12P3	488.0	-3
+cpd00118	cpd00118	-1.0	MOLSPLIT	cofactor		c	Putrescine	C4H14N2	90.0	2
+cpd00119	cpd00119	-0.0178	MOLFRACTION	protein	cpd00001:-1	c	L-Histidine	C6H9N3O2	155.0	0
+cpd00129	cpd00129	-0.0414	MOLFRACTION	protein	cpd00001:-1	c	L-Proline	C5H9NO2	114.0	0
+cpd00132	cpd00132	-0.0451	MOLFRACTION	protein	cpd00001:-1	c	L-Asparagine	C4H8N2O3	132.0	0
+cpd00149	cpd00149	-1.0	MOLSPLIT	cofactor		c	Co2+	Co	59.0	2
+cpd00156	cpd00156	-0.0791	MOLFRACTION	protein	cpd00001:-1	c	L-Valine	C5H11NO2	117.0	0
+cpd00161	cpd00161	-0.0474	MOLFRACTION	protein	cpd00001:-1	c	L-Threonine	C4H9NO3	119.0	0
+cpd00166	cpd00166	-1.0	MOLSPLIT	cofactor	cpd01997:-1|cpd03422:-1	c	Calomide	C72H100CoN18O17P	1579.0	0
+cpd00201	cpd00201	-1.0	MOLSPLIT	cofactor		c	10-Formyltetrahydrofolate	C20H21N7O7	471.0	-2
+cpd00205	cpd00205	-1.0	MOLSPLIT	cofactor		c	K+	K	39.0	1
+cpd00220	cpd00220	-1.0	MOLSPLIT	cofactor		c	Riboflavin	C17H19N4O6	376.0	-1
+cpd00241	cpd00241	-1.0	GC	dna	cpd00012:-1	c	dGTP	C10H13N5O13P3	504.0	-3
+cpd00254	cpd00254	-1.0	MOLSPLIT	cofactor		c	Mg	Mg	24.0	2
+cpd00264	cpd00264	-1.0	MOLSPLIT	cofactor		c	Spermidine	C7H22N3	148.0	3
+cpd00322	cpd00322	-0.0543	MOLFRACTION	protein	cpd00001:-1	c	L-Isoleucine	C6H13NO2	131.0	0
+cpd00345	cpd00345	-1.0	MOLSPLIT	cofactor		c	5-Methyltetrahydrofolate	C20H23N7O6	457.0	-2
+cpd00356	cpd00356	-1.0	GC	dna	cpd00012:-1	c	dCTP	C9H13N3O13P3	464.0	-3
+cpd00357	cpd00357	-1.0	AT	dna	cpd00012:-1	c	TTP	C10H14N2O14P3	479.0	-3
+cpd00557	cpd00557	-1.0	MOLSPLIT	cofactor		c	Siroheme	C42H36FeN4O16	908.0	-8
+cpd02229	cpd02229	-1.0	MOLSPLIT	cellwall		c	Bactoprenyl diphosphate	C55H90O7P2	924.0	-2
+cpd10515	cpd10515	-1.0	MOLSPLIT	cofactor		c	Fe+2	Fe	56.0	2
+cpd10516	cpd10516	-1.0	MOLSPLIT	cofactor		c	Fe+3	Fe	56.0	3
+cpd11416	cpd11416	1.0	EXACT	other		c	Biomass		0.0	0
+cpd11493	cpd11493	-1.0	MOLSPLIT	cofactor	cpd12370:-1	c	ACP	C11H22N2O7PRS	357.0	-2
+cpd15352	cpd15352	-1.0	MOLSPLIT	cofactor		c	2-Demethylmenaquinone 8	C50H70O2	702.0	0
+cpd15432	cpd15432	-1.0	MOLSPLIT	cellwall		c	core oligosaccharide lipid A	C176H303N2O100P4	4171.0	-11
+cpd15500	cpd15500	-1.0	MOLSPLIT	cofactor		c	Menaquinone 8	C51H72O2	716.0	0
+cpd15533	cpd15533	-1.0	MOLSPLIT	lipid		c	phosphatidylethanolamine dioctadecanoyl	C41H82NO8P	747.0	0
+cpd15540	cpd15540	-1.0	MOLSPLIT	lipid		c	Phosphatidylglycerol dioctadecanoyl	C42H82O10P	777.0	-1
+cpd15560	cpd15560	-1.0	MOLSPLIT	cofactor		c	Ubiquinone-8	C49H74O4	726.0	0
+cpd15665	cpd15665	-1.0	MOLSPLIT	cellwall	cpd15666:-1	c	Peptidoglycan polymer (n subunits)	C80H125N16O42R	1982.0	-4
+cpd15695	cpd15695	-1.0	MOLSPLIT	lipid		c	Diisoheptadecanoylphosphatidylethanolamine	C39H78NO8P	719.0	0
+cpd15696	cpd15696	-1.0	MOLSPLIT	lipid		c	Dianteisoheptadecanoylphosphatidylethanolamine	C39H78NO8P	719.0	0
+cpd15722	cpd15722	-1.0	MOLSPLIT	lipid		c	Diisoheptadecanoylphosphatidylglycerol	C40H78O10P	749.0	-1
+cpd15723	cpd15723	-1.0	MOLSPLIT	lipid		c	Dianteisoheptadecanoylphosphatidylglycerol	C40H78O10P	749.0	-1
+cpd15793	cpd15793	-1.0	MOLSPLIT	lipid		c	Stearoylcardiolipin (B. subtilis)	C81H156O17P2	1462.0	-2
+cpd15794	cpd15794	-1.0	MOLSPLIT	lipid		c	Isoheptadecanoylcardiolipin (B. subtilis)	C77H148O17P2	1406.0	-2
+cpd15795	cpd15795	-1.0	MOLSPLIT	lipid		c	Anteisoheptadecanoylcardiolipin (B. subtilis)	C77H148O17P2	1406.0	-2
+cpd17041	cpd17041	-1.0	EXACT	other		c	Protein biosynthesis		0.0	0
+cpd17042	cpd17042	-1.0	EXACT	other		c	DNA replication		0.0	0
+cpd17043	cpd17043	-1.0	EXACT	other		c	RNA transcription		0.0	0
