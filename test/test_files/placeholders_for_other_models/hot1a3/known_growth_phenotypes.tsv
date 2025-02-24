@@ -6,12 +6,10 @@ promm	pyruvate	cpd00020		1
 promm				1	
 pro99				0	
 hmb				0	
-hmb	cmpt			1	Not sure if we can define this
 hmb	pep	cpd11879;cpd30698		1	Was unsure what ModelSEED cpd to use for gelatin (there were multiple types)
 hmb	aa	cpd00023;cpd00033;cpd00035;cpd00039;cpd00041;cpd00051;cpd00053;cpd00054;cpd00060;cpd00065;cpd00066;cpd00069;cpd00084;cpd00107;cpd00117;cpd00119;cpd00129;cpd00132;cpd00156;cpd00161;cpd00186;cpd00320;cpd00322;cpd00549;cpd00550;cpd00587;cpd00611;cpd00637;cpd01308;cpd03840		1	"Osnat defined, not sure how there are more compounds in this list than when I looked at Elena's list"
-hmb	lips			0	Not sure if we can define this
 hmb	oligo	cpd00076;cpd00179;cpd00208;cpd00794		1	
-hmb	org			0	
+hmb	org	cpd00159;cpd00020;cpd00029;cpd00137;cpd00139;cpd00036;cpd00106		0	
 hmb	ntrl	cpd00027;cpd00138;cpd00750;cpd00185;cpd00154;cpd00108;cpd00368		0	
 hmb	amisug	cpd00276;cpd01524;cpd00122		1	
 hmb	acdsug	cpd00280;cpd16224;cpd00222		0	"Assumed that ""galact. acid"" meant Galacturonic acid, that ""glucor. acid"" was D-glucoronate, and that ""glucon. acid"" meant gluconic acid"
