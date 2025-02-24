@@ -9,15 +9,15 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 media = {
     "mbm": {"kbase_id": "mbm.media", "kbase_ws": media_workspace},
     "l1": {"kbase_id": "l1.media", "kbase_ws": media_workspace},
-    "bashir_c_free": {"kbase_id": "bashir_c_free", "kbase_ws": media_workspace},
+    "bashir_c_free": {"kbase_id": "bashir_c_free.media", "kbase_ws": media_workspace},
     "marine_broth_wo_yeast_and_peptone": {
-        "kbase_id": "marine_broth_wo_yeast_and_peptone",
+        "kbase_id": "marine_broth_wo_yeast_and_peptone.media",
         "kbase_ws": media_workspace,
     },
-    "promm": {"kbase_id": "promm", "kbase_ws": media_workspace},
-    "hmb": {"kbase_id": "hmb", "kbase_ws": media_workspace},
-    "mmb": {"kbase_id": "mmb", "kbase_ws": media_workspace},
-    "pro99": {"kbase_id": "pro99", "kbase_ws": media_workspace},
+    "promm": {"kbase_id": "promm.media", "kbase_ws": media_workspace},
+    "hmb": {"kbase_id": "hmb.media", "kbase_ws": media_workspace},
+    "mmb": {"kbase_id": "mmb.media", "kbase_ws": media_workspace},
+    "pro99": {"kbase_id": "pro99.media", "kbase_ws": media_workspace},
 }
 
 # Load the known growth phenotype data as a pandas DataFrame
