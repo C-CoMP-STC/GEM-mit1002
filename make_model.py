@@ -1,4 +1,4 @@
-#!~/opt/miniconda3/envs/modelseedpy-dev/bin/python
+#!/projectnb/cometsfba/hscott/GEM-repos/GEM-mit1002/env/bin/python
 """
 Script to build a ModelSEED model from a genome, add biomass and gap‐filled reactions,
 and save intermediate SBML files.
