@@ -27,19 +27,20 @@ def main():
     # =============================================================================
     # Load the genome (from Michelle's anvi'o gene calls)
     genome = MSGenome.from_fasta(
-        "genome/Michelle's 4106 gene calls/MIT1002_anvio_prot_seqs.fa", split=" "
+        os.path.join(FILE_DIR, "genome", "Michelle's 4106 gene calls", "MIT1002_anvio_prot_seqs.fa"),
+        split=" "
     )
 
-    # Load GFF annotations and attach them to genome features
-    gff_annotations = parse_gff(
-        "genome/Michelle's 4106 gene calls/2738541267_genecalls.gff"
-    )
-    for feature in genome.features:
-        if feature.id in gff_annotations:
-            feature.annotation = gff_annotations[feature.id]
+    # # Load GFF annotations and attach them to genome features
+    # gff_annotations = parse_gff(
+    #     "genome/Michelle's 4106 gene calls/2738541267_genecalls.gff"
+    # )
+    # for feature in genome.features:
+    #     if feature.id in gff_annotations:
+    #         feature.annotation = gff_annotations[feature.id]
 
-    # Inspect an example feature
-    print(genome.features[0].id, genome.features[0].annotation)
+    # # Inspect an example feature
+    # print(genome.features[0].id, genome.features[0].annotation)
 
     # Annotate the genome using RAST
     rast = RastClient()
