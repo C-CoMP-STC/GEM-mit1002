@@ -74,56 +74,56 @@ def main():
     #   Add Michelle's Reactions from the ModelSEED Database
     # =============================================================================
     # Load ModelSEED reaction and compound databases
-    rxn_db = json.load(
-        open(
-            "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/reactions.json"
-        )
-    )
-    met_db = json.load(
-        open(
-            "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/compounds.json"
-        )
-    )
+    # rxn_db = json.load(
+    #     open(
+    #         "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/reactions.json"
+    #     )
+    # )
+    # met_db = json.load(
+    #     open(
+    #         "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/compounds.json"
+    #     )
+    # )
 
-    # Get the list of reaction IDs from the template (remove the trailing compartment tag)
-    template_rxn_ids = [r["id"][:-2] for r in template["reactions"]]
+    # # Get the list of reaction IDs from the template (remove the trailing compartment tag)
+    # template_rxn_ids = [r["id"][:-2] for r in template["reactions"]]
 
-    # Subset the ModelSEED reaction DB to non-obsolete reactions present in the template
-    template_rxn_db = {
-        rxn["id"]: rxn
-        for rxn in rxn_db
-        if not rxn["is_obsolete"] and rxn["id"] in template_rxn_ids
-    }
+    # # Subset the ModelSEED reaction DB to non-obsolete reactions present in the template
+    # template_rxn_db = {
+    #     rxn["id"]: rxn
+    #     for rxn in rxn_db
+    #     if not rxn["is_obsolete"] and rxn["id"] in template_rxn_ids
+    # }
 
-    # Load Michelle's reactions (with ModelSEED IDs) from CSV
-    michelle_rxns = pd.read_csv(
-        os.path.join("Pangenome from Michelle", "database_w_MNX_SEED.csv"), header=0
-    )
+    # # Load Michelle's reactions (with ModelSEED IDs) from CSV
+    # michelle_rxns = pd.read_csv(
+    #     os.path.join("Pangenome from Michelle", "database_w_MNX_SEED.csv"), header=0
+    # )
 
-    # Filter for inferred reactions with a valid ModelSEED ID and convert the IDs from string to list
-    rxns_to_add = michelle_rxns[
-        (michelle_rxns["Inferred Presence"] == 1)
-        & (michelle_rxns["ModelSEED ID"].notnull())
-    ].copy()
-    rxns_to_add["ModelSEED ID"] = rxns_to_add["ModelSEED ID"].apply(ast.literal_eval)
+    # # Filter for inferred reactions with a valid ModelSEED ID and convert the IDs from string to list
+    # rxns_to_add = michelle_rxns[
+    #     (michelle_rxns["Inferred Presence"] == 1)
+    #     & (michelle_rxns["ModelSEED ID"].notnull())
+    # ].copy()
+    # rxns_to_add["ModelSEED ID"] = rxns_to_add["ModelSEED ID"].apply(ast.literal_eval)
 
-    # Combine the lists of reaction IDs and get unique values, then subset to those in the template DB
-    lists_of_rxn_ids = rxns_to_add["ModelSEED ID"].tolist()
-    rxn_ids = list(
-        {
-            x
-            for item in lists_of_rxn_ids
-            for x in (item if isinstance(item, list) else [item])
-        }
-    )
-    rxn_ids = [rxn_id for rxn_id in rxn_ids if rxn_id in template_rxn_db]
+    # # Combine the lists of reaction IDs and get unique values, then subset to those in the template DB
+    # lists_of_rxn_ids = rxns_to_add["ModelSEED ID"].tolist()
+    # rxn_ids = list(
+    #     {
+    #         x
+    #         for item in lists_of_rxn_ids
+    #         for x in (item if isinstance(item, list) else [item])
+    #     }
+    # )
+    # rxn_ids = [rxn_id for rxn_id in rxn_ids if rxn_id in template_rxn_db]
 
-    # Add each selected reaction to the base model
-    for rxn_id in rxn_ids:
-        create_cobra_reaction(base_model, template_rxn_db, rxn_id)
+    # # Add each selected reaction to the base model
+    # for rxn_id in rxn_ids:
+    #     create_cobra_reaction(base_model, template_rxn_db, rxn_id)
 
-    # Save the updated model
-    cobra.io.write_sbml_model(base_model, "modelseedpy_model_02.xml")
+    # # Save the updated model
+    # cobra.io.write_sbml_model(base_model, "modelseedpy_model_02.xml")
 
 
     # =============================================================================
@@ -152,10 +152,10 @@ def main():
     # Create the custom media object.
     my_media = CustomMedia("Custom Media", mediacompounds)
 
-    # Run gap filling for each biomass component in the biomass reaction "bio1"
-    final_model = gapfill_and_annotate_biomass_components(
-        base_model, cobra_template, my_media, "bio1"
-    )
+    # # Run gap filling for each biomass component in the biomass reaction "bio1"
+    # final_model = gapfill_and_annotate_biomass_components(
+    #     base_model, cobra_template, my_media, "bio1"
+    # )
 
     # =============================================================================
     #   Gapfill for growth (really just testing the gapfilling)
@@ -168,13 +168,13 @@ def main():
     # =============================================================================
     #   Load the model made in KBase and gapfill it
     # =============================================================================
-    file_path = "2025-01-08_Scott_draft-model-from-KBase.xml"
-    model = cobra.io.read_sbml_model(file_path)
+    # file_path = "2025-01-08_Scott_draft-model-from-KBase.xml"
+    # model = cobra.io.read_sbml_model(file_path)
 
-    # Gapfill the model
-    gapfilled_model = MSBuilder.gapfill_model(model, "bio1_biomass", cobra_template, my_media)
+    # # Gapfill the model
+    # gapfilled_model = MSBuilder.gapfill_model(model, "bio1_biomass", cobra_template, my_media)
 
-    cobra.io.write_sbml_model(gapfilled_model, "2025-01-08_Scott_draft-model-from-KBase-MSP-gapfilled.xml")
+    # cobra.io.write_sbml_model(gapfilled_model, "2025-01-08_Scott_draft-model-from-KBase-MSP-gapfilled.xml")
 
 
 def parse_gff(gff_path):
