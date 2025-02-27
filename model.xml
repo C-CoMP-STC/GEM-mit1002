@@ -7399,7 +7399,7 @@
           </html>
         </notes>
       </species>
-      <species id="M_cpd27484_c0" name="MPT-Synthases [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="nan">
+      <species id="M_cpd27484_c0" name="MPT-Synthases [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>modelseed_template_id: cpd27484_c</p>
@@ -7420,7 +7420,7 @@
           </html>
         </notes>
       </species>
-      <species id="M_cpd22290_c0" name="Acceptor [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="nan">
+      <species id="M_cpd22290_c0" name="Acceptor [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>modelseed_template_id: cpd22290_c</p>
