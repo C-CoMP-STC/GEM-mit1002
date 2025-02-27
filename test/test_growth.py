@@ -24,7 +24,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
         model = cobra.io.read_sbml_model("model.xml")
 
         # Set the media so that there are no carbon sources
-        model.medium = minimal_media
+        model.medium = clean_media(model, minimal_media)
 
         # Run the model
         sol = model.optimize()
