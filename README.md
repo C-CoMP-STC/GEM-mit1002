@@ -1,7 +1,5 @@
 [![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://hgscott.github.io/mit1002-model)
 
-⚠️ This repo is currently superceded by: https://github.com/segrelab/GEM-mit1002 ⚠️
-
 # MIT1002-model
 
 This repo contains the *Alteromonas macleodii* MIT1002 model, and code associated with its creation, curation, and testing.
