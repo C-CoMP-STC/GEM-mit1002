@@ -32,6 +32,7 @@ jobs:
           python -m pip install pytest
           python -m pip install matplotlib
           python -m pip install seaborn
+          python -m pip install openpyxl
           python -m pip install git+https://github.com/Devlin-Moyer/macaw.git@main
           # FIXME: These are dependencies for macaw, remove once the setup.py
           # file includes the install requirements
