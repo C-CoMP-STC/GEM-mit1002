@@ -13,7 +13,7 @@ jobs:
   # First job builds the environment
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,6 +26,7 @@ jobs:
           echo Installing Dependencies
           python -m pip install --upgrade pip
           python -m pip install importlib-resources==5.13.0
+          python -m pip install numpy==1.23.5
           python -m pip install memote
           python -m pip install cobra
           python -m pip install pytest
