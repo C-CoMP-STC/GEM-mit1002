@@ -413,7 +413,7 @@
           </html>
         </notes>
       </species>
-      <species id="M_cpd17042_c0" name="DNA replication [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="null">
+      <species id="M_cpd17042_c0" name="DNA replication [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>modelseed_template_id: cpd17042_c</p>
@@ -3710,7 +3710,7 @@
           </html>
         </notes>
       </species>
-      <species id="M_cpd17043_c0" name="RNA transcription [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="null">
+      <species id="M_cpd17043_c0" name="RNA transcription [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>modelseed_template_id: cpd17043_c</p>
@@ -4543,7 +4543,7 @@
           </html>
         </notes>
       </species>
-      <species id="M_cpd17041_c0" name="Protein biosynthesis [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="null">
+      <species id="M_cpd17041_c0" name="Protein biosynthesis [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>modelseed_template_id: cpd17041_c</p>
@@ -7917,7 +7917,7 @@
           </html>
         </notes>
       </species>
-      <species id="M_cpd11462_c0" name="mRNA [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="null">
+      <species id="M_cpd11462_c0" name="mRNA [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>modelseed_template_id: cpd11462_c</p>
@@ -7952,7 +7952,7 @@
           </html>
         </notes>
       </species>
-      <species id="M_cpd11416_c0" name="Biomass [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="null">
+      <species id="M_cpd11416_c0" name="Biomass [c0]" compartment="c0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>modelseed_template_id: cpd11416_c</p>
