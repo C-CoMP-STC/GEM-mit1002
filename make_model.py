@@ -44,8 +44,7 @@ def main():
     # Build the initial model from the genome and template
     model_builder = MSBuilder(genome, cobra_template)
     base_model = model_builder.build(
-        "model",
-        "0",
+        "iHS4106",  # Model ID
         allow_all_non_grp_reactions=True,
         annotate_with_rast=False,
     )
