@@ -14,9 +14,7 @@ TESTFILE_DIR = os.path.join(os.path.dirname(__file__), "test_files")
 # Load the media definitions
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
-minimal_media = media_definitions["minimal_media"]
-mbm_media = media_definitions["mbm_media"]
-l1_media = media_definitions["l1_media"]
+minimal_media = media_definitions["minimal"]
 
 
 class TestGrowthPhenotypes(unittest.TestCase):
@@ -50,7 +48,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
         # minimal media, run FBA and check if the model grows
         pred_growth = []
         for index, row in growth_phenotypes.iterrows():
-            minimal_media = eval(row["minimal_media"]).copy()
+            minimal_media = media_definitions[row["minimal_media"]].copy()
             # Check if the model has an exchange reaction for the metabolite
             if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
                 # If it does, add the exchange reaction to the minimal media used
@@ -161,6 +159,10 @@ class TestGrowthPhenotypes(unittest.TestCase):
             top=False,
             labeltop=True,
         )
+
+        # Make sure that every y-tick is shown
+        ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
+        ax.set_yticklabels(growth_phenotypes.index, rotation=0)
 
         # Make sure that the y-axis labels are not cut off
         plt.tight_layout()
