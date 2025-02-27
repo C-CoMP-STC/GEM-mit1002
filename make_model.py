@@ -1,7 +1,6 @@
 #!/projectnb/cometsfba/hscott/GEM-repos/GEM-mit1002/env/bin/python
 """
-Script to build a ModelSEED model from a genome, add biomass and gap‐filled reactions,
-and save intermediate SBML files.
+Script to build a draft ModelSEED model from a genome annotated with RAST
 """
 
 import ast
@@ -31,17 +30,6 @@ def main():
         split=" "
     )
 
-    # # Load GFF annotations and attach them to genome features
-    # gff_annotations = parse_gff(
-    #     "genome/Michelle's 4106 gene calls/2738541267_genecalls.gff"
-    # )
-    # for feature in genome.features:
-    #     if feature.id in gff_annotations:
-    #         feature.annotation = gff_annotations[feature.id]
-
-    # # Inspect an example feature
-    # print(genome.features[0].id, genome.features[0].annotation)
-
     # Annotate the genome using RAST
     rast = RastClient()
     rast.annotate_genome(genome)
@@ -49,7 +37,7 @@ def main():
     # =============================================================================
     #   Build the Model and Add Biomass Reaction
     # =============================================================================
-    # Use the gram-negative template (see FIXME below if you later want to classify the genome)
+    # Use the gram-negative template
     template = get_template("template_gram_neg")
     cobra_template = MSTemplateBuilder.from_dict(template, None).build()
 
@@ -62,122 +50,8 @@ def main():
         annotate_with_rast=False,
     )
 
-    # Add a biomass reaction (using biomass ID "bio2")
-    # I think this is the "energy" biomass reaction
-    # Reactants = H2O & ATP
-    # FIXME: Check that this biomass formulation is correct for your application.
-    base_model.add_reactions(
-        [build_biomass("bio2", base_model, cobra_template, core_atp, "0")]
-    )
-
     # Save the base model
-    cobra.io.write_sbml_model(base_model, os.path.join(FILE_DIR, "modelseedpy_model_01.xml"))
-
-    # =============================================================================
-    #   Add Michelle's Reactions from the ModelSEED Database
-    # =============================================================================
-    # Load ModelSEED reaction and compound databases
-    # rxn_db = json.load(
-    #     open(
-    #         "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/reactions.json"
-    #     )
-    # )
-    # met_db = json.load(
-    #     open(
-    #         "/Users/helenscott/Documents/PhD/Segre-lab/ModelSEEDDatabase/Biochemistry/compounds.json"
-    #     )
-    # )
-
-    # # Get the list of reaction IDs from the template (remove the trailing compartment tag)
-    # template_rxn_ids = [r["id"][:-2] for r in template["reactions"]]
-
-    # # Subset the ModelSEED reaction DB to non-obsolete reactions present in the template
-    # template_rxn_db = {
-    #     rxn["id"]: rxn
-    #     for rxn in rxn_db
-    #     if not rxn["is_obsolete"] and rxn["id"] in template_rxn_ids
-    # }
-
-    # # Load Michelle's reactions (with ModelSEED IDs) from CSV
-    # michelle_rxns = pd.read_csv(
-    #     os.path.join("Pangenome from Michelle", "database_w_MNX_SEED.csv"), header=0
-    # )
-
-    # # Filter for inferred reactions with a valid ModelSEED ID and convert the IDs from string to list
-    # rxns_to_add = michelle_rxns[
-    #     (michelle_rxns["Inferred Presence"] == 1)
-    #     & (michelle_rxns["ModelSEED ID"].notnull())
-    # ].copy()
-    # rxns_to_add["ModelSEED ID"] = rxns_to_add["ModelSEED ID"].apply(ast.literal_eval)
-
-    # # Combine the lists of reaction IDs and get unique values, then subset to those in the template DB
-    # lists_of_rxn_ids = rxns_to_add["ModelSEED ID"].tolist()
-    # rxn_ids = list(
-    #     {
-    #         x
-    #         for item in lists_of_rxn_ids
-    #         for x in (item if isinstance(item, list) else [item])
-    #     }
-    # )
-    # rxn_ids = [rxn_id for rxn_id in rxn_ids if rxn_id in template_rxn_db]
-
-    # # Add each selected reaction to the base model
-    # for rxn_id in rxn_ids:
-    #     create_cobra_reaction(base_model, template_rxn_db, rxn_id)
-
-    # # Save the updated model
-    # cobra.io.write_sbml_model(base_model, "modelseedpy_model_02.xml")
-
-
-    # =============================================================================
-    #  Gapfill and Annotate Biomass Components
-    # =============================================================================
-    # Load media definitions
-    with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
-        media_definitions = pickle.load(f)
-
-    # Add glucose to the mbm media
-    media_definitions["mbm_media"]["EX_cpd00027_e0"] = 10
-
-    # Convert the dictionary of media definitions to a list of MediaCompound objects
-    # Convert the COBRApy media dictionary into a list of MediaCompound objects.
-    mediacompounds = []
-    for exch_id, flux in media_definitions["mbm_media"].items():
-        # Convert exchange reaction ID (e.g., "EX_cpd00007_e0") to a metabolite ID.
-        # This example assumes your model’s metabolites have IDs like "cpd00007_e0".
-        if exch_id.startswith("EX_"):
-            met_id = exch_id[3:]
-        else:
-            met_id = exch_id
-        # Here we use the flux as the maximum uptake (maxFlux) and set minFlux to 0.
-        mediacompounds.append(MediaCompound(met_id, maxFlux=flux, minFlux=0))
-
-    # Create the custom media object.
-    my_media = CustomMedia("Custom Media", mediacompounds)
-
-    # # Run gap filling for each biomass component in the biomass reaction "bio1"
-    # final_model = gapfill_and_annotate_biomass_components(
-    #     base_model, cobra_template, my_media, "bio1"
-    # )
-
-    # =============================================================================
-    #   Gapfill for growth (really just testing the gapfilling)
-    # =============================================================================
-    gapfilled_model = MSBuilder.gapfill_model(base_model, "bio1", cobra_template, my_media)
-
-    # Save the final gap-filled model
-    cobra.io.write_sbml_model(gapfilled_model, os.path.join(FILE_DIR, "modelseedpy_model_04.xml"))
-
-    # =============================================================================
-    #   Load the model made in KBase and gapfill it
-    # =============================================================================
-    # file_path = "2025-01-08_Scott_draft-model-from-KBase.xml"
-    # model = cobra.io.read_sbml_model(file_path)
-
-    # # Gapfill the model
-    # gapfilled_model = MSBuilder.gapfill_model(model, "bio1_biomass", cobra_template, my_media)
-
-    # cobra.io.write_sbml_model(gapfilled_model, "2025-01-08_Scott_draft-model-from-KBase-MSP-gapfilled.xml")
+    cobra.io.write_sbml_model(base_model, os.path.join(FILE_DIR, "model.xml"))
 
 
 def parse_gff(gff_path):
