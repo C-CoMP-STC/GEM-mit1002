@@ -63,13 +63,15 @@ def main():
     )
 
     # Add a biomass reaction (using biomass ID "bio2")
+    # I think this is the "energy" biomass reaction
+    # Reactants = H2O & ATP
     # FIXME: Check that this biomass formulation is correct for your application.
     base_model.add_reactions(
         [build_biomass("bio2", base_model, cobra_template, core_atp, "0")]
     )
 
     # Save the base model
-    cobra.io.write_sbml_model(base_model, "modelseedpy_model_01.xml")
+    cobra.io.write_sbml_model(base_model, os.path.join(FILE_DIR, "modelseedpy_model_01.xml"))
 
     # =============================================================================
     #   Add Michelle's Reactions from the ModelSEED Database
@@ -128,7 +130,7 @@ def main():
 
 
     # =============================================================================
-    #   Gapfill and Annotate Biomass Components
+    #  Gapfill and Annotate Biomass Components
     # =============================================================================
     # Load media definitions
     with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
@@ -164,7 +166,7 @@ def main():
     gapfilled_model = MSBuilder.gapfill_model(base_model, "bio1", cobra_template, my_media)
 
     # Save the final gap-filled model
-    cobra.io.write_sbml_model(gapfilled_model, "modelseedpy_model_04.xml")
+    cobra.io.write_sbml_model(gapfilled_model, os.path.join(FILE_DIR, "modelseedpy_model_04.xml"))
 
     # =============================================================================
     #   Load the model made in KBase and gapfill it
