@@ -1,8 +1,8 @@
 minimal_media	c_source	met_id	bigg_id	growth	notes	pred_growth
 mbm	Glucose 	cpd00027	glc__D	Yes		No
 l1	Glucose 	cpd00027	glc__D	Yes		No
-mbm	Acetate	cpd00029	ac	Yes		No Exchange
-l1	Acetate	cpd00029	ac	Yes		No Exchange
+mbm	Acetate	cpd00029	ac	Yes		No
+l1	Acetate	cpd00029	ac	Yes		No
 mbm	Glycolate	cpd00139	glyclt	No		No Exchange
 mbm	Homarine	cpd00737		Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No Exchange
 mbm	3-hydroxybutyrate	cpd29193		Yes		No Exchange
@@ -18,12 +18,12 @@ l1	Glycerol-3-phosphate	cpd00080	glyc3p	Yes		No Exchange
 l1	DHPS (dihydroxypropanesulfonate)	cpd23538		Yes		No Exchange
 l1	Tyrosine	cpd00069	tyr__L	Yes	Assumed we wanted L-tyrosine.	No Exchange
 l1	Glutamate	cpd00023	glu__L	Yes	Assumed we wanted L-glutamate.	No
-l1	Valine	cpd00156	val__L	Yes	Assumed we wanted L-valine.	No Exchange
-promm	Leucine	cpd00107		Yes		No Exchange
+l1	Valine	cpd00156	val__L	Yes	Assumed we wanted L-valine.	No
+promm	Leucine	cpd00107		Yes		No
 promm	4-methyl-2-oxopentanoic acid	cpd00200		No		No Exchange
-promm	Isoleucine	cpd00322		Yes		No Exchange
+promm	Isoleucine	cpd00322		Yes		No
 promm	3-methyl-2-oxopentanoic acid	cpd00508		No		No Exchange
-promm	Valine	cpd00156		Yes		No Exchange
+promm	Valine	cpd00156		Yes		No
 promm	3-methyl-2-oxobutanoic acid	cpd00123		Yes		No Exchange
 promm	Kynurenine	cpd00275		No	There are two kynurenine metabolites in the db ModelSEED	No Exchange
 promm	Thymidine	cpd00184		No		No
