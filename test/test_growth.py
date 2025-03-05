@@ -306,14 +306,14 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
     #    This just filters out any exchange that might be for the primary carbon.
     mbm_no_carbon = {
         ex: lb
-        for ex, lb in media_definitions["mbm_media"].items()
+        for ex, lb in media_definitions["mbm"].items()
         if not ex.startswith("EX_") or "glc" not in ex.lower()
     }
 
     # 3) l1 minus carbon sources
     l1_no_carbon = {
         ex: lb
-        for ex, lb in media_definitions["l1_media"].items()
+        for ex, lb in media_definitions["l1"].items()
         if not ex.startswith("EX_") or "glc" not in ex.lower()
     }
 

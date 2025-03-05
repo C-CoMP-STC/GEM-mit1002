@@ -1,0 +1,44 @@
+,empty,mbm_noC,l1_noC,mbm_Glucose ,l1_Glucose ,mbm_Acetate,l1_Acetate,mbm_3-hydroxybutyrate,l1_Alanine,l1_Proline,l1_Glycerol-3-phosphate,l1_DHPS (dihydroxypropanesulfonate),l1_Tyrosine,l1_Glutamate,l1_Valine,promm_Leucine,promm_Isoleucine,promm_Valine,promm_3-methyl-2-oxobutanoic acid
+DNA [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Protein [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+mRNA [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+CoA [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+ACP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+NAD [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+NADP [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+K+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Mg [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+fe3 [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Ca2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Cl- [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Co2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Cu2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+FAD [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Fe2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Mn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Sulfate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Zn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Pyridoxal phosphate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Riboflavin [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+S-Adenosyl-L-methionine [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+10-Formyltetrahydrofolate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Tetrahydrofolate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+5-Methyltetrahydrofolate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+GSH [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Heme [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Siroheme [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Spermidine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Putrescine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+TPP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Ubiquinone-8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+2-Demethylmenaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Menaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Calomide [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Stearoylcardiolipin (B. subtilis) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Phosphatidylglycerol dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+phosphatidylethanolamine dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Lauroyl-KDO2-lipid IV(A) [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Bactoprenyl diphosphate [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Peptidoglycan polymer (n subunits) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+ATP [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+H2O [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
