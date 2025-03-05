@@ -4,6 +4,9 @@
 
 This repo contains the *Alteromonas macleodii* MIT1002 model, and code associated with its creation, curation, and testing.
 
+The model was generated using GenBank genome for MIT1002 (Accession Number: NZ_JXRW01000001), accessible via KBase.
+The narrative for generating the draft model, is available here: https://narrative.kbase.us/narrative/208605
+
 This repo uses GtiHub actions to automatically test the model.
 Upon every push, pull request, manual trigger:
 1. A new MEMOTE report is generated, and saved as "index.html"
