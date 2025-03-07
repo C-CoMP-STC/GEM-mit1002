@@ -41,19 +41,43 @@ jobs:
           # file includes the install requirements
           python -m pip install Pebble==5.0.7
           python -m pip install networkx==3.1
-
+  
+  # Second job generates the MEMOTE report
+  memote-report:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
         run: memote report snapshot model.xml
 
+  # Third job runs the custom tests
+  test:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
       # Run the custom tests
       - name: Run Custom Tests with pytest
         run: pytest
 
+  # Fifth job exports the model into different file types
+  export:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
       # Export model file as json file
       - name: Export Model as JSON
         run: python export_model.py
 
+  # Final job pushes the changes to the remote repository
+  push:
+    runs-on: ubuntu-22.04
+    needs: [memote-report, test, export]
+    steps:
+      - uses: actions/checkout@v3
       - name: Push to Remote
         run: |
           git config --global user.name "${{ github.actor }}"
