@@ -13,8 +13,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # First job builds the environment
-  build:
+  # All in one job, so I don't have to deal with uploading and downloading a venv
+  build-and-test:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
 
@@ -23,17 +23,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.8'
-
       # Install everything I need
       - name: Install Dependencies
         run: |
           echo Installing Dependencies
-          python -m venv venv
-          source venv/bin/activate
           python -m pip install --upgrade pip
           python -m pip install importlib-resources==5.13.0
           python -m pip install numpy==1.23.5
@@ -48,66 +41,15 @@ jobs:
           # file includes the install requirements
           python -m pip install Pebble==5.0.7
           python -m pip install networkx==3.1
-      # Save the virtual environment to be used in the next jobs
-      - name: Save virtual environment
-        uses: actions/upload-artifact@v3
-        with:
-          name: python-env
-          path: venv
   
-  # Second job generates the MEMOTE report
-  memote-report:
-    runs-on: ubuntu-22.04
-    needs: build
-    steps:
-      - uses: actions/checkout@v3
-      # Download the virtual environment
-      - name: Download Virtual Environment
-        uses: actions/download-artifact@v3
-        with:
-          name: python-env
-          path: venv
-      - name: Activate Virtual Environment
-        run: |
-          source venv/bin/activate
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
         run: memote report snapshot model.xml
 
-  # Third job runs the custom tests
-  test:
-    runs-on: ubuntu-22.04
-    needs: build
-    steps:
-      - uses: actions/checkout@v3
-      # Download the virtual environment
-      - name: Download Virtual Environment
-        uses: actions/download-artifact@v3
-        with:
-          name: python-env
-          path: venv
-      - name: Activate Virtual Environment
-        run: |
-          source venv/bin/activate
       # Run the custom tests
       - name: Run Custom Tests with pytest
         run: pytest
 
-  # Fourth job runs the CUE simulations
-  cue:
-    runs-on: ubuntu-22.04
-    needs: build
-    steps:
-      - uses: actions/checkout@v3
-      # Download the virtual environment
-      - name: Download Virtual Environment
-        uses: actions/download-artifact@v3
-        with:
-          name: python-env
-          path: venv
-      - name: Activate Virtual Environment
-        run: |
-          source venv/bin/activate
       # Run the CUE simulations
       - name: Run CUE Simulations
         run: |
@@ -115,31 +57,10 @@ jobs:
           python check_cue/02_calc_cue.py
           python check_cue/03_plot_cue.py
 
-  # Fifth job exports the model into different file types
-  export:
-    runs-on: ubuntu-22.04
-    needs: build
-    steps:
-      - uses: actions/checkout@v3
-      # Download the virtual environment
-      - name: Download Virtual Environment
-        uses: actions/download-artifact@v3
-        with:
-          name: python-env
-          path: venv
-      - name: Activate Virtual Environment
-        run: |
-          source venv/bin/activate
-      # Export model file as json file
-      - name: Export Model as JSON
+      # Export model file as json and excel file
+      - name: Export Model
         run: python export_model.py
 
-  # Final job pushes the changes to the remote repository
-  push:
-    runs-on: ubuntu-22.04
-    needs: [memote-report, test, export]
-    steps:
-      - uses: actions/checkout@v3
       - name: Push to Remote
         run: |
           git config --global user.name "${{ github.actor }}"
