@@ -36,11 +36,6 @@ jobs:
           python -m pip install matplotlib
           python -m pip install seaborn
           python -m pip install openpyxl
-          python -m pip install git+https://github.com/Devlin-Moyer/macaw.git@main
-          # FIXME: These are dependencies for macaw, remove once the setup.py
-          # file includes the install requirements
-          python -m pip install Pebble==5.0.7
-          python -m pip install networkx==3.1
 
       # Run the custom tests
       - name: Run Custom Tests with pytest
