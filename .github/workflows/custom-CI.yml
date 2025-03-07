@@ -41,10 +41,6 @@ jobs:
           # file includes the install requirements
           python -m pip install Pebble==5.0.7
           python -m pip install networkx==3.1
-  
-      # Generate the memote report on the model
-      - name: Generate MEMOTE Report
-        run: memote report snapshot model.xml
 
       # Run the custom tests
       - name: Run Custom Tests with pytest
