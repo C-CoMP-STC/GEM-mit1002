@@ -66,6 +66,19 @@ jobs:
       - name: Run Custom Tests with pytest
         run: pytest
 
+  # Fourth job runs the CUE simulations
+  cue:
+    runs-on: ${{ env.UBUNTU_VERSION }}
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      # Run the CUE simulations
+      - name: Run CUE Simulations
+        run: |
+          python check_cue/01_run_cobra.py
+          python check_cue/02_calc_cue.py
+          python check_cue/03_plot_cue.py
+
   # Fifth job exports the model into different file types
   export:
     runs-on: ${{ env.UBUNTU_VERSION }}
