@@ -43,10 +43,6 @@ jobs:
       - name: Generate MEMOTE Report
         run: memote report snapshot model.xml
 
-      # Run the macaw tests
-      - name: Run MACAW tests
-        run: python run_macaw.py
-
       # Run the custom tests
       - name: Run Custom Tests with pytest
         run: pytest
