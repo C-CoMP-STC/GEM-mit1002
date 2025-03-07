@@ -11,16 +11,12 @@ on:
   pull_request:
   workflow_dispatch:
 
-# Define a reusable ubuntu version using YAML anchors
-env:
-  UBUNTU_VERSION: ubuntu-22.04
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # First job builds the environment
   build:
     # The type of runner that the job will run on
-    runs-on: ${{ env.UBUNTU_VERSION }}
+    runs-on: ubuntu-22.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -48,7 +44,7 @@ jobs:
   
   # Second job generates the MEMOTE report
   memote-report:
-    runs-on: ${{ env.UBUNTU_VERSION }}
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +54,7 @@ jobs:
 
   # Third job runs the custom tests
   test:
-    runs-on: ${{ env.UBUNTU_VERSION }}
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - uses: actions/checkout@v3
@@ -68,7 +64,7 @@ jobs:
 
   # Fourth job runs the CUE simulations
   cue:
-    runs-on: ${{ env.UBUNTU_VERSION }}
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - uses: actions/checkout@v3
@@ -81,7 +77,7 @@ jobs:
 
   # Fifth job exports the model into different file types
   export:
-    runs-on: ${{ env.UBUNTU_VERSION }}
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - uses: actions/checkout@v3
@@ -91,7 +87,7 @@ jobs:
 
   # Final job pushes the changes to the remote repository
   push:
-    runs-on: ${{ env.UBUNTU_VERSION }}
+    runs-on: ubuntu-22.04
     needs: [memote-report, test, export]
     steps:
       - uses: actions/checkout@v3
