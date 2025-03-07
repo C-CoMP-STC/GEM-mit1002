@@ -36,7 +36,7 @@ jobs:
           python -m pip install matplotlib
           python -m pip install seaborn
           python -m pip install openpyxl
-          python -m pip install git+https://github.com/segrelab/GEM2CUE.git@main
+          python -m pip install git+https://github.com/segrelab/GEM2CUE.git@remove-classes
 
       # Run the custom tests
       - name: Run Custom Tests with pytest
