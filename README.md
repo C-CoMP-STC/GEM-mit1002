@@ -1,10 +1,11 @@
 [![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://hgscott.github.io/mit1002-model)
 
-⚠️ This repo is currently superceded by: https://github.com/segrelab/GEM-mit1002 ⚠️
-
 # MIT1002-model
 
 This repo contains the *Alteromonas macleodii* MIT1002 model, and code associated with its creation, curation, and testing.
+
+The model was generated using GenBank genome for MIT1002 (Accession Number: NZ_JXRW01000001), accessible via KBase.
+The narrative for generating the draft model, is available here: https://narrative.kbase.us/narrative/208605
 
 This repo uses GtiHub actions to automatically test the model.
 Upon every push, pull request, manual trigger:

@@ -1,5 +1,5 @@
 .vscode
-
+.venv
 */__pycache__
 *.fa
 genome/RefSeq_genome_from_KBase/*.gff
