@@ -41,13 +41,28 @@ jobs:
           # file includes the install requirements
           python -m pip install Pebble==5.0.7
           python -m pip install networkx==3.1
+      # Save the virtual environment to be used in the next jobs
+      - name: Save virtual environment
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-env
+          path: venv
   
   # Second job generates the MEMOTE report
   memote-report:
     runs-on: ubuntu-22.04
     needs: build
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@
+      # Download the virtual environment
+      - name: Download Virtual Environment
+        uses: actions/download-artifact@v3
+        with:
+          name: python-env
+          path: venv
+      - name: Activate Virtual Environment
+        run: |
+          source venv/bin/activate
       # Generate the memote report on the model
       - name: Generate MEMOTE Report
         run: memote report snapshot model.xml
@@ -58,6 +73,15 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3
+      # Download the virtual environment
+      - name: Download Virtual Environment
+        uses: actions/download-artifact@v3
+        with:
+          name: python-env
+          path: venv
+      - name: Activate Virtual Environment
+        run: |
+          source venv/bin/activate
       # Run the custom tests
       - name: Run Custom Tests with pytest
         run: pytest
@@ -68,6 +92,15 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3
+      # Download the virtual environment
+      - name: Download Virtual Environment
+        uses: actions/download-artifact@v3
+        with:
+          name: python-env
+          path: venv
+      - name: Activate Virtual Environment
+        run: |
+          source venv/bin/activate
       # Run the CUE simulations
       - name: Run CUE Simulations
         run: |
@@ -81,6 +114,15 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3
+      # Download the virtual environment
+      - name: Download Virtual Environment
+        uses: actions/download-artifact@v3
+        with:
+          name: python-env
+          path: venv
+      - name: Activate Virtual Environment
+        run: |
+          source venv/bin/activate
       # Export model file as json file
       - name: Export Model as JSON
         run: python export_model.py
