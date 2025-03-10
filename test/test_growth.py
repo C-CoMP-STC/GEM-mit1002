@@ -136,14 +136,16 @@ class TestGrowthPhenotypes(unittest.TestCase):
         cmap = ["#5E5E5E", "#FF7D0A", "#024064"]  # C-CoMP gray, orange, and dark blue
 
         # Plot the heatmap
-        ax = sns.heatmap(
+        fig, ax = plt.subplots()
+        sns.heatmap(
             growth_phenotypes.replace(value_to_int),
             cmap=cmap,
             linewidths=4,
             linecolor="white",
+            ax=ax,
         )
 
-        # modify colorbar:
+        # Modify colorbar:
         colorbar = ax.collections[0].colorbar
         r = colorbar.vmax - colorbar.vmin
         colorbar.set_ticks([colorbar.vmin + r / n * (0.5 + i) for i in range(n)])
@@ -156,7 +158,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
             labelsize=10,
             labelbottom=False,
             bottom=False,
-            top=False,
+            top=True,
             labeltop=True,
         )
 
