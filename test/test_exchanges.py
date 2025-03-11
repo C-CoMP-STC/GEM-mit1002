@@ -14,14 +14,9 @@ class TestExchanges(unittest.TestCase):
             met for met in model.metabolites if met.compartment == "e0"
         ]
 
-        # Find all exchange reactions
-        exchange_reactions = [
-            rxn for rxn in model.reactions if rxn.id.startswith("EX_")
-        ]
-
         # Create a set of metabolites involved in exchange reactions
         exchange_metabolites = set()
-        for rxn in exchange_reactions:
+        for rxn in model.exchanges:
             for met in rxn.metabolites:
                 exchange_metabolites.add(met.id)
 
