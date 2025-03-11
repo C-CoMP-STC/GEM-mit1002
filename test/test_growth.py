@@ -295,6 +295,10 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
         met.id for met in biomass_rxn.metabolites if biomass_rxn.metabolites[met] < 0
     ]
 
+    # "Un-lump" the biomass so that any lumped biomass component (e.g. DNA) is
+    # separated into its constituent metabolites (e.g. dAMP, dCMP, dGMP, dTMP)
+    unlumped_compounds = unlump_biomass(model, biomass_compounds)
+
     # Make a dictionary to store the producibility results
     biomass_producibility = {}
 
@@ -325,7 +329,7 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
     # Test the negative controls
     for ctrl_name, ctrl_medium in controls.items():
         biomass_producibility[ctrl_name] = test_medium(
-            ctrl_medium, biomass_compounds, model
+            ctrl_medium, unlumped_compounds, model
         )
 
     # Check the producibility of the biomass componets on the different carbon sources
@@ -340,7 +344,7 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
             1000.0  # FIXME: I should set this to a consistent, lower value
         )
         # Test it
-        biomass_producibility[c_source] = test_medium(medium, biomass_compounds, model)
+        biomass_producibility[c_source] = test_medium(medium, unlumped_compounds, model)
 
     # Make a dataframe of the producibility results and save it to a CSV file
     df = pd.DataFrame.from_dict(biomass_producibility)
@@ -392,6 +396,55 @@ def plot_prodcubility(model, df):
     plt.savefig(
         os.path.join(TESTFILE_DIR, model.id + "_biomass_producibility_heatmap.png")
     )
+
+
+def unlump_biomass(
+    model,
+    biomass_compounds,
+    lumped_metabolites=["cpd11461_c0", "cpd11463_c0", "cpd11462_c0"],
+):
+    """
+    "Un-lump" the biomass so that any lumped biomass component (e.g. DNA) is
+    separated into its constituent metabolites (e.g. dAMP, dCMP, dGMP, dTMP)
+
+    Args:
+    model (cobra.Model): The model to test
+    biomass_compounds (list): List of biomass compounds to test
+    lumped_metabolites (list): List of metabolites that are lumped in the
+        biomass reaction (defaults to
+        ['cpd11461_c0', 'cpd11463_c0', 'cpd11462_c0'] which is DNA, protein,
+        and RNA respectively)
+
+    Returns:
+    list: List of individual metabolites that make up the biomass
+    """
+    # Make a copy of the biomass compounds
+    unlumped_compounds = biomass_compounds.copy()
+
+    # Loop through the lumped metabolites
+    for lumped_metabolite in lumped_metabolites:
+        # Remove the metabolite from the list of biomass compounds
+        unlumped_compounds.remove(lumped_metabolite)
+        # Find the reaction in the model that makes the lumped metabolite
+        synth_rxn = [
+            r
+            for r in model.reactions
+            if model.metabolites.get_by_id(lumped_metabolite) in r.products
+        ]
+        # Throw an error if there is not exactly one reaction that makes the lumped metabolite
+        if len(synth_rxn) != 1:
+            raise ValueError(
+                "There should be exactly one reaction that makes the lumped metabolite"
+            )
+        # Get the reaction
+        synth_rxn = synth_rxn[0]
+        # Get the metabolites that are consumed in the reaction
+        substrates = [m.id for m in synth_rxn.reactants]
+        # Add the metabolites to the list of biomass compounds
+        unlumped_compounds += substrates
+
+    # Return the list of individual metabolites that make up the biomass
+    return unlumped_compounds
 
 
 if __name__ == "__main__":
