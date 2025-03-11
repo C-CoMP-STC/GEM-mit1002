@@ -834,7 +834,7 @@
 },
 {
 "id":"cpd03049_c0",
-"name":"2-Hydroxyethyl-ThPP [c0]",
+"name":"2-Hydroxyethyl-TPP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C14H21N4O8P2S",
@@ -4593,7 +4593,7 @@
 },
 {
 "id":"cpd03189_c0",
-"name":"3-Carboxy-1-hydroxypropyl-ThPP [c0]",
+"name":"3-Carboxy-1-hydroxypropyl-TPP [c0]",
 "compartment":"c0",
 "charge":-2,
 "formula":"C16H22N4O10P2S",
@@ -14381,34 +14381,6 @@
 }
 },
 {
-"id":"cpd12005_c0",
-"name":"Lipoylprotein [c0]",
-"compartment":"c0",
-"charge":0,
-"formula":"CHRS2",
-"annotation":{
-"bigg.metabolite":"lpro",
-"kegg.compound":"C02051",
-"metanetx.chemical":"MNXM998",
-"sbo":"SBO:0000247",
-"seed.compound":"cpd12005"
-}
-},
-{
-"id":"cpd11830_c0",
-"name":"S-Aminomethyldihydrolipoylprotein [c0]",
-"compartment":"c0",
-"charge":1,
-"formula":"C2H7NRS2",
-"annotation":{
-"bigg.metabolite":"alpro",
-"kegg.compound":"C01242",
-"metanetx.chemical":"MNXM81221",
-"sbo":"SBO:0000247",
-"seed.compound":"cpd11830"
-}
-},
-{
 "id":"cpd11621_c0",
 "name":"Oxidizedferredoxin [c0]",
 "compartment":"c0",
@@ -15534,20 +15506,6 @@
 "metanetx.chemical":"MNXM7294",
 "sbo":"SBO:0000247",
 "seed.compound":"cpd15696"
-}
-},
-{
-"id":"cpd12225_c0",
-"name":"Dihydrolipolprotein [c0]",
-"compartment":"c0",
-"charge":0,
-"formula":"CH3RS2",
-"annotation":{
-"bigg.metabolite":"dhlpro",
-"kegg.compound":"C02972",
-"metanetx.chemical":"MNXM1663",
-"sbo":"SBO:0000247",
-"seed.compound":"cpd12225"
 }
 },
 {
@@ -19995,6 +19953,21 @@
 ],
 "sbo":"SBO:0000247",
 "seed.compound":"cpd01997"
+}
+},
+{
+"id":"cpd15217_c0",
+"name":"S-Aminomethyldihydrolipoamide [c0]",
+"compartment":"c0",
+"charge":1,
+"formula":"C9H21N2OS2",
+"annotation":{
+"bigg.metabolite":"alpam",
+"inchi":"InChI=1S/C9H20N2OS2/c10-7-14-6-5-8(13)3-1-2-4-9(11)12/h8,13H,1-7,10H2,(H2,11,12)",
+"inchikey":"KALYVIJGKPJBQV-UHFFFAOYSA-N",
+"kegg.compound":"C01242",
+"sbo":"SBO:0000247",
+"seed.compound":"cpd15217"
 }
 }
 ],
@@ -38979,14 +38952,14 @@
 }
 },
 {
-"id":"rxn06377_c0",
+"id":"rxn09499_c0",
 "name":"glycine:lipoylprotein oxidoreductase (decarboxylating and acceptor-aminomethylating) [c0]",
 "metabolites":{
 "cpd00011_c0":1.0,
 "cpd00033_c0":-1.0,
 "cpd00067_c0":-1.0,
-"cpd11830_c0":1.0,
-"cpd12005_c0":-1.0
+"cpd00213_c0":-1.0,
+"cpd15217_c0":1.0
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
@@ -42148,14 +42121,14 @@
 }
 },
 {
-"id":"rxn06600_c0",
+"id":"rxn09498_c0",
 "name":"S-aminomethyldihydrolipoylprotein:(6S)-tetrahydrofolate aminomethyltransferase (ammonia-forming) [c0]",
 "metabolites":{
 "cpd00013_c0":1.0,
 "cpd00087_c0":-1.0,
 "cpd00125_c0":1.0,
-"cpd11830_c0":-1.0,
-"cpd12225_c0":1.0
+"cpd00449_c0":1.0,
+"cpd15217_c0":-1.0
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
@@ -49441,40 +49414,6 @@
 "rhea":"25252",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn15021"
-}
-},
-{
-"id":"rxn00154_c0",
-"name":"pyruvate:NAD+ 2-oxidoreductase (CoA-acetylating) [c0]",
-"metabolites":{
-"cpd00003_c0":-1.0,
-"cpd00004_c0":1.0,
-"cpd00010_c0":-1.0,
-"cpd00011_c0":1.0,
-"cpd00020_c0":-1.0,
-"cpd00022_c0":1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS03465 and TK37_RS03460 and TK37_RS03470",
-"annotation":{
-"bigg.reaction":[
-"PDH",
-"PDHm"
-],
-"biocyc":"META:PYRUVDEH-RXN",
-"ec-code":[
-"1.8.1.4",
-"1.2.1.-",
-"1.2.1.M10",
-"2.3.1.12",
-"1.2.4.1"
-],
-"kegg.reaction":"R00209",
-"metanetx.reaction":"MNXR102425",
-"rhea":"28045",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn00154"
 }
 },
 {
