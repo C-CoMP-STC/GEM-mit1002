@@ -13,4 +13,5 @@ class TestValidSBML(unittest.TestCase):
         # of the second element of the results tuple. The first element
         # is the model itself.
         # A valid file should have 0 errors.
-        self.assertEqual(0, len(results[1]['SBML_ERROR']))
+        errors = results[1]['SBML_ERROR']
+        self.assertEqual(0, len(errors), msg=f"SBML validation errors: {errors}")
