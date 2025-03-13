@@ -11,6 +11,9 @@ import seaborn as sns
 # Set path to the `test_files` directory
 TESTFILE_DIR = os.path.join(os.path.dirname(__file__), "test_files")
 
+# Set path to the results directory
+RESULTS_DIR = os.path.join(TESTFILE_DIR, "test_results")
+
 # Load the media definitions
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
@@ -95,7 +98,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
 
         # Save the dataframe as a TSV
         growth_phenotypes.to_csv(
-            os.path.join(TESTFILE_DIR, "known_growth_phenotypes_w_pred.tsv"),
+            os.path.join(RESULTS_DIR, "known_growth_phenotypes_w_pred.tsv"),
             sep="\t",
             index=False,
         )
@@ -170,7 +173,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
         plt.tight_layout()
 
         # Save the figure
-        plt.savefig(os.path.join(TESTFILE_DIR, "exp_vs_pred_growth_phenotypes.png"))
+        plt.savefig(os.path.join(RESULTS_DIR, "exp_vs_pred_growth_phenotypes.png"))
 
     # Test which biomass components are producible by the model
     # It doesn't really test anyything, as in there is no way to pass or fail,
@@ -349,7 +352,7 @@ def test_model(model, growth_phenotypes, media_definitions, biomass_rxn="bio1_bi
     # Make a dataframe of the producibility results and save it to a CSV file
     df = pd.DataFrame.from_dict(biomass_producibility)
     # Save the dataframe to a CSV file and make the file name specific the the model.id
-    df.to_csv(os.path.join(TESTFILE_DIR, model.id + "_biomass_producibility.csv"))
+    df.to_csv(os.path.join(RESULTS_DIR, model.id + "_biomass_producibility.csv"))
 
     # Plot the producibility results
     plot_prodcubility(model, df)
@@ -394,7 +397,7 @@ def plot_prodcubility(model, df):
 
     # Save the plot
     plt.savefig(
-        os.path.join(TESTFILE_DIR, model.id + "_biomass_producibility_heatmap.png")
+        os.path.join(RESULTS_DIR, model.id + "_biomass_producibility_heatmap.png")
     )
 
 
