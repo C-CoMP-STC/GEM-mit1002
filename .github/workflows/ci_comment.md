@@ -4,6 +4,6 @@ This PR has been [automatically tested with GH Actions](https://github.com/segre
 ![Biomass Producibility Heatmap](https://github.com/segrelab/GEM-mit1002/blob/{BRANCH_NAME}/test/test_files/test_results/iHS4156_biomass_producibility_heatmap.png?raw=true)
 
 
-This and a more detailed output from the tests are also committed to `test/test_files/test_results`.
+This and a more detailed output from the tests are also committed to [`test/test_files/test_results`](https://github.com/segrelab/GEM-mit1002/blob/{BRANCH_NAME}/test/test_files/test_results).
 
 > _Note: In the case of multiple test runs, this post will be edited._
