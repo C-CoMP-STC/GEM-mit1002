@@ -91,5 +91,5 @@ jobs:
           identifier: "GITHUB_COMMENT_CUSTOM_CI"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          BRANCH_NAME: ${{ github.head_ref }}
           GH_ACTION_RUN: ${{github.run_id}}
+          GITHUB_SHA: ${{ github.sha }}
