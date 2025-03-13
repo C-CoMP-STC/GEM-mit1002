@@ -44,7 +44,7 @@ jobs:
           PARSED_RESULTS="${PARSED_RESULTS//$'\r'/'<br>'}"
           echo $PARSED_RESULTS
           echo "results=$PARSED_RESULTS" >> $GITHUB_OUTPUT
-          printf "$TEST_RESULTS" > testResults/pytest_summary.md
+          printf "$TEST_RESULTS" > test/test_files/test_results/pytest_summary.md
         continue-on-error: true
 
       # Run the CUE simulations
