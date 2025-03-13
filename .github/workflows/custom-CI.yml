@@ -65,7 +65,7 @@ jobs:
 
           git add -A
           git commit -m "Run custom-CI workflow"
-          git push
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Mention PR# in README.md
         env:
