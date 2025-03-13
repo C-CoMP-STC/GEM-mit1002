@@ -58,15 +58,6 @@ jobs:
       - name: Export Model
         run: python export_model.py
 
-      - name: Push to Remote
-        run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
-          git add -A
-          git commit -m "Run custom-CI workflow"
-          git push origin HEAD:${{ github.head_ref }}
-
       - name: Mention PR# in README.md
         env:
           PR_NUMBER: ${{ github.event.number }}
@@ -86,7 +77,7 @@ jobs:
       - name: Auto-commit results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_user_name: memote-bot
+          commit_user_name: action-bot
           commit_message: "chore: add custom-CI test result"
           file_pattern: testResults/*
         env:
