@@ -84,6 +84,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.number }}
 
+      - name: Get commit SHA
+        id: get-commit-sha
+        run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
       - name: Post comment
         uses: NejcZdovc/comment-pr@v2
         with:
@@ -92,4 +96,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           GH_ACTION_RUN: ${{github.run_id}}
-          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_SHA: ${{ env.COMMIT_SHA }}
