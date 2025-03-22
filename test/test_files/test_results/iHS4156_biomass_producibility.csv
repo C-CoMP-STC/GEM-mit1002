@@ -1,5 +1,5 @@
 ,empty,mbm_noC,l1_noC,mbm_Glucose ,l1_Glucose ,mbm_Acetate,l1_Acetate,mbm_3-hydroxybutyrate,l1_Alanine,l1_Proline,l1_Glycerol-3-phosphate,l1_DHPS (dihydroxypropanesulfonate),l1_Tyrosine,l1_Glutamate,l1_Valine,promm_Leucine,promm_Isoleucine,promm_Valine,promm_3-methyl-2-oxobutanoic acid
-CoA [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+CoA [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 ACP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 NAD [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 NADP [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
