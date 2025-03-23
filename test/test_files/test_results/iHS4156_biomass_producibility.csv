@@ -27,7 +27,7 @@ Siroheme [c0],False,False,False,False,False,False,False,False,False,False,False,
 Spermidine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Putrescine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 TPP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ubiquinone-8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Ubiquinone-8 [c0],False,False,False,True,True,True,True,False,True,True,False,False,False,True,False,True,True,True,True
 2-Demethylmenaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Menaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Calomide [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
@@ -35,7 +35,7 @@ Stearoylcardiolipin (B. subtilis) [c0],False,False,False,False,False,False,False
 Phosphatidylglycerol dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 phosphatidylethanolamine dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Lauroyl-KDO2-lipid IV(A) [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
-Bactoprenyl diphosphate [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Bactoprenyl diphosphate [c0],False,False,False,True,True,True,True,False,True,True,False,False,False,True,False,True,True,True,True
 Peptidoglycan polymer (n subunits) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 ATP [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 H2O [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
