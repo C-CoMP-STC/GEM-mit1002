@@ -46,7 +46,7 @@ TTP [c0],False,False,False,True,False,True,False,False,True,True,False,False,Fal
 L-Glutamate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 Glycine [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 L-Alanine [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
-L-Lysine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+L-Lysine [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 L-Aspartate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 L-Arginine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 L-Glutamine [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
