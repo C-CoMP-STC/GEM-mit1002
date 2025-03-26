@@ -11,7 +11,7 @@ Cl- [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,
 Co2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Cu2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
 FAD [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
-Fe2+ [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Fe2+ [c0],False,False,False,True,True,True,True,False,True,True,False,False,False,True,True,True,True,True,True
 Mn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
 Sulfate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
 Zn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
@@ -22,15 +22,14 @@ S-Adenosyl-L-methionine [c0],False,False,False,True,False,True,False,False,True,
 Tetrahydrofolate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 5-Methyltetrahydrofolate [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 GSH [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
-Heme [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Siroheme [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Spermidine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Putrescine [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Heme [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Siroheme [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Spermidine [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
+Putrescine [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 TPP [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
-Ubiquinone-8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Ubiquinone-8 [c0],False,False,False,True,True,True,True,False,True,True,False,False,False,True,False,True,True,True,True
 2-Demethylmenaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Menaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Calomide [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Stearoylcardiolipin (B. subtilis) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Phosphatidylglycerol dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 phosphatidylethanolamine dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
