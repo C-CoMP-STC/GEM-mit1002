@@ -43,6 +43,36 @@ minimal_glucose["EX_cpd00027_e0"] = 10  # Glucose_e0
 minimal_acetate = minimal_media.copy()
 minimal_acetate["EX_cpd00029_e0"] = 10  # Acetate_e0
 
+# A version of the minimal media with all of the vitamins in the biomass
+# Useful for gap filling to avoid gap filling vitmain biosynthesis pathways
+minimal_vitamins = minimal_media.copy()
+vitamins = {
+    "EX_cpd00010_e0": 100,  # 'CoA [c0]',
+    "EX_cpd11493_e0": 100,  # 'ACP [c0]',
+    "EX_cpd10516_e0": 100,  # 'fe3 [c0]',
+    "EX_cpd00015_e0": 100,  # 'FAD [c0]',
+    "EX_cpd10515_e0": 100,  # 'Fe2+ [c0]',
+    "EX_cpd00016_e0": 100,  # Pyridoxal phosphate [c0] (Vitamin B6)
+    "EX_cpd00220_e0": 100,  # Riboflavin [c0] (Vitamin B2)
+    "EX_cpd00017_e0": 100,  # 'S-Adenosyl-L-methionine [c0]',
+    "EX_cpd00201_e0": 100,  # '10-Formyltetrahydrofolate [c0]',
+    "EX_cpd00087_e0": 100,  # Tetrahydrofolate (Folate/Vitamin B9)
+    "EX_cpd00345_e0": 100,  # 5-Methyltetrahydrofolate (Active folic acid)
+    "EX_cpd00028_e0": 100,  # 'Heme [c0]',
+    "EX_cpd00557_e0": 100,  # 'Siroheme [c0]',
+    "EX_cpd00264_e0": 100,  # 'Spermidine [c0]',
+    "EX_cpd00118_e0": 100,  # 'Putrescine [c0]',
+    "EX_cpd00056_e0": 100,  # TPP (Thiamin pyrophosphate/Vitamin B1)
+    "EX_cpd15560_e0": 100,  # 'Ubiquinone-8 [c0]',
+    "EX_cpd15540_e0": 100,  # 'Phosphatidylglycerol dioctadecanoyl [c0]',
+    "EX_cpd15533_e0": 100,  # 'phosphatidylethanolamine dioctadecanoyl [c0]',
+    "EX_cpd03736_e0": 100,  # 'Lauroyl-KDO2-lipid IV(A) [c0]',
+    "EX_cpd02229_e0": 100,  # 'Bactoprenyl diphosphate [c0]',
+    "EX_cpd15665_e0": 100,  # 'Peptidoglycan polymer (n subunits) [c0]',
+}
+minimal_vitamins.update(vitamins)
+
+
 # mbm_media
 # Minimal Basal Medium used by Zac in the Moran lab for the first round
 # of growth tests for A. mac MI1002
@@ -477,6 +507,7 @@ media = {
     "minimal": minimal_media,
     "minimal_glucose": minimal_glucose,
     "minimal_acetate": minimal_acetate,
+    "minimal_vitamins": minimal_vitamins,
     "mbm": mbm_media,
     "l1": l1_media,
     "bashir_c_free": bashir_c_free,
