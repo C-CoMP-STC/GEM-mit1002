@@ -1,11 +1,26 @@
+import os
+
+import cobra
 from gem_utilities.maps import map_ko_ids
 
-# TODO: Replace by extracting all of the KOs from the model
-ko_ids = ["K00665", "K00668"]
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUT_DIR = os.path.join(FILE_DIR, 'kegg_maps')
+
+# Load the model
+model = cobra.io.read_sbml_model(os.path.join(FILE_DIR, 'model.xml'))
+
+# Extract the KO IDs from the model
+# FIXME: Right now there are no KO IDs in the model
+ko_ids = set()
+for reaction in model.reactions:
+    for ko_id in reaction.annotation.get('kegg.ko', []):
+        ko_ids.add(ko_id)
 
 # Make and save a single map
-# TODO: Change the KGML folder
-# TODO: Change the output folder
 # TODO: Add more maps
 # TODO: Find all maps to make based on the KO IDs
-map_ko_ids("ko00061", ko_ids, kgml_folder='.')
+map_ko_ids("ko00061",
+           ko_ids,
+           kgml_folder='/Users/helenscott/Documents/PhD/Segre-lab/kegg_data/kgml',
+           output_folder=OUT_DIR)
+
