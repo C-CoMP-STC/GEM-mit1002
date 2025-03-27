@@ -404,9 +404,79 @@ pro99 = {
     "EX_cpd00242_e0": 1000,  # H2CO3
 }
 
+lb = {
+    "EX_cpd00001_e0": 100,  # H2O
+    "EX_cpd00007_e0": 100,  # O2
+    "EX_cpd00009_e0": 100,  # Phosphate
+    "EX_cpd00018_e0": 100,  # AMP
+    "EX_cpd00023_e0": 100,  # L-Glutamate
+    "EX_cpd00027_e0": 100,  # D-Glucose
+    "EX_cpd00028_e0": 100,  # Heme
+    "EX_cpd00030_e0": 100,  # Mn2+
+    "EX_cpd00033_e0": 100,  # Glycine
+    "EX_cpd00034_e0": 100,  # Zn2+
+    "EX_cpd00035_e0": 100,  # L-Alanine
+    "EX_cpd00039_e0": 100,  # L-Lysine
+    "EX_cpd00041_e0": 100,  # L-Aspartate
+    "EX_cpd00046_e0": 100,  # CMP
+    "EX_cpd00048_e0": 100,  # Sulfate
+    "EX_cpd00051_e0": 100,  # L-Arginine
+    "EX_cpd00054_e0": 100,  # L-Serine
+    "EX_cpd00058_e0": 100,  # Cu2+
+    "EX_cpd00060_e0": 100,  # L-Methionine
+    "EX_cpd00063_e0": 100,  # Ca2+
+    "EX_cpd00065_e0": 100,  # L-Tryptophan
+    "EX_cpd00066_e0": 100,  # L-Phenylalanine
+    "EX_cpd00067_e0": 100,  # H+
+    "EX_cpd00069_e0": 100,  # L-Tyrosine
+    "EX_cpd00084_e0": 100,  # L-Cysteine
+    "EX_cpd00091_e0": 100,  # UMP
+    "EX_cpd00092_e0": 100,  # Uracil
+    "EX_cpd00099_e0": 100,  # Cl-
+    "EX_cpd00107_e0": 100,  # L-Leucine
+    "EX_cpd00119_e0": 100,  # L-Histidine
+    "EX_cpd00126_e0": 100,  # GMP
+    "EX_cpd00129_e0": 100,  # L-Proline
+    "EX_cpd00149_e0": 100,  # Co2+
+    "EX_cpd00156_e0": 100,  # L-Valine
+    "EX_cpd00161_e0": 100,  # L-Threonine
+    "EX_cpd00182_e0": 100,  # Adenosine
+    "EX_cpd00184_e0": 100,  # Thymidine
+    "EX_cpd00205_e0": 100,  # K+
+    "EX_cpd00215_e0": 100,  # Pyridoxal
+    "EX_cpd00218_e0": 100,  # Niacin
+    "EX_cpd00219_e0": 100,  # Prephenate
+    "EX_cpd00220_e0": 100,  # Riboflavin
+    "EX_cpd00226_e0": 100,  # HYXN
+    "EX_cpd00239_e0": 100,  # H2S
+    "EX_cpd00246_e0": 100,  # Inosine
+    "EX_cpd00249_e0": 100,  # Uridine
+    "EX_cpd00254_e0": 100,  # Mg
+    "EX_cpd00311_e0": 100,  # Guanosine
+    "EX_cpd00322_e0": 100,  # L-Isoleucine
+    "EX_cpd00381_e0": 100,  # L-Cystine
+    "EX_cpd00383_e0": 100,  # Shikimate
+    "EX_cpd00393_e0": 100,  # Folate
+    "EX_cpd00438_e0": 100,  # Deoxyadenosine
+    "EX_cpd00531_e0": 100,  # Hg2+
+    "EX_cpd00541_e0": 100,  # Lipoate
+    "EX_cpd00644_e0": 100,  # PAN
+    "EX_cpd00654_e0": 100,  # Deoxycytidine
+    "EX_cpd00793_e0": 100,  # Thiamine phosphate
+    "EX_cpd00971_e0": 100,  # Na+
+    "EX_cpd01012_e0": 100,  # Cd2+
+    "EX_cpd01048_e0": 100,  # Arssenate
+    "EX_cpd03424_e0": 100,  # Vitamin B12
+    "EX_cpd10515_e0": 100,  # Fe2+
+    "EX_cpd10516_e0": 100,  # Fe3+
+    "EX_cpd11595_e0": 100,  # Chromate
+}
+
 # Make a dictionary of all the media
 media = {
     "minimal": minimal_media,
+    "minimal_glucose": minimal_glucose,
+    "minimal_acetate": minimal_acetate,
     "mbm": mbm_media,
     "l1": l1_media,
     "bashir_c_free": bashir_c_free,
@@ -415,6 +485,7 @@ media = {
     "hmb": hmb,
     "mmb": mmb,
     "pro99": pro99,
+    "lb": lb,
 }
 
 # Save a pickle file with the media definitions
