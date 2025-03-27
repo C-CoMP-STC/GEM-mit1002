@@ -23,6 +23,7 @@ minimal_media = {
     "EX_cpd00971_e0": 1000,  # Na+_e0
     "EX_cpd00063_e0": 1000,  # Ca2+_e0
     "EX_cpd00048_e0": 1000,  # Sulfate_e0
+    "EX_cpd10515_e0": 100,  # Fe2+ (The version of Fe that is in the biomass)
     "EX_cpd10516_e0": 1000,  # fe3_e0
     "EX_cpd00254_e0": 1000,  # Mg_e0
     "EX_cpd00009_e0": 1000,  # Phosphate_e0
@@ -51,7 +52,6 @@ vitamins = {
     "EX_cpd11493_e0": 100,  # 'ACP [c0]',
     "EX_cpd10516_e0": 100,  # 'fe3 [c0]',
     "EX_cpd00015_e0": 100,  # 'FAD [c0]',
-    "EX_cpd10515_e0": 100,  # 'Fe2+ [c0]',
     "EX_cpd00016_e0": 100,  # Pyridoxal phosphate [c0] (Vitamin B6)
     "EX_cpd00220_e0": 100,  # Riboflavin [c0] (Vitamin B2)
     "EX_cpd00017_e0": 100,  # 'S-Adenosyl-L-methionine [c0]',
