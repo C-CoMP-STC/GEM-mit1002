@@ -32,7 +32,6 @@ minimal_media = {
     "EX_cpd00030_e0": 1000,  # Mn2+_e0
     "EX_cpd00075_e0": 1000,  # Nitrite_e0
     "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
     "EX_cpd00034_e0": 1000,  # Zn2+_e0
     "EX_cpd00149_e0": 1000,  # Co2+_e0
 }
