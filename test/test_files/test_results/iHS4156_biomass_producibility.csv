@@ -31,8 +31,8 @@ Ubiquinone-8 [c0],False,False,False,True,True,True,True,False,True,True,False,Fa
 2-Demethylmenaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Menaquinone 8 [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
 Stearoylcardiolipin (B. subtilis) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Phosphatidylglycerol dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-phosphatidylethanolamine dioctadecanoyl [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Phosphatidylglycerol dioctadecanoyl [c0],False,False,False,True,True,True,True,False,True,True,False,False,False,True,False,True,True,True,True
+phosphatidylethanolamine dioctadecanoyl [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 Lauroyl-KDO2-lipid IV(A) [c0],False,False,False,True,False,True,False,False,True,True,False,False,False,True,False,True,True,True,True
 Bactoprenyl diphosphate [c0],False,False,False,True,True,True,True,False,True,True,False,False,False,True,False,True,True,True,True
 Peptidoglycan polymer (n subunits) [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
