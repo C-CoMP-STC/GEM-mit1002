@@ -36,6 +36,13 @@ minimal_media = {
     "EX_cpd00149_e0": 1000,  # Co2+_e0
 }
 
+# Minimal media with glucose and acetate
+minimal_glucose = minimal_media.copy()
+minimal_glucose["EX_cpd00027_e0"] = 10  # Glucose_e0
+
+minimal_acetate = minimal_media.copy()
+minimal_acetate["EX_cpd00029_e0"] = 10  # Acetate_e0
+
 # mbm_media
 # Minimal Basal Medium used by Zac in the Moran lab for the first round
 # of growth tests for A. mac MI1002
