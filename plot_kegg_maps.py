@@ -18,10 +18,19 @@ for reaction in model.reactions:
     for ko_id in reaction.annotation.get('kegg.orthology', []):
         ko_ids.add(ko_id)
 
-# Make and save a single map
-# TODO: Add more maps
-# TODO: Find all maps to make based on the KO IDs
-map_ko_ids("ko00061",
-           ko_ids,
-           kgml_folder='/Users/helenscott/Documents/PhD/Segre-lab/kegg_data/kgml',
-           output_folder=OUT_DIR)
+# List pathways to map
+pathway_ids = ['ko00010',  # Glycolysis / Gluconeogenesis
+               'ko00020',  # Citrate cycle (TCA cycle)
+               'ko00030',  # Pentose phosphate pathway
+               'ko00300',  # Lysine biosynthesis
+               'ko00310',  # Lysine degradation
+               'ko00220',  # Arginine biosynthesis
+               'ko00330',  # Arginine and proline metabolism
+               ]
+
+# Make and save all maps
+for pathway_id in pathway_ids:
+    map_ko_ids(pathway_id,
+               ko_ids,
+               kgml_folder='/Users/helenscott/Documents/PhD/Segre-lab/kegg_data/kgml',
+               output_folder=OUT_DIR)
