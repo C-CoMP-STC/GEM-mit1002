@@ -17,7 +17,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Install everything I need
       - name: Install Dependencies
@@ -63,16 +63,13 @@ jobs:
           PR_NUMBER: ${{ github.event.number }}
         run: sed -i -e "s/[[:digit:]]\{3,4\}\*\* (CUSTOM-CI)/$PR_NUMBER\*\* (CUSTOM-CI)/" test/test_files/test_results/README.md
 
-      - name: Update local branch before committing changes
+      - name: Ensure branch is up to date before committing
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
         run: |
-          git stash
-          git fetch
+          git fetch origin
           git checkout $BRANCH_NAME
-          if git stash list | grep -q 'stash@{'; then
-            git stash pop
-          fi
+          git reset --hard origin/$BRANCH_NAME
 
       - name: Auto-commit results
         uses: stefanzweifel/git-auto-commit-action@v4
