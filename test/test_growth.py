@@ -73,7 +73,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
             # Run the model
             sol = model.optimize()
             # Check if the model grows
-            if sol.objective_value > 0:
+            if sol.objective_value > 1e-3:
                 # If it does, add 'Y' to the list
                 pred_growth.append("Yes")
                 # Give a warning if growth was not expected
