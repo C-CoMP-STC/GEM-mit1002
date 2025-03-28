@@ -24,10 +24,12 @@ def set_plot_style(g):
 def carbon_fates_bar(data):
     # Check that the column names are correct
     assert set(data.columns) == set(["co2", "organic_c", "biomass"])
+    # Set the column order
+    data = data[["biomass", "organic_c", "co2"]]
     # Plot the stacked bar plot
-    g = data.plot(kind="bar", stacked=True, color=[LIGHT_ORANGE, LIGHT_BLUE, DARK_BLUE])
+    g = data.plot(kind="bar", stacked=True, color=[DARK_BLUE, LIGHT_BLUE, LIGHT_ORANGE])
     # Move the legend outside of the plot
-    custom_labels = ["CO2", "Organic C", "Biomass"]
+    custom_labels = ["Biomass", "Organic C", "CO2"]
     lgd = plt.legend(
         bbox_to_anchor=(1.25, 0.5),
         loc="center right",
