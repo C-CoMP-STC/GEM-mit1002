@@ -25,6 +25,7 @@ results = pd.read_csv(os.path.join(OUT_DIR, "results.csv"))
 # Stacked bar plot of the carbon fates for the different conditions
 data = results.set_index("sim_name")[["biomass", "organic_c", "co2"]]
 g = carbon_fates_bar(data)
+plt.tight_layout()
 plt.savefig(os.path.join(output_folder, "carbon_fates.png"))
 
 # Stacked bar plot of the normalized carbon fates for the different conditions
@@ -32,6 +33,7 @@ data_norm = results.set_index("sim_name")[["biomass_norm", "organic_c_norm", "co
 # Rename the columns to match the function
 data_norm.columns = ["biomass", "organic_c", "co2"]
 g_norm = carbon_fates_bar(data_norm)
+plt.tight_layout()
 plt.savefig(os.path.join(output_folder, "carbon_fates_norm.png"))
 
 # Subset the results to only include the pFBA on realistic O2

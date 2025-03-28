@@ -29,10 +29,10 @@ def carbon_fates_bar(data):
     # Move the legend outside of the plot
     custom_labels = ["CO2", "Organic C", "Biomass"]
     lgd = plt.legend(
-        bbox_to_anchor=(0.5, -0.20),
-        loc="upper center",
+        bbox_to_anchor=(1.25, 0.5),
+        loc="center right",
         borderaxespad=0.0,
-        ncol=3,
+        ncol=1,
         labels=custom_labels,
     )
     # Make the legend text gray too
