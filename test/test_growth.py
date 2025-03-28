@@ -198,10 +198,13 @@ class TestGrowthPhenotypes(unittest.TestCase):
             media_definitions = pickle.load(f)
 
         # Run the biomass producibility function on each of the models
-        biomass.check_biomass_producibility(model,
-                                            growth_phenotypes,
-                                            media_definitions,
-                                            out_dir=RESULTS_DIR)
+        sink_options = [False, True]
+        for option in sink_options:
+            biomass.check_biomass_producibility(model,
+                                                growth_phenotypes,
+                                                media_definitions,
+                                                sinks_for_all=option,
+                                                out_dir=RESULTS_DIR)
 
 
 if __name__ == "__main__":
