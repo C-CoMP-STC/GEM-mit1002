@@ -126,6 +126,7 @@ mbm_media = {
 # FIXME: Does that mean there are other carbon/nitrogen sources in the media?
 l1_media = {
     "EX_cpd00007_e0": 20,  # O2_e0
+    "EX_cpd00001_e0": 1000,  # H2O
     # L1 salts
     "EX_cpd00971_e0": 1000,  # Na+_e0 (in NaNO3, NaH2PO4, NaSiO3, Na2EDTA, NaMoO4, Na3VO4)
     "EX_cpd00209_e0": 1000,  # NO3- (in NaNO3)
@@ -158,6 +159,7 @@ l1_media = {
 
 bashir_c_free = {
     "EX_cpd00007_e0": 20,  # O2_e0
+    "EX_cpd00001_e0": 1000,  # H2O
     ##################
     # Nitrogen Source
     ##################
@@ -216,6 +218,7 @@ bashir_c_free = {
 # Based on 2024-02-19_Kratzl_Marine_Pro_Medium.xlsx
 marine_broth_wo_yeast_and_peptone = {
     "EX_cpd00007_e0": 20,  # O2_e0
+    "EX_cpd00001_e0": 1000,  # H2O
     ################
     # Salt Solution
     ################
