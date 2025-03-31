@@ -2,6 +2,6 @@
 
 The test results shown here were obtained by the GitHub Actions run in:
 
-- **PR #167** (CUSTOM-CI)
+- **PR #169** (CUSTOM-CI)
 
 The results will be updated by any subsequent pull request. Summary results are shown as a comment in the corresponding pull request.
