@@ -5,7 +5,7 @@ mbm	Acetate	cpd00029	ac	Yes
 l1	Acetate	cpd00029	ac	Yes	
 mbm	Glycolate	cpd00139	glyclt	No	
 mbm	Homarine	cpd00737		Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.
-mbm	3-hydroxybutyrate	cpd29193		Yes	
+mbm	3-hydroxybutyrate	cpd00797		Yes	
 mbm	Choline	cpd00098	chol	No	
 mbm	Ectoine	cpd03727	ectoine	No	
 mbm	Alanine	cpd00035	ala__L	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.

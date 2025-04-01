@@ -50,6 +50,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
 
         # Loop through the growth phenotpes, and add the carbon source to the
         # minimal media, run FBA and check if the model grows
+        ex_rxn_present = []
         pred_growth = []
         for index, row in growth_phenotypes.iterrows():
             minimal_media = media_definitions[row["minimal_media"]].copy()
@@ -57,17 +58,11 @@ class TestGrowthPhenotypes(unittest.TestCase):
             if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
                 # If it does, add the exchange reaction to the minimal media used
                 minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+                # Mark the exchange reaction as present
+                ex_rxn_present.append("Yes")
             else:
-                # If it doesn't have the exchange reaction, add "No Exchange"
-                pred_growth.append("No Exchange")
-                # Give a warning if growth was expected
-                if row["growth"] == "Yes":
-                    warnings.warn(
-                        "Model did not have an exchange reaction for "
-                        + row["c_source"]
-                        + ", but growth was expected."
-                    )
-                continue
+                # Mark the exchange reaction as not present
+                ex_rxn_present.append("No")
             # Set the media
             model.medium = media.clean_media(model, minimal_media)
             # Run the model
@@ -76,25 +71,12 @@ class TestGrowthPhenotypes(unittest.TestCase):
             if sol.objective_value > 1e-3:
                 # If it does, add 'Y' to the list
                 pred_growth.append("Yes")
-                # Give a warning if growth was not expected
-                if row["growth"] == "No":
-                    warnings.warn(
-                        "Model grew on "
-                        + row["c_source"]
-                        + ", but growth was not expected."
-                    )
             else:
                 # If it doesn't, add 'N' to the list
                 pred_growth.append("No")
-                # Give a warning if growth was expected
-                if row["growth"] == "Yes":
-                    warnings.warn(
-                        "Model did not grow on "
-                        + row["c_source"]
-                        + ", but growth was expected."
-                    )
 
-        # Add the list as a new column in the dataframe
+        # Add the lists as new columns in the dataframe
+        growth_phenotypes["ex_rxn_present"] = ex_rxn_present
         growth_phenotypes["pred_growth"] = pred_growth
 
         # Save the dataframe as a TSV
@@ -116,6 +98,19 @@ class TestGrowthPhenotypes(unittest.TestCase):
         )
         # And set it as the index
         growth_phenotypes = growth_phenotypes.set_index("c_source")
+
+        # Make a dictionary for the phenotypes to numbers
+        value_to_int = {"Unsure": 0, "No": 1, "Yes": 2}
+        n = len(value_to_int)
+
+        # Create an annotation data frame for the text labels on the heatmap
+        annotation_key = {"No": "No Exchange", "Yes": ""}
+        annot_df = growth_phenotypes['ex_rxn_present'].replace(annotation_key).to_frame()
+        annot_df.rename(columns={'ex_rxn_present': 'FBA'}, inplace=True)
+        annot_df['Experimental'] = ""
+        # Sort the columns to match the order of the heatmap
+        annot_df = annot_df[["Experimental", "FBA"]]
+
         # Subset the other columns, to have just the growth and predicted growth
         growth_phenotypes = growth_phenotypes[["growth", "pred_growth"]]
 
@@ -128,13 +123,6 @@ class TestGrowthPhenotypes(unittest.TestCase):
             }
         )
 
-        # Replace all of the "No Exchange" values with "No"
-        growth_phenotypes = growth_phenotypes.replace("No Exchange", "No")
-
-        # Make a dictionary for the phenotypes to numbers
-        value_to_int = {"Unsure": 0, "No": 1, "Yes": 2}
-        n = len(value_to_int)
-
         # Make a colormap of specified colors (in numerical order for the phenotypes)
         # cmap = ['gray', '#F18F01', '#399E5A'] # Gray, orange, green
         cmap = ["#5E5E5E", "#FF7D0A", "#024064"]  # C-CoMP gray, orange, and dark blue
@@ -146,6 +134,9 @@ class TestGrowthPhenotypes(unittest.TestCase):
             cmap=cmap,
             linewidths=4,
             linecolor="white",
+            annot=annot_df,
+            fmt="",
+            annot_kws={"fontsize": 8},  # Smaller font size for annotation
             ax=ax,
         )
 
