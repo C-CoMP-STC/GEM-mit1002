@@ -14,9 +14,9 @@ mbm	Proline	cpd00129	pro__L	Unsure	Maybe. Took over a week for noticeable, but w
 l1	Proline	cpd00129	pro__L	Yes		Yes
 mbm	Sucrose	cpd00076	sucr	No		No Exchange
 mbm	Fructose	cpd00082	fru	No		No Exchange
-l1	Glycerol-3-phosphate	cpd00080	glyc3p	Yes		No Exchange
+l1	Glycerol-3-phosphate	cpd00080	glyc3p	Yes		No
 l1	DHPS (dihydroxypropanesulfonate)	cpd23538		Yes		No Exchange
-l1	Tyrosine	cpd00069	tyr__L	Yes	Assumed we wanted L-tyrosine.	No Exchange
+l1	Tyrosine	cpd00069	tyr__L	Yes	Assumed we wanted L-tyrosine.	Yes
 l1	Glutamate	cpd00023	glu__L	Yes	Assumed we wanted L-glutamate.	Yes
 l1	Valine	cpd00156	val__L	Yes	Assumed we wanted L-valine.	No
 promm	Leucine	cpd00107		Yes		Yes
