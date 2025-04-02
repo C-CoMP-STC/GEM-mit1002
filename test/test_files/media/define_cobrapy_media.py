@@ -311,8 +311,8 @@ marine_broth_wo_yeast_and_peptone = {
 promm = {
     "EX_cpd00034_e0": 1000,  # Zn2+
     "EX_cpd03387_e0": 1000,  # Selenite
-    "EX_cpd00020_e0": 1000,  # Pyruvate    # Is this a problem?
-    "EX_cpd00029_e0": 1000,  # Acetate  # Is this a problem?
+    "EX_cpd00020_e0": 1000,  # Pyruvate
+    "EX_cpd00029_e0": 1000,  # Acetate
     "EX_cpd00007_e0": 20,  # O2
     "EX_cpd00244_e0": 1000,  # Ni2+
     "EX_cpd00971_e0": 1000,  # Na+
@@ -343,6 +343,13 @@ promm = {
     "EX_cpd00644_e0": 1000,  # PAN
     "EX_cpd03424_e0": 1000,  # Vitamin B12
 }
+
+# Make a minimal version of ProMM without the carbon sources
+promm_no_c = promm.copy()
+promm_no_c.pop("EX_cpd00020_e0")  # Pyruvate
+promm_no_c.pop("EX_cpd00029_e0")  # Acetate
+promm_no_c.pop("EX_cpd00100_e0")  # Glycerol
+promm_no_c.pop("EX_cpd00159_e0")  # L-Lactate
 
 # HMB
 # Media definition from Osnat's KBase narrative
@@ -514,6 +521,7 @@ media = {
     "bashir_c_free": bashir_c_free,
     "marine_broth_wo_yeast_and_peptone": marine_broth_wo_yeast_and_peptone,
     "promm": promm,
+    "promm_no_c": promm_no_c,
     "hmb": hmb,
     "mmb": mmb,
     "pro99": pro99,
