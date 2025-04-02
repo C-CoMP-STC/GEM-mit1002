@@ -19,12 +19,12 @@ l1	DHPS (dihydroxypropanesulfonate)	cpd23538		Yes		No	No
 l1	Tyrosine	cpd00069	tyr__L	Yes	Assumed we wanted L-tyrosine.	Yes	Yes
 l1	Glutamate	cpd00023	glu__L	Yes	Assumed we wanted L-glutamate.	Yes	Yes
 l1	Valine	cpd00156	val__L	Yes	Assumed we wanted L-valine.	Yes	No
-promm	Leucine	cpd00107		Yes		Yes	Yes
-promm	4-methyl-2-oxopentanoic acid	cpd00200		No		No	Yes
-promm	Isoleucine	cpd00322		Yes		Yes	Yes
-promm	3-methyl-2-oxopentanoic acid	cpd00508		No		No	Yes
-promm	Valine	cpd00156		Yes		Yes	Yes
-promm	3-methyl-2-oxobutanoic acid	cpd00123		Yes		No	Yes
-promm	Kynurenine	cpd00275		No	There are two kynurenine metabolites in the db ModelSEED	No	Yes
-promm	Thymidine	cpd00184		No		Yes	Yes
-promm	4-hydroxybenzoic acid	cpd00136		No		No	Yes
+promm_no_c	Leucine	cpd00107		Yes		Yes	No
+promm_no_c	4-methyl-2-oxopentanoic acid	cpd00200		No		No	No
+promm_no_c	Isoleucine	cpd00322		Yes		Yes	No
+promm_no_c	3-methyl-2-oxopentanoic acid	cpd00508		No		No	No
+promm_no_c	Valine	cpd00156		Yes		Yes	No
+promm_no_c	3-methyl-2-oxobutanoic acid	cpd00123		Yes		No	No
+promm_no_c	Kynurenine	cpd00275		No	There are two kynurenine metabolites in the db ModelSEED	No	No
+promm_no_c	Thymidine	cpd00184		No		Yes	No
+promm_no_c	4-hydroxybenzoic acid	cpd00136		No		No	No
