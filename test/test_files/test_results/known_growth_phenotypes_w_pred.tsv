@@ -15,7 +15,7 @@ l1	Proline	cpd00129	pro__L	Yes		Yes	Yes
 mbm	Sucrose	cpd00076	sucr	No		No	No
 mbm	Fructose	cpd00082	fru	No		No	No
 l1	Glycerol-3-phosphate	cpd00080	glyc3p	Yes		Yes	Yes
-l1	DHPS (dihydroxypropanesulfonate)	cpd23538		Yes		No	No
+l1	DHPS (dihydroxypropanesulfonate)	cpd23538		Yes		Yes	Yes
 l1	Tyrosine	cpd00069	tyr__L	Yes	Assumed we wanted L-tyrosine.	Yes	Yes
 l1	Glutamate	cpd00023	glu__L	Yes	Assumed we wanted L-glutamate.	Yes	Yes
 l1	Valine	cpd00156	val__L	Yes	Assumed we wanted L-valine.	Yes	No
