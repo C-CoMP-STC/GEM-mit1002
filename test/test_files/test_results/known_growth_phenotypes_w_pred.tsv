@@ -21,7 +21,7 @@ l1	Glutamate	cpd00023	glu__L	Yes	Assumed we wanted L-glutamate.	Yes	Yes
 l1	Valine	cpd00156	val__L	Yes	Assumed we wanted L-valine.	Yes	Yes
 promm_no_c	Leucine	cpd00107		Yes		Yes	Yes
 promm_no_c	4-methyl-2-oxopentanoic acid	cpd00200		No		No	No
-promm_no_c	Isoleucine	cpd00322		Yes		Yes	No
+promm_no_c	Isoleucine	cpd00322		Yes		Yes	Yes
 promm_no_c	3-methyl-2-oxopentanoic acid	cpd00508		No		No	No
 promm_no_c	Valine	cpd00156		Yes		Yes	Yes
 promm_no_c	3-methyl-2-oxobutanoic acid	cpd00123		Yes		Yes	Yes
