@@ -1,0 +1,62 @@
+,empty,mbm,l1,promm_no_c,mbm_Glucose ,l1_Glucose ,mbm_Acetate,l1_Acetate,mbm_3-hydroxybutyrate,l1_Alanine,l1_Proline,l1_Glycerol-3-phosphate,l1_DHPS (dihydroxypropanesulfonate),l1_Tyrosine,l1_Glutamate,l1_Valine,promm_no_c_Leucine,promm_no_c_Isoleucine,promm_no_c_Valine,promm_no_c_3-methyl-2-oxobutanoic acid
+CoA [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+NAD [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+NADP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+K+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Mg [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+fe3 [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Ca2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Cl- [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Co2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Cu2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+FAD [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Fe2+ [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Mn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Sulfate [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Zn2+ [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+Pyridoxal phosphate [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Riboflavin [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+S-Adenosyl-L-methionine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+10-Formyltetrahydrofolate [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Tetrahydrofolate [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+5-Methyltetrahydrofolate [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+GSH [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Heme [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Siroheme [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Spermidine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Putrescine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+TPP [c0],False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+Ubiquinone-8 [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+"1,2-dioctadecanoyl-sn-glycero-3-phosphoglycerol [c0]",False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+phosphatidylethanolamine dioctadecanoyl [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Lauroyl-KDO2-lipid IV(A) [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Bactoprenyl diphosphate [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+ATP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+H2O [c0],False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
+dATP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+dGTP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+dCTP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+TTP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Glutamate [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+Glycine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Alanine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Lysine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Aspartate [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Arginine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Glutamine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Serine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Methionine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Tryptophan [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Phenylalanine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Tyrosine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Cysteine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Leucine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Histidine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Proline [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Asparagine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Valine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Threonine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+L-Isoleucine [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False
+GTP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+CTP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False
+UTP [c0],False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,False,True,False

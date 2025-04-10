@@ -3,12 +3,9 @@
 name: Custom-CI
 
 # Controls when the workflow will run
-# Run for pushes and pulls on every branch and manually from the Actions tab
+# Run only for pull requests
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  pull_request:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,6 +18,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          fetch-depth: 0
 
       # Install everything I need
       - name: Install Dependencies
@@ -39,7 +39,15 @@ jobs:
 
       # Run the custom tests
       - name: Run Custom Tests with pytest
-        run: pytest
+        id: run-tests
+        run: |
+          TEST_RESULTS=$(pytest)
+          echo $TEST_RESULTS
+          PARSED_RESULTS="${TEST_RESULTS//$'\n'/'<br>'}"
+          PARSED_RESULTS="${PARSED_RESULTS//$'\r'/'<br>'}"
+          echo $PARSED_RESULTS
+          echo "results=$PARSED_RESULTS" >> $GITHUB_OUTPUT
+          printf "$TEST_RESULTS" > test/test_files/test_results/pytest_summary.md
         continue-on-error: true
 
       # Run the CUE simulations
@@ -53,11 +61,32 @@ jobs:
       - name: Export Model
         run: python export_model.py
 
-      - name: Push to Remote
-        run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Mention PR# in README.md
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+        run: sed -i -e "s/[[:digit:]]\{3,4\}\*\* (CUSTOM-CI)/$PR_NUMBER\*\* (CUSTOM-CI)/" test/test_files/test_results/README.md
 
-          git add -A
-          git commit -m "Run custom-CI workflow"
-          git push
+      # Auto-commit the changes directly without stashing
+      - name: Auto-commit results
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_user_name: action-bot
+          commit_message: "chore: add custom-CI test result"
+          file_pattern: test/test_files/test_results/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
+
+      - name: Get commit SHA
+        id: get-commit-sha
+        run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
+      - name: Post comment
+        uses: NejcZdovc/comment-pr@v2
+        with:
+          file: "ci_comment.md"
+          identifier: "GITHUB_COMMENT_CUSTOM_CI"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_ACTION_RUN: ${{github.run_id}}
+          COMMIT_SHA: ${{ env.COMMIT_SHA }}
