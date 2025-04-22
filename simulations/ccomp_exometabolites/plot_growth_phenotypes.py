@@ -94,6 +94,28 @@ for index, row in top_10_metabolites.iterrows():
         # If it doesn't, add 'N' to the list
         top_10_metabolites.at[index, "pred_growth"] = "No"
 
+    # Check for growth with free exchnage and tranport (i.e. add a sink reaction,
+    # and check if the model grows)
+    # Make a new copy of the model to work with
+    model = model_orig.copy()
+    # Set the media so that there are no carbon sources
+    model.medium = media.clean_media(model, minimal_media)
+    # Add a sink reaction for the metabolite
+    # TODO: Change the lower bound to restrict the flux
+    model.add_boundary(
+        metabolite=model.metabolites.get_by_id(row["met_id"] + "_c0"),
+        type="sink",
+    )
+    # Run the model
+    sol = model.optimize()
+    # Check if the model grows
+    if sol.objective_value > 1e-3:
+        # If it does, add 'Y' to the list
+        top_10_metabolites.at[index, "pred_growth_free_transport"] = "Yes"
+    else:
+        # If it doesn't, add 'N' to the list
+        top_10_metabolites.at[index, "pred_growth_free_transport"] = "No"
+
 # Plot a categorical heatmap of the growth phenotypes, where the rows
 # are the metabolites and the columns are the experimental and predicted
 # growth phenotypes. Show growth as blue and no growth as red, and
@@ -108,20 +130,25 @@ n = len(value_to_int)
 # Create an annotation data frame for the text labels on the heatmap
 annotation_key = {"No": "No Exchange", "Yes": ""}
 annot_df = growth_phenotypes["ex_rxn_present"].replace(annotation_key).to_frame()
-annot_df.rename(columns={"ex_rxn_present": "FBA"}, inplace=True)
+annot_df.rename(columns={"ex_rxn_present": "FBA (Defined EXs Only)"}, inplace=True)
 annot_df["Experimental"] = ""
+annot_df["FBA (Free Transport)"] = ""
 # Sort the columns to match the order of the heatmap
-annot_df = annot_df[["Experimental", "FBA"]]
+annot_df = annot_df[["Experimental", "FBA (Defined EXs Only)", "FBA (Free Transport)"]]
 
-# Subset the other columns, to have just the growth and predicted growth
-growth_phenotypes = growth_phenotypes[["exp_growth", "pred_growth"]]
+# Subset the other columns, to have just the growth and the two types of
+# predicted growth (with the model as is, and with free transport)
+growth_phenotypes = growth_phenotypes[
+    ["exp_growth", "pred_growth", "pred_growth_free_transport"]
+]
 
 # Rename the columns and the index to be longer/more descriptive
 growth_phenotypes.index.name = "Media/Carbon Source"
 growth_phenotypes = growth_phenotypes.rename(
     columns={
         "exp_growth": "Experimental",
-        "pred_growth": "FBA",
+        "pred_growth": "FBA (Defined EXs Only)",
+        "pred_growth_free_transport": "FBA (Free Transport)",
     }
 )
 
