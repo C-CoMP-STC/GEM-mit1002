@@ -10,192 +10,155 @@ from gem_utilities import biomass, media
 FILE_DIR = os.path.dirname(__file__)
 
 # Set path to the `test_files` directory
-TESTFILE_DIR = os.path.join(os.path.dirname(__file__), "test_files")
+TESTFILE_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(FILE_DIR)), "test", "test_files"
+)
 
 # Load the media definitions
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
-minimal_media = media_definitions["minimal"]
+minimal_media = media_definitions["promm_no_c"]
 
 # Load the model with cobrapy
 model = cobra.io.read_sbml_model("model.xml")
 
+# Load the top 10 metabolite file
+top_10_metabolites = pd.read_csv(
+    os.path.join(FILE_DIR, "top10_exometabolites.csv"), sep=","
+)
 
-class TestGrowthPhenotypes(unittest.TestCase):
-    # Check that there is no growth on a media with no carbon sources
-    def test_growth_w_0_C(self):
-        
+# Load the known growth phenotype file
+known_growth_phenotypes = pd.read_csv(
+    os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+)
 
-        # Set the media so that there are no carbon sources
-        model.medium = media.clean_media(model, minimal_media)
+# Subset the top 10 metabolites to only include the ones that are from PRO
+top_10_metabolites = top_10_metabolites[
+    top_10_metabolites["organism"] == "Prochlorococcus marinus"
+].copy()
 
-        # Run the model
-        sol = model.optimize()
-
-        # Check that no biomass is produced
-        self.assertEqual(sol.objective_value, 0)
-
-    # Test that there is growth on the expected pheontypes, and that there
-    # is no growth on the expected phenotypes. Make a plot of the growth
-    # phenotypes.
-    def test_expected_growth_phenotypes(self):
-        # Load the TSV of the growth phenotypes
-        growth_phenotypes = pd.read_csv(
-            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
-        )
-
-        # Load the model
-        model = cobra.io.read_sbml_model("model.xml")
-
-        # Loop through the growth phenotpes, and add the carbon source to the
-        # minimal media, run FBA and check if the model grows
-        ex_rxn_present = []
-        pred_growth = []
-        for index, row in growth_phenotypes.iterrows():
-            minimal_media = media_definitions[row["minimal_media"]].copy()
-            # Check if the model has an exchange reaction for the metabolite
-            if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
-                # If it does, add the exchange reaction to the minimal media used
-                minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
-                # Mark the exchange reaction as present
-                ex_rxn_present.append("Yes")
+# For every metabolite in the top 10 metabolites, check if it is in the
+# known growth phenotypes, if it is add add the value from that file to the
+# new column "exp_growth" in the top 10 metabolites dataframe, then run FBA
+# and check if the model grows on that metabolite, and add the value to the
+# new column "pred_growth" in the top 10 metabolites dataframe
+for index, row in top_10_metabolites.iterrows():
+    # Check if the metabolite is in the known growth phenotypes
+    if row["met_id"] in known_growth_phenotypes["met_id"].values:
+        # Check that all the values in the known growth file are the same
+        exp_growth = known_growth_phenotypes[
+            known_growth_phenotypes["met_id"] == row["met_id"]
+        ]["growth"].values
+        if len(set(exp_growth)) > 1:
+            # As long as there is one "Yes" in the list, set the value to "Yes"
+            if "Yes" in exp_growth:
+                top_10_metabolites.at[index, "exp_growth"] = "Yes"
+            # If there is no "Yes" in the list, throw an error
             else:
-                # Mark the exchange reaction as not present
-                ex_rxn_present.append("No")
-            # Set the media
-            model.medium = media.clean_media(model, minimal_media)
-            # Run the model
-            sol = model.optimize()
-            # Check if the model grows
-            if sol.objective_value > 1e-3:
-                # If it does, add 'Y' to the list
-                pred_growth.append("Yes")
-            else:
-                # If it doesn't, add 'N' to the list
-                pred_growth.append("No")
+                raise ValueError(
+                    f"Multiple growth phenotypes found for metabolite {row['met_id']}: {exp_growth}"
+                )
+        else:
+            # If there is only one value, set the value to that
+            top_10_metabolites.at[index, "exp_growth"] = exp_growth[0]
+    else:
+        # If it isn't, set the value to "Unknown"
+        top_10_metabolites.at[index, "exp_growth"] = "Unknown"
 
-        # Add the lists as new columns in the dataframe
-        growth_phenotypes["ex_rxn_present"] = ex_rxn_present
-        growth_phenotypes["pred_growth"] = pred_growth
+    # Set the media so that there are no carbon sources
+    model.medium = media.clean_media(model, minimal_media)
 
-        # Save the dataframe as a TSV
-        growth_phenotypes.to_csv(
-            os.path.join(RESULTS_DIR, "known_growth_phenotypes_w_pred.tsv"),
-            sep="\t",
-            index=False,
-        )
+    # Check if the model has an exchange reaction for the metabolite
+    if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
+        # If it does, add the exchange reaction to the minimal media used
+        model.medium["EX_" + row["met_id"] + "_e0"] = 1000.0
+        # Say "Yes" to the exchange reaction present
+        top_10_metabolites.at[index, "ex_rxn_present"] = "Yes"
+     #If not, save that information in a new column
+    else:
+        top_10_metabolites.at[index, "ex_rxn_present"] = "No"
 
-        # Plot a categorical heatmap of the growth phenotypes, where the rows
-        # are the metabolites and the columns are the experimental and predicted
-        # growth phenotypes. Show growth as blue and no growth as orange, and
-        # unsure as gray
-        # First, make a new dataframe with the metabolites as the rows and the
-        # experimental and predicted growth phenotypes as the columns
-        # Combine the values of "minimal_media" and "c_source" into one column
-        growth_phenotypes["c_source"] = (
-            growth_phenotypes["minimal_media"] + " " + growth_phenotypes["c_source"]
-        )
-        # And set it as the index
-        growth_phenotypes = growth_phenotypes.set_index("c_source")
+    # Run the model
+    sol = model.optimize()
 
-        # Make a dictionary for the phenotypes to numbers
-        value_to_int = {"Unsure": 0, "No": 1, "Yes": 2}
-        n = len(value_to_int)
+    # Check if the model grows
+    if sol.objective_value > 1e-3:
+        # If it does, add 'Y' to the list
+        top_10_metabolites.at[index, "pred_growth"] = "Yes"
+    else:
+        # If it doesn't, add 'N' to the list
+        top_10_metabolites.at[index, "pred_growth"] = "No"
 
-        # Create an annotation data frame for the text labels on the heatmap
-        annotation_key = {"No": "No Exchange", "Yes": ""}
-        annot_df = growth_phenotypes['ex_rxn_present'].replace(annotation_key).to_frame()
-        annot_df.rename(columns={'ex_rxn_present': 'FBA'}, inplace=True)
-        annot_df['Experimental'] = ""
-        # Sort the columns to match the order of the heatmap
-        annot_df = annot_df[["Experimental", "FBA"]]
+# Plot a categorical heatmap of the growth phenotypes, where the rows
+# are the metabolites and the columns are the experimental and predicted
+# growth phenotypes. Show growth as blue and no growth as red, and
+# unsure as gray
+# And set it as the index
+growth_phenotypes = top_10_metabolites.set_index("metabolite")
 
-        # Subset the other columns, to have just the growth and predicted growth
-        growth_phenotypes = growth_phenotypes[["growth", "pred_growth"]]
+# Make a dictionary for the phenotypes to numbers
+value_to_int = {"Unknown": 0, "No": 1, "Yes": 2}
+n = len(value_to_int)
 
-        # Rename the columns and the index to be longer/more descriptive
-        growth_phenotypes.index.name = "Media/Carbon Source"
-        growth_phenotypes = growth_phenotypes.rename(
-            columns={
-                "growth": "Experimental",
-                "pred_growth": "FBA",
-            }
-        )
+# Create an annotation data frame for the text labels on the heatmap
+annotation_key = {"No": "No Exchange", "Yes": ""}
+annot_df = growth_phenotypes["ex_rxn_present"].replace(annotation_key).to_frame()
+annot_df.rename(columns={"ex_rxn_present": "FBA"}, inplace=True)
+annot_df["Experimental"] = ""
+# Sort the columns to match the order of the heatmap
+annot_df = annot_df[["Experimental", "FBA"]]
 
-        # Make a colormap of specified colors (in numerical order for the phenotypes)
-        # cmap = ['gray', '#F18F01', '#399E5A'] # Gray, orange, green
-        cmap = ["#5E5E5E", "#FF7D0A", "#024064"]  # C-CoMP gray, orange, and dark blue
+# Subset the other columns, to have just the growth and predicted growth
+growth_phenotypes = growth_phenotypes[["exp_growth", "pred_growth"]]
 
-        # Plot the heatmap
-        fig, ax = plt.subplots()
-        sns.heatmap(
-            growth_phenotypes.replace(value_to_int),
-            cmap=cmap,
-            linewidths=4,
-            linecolor="white",
-            annot=annot_df,
-            fmt="",
-            annot_kws={"fontsize": 8},  # Smaller font size for annotation
-            ax=ax,
-        )
+# Rename the columns and the index to be longer/more descriptive
+growth_phenotypes.index.name = "Media/Carbon Source"
+growth_phenotypes = growth_phenotypes.rename(
+    columns={
+        "exp_growth": "Experimental",
+        "pred_growth": "FBA",
+    }
+)
 
-        # Modify colorbar:
-        colorbar = ax.collections[0].colorbar
-        r = colorbar.vmax - colorbar.vmin
-        colorbar.set_ticks([colorbar.vmin + r / n * (0.5 + i) for i in range(n)])
-        colorbar.set_ticklabels(list(value_to_int.keys()))
+# Make a colormap of specified colors (in numerical order for the phenotypes)
+cmap = ["#5E5E5E", "#AC333C", "#193F61"]  # C-CoMP gray, red, and dark blue
 
-        # Move the x-axis labels to the top
-        plt.tick_params(
-            axis="both",
-            which="major",
-            labelsize=10,
-            labelbottom=False,
-            bottom=False,
-            top=True,
-            labeltop=True,
-        )
+# Plot the heatmap
+fig, ax = plt.subplots()
+sns.heatmap(
+    growth_phenotypes.replace(value_to_int),
+    cmap=cmap,
+    linewidths=4,
+    linecolor="white",
+    annot=annot_df,
+    fmt="",
+    annot_kws={"fontsize": 8},  # Smaller font size for annotation
+    ax=ax,
+)
 
-        # Make sure that every y-tick is shown
-        ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
-        ax.set_yticklabels(growth_phenotypes.index, rotation=0)
+# Modify colorbar:
+colorbar = ax.collections[0].colorbar
+r = colorbar.vmax - colorbar.vmin
+colorbar.set_ticks([colorbar.vmin + r / n * (0.5 + i) for i in range(n)])
+colorbar.set_ticklabels(list(value_to_int.keys()))
 
-        # Make sure that the y-axis labels are not cut off
-        plt.tight_layout()
+# Move the x-axis labels to the top
+plt.tick_params(
+    axis="both",
+    which="major",
+    labelsize=10,
+    labelbottom=False,
+    bottom=False,
+    top=True,
+    labeltop=True,
+)
 
-        # Save the figure
-        plt.savefig(os.path.join(RESULTS_DIR, "exp_vs_pred_growth_phenotypes.png"))
+# Make sure that every y-tick is shown
+ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
+ax.set_yticklabels(growth_phenotypes.index, rotation=0)
 
-    # Test which biomass components are producible by the model
-    # It doesn't really test anyything, as in there is no way to pass or fail,
-    # but it generates a heatmap of the producibility of the biomass components
-    def test_biomass_component_producibility(self):
-        # Load the TSV of the growth phenotypes
-        growth_phenotypes = pd.read_csv(
-            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
-        )
+# Make sure that the y-axis labels are not cut off
+plt.tight_layout()
 
-        # Load the model
-        model = cobra.io.read_sbml_model("model.xml")
-
-        # Filter the growth phenotypes to only include the carbon sources that it can grow on
-        growth_phenotypes = growth_phenotypes[growth_phenotypes["growth"] == "Yes"]
-
-        # Load the media definitions
-        with open(
-            os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb"
-        ) as f:
-            media_definitions = pickle.load(f)
-
-        # Run the biomass producibility function on each of the models
-        sink_options = [False, True]
-        for option in sink_options:
-            biomass.check_biomass_producibility(model,
-                                                growth_phenotypes,
-                                                media_definitions,
-                                                sinks_for_all=option,
-                                                out_dir=RESULTS_DIR)
-
-
-if __name__ == "__main__":
-    unittest.main()
+# Save the figure
+plt.savefig(os.path.join(FILE_DIR, "pro_exomet_growth_phenotypes.png"))
