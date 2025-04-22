@@ -137,7 +137,7 @@ sns.heatmap(
     linecolor="white",
     annot=annot_df,
     fmt="",
-    annot_kws={"fontsize": 8},  # Smaller font size for annotation
+    annot_kws={"fontsize": 10},
     ax=ax,
 )
 
