@@ -156,7 +156,7 @@ growth_phenotypes = growth_phenotypes.rename(
 cmap = ["#5E5E5E", "#AC333C", "#193F61"]  # C-CoMP gray, red, and dark blue
 
 # Plot the heatmap
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(8, 4))
 sns.heatmap(
     growth_phenotypes.replace(value_to_int),
     cmap=cmap,
