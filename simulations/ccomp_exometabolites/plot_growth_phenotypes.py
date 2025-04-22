@@ -17,10 +17,10 @@ TESTFILE_DIR = os.path.join(
 # Load the media definitions
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
-minimal_media = media_definitions["promm_no_c"]
+minimal_media = media_definitions["l1"]
 
 # Load the model with cobrapy
-model = cobra.io.read_sbml_model("model.xml")
+model_orig = cobra.io.read_sbml_model("model.xml")
 
 # Load the top 10 metabolite file
 top_10_metabolites = pd.read_csv(
@@ -65,16 +65,21 @@ for index, row in top_10_metabolites.iterrows():
         # If it isn't, set the value to "Unknown"
         top_10_metabolites.at[index, "exp_growth"] = "Unknown"
 
+    # Make a copy of the model to work with
+    model = model_orig.copy()
+
     # Set the media so that there are no carbon sources
     model.medium = media.clean_media(model, minimal_media)
 
     # Check if the model has an exchange reaction for the metabolite
     if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
         # If it does, add the exchange reaction to the minimal media used
-        model.medium["EX_" + row["met_id"] + "_e0"] = 1000.0
+        medium = model.medium.copy()
+        medium["EX_" + row["met_id"] + "_e0"] = 1000.0
+        model.medium = medium
         # Say "Yes" to the exchange reaction present
         top_10_metabolites.at[index, "ex_rxn_present"] = "Yes"
-     #If not, save that information in a new column
+    # If not, save that information in a new column
     else:
         top_10_metabolites.at[index, "ex_rxn_present"] = "No"
 
