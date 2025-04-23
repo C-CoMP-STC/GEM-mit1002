@@ -90,6 +90,7 @@ for index, row in top_10_metabolites.iterrows():
     if sol.objective_value > 1e-3:
         # If it does, add 'Y' to the list
         top_10_metabolites.at[index, "pred_growth"] = "Yes"
+
         # Calculate the carbon use efficiency
         # Get the uptake in terms of the number of carbon atoms
         # Get the uptake flux for the metabolite
@@ -105,11 +106,21 @@ for index, row in top_10_metabolites.iterrows():
         cue = 1 - (resp_c_atom / uptake_c_atom)
         # Add the CUE to the dataframe
         top_10_metabolites.at[index, "cue"] = cue
+
+        # Calculate the yield coefficient
+        # (growth rate / (uptake rate * molar mass) )
+        yield_coeff = sol.objective_value / (
+            uptake * model.metabolites.get_by_id(row["met_id"] + "_c0").formula_weight
+        )
+        # Add the yield coefficient to the dataframe
+        top_10_metabolites.at[index, "yield"] = yield_coeff
     else:
         # If it doesn't, add 'N' to the list
         top_10_metabolites.at[index, "pred_growth"] = "No"
         # Set the CUE to NaN
         top_10_metabolites.at[index, "cue"] = None
+        # Set yield to NaN
+        top_10_metabolites.at[index, "yield"] = None
 
     # Check for growth with free exchnage and tranport (i.e. add a sink reaction,
     # and check if the model grows)
@@ -235,3 +246,21 @@ ax.set_yticklabels(growth_phenotypes.index, rotation=0)
 plt.tight_layout()
 # Save the figure
 plt.savefig(os.path.join(FILE_DIR, "pro_exomet_cue.png"))
+
+# Plot a heatmap of the yield values
+fig, ax = plt.subplots(figsize=(3, 4))
+sns.heatmap(
+    growth_phenotypes["yield"].to_frame(),
+    cmap=cmap,
+    linewidths=4,
+    linecolor="white",
+    fmt=".2f",
+    ax=ax,
+)
+# Make sure that every y-tick is shown
+ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
+ax.set_yticklabels(growth_phenotypes.index, rotation=0)
+# Make sure that the y-axis labels are not cut off
+plt.tight_layout()
+# Save the figure
+plt.savefig(os.path.join(FILE_DIR, "pro_exomet_yield.png"))
