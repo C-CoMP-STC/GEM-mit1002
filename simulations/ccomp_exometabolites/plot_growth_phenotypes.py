@@ -110,7 +110,8 @@ for index, row in top_10_metabolites.iterrows():
         # Calculate the yield coefficient
         # (growth rate / (uptake rate * molar mass) )
         yield_coeff = sol.objective_value / (
-            uptake * model.metabolites.get_by_id(row["met_id"] + "_c0").formula_weight
+            uptake
+            * (model.metabolites.get_by_id(row["met_id"] + "_c0").formula_weight / 10e3)
         )
         # Add the yield coefficient to the dataframe
         top_10_metabolites.at[index, "yield"] = yield_coeff
