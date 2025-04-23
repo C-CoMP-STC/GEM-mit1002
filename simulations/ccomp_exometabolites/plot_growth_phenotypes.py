@@ -90,9 +90,26 @@ for index, row in top_10_metabolites.iterrows():
     if sol.objective_value > 1e-3:
         # If it does, add 'Y' to the list
         top_10_metabolites.at[index, "pred_growth"] = "Yes"
+        # Calculate the carbon use efficiency
+        # Get the uptake in terms of the number of carbon atoms
+        # Get the uptake flux for the metabolite
+        uptake = sol.fluxes["EX_" + row["met_id"] + "_e0"] * -1
+        # Multiple the uptake flux by the number of carbon atoms in the metabolite
+        uptake_c_atom = (
+            uptake * model.metabolites.get_by_id(row["met_id"] + "_c0").elements["C"]
+        )
+        # Get the respiration flux
+        # The flux is the same as the carbon atom flux since CO2 only has one carbon
+        resp_c_atom = sol.fluxes["EX_cpd00011_e0"]
+        # Calculate CUE
+        cue = 1 - (resp_c_atom / uptake_c_atom)
+        # Add the CUE to the dataframe
+        top_10_metabolites.at[index, "cue"] = cue
     else:
         # If it doesn't, add 'N' to the list
         top_10_metabolites.at[index, "pred_growth"] = "No"
+        # Set the CUE to NaN
+        top_10_metabolites.at[index, "cue"] = None
 
     # Check for growth with free exchnage and tranport (i.e. add a sink reaction,
     # and check if the model grows)
@@ -138,13 +155,13 @@ annot_df = annot_df[["Experimental", "FBA (Defined EXs Only)", "FBA (Free Transp
 
 # Subset the other columns, to have just the growth and the two types of
 # predicted growth (with the model as is, and with free transport)
-growth_phenotypes = growth_phenotypes[
+growth_phenotypes_to_plot = growth_phenotypes[
     ["exp_growth", "pred_growth", "pred_growth_free_transport"]
 ]
 
 # Rename the columns and the index to be longer/more descriptive
-growth_phenotypes.index.name = "Media/Carbon Source"
-growth_phenotypes = growth_phenotypes.rename(
+growth_phenotypes_to_plot.index.name = "Media/Carbon Source"
+growth_phenotypes_to_plot = growth_phenotypes_to_plot.rename(
     columns={
         "exp_growth": "Experimental",
         "pred_growth": "FBA (Defined EXs Only)",
@@ -158,7 +175,7 @@ cmap = ["#5E5E5E", "#AC333C", "#193F61"]  # C-CoMP gray, red, and dark blue
 # Plot the heatmap
 fig, ax = plt.subplots(figsize=(8, 4))
 sns.heatmap(
-    growth_phenotypes.replace(value_to_int),
+    growth_phenotypes_to_plot.replace(value_to_int),
     cmap=cmap,
     linewidths=4,
     linecolor="white",
@@ -186,11 +203,35 @@ plt.tick_params(
 )
 
 # Make sure that every y-tick is shown
-ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
-ax.set_yticklabels(growth_phenotypes.index, rotation=0)
+ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes_to_plot))])
+ax.set_yticklabels(growth_phenotypes_to_plot.index, rotation=0)
 
 # Make sure that the y-axis labels are not cut off
 plt.tight_layout()
 
 # Save the figure
 plt.savefig(os.path.join(FILE_DIR, "pro_exomet_growth_phenotypes.png"))
+
+# Define the single color (e.g., the C-CoMP theme's green)
+single_color = "#38A85E"
+# Create a light palette colormap from that color
+# This will create a colormap that goes from white to the specified color
+cmap = sns.light_palette(single_color, as_cmap=True)
+
+# Plot a heatmap of the CUE values
+fig, ax = plt.subplots(figsize=(3, 4))
+sns.heatmap(
+    growth_phenotypes["cue"].to_frame(),
+    cmap=cmap,
+    linewidths=4,
+    linecolor="white",
+    fmt=".2f",
+    ax=ax,
+)
+# Make sure that every y-tick is shown
+ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
+ax.set_yticklabels(growth_phenotypes.index, rotation=0)
+# Make sure that the y-axis labels are not cut off
+plt.tight_layout()
+# Save the figure
+plt.savefig(os.path.join(FILE_DIR, "pro_exomet_cue.png"))
