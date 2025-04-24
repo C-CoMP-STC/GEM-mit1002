@@ -5,7 +5,9 @@ import cobra
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from gem_utilities import biomass, media
+from gem2cue import (
+    utils,  # Import the working version (works with the med4-hot1a3 conda env)
+)
 
 FILE_DIR = os.path.dirname(__file__)
 
@@ -17,10 +19,11 @@ TESTFILE_DIR = os.path.join(
 # Load the media definitions
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
-minimal_media = media_definitions["l1"]
+minimal_media = media_definitions["minimal"]
 
 # Load the model with cobrapy
 model_orig = cobra.io.read_sbml_model("model.xml")
+c_ex_rxns = utils.get_c_ex_rxns(model_orig)
 
 # Load the top 10 metabolite file
 top_10_metabolites = pd.read_csv(
@@ -69,7 +72,7 @@ for index, row in top_10_metabolites.iterrows():
     model = model_orig.copy()
 
     # Set the media so that there are no carbon sources
-    model.medium = media.clean_media(model, minimal_media)
+    model.medium = minimal_media
 
     # Check if the model has an exchange reaction for the metabolite
     if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
@@ -91,44 +94,38 @@ for index, row in top_10_metabolites.iterrows():
         # If it does, add 'Y' to the list
         top_10_metabolites.at[index, "pred_growth"] = "Yes"
 
-        # Calculate the carbon use efficiency
-        # Get the uptake in terms of the number of carbon atoms
-        # Get the uptake flux for the metabolite
-        uptake = sol.fluxes["EX_" + row["met_id"] + "_e0"] * -1
-        # Multiple the uptake flux by the number of carbon atoms in the metabolite
-        uptake_c_atom = (
-            uptake * model.metabolites.get_by_id(row["met_id"] + "_c0").elements["C"]
+        # Extract the carbon fates for the solution (not normalized)
+        c_fates = utils.extract_c_fates_from_solution(
+            sol, c_ex_rxns, co2_ex_rxn="EX_cpd00011_e0", norm=False
         )
-        # Get the respiration flux
-        # The flux is the same as the carbon atom flux since CO2 only has one carbon
-        resp_c_atom = sol.fluxes["EX_cpd00011_e0"]
-        # Calculate CUE
-        cue = 1 - (resp_c_atom / uptake_c_atom)
-        # Add the CUE to the dataframe
-        top_10_metabolites.at[index, "cue"] = cue
+        uptake = c_fates[0]
+        co2 = c_fates[1]
+        organic_c = c_fates[2]
+        biomass = c_fates[3]
 
-        # Calculate the yield coefficient
-        # (growth rate / (uptake rate * molar mass) )
-        yield_coeff = sol.objective_value / (
-            uptake
-            * (model.metabolites.get_by_id(row["met_id"] + "_c0").formula_weight / 1000)
-        )
-        # Add the yield coefficient to the dataframe
-        top_10_metabolites.at[index, "yield"] = yield_coeff
+        # Calculate CUE/GGE/BGE
+        cue = 1 - (co2 / uptake)
+        gge = biomass / uptake
+        bge = biomass / (biomass + co2)
+
+        # Add the results to the dataframe
+        top_10_metabolites.at[index, "cue"] = cue
+        top_10_metabolites.at[index, "gge"] = gge
+        top_10_metabolites.at[index, "bge"] = bge
     else:
         # If it doesn't, add 'N' to the list
         top_10_metabolites.at[index, "pred_growth"] = "No"
-        # Set the CUE to NaN
+        # Set the results to NaN
         top_10_metabolites.at[index, "cue"] = None
-        # Set yield to NaN
-        top_10_metabolites.at[index, "yield"] = None
+        top_10_metabolites.at[index, "gge"] = None
+        top_10_metabolites.at[index, "bge"] = None
 
     # Check for growth with free exchnage and tranport (i.e. add a sink reaction,
     # and check if the model grows)
     # Make a new copy of the model to work with
     model = model_orig.copy()
     # Set the media so that there are no carbon sources
-    model.medium = media.clean_media(model, minimal_media)
+    model.medium = minimal_media
     # Add a sink reaction for the metabolite
     # TODO: Change the lower bound to restrict the flux
     model.add_boundary(
@@ -228,13 +225,13 @@ plt.savefig(os.path.join(FILE_DIR, "pro_exomet_growth_phenotypes.png"))
 single_color = "#38A85E"
 # Create a light palette colormap from that color
 # This will create a colormap that goes from white to the specified color
-cmap = sns.light_palette(single_color, as_cmap=True)
+green_cmap = sns.light_palette(single_color, as_cmap=True)
 
 # Plot a heatmap of the CUE values
 fig, ax = plt.subplots(figsize=(3, 4))
 sns.heatmap(
     growth_phenotypes["cue"].to_frame(),
-    cmap=cmap,
+    cmap=green_cmap,
     linewidths=4,
     linecolor="white",
     fmt=".2f",
@@ -248,11 +245,11 @@ plt.tight_layout()
 # Save the figure
 plt.savefig(os.path.join(FILE_DIR, "pro_exomet_cue.png"))
 
-# Plot a heatmap of the yield values
+# Plot a heatmap of the bge values
 fig, ax = plt.subplots(figsize=(3, 4))
 sns.heatmap(
-    growth_phenotypes["yield"].to_frame(),
-    cmap=cmap,
+    growth_phenotypes["bge"].to_frame(),
+    cmap=green_cmap,
     linewidths=4,
     linecolor="white",
     fmt=".2f",
@@ -264,4 +261,4 @@ ax.set_yticklabels(growth_phenotypes.index, rotation=0)
 # Make sure that the y-axis labels are not cut off
 plt.tight_layout()
 # Save the figure
-plt.savefig(os.path.join(FILE_DIR, "pro_exomet_yield.png"))
+plt.savefig(os.path.join(FILE_DIR, "pro_exomet_bge.png"))
