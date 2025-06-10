@@ -136,6 +136,14 @@ def run_tests_on_prs():
             print(f"\n--- Evaluating PR #{pr} ---")
 
             try:
+                # Delete the branch if it already exists locally
+                subprocess.run(
+                    ["git", "branch", "-D", branch_name],
+                    check=False,  # Don't fail if branch doesn't exist
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                )
+
                 # Fetch and checkout PR
                 subprocess.run(
                     ["git", "fetch", REMOTE, f"pull/{pr}/head:{branch_name}"],
