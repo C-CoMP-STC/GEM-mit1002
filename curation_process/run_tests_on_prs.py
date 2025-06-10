@@ -114,87 +114,78 @@ def run_tests_on_prs():
         212,
     ]
 
-    # Output CSV
-    summary_file = os.path.join(FILE_PATH, "growth_match_summary.csv")
-    with open(summary_file, mode="w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(
-            [
-                "PR Number",
-                "Commit",
-                "Reactions",
-                "Metabolites",
-                "Genes",
-                "Matches",
-                "Total",
-                "% Match",
-            ]
-        )
+    # Prepare results as a list of dicts
+    results_list = []
 
-        for pr in pull_requests:
-            branch_name = f"pr-{pr}"
-            print(f"\n--- Evaluating PR #{pr} ---")
+    for pr in pull_requests:
+        branch_name = f"pr-{pr}"
+        print(f"\n--- Evaluating PR #{pr} ---")
 
-            try:
-                # Delete the branch if it already exists locally
-                subprocess.run(
-                    ["git", "branch", "-D", branch_name],
-                    check=False,  # Don't fail if branch doesn't exist
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                )
+        try:
+            # Delete the branch if it already exists locally
+            subprocess.run(
+                ["git", "branch", "-D", branch_name],
+                check=False,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
 
-                # Fetch and checkout PR
-                subprocess.run(
-                    ["git", "fetch", REMOTE, f"pull/{pr}/head:{branch_name}"],
-                    check=True,
-                )
-                subprocess.run(["git", "checkout", branch_name], check=True)
+            # Fetch and checkout PR
+            subprocess.run(
+                ["git", "fetch", REMOTE, f"pull/{pr}/head:{branch_name}"],
+                check=True,
+            )
+            subprocess.run(["git", "checkout", branch_name], check=True)
 
-                # Get commit hash
-                commit_hash = subprocess.check_output(
-                    ["git", "rev-parse", "HEAD"], text=True
-                ).strip()
+            # Get commit hash
+            commit_hash = subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], text=True
+            ).strip()
 
-                # Run test_growth
-                results = run_test_growth()
+            # Run test_growth
+            results = run_test_growth()
 
-                # Write to CSV
-                writer.writerow(
-                    [
-                        pr,
-                        commit_hash,
-                        results.get("num_reactions"),
-                        results.get("num_metabolites"),
-                        results.get("num_genes"),
-                        results.get("matches"),
-                        results.get("total"),
-                        round(
-                            100
-                            * results.get("matches", 0)
-                            / max(results.get("total", 1), 1),
-                            2,
-                        ),
-                    ]
-                )
+            # Append results to list
+            results_list.append(
+                {
+                    "PR Number": pr,
+                    "Commit": commit_hash,
+                    "Reactions": results.get("num_reactions"),
+                    "Metabolites": results.get("num_metabolites"),
+                    "Genes": results.get("num_genes"),
+                    "Matches": results.get("matches"),
+                    "Total": results.get("total"),
+                    "% Match": round(
+                        100
+                        * results.get("matches", 0)
+                        / max(results.get("total", 1), 1),
+                        2,
+                    ),
+                }
+            )
 
-            except Exception as e:
-                print(f"Error with PR #{pr}: {e}")
-                writer.writerow(
-                    [
-                        pr,
-                        "ERROR",
-                        "ERROR",
-                        "ERROR",
-                        "ERROR",
-                        "ERROR",
-                        "ERROR",
-                        "ERROR",
-                    ]
-                )
+        except Exception as e:
+            print(f"Error with PR #{pr}: {e}")
+            results_list.append(
+                {
+                    "PR Number": pr,
+                    "Commit": "ERROR",
+                    "Reactions": "ERROR",
+                    "Metabolites": "ERROR",
+                    "Genes": "ERROR",
+                    "Matches": "ERROR",
+                    "Total": "ERROR",
+                    "% Match": "ERROR",
+                }
+            )
 
     # Return to original branch
     subprocess.run(["git", "checkout", original_branch])
+
+    # Write results to CSV ONCE, after all PRs are processed
+    summary_file = os.path.join(FILE_PATH, "growth_match_summary.csv")
+    df = pd.DataFrame(results_list)
+    df.to_csv(summary_file, index=False)
 
 
 def run_test_growth():
