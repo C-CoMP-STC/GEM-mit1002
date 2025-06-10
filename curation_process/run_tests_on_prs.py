@@ -209,6 +209,13 @@ def run_test_growth():
         # Get the expected growth phenotype
         expected_growth = row["growth"]
 
+        # If the expected growth is not Yes or No (e.g. "Unsure"), skip the row
+        if expected_growth not in ["Yes", "No"]:
+            warnings.warn(
+                f"Expected growth phenotype '{expected_growth}' is not valid. Skipping row."
+            )
+            continue
+
         # Set the minimal media and exchange reactions
         minimal_media = media_definitions[row["minimal_media"]].copy()
 
