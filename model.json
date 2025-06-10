@@ -1606,7 +1606,7 @@
 },
 {
 "id":"cpd00193_c0",
-"name":"APS [c0]",
+"name":"5'-Adenylyl sulfate [c0]",
 "compartment":"c0",
 "charge":-2,
 "formula":"C10H12N5O10PS",
@@ -2020,7 +2020,7 @@
 },
 {
 "id":"cpd15237_c0",
-"name":"9-Hexadecenoate [c0]",
+"name":"(9Z)-Hexadecenoate [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C16H29O2",
@@ -2810,7 +2810,7 @@
 },
 {
 "id":"cpd11513_c0",
-"name":"12-methyl-3-hydroxy-tetra-decanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-12-methyltetradecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C26H49N2O9PRS",
@@ -2822,7 +2822,7 @@
 },
 {
 "id":"cpd11514_c0",
-"name":"12-methyl-trans-tetra-dec-2-enoyl-ACP [c0]",
+"name":"(2E)-12-methyltetradecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C26H47N2O8PRS",
@@ -3098,7 +3098,7 @@
 },
 {
 "id":"cpd11505_c0",
-"name":"8-methyl-3-hydroxy-decanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-8-methyldecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C22H41N2O9PRS",
@@ -3110,7 +3110,7 @@
 },
 {
 "id":"cpd11506_c0",
-"name":"8-methyl-trans-dec-2-enoyl-ACP [c0]",
+"name":"(2E)-8-methyldecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C22H39N2O8PRS",
@@ -4097,7 +4097,7 @@
 },
 {
 "id":"cpd15269_c0",
-"name":"octadecenoate [c0]",
+"name":"(11Z)-Octadecenoate [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C18H33O2",
@@ -4283,7 +4283,7 @@
 },
 {
 "id":"cpd11522_c0",
-"name":"5-methyl-3-hydroxy-hexanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-5-methylhexanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C18H33N2O9PRS",
@@ -4295,7 +4295,7 @@
 },
 {
 "id":"cpd11523_c0",
-"name":"5-methyl-trans-hex-2-enoyl-ACP [c0]",
+"name":"(2E)-5-methylhexenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C18H31N2O8PRS",
@@ -5414,7 +5414,7 @@
 },
 {
 "id":"cpd11526_c0",
-"name":"7-methyl-3-hydroxy-octanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-7-methyloctanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C20H37N2O9PRS",
@@ -5426,7 +5426,7 @@
 },
 {
 "id":"cpd11527_c0",
-"name":"7-methyl-trans-oct-2-enoyl-ACP [c0]",
+"name":"(2E)-7-methyloctenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C20H35N2O8PRS",
@@ -6443,7 +6443,7 @@
 },
 {
 "id":"cpd00461_c0",
-"name":"Oxopent-4-enoate [c0]",
+"name":"2-Hydroxy-2,4-pentadienoate [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C5H5O3",
@@ -8336,25 +8336,6 @@
 }
 },
 {
-"id":"cpd00190_c0",
-"name":"beta-D-Glucose [c0]",
-"compartment":"c0",
-"charge":0,
-"formula":"C6H12O6",
-"annotation":{
-"biocyc":[
-"META:GLC",
-"META:B-XGLC-HEX-1:5_6:A"
-],
-"inchi":"InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6-/m1/s1",
-"inchikey":"WQZGKKKJIJFFOK-VFUOTHLCSA-N",
-"kegg.compound":"C00221",
-"metanetx.chemical":"MNXM105",
-"sbo":"SBO:0000247",
-"seed.compound":"cpd00190"
-}
-},
-{
 "id":"cpd00170_c0",
 "name":"Gluconolactone [c0]",
 "compartment":"c0",
@@ -8767,7 +8748,7 @@
 },
 {
 "id":"cpd03847_c0",
-"name":"Tetradecanoic acid [c0]",
+"name":"Tetradecanoate [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C14H27O2",
@@ -8801,7 +8782,7 @@
 },
 {
 "id":"cpd11534_c0",
-"name":"11-methyl-3-hydroxy-dodecanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-11-methyldodecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C24H45N2O9PRS",
@@ -8813,7 +8794,7 @@
 },
 {
 "id":"cpd11535_c0",
-"name":"11-methyl-trans-dodec-2-enoyl-ACP [c0]",
+"name":"(2E)-11-methyldodecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C24H43N2O8PRS",
@@ -9034,7 +9015,7 @@
 },
 {
 "id":"cpd11501_c0",
-"name":"6-methyl-3-hydroxy-octanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-6-methyloctanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C20H37N2O9PRS",
@@ -9046,7 +9027,7 @@
 },
 {
 "id":"cpd11502_c0",
-"name":"6-methyl-trans-oct-2-enoyl-ACP [c0]",
+"name":"(2E)-6-methyloctenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C20H35N2O8PRS",
@@ -9290,18 +9271,6 @@
 }
 },
 {
-"id":"cpd15360_c0",
-"name":"2-Octaprenyl-3-methyl-5-hydroxy-6-methoxy-1,4-benzoquinol [c0]",
-"compartment":"c0",
-"charge":0,
-"formula":"C48H74O4",
-"annotation":{
-"bigg.metabolite":"2omhmbl",
-"sbo":"SBO:0000247",
-"seed.compound":"cpd15360"
-}
-},
-{
 "id":"cpd01973_c0",
 "name":"4-Guanidinobutanamide [c0]",
 "compartment":"c0",
@@ -9428,7 +9397,7 @@
 },
 {
 "id":"cpd15366_c0",
-"name":"(3R,5Z)-3-Hydroxydodecenoyl-ACP",
+"name":"(3R,5Z)-3-Hydroxydodecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C23H41N2O9PRS",
@@ -9929,7 +9898,7 @@
 },
 {
 "id":"cpd15298_c0",
-"name":"7-Tetradecenoate [c0]",
+"name":"(7Z)-Tetradecenoate [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C14H25O2",
@@ -10093,7 +10062,7 @@
 },
 {
 "id":"cpd11517_c0",
-"name":"14-methyl-3-hydroxy-hexa-decanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-14-methylhexadecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C28H53N2O9PRS",
@@ -10105,7 +10074,7 @@
 },
 {
 "id":"cpd11518_c0",
-"name":"14-methyl-trans-hexa-dec-2-enoyl-ACP [c0]",
+"name":"(2E)-14-methylhexadecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C28H51N2O8PRS",
@@ -10779,7 +10748,7 @@
 },
 {
 "id":"cpd11542_c0",
-"name":"15-methyl-3-hydroxy-hexa-decanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-15-methylhexadecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C28H53N2O9PRS",
@@ -10791,7 +10760,7 @@
 },
 {
 "id":"cpd11543_c0",
-"name":"15-methyl-trans-hexa-dec-2-enoyl-ACP [c0]",
+"name":"(2E)-15-methylhexadecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C28H51N2O8PRS",
@@ -12581,7 +12550,7 @@
 },
 {
 "id":"cpd00200_c0",
-"name":"4-methyl-2-oxopentoate [c0]",
+"name":"4-Methyl-2-oxopentanoate [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C6H9O3",
@@ -12931,7 +12900,7 @@
 },
 {
 "id":"cpd11538_c0",
-"name":"13-methyl-3-hydroxy-tetra-decanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-13-methyltetradecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C26H49N2O9PRS",
@@ -12943,7 +12912,7 @@
 },
 {
 "id":"cpd11539_c0",
-"name":"13-methyl-trans-tetra-dec-2-enoyl-ACP [c0]",
+"name":"(2E)-13-methyltetradecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C26H47N2O8PRS",
@@ -13245,7 +13214,7 @@
 },
 {
 "id":"cpd11509_c0",
-"name":"10-methyl-3-hydroxy-dodecanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-10-methyldodecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C24H45N2O9PRS",
@@ -13257,7 +13226,7 @@
 },
 {
 "id":"cpd11510_c0",
-"name":"10-methyl-trans-dodec-2-enoyl-ACP [c0]",
+"name":"(2E)-10-methyldodecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C24H43N2O8PRS",
@@ -13939,7 +13908,7 @@
 },
 {
 "id":"cpd11530_c0",
-"name":"9-methyl-3-hydroxy-decanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-9-methyldecanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C22H41N2O9PRS",
@@ -13951,7 +13920,7 @@
 },
 {
 "id":"cpd11531_c0",
-"name":"9-methyl-trans-dec-2-enoyl-ACP [c0]",
+"name":"(2E)-9-methyldecenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C22H39N2O8PRS",
@@ -14217,7 +14186,7 @@
 },
 {
 "id":"cpd03847_e0",
-"name":"Tetradecanoic acid [e0]",
+"name":"Tetradecanoate [c0]",
 "compartment":"e0",
 "charge":-1,
 "formula":"C14H27O2",
@@ -15315,7 +15284,7 @@
 },
 {
 "id":"cpd11497_c0",
-"name":"4-methyl-3-hydroxy-hexanoyl-ACP [c0]",
+"name":"(3R)-3-hydroxy-4-methylhexanoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C18H33N2O9PRS",
@@ -15327,7 +15296,7 @@
 },
 {
 "id":"cpd11498_c0",
-"name":"4-methyl-trans-hex-2-enoyl-ACP [c0]",
+"name":"(2E)-4-methylhexenoyl-ACP [c0]",
 "compartment":"c0",
 "charge":-1,
 "formula":"C18H31N2O8PRS",
@@ -17809,38 +17778,6 @@
 }
 },
 {
-"id":"cpd19001_c0",
-"name":"alpha-D-Glucose [c0]",
-"compartment":"c0",
-"charge":0,
-"formula":"C6H12O6",
-"annotation":{
-"biocyc":"META:ALPHA-GLUCOSE",
-"inchi":"InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6+/m1/s1",
-"inchikey":"WQZGKKKJIJFFOK-DVKNGEFBSA-N",
-"kegg.compound":"C00267",
-"metanetx.chemical":"MNXM99",
-"sbo":"SBO:0000247",
-"seed.compound":"cpd19001"
-}
-},
-{
-"id":"cpd19006_c0",
-"name":"alpha-D-Glucose 6-phosphate [c0]",
-"compartment":"c0",
-"charge":-2,
-"formula":"C6H11O9P",
-"annotation":{
-"biocyc":"META:ALPHA-GLC-6-P",
-"inchi":"InChI=1S/C6H13O9P/c7-3-2(1-14-16(11,12)13)15-6(10)5(9)4(3)8/h2-10H,1H2,(H2,11,12,13)/p-2/t2-,3-,4+,5-,6+/m1/s1",
-"inchikey":"NBSCHQHZLSJFNQ-DVKNGEFBSA-L",
-"kegg.compound":"C00668",
-"metanetx.chemical":"MNXM215",
-"sbo":"SBO:0000247",
-"seed.compound":"cpd19006"
-}
-},
-{
 "id":"cpd19030_c0",
 "name":"(R)-2,3-Dihydroxy-3-methylbutanoate [c0]",
 "compartment":"c0",
@@ -19445,7 +19382,7 @@
 },
 {
 "id":"cpd14954_c0",
-"name":"Protein N6-(lipoyl)lysine",
+"name":"Protein N6-(lipoyl)lysine [c0]",
 "compartment":"c0",
 "charge":0,
 "formula":"C8H14NORS2",
@@ -19515,7 +19452,7 @@
 {
 "id":"cpd15380_e0",
 "name":"5'-deoxyribose [e0]",
-"compartment":"c0",
+"compartment":"e0",
 "charge":0,
 "formula":"C5H10O4",
 "annotation":{
@@ -19559,7 +19496,7 @@
 },
 {
 "id":"cpd00342_c0",
-"name":"N-acetylornithine",
+"name":"N-acetylornithine [c0]",
 "compartment":"c0",
 "charge":0,
 "formula":"C7H14N2O3",
@@ -19740,7 +19677,7 @@
 },
 {
 "id":"cpd00204_e0",
-"name":"CO",
+"name":"CO [e0]",
 "compartment":"e0",
 "charge":1,
 "formula":"CHO",
@@ -19754,7 +19691,7 @@
 },
 {
 "id":"cpd00123_e0",
-"name":"3-Methyl-2-oxobutanoate",
+"name":"3-Methyl-2-oxobutanoate [e0]",
 "compartment":"e0",
 "charge":-1,
 "formula":"C5H7O3",
@@ -19780,6 +19717,55 @@
 "metanetx.chemical":"MNXM5311",
 "seed.compound":"cpd25681"
 }
+},
+{
+"id":"cpd00378_e0",
+"name":"Formamide [e0]",
+"compartment":"e0",
+"charge":0,
+"formula":"CH3NO",
+"annotation":{
+"bigg.metabolite":"frmd",
+"biocyc":"META:FORMAMIDE",
+"inchi":"InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+"inchikey":"ZHNUHDYFZUAESO-UHFFFAOYSA-N",
+"kegg.compound":"C00488",
+"metanetx.chemical":"MNXM1231",
+"sbo":"SBO:0000247",
+"seed.compound":"cpd00378"
+}
+},
+{
+"id":"cpd00352_c0",
+"name":"delta1-Piperideine-6-L-carboxylate [c0]",
+"compartment":"c0",
+"charge":-1,
+"formula":"C6H8NO2",
+"annotation":{
+"bigg.metabolite":"thp2c",
+"biocyc":"META:CPD-7682",
+"kegg.compound":"C00450",
+"metanetx.chemical":"MNXM748",
+"sbo":"SBO:0000247",
+"seed.compound":"cpd00352"
+}
+},
+{
+"id":"cpd00323_c0",
+"name":"L-Pipecolate [c0]",
+"compartment":"c0",
+"charge":0,
+"formula":"C6H11NO2",
+"annotation":{
+"bigg.metabolite":"Lpipcol",
+"biocyc":"META:L-PIPECOLATE",
+"inchi":"InChI=1S/C6H11NO2/c8-6(9)5-3-1-2-4-7-5/h5,7H,1-4H2,(H,8,9)/t5-/m0/s1",
+"inchikey":"HXEACLLIILLPRG-YFKPBYRVSA-N",
+"kegg.compound":"C00408",
+"metanetx.chemical":"MNXM684",
+"sbo":"SBO:0000247",
+"seed.compound":"cpd00323"
+}
 }
 ],
 "reactions":[
@@ -19795,7 +19781,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS16725 or (TK37_RS08325 and TK37_RS18960)",
+"gene_reaction_rule":"TK37_RS16725",
 "annotation":{
 "bigg.reaction":[
 "FOLD3m",
@@ -28026,36 +28012,6 @@
 }
 },
 {
-"id":"rxn01108_c0",
-"name":"beta-D-Glucose:NAD+ 1-oxoreductase [c0]",
-"metabolites":{
-"cpd00003_c0":-1.0,
-"cpd00004_c0":1.0,
-"cpd00067_c0":1.0,
-"cpd00170_c0":1.0,
-"cpd00190_c0":-1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS17070",
-"annotation":{
-"biocyc":[
-"META:GLUCOSE-1-DEHYDROGENASE-NAD+-RXN",
-"META:GLUCOSE-1-DEHYDROGENASE-RXN"
-],
-"ec-code":[
-"1.1.1.118",
-"1.1.1.47"
-],
-"kegg.orthology":"K00034",
-"kegg.reaction":"R01520",
-"metanetx.reaction":"MNXR107038",
-"rhea":"13652",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn01108"
-}
-},
-{
 "id":"rxn10292_c0",
 "name":"isoheptadecanoyl-lipoteichoic acid synthesis (n=24), linked, unsubstituted [c0]",
 "metabolites":{
@@ -29350,28 +29306,6 @@
 "rhea":"26456",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn00668"
-}
-},
-{
-"id":"rxn08353_c0",
-"name":"5-demethylubiquinone-8 methyltransferase [c0]",
-"metabolites":{
-"cpd00017_c0":-1.0,
-"cpd00019_c0":1.0,
-"cpd00067_c0":1.0,
-"cpd15360_c0":-1.0,
-"cpd15561_c0":1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS01150 and TK37_RS16300",
-"annotation":{
-"bigg.reaction":"DMQMT",
-"biocyc":"META:DHHB-METHYLTRANSFER-RXN",
-"ec-code":"2.1.1.64",
-"metanetx.reaction":"MNXR97527",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn08353"
 }
 },
 {
@@ -32500,26 +32434,6 @@
 }
 },
 {
-"id":"rxn08527_c0",
-"name":"fumarate reductase [c0]",
-"metabolites":{
-"cpd00036_c0":1.0,
-"cpd00106_c0":-1.0,
-"cpd15499_c0":-1.0,
-"cpd15500_c0":1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS15975 and TK37_RS15980 and TK37_RS15985 and TK37_RS15990",
-"annotation":{
-"bigg.reaction":"FRD2",
-"ec-code":"1.3.99.1",
-"metanetx.reaction":"MNXR99637",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn08527"
-}
-},
-{
 "id":"rxn03253_c0",
 "name":"Decanoyl-CoA:(acceptor) 2,3-oxidoreductase [c0]",
 "metabolites":{
@@ -32653,26 +32567,6 @@
 "rhea":"19524",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn00173"
-}
-},
-{
-"id":"rxn08528_c0",
-"name":"fumarate reductase [c0]",
-"metabolites":{
-"cpd00036_c0":1.0,
-"cpd00106_c0":-1.0,
-"cpd15352_c0":1.0,
-"cpd15353_c0":-1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS15975 and TK37_RS15980 and TK37_RS15985 and TK37_RS15990",
-"annotation":{
-"bigg.reaction":"FRD3",
-"ec-code":"1.3.99.1",
-"metanetx.reaction":"MNXR99639",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn08528"
 }
 },
 {
@@ -34928,7 +34822,7 @@
 "cpd00650_c0":-1.0,
 "cpd00982_c0":-1.0
 },
-"lower_bound":0.0,
+"lower_bound":-1000.0,
 "upper_bound":1000.0,
 "gene_reaction_rule":"TK37_RS08230 or (TK37_RS10875 and TK37_RS08230 and TK37_RS09355 and TK37_RS20075 and TK37_RS17090 and TK37_RS04250 and TK37_RS08845 and TK37_RS18115 and TK37_RS09010)",
 "annotation":{
@@ -35873,10 +35767,10 @@
 "id":"rxn01639_c0",
 "name":"N-Formimino-L-glutamate formiminohydrolase [c0]",
 "metabolites":{
-"cpd00001_c0":1.0,
-"cpd00023_c0":-1.0,
-"cpd00344_c0":1.0,
-"cpd00378_c0":-1.0
+"cpd00001_c0":-1.0,
+"cpd00023_c0":1.0,
+"cpd00344_c0":-1.0,
+"cpd00378_c0":1.0
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
@@ -38949,44 +38843,6 @@
 }
 },
 {
-"id":"rxn02200_c0",
-"name":"2-amino-4-hydroxy-6-hydroxymethyl-7,8-dihydropteridine:4-aminobenzoate 2-amino-4-hydroxydihydropteridine-6-methenyltransferase [c0]",
-"metabolites":{
-"cpd00001_c0":1.0,
-"cpd00443_c0":-1.0,
-"cpd00683_c0":1.0,
-"cpd00954_c0":-1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS16725 or (TK37_RS08325 and TK37_RS18960)",
-"annotation":{
-"bigg.reaction":[
-"DHPSm",
-"DHPS"
-],
-"biocyc":"META:RXN-14226",
-"ec-code":"2.5.1.15",
-"kegg.orthology":[
-"K00796",
-"K24102",
-"K18825",
-"K18824",
-"K18974",
-"K13941",
-"K13939"
-],
-"kegg.reaction":"R03066",
-"metanetx.reaction":[
-"MNXR140386",
-"MNXR139168"
-],
-"rhea":"30890",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn02200"
-}
-},
-{
 "id":"rxn01069_c0",
 "name":"O-phospho-L-homoserine phosphate-lyase (adding water;L-threonine-forming) [c0]",
 "metabolites":{
@@ -39819,35 +39675,6 @@
 "rhea":"12359",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn00559"
-}
-},
-{
-"id":"rxn01109_c0",
-"name":"beta-D-Glucose:NADP+ 1-oxoreductase [c0]",
-"metabolites":{
-"cpd00005_c0":1.0,
-"cpd00006_c0":-1.0,
-"cpd00067_c0":1.0,
-"cpd00170_c0":1.0,
-"cpd00190_c0":-1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS17070",
-"annotation":{
-"biocyc":[
-"META:GLUCOSE-1-DEHYDROGENASE-NADP+-RXN",
-"META:GLUCOSE-1-DEHYDROGENASE-RXN"
-],
-"ec-code":[
-"1.1.1.47",
-"1.1.1.119"
-],
-"kegg.orthology":"K00034",
-"kegg.reaction":"R01521",
-"metanetx.reaction":"MNXR107039",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn01109"
 }
 },
 {
@@ -42277,33 +42104,6 @@
 "rhea":"11675",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn01257"
-}
-},
-{
-"id":"rxn09272_c0",
-"name":"fumarate reductase complex (i.e. FRD, involved in anaerobic respiration, repressed in aerobic respiration) [c0]",
-"metabolites":{
-"cpd00036_c0":-1.0,
-"cpd00106_c0":1.0,
-"cpd15560_c0":-1.0,
-"cpd15561_c0":1.0
-},
-"lower_bound":0.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS15975 and TK37_RS15980 and TK37_RS15985 and TK37_RS15990",
-"annotation":{
-"bigg.reaction":[
-"SUCD7",
-"SUCDi"
-],
-"biocyc":"META:SUCCINATE-DEHYDROGENASE-UBIQUINONE-RXN",
-"ec-code":[
-"1.3.5.1",
-"1.3.99.1"
-],
-"metanetx.reaction":"MNXR99641",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn09272"
 }
 },
 {
@@ -46982,29 +46782,6 @@
 }
 },
 {
-"id":"rxn01171_c0",
-"name":"D-glucose 1-epimerase [c0]",
-"metabolites":{
-"cpd00027_c0":-1.0,
-"cpd00190_c0":1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS19715",
-"annotation":{
-"biocyc":"META:ALDOSE-1-EPIMERASE-RXN",
-"ec-code":"5.1.3.3",
-"kegg.orthology":"K01785",
-"kegg.reaction":"R01602",
-"metanetx.reaction":[
-"MNXR134274",
-"MNXR107082"
-],
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn01171"
-}
-},
-{
 "id":"rxn02288_c0",
 "name":"Uroporphyrinogen-III carboxy-lyase [c0]",
 "metabolites":{
@@ -48073,7 +47850,7 @@
 "cpd00650_c0":1.0,
 "cpd00842_c0":-1.0
 },
-"lower_bound":0.0,
+"lower_bound":-1000.0,
 "upper_bound":1000.0,
 "gene_reaction_rule":"TK37_RS18685 and TK37_RS17080 and TK37_RS15260 and TK37_RS01715 and TK37_RS11765 and TK37_RS01845",
 "annotation":{
@@ -51633,37 +51410,6 @@
 }
 },
 {
-"id":"rxn15249_c0",
-"name":"ATP:alpha-D-glucose 6-phosphotransferase [c0]",
-"metabolites":{
-"cpd00002_c0":-1.0,
-"cpd00008_c0":1.0,
-"cpd00067_c0":1.0,
-"cpd19001_c0":-1.0,
-"cpd19006_c0":1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS11015",
-"annotation":{
-"biocyc":"META:RXN-1685",
-"ec-code":[
-"2.7.1.2",
-"2.7.1.1"
-],
-"kegg.orthology":[
-"K25026",
-"K00844",
-"K12407",
-"K00845"
-],
-"kegg.reaction":"R01786",
-"metanetx.reaction":"MNXR100284",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn15249"
-}
-},
-{
 "id":"rxn15466_c0",
 "name":"(R)-2,3-Dihydroxy-3-methylbutanoate:NADP+ oxidoreductase (isomerizing) [c0]",
 "metabolites":{
@@ -53093,62 +52839,6 @@
 "metanetx.reaction":"MNXR113944",
 "sbo":"SBO:0000176",
 "seed.reaction":"rxn40368"
-}
-},
-{
-"id":"rxn15230_c0",
-"name":"Lactose galactohydrolase [c0]",
-"metabolites":{
-"cpd00001_c0":-1.0,
-"cpd00108_c0":1.0,
-"cpd00208_c0":-1.0,
-"cpd19001_c0":1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS14675",
-"annotation":{
-"ec-code":[
-"3.2.1.23",
-"3.2.1.108"
-],
-"kegg.orthology":[
-"K01190",
-"K01229",
-"K12112",
-"K12309",
-"K12111"
-],
-"kegg.reaction":[
-"R01678",
-"R06098"
-],
-"metanetx.reaction":"MNXR101023",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn15230"
-}
-},
-{
-"id":"rxn20583_c0",
-"name":"phosphoglucose mutase [c0]",
-"metabolites":{
-"cpd00089_c0":-1.0,
-"cpd19006_c0":1.0
-},
-"lower_bound":-1000.0,
-"upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS18850",
-"annotation":{
-"biocyc":"META:PHOSPHOGLUCMUT-RXN",
-"ec-code":"5.4.2.2",
-"kegg.orthology":[
-"K15778",
-"K01835",
-"K15779"
-],
-"kegg.reaction":"R00959",
-"sbo":"SBO:0000176",
-"seed.reaction":"rxn20583"
 }
 },
 {
@@ -54912,7 +54602,7 @@
 "metabolites":{
 "cpd00156_e0":-1.0
 },
-"lower_bound":-10.0,
+"lower_bound":0.0,
 "upper_bound":1000.0,
 "gene_reaction_rule":"",
 "annotation":{
@@ -55822,7 +55512,7 @@
 "metabolites":{
 "cpd11470_c0":-1.0,
 "cpd11493_c0":1.0,
-"cpd14954_c0":1.0
+"cpd14953_c0":1.0
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
@@ -56475,6 +56165,7 @@
 "cpd00003_c0":-1.0,
 "cpd00004_c0":1.0,
 "cpd00067_c0":2.0,
+"cpd00139_c0":1.0,
 "cpd00229_c0":-1.0
 },
 "lower_bound":-1000.0,
@@ -56749,6 +56440,135 @@
 "kegg.reaction":"R11264",
 "metanetx.reaction":"MNXR114562",
 "seed.reaction":"rxn25278"
+}
+},
+{
+"id":"rxn47974_c0",
+"name":"3-Mercaptopyruvate:sulfide sulfurtransferase",
+"metabolites":{
+"cpd00020_c0":1.0,
+"cpd00067_c0":1.0,
+"cpd00239_c0":1.0,
+"cpd00706_c0":-1.0,
+"cpd11420_c0":1.0,
+"cpd11421_c0":-1.0
+},
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"TK37_RS13750 and TK37_RS14240",
+"annotation":{
+"biocyc":"META:MERCAPYSTRANS-RXN",
+"ec-code":"2.8.1.2",
+"kegg.reaction":"R03105",
+"seed.reaction":"rxn02229"
+}
+},
+{
+"id":"rxn05708_c0",
+"name":"Formamide transport via proton symport",
+"metabolites":{
+"cpd00067_c0":-1.0,
+"cpd00067_e0":1.0,
+"cpd00378_c0":-1.0,
+"cpd00378_e0":1.0
+},
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"",
+"annotation":{
+"sbo":"SBO:0000185",
+"seed.reaction":"rxn05708"
+}
+},
+{
+"id":"EX_cpd00378_e0",
+"name":"Exchange of formamide [e0]",
+"metabolites":{
+"cpd00378_e0":-1.0
+},
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"",
+"annotation":{
+"sbo":"SBO:0000627"
+}
+},
+{
+"id":"rxn00510_c0",
+"name":"N6-(L-1,3-Dicarboxypropyl)-L-lysine:NAD+ oxidoreductase (L-lysine-forming)",
+"metabolites":{
+"cpd00001_c0":1.0,
+"cpd00003_c0":1.0,
+"cpd00004_c0":-1.0,
+"cpd00024_c0":-1.0,
+"cpd00039_c0":-1.0,
+"cpd00067_c0":-1.0,
+"cpd00351_c0":1.0
+},
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"TK37_RS19575",
+"annotation":{
+"bigg.reaction":"SACCD2",
+"biocyc":"META:1.5.1.7-RXN",
+"ec-code":"1.5.1.7",
+"kegg.reaction":"R00715",
+"metanetx.reaction":"MNXR188816",
+"sbo":"SBO:0000176",
+"seed.reaction":"rxn00510"
+}
+},
+{
+"id":"rxn01664_c0",
+"name":"(S)-2-Amino-6-oxohexanoate hydro-lyase (spontaneous)",
+"metabolites":{
+"cpd00001_c0":1.0,
+"cpd00067_c0":1.0,
+"cpd00352_c0":1.0,
+"cpd02522_c0":-1.0
+},
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"",
+"annotation":{
+"bigg.reaction":"AADSACYCL",
+"biocyc":"META:RXN-8173",
+"kegg.reaction":"R02317",
+"metanetx.reaction":"MNXR147608",
+"sbo":"SBO:0000176",
+"seed.reaction":"rxn01664"
+}
+},
+{
+"id":"rxn45861_c0",
+"name":"Reduction of delta1-Piperideine-6-L-carboxylate to L-pipecolate with NADPH",
+"metabolites":{
+"cpd00005_c0":-1.0,
+"cpd00006_c0":1.0,
+"cpd00067_c0":-2.0,
+"cpd00323_c0":1.0,
+"cpd00352_c0":-1.0
+},
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"TK37_RS03165",
+"annotation":{
+"biocyc":"META:RXN-16267",
+"sbo":"SBO:0000176",
+"seed.reaction":"rxn45861"
+}
+},
+{
+"id":"DM_cpd00323_c0",
+"name":"Sink for L-pipecolate [c0]",
+"metabolites":{
+"cpd00323_c0":-1.0
+},
+"lower_bound":0.0,
+"upper_bound":1000.0,
+"gene_reaction_rule":"",
+"annotation":{
+"sbo":"SBO:0000627"
 }
 }
 ],
@@ -61102,7 +60922,7 @@
 },
 {
 "id":"TK37_RS03165",
-"name":"G_TK37_RS03165",
+"name":"proC",
 "annotation":{
 "refseq":"WP_049586037.1",
 "sbo":"SBO:0000243"
@@ -64294,6 +64114,14 @@
 {
 "id":"TK37_RS13120",
 "name":"prpF"
+},
+{
+"id":"TK37_RS14240",
+"name":"G_TK37_RS14240"
+},
+{
+"id":"TK37_RS13750",
+"name":"G_TK37_RS13750"
 }
 ],
 "id":"iHS4156",
