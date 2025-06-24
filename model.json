@@ -20980,7 +20980,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "U28",
@@ -23405,7 +23405,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "biocyc":"META:RXN-14227",
 "ec-code":"3.1.3.5",
@@ -23933,7 +23933,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS18885",
+"gene_reaction_rule":"",
 "annotation":{
 "biocyc":"META:RXN0-5222",
 "ec-code":[
@@ -25007,7 +25007,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD9pp",
@@ -25756,7 +25756,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD8pp",
@@ -27803,7 +27803,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "U34",
@@ -31164,7 +31164,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD4",
@@ -31722,7 +31722,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD11",
@@ -31978,7 +31978,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS06630 and TK37_RS17120 and TK37_RS15600 and TK37_RS10715 and TK37_RS17145 and TK37_RS17930 and TK37_RS15570 and TK37_RS00955 and TK37_RS06650 and TK37_RS05425 and TK37_RS04835 and TK37_RS17150 and TK37_RS01820 and TK37_RS00945 and TK37_RS02140 and TK37_RS15565 and TK37_RS15290 and TK37_RS15585 and TK37_RS03810 and TK37_RS16875 and TK37_RS06640 and TK37_RS18520 and TK37_RS20550 and TK37_RS04865 and TK37_RS19380 and TK37_RS13970 and TK37_RS10720 and TK37_RS08300 and TK37_RS06595 and TK37_RS06600 and TK37_RS06585 and TK37_RS13215 and TK37_RS05770 and TK37_RS03815 and TK37_RS17810 and TK37_RS06255 and TK37_RS15610 and TK37_RS20335 and TK37_RS05420 and TK37_RS06620 and TK37_RS16385 and TK37_RS01835 and TK37_RS04830 and TK37_RS05785 and TK37_RS16680 and TK37_RS15580 and TK37_RS15560 and TK37_RS02835 and TK37_RS01925 and TK37_RS07490 and TK37_RS06665 and TK37_RS04770 and TK37_RS11325 and TK37_RS17825 and TK37_RS06635 and TK37_RS06660 and TK37_RS06645 and TK37_RS06625 and TK37_RS15590 and TK37_RS06605 and TK37_RS06655 and TK37_RS01375 and TK37_RS02755 and TK37_RS15575 and TK37_RS00950 and TK37_RS01260 and TK37_RS17365 and TK37_RS10625 and TK37_RS06610 and TK37_RS20380 and TK37_RS16975 and TK37_RS15595 and TK37_RS17820 and TK37_RS17140 and TK37_RS19470 and TK37_RS07445 and TK37_RS17155 and TK37_RS15285 and TK37_RS17125 and TK37_RS15605",
+"gene_reaction_rule":"TK37_RS06630 and TK37_RS17120 and TK37_RS15600 and TK37_RS10715 and TK37_RS17145 and TK37_RS17930 and TK37_RS15570 and TK37_RS00955 and TK37_RS06650 and TK37_RS05425 and TK37_RS04835 and TK37_RS17150 and TK37_RS01820 and TK37_RS00945 and TK37_RS02140 and TK37_RS15565 and TK37_RS15290 and TK37_RS15585 and TK37_RS03810 and TK37_RS16875 and TK37_RS06640 and TK37_RS18520 and TK37_RS20550 and TK37_RS04865 and TK37_RS19380 and TK37_RS13970 and TK37_RS10720 and TK37_RS08300 and TK37_RS06595 and TK37_RS06600 and TK37_RS06585 and TK37_RS13215 and TK37_RS05770 and TK37_RS03815 and TK37_RS17810 and TK37_RS06255 and TK37_RS15610 and TK37_RS20335 and TK37_RS05420 and TK37_RS06620 and TK37_RS16385 and TK37_RS01835 and TK37_RS04830 and TK37_RS05785 and TK37_RS16680 and TK37_RS15580 and TK37_RS15560 and TK37_RS02835 and TK37_RS01925 and TK37_RS07490 and TK37_RS06665 and TK37_RS04770 and TK37_RS11325 and TK37_RS17825 and TK37_RS06635 and TK37_RS06660 and TK37_RS06645 and TK37_RS06625 and TK37_RS15590 and TK37_RS06605 and TK37_RS06655 and TK37_RS01375 and TK37_RS02755 and TK37_RS15575 and TK37_RS00950 and TK37_RS01260 and TK37_RS17365 and TK37_RS06610 and TK37_RS20380 and TK37_RS16975 and TK37_RS15595 and TK37_RS17820 and TK37_RS17140 and TK37_RS07445 and TK37_RS17155 and TK37_RS15285 and TK37_RS17125 and TK37_RS15605",
 "annotation":{
 "metanetx.reaction":"MNXR134852",
 "sbo":"SBO:0000176",
@@ -32580,7 +32580,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD5pp",
@@ -41283,7 +41283,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD10pp",
@@ -44079,7 +44079,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD6",
@@ -45867,7 +45867,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS04095 and TK37_RS03585 and TK37_RS12505 and TK37_RS14380",
+"gene_reaction_rule":"TK37_RS04095 and TK37_RS14380",
 "annotation":{
 "bigg.reaction":[
 "NTD1",
@@ -46237,7 +46237,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS18885",
+"gene_reaction_rule":"",
 "annotation":{
 "biocyc":"META:R524-RXN",
 "ec-code":"4.2.1.104",
@@ -47895,7 +47895,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS12355 and TK37_RS17740 and TK37_RS17565",
+"gene_reaction_rule":"TK37_RS12355 and TK37_RS17565",
 "annotation":{
 "bigg.reaction":[
 "AAH1_2",
@@ -49143,7 +49143,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"TK37_RS12355 and TK37_RS17740 and TK37_RS17565",
+"gene_reaction_rule":"TK37_RS12355 and TK37_RS17565",
 "annotation":{
 "bigg.reaction":[
 "ADA",
@@ -57118,20 +57118,6 @@
 }
 },
 {
-"id":"TK37_RS03585",
-"name":"G_TK37_RS03585",
-"annotation":{
-"sbo":"SBO:0000243"
-}
-},
-{
-"id":"TK37_RS12505",
-"name":"G_TK37_RS12505",
-"annotation":{
-"sbo":"SBO:0000243"
-}
-},
-{
 "id":"TK37_RS14380",
 "name":"G_TK37_RS14380",
 "annotation":{
@@ -58080,13 +58066,6 @@
 "name":"psd",
 "annotation":{
 "refseq":"WP_014948076.1",
-"sbo":"SBO:0000243"
-}
-},
-{
-"id":"TK37_RS18885",
-"name":"G_TK37_RS18885",
-"annotation":{
 "sbo":"SBO:0000243"
 }
 },
@@ -60363,13 +60342,6 @@
 }
 },
 {
-"id":"TK37_RS10625",
-"name":"G_TK37_RS10625",
-"annotation":{
-"sbo":"SBO:0000243"
-}
-},
-{
 "id":"TK37_RS06610",
 "name":"rpmJ",
 "annotation":{
@@ -60414,13 +60386,6 @@
 "name":"rplL",
 "annotation":{
 "refseq":"WP_015068303.1",
-"sbo":"SBO:0000243"
-}
-},
-{
-"id":"TK37_RS19470",
-"name":"G_TK37_RS19470",
-"annotation":{
 "sbo":"SBO:0000243"
 }
 },
@@ -62989,13 +62954,6 @@
 "name":"G_TK37_RS12355",
 "annotation":{
 "refseq":"WP_049587909.1",
-"sbo":"SBO:0000243"
-}
-},
-{
-"id":"TK37_RS17740",
-"name":"G_TK37_RS17740",
-"annotation":{
 "sbo":"SBO:0000243"
 }
 },
