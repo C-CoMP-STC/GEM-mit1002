@@ -18262,26 +18262,6 @@
 }
 },
 {
-"id":"cpd01046_c0",
-"name":"Allysine (cpd01046_c0)",
-"compartment":"c0",
-"charge":0,
-"formula":"C6H11NO3",
-"annotation":{
-"bigg.metabolite":"L2aadp6sa",
-"biocyc":"META:ALLYSINE",
-"inchi":"InChI=1S/C6H11NO3/c7-5(6(9)10)3-1-2-4-8/h4-5H,1-3,7H2,(H,9,10)/t5-/m0/s1",
-"inchikey":"GFXYTQPNNXGICT-YFKPBYRVSA-N",
-"kegg.compound":"C04076",
-"metanetx.chemical":[
-"MNXM219",
-"MNXM89905"
-],
-"sbo":"SBO:0000247",
-"seed.compound":"cpd01046"
-}
-},
-{
 "id":"cpd01042_c0",
 "name":"p-Cresol (cpd01042_c0)",
 "compartment":"c0",
@@ -52247,7 +52227,7 @@
 "cpd00039_c0":-1.0,
 "cpd00764_c0":1.0,
 "cpd00800_c0":-1.0,
-"cpd01046_c0":1.0
+"cpd02522_c0":1.0
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
