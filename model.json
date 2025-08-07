@@ -23317,7 +23317,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588866.1",
+"gene_reaction_rule":"WP_049588866.1 or WP_049585787.1 or WP_041693510.1",
 "annotation":{
 "bigg.reaction":[
 "CYSS",
@@ -24181,7 +24181,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014976817.1",
+"gene_reaction_rule":"WP_014976817.1 or WP_049587602.1",
 "annotation":{
 "bigg.reaction":[
 "GAPD",
@@ -24987,7 +24987,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586202.1 and WP_049588338.1",
+"gene_reaction_rule":"WP_014951321.1",
 "annotation":{
 "bigg.reaction":[
 "NTD9pp",
@@ -26600,7 +26600,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588842.1 and WP_049586277.1",
+"gene_reaction_rule":"WP_049588842.1 or WP_049586277.1 or WP_049588781.1",
 "annotation":{
 "bigg.reaction":[
 "YFL030W",
@@ -27266,7 +27266,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588804.1 and WP_049587884.1 and WP_049588805.1",
+"gene_reaction_rule":"WP_049588804.1 and WP_049587884.1 and WP_049588805.1 and WP_049587886.1 and WP_039228167.1",
 "annotation":{
 "bigg.reaction":[
 "XAND",
@@ -28909,7 +28909,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014977809.1",
+"gene_reaction_rule":"WP_014977809.1 or WP_049588717.1",
 "annotation":{
 "bigg.reaction":[
 "CHA1_1",
@@ -29114,7 +29114,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586099.1",
+"gene_reaction_rule":"WP_049586099.1 or WP_049588488.1",
 "annotation":{
 "biocyc":"META:RIB5PISOM-RXN",
 "ec-code":"5.3.1.6",
@@ -30013,7 +30013,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586292.1",
+"gene_reaction_rule":"WP_049586292.1 or WP_049587790.1",
 "annotation":{
 "bigg.reaction":[
 "GLUDx",
@@ -30112,7 +30112,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_080986475.1",
+"gene_reaction_rule":"WP_080986475.1 or HBN98087.1",
 "annotation":{
 "bigg.reaction":"IZPN",
 "biocyc":"META:IMIDAZOLONEPROPIONASE-RXN",
@@ -31702,7 +31702,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586202.1 and WP_049588338.1",
+"gene_reaction_rule":"WP_014951321.1",
 "annotation":{
 "bigg.reaction":[
 "NTD11",
@@ -36269,7 +36269,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588490.1",
+"gene_reaction_rule":"WP_049588490.1 or WP_049588490.1",
 "annotation":{
 "bigg.reaction":[
 "LCADm",
@@ -36489,7 +36489,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586789.1 and WP_014948979.1 and WP_049588023.1",
+"gene_reaction_rule":"(WP_049586789.1 and WP_014948979.1) or WP_049588023.1 or WP_049585995.1",
 "annotation":{
 "bigg.reaction":[
 "GLUN",
@@ -36593,7 +36593,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587342.1 and WP_014977336.1 and WP_049588907.1 and WP_049586860.1 and WP_049588854.1",
+"gene_reaction_rule":"WP_049587342.1 or WP_014977336.1 or WP_049588907.1 or WP_049586860.1 or WP_049588854.1",
 "annotation":{
 "bigg.reaction":[
 "ALCD2if",
@@ -39402,7 +39402,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014949849.1 and WP_014979614.1",
+"gene_reaction_rule":"WP_014949849.1 or WP_014979614.1 or WP_014949660.1",
 "annotation":{
 "bigg.reaction":"DDPGA",
 "biocyc":"META:4OH2OXOGLUTARALDOL-RXN",
@@ -39638,7 +39638,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586730.1",
+"gene_reaction_rule":"WP_049586730.1 or KHT61264.1",
 "annotation":{
 "bigg.reaction":[
 "PMI40",
@@ -40397,7 +40397,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014949721.1 and WP_049588230.1",
+"gene_reaction_rule":"WP_049587271.1",
 "annotation":{
 "bigg.reaction":[
 "ASPTAm",
@@ -43917,7 +43917,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586907.1",
+"gene_reaction_rule":"WP_049586907.1 or WP_014950684.1 or WP_049587341.1",
 "annotation":{
 "bigg.reaction":[
 "ALD4_2",
@@ -44638,7 +44638,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_085929484.1",
+"gene_reaction_rule":"WP_085929484.1 or WP_049588754.1",
 "annotation":{
 "bigg.reaction":[
 "HIBDkt",
@@ -45707,7 +45707,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588568.1",
+"gene_reaction_rule":"WP_049588568.1 or WP_049587064.1",
 "annotation":{
 "bigg.reaction":[
 "MICITDr",
@@ -47066,7 +47066,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_039217399.1",
+"gene_reaction_rule":"WP_039217399.1 or WP_061093966.1",
 "annotation":{
 "bigg.reaction":[
 "GALK",
@@ -47142,7 +47142,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"(WP_014947786.1 and WP_049587019.1 and WP_049587262.1 and WP_049589161.1 and WP_014949232.1 and WP_039227752.1 and WP_049587138.1 and WP_014976690.1 and WP_049587170.1) or WP_014976690.1",
+"gene_reaction_rule":"WP_014947786.1 or WP_049587019.1 or WP_049587262.1 or WP_049589161.1 or WP_014949232.1 or WP_039227752.1 or WP_049587138.1 or WP_014976690.1 or WP_049587170.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD7f",
 "ec-code":[
@@ -47519,7 +47519,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014976407.1",
+"gene_reaction_rule":"WP_014976407.1 or WP_049586533.1",
 "annotation":{
 "bigg.reaction":[
 "ASP31",
@@ -47643,7 +47643,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014979424.1",
+"gene_reaction_rule":"WP_014979424.1 or WP_049585742.1",
 "annotation":{
 "bigg.reaction":[
 "ADE8",
@@ -48566,7 +48566,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049585722.1 or (WP_049585722.1 and WP_049587341.1)",
+"gene_reaction_rule":"WP_049585722.1 or (WP_049585722.1 and WP_049587341.1) or WP_014950684.1",
 "annotation":{
 "bigg.reaction":[
 "GSADH",
@@ -49123,7 +49123,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587909.1 and WP_049588809.1",
+"gene_reaction_rule":"WP_049587909.1 or WP_049588809.1 or WP_049586618.1",
 "annotation":{
 "bigg.reaction":[
 "ADA",
@@ -49669,7 +49669,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588396.1 and WP_049585600.1",
+"gene_reaction_rule":"WP_049588396.1 or WP_049585600.1 or WP_197047984.1",
 "annotation":{
 "bigg.reaction":[
 "PCAD",
@@ -52450,7 +52450,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586948.1",
+"gene_reaction_rule":"WP_049586948.1 or WP_014950775.1",
 "annotation":{
 "biocyc":"META:RXN0-6444",
 "ec-code":"1.14.99.46",
@@ -52480,7 +52480,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586993.1",
+"gene_reaction_rule":"WP_049586993.1 or WP_197047984.1",
 "annotation":{
 "biocyc":"META:RXN0-6452",
 "ec-code":"3.5.1.-",
@@ -56150,7 +56150,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588355.1 or WP_014950684.1",
+"gene_reaction_rule":"WP_049588355.1 or WP_014950684.1 or WP_049588591.1",
 "annotation":{
 "bigg.reaction":"GCALDD",
 "biocyc":"META:GLYCOLALD-DEHYDROG-RXN",
@@ -56509,7 +56509,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"",
+"gene_reaction_rule":"WP_049585722.1",
 "annotation":{
 "bigg.reaction":"AADSACYCL",
 "biocyc":"META:RXN-8173",
@@ -56531,7 +56531,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586037.1",
+"gene_reaction_rule":"WP_049586037.1 or WP_049588112.1",
 "annotation":{
 "biocyc":"META:RXN-16267",
 "sbo":"SBO:0000176",
@@ -64060,6 +64060,54 @@
 {
 "id":"WP_049588222.1",
 "name":"G_WP_049588222.1"
+},
+{
+"id":"WP_197047984.1",
+"name":""
+},
+{
+"id":"WP_049586618.1",
+"name":""
+},
+{
+"id":"WP_039228167.1",
+"name":""
+},
+{
+"id":"WP_049587886.1",
+"name":""
+},
+{
+"id":"KHT61264.1",
+"name":""
+},
+{
+"id":"WP_049585787.1",
+"name":""
+},
+{
+"id":"WP_049588488.1",
+"name":""
+},
+{
+"id":"WP_061093966.1",
+"name":""
+},
+{
+"id":"WP_049588591.1",
+"name":""
+},
+{
+"id":"HBN98087.1",
+"name":""
+},
+{
+"id":"WP_014950775.1",
+"name":""
+},
+{
+"id":"WP_049588112.1",
+"name":""
 }
 ],
 "id":"iHS4156",
