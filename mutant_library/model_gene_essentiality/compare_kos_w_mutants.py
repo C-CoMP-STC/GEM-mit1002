@@ -55,7 +55,7 @@ try:
         mapping_df,
         left_on=results_key_column,
         right_on=lookup_key_column,
-        how="left",
+        how="outer",
     )
 
     # Drop the redundant key column from the lookup table if you don't need it
