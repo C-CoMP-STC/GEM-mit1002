@@ -34,12 +34,10 @@ try:
     mutant_lib_df = pd.read_csv(mutant_lib_file)
 
     # Prepare the lookup table for merging
-    # We only need the two columns for the mapping.
-    # This also handles cases where one 'locus_tag_from_model' might have multiple 'locus_tag_from_mut_lib'
-    # by keeping the first one found.
+    # We only need the two columns for the mapping
     mapping_df = lookup_df[
         [lookup_key_column, "locus_tag_from_mut_lib"]
-    ].drop_duplicates(subset=[lookup_key_column])
+    ]
 
     # Add a new column to the results dataframe with boolean values indicating if the gene is essential in the model
     # A gene is considered essential if the growth rate is less that 1E-3
