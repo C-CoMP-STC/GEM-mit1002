@@ -49898,7 +49898,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014949721.1 and WP_049588230.1",
+"gene_reaction_rule":"WP_014949721.1 or WP_049588230.1 or WP_049587271.1",
 "annotation":{
 "biocyc":"META:RXN-11737",
 "ec-code":"2.6.1.1",
@@ -56875,7 +56875,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"",
+"gene_reaction_rule":"WP_014948769.1",
 "annotation":{
 "sbo":"SBO:0000176"
 }
@@ -56977,7 +56977,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"",
+"gene_reaction_rule":"WP_014950084.1",
 "annotation":{
 "bigg.reaction":"DMATT",
 "biocyc":"META:GPPSYN-RXN",
@@ -57750,8 +57750,8 @@
 "cpd00067_c0":2.0,
 "cpd00340_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588591.1 or WP_014950281.1",
 "annotation":{
 "ec-code":[
@@ -57772,8 +57772,8 @@
 "cpd00033_c0":-1.0,
 "cpd00040_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":"2.6.1.4",
@@ -57789,8 +57789,8 @@
 "cpd00039_c0":-1.0,
 "cpd00549_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_080760048.1 or WP_049588368.1",
 "annotation":{
 "ec-code":"5.1.1.5",
@@ -57809,8 +57809,8 @@
 "cpd00067_c0":1.0,
 "cpd00139_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586098.1 or WP_039227754.1",
 "annotation":{
 "ec-code":"1.1.1.79",
@@ -57829,8 +57829,8 @@
 "cpd00067_c0":1.0,
 "cpd00139_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586436.1 or WP_049586233.1 or WP_049586098.1 or WP_039227754.1",
 "annotation":{
 "ec-code":"1.1.1.26",
@@ -57848,8 +57848,8 @@
 "cpd00078_c0":1.0,
 "cpd01507_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585851.1 or WP_049588755.1 or WP_024015658.1",
 "annotation":{
 "ec-code":"2.3.1.174",
@@ -57869,8 +57869,8 @@
 "cpd00085_c0":1.0,
 "cpd01720_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_039229281.1 or WP_049588841.1",
 "annotation":{
 "ec-code":"3.5.1.6",
@@ -57889,8 +57889,8 @@
 "cpd00100_c0":-1.0,
 "cpd00157_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586860.1 or WP_049588707.1",
 "annotation":{
 "ec-code":"1.1.1.6",
@@ -57910,8 +57910,8 @@
 "cpd00102_c0":-1.0,
 "cpd00169_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014950281.1 or WP_049585722.1",
 "annotation":{
 "ec-code":"1.2.1.9",
@@ -57929,8 +57929,8 @@
 "cpd00120_c0":-1.0,
 "cpd00211_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586255.1 and WP_049586254.1",
 "annotation":{
 "ec-code":"2.8.3.8",
@@ -57948,8 +57948,8 @@
 "cpd00211_c0":1.0,
 "cpd00279_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586255.1 and WP_049586254.1",
 "annotation":{
 "ec-code":"2.8.3.9",
@@ -57968,8 +57968,8 @@
 "cpd00199_c0":1.0,
 "cpd00728_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588907.1 or WP_085929484.1",
 "annotation":{
 "ec-code":"1.1.1.61",
@@ -57987,8 +57987,8 @@
 "cpd00314_c0":1.0,
 "cpd27436_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014977981.1 or WP_049587310.1",
 "annotation":{
 "ec-code":"3.1.3.22",
@@ -58007,8 +58007,8 @@
 "cpd00361_c0":-1.0,
 "cpd00551_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014976326.1 or WP_049588500.1",
 "annotation":{
 "ec-code":"1.1.1.304",
@@ -58025,8 +58025,8 @@
 "cpd00391_c0":-1.0,
 "cpd02386_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014975676.1 or WP_014977810.1",
 "annotation":{
 "ec-code":"4.2.1.82",
@@ -58044,8 +58044,8 @@
 "cpd00467_c0":-1.0,
 "cpd03284_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587271.1 or WP_014949721.1",
 "annotation":{
 "ec-code":"2.6.1.1",
@@ -58062,8 +58062,8 @@
 "cpd01502_c0":1.0,
 "cpd01700_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585948.1 and WP_049585947.1",
 "annotation":{
 "ec-code":"4.2.1.35",
@@ -58082,8 +58082,8 @@
 "cpd00067_c0":1.0,
 "cpd01709_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586098.1 or WP_049586233.1",
 "annotation":{
 "ec-code":[
@@ -58106,8 +58106,8 @@
 "cpd12711_c0":1.0,
 "cpd12712_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588230.1",
 "annotation":{
 "ec-code":[
@@ -58130,8 +58130,8 @@
 "cpd00339_c0":1.0,
 "cpd09206_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014950684.1",
 "annotation":{
 "ec-code":"1.2.1.19",
@@ -58149,8 +58149,8 @@
 "cpd01155_c0":-1.0,
 "cpd09206_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":"2.6.1.82",
@@ -58171,8 +58171,8 @@
 "cpd00067_c0":1.0,
 "cpd02522_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585722.1",
 "annotation":{
 "ec-code":"1.4.1.18",
@@ -58190,8 +58190,8 @@
 "cpd00039_c0":-1.0,
 "cpd02522_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_197047972.1",
 "annotation":{
 "ec-code":"2.6.1.36",
@@ -58209,8 +58209,8 @@
 "cpd00067_c0":-1.0,
 "cpd01155_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587155.1",
 "annotation":{
 "ec-code":"4.1.1.18",
@@ -58230,8 +58230,8 @@
 "cpd00067_c0":-2.0,
 "cpd00465_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588841.1",
 "annotation":{
 "ec-code":[
@@ -58251,8 +58251,8 @@
 "cpd00041_c0":-1.0,
 "cpd00106_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588132.1",
 "annotation":{
 "ec-code":[
@@ -58271,8 +58271,8 @@
 "cpd00041_c0":-1.0,
 "cpd00320_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_080760048.1",
 "annotation":{
 "ec-code":"5.1.1.13",
@@ -58290,8 +58290,8 @@
 "cpd00064_c0":-1.0,
 "cpd00858_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":"2.6.1.13",
@@ -58309,8 +58309,8 @@
 "cpd00067_c0":-1.0,
 "cpd00118_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_039226879.1",
 "annotation":{
 "ec-code":"4.1.1.17",
@@ -58327,8 +58327,8 @@
 "cpd00066_c0":-1.0,
 "cpd00333_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049589036.1",
 "annotation":{
 "ec-code":[
@@ -58351,8 +58351,8 @@
 "cpd00072_c0":-1.0,
 "cpd00290_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586246.1",
 "annotation":{
 "ec-code":"2.7.1.90",
@@ -58371,8 +58371,8 @@
 "cpd00077_c0":1.0,
 "cpd03762_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588500.1",
 "annotation":{
 "ec-code":"1.3.1.25",
@@ -58390,8 +58390,8 @@
 "cpd00085_c0":1.0,
 "cpd00191_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_197047972.1",
 "annotation":{
 "ec-code":"2.6.1.18",
@@ -58409,8 +58409,8 @@
 "cpd00085_c0":-1.0,
 "cpd00191_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":[
@@ -58431,8 +58431,8 @@
 "cpd00086_c0":1.0,
 "cpd00519_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587671.1",
 "annotation":{
 "ec-code":"2.1.3.1",
@@ -58451,8 +58451,8 @@
 "cpd00092_c0":1.0,
 "cpd00307_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585992.1",
 "annotation":{
 "ec-code":"3.5.4.1",
@@ -58471,8 +58471,8 @@
 "cpd00092_c0":1.0,
 "cpd00337_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_012519580.1",
 "annotation":{
 "ec-code":"1.3.1.1",
@@ -58490,8 +58490,8 @@
 "cpd00105_c0":1.0,
 "cpd00249_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014977204.1",
 "annotation":{
 "ec-code":[
@@ -58513,8 +58513,8 @@
 "cpd00108_c0":-1.0,
 "cpd02143_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586810.1",
 "annotation":{
 "ec-code":"1.1.1.48/1.1.1.120",
@@ -58532,8 +58532,8 @@
 "cpd00118_c0":-1.0,
 "cpd00434_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":[
@@ -58556,8 +58556,8 @@
 "cpd00120_c0":1.0,
 "cpd01011_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588588.1",
 "annotation":{
 "ec-code":[
@@ -58579,8 +58579,8 @@
 "cpd00120_c0":-1.0,
 "cpd01662_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586784.1",
 "annotation":{
 "ec-code":"2.3.1.19",
@@ -58601,8 +58601,8 @@
 "cpd00120_c0":1.0,
 "cpd00211_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586975.1",
 "annotation":{
 "ec-code":[
@@ -58624,8 +58624,8 @@
 "cpd00128_c0":-1.0,
 "cpd00226_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588809.1",
 "annotation":{
 "ec-code":"3.5.4.2",
@@ -58643,8 +58643,8 @@
 "cpd00141_c0":-1.0,
 "cpd01844_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586785.1",
 "annotation":{
 "ec-code":[
@@ -58666,8 +58666,8 @@
 "cpd00143_c0":1.0,
 "cpd03331_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586233.1",
 "annotation":{
 "ec-code":[
@@ -58691,8 +58691,8 @@
 "cpd00153_c0":1.0,
 "cpd00225_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585438.1",
 "annotation":{
 "ec-code":[
@@ -58714,8 +58714,8 @@
 "cpd00154_c0":-1.0,
 "cpd01527_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588500.1",
 "annotation":{
 "ec-code":[
@@ -58737,8 +58737,8 @@
 "cpd00154_c0":-1.0,
 "cpd01782_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588174.1",
 "annotation":{
 "ec-code":"1.1.1.424",
@@ -58757,8 +58757,8 @@
 "cpd00164_c0":1.0,
 "cpd00594_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_080986362.1",
 "annotation":{
 "ec-code":"1.1.1.19",
@@ -58775,8 +58775,8 @@
 "cpd00176_c0":1.0,
 "cpd00222_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014975676.1",
 "annotation":{
 "ec-code":[
@@ -58799,8 +58799,8 @@
 "cpd00183_c0":1.0,
 "cpd00756_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014948660.1",
 "annotation":{
 "ec-code":[
@@ -58822,8 +58822,8 @@
 "cpd00198_c0":1.0,
 "cpd00259_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588438.1",
 "annotation":{
 "ec-code":"2.7.1.17",
@@ -58841,8 +58841,8 @@
 "cpd00199_c0":1.0,
 "cpd00281_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":"2.6.1.19",
@@ -58863,8 +58863,8 @@
 "cpd00242_c0":-1.0,
 "cpd00519_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586521.1",
 "annotation":{
 "ec-code":"6.4.1.3",
@@ -58882,8 +58882,8 @@
 "cpd00249_c0":-1.0,
 "cpd00475_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014948660.1",
 "annotation":{
 "ec-code":[
@@ -58905,8 +58905,8 @@
 "cpd00261_c0":1.0,
 "cpd00417_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587537.1",
 "annotation":{
 "ec-code":"1.1.1.12",
@@ -58925,8 +58925,8 @@
 "cpd00261_c0":1.0,
 "cpd00306_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014949725.1",
 "annotation":{
 "ec-code":"1.1.1.10",
@@ -58944,8 +58944,8 @@
 "cpd00261_c0":1.0,
 "cpd00473_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588438.1",
 "annotation":{
 "ec-code":"4.1.1.34",
@@ -58963,8 +58963,8 @@
 "cpd00269_c0":1.0,
 "cpd00705_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":"2.6.1.39",
@@ -58983,8 +58983,8 @@
 "cpd00276_c0":-1.0,
 "cpd00288_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585926.1",
 "annotation":{
 "ec-code":[
@@ -59003,8 +59003,8 @@
 "cpd00293_c0":-1.0,
 "cpd02611_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587867.1",
 "annotation":{
 "ec-code":"5.4.2.3",
@@ -59023,8 +59023,8 @@
 "cpd00300_c0":-1.0,
 "cpd08625_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588800.1",
 "annotation":{
 "ec-code":"1.7.3.3",
@@ -59042,8 +59042,8 @@
 "cpd00311_c0":1.0,
 "cpd00475_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014948660.1",
 "annotation":{
 "ec-code":[
@@ -59064,8 +59064,8 @@
 "cpd00339_c0":1.0,
 "cpd00729_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014949262.1",
 "annotation":{
 "ec-code":"3.5.1.30",
@@ -59083,8 +59083,8 @@
 "cpd00339_c0":-1.0,
 "cpd02089_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588781.1",
 "annotation":{
 "ec-code":"2.6.1.48",
@@ -59104,8 +59104,8 @@
 "cpd00379_c0":1.0,
 "cpd02089_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585438.1",
 "annotation":{
 "ec-code":"1.2.1.20",
@@ -59122,8 +59122,8 @@
 "cpd00427_c0":-1.0,
 "cpd00520_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014977810.1",
 "annotation":{
 "ec-code":"4.2.1.25",
@@ -59142,8 +59142,8 @@
 "cpd00437_c0":1.0,
 "cpd00608_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049589016.1",
 "annotation":{
 "ec-code":"1.1.1.58",
@@ -59162,8 +59162,8 @@
 "cpd00473_c0":1.0,
 "cpd00594_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588754.1",
 "annotation":{
 "ec-code":"1.1.1.45",
@@ -59183,8 +59183,8 @@
 "cpd00599_c0":1.0,
 "cpd03709_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585722.1",
 "annotation":{
 "ec-code":[
@@ -59207,8 +59207,8 @@
 "cpd00618_c0":-1.0,
 "cpd02646_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588594.1",
 "annotation":{
 "ec-code":"1.14.12.12",
@@ -59226,8 +59226,8 @@
 "cpd00650_c0":1.0,
 "cpd01599_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586521.1",
 "annotation":{
 "ec-code":[
@@ -59249,8 +59249,8 @@
 "cpd00268_c0":1.0,
 "cpd00706_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588222.1 or WP_014948070.1",
 "annotation":{
 "ec-code":"2.8.1.2",
@@ -59269,8 +59269,8 @@
 "cpd00714_c0":1.0,
 "cpd01618_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586860.1",
 "annotation":{
 "ec-code":"1.1.1.202",
@@ -59289,8 +59289,8 @@
 "cpd00806_c0":1.0,
 "cpd01186_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588438.1",
 "annotation":{
 "ec-code":"2.7.1.51",
@@ -59308,8 +59308,8 @@
 "cpd01328_c0":1.0,
 "cpd01916_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587022.1",
 "annotation":{
 "ec-code":"3.1.1.65",
@@ -59326,8 +59326,8 @@
 "cpd01328_c0":-1.0,
 "cpd02467_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014975676.1",
 "annotation":{
 "ec-code":"4.2.1.90",
@@ -59346,8 +59346,8 @@
 "cpd01749_c0":-1.0,
 "cpd03364_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_080986392.1",
 "annotation":{
 "ec-code":"3.7.1.3",
@@ -59366,8 +59366,8 @@
 "cpd01607_c0":-1.0,
 "cpd01916_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014976326.1",
 "annotation":{
 "ec-code":"1.1.1.173/1.1.1.378",
@@ -59384,8 +59384,8 @@
 "cpd01630_c0":1.0,
 "cpd02536_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014975676.1",
 "annotation":{
 "ec-code":"5.5.1.1",
@@ -59404,8 +59404,8 @@
 "cpd01816_c0":1.0,
 "cpd02564_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586522.1",
 "annotation":{
 "ec-code":[
@@ -59427,8 +59427,8 @@
 "cpd01932_c0":1.0,
 "cpd02646_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014949228.1",
 "annotation":{
 "ec-code":"1.3.1.29",
@@ -59446,8 +59446,8 @@
 "cpd00728_c0":-1.0,
 "cpd07946_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014947829.1",
 "annotation":{
 "ec-code":"2.8.3.-",
@@ -59463,8 +59463,8 @@
 "cpd00072_c0":1.0,
 "cpd03583_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588761.1",
 "annotation":{
 "ec-code":"5.3.1.27",
@@ -59481,8 +59481,8 @@
 "cpd00176_c0":1.0,
 "cpd00403_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014975676.1",
 "annotation":{
 "ec-code":"4.2.1.8",
@@ -59501,8 +59501,8 @@
 "cpd00072_c0":1.0,
 "cpd00491_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014976326.1",
 "annotation":{
 "ec-code":"1.1.1.140",
@@ -59522,8 +59522,8 @@
 "cpd00153_c0":-1.0,
 "cpd03762_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588594.1",
 "annotation":{
 "ec-code":"1.14.12.10",
@@ -59541,8 +59541,8 @@
 "cpd01092_c0":1.0,
 "cpd09027_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588802.1",
 "annotation":{
 "ec-code":[
@@ -59564,8 +59564,8 @@
 "cpd00461_c0":1.0,
 "cpd09255_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588590.1",
 "annotation":{
 "ec-code":[
@@ -59587,8 +59587,8 @@
 "cpd00212_c0":1.0,
 "cpd01066_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587537.1",
 "annotation":{
 "ec-code":"1.1.1.14",
@@ -59608,8 +59608,8 @@
 "cpd00067_c0":1.0,
 "cpd01700_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049585950.1",
 "annotation":{
 "ec-code":[
@@ -59632,8 +59632,8 @@
 "cpd11340_c0":-1.0,
 "cpd11341_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588112.1",
 "annotation":{
 "ec-code":[
@@ -59654,8 +59654,8 @@
 "cpd00086_c0":-1.0,
 "cpd00141_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014947829.1",
 "annotation":{
 "ec-code":"2.8.3.27",
@@ -59673,8 +59673,8 @@
 "cpd00818_c0":1.0,
 "cpd03194_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586389.1",
 "annotation":{
 "ec-code":"3.2.1.85",
@@ -59693,8 +59693,8 @@
 "cpd00108_c0":-1.0,
 "cpd01171_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_039225720.1",
 "annotation":{
 "ec-code":"1.1.1.21",
@@ -59712,8 +59712,8 @@
 "cpd02631_c0":1.0,
 "cpd16540_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588309.1",
 "annotation":{
 "ec-code":[
@@ -59735,8 +59735,8 @@
 "cpd00751_c0":-1.0,
 "cpd18011_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014976326.1",
 "annotation":{
 "ec-code":"1.1.1.435",
@@ -59754,8 +59754,8 @@
 "cpd00364_c0":-1.0,
 "cpd00415_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588435.1",
 "annotation":{
 "ec-code":"1.1.5.3",
@@ -59773,8 +59773,8 @@
 "cpd00135_c0":-1.0,
 "cpd19019_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588866.1",
 "annotation":{
 "ec-code":"4.2.1.22",
@@ -59792,8 +59792,8 @@
 "cpd00388_c0":1.0,
 "cpd19020_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588806.1",
 "annotation":{
 "ec-code":"3.5.2.5",
@@ -59812,8 +59812,8 @@
 "cpd00551_c0":1.0,
 "cpd19008_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587537.1",
 "annotation":{
 "ec-code":"1.1.1.303",
@@ -59832,8 +59832,8 @@
 "cpd00524_c0":1.0,
 "cpd03669_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588174.1",
 "annotation":{
 "ec-code":[
@@ -59855,8 +59855,8 @@
 "cpd22964_c0":1.0,
 "cpd27257_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586326.1",
 "annotation":{
 "ec-code":"6.2.1.62",
@@ -59877,8 +59877,8 @@
 "cpd00264_c0":-1.0,
 "cpd22967_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586310.1",
 "annotation":{
 "ec-code":"6.3.2.-",
@@ -59899,8 +59899,8 @@
 "cpd22967_c0":-1.0,
 "cpd22968_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586324.1",
 "annotation":{
 "ec-code":"6.3.2.-",
@@ -59919,8 +59919,8 @@
 "cpd22969_c0":1.0,
 "cpd27257_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049586329.1",
 "annotation":{
 "ec-code":"2.-.-.-",
@@ -59938,8 +59938,8 @@
 "cpd00596_c0":1.0,
 "cpd01419_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588842.1",
 "annotation":{
 "ec-code":"2.6.1.112",
@@ -59958,8 +59958,8 @@
 "cpd02467_c0":-1.0,
 "cpd23713_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014976326.1",
 "annotation":{
 "ec-code":"1.1.1.401",
@@ -59977,8 +59977,8 @@
 "cpd00199_c0":1.0,
 "cpd00281_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_197047972.1",
 "annotation":{
 "ec-code":[
@@ -60000,8 +60000,8 @@
 "cpd03412_c0":-1.0,
 "cpd22007_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_024015575.1",
 "annotation":{
 "ec-code":"3.2.1.218",
@@ -60019,8 +60019,8 @@
 "cpd01185_c0":1.0,
 "cpd18011_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587022.1",
 "annotation":{
 "ec-code":"3.1.1.120",
@@ -60036,8 +60036,8 @@
 "cpd00437_c0":1.0,
 "cpd34961_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588908.1",
 "annotation":{
 "ec-code":"5.3.3.-",
@@ -60056,8 +60056,8 @@
 "cpd00982_c0":1.0,
 "cpd01202_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_039227752.1",
 "annotation":{
 "ec-code":"1.3.8.15",
@@ -60075,8 +60075,8 @@
 "cpd00338_c0":-1.0,
 "cpd01419_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049589092.1",
 "annotation":{
 "ec-code":"2.1.3.16",
@@ -60095,8 +60095,8 @@
 "cpd00176_c0":-1.0,
 "cpd02728_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588500.1",
 "annotation":{
 "ec-code":"1.1.1.126",
@@ -60115,8 +60115,8 @@
 "cpd00894_c0":-1.0,
 "cpd00945_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049588496.1",
 "annotation":{
 "ec-code":[
@@ -60135,8 +60135,8 @@
 "cpd02508_c0":2.0,
 "cpd03648_c0":-1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_197047980.1",
 "annotation":{
 "ec-code":"4.2.2.6",
@@ -60155,8 +60155,8 @@
 "cpd09253_c0":-1.0,
 "cpd09254_c0":1.0
 },
-"lower_bound":0,
-"upper_bound":1000,
+"lower_bound":0.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014949228.1",
 "annotation":{
 "ec-code":"1.3.1.87",
@@ -60175,8 +60175,8 @@
 "cpd02387_c0":-1.0,
 "cpd23713_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587021.1",
 "annotation":{
 "ec-code":"1.1.1.434",
@@ -60193,8 +60193,8 @@
 "cpd00280_c0":2.0,
 "cpd01532_c0":-1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_049587907.1",
 "annotation":{
 "ec-code":"3.2.1.67",
@@ -60214,8 +60214,8 @@
 "cpd11341_c0":-1.0,
 "cpd11408_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014950281.1",
 "annotation":{
 "ec-code":"1.2.1.99",
@@ -60235,8 +60235,8 @@
 "cpd11341_c0":-1.0,
 "cpd11408_c0":1.0
 },
-"lower_bound":-1000,
-"upper_bound":1000,
+"lower_bound":-1000.0,
+"upper_bound":1000.0,
 "gene_reaction_rule":"WP_014950281.1",
 "annotation":{
 "ec-code":"1.2.1.99",
@@ -67914,6 +67914,10 @@
 {
 "id":"WP_049587907.1",
 "name":"rhgA"
+},
+{
+"id":"WP_014948769.1",
+"name":""
 }
 ],
 "id":"iHS4156",
