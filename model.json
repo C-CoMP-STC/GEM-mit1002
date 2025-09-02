@@ -37030,7 +37030,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH2c",
@@ -37623,7 +37623,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH9ir",
