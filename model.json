@@ -21212,7 +21212,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "ec-code":"6.2.1.3",
 "metanetx.reaction":"MNXR134818",
@@ -26931,7 +26931,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "ec-code":"6.2.1.3",
 "metanetx.reaction":"MNXR134816",
@@ -33133,7 +33133,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "ec-code":"6.2.1.3",
 "metanetx.reaction":"MNXR134819",
@@ -36237,7 +36237,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "bigg.reaction":[
 "FACOAL161p",
@@ -38993,7 +38993,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "bigg.reaction":[
 "FACOAL160",
@@ -39309,7 +39309,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "bigg.reaction":"ACAC",
 "biocyc":"META:ACETOACETATE--COA-LIGASE-RXN",
@@ -41726,7 +41726,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "ec-code":"6.2.1.3",
 "metanetx.reaction":"MNXR134815",
@@ -44200,7 +44200,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "ec-code":"6.2.1.3",
 "metanetx.reaction":"MNXR134820",
@@ -45087,7 +45087,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "bigg.reaction":"FACOAL180",
 "biocyc":[
@@ -45401,7 +45401,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "ec-code":"6.2.1.3",
 "metanetx.reaction":"MNXR134817",
@@ -51084,7 +51084,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "bigg.reaction":"FACOAL181",
 "metanetx.reaction":"MNXR136033",
@@ -51782,7 +51782,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587062.1 and WP_049587639.1 and WP_014950005.1 and WP_049586144.1 and WP_049588937.1",
+"gene_reaction_rule":"WP_049587062.1 or WP_049587639.1 or WP_014950005.1 or WP_049586144.1 or WP_049588937.1",
 "annotation":{
 "bigg.reaction":[
 "FACOAL140",
