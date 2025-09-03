@@ -21498,7 +21498,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588707.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588754.1 or WP_049588707.1",
 "annotation":{
 "bigg.reaction":[
 "HACD7p",
@@ -24003,7 +24003,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586525.1 or (WP_024015658.1 and WP_049585851.1 and WP_049588755.1)",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588755.1 or WP_049586525.1",
 "annotation":{
 "bigg.reaction":[
 "KAT3",
@@ -24693,7 +24693,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"(WP_014947786.1 and WP_049587019.1 and WP_049587262.1 and WP_049589161.1 and WP_014949232.1 and WP_039227752.1 and WP_049587138.1 and WP_014976690.1 and WP_049587170.1) or WP_014976690.1",
+"gene_reaction_rule":"WP_014976690.1 or WP_014949232.1 or WP_049587019.1 or WP_049587170.1 or WP_049587262.1 or WP_014947786.1 or WP_049589161.1 or WP_039227752.1 or WP_049587138.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD3f",
 "ec-code":[
@@ -25597,7 +25597,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"(WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1) or (WP_049588707.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1)",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588754.1 or WP_049588707.1",
 "annotation":{
 "bigg.reaction":[
 "HACD1i",
@@ -26126,7 +26126,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014947786.1 and WP_049587019.1 and WP_049587262.1 and WP_049589161.1 and WP_014949232.1 and WP_039227752.1 and WP_049587138.1 and WP_014976690.1 and WP_049587170.1",
+"gene_reaction_rule":"WP_014976690.1 or WP_014949232.1 or WP_049587019.1 or WP_049587170.1 or WP_049587262.1 or WP_014947786.1 or WP_049589161.1 or WP_039227752.1 or WP_049587138.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD5f",
 "ec-code":[
@@ -27942,7 +27942,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH4p",
@@ -28161,7 +28161,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH5",
@@ -29316,7 +29316,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588707.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588754.1 or WP_049588707.1",
 "annotation":{
 "bigg.reaction":[
 "HACD6",
@@ -29765,7 +29765,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH7p",
@@ -33597,7 +33597,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"(WP_014947786.1 and WP_049587019.1 and WP_049587262.1 and WP_049589161.1 and WP_014949232.1 and WP_039227752.1 and WP_049587138.1 and WP_014976690.1 and WP_049587170.1) or WP_014976690.1",
+"gene_reaction_rule":"WP_014976690.1 or WP_014949232.1 or WP_049587019.1 or WP_049587170.1 or WP_049587262.1 or WP_014947786.1 or WP_049589161.1 or WP_039227752.1 or WP_049587138.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD4f",
 "ec-code":[
@@ -35976,7 +35976,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587019.1 or (WP_014947786.1 and WP_049587019.1 and WP_049587262.1 and WP_049589161.1 and WP_014949232.1 and WP_039227752.1 and WP_049587138.1 and WP_014976690.1 and WP_049587170.1)",
+"gene_reaction_rule":"WP_014976690.1 or WP_014949232.1 or WP_049587019.1 or WP_049587170.1 or WP_049587262.1 or WP_014947786.1 or WP_049589161.1 or WP_039227752.1 or WP_049587138.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD1f",
 "ec-code":[
@@ -36829,7 +36829,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588707.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588754.1 or WP_049588707.1",
 "annotation":{
 "bigg.reaction":[
 "HACD4i",
@@ -37014,7 +37014,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH2c",
@@ -37113,7 +37113,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586525.1 or (WP_024015658.1 and WP_049585851.1 and WP_049588755.1)",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588755.1 or WP_049586525.1",
 "annotation":{
 "bigg.reaction":[
 "KAT4",
@@ -37607,7 +37607,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH9ir",
@@ -38060,7 +38060,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586525.1 or (WP_024015658.1 and WP_049585851.1 and WP_049588755.1)",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588755.1 or WP_049586525.1",
 "annotation":{
 "bigg.reaction":[
 "ACACT7p",
@@ -39078,7 +39078,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":"ECOAH3",
 "ec-code":[
@@ -40403,7 +40403,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586525.1 or (WP_024015658.1 and WP_049585851.1 and WP_049588755.1)",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588755.1 or WP_049586525.1",
 "annotation":{
 "bigg.reaction":[
 "ACACT5r",
@@ -41638,7 +41638,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"(WP_014947786.1 and WP_049587019.1 and WP_049587262.1 and WP_049589161.1 and WP_014949232.1 and WP_039227752.1 and WP_049587138.1 and WP_014976690.1 and WP_049587170.1) or WP_014976690.1",
+"gene_reaction_rule":"WP_014976690.1 or WP_014949232.1 or WP_049587019.1 or WP_049587170.1 or WP_049587262.1 or WP_014947786.1 or WP_049589161.1 or WP_039227752.1 or WP_049587138.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD6f",
 "ec-code":[
@@ -43107,7 +43107,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588707.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588754.1 or WP_049588707.1",
 "annotation":{
 "bigg.reaction":[
 "HACD2i",
@@ -44011,7 +44011,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586525.1 or (WP_024015658.1 and WP_049585851.1 and WP_049588755.1) or WP_049588755.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588755.1 or WP_049586525.1",
 "annotation":{
 "bigg.reaction":[
 "ACACT2r",
@@ -45688,7 +45688,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588707.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588754.1 or WP_049588707.1",
 "annotation":{
 "bigg.reaction":[
 "HACD5",
@@ -46981,7 +46981,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":[
 "ECOAH6p",
@@ -48314,7 +48314,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014947786.1 or WP_049587019.1 or WP_049587262.1 or WP_049589161.1 or WP_014949232.1 or WP_039227752.1 or WP_049587138.1 or WP_014976690.1 or WP_049587170.1 or WP_049586522.1",
+"gene_reaction_rule":"WP_014976690.1 or WP_014949232.1 or WP_049587019.1 or WP_049587170.1 or WP_049587262.1 or WP_014947786.1 or WP_049589161.1 or WP_039227752.1 or WP_049587138.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD7f",
 "ec-code":[
@@ -48545,7 +48545,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049587019.1 or (WP_014947786.1 and WP_049587019.1 and WP_049587262.1 and WP_049589161.1 and WP_014949232.1 and WP_039227752.1 and WP_049587138.1 and WP_014976690.1 and WP_049587170.1) or WP_014976690.1",
+"gene_reaction_rule":"WP_014976690.1 or WP_014949232.1 or WP_049587019.1 or WP_049587170.1 or WP_049587262.1 or WP_014947786.1 or WP_049589161.1 or WP_039227752.1 or WP_049587138.1 or WP_049586522.1",
 "annotation":{
 "bigg.reaction":"ACOAD2f",
 "ec-code":[
@@ -49004,7 +49004,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":"ECOAH1",
 "biocyc":[
@@ -49502,7 +49502,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588954.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1 and WP_014976911.1 and WP_014948837.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_014976911.1 or WP_014948837.1 or WP_049588954.1",
 "annotation":{
 "bigg.reaction":"ECOAH2",
 "biocyc":"META:RXN-12567",
@@ -50628,7 +50628,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049586525.1 or (WP_024015658.1 and WP_049585851.1 and WP_049588755.1)",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588755.1 or WP_049586525.1",
 "annotation":{
 "bigg.reaction":[
 "ACACT6p",
@@ -50804,7 +50804,7 @@
 },
 "lower_bound":-1000.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_049588707.1 and WP_049588754.1 and WP_049588521.1 and WP_049585918.1",
+"gene_reaction_rule":"(WP_049588521.1 and WP_024015658.1) or (WP_049585918.1 and WP_049585851.1) or WP_049588754.1 or WP_049588707.1",
 "annotation":{
 "bigg.reaction":[
 "HACD3",
