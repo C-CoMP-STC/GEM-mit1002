@@ -52699,7 +52699,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014949591.1 and WP_049588214.1 and WP_014979357.1 and WP_014949594.1 and WP_049587321.1 and WP_039220102.1 and WP_049588217.1 and WP_049587017.1",
+"gene_reaction_rule":"WP_014949591.1 and WP_049588214.1 and WP_014979357.1 and WP_014949594.1 and WP_039220102.1 and WP_049588217.1 and (WP_049587017.1 or WP_049587321.1)",
 "annotation":{
 "metanetx.reaction":"MNXR137932",
 "sbo":"SBO:0000655",
@@ -52952,7 +52952,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"WP_014949591.1 and WP_049588214.1 and WP_014979357.1 and WP_014949594.1 and WP_049587321.1 and WP_039220102.1 and WP_049588217.1 and WP_049587017.1",
+"gene_reaction_rule":"WP_014949591.1 and WP_049588214.1 and WP_014979357.1 and WP_014949594.1 and WP_039220102.1 and WP_049588217.1 and (WP_049587017.1 or WP_049587321.1)",
 "annotation":{
 "metanetx.reaction":"MNXR137931",
 "sbo":"SBO:0000185",
@@ -60175,7 +60175,7 @@
 "cpd00205_c0":1,
 "cpd00205_e0":-1
 },
-"lower_bound":-1000,
+"lower_bound":-1000.0,
 "upper_bound":1000.0,
 "gene_reaction_rule":"WP_014975926.1 and WP_080752378.1 and WP_014948678.1 and WP_014978627.1",
 "annotation":{
@@ -67820,6 +67820,10 @@
 {
 "id":"WP_049587125.1",
 "name":"fbpA"
+},
+{
+"id":"WP_049587894.1",
+"name":""
 }
 ],
 "id":"iHS4156",
