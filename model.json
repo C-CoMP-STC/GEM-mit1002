@@ -34277,7 +34277,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"(WP_049588336.1 and WP_039225577.1 and WP_152910875.1 and WP_049586869.1) or WP_049586869.1 or (WP_049588336.1 and WP_152910875.1 and WP_039225577.1) or WP_014977393.1",
+"gene_reaction_rule":"WP_049588336.1 or WP_039225577.1 or WP_152910875.1 or WP_049586869.1 or WP_014977393.1",
 "annotation":{
 "bigg.reaction":[
 "CAT",
@@ -60175,7 +60175,7 @@
 "cpd00205_c0":1,
 "cpd00205_e0":-1
 },
-"lower_bound":-1000,
+"lower_bound":-1000.0,
 "upper_bound":1000.0,
 "gene_reaction_rule":"WP_014975926.1 and WP_080752378.1 and WP_014948678.1 and WP_014978627.1",
 "annotation":{
@@ -67820,6 +67820,10 @@
 {
 "id":"WP_049587125.1",
 "name":"fbpA"
+},
+{
+"id":"WP_049587894.1",
+"name":""
 }
 ],
 "id":"iHS4156",
