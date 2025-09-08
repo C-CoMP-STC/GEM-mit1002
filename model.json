@@ -34277,7 +34277,7 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":"(WP_049588336.1 and WP_039225577.1 and WP_152910875.1 and WP_049586869.1) or WP_049586869.1 or (WP_049588336.1 and WP_152910875.1 and WP_039225577.1) or WP_014977393.1",
+"gene_reaction_rule":"WP_049588336.1 or WP_039225577.1 or WP_152910875.1 or WP_049586869.1 or WP_014977393.1",
 "annotation":{
 "bigg.reaction":[
 "CAT",
