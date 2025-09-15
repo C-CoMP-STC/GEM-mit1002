@@ -57,10 +57,6 @@ jobs:
           python check_cue/02_calc_cue.py
           python check_cue/03_plot_cue.py
 
-      # Export model file as json and excel file
-      - name: Export Model
-        run: python export_model.py
-
       - name: Mention PR# in README.md
         env:
           PR_NUMBER: ${{ github.event.number }}
