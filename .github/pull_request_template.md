@@ -8,6 +8,7 @@ e.g. This PR improves/fixes # by ...
 
 **I hereby confirm that I have:**
 <!-- *Note: replace [ ] with [X] to check the box. -->
+- [ ] Made my edits to the model on the XML file
 - [ ] Tested my code on my own computer for running the model
 - [ ] Selected `develop` as a target branch
 - [ ] Any removed reactions and metabolites have been moved to the corresponding deprecated identifier lists
