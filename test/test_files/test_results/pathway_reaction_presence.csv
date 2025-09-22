@@ -1,0 +1,10 @@
+pathway,name,reaction_id,in_model
+EMP,Glucose-6-phosphate isomerase,rxn00558_c0,Yes
+EMP,Phosphofructokinase,rxn00545_c0,Yes
+EMP,Fructose diphosphate aldolase,rxn00786_c0,Yes
+EMP,Triose-phosphate isomerase,rxn00747_c0,Yes
+EMP,Glyceraldehyde-3-phosphate dehydrogenase,rxn00781_c0,Yes
+EMP,3-phosphoglycerate kinase,rxn01100_c0,Yes
+EMP,Phosphoglycerate mutase,rxn01106_c0,Yes
+EMP,Enolase,rxn00459_c0,Yes
+EMP,Pyruvate kinase,rxn00148_c0,Yes
