@@ -1,10 +1,10 @@
 pathway,name,reaction_id
-EMP,Glucose-6-phosphate isomerase,rxn00558
-EMP,Phosphofructokinase,rxn00545
-EMP,Fructose diphosphate aldolase,rxn00786
-EMP,Triose-phosphate isomerase,rxn00747
-EMP,Glyceraldehyde-3-phosphate dehydrogenase,rxn00781
-EMP,3-phosphoglycerate kinase,rxn01100
-EMP,Phosphoglycerate mutase,rxn01106
-EMP,Enolase,rxn00459
-EMP,Pyruvate kinase,rxn00148
+EMP,Glucose-6-phosphate isomerase,rxn00558_c0
+EMP,Phosphofructokinase,rxn00545_c0
+EMP,Fructose diphosphate aldolase,rxn00786_c0
+EMP,Triose-phosphate isomerase,rxn00747_c0
+EMP,Glyceraldehyde-3-phosphate dehydrogenase,rxn00781_c0
+EMP,3-phosphoglycerate kinase,rxn01100_c0
+EMP,Phosphoglycerate mutase,rxn01106_c0
+EMP,Enolase,rxn00459_c0
+EMP,Pyruvate kinase,rxn00148_c0
