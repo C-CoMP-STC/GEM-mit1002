@@ -8,3 +8,7 @@ EMP,3-phosphoglycerate kinase,rxn01100_c0,Yes
 EMP,Phosphoglycerate mutase,rxn01106_c0,Yes
 EMP,Enolase,rxn00459_c0,Yes
 EMP,Pyruvate kinase,rxn00148_c0,Yes
+ED,D-glucose-6-phosphate:NADP+ 1-oxidoreductase,rxn00604_c0,Yes
+ED,6-Phospho-D-glucono-1-5-lactone lactonohydrolase,rxn01476_c0,Yes
+ED,6-phosphogluconate dehydratase,rxn15296,No
+ED,2-keto-3-deoxy-6-phosphogluconate aldolase,rxn00783,No
