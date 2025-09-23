@@ -10,5 +10,5 @@ EMP,Enolase,rxn00459_c0,Yes,WP_049585952.1
 EMP,Pyruvate kinase,rxn00148_c0,Yes,WP_014949855.1
 ED,D-glucose-6-phosphate:NADP+ 1-oxidoreductase,rxn00604_c0,Yes,WP_049587589.1
 ED,6-Phospho-D-glucono-1-5-lactone lactonohydrolase,rxn01476_c0,Yes,WP_014979596.1 or WP_014979596.1
-ED,6-phosphogluconate dehydratase,rxn15296_c0,Yes,WP_014998717.1
-ED,2-keto-3-deoxy-6-phosphogluconate aldolase,rxn00783_c0,No,
+ED,6-phosphogluconate dehydratase,rxn01477_c0,Yes,WP_014998717.1
+ED,2-keto-3-deoxy-6-phosphogluconate aldolase,rxn03884_c0,Yes,WP_014949849.1 and WP_014979614.1
