@@ -29,14 +29,19 @@ class TestPathways(unittest.TestCase):
             os.path.join(TESTFILE_DIR, "pathway_reactions.csv")
         )
 
-        # Create a set of reaction IDs from the model for fast lookups
-        model_reaction_ids = {r.id for r in model.reactions}
+        # Create a dictionary of reaction IDs and their GPR in the model
+        model_reaction_gpr = {r.id: r.gene_reaction_rule for r in model.reactions}
 
         # Use the vectorized `isin` method to get a boolean Series
-        is_present = pathway_reactions["reaction_id"].isin(model_reaction_ids)
+        is_present = pathway_reactions["reaction_id"].isin(model_reaction_gpr.keys())
 
         # Map the boolean results to "Yes"/"No" strings
         pathway_reactions["in_model"] = is_present.map({True: "Yes", False: "No"})
+
+        # Add a column for the GPR
+        pathway_reactions["GPR"] = pathway_reactions["reaction_id"].map(
+            model_reaction_gpr
+        ).fillna("")
 
         # Save the results to a new CSV file
         pathway_reactions.to_csv(
@@ -44,15 +49,17 @@ class TestPathways(unittest.TestCase):
         )
 
         # Plot a categorical heatmap of the reaction presence/absence for each pathway
+        # And annotate with the GPR
         for pathway in pathway_reactions["pathway"].unique():
+            # Extract just the data for this pathway
             plt_data = pathway_reactions[pathway_reactions["pathway"] == pathway].copy()
-            plt_data = plt_data.pivot(
-                index="reaction_id", columns="pathway", values="in_model"
-            )
+            # Extract just the columns we neec, and set the index to reaction_id
+            plt_data = plt_data[["reaction_id", "in_model", "GPR"]].set_index("reaction_id")
+            # Make the figure
             plt.figure(figsize=(6, max(2, len(plt_data) * 0.3)))
             sns.heatmap(
-                plt_data.replace({"Yes": 1, "No": 0}),
-                annot=plt_data,
+                plt_data[["in_model"]].replace({"Yes": 1, "No": 0}),
+                annot=plt_data[["GPR"]],
                 cbar=False,
                 vmin=0,
                 vmax=1,
