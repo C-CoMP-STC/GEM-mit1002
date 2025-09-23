@@ -12,3 +12,5 @@ ED,D-glucose-6-phosphate:NADP+ 1-oxidoreductase,rxn00604_c0,Yes,WP_049587589.1
 ED,6-Phospho-D-glucono-1-5-lactone lactonohydrolase,rxn01476_c0,Yes,WP_014979596.1 or WP_014979596.1
 ED,6-phosphogluconate dehydratase,rxn01477_c0,Yes,WP_014998717.1
 ED,2-keto-3-deoxy-6-phosphogluconate aldolase,rxn03884_c0,Yes,WP_014949849.1 and WP_014979614.1
+Glyoxylate Shunt,Isocitrate lyase,rxn00336_c0,Yes,WP_049587992.1
+Glyoxylate Shunt,Malate synthase,rxn00330_c0,Yes,WP_049587987.1
