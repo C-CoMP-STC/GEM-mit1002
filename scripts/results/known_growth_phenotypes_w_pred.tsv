@@ -2,7 +2,7 @@ minimal_media	c_source	met_id	bigg_id	growth	notes	ex_rxn_present	pred_growth
 mbm	Glucose 	cpd00027	glc__D	Yes		Yes	Yes
 l1	Glucose 	cpd00027	glc__D	Yes		Yes	Yes
 mbm	Acetate	cpd00029	ac	Yes		Yes	Yes
-l1	Acetate	cpd00029	ac	Yes		Yes	Yes
+l1	Acetate	cpd00029	ac	Yes		Yes	No
 mbm	Glycolate	cpd00139	glyclt	No		No	No
 mbm	Homarine	cpd00737		Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No	No
 mbm	3-hydroxybutyrate	cpd00797		Yes		Yes	Yes
