@@ -8,7 +8,7 @@ from matplotlib.patches import Patch
 
 # Define paths relative to the project root
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
-TESTFILE_DIR = os.path.join(PROJECT_ROOT, "test", "test_files")
+INPUTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "inputs")
 RESULTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "results")
 
 
@@ -21,7 +21,7 @@ color_map = {"yes": "lightgreen", "no": "lightcoral"}
 def test_pathway_reactions_present(model: cobra.Model):
     # Load the CSV of the pathway reactions
     pathway_reactions = pd.read_csv(
-        os.path.join(TESTFILE_DIR, "pathway_reactions.csv")
+        os.path.join(INPUTS_DIR, "pathway_reactions.csv")
     )
 
     # Create a dictionary of reaction IDs and their GPR in the model
