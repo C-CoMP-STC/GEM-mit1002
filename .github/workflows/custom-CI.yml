@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Custom-CI
 
 # Controls when the workflow will run
@@ -9,8 +7,11 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # All in one job, so I don't have to deal with uploading and downloading a venv
-  build-and-test:
+  #################################################################
+  # JOB 1: Run unit tests to verify model correctness.
+  # This job can pass or fail, providing a clear test status.
+  #################################################################
+  test:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
 
@@ -25,42 +26,46 @@ jobs:
       # Install everything I need
       - name: Install Dependencies
         run: |
-          echo Installing Dependencies
           python -m pip install --upgrade pip
-          python -m pip install importlib-resources==5.13.0
-          python -m pip install numpy==1.23.5
-          python -m pip install memote
-          python -m pip install cobra
-          python -m pip install pytest
-          python -m pip install matplotlib
-          python -m pip install seaborn
-          python -m pip install openpyxl
-          python -m pip install git+https://github.com/segrelab/GEM2CUE.git@remove-classes
+          python -m pip install -r requirements.txt
 
       # Run the custom tests
       - name: Run Custom Tests with pytest
-        id: run-tests
-        run: |
-          TEST_RESULTS=$(pytest)
-          echo $TEST_RESULTS
-          PARSED_RESULTS="${TEST_RESULTS//$'\n'/'<br>'}"
-          PARSED_RESULTS="${PARSED_RESULTS//$'\r'/'<br>'}"
-          echo $PARSED_RESULTS
-          echo "results=$PARSED_RESULTS" >> $GITHUB_OUTPUT
-          printf "$TEST_RESULTS" > test/test_files/test_results/pytest_summary.md
-        continue-on-error: true
+        run: pytest
+  
+  ##############################################################
+  # JOB 2: Generate and commit analysis reports.
+  # This job runs AFTER the test job, regardless of its outcome.
+  ##############################################################
+  report:
+    runs-on: ubuntu-22.04
+    # 'needs: test' makes this job wait for the 'test' job to finish.
+    needs: test
+    # 'if: always()' ensures this job runs even if the 'test' job failed.
+    if: always()
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          fetch-depth: 0
 
-      # Run the CUE simulations
-      - name: Run CUE Simulations
+      # Install everything I need
+      - name: Install Dependencies
         run: |
-          python check_cue/01_run_cobra.py
-          python check_cue/02_calc_cue.py
-          python check_cue/03_plot_cue.py
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # Generate the analysis reports
+      - name: Generate Analysis Reports
+        run: |
+          python scripts/generate_growth_report.py
+          python scripts/generate_pathway_report.py
 
       - name: Mention PR# in README.md
         env:
           PR_NUMBER: ${{ github.event.number }}
-        run: sed -i -e "s/[[:digit:]]\{3,4\}\*\* (CUSTOM-CI)/$PR_NUMBER\*\* (CUSTOM-CI)/" test/test_files/test_results/README.md
+        run: sed -i -e "s/[[:digit:]]\{3,4\}\*\* (CUSTOM-CI)/$PR_NUMBER\*\* (CUSTOM-CI)/" scripts/results/README.md
 
       # Auto-commit the changes directly without stashing
       - name: Auto-commit results
@@ -68,7 +73,7 @@ jobs:
         with:
           commit_user_name: action-bot
           commit_message: "chore: add custom-CI test result"
-          file_pattern: test/test_files/test_results/*
+          file_pattern: scripts/results/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.number }}
