@@ -1,6 +1,6 @@
-# Test results
+# Script results
 
-The test results shown here were obtained by the GitHub Actions run in:
+The results shown here were obtained by the GitHub Actions run in:
 
 - **PR #271** (CUSTOM-CI)
 
