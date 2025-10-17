@@ -28,7 +28,7 @@ Spermidine,False,False,False,False,True,True,True,True,True,True,True,True,True,
 Siroheme,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,False,False,True,True
 Bactoprenyl diphosphate,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,False,False,True,True
 Lauroyl-KDO2-lipid IV(A),False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,False,False,True,True
-Fe2+,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,False,False,True,True
+Fe2+,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
 fe3,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True
 dATP,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,False,False,True,True
 dGTP,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,False,False,True,True
