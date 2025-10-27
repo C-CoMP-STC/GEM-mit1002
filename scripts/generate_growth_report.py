@@ -21,7 +21,9 @@ with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as
 def generate_growth_phenotype_report(model: cobra.Model):
     # Load the TSV of the growth phenotypes
     growth_phenotypes = pd.read_csv(
-        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+        sep="\t",
+        converters={"met_id": lambda x: x.split(",")},
     )
 
     # Loop through the growth phenotpes, and add the carbon source to the
@@ -31,9 +33,13 @@ def generate_growth_phenotype_report(model: cobra.Model):
     for index, row in growth_phenotypes.iterrows():
         minimal_media = media_definitions[row["minimal_media"]].copy()
         # Check if the model has an exchange reaction for the metabolite
-        if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
+        if all(
+            "EX_" + met_id + "_e0" in [r.id for r in model.reactions]
+            for met_id in row["met_id"]
+        ):
             # If it does, add the exchange reaction to the minimal media used
-            minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+            for met_id in row["met_id"]:
+                minimal_media["EX_" + met_id + "_e0"] = 1000.0
             # Mark the exchange reaction as present
             ex_rxn_present.append("Yes")
         else:
@@ -52,7 +58,7 @@ def generate_growth_phenotype_report(model: cobra.Model):
             pred_growth.append("No")
 
     # Add the lists as new columns in the dataframe
-    growth_phenotypes["ex_rxn_present"] = ex_rxn_present
+    growth_phenotypes["all_ex_rxn_present"] = ex_rxn_present
     growth_phenotypes["pred_growth"] = pred_growth
 
     # Save the dataframe as a TSV
@@ -81,8 +87,10 @@ def generate_growth_phenotype_report(model: cobra.Model):
 
     # Create an annotation data frame for the text labels on the heatmap
     annotation_key = {"No": "No Exchange", "Yes": ""}
-    annot_df = growth_phenotypes["ex_rxn_present"].replace(annotation_key).to_frame()
-    annot_df.rename(columns={"ex_rxn_present": "FBA"}, inplace=True)
+    annot_df = (
+        growth_phenotypes["all_ex_rxn_present"].replace(annotation_key).to_frame()
+    )
+    annot_df.rename(columns={"all_ex_rxn_present": "FBA"}, inplace=True)
     annot_df["Experimental"] = ""
     # Sort the columns to match the order of the heatmap
     annot_df = annot_df[["Experimental", "FBA"]]
