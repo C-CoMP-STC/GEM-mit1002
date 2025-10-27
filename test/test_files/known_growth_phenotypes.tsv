@@ -28,3 +28,26 @@ promm_no_c	3-methyl-2-oxobutanoic acid	cpd00123		Yes
 promm_no_c	Kynurenine	cpd00275		No	There are two kynurenine metabolites in the db ModelSEED
 promm_no_c	Thymidine	cpd00184		No	
 promm_no_c	4-hydroxybenzoic acid	cpd00136		No	
+marine_broth_wo_yeast_and_peptone	Lys			Yes	
+marine_broth_wo_yeast_and_peptone	LysC			Yes	
+marine_broth_wo_yeast_and_peptone	Met			No	
+marine_broth_wo_yeast_and_peptone	MetC			Yes	
+marine_broth_wo_yeast_and_peptone	Gln			Yes	
+marine_broth_wo_yeast_and_peptone	GlnC			Yes	
+marine_broth_wo_yeast_and_peptone	Arg			Yes	
+marine_broth_wo_yeast_and_peptone	ArgC			Yes	
+marine_broth_wo_yeast_and_peptone	AS			No	
+marine_broth_wo_yeast_and_peptone	NS			No	
+marine_broth_wo_yeast_and_peptone	NP			Yes	
+marine_broth_wo_yeast_and_peptone	AP			Yes	
+marine_broth_wo_yeast_and_peptone	UP			No	
+marine_broth_wo_yeast_and_peptone	UG			Yes	
+marine_broth_wo_yeast_and_peptone	AG			Yes	
+marine_broth_wo_yeast_and_peptone	NG			Yes	
+marine_broth_wo_yeast_and_peptone	US			No	
+marine_broth_wo_yeast_and_peptone	Ala			Yes	
+marine_broth_wo_yeast_and_peptone	AlaC			Yes	
+marine_broth_wo_yeast_and_peptone	Pro			No	
+marine_broth_wo_yeast_and_peptone	ProC			Yes	
+marine_broth_wo_yeast_and_peptone	Cys			No	
+marine_broth_wo_yeast_and_peptone	CysC			No	
