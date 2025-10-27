@@ -111,8 +111,14 @@ def generate_growth_phenotype_report(model: cobra.Model):
     # cmap = ['gray', '#F18F01', '#399E5A'] # Gray, orange, green
     cmap = ["#5E5E5E", "#FF7D0A", "#024064"]  # C-CoMP gray, orange, and dark blue
 
+    # Dynamically set the figure height based on the number of rows
+    fig_height = max(10, len(growth_phenotypes) * 0.4)  # 0.4 inches per row
     # Plot the heatmap
-    fig, ax = plt.subplots()
+    # Use constrained_layout to prevent cutting off y-axis/colorbar labels
+    fig, ax = plt.subplots(
+        figsize=(8, fig_height),
+        constrained_layout=True,
+    )
     sns.heatmap(
         growth_phenotypes.replace(value_to_int),
         cmap=cmap,
@@ -144,9 +150,6 @@ def generate_growth_phenotype_report(model: cobra.Model):
     # Make sure that every y-tick is shown
     ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
     ax.set_yticklabels(growth_phenotypes.index, rotation=0)
-
-    # Make sure that the y-axis labels are not cut off
-    plt.tight_layout()
 
     # Save the figure
     plt.savefig(os.path.join(RESULTS_DIR, "exp_vs_pred_growth_phenotypes.png"))
