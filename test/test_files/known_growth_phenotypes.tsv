@@ -42,12 +42,12 @@ marine_broth_wo_yeast_and_peptone	Methionine	cpd00060		No
 marine_broth_wo_yeast_and_peptone	Methionine+Pyruvate	cpd00060,cpd00020		Yes	
 marine_broth_wo_yeast_and_peptone	Proline	cpd00129		No	
 marine_broth_wo_yeast_and_peptone	Proline+Pyruvate	cpd00129,cpd00020		Yes	
-marine_broth_wo_yeast_and_peptone	Ammonium+Succinate	cpd00013,cpd00036		No	
-marine_broth_wo_yeast_and_peptone	Nitrate+Succinate	cpd00209,cpd00036		No	
-marine_broth_wo_yeast_and_peptone	Nitrate+Pyruvate	cpd00209,cpd00020		Yes	
-marine_broth_wo_yeast_and_peptone	Ammonium+Pyruvate	cpd00013,cpd00020		Yes	
-marine_broth_wo_yeast_and_peptone	Urea+Pyruvate	cpd00073,cpd00020		No	
 marine_broth_wo_yeast_and_peptone	Urea+Glucose	cpd00073,cpd00027		Yes	
 marine_broth_wo_yeast_and_peptone	Ammonium+Glucose	cpd00013,cpd00027		Yes	
 marine_broth_wo_yeast_and_peptone	Nitrate+Glucose	cpd00209,cpd00027		Yes	
+marine_broth_wo_yeast_and_peptone	Nitrate+Pyruvate	cpd00209,cpd00020		Yes	
+marine_broth_wo_yeast_and_peptone	Ammonium+Pyruvate	cpd00013,cpd00020		Yes	
+marine_broth_wo_yeast_and_peptone	Urea+Pyruvate	cpd00073,cpd00020		No	
+marine_broth_wo_yeast_and_peptone	Ammonium+Succinate	cpd00013,cpd00036		No	
+marine_broth_wo_yeast_and_peptone	Nitrate+Succinate	cpd00209,cpd00036		No	
 marine_broth_wo_yeast_and_peptone	Urea+Succinate	cpd00073,cpd00036		No	
