@@ -158,7 +158,9 @@ def generate_growth_phenotype_report(model: cobra.Model):
 def generate_biomass_producibility_report(model: cobra.Model):
     # Load the TSV of the growth phenotypes
     growth_phenotypes = pd.read_csv(
-        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+        sep="\t",
+        converters={"met_id": lambda x: x.split(",")},
     )
 
     # Filter the growth phenotypes to only include the carbon sources that it can grow on
@@ -184,5 +186,5 @@ if __name__ == "__main__":
     model = cobra.io.read_sbml_model("model.xml")
 
     # Generate the reports
-    generate_growth_phenotype_report(model)
+    # generate_growth_phenotype_report(model)
     generate_biomass_producibility_report(model)
