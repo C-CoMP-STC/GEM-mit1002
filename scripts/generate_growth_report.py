@@ -186,5 +186,5 @@ if __name__ == "__main__":
     model = cobra.io.read_sbml_model("model.xml")
 
     # Generate the reports
-    # generate_growth_phenotype_report(model)
+    generate_growth_phenotype_report(model)
     generate_biomass_producibility_report(model)
