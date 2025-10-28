@@ -40,7 +40,9 @@ class TestGrowthPhenotypes(unittest.TestCase):
     def test_expected_growth_phenotypes(self):
         # Load the TSV of the growth phenotypes
         growth_phenotypes = pd.read_csv(
-            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+            sep="\t",
+            converters={"met_id": lambda x: x.split(",")},
         )
 
         # Load the model
@@ -52,10 +54,14 @@ class TestGrowthPhenotypes(unittest.TestCase):
         pred_growth = []
         for index, row in growth_phenotypes.iterrows():
             minimal_media = media_definitions[row["minimal_media"]].copy()
-            # Check if the model has an exchange reaction for the metabolite
-            if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
+            # Check if the model has an exchange reaction for the metabolite(s)
+            if all(
+                "EX_" + met_id + "_e0" in [r.id for r in model.reactions]
+                for met_id in row["met_id"]
+            ):
                 # If it does, add the exchange reaction to the minimal media used
-                minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+                for met_id in row["met_id"]:
+                    minimal_media["EX_" + met_id + "_e0"] = 1000.0
                 # Mark the exchange reaction as present
                 ex_rxn_present.append("Yes")
             else:
@@ -74,7 +80,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
                 pred_growth.append("No")
 
         # Add the lists as new columns in the dataframe
-        growth_phenotypes["ex_rxn_present"] = ex_rxn_present
+        growth_phenotypes["all_ex_rxn_present"] = ex_rxn_present
         growth_phenotypes["pred_growth"] = pred_growth
 
         # Filter for only the phenotypes that are explicitly "Yes" or "No"
@@ -102,7 +108,7 @@ class TestGrowthPhenotypes(unittest.TestCase):
             # Add a row for each mismatch
             for index, row in mismatches.iterrows():
                 # Note: Assuming you have a 'c_source' column as in your original file
-                line = f"{row['c_source']:<25} | {row['growth']:<12} | {row['pred_growth']:<12} | {row['ex_rxn_present']:<10}"
+                line = f"{row['c_source']:<25} | {row['growth']:<12} | {row['pred_growth']:<12} | {row['all_ex_rxn_present']:<10}"
                 error_message.append(line)
 
             # Combine the list into a single string and fail the test
