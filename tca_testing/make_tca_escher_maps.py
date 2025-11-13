@@ -1,7 +1,9 @@
-import escher
+import itertools
+
 import cobra
 import pandas as pd
-import itertools
+
+import escher
 
 # Load the models
 amac_model = cobra.io.read_sbml_model("../model.xml")
@@ -388,4 +390,5 @@ for c_label in c_names:
             model = ecoli_model,
             map_json = ecoli_map_path,
             reaction_data = flux_data
+        ).save_html(f"escher_plots/html/ecoli_{c_label}+{n_label}_blocked_reactions.html")            reaction_data = flux_data
         ).save_html(f"escher_plots/html/ecoli_{c_label}+{n_label}_blocked_reactions.html")
