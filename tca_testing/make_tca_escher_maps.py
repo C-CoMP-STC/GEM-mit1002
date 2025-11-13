@@ -7,11 +7,15 @@ import escher
 
 # Load the models
 amac_model = cobra.io.read_sbml_model("../model.xml")
-ecoli_model = cobra.io.read_sbml_model("/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.xml")
+ecoli_model = cobra.io.read_sbml_model(
+    "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.xml"
+)
 
 # Save the paths to the maps
 amac_map_path = "../escher/MIT1002_TCA_escher-map.json"
-ecoli_map_path = "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.TCA Only.json"
+ecoli_map_path = (
+    "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.TCA Only.json"
+)
 
 # Define media without carbon or nitrogen sources
 amac_basal_media = {
@@ -31,36 +35,40 @@ amac_basal_media = {
     "EX_cpd00149_e0": 1000,  # Co2+_e0
 }
 ecoli_basal_media = {
-    'EX_co2_e': 1000.0,
-    'EX_cobalt2_e': 1000.0,
-    'EX_h_e': 1000.0,
-    'EX_h2o_e': 1000.0,
-    'EX_k_e': 1000.0,
-    'EX_cu2_e': 1000.0,
-    'EX_mg2_e': 1000.0,
-    'EX_mn2_e': 1000.0,
-    'EX_mobd_e': 1000.0,
-    'EX_na1_e': 1000.0,
-    'EX_ca2_e': 1000.0,
-    'EX_cbl1_e': 0.01,
-    'EX_ni2_e': 1000.0,
-    'EX_o2_e': 1000.0,
-    'EX_cl_e': 1000.0,
-    'EX_pi_e': 1000.0,
-    'EX_zn2_e': 1000.0,
-    'EX_sel_e': 1000.0,
-    'EX_slnt_e': 1000.0,
-    'EX_so4_e': 1000.0,
-    'EX_tungs_e': 1000.0,
-    'EX_fe2_e': 1000.0,
-    'EX_fe3_e': 1000.0
+    "EX_co2_e": 1000.0,
+    "EX_cobalt2_e": 1000.0,
+    "EX_h_e": 1000.0,
+    "EX_h2o_e": 1000.0,
+    "EX_k_e": 1000.0,
+    "EX_cu2_e": 1000.0,
+    "EX_mg2_e": 1000.0,
+    "EX_mn2_e": 1000.0,
+    "EX_mobd_e": 1000.0,
+    "EX_na1_e": 1000.0,
+    "EX_ca2_e": 1000.0,
+    "EX_cbl1_e": 0.01,
+    "EX_ni2_e": 1000.0,
+    "EX_o2_e": 1000.0,
+    "EX_cl_e": 1000.0,
+    "EX_pi_e": 1000.0,
+    "EX_zn2_e": 1000.0,
+    "EX_sel_e": 1000.0,
+    "EX_slnt_e": 1000.0,
+    "EX_so4_e": 1000.0,
+    "EX_tungs_e": 1000.0,
+    "EX_fe2_e": 1000.0,
+    "EX_fe3_e": 1000.0,
 }
 
 # Define additions to the minimal media
-c_sources = {"Glucose": {"ModelSEED": "EX_cpd00027_e0", "BiGG": "EX_glc__D_e"},
-             "Acetate": {"ModelSEED": "EX_cpd00029_e0", "BiGG": "EX_ac_e"}}
-n_sources = {"Ammonia": {"ModelSEED": "EX_cpd00013_e0", "BiGG": "EX_nh4_e"},
-             "Nitrate": {"ModelSEED": "EX_cpd00209_e0", "BiGG": "EX_no3_e"}}
+c_sources = {
+    "Glucose": {"ModelSEED": "EX_cpd00027_e0", "BiGG": "EX_glc__D_e"},
+    "Acetate": {"ModelSEED": "EX_cpd00029_e0", "BiGG": "EX_ac_e"},
+}
+n_sources = {
+    "Ammonia": {"ModelSEED": "EX_cpd00013_e0", "BiGG": "EX_nh4_e"},
+    "Nitrate": {"ModelSEED": "EX_cpd00209_e0", "BiGG": "EX_no3_e"},
+}
 
 # Make list of all reactions to maximize
 modelseed_tca_rxns = [
@@ -79,7 +87,7 @@ modelseed_tca_rxns = [
     "rxn00288_c0",
     "rxn10126_c0",
     "rxn00799_c0",
-    "rxn00248_c0"
+    "rxn00248_c0",
 ]
 bigg_tca_rxns = [
     "ACONTa",
@@ -97,7 +105,7 @@ bigg_tca_rxns = [
     "CS",
     "CITL",
     "MALS",
-    "ICL"
+    "ICL",
 ]
 
 # Make interventions in the Amac model
@@ -106,39 +114,45 @@ bigg_tca_rxns = [
 amac_w_lumped_rxns = amac_model.copy()
 
 # Remove (not just knock out) current "unlumped" reactions
-unlumped_reactions = ["rxn01387_c0",
-                      "rxn00199_c0",
-                      "rxn00441_c0",
-                      "rxn02376_c0",
-                      "rxn01872_c0"]
+unlumped_reactions = [
+    "rxn01387_c0",
+    "rxn00199_c0",
+    "rxn00441_c0",
+    "rxn02376_c0",
+    "rxn01872_c0",
+]
 amac_w_lumped_rxns.remove_reactions(unlumped_reactions)
 
 # Define a lumped ICDH
 lumped_icdh_reaction = cobra.Reaction("rxn00198_c0")
 lumped_icdh_reaction.name = "NADP+-dependent isocitrate dehydrogenase"
 lumped_icdh_reaction.lower_bound = 0  # irreversible
-lumped_icdh_reaction.upper_bound = 1000 # arbitrary upper bound
-lumped_icdh_reaction.add_metabolites({
-    amac_w_lumped_rxns.metabolites.cpd00260_c0: -1,  # isocitrate
-    amac_w_lumped_rxns.metabolites.cpd00006_c0: -1,  # NADP
-    amac_w_lumped_rxns.metabolites.cpd00024_c0: 1,   # alpha-ketoglutarate
-    amac_w_lumped_rxns.metabolites.cpd00011_c0: 1,   # CO2
-    amac_w_lumped_rxns.metabolites.cpd00005_c0: 1    # NADPH
-})
+lumped_icdh_reaction.upper_bound = 1000  # arbitrary upper bound
+lumped_icdh_reaction.add_metabolites(
+    {
+        amac_w_lumped_rxns.metabolites.cpd00260_c0: -1,  # isocitrate
+        amac_w_lumped_rxns.metabolites.cpd00006_c0: -1,  # NADP
+        amac_w_lumped_rxns.metabolites.cpd00024_c0: 1,  # alpha-ketoglutarate
+        amac_w_lumped_rxns.metabolites.cpd00011_c0: 1,  # CO2
+        amac_w_lumped_rxns.metabolites.cpd00005_c0: 1,  # NADPH
+    }
+)
 
 # Define a lumped AKGDH
 lumped_akgdh_rxn = cobra.Reaction("rxn08094_c0")
 lumped_akgdh_rxn.name = "2-Oxoglutarate dehydrogenase complex"
 lumped_akgdh_rxn.lower_bound = 0
 lumped_akgdh_rxn.upper_bound = 1000
-lumped_akgdh_rxn.add_metabolites({
-    amac_w_lumped_rxns.metabolites.cpd00024_c0: -1.0,  # 2-Oxoglutarate
-    amac_w_lumped_rxns.metabolites.cpd00010_c0: -1.0,  # CoA
-    amac_w_lumped_rxns.metabolites.cpd00003_c0: -1.0,  # NAD+
-    amac_w_lumped_rxns.metabolites.cpd00078_c0: 1.0,   # Succinyl-CoA
-    amac_w_lumped_rxns.metabolites.cpd00011_c0: 1.0,   # CO2
-    amac_w_lumped_rxns.metabolites.cpd00004_c0: 1.0    # NADH
-})
+lumped_akgdh_rxn.add_metabolites(
+    {
+        amac_w_lumped_rxns.metabolites.cpd00024_c0: -1.0,  # 2-Oxoglutarate
+        amac_w_lumped_rxns.metabolites.cpd00010_c0: -1.0,  # CoA
+        amac_w_lumped_rxns.metabolites.cpd00003_c0: -1.0,  # NAD+
+        amac_w_lumped_rxns.metabolites.cpd00078_c0: 1.0,  # Succinyl-CoA
+        amac_w_lumped_rxns.metabolites.cpd00011_c0: 1.0,  # CO2
+        amac_w_lumped_rxns.metabolites.cpd00004_c0: 1.0,  # NADH
+    }
+)
 
 # Add lumped reactions
 amac_w_lumped_rxns.add_reactions([lumped_icdh_reaction, lumped_akgdh_rxn])
@@ -152,7 +166,7 @@ atp_consuming_reactions = []
 # Make a list of all versions of the amac model to test
 amac_models_to_test = {
     "Original": amac_model,
-    "With_Lumped_Reactions": amac_w_lumped_rxns
+    "With_Lumped_Reactions": amac_w_lumped_rxns,
 }
 # Make a list to store results for each model
 amac_growth_dfs = {}
@@ -161,14 +175,14 @@ n_names = list(n_sources.keys())
 
 for model_name, model in amac_models_to_test.items():
     amac_growth_results = []
-    print(f'Running AMAC tests for model: {model_name}')
+    print(f"Running AMAC tests for model: {model_name}")
     for c_k in range(1, len(c_names) + 1):
         for c_subset in itertools.combinations(c_names, c_k):
             for n_k in range(1, len(n_names) + 1):
                 for n_subset in itertools.combinations(n_names, n_k):
                     c_label = "+".join(c_subset)
                     n_label = "+".join(n_subset)
-                    print(f'  Testing C source(s): {c_label} | N source(s): {n_label}')
+                    print(f"  Testing C source(s): {c_label} | N source(s): {n_label}")
                     # Make a medium (copy so basal isn't mutated)
                     amac_medium = amac_basal_media.copy()
                     # Add carbon sources (use same per-source bounds as before)
@@ -184,14 +198,20 @@ for model_name, model in amac_models_to_test.items():
                     m.medium = amac_medium
                     sol = m.optimize()
                     # Collect TCA fluxes
-                    rxn_fluxes = {rxn: sol.fluxes[rxn] for rxn in modelseed_tca_rxns if rxn in sol.fluxes}
+                    rxn_fluxes = {
+                        rxn: sol.fluxes[rxn]
+                        for rxn in modelseed_tca_rxns
+                        if rxn in sol.fluxes
+                    }
                     rxn_fluxes["bio1_biomass"] = sol.objective_value
-                    amac_growth_results.append({
-                        "Model": model_name,
-                        "C_source": c_label,
-                        "N_source": n_label,
-                        "fluxes": rxn_fluxes,
-                    })
+                    amac_growth_results.append(
+                        {
+                            "Model": model_name,
+                            "C_source": c_label,
+                            "N_source": n_label,
+                            "fluxes": rxn_fluxes,
+                        }
+                    )
     # Convert to DataFrame for this model
     amac_growth_dfs[model_name] = pd.DataFrame(amac_growth_results)
 
@@ -209,10 +229,10 @@ for model_name, model in amac_models_to_test.items():
                         & (growth_df["N_source"] == n_label)
                     ]["fluxes"].item()
                     escher.Builder(
-                        model = model,
-                        map_json = amac_map_path,
-                        reaction_data = flux_data
-                    ).save_html(f"escher_plots/html/amac_{model_name}_{c_label}+{n_label}.html")
+                        model=model, map_json=amac_map_path, reaction_data=flux_data
+                    ).save_html(
+                        f"escher_plots/html/amac_{model_name}_{c_label}+{n_label}.html"
+                    )
 
 # For e. coli
 # Make a list to store results
@@ -226,7 +246,9 @@ for c_k in range(1, len(c_names) + 1):
                 c_label = "+".join(c_subset)
                 n_label = "+".join(n_subset)
                 # Debugging
-                print(f'Testing E. coli with C source: {c_label} and N source: {n_label}')
+                print(
+                    f"Testing E. coli with C source: {c_label} and N source: {n_label}"
+                )
                 # Make a medium
                 ecoli_medium = ecoli_basal_media.copy()
                 # Add carbon sources (use same per-source bounds as before)
@@ -245,20 +267,25 @@ for c_k in range(1, len(c_names) + 1):
                 # Optimize for Biomass (Check Fluxes When Growing)
                 ecoli_solution = ecoli_model.optimize()
                 # Get the fluxes through the TCA cycle reactions (skip reactions that aren't in the model)
-                rxn_fluxes = {rxn: ecoli_solution.fluxes[rxn]
-                              for rxn in bigg_tca_rxns
-                              if rxn in ecoli_solution.fluxes}
+                rxn_fluxes = {
+                    rxn: ecoli_solution.fluxes[rxn]
+                    for rxn in bigg_tca_rxns
+                    if rxn in ecoli_solution.fluxes
+                }
                 # Add the biomass flux to the dict
-                rxn_fluxes["BIOMASS_Ec_iJO1366_core_53p95M"] = ecoli_solution.objective_value
+                rxn_fluxes["BIOMASS_Ec_iJO1366_core_53p95M"] = (
+                    ecoli_solution.objective_value
+                )
                 # Store the results
-                ecoli_growth_results.append({
-                    "C_source": c_label,
-                    "N_source": n_label,
-                    "fluxes": rxn_fluxes,
-                })
+                ecoli_growth_results.append(
+                    {
+                        "C_source": c_label,
+                        "N_source": n_label,
+                        "fluxes": rxn_fluxes,
+                    }
+                )
 # Convert to DataFrame for easier viewing
 ecoli_growth_df = pd.DataFrame(ecoli_growth_results)
-ecoli_growth_df
 
 # Make a save all escher maps as HTML files
 for c_k in range(1, len(c_names) + 1):
@@ -272,9 +299,7 @@ for c_k in range(1, len(c_names) + 1):
                     & (ecoli_growth_df["N_source"] == n_label)
                 ]["fluxes"].item()
                 escher.Builder(
-                    model = ecoli_model,
-                    map_json = ecoli_map_path,
-                    reaction_data = flux_data
+                    model=ecoli_model, map_json=ecoli_map_path, reaction_data=flux_data
                 ).save_html(f"escher_plots/html/ecoli_{c_label}+{n_label}.html")
 
 # Optimize for TCA cycle reactions (check for blockages)
@@ -284,7 +309,9 @@ amac_blockage_results = []
 for c_name, c_id_dict in c_sources.items():
     for n_name, n_id_dict in n_sources.items():
         # Debugging
-        print(f'Testing AMAC with C source: {c_name} ({c_id_dict["ModelSEED"]}) and N source: {n_name} ({n_id_dict["ModelSEED"]})')
+        print(
+            f'Testing AMAC with C source: {c_name} ({c_id_dict["ModelSEED"]}) and N source: {n_name} ({n_id_dict["ModelSEED"]})'
+        )
         # Make a medium
         amac_medium = amac_basal_media.copy()
         # Add a limiting amount of carbon source
@@ -306,20 +333,21 @@ for c_name, c_id_dict in c_sources.items():
             # Set the objective to the current reaction
             amac_model.objective = rxn_id
             # Debugging
-            print(f'  Optimizing for reaction: {rxn_id}')
+            print(f"  Optimizing for reaction: {rxn_id}")
             # Optimize
             amac_solution = amac_model.optimize()
             # Store the flux
             rxn_fluxes[rxn_id] = amac_solution.objective_value
         # Store the results
-        amac_blockage_results.append({
-            "C_source": c_name,
-            "N_source": n_name,
-            "fluxes": rxn_fluxes,
-        })
+        amac_blockage_results.append(
+            {
+                "C_source": c_name,
+                "N_source": n_name,
+                "fluxes": rxn_fluxes,
+            }
+        )
 # Convert to DataFrame for easier viewing
 amac_blockage_df = pd.DataFrame(amac_blockage_results)
-amac_blockage_df
 
 # Make a save all escher maps as HTML files
 for c_label in c_names:
@@ -329,10 +357,10 @@ for c_label in c_names:
             & (amac_blockage_df["N_source"] == n_label)
         ]["fluxes"].item()
         escher.Builder(
-            model = amac_model,
-            map_json = amac_map_path,
-            reaction_data = flux_data
-        ).save_html(f"escher_plots/html/amac_Original_{c_label}+{n_label}_blocked_reactions.html")
+            model=amac_model, map_json=amac_map_path, reaction_data=flux_data
+        ).save_html(
+            f"escher_plots/html/amac_Original_{c_label}+{n_label}_blocked_reactions.html"
+        )
 
 # For E. coli
 # Make a list to store results
@@ -341,7 +369,9 @@ ecoli_blockage_results = []
 for c_name, c_id_dict in c_sources.items():
     for n_name, n_id_dict in n_sources.items():
         # Debugging
-        print(f'Testing E. coli with C source: {c_name} ({c_id_dict["BiGG"]}) and N source: {n_name} ({n_id_dict["BiGG"]})')
+        print(
+            f'Testing E. coli with C source: {c_name} ({c_id_dict["BiGG"]}) and N source: {n_name} ({n_id_dict["BiGG"]})'
+        )
         # Make a medium
         ecoli_medium = ecoli_basal_media.copy()
         # Add a limiting amount of carbon source
@@ -364,20 +394,21 @@ for c_name, c_id_dict in c_sources.items():
             # Set the objective to the current reaction
             ecoli_model.objective = rxn_id
             # Debugging
-            print(f'  Optimizing for reaction: {rxn_id}')
+            print(f"  Optimizing for reaction: {rxn_id}")
             # Optimize
             ecoli_solution = ecoli_model.optimize()
             # Store the flux
             rxn_fluxes[rxn_id] = ecoli_solution.objective_value
         # Store the results
-        ecoli_blockage_results.append({
-            "C_source": c_name,
-            "N_source": n_name,
-            "fluxes": rxn_fluxes,
-        })
+        ecoli_blockage_results.append(
+            {
+                "C_source": c_name,
+                "N_source": n_name,
+                "fluxes": rxn_fluxes,
+            }
+        )
 # Convert to DataFrame for easier viewing
 ecoli_blockage_df = pd.DataFrame(ecoli_blockage_results)
-ecoli_blockage_df
 
 # Make a save all escher maps as HTML files
 for c_label in c_names:
@@ -387,8 +418,7 @@ for c_label in c_names:
             & (ecoli_blockage_df["N_source"] == n_label)
         ]["fluxes"].item()
         escher.Builder(
-            model = ecoli_model,
-            map_json = ecoli_map_path,
-            reaction_data = flux_data
-        ).save_html(f"escher_plots/html/ecoli_{c_label}+{n_label}_blocked_reactions.html")            reaction_data = flux_data
-        ).save_html(f"escher_plots/html/ecoli_{c_label}+{n_label}_blocked_reactions.html")
+            model=ecoli_model, map_json=ecoli_map_path, reaction_data=flux_data
+        ).save_html(
+            f"escher_plots/html/ecoli_{c_label}+{n_label}_blocked_reactions.html"
+        )
