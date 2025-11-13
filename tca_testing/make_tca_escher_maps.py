@@ -5,6 +5,10 @@ import pandas as pd
 
 import escher
 
+########################################################################
+# SET UP
+########################################################################
+
 # Load the models
 amac_model = cobra.io.read_sbml_model("../model.xml")
 ecoli_model = cobra.io.read_sbml_model(
@@ -108,7 +112,10 @@ bigg_tca_rxns = [
     "ICL",
 ]
 
-# Make interventions in the Amac model
+########################################################################
+# MAKE INTERVENTIONS IN THE AMAC MODEL
+########################################################################
+
 # Lumped reactions for ICDH and AKGDH
 # Make a copy of the model to work with
 amac_w_lumped_rxns = amac_model.copy()
@@ -161,7 +168,9 @@ amac_w_lumped_rxns.add_reactions([lumped_icdh_reaction, lumped_akgdh_rxn])
 # TODO: List reactions involving ATP to make irreversible (force in the ATP-consuming direction)
 atp_consuming_reactions = []
 
-# Optimize for Biomass (Check fluxes when growing)
+########################################################################
+# OPTIMIZE FOR BIOMASS (CHECK FLUXES WHEN GROWING)
+########################################################################
 # For Amac
 # Make a list of all versions of the amac model to test
 amac_models_to_test = {
@@ -302,7 +311,9 @@ for c_k in range(1, len(c_names) + 1):
                     model=ecoli_model, map_json=ecoli_map_path, reaction_data=flux_data
                 ).save_html(f"escher_plots/html/ecoli_{c_label}+{n_label}.html")
 
-# Optimize for TCA cycle reactions (check for blockages)
+########################################################################
+# OPTIMIZE FOR TCA CYCLE REACTIONS (CHECK FOR BLOCKAGES)
+########################################################################
 # Make a list to store results
 amac_blockage_results = []
 # Get every combination of C and N source
