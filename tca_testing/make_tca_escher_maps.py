@@ -1,4 +1,5 @@
 import itertools
+import os
 
 import cobra
 import pandas as pd
@@ -9,17 +10,23 @@ import escher
 # SET UP
 ########################################################################
 
+# Get paths
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(FILE_DIR))
+
+# Set and make output directory for the escher plots
+ESCHER_PLOT_DIR = os.path.join(FILE_DIR, "escher_plots", "html")
+os.makedirs(ESCHER_PLOT_DIR, exist_ok=True)
+
 # Load the models
-amac_model = cobra.io.read_sbml_model("../model.xml")
+amac_model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
 ecoli_model = cobra.io.read_sbml_model(
     "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.xml"
 )
 
 # Save the paths to the maps
-amac_map_path = "../escher/MIT1002_TCA_escher-map.json"
-ecoli_map_path = (
-    "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.TCA Only.json"
-)
+amac_map_path = os.path.join(PROJECT_ROOT, "escher", "MIT1002_TCA_escher-map.json")
+ecoli_map_path = os.path.join(FILE_DIR, "iJO1366_tca-only-escher-map.json")
 
 # Define media without carbon or nitrogen sources
 amac_basal_media = {
@@ -240,7 +247,7 @@ for model_name, model in amac_models_to_test.items():
                     escher.Builder(
                         model=model, map_json=amac_map_path, reaction_data=flux_data
                     ).save_html(
-                        f"escher_plots/html/amac_{model_name}_{c_label}+{n_label}.html"
+                        f"{ESCHER_PLOT_DIR}/amac_{model_name}_{c_label}+{n_label}.html"
                     )
 
 # For e. coli
@@ -309,7 +316,7 @@ for c_k in range(1, len(c_names) + 1):
                 ]["fluxes"].item()
                 escher.Builder(
                     model=ecoli_model, map_json=ecoli_map_path, reaction_data=flux_data
-                ).save_html(f"escher_plots/html/ecoli_{c_label}+{n_label}.html")
+                ).save_html(f"{ESCHER_PLOT_DIR}/ecoli_{c_label}+{n_label}.html")
 
 ########################################################################
 # OPTIMIZE FOR TCA CYCLE REACTIONS (CHECK FOR BLOCKAGES)
@@ -370,7 +377,7 @@ for c_label in c_names:
         escher.Builder(
             model=amac_model, map_json=amac_map_path, reaction_data=flux_data
         ).save_html(
-            f"escher_plots/html/amac_Original_{c_label}+{n_label}_blocked_reactions.html"
+            f"{ESCHER_PLOT_DIR}/amac_Original_{c_label}+{n_label}_blocked_reactions.html"
         )
 
 # For E. coli
@@ -431,5 +438,5 @@ for c_label in c_names:
         escher.Builder(
             model=ecoli_model, map_json=ecoli_map_path, reaction_data=flux_data
         ).save_html(
-            f"escher_plots/html/ecoli_{c_label}+{n_label}_blocked_reactions.html"
+            f"{ESCHER_PLOT_DIR}/ecoli_{c_label}+{n_label}_blocked_reactions.html"
         )
