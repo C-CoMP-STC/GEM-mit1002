@@ -51,7 +51,7 @@ def main():
     ####################################################################
     # MAKE INTERVENTIONS IN THE AMAC MODEL
     ####################################################################
-    # Create a version of the model with lumped ICDH and AKGDH reactions
+    # --- Make a version of the model with lumped ICDH and AKGDH reactions ---
     # Make a copy of the original model to modify
     amac_w_lumped_rxns = amac_model.copy()
     # Remove (not just knockout) the original ICDH and AKGDH reactions
@@ -90,14 +90,81 @@ def main():
     )
     amac_w_lumped_rxns.add_reactions([lumped_icdh_reaction, lumped_akgdh_rxn])
 
-    # TODO: Strict ATP Production
-    # TODO: List reactions involving ATP to make irreversible (force in the ATP-consuming direction)
-    # atp_consuming_reactions = []
+    # --- Make a version of the model with strict ATP production ---
+    # List reactions involving ATP to make irreversible (consumption only)
+    atp_consuming_reactions = [
+        "rxn00077_c0",
+        "rxn00104_c0",
+        "rxn00239_c0",
+        "rxn00364_c0",
+        "rxn00379_c0",
+        "rxn01219_c0",
+        "rxn01509_c0",
+        "rxn01517_c0",
+        "rxn02314_c0",
+        "rxn08762_c0",
+        "rxn15121_c0",
+    ]
+    # Make a copy of the original model to modify
+    amac_model_strict_atp = amac_model.copy()
+    # Loop through and set all lower bounds to 0
+    for rxn_id in atp_consuming_reactions:
+        if (
+            rxn_id
+            in amac_model_strict_atp.reactions
+            & amac_model_strict_atp.metabolites.cpd00002_c0
+            in amac_model_strict_atp.reactions.get_by_id(rxn_id).reactants
+        ):
+            amac_model_strict_atp.reactions.get_by_id(rxn_id).lower_bound = 0
+        else:
+            print(f"Warning:{rxn_id} not found or ATP is not a reactant.")
 
-    # Make a dictionary of the models to test
+    # --- Even stricter: make nucleotide balancing reactions irreversible ---
+    # List nucleotide balancing reactions to make irreversible (consumption only)
+    nucleotide_balancing_reactions = [
+        "rxn00097_c0",
+        "rxn00409_c0",
+        "rxn00515_c0",
+        "rxn00839_c0",
+        "rxn01353_c0",
+        "rxn01673_c0",
+        "rxn01678_c0",
+    ]
+    # Make a copy of the strict ATP model to modify
+    amac_model_strict_nucleotide_balancing = amac_model_strict_atp.copy()
+    # Loop through and set all lower bounds to 0
+    for rxn_id in nucleotide_balancing_reactions:
+        if (
+            rxn_id
+            in amac_model_strict_nucleotide_balancing.reactions
+            & amac_model_strict_nucleotide_balancing.metabolites.cpd00002_c0
+            in amac_model_strict_nucleotide_balancing.reactions.get_by_id(
+                rxn_id
+            ).reactants
+        ):
+            amac_model_strict_nucleotide_balancing.reactions.get_by_id(
+                rxn_id
+            ).lower_bound = 0
+        else:
+            print(f"Warning:{rxn_id} not found or ATP is not a reactant.")
+
+    # --- The (less) struct ATP production + lumped reactions ---
+    amac_model_strict_atp_w_lumped_rxns = amac_model_strict_atp.copy()
+    # Remove (not just knockout) the original ICDH and AKGDH reactions
+    amac_model_strict_atp_w_lumped_rxns.remove_reactions(
+        ["rxn01387_c0", "rxn00199_c0", "rxn00441_c0", "rxn02376_c0", "rxn01872_c0"]
+    )
+    # Add the lumped reactions
+    amac_model_strict_atp_w_lumped_rxns.add_reactions(
+        [lumped_icdh_reaction, lumped_akgdh_rxn]
+    )
+    # --- Make a dictionary of the models to test ---
     amac_models_to_test = {
         "Original": amac_model,
         "With_Lumped_Reactions": amac_w_lumped_rxns,
+        "Strict_ATP_Production": amac_model_strict_atp,
+        "Strict_ATP_Production_Nucleotide_Balancing": amac_model_strict_nucleotide_balancing,
+        "Strict_ATP_Production_With_Lumped_Reactions": amac_model_strict_atp_w_lumped_rxns,
     }
 
     ####################################################################
