@@ -1,3 +1,9 @@
+#!/Users/helenscott/opt/miniconda3/envs/escher/bin/python3
+"""
+This script generates escher maps with fluxes while growing, and while
+optimizing for the TCA cycle reactions individually, for the mit1002 model,
+the model with some interventions to test, and the E. coli iJO1366 model.
+"""
 import itertools
 import os
 
@@ -12,17 +18,22 @@ import escher
 
 # Get paths
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(os.path.dirname(FILE_DIR))
+PROJECT_ROOT = os.path.dirname(FILE_DIR)
 
 # Set and make output directory for the escher plots
 ESCHER_PLOT_DIR = os.path.join(FILE_DIR, "escher_plots", "html")
 os.makedirs(ESCHER_PLOT_DIR, exist_ok=True)
 
+# Define the path to the E. coli model
+# This is a local path on Helen's computer - change as needed
+# Alternatively, can download everytime you run with
+# cobra.io.load_model("iJO1366")
+# But that is slower
+E_COLI_MODEL_PATH = "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli"
+
 # Load the models
 amac_model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
-ecoli_model = cobra.io.read_sbml_model(
-    "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.xml"
-)
+ecoli_model = cobra.io.read_sbml_model(os.path.join(E_COLI_MODEL_PATH, "iJO1366.xml"))
 
 # Save the paths to the maps
 amac_map_path = os.path.join(PROJECT_ROOT, "escher", "MIT1002_TCA_escher-map.json")
@@ -191,7 +202,6 @@ n_names = list(n_sources.keys())
 
 for model_name, model in amac_models_to_test.items():
     amac_growth_results = []
-    print(f"Running AMAC tests for model: {model_name}")
     for c_k in range(1, len(c_names) + 1):
         for c_subset in itertools.combinations(c_names, c_k):
             for n_k in range(1, len(n_names) + 1):
@@ -261,10 +271,6 @@ for c_k in range(1, len(c_names) + 1):
             for n_subset in itertools.combinations(n_names, n_k):
                 c_label = "+".join(c_subset)
                 n_label = "+".join(n_subset)
-                # Debugging
-                print(
-                    f"Testing E. coli with C source: {c_label} and N source: {n_label}"
-                )
                 # Make a medium
                 ecoli_medium = ecoli_basal_media.copy()
                 # Add carbon sources (use same per-source bounds as before)
@@ -326,10 +332,6 @@ amac_blockage_results = []
 # Get every combination of C and N source
 for c_name, c_id_dict in c_sources.items():
     for n_name, n_id_dict in n_sources.items():
-        # Debugging
-        print(
-            f'Testing AMAC with C source: {c_name} ({c_id_dict["ModelSEED"]}) and N source: {n_name} ({n_id_dict["ModelSEED"]})'
-        )
         # Make a medium
         amac_medium = amac_basal_media.copy()
         # Add a limiting amount of carbon source
@@ -350,8 +352,6 @@ for c_name, c_id_dict in c_sources.items():
                 continue
             # Set the objective to the current reaction
             amac_model.objective = rxn_id
-            # Debugging
-            print(f"  Optimizing for reaction: {rxn_id}")
             # Optimize
             amac_solution = amac_model.optimize()
             # Store the flux
@@ -386,10 +386,6 @@ ecoli_blockage_results = []
 # Get every combination of C and N source
 for c_name, c_id_dict in c_sources.items():
     for n_name, n_id_dict in n_sources.items():
-        # Debugging
-        print(
-            f'Testing E. coli with C source: {c_name} ({c_id_dict["BiGG"]}) and N source: {n_name} ({n_id_dict["BiGG"]})'
-        )
         # Make a medium
         ecoli_medium = ecoli_basal_media.copy()
         # Add a limiting amount of carbon source
@@ -411,8 +407,6 @@ for c_name, c_id_dict in c_sources.items():
                 continue
             # Set the objective to the current reaction
             ecoli_model.objective = rxn_id
-            # Debugging
-            print(f"  Optimizing for reaction: {rxn_id}")
             # Optimize
             ecoli_solution = ecoli_model.optimize()
             # Store the flux
