@@ -202,23 +202,24 @@ def main():
     ####################################################################
     # BLOCKAGE SIMULATIONS (OPTIMIZE FOR EACH TCA REACTION)
     ####################################################################
-    amac_blockage_df = run_flux_simulations(
-        model=amac_model,
-        model_name="Original",
-        basal_media=amac_basal_media,
-        c_sources=c_sources,
-        n_sources=n_sources,
-        id_type="ModelSEED",
-        objectives=modelseed_tca_rxns,
-        fluxes_to_record=[],
-    )
-    generate_escher_maps(
-        df=amac_blockage_df,
-        model=amac_model,
-        map_path=amac_map_path,
-        file_prefix="amac_Original",
-        file_suffix="_blocked_reactions",
-    )
+    for model_name, model_obj in amac_models_to_test.items():
+        amac_blockage_df = run_flux_simulations(
+            model=model_obj,
+            model_name=model_name,
+            basal_media=amac_basal_media,
+            c_sources=c_sources,
+            n_sources=n_sources,
+            id_type="ModelSEED",
+            objectives=modelseed_tca_rxns,
+            fluxes_to_record=[],
+        )
+        generate_escher_maps(
+            df=amac_blockage_df,
+            model=model_obj,
+            map_path=amac_map_path,
+            file_prefix=f"amac_{model_name}",
+            file_suffix="_blocked_reactions",
+        )
 
     ecoli_blockage_df = run_flux_simulations(
         model=ecoli_model,
