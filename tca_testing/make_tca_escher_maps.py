@@ -110,10 +110,9 @@ def main():
     # Loop through and set all lower bounds to 0
     for rxn_id in atp_consuming_reactions:
         if (
-            rxn_id
-            in amac_model_strict_atp.reactions
-            & amac_model_strict_atp.metabolites.cpd00002_c0
-            in amac_model_strict_atp.reactions.get_by_id(rxn_id).reactants
+            (rxn_id in amac_model_strict_atp.reactions)
+            & (amac_model_strict_atp.metabolites.cpd00002_c0
+                in amac_model_strict_atp.reactions.get_by_id(rxn_id).reactants)
         ):
             amac_model_strict_atp.reactions.get_by_id(rxn_id).lower_bound = 0
         else:
@@ -135,16 +134,11 @@ def main():
     # Loop through and set all lower bounds to 0
     for rxn_id in nucleotide_balancing_reactions:
         if (
-            rxn_id
-            in amac_model_strict_nucleotide_balancing.reactions
-            & amac_model_strict_nucleotide_balancing.metabolites.cpd00002_c0
-            in amac_model_strict_nucleotide_balancing.reactions.get_by_id(
-                rxn_id
-            ).reactants
+            (rxn_id in amac_model_strict_nucleotide_balancing.reactions)
+            & (amac_model_strict_nucleotide_balancing.metabolites.cpd00002_c0
+                in amac_model_strict_nucleotide_balancing.reactions.get_by_id(rxn_id).reactants)
         ):
-            amac_model_strict_nucleotide_balancing.reactions.get_by_id(
-                rxn_id
-            ).lower_bound = 0
+            amac_model_strict_nucleotide_balancing.reactions.get_by_id(rxn_id).lower_bound = 0
         else:
             print(f"Warning:{rxn_id} not found or ATP is not a reactant.")
 
