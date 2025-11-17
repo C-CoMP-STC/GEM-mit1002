@@ -329,6 +329,7 @@ def define_media_and_reactions():
         "rxn01388_c0",
         "rxn01387_c0",
         "rxn00199_c0",
+        "rxn00198_c0",
         "rxn00336_c0",
         "rxn00330_c0",
         "rxn00441_c0",
