@@ -187,8 +187,8 @@ def main():
             c_sources=c_sources,
             n_sources=n_sources,
             id_type="ModelSEED",
-            objectives=["bio1_biomass"],
-            fluxes_to_record=modelseed_tca_rxns,
+            objectives={"bio1_biomass": "max"},
+            fluxes_to_record=list(modelseed_tca_rxns.keys()),
         )
         generate_escher_maps(
             df=amac_growth_df,
@@ -207,8 +207,8 @@ def main():
         c_sources=c_sources,
         n_sources=n_sources,
         id_type="BiGG",
-        objectives=["BIOMASS_Ec_iJO1366_core_53p95M"],
-        fluxes_to_record=bigg_tca_rxns,
+        objectives={"BIOMASS_Ec_iJO1366_core_53p95M": "max"},
+        fluxes_to_record=list(bigg_tca_rxns.keys()),
     )
     generate_escher_maps(
         df=ecoli_growth_df,
@@ -323,43 +323,46 @@ def define_media_and_reactions():
         "Ammonia": {"ModelSEED": "EX_cpd00013_e0", "BiGG": "EX_nh4_e"},
         "Nitrate": {"ModelSEED": "EX_cpd00209_e0", "BiGG": "EX_no3_e"},
     }
-    modelseed_tca_rxns = [
-        "rxn00256_c0",
-        "rxn00974_c0",
-        "rxn01388_c0",
-        "rxn01387_c0",
-        "rxn00199_c0",
-        "rxn00198_c0",
-        "rxn00336_c0",
-        "rxn00330_c0",
-        "rxn00441_c0",
-        "rxn02376_c0",
-        "rxn01872_c0",
-        "rxn08094_c0",
-        "rxn00285_c0",
-        "rxn00288_c0",
-        "rxn10126_c0",
-        "rxn00799_c0",
-        "rxn00248_c0",
-    ]
-    bigg_tca_rxns = [
-        "ACONTa",
-        "ACONTb",
-        "ICDHyr",
-        "AKGDH",
-        "SUCOAS",
-        "FRD2",
-        "SUCDi",
-        "FUM",
-        "MOX",
-        "MDH2",
-        "MDH",
-        "MDH3",
-        "CS",
-        "CITL",
-        "MALS",
-        "ICL",
-    ]
+    # Define the reaction ID for all reactions in the DCA cycle and the
+    # direction of flux for the "forward" TCA Cycle (counter clockwise on my
+    # map)
+    modelseed_tca_rxns = {
+        "rxn00256_c0": 'max',  # H2O + Acetyl-CoA + Oxaloacetate --> CoA + H+ + Citrate
+        "rxn00974_c0": 'max',  # Citrate <=> H2O + cis-Aconitate
+        "rxn01388_c0": 'min',  # Isocitrate <=> H2O + cis-Aconitate
+        "rxn01387_c0": 'max',  # NADP + Isocitrate <=> NADPH + H+ + Oxalosuccinate
+        "rxn00199_c0": 'max',  # H+ + Oxalosuccinate --> CO2 + 2-Oxoglutarate
+        "rxn00198_c0": 'max',  # NADP+ + Isocitrate --> NADPH + H+ + 2-Oxoglutarate
+        "rxn00336_c0": 'max',  # Isocitrate --> Succinate + Glyoxalate
+        "rxn00330_c0": 'max',  # H2O + Acetyl-CoA + Glyoxalate --> CoA + H+ + L-Malate
+        "rxn00441_c0": 'max',  # 2-Oxoglutarate + TPP + H+ --> CO2 + 3-Carboxy-1-hydroxypropyl-TPP
+        "rxn02376_c0": 'max',  # 3-Carboxy-1-hydroxypropyl-TPP + Protein N6-(lipoyl)lysine [c0] <=> TPP + S-Succinyldihydrolipoamide
+        "rxn01872_c0": 'min',  # Succinyl-CoA + Protein N6-(dihydrolipoyl)lysine <=> CoA + S-Succinyldihydrolipoamide
+        "rxn08094_c0": 'max',  # 2-Oxoglutarate + CoA + NAD+ --> Succinyl-CoA + CO2 + NADH
+        "rxn00285_c0": 'min',  # ATP + CoA + Succinate <=> ADP + Phosphate + Succinyl-CoA
+        "rxn00288_c0": 'min',  # FAD + Succinate + H+ --> Fumarate + FADH2
+        "rxn10126_c0": 'max',  # FADH2 + Ubiquinone-8 --> FAD + H+ + Ubiquinol-8
+        "rxn00799_c0": 'min',  # L-Malate <=> H2O + Fumarate
+        "rxn00248_c0": 'max',  # NAD + L-Malate <=> NADH + Oxaloacetate + H+
+    }
+    bigg_tca_rxns = {
+        "ACONTa": 'max',  # Citrate <=> Cis-Aconitate + H2O H2O
+        "ACONTb": 'max',  # Cis-Aconitate + H2O H2O <=> Isocitrate
+        "ICDHyr": 'max',  # Isocitrate + NADP <=> 2-Oxoglutarate + CO2 CO2 + NADPH
+        "AKGDH": 'max',  # 2-Oxoglutarate + CoA + NAD --> CO2 CO2 + NADH + Succinyl-CoA
+        "SUCOAS": 'min',  # 'ATP + CoA + Succinate <=> ADP + Phosphate + Succinyl-CoA'
+        "FRD2": 'min',  # Fumarate + Menaquinol 8 --> Menaquinone 8 + Succinate
+        "SUCDi": 'min',  # Ubiquinone-8 + Succinate --> Fumarate + Ubiquinol-8
+        "FUM": 'min',  # Fumarate + H2O H2O <=> L-Malate
+        "MOX": 'max',  # L-Malate + O2 O2 <=> Hydrogen peroxide + Oxaloacetate
+        "MDH2": 'max',  # L-Malate + Ubiquinone-8 --> Oxaloacetate + Ubiquinol-8
+        "MDH": 'max',  # L-Malate + NAD <=> H+ + NADH + Oxaloacetate
+        "MDH3": 'max',  # L-Malate + Menaquinone 8 --> Menaquinol 8 + Oxaloacetate
+        "CS": 'max',  # Acetyl-CoA + H2O H2O + Oxaloacetate --> Citrate + Coenzyme A + H+
+        "CITL": 'min',  # Citrate --> Acetate + Oxaloacetate
+        "MALS": 'max',  # Acetyl-CoA + Glyoxylate + H2O H2O --> Coenzyme A + H+ + L-Malate
+        "ICL": 'max',  # Isocitrate --> Glyoxylate + Succinate'
+    }
     return (
         amac_basal_media,
         ecoli_basal_media,
@@ -399,7 +402,7 @@ def run_flux_simulations(
     c_sources: dict,
     n_sources: dict,
     id_type: str,
-    objectives: list,
+    objectives: dict,
     fluxes_to_record: list,
 ) -> pd.DataFrame:
     """Runs FBA for various media conditions and objectives"""
@@ -426,10 +429,11 @@ def run_flux_simulations(
                     m.medium = medium
 
                     flux_data = {}
-                    for obj_id in objectives:
+                    for obj_id, obj_dir in objectives.items():
                         if obj_id not in m.reactions:
                             continue
                         m.objective = obj_id
+                        m.objective_direction = obj_dir
                         sol = m.optimize()
                         if len(objectives) == 1:
                             flux_data = {
