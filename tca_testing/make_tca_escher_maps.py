@@ -9,13 +9,16 @@ import os
 
 import cobra
 import pandas as pd
+from playwright.sync_api import sync_playwright
 
 import escher
 
 # Define constants and paths at the module level
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(FILE_DIR)
-ESCHER_PLOT_DIR = os.path.join(FILE_DIR, "escher_plots", "html")
+ESCHER_PLOT_DIR = os.path.join(FILE_DIR, "escher_plots")
+HTML_DIR = os.path.join(ESCHER_PLOT_DIR, "html")
+SVG_DIR = os.path.join(ESCHER_PLOT_DIR, "svg")
 E_COLI_MODEL_PATH = "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli"
 
 
@@ -28,6 +31,8 @@ def main():
     ####################################################################
     # Create directory for escher plots if it doesn't exist
     os.makedirs(ESCHER_PLOT_DIR, exist_ok=True)
+    os.makedirs(HTML_DIR, exist_ok=True)
+    os.makedirs(SVG_DIR, exist_ok=True)
 
     # Load models and define map paths
     amac_model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
@@ -109,10 +114,9 @@ def main():
     amac_model_strict_atp = amac_model.copy()
     # Loop through and set all lower bounds to 0
     for rxn_id in atp_consuming_reactions:
-        if (
-            (rxn_id in amac_model_strict_atp.reactions)
-            & (amac_model_strict_atp.metabolites.cpd00002_c0
-                in amac_model_strict_atp.reactions.get_by_id(rxn_id).reactants)
+        if (rxn_id in amac_model_strict_atp.reactions) & (
+            amac_model_strict_atp.metabolites.cpd00002_c0
+            in amac_model_strict_atp.reactions.get_by_id(rxn_id).reactants
         ):
             amac_model_strict_atp.reactions.get_by_id(rxn_id).lower_bound = 0
         else:
@@ -133,12 +137,15 @@ def main():
     amac_model_strict_nucleotide_balancing = amac_model_strict_atp.copy()
     # Loop through and set all lower bounds to 0
     for rxn_id in nucleotide_balancing_reactions:
-        if (
-            (rxn_id in amac_model_strict_nucleotide_balancing.reactions)
-            & (amac_model_strict_nucleotide_balancing.metabolites.cpd00002_c0
-                in amac_model_strict_nucleotide_balancing.reactions.get_by_id(rxn_id).reactants)
+        if (rxn_id in amac_model_strict_nucleotide_balancing.reactions) & (
+            amac_model_strict_nucleotide_balancing.metabolites.cpd00002_c0
+            in amac_model_strict_nucleotide_balancing.reactions.get_by_id(
+                rxn_id
+            ).reactants
         ):
-            amac_model_strict_nucleotide_balancing.reactions.get_by_id(rxn_id).lower_bound = 0
+            amac_model_strict_nucleotide_balancing.reactions.get_by_id(
+                rxn_id
+            ).lower_bound = 0
         else:
             print(f"Warning:{rxn_id} not found or ATP is not a reactant.")
 
@@ -409,14 +416,62 @@ def generate_escher_maps(
 ):
     """Generates and saves Escher maps from a DataFrame of flux results."""
     for _, row in df.iterrows():
+        # Extract the information from the dataframe
         c_label = row["C_source"]
         n_label = row["N_source"]
         flux_data = row["fluxes"]
-        filename = f"{file_prefix}_{c_label}+{n_label}{file_suffix}.html"
+
+        # Make a specific file name
+        filename = f"{file_prefix}_{c_label}+{n_label}{file_suffix}"
+
+        # Build the Escher Map
         builder = escher.Builder(
             model=model, map_json=map_path, reaction_data=flux_data
         )
-        builder.save_html(os.path.join(ESCHER_PLOT_DIR, filename))
+
+        # Save as html
+        html_path = os.path.join(HTML_DIR, filename + ".html")
+        builder.save_html(html_path)
+
+        # Open in a headless browser, inline computed stules, get SVG
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(viewport={"width": 1200, "height": 800})
+            page.goto(f"file://{html_path.resolve()}", wait_until="domcontentloaded")
+            page.wait_for_selector("svg", timeout=10000)
+
+            # Inline computed styles into SVG before serializing
+            inline_svg = page.evaluate(
+                """() => {
+                function copyComputedStyles(svg) {
+                    const all = svg.querySelectorAll('*');
+                    for (const el of all) {
+                        const cs = window.getComputedStyle(el);
+                        let s = '';
+                        for (let i = 0; i < cs.length; i++) {
+                            const key = cs[i];
+                            const val = cs.getPropertyValue(key);
+                            // Skip some properties if you want smaller output
+                            s += key + ':' + val + ';';
+                        }
+                        el.setAttribute('style', s);
+                    }
+                }
+                const svg = document.querySelector('svg');
+                const clone = svg.cloneNode(true);
+                copyComputedStyles(clone);
+                return new XMLSerializer().serializeToString(clone);
+            }"""
+            )
+            browser.close()
+
+        # Save SVG
+        with open(
+            os.path.join(SVG_DIR, filename + ".svg"),
+            "w",
+            encoding="utf-8",
+        ) as f:
+            f.write(inline_svg)
 
 
 # Run the main function
