@@ -6,9 +6,15 @@ the model with some interventions to test, and the E. coli iJO1366 model.
 """
 import itertools
 import os
+import threading
+import time
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from typing import Optional
 
 import cobra
 import pandas as pd
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
 import escher
@@ -19,6 +25,7 @@ PROJECT_ROOT = os.path.dirname(FILE_DIR)
 ESCHER_PLOT_DIR = os.path.join(FILE_DIR, "escher_plots")
 HTML_DIR = os.path.join(ESCHER_PLOT_DIR, "html")
 SVG_DIR = os.path.join(ESCHER_PLOT_DIR, "svg")
+PNG_DIR = os.path.join(ESCHER_PLOT_DIR, "png") # Added for PNG output
 E_COLI_MODEL_PATH = "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli"
 
 
@@ -33,6 +40,7 @@ def main():
     os.makedirs(ESCHER_PLOT_DIR, exist_ok=True)
     os.makedirs(HTML_DIR, exist_ok=True)
     os.makedirs(SVG_DIR, exist_ok=True)
+    os.makedirs(PNG_DIR, exist_ok=True) # Added for PNG output
 
     # Load models and define map paths
     amac_model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
@@ -187,6 +195,9 @@ def main():
             model=model_obj,
             map_path=amac_map_path,
             file_prefix=f"amac_{model_name}",
+            html_dir=Path(HTML_DIR),
+            svg_dir=Path(SVG_DIR),
+            png_dir=Path(PNG_DIR),
         )
 
     ecoli_growth_df = run_flux_simulations(
@@ -204,6 +215,9 @@ def main():
         model=ecoli_model,
         map_path=ecoli_map_path,
         file_prefix="ecoli",
+        html_dir=Path(HTML_DIR),
+        svg_dir=Path(SVG_DIR),
+        png_dir=Path(PNG_DIR),
     )
 
     ####################################################################
@@ -226,6 +240,9 @@ def main():
             map_path=amac_map_path,
             file_prefix=f"amac_{model_name}",
             file_suffix="_blocked_reactions",
+            html_dir=Path(HTML_DIR),
+            svg_dir=Path(SVG_DIR),
+            png_dir=Path(PNG_DIR),
         )
 
     ecoli_blockage_df = run_flux_simulations(
@@ -244,6 +261,9 @@ def main():
         map_path=ecoli_map_path,
         file_prefix="ecoli",
         file_suffix="_blocked_reactions",
+        html_dir=Path(HTML_DIR),
+        svg_dir=Path(SVG_DIR),
+        png_dir=Path(PNG_DIR),
     )
 
 
@@ -349,6 +369,28 @@ def define_media_and_reactions():
     )
 
 
+# Quiet HTTP handler so the server doesn't spam stdout
+class _QuietHandler(SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        # Use the 'directory' keyword argument for Python 3.7+
+        super().__init__(*args, directory=kwargs.pop("directory"), **kwargs)
+
+    def log_message(self, format, *args):
+        pass
+
+
+def _start_http_server(directory: Path, port: int = 0):
+    """Starts an HTTP server in a thread, serving the specified directory."""
+    # This handler is created with the directory to serve, avoiding os.chdir
+    handler = lambda *args, **kwargs: _QuietHandler(*args, directory=str(directory), **kwargs)
+    server = ThreadingHTTPServer(("127.0.0.1", port), handler)
+    actual_port = server.server_address[1]
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    # Return only the three values expected by the calling function
+    return server, thread, actual_port
+
+
 def run_flux_simulations(
     model: cobra.Model,
     model_name: str,
@@ -413,65 +455,102 @@ def generate_escher_maps(
     map_path: str,
     file_prefix: str,
     file_suffix: str = "",
-):
-    """Generates and saves Escher maps from a DataFrame of flux results."""
-    for _, row in df.iterrows():
-        # Extract the information from the dataframe
-        c_label = row["C_source"]
-        n_label = row["N_source"]
-        flux_data = row["fluxes"]
+    html_dir: Optional[Path] = None,
+    svg_dir: Optional[Path] = None,
+    png_dir: Optional[Path] = None,
+    min_svg_inner_length: int = 700,
+    page_viewport: dict = {"width": 1200, "height": 800},
+) -> None:
+    """
+    Generates and saves Escher maps from a DataFrame of flux results.
+    Saves standalone SVGs and PNGs to disk.
+    """
+    # Set default directories if not provided
+    html_dir = Path(html_dir) if html_dir else Path("html")
+    svg_dir = Path(svg_dir) if svg_dir else Path("svg")
+    png_dir = Path(png_dir) if png_dir else Path("png")
 
-        # Make a specific file name
-        filename = f"{file_prefix}_{c_label}+{n_label}{file_suffix}"
+    html_dir.mkdir(parents=True, exist_ok=True)
+    svg_dir.mkdir(parents=True, exist_ok=True)
+    png_dir.mkdir(parents=True, exist_ok=True)
 
-        # Build the Escher Map
-        builder = escher.Builder(
-            model=model, map_json=map_path, reaction_data=flux_data
-        )
+    # Start HTTP server serving the html_dir
+    server, thread, port = _start_http_server(html_dir, port=0)
+    base_url = f"http://127.0.0.1:{port}"
+    print(f"Serving {html_dir.resolve()} at {base_url}/")
 
-        # Save as html
-        html_path = os.path.join(HTML_DIR, filename + ".html")
-        builder.save_html(html_path)
-
-        # Open in a headless browser, inline computed stules, get SVG
+    try:
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
-            page = browser.new_page(viewport={"width": 1200, "height": 800})
-            page.goto(f"file://{html_path.resolve()}", wait_until="domcontentloaded")
-            page.wait_for_selector("svg", timeout=10000)
+            page = browser.new_page(viewport=page_viewport)
+            page.on("console", lambda msg: print(f"BROWSER: {msg.text}"))
 
-            # Inline computed styles into SVG before serializing
-            inline_svg = page.evaluate(
-                """() => {
-                function copyComputedStyles(svg) {
-                    const all = svg.querySelectorAll('*');
-                    for (const el of all) {
-                        const cs = window.getComputedStyle(el);
-                        let s = '';
-                        for (let i = 0; i < cs.length; i++) {
-                            const key = cs[i];
-                            const val = cs.getPropertyValue(key);
-                            // Skip some properties if you want smaller output
-                            s += key + ':' + val + ';';
+            for _, row in df.iterrows():
+                c_label = row["C_source"]
+                n_label = row["N_source"]
+                flux_data = row["fluxes"]
+
+                filename = f"{file_prefix}_{c_label}+{n_label}{file_suffix}"
+                html_filename = filename + ".html"
+                svg_path = svg_dir / (filename + ".svg")
+                png_path = png_dir / (filename + ".png")
+
+                builder = escher.Builder(
+                    model=model, map_json=map_path, reaction_data=flux_data
+                )
+                # Save using the full path now that we are not changing directory
+                builder.save_html(str(html_dir / html_filename))
+
+                url = f"{base_url}/{html_filename}"
+                print("Loading", url)
+
+                try:
+                    page.goto(url, wait_until="domcontentloaded", timeout=15000)
+                    page.wait_for_selector("svg.escher-svg", timeout=15000)
+                    page.wait_for_function(
+                        f"() => {{ const s = document.querySelector('svg.escher-svg'); return s && s.innerHTML.length > {min_svg_inner_length}; }}",
+                        timeout=20000,
+                    )
+                except PlaywrightTimeoutError as e:
+                    print(f"Warning: Timeout loading page or SVG for {filename}. Error: {e}. Skipping image generation for this file.")
+                    continue
+
+                # --- Generate SVG ---
+                inline_svg = page.evaluate(
+                    """() => {
+                    function inlineStyles(svg) {
+                        for (const el of svg.querySelectorAll('*')) {
+                            const cs = window.getComputedStyle(el);
+                            if (cs.length > 0) el.setAttribute('style', cs.cssText);
                         }
-                        el.setAttribute('style', s);
                     }
-                }
-                const svg = document.querySelector('svg');
-                const clone = svg.cloneNode(true);
-                copyComputedStyles(clone);
-                return new XMLSerializer().serializeToString(clone);
-            }"""
-            )
-            browser.close()
+                    const svg = document.querySelector('svg.escher-svg');
+                    if (!svg) return '';
+                    const clone = svg.cloneNode(true);
+                    inlineStyles(clone);
+                    if (!clone.hasAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                    return new XMLSerializer().serializeToString(clone);
+                }"""
+                )
+                if inline_svg:
+                    svg_path.write_text(inline_svg, encoding="utf-8")
+                    print("Wrote", svg_path)
+                else:
+                    print(f"Warning: extracted SVG for {filename} was empty.")
 
-        # Save SVG
-        with open(
-            os.path.join(SVG_DIR, filename + ".svg"),
-            "w",
-            encoding="utf-8",
-        ) as f:
-            f.write(inline_svg)
+                # --- Generate PNG ---
+                try:
+                    el = page.query_selector('svg.escher-svg')
+                    if el:
+                        el.screenshot(path=str(png_path))
+                        print("Wrote", png_path)
+                except Exception as e:
+                    print(f"PNG screenshot failed for {filename}: {e}")
+
+            browser.close()
+    finally:
+        server.shutdown()
+        print("HTTP server stopped.")
 
 
 # Run the main function
