@@ -22,7 +22,8 @@ import escher
 # Define constants and paths at the module level
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(FILE_DIR)
-ESCHER_PLOT_DIR = os.path.join(FILE_DIR, "escher_plots")
+RESULTS_DIR = os.path.join(FILE_DIR, "results")
+ESCHER_PLOT_DIR = os.path.join(RESULTS_DIR, "escher_plots")
 HTML_DIR = os.path.join(ESCHER_PLOT_DIR, "html")
 SVG_DIR = os.path.join(ESCHER_PLOT_DIR, "svg")
 PNG_DIR = os.path.join(ESCHER_PLOT_DIR, "png") # Added for PNG output
@@ -37,6 +38,7 @@ def main():
     # SET UP
     ####################################################################
     # Create directory for escher plots if it doesn't exist
+    os.makedirs(RESULTS_DIR, exist_ok=True)
     os.makedirs(ESCHER_PLOT_DIR, exist_ok=True)
     os.makedirs(HTML_DIR, exist_ok=True)
     os.makedirs(SVG_DIR, exist_ok=True)
@@ -179,6 +181,7 @@ def main():
     ####################################################################
     # GROWTH SIMULATIONS (OPTIMIZE FOR BIOMASS)
     ####################################################################
+    # For all the different amac models
     for model_name, model_obj in amac_models_to_test.items():
         amac_growth_df = run_flux_simulations(
             model=model_obj,
@@ -188,8 +191,14 @@ def main():
             n_sources=n_sources,
             id_type="ModelSEED",
             objectives={"bio1_biomass": "max"},
-            fluxes_to_record=list(modelseed_tca_rxns.keys()),
+            fluxes_to_record=[r.id for r in model_obj.reactions],
         )
+        # Add a new column with the growth rate
+        amac_growth_df["growth_rate"] = amac_growth_df["fluxes"].apply(lambda x: x.get("bio1_biomass", 0))
+        # Save the growth simulation results
+        amac_growth_df.to_csv(os.path.join(RESULTS_DIR, "amac_" + model_name + "_growth_fluxes.csv"),
+                              index=False)
+        # Make and save escher maps
         generate_escher_maps(
             df=amac_growth_df,
             model=model_obj,
@@ -199,7 +208,7 @@ def main():
             svg_dir=Path(SVG_DIR),
             png_dir=Path(PNG_DIR),
         )
-
+    # For the one ecoli model
     ecoli_growth_df = run_flux_simulations(
         model=ecoli_model,
         model_name="Ecoli",
@@ -208,8 +217,14 @@ def main():
         n_sources=n_sources,
         id_type="BiGG",
         objectives={"BIOMASS_Ec_iJO1366_core_53p95M": "max"},
-        fluxes_to_record=list(bigg_tca_rxns.keys()),
+        fluxes_to_record=[r.id for r in ecoli_model.reactions],
     )
+    # Add a new column with the growth rate
+    ecoli_growth_df["growth_rate"] = ecoli_growth_df["fluxes"].apply(lambda x: x.get("BIOMASS_Ec_iJO1366_core_53p95M", 0))
+    # Save the growth simulation results
+    ecoli_growth_df.to_csv(os.path.join(RESULTS_DIR, "ecoli_growth_fluxes.csv"),
+                           index=False)
+    # Make and save escher maps
     generate_escher_maps(
         df=ecoli_growth_df,
         model=ecoli_model,
