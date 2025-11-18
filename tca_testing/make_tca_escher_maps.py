@@ -340,7 +340,7 @@ def define_media_and_reactions():
         "rxn01872_c0": 'min',  # Succinyl-CoA + Protein N6-(dihydrolipoyl)lysine <=> CoA + S-Succinyldihydrolipoamide
         "rxn08094_c0": 'max',  # 2-Oxoglutarate + CoA + NAD+ --> Succinyl-CoA + CO2 + NADH
         "rxn00285_c0": 'min',  # ATP + CoA + Succinate <=> ADP + Phosphate + Succinyl-CoA
-        "rxn00288_c0": 'min',  # FAD + Succinate + H+ --> Fumarate + FADH2
+        "rxn00288_c0": 'max',  # FAD + Succinate + H+ --> Fumarate + FADH2
         "rxn10126_c0": 'max',  # FADH2 + Ubiquinone-8 --> FAD + H+ + Ubiquinol-8
         "rxn00799_c0": 'min',  # L-Malate <=> H2O + Fumarate
         "rxn00248_c0": 'max',  # NAD + L-Malate <=> NADH + Oxaloacetate + H+
@@ -352,8 +352,8 @@ def define_media_and_reactions():
         "AKGDH": 'max',  # 2-Oxoglutarate + CoA + NAD --> CO2 CO2 + NADH + Succinyl-CoA
         "SUCOAS": 'min',  # 'ATP + CoA + Succinate <=> ADP + Phosphate + Succinyl-CoA'
         "FRD2": 'min',  # Fumarate + Menaquinol 8 --> Menaquinone 8 + Succinate
-        "SUCDi": 'min',  # Ubiquinone-8 + Succinate --> Fumarate + Ubiquinol-8
-        "FUM": 'min',  # Fumarate + H2O H2O <=> L-Malate
+        "SUCDi": 'max',  # Ubiquinone-8 + Succinate --> Fumarate + Ubiquinol-8
+        "FUM": 'max',  # Fumarate + H2O H2O <=> L-Malate
         "MOX": 'max',  # L-Malate + O2 O2 <=> Hydrogen peroxide + Oxaloacetate
         "MDH2": 'max',  # L-Malate + Ubiquinone-8 --> Oxaloacetate + Ubiquinol-8
         "MDH": 'max',  # L-Malate + NAD <=> H+ + NADH + Oxaloacetate
