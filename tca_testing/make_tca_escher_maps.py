@@ -132,6 +132,32 @@ def main():
         else:
             print(f"Warning:{rxn_id} not found or ATP is not a reactant.")
 
+    # Slightly less strict: Stil allow rxn01517 to be reversible
+    # List reactions involving ATP to make irreversible (consumption only)
+    atp_consuming_reactions_except_dUMP = [
+        "rxn00077_c0",
+        "rxn00104_c0",
+        "rxn00239_c0",
+        "rxn00364_c0",
+        "rxn00379_c0",
+        "rxn01219_c0",
+        "rxn01509_c0",
+        "rxn02314_c0",
+        "rxn08762_c0",
+        "rxn15121_c0",
+    ]
+    # Make a copy of the original model to modify
+    amac_model_strict_atp_except_dUMP = amac_model.copy()
+    # Loop through and set all lower bounds to 0
+    for rxn_id in atp_consuming_reactions_except_dUMP:
+        if (rxn_id in amac_model_strict_atp_except_dUMP.reactions) & (
+            amac_model_strict_atp_except_dUMP.metabolites.cpd00002_c0
+            in amac_model_strict_atp_except_dUMP.reactions.get_by_id(rxn_id).reactants
+        ):
+            amac_model_strict_atp_except_dUMP.reactions.get_by_id(rxn_id).lower_bound = 0
+        else:
+            print(f"Warning:{rxn_id} not found or ATP is not a reactant.")
+
     # --- Even stricter: make nucleotide balancing reactions irreversible ---
     # List nucleotide balancing reactions to make irreversible (consumption only)
     nucleotide_balancing_reactions = [
@@ -174,6 +200,7 @@ def main():
         "Original": amac_model,
         "With_Lumped_Reactions": amac_w_lumped_rxns,
         "Strict_ATP_Production": amac_model_strict_atp,
+        "Strict_ATP_Production_Except_dUMP": amac_model_strict_atp_except_dUMP,
         "Strict_ATP_Production_Nucleotide_Balancing": amac_model_strict_nucleotide_balancing,
         "Strict_ATP_Production_With_Lumped_Reactions": amac_model_strict_atp_w_lumped_rxns,
     }
