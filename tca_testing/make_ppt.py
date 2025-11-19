@@ -13,7 +13,7 @@ from pptx.util import Inches
 
 # Define path names
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-PNG_DIR = os.path.join(FILE_DIR, "escher_plots", "png")
+PNG_DIR = os.path.join(FILE_DIR, "results", "escher_plots", "png")
 
 # Define image positions for reuse
 IMG_POSITIONS = {
@@ -173,7 +173,7 @@ def main():
     )
 
     # Save the output file
-    output_path = os.path.join(FILE_DIR, "generated-slides.pptx")
+    output_path = os.path.join(FILE_DIR, "results", "generated-slides.pptx")
     prs.save(output_path)
     print(f"\nPresentation saved to {output_path}")
 
