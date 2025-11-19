@@ -3,7 +3,7 @@
         "homepage": "https://escher.github.io",
         "map_description": "\nLast Modified Wed Nov 19 2025 14:48:55 GMT-0500 (Eastern Standard Time)",
         "map_id": "49d4752b48ef59713f50a7d2ca35df78",
-        "map_name": "iJO1366.Nucleotide metabolism",
+        "map_name": "MIT1022 Thymine Synthesis",
         "schema": "https://escher.github.io/escher/jsonschema/1-0-0#"
     },
     {
@@ -15,17 +15,17 @@
         },
         "nodes": {
             "1352853": {
-                "bigg_id": "dtmp_c",
+                "bigg_id": "cpd00298_c0",
                 "label_x": 1087.5584716796875,
                 "label_y": -1240.0879553426216,
-                "name": "DTMP",
+                "name": "dTMP",
                 "node_is_primary": true,
                 "node_type": "metabolite",
                 "x": 1146,
                 "y": -1197.8401526082466
             },
             "1352859": {
-                "bigg_id": "thymd_c",
+                "bigg_id": "cpd00184_c0",
                 "label_x": 1925.0408935546875,
                 "label_y": -1165.0055578816841,
                 "name": "Thymidine",
@@ -35,7 +35,7 @@
                 "y": -1197.8401526082466
             },
             "1352887": {
-                "bigg_id": "atp_c",
+                "bigg_id": "cpd00002_c0",
                 "label_x": 1792.2606201171875,
                 "label_y": -1065.63037109375,
                 "name": "ATP",
@@ -45,7 +45,7 @@
                 "y": -1099
             },
             "1352888": {
-                "bigg_id": "adp_c",
+                "bigg_id": "cpd00008_c0",
                 "label_x": 1350.7120361328125,
                 "label_y": -1059,
                 "name": "ADP",
@@ -55,7 +55,7 @@
                 "y": -1079
             },
             "1352889": {
-                "bigg_id": "h_c",
+                "bigg_id": "cpd00067_c0",
                 "label_x": 1255.671142578125,
                 "label_y": -1107.301513671875,
                 "name": "H+",
@@ -65,17 +65,17 @@
                 "y": -1139
             },
             "1352926": {
-                "bigg_id": "dump_c",
+                "bigg_id": "cpd00299_c0",
                 "label_x": 393.1294250488281,
                 "label_y": -1153.2321130700045,
-                "name": "DUMP",
+                "name": "dUMP",
                 "node_is_primary": true,
                 "node_type": "metabolite",
                 "x": 427.6263732910156,
                 "y": -1196.230526155942
             },
             "1352957": {
-                "bigg_id": "h2o_c",
+                "bigg_id": "cpd00001_c0",
                 "label_x": 1322.3287353515625,
                 "label_y": -1384.2315673828125,
                 "name": "H2O",
@@ -85,7 +85,7 @@
                 "y": -1364.2315673828125
             },
             "1352958": {
-                "bigg_id": "pi_c",
+                "bigg_id": "cpd00009_c0",
                 "label_x": 1797.3287353515625,
                 "label_y": -1394.2315673828125,
                 "name": "Phosphate",
@@ -95,7 +95,7 @@
                 "y": -1364.2315673828125
             },
             "1352964": {
-                "bigg_id": "mlthf_c",
+                "bigg_id": "cpd00125_c0",
                 "label_x": 776,
                 "label_y": -1269,
                 "name": "5,10-Methylenetetrahydrofolate",
@@ -105,7 +105,7 @@
                 "y": -1249
             },
             "1352965": {
-                "bigg_id": "dhf_c",
+                "bigg_id": "cpd00330_c0",
                 "label_x": 1016,
                 "label_y": -1279,
                 "name": "7,8-Dihydrofolate",
@@ -175,7 +175,7 @@
                 "y": -1197.8401526082466
             },
             "1353907": {
-                "bigg_id": "2dr1p_c",
+                "bigg_id": "cpd00509_c0",
                 "label_x": 2221.198542211776,
                 "label_y": -1157.8401526082466,
                 "name": "2-Deoxy-D-ribose 1-phosphate",
@@ -185,7 +185,7 @@
                 "y": -1197.8401526082466
             },
             "1353908": {
-                "bigg_id": "pi_c",
+                "bigg_id": "cpd00009_c0",
                 "label_x": 1957.6306051440954,
                 "label_y": -1079.2023678227595,
                 "name": "Phosphate",
@@ -195,7 +195,7 @@
                 "y": -1119.2023678227595
             },
             "1353909": {
-                "bigg_id": "thym_c",
+                "bigg_id": "cpd00151_c0",
                 "label_x": 2156.829730471161,
                 "label_y": -1079.8084716648275,
                 "name": "Thymine C5H6N2O2",
@@ -220,7 +220,7 @@
                 "y": -1196.2551177000878
             },
             "1353913": {
-                "bigg_id": "dutp_c",
+                "bigg_id": "cpd00358_c0",
                 "label_x": 1.4410671902766126,
                 "label_y": -1156.4270699367091,
                 "name": "DUTP C9H11N2O14P3",
@@ -230,7 +230,7 @@
                 "y": -1196.4270699367091
             },
             "1353914": {
-                "bigg_id": "h2o_c",
+                "bigg_id": "cpd00001_c0",
                 "label_x": 79.55587281849739,
                 "label_y": -1291.5059997827134,
                 "name": "H2O H2O",
@@ -240,7 +240,7 @@
                 "y": -1271.5059997827134
             },
             "1353915": {
-                "bigg_id": "h_c",
+                "bigg_id": "cpd00067_c0",
                 "label_x": 304.5692957436411,
                 "label_y": -1077.1926515632754,
                 "name": "H+",
@@ -250,7 +250,7 @@
                 "y": -1117.1926515632754
             },
             "1353916": {
-                "bigg_id": "ppi_c",
+                "bigg_id": "cpd00012_c0",
                 "label_x": 289.4804130074781,
                 "label_y": -1297.1351583739272,
                 "name": "Diphosphate",
@@ -275,7 +275,7 @@
                 "y": -1196.4270699367091
             },
             "1353920": {
-                "bigg_id": "adp_c",
+                "bigg_id": "cpd00008_c0",
                 "label_x": -60.33562391673422,
                 "label_y": -1294.2502541180936,
                 "name": "ADP C10H12N5O10P2",
@@ -285,7 +285,7 @@
                 "y": -1274.2502541180936
             },
             "1353921": {
-                "bigg_id": "atp_c",
+                "bigg_id": "cpd00002_c0",
                 "label_x": -272.4118725031351,
                 "label_y": -1298.5499437835797,
                 "name": "ATP C10H12N5O13P3",
@@ -295,7 +295,7 @@
                 "y": -1278.5499437835797
             },
             "1353922": {
-                "bigg_id": "dudp_c",
+                "bigg_id": "cpd00978_c0",
                 "label_x": -343.0406677177223,
                 "label_y": -1156.4270699367091,
                 "name": "DUDP C9H11N2O11P2",
@@ -307,7 +307,7 @@
         },
         "reactions": {
             "1353213": {
-                "bigg_id": "TMDK1",
+                "bigg_id": "rxn01143_c0",
                 "gene_reaction_rule": "b1238",
                 "genes": [
                     {
@@ -319,27 +319,27 @@
                 "label_y": -1137.6439208984375,
                 "metabolites": [
                     {
-                        "bigg_id": "thymd_c",
+                        "bigg_id": "cpd00184_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "adp_c",
+                        "bigg_id": "cpd00008_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "h_c",
+                        "bigg_id": "cpd00067_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "dtmp_c",
+                        "bigg_id": "cpd00298_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "atp_c",
+                        "bigg_id": "cpd00002_c0",
                         "coefficient": -1
                     }
                 ],
-                "name": "Thymidine kinase (ATP:thymidine)",
+                "name": "Thymidine kinase (ATP:thymidine 5'-phosphotransferase)",
                 "reversibility": false,
                 "segments": {
                     "1354872": {
@@ -417,7 +417,7 @@
                 }
             },
             "1353239": {
-                "bigg_id": "NTD5",
+                "bigg_id": "rxn01145_c0",
                 "gene_reaction_rule": "b2291 or b2744 or b4374",
                 "genes": [
                     {
@@ -437,19 +437,19 @@
                 "label_y": -1279.39697265625,
                 "metabolites": [
                     {
-                        "bigg_id": "h2o_c",
+                        "bigg_id": "cpd00001_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "thymd_c",
+                        "bigg_id": "cpd00184_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "pi_c",
+                        "bigg_id": "cpd00009_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "dtmp_c",
+                        "bigg_id": "cpd00298_c0",
                         "coefficient": -1
                     }
                 ],
@@ -519,7 +519,7 @@
                 }
             },
             "1353242": {
-                "bigg_id": "TMDS",
+                "bigg_id": "rxn01520_c0",
                 "gene_reaction_rule": "b2827",
                 "genes": [
                     {
@@ -531,19 +531,19 @@
                 "label_y": -1142.6576574910591,
                 "metabolites": [
                     {
-                        "bigg_id": "dump_c",
+                        "bigg_id": "cpd00299_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "dhf_c",
+                        "bigg_id": "cpd00330_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "dtmp_c",
+                        "bigg_id": "cpd00298_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "mlthf_c",
+                        "bigg_id": "cpd00125_c0",
                         "coefficient": -1
                     }
                 ],
@@ -613,7 +613,7 @@
                 }
             },
             "1353273": {
-                "bigg_id": "TMDPP",
+                "bigg_id": "rxn01146_c0",
                 "gene_reaction_rule": "b4382",
                 "genes": [
                     {
@@ -630,19 +630,19 @@
                 "label_y": -1237.8401526082466,
                 "metabolites": [
                     {
-                        "bigg_id": "2dr1p_c",
+                        "bigg_id": "cpd00509_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "pi_c",
+                        "bigg_id": "cpd00009_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "thym_c",
+                        "bigg_id": "cpd00151_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "thymd_c",
+                        "bigg_id": "cpd00184_c0",
                         "coefficient": -1
                     }
                 ],
@@ -712,7 +712,7 @@
                 }
             },
             "1353274": {
-                "bigg_id": "DUTPDP",
+                "bigg_id": "rxn01519_c0",
                 "gene_reaction_rule": "b3640 or b2251",
                 "genes": [
                     {
@@ -738,23 +738,23 @@
                 "label_y": -1236.2388865378034,
                 "metabolites": [
                     {
-                        "bigg_id": "dump_c",
+                        "bigg_id": "cpd00299_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "dutp_c",
+                        "bigg_id": "cpd00358_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "h2o_c",
+                        "bigg_id": "cpd00001_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "h_c",
+                        "bigg_id": "cpd00067_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "ppi_c",
+                        "bigg_id": "cpd00012_c0",
                         "coefficient": 1
                     }
                 ],
@@ -836,7 +836,7 @@
                 }
             },
             "1353275": {
-                "bigg_id": "NDPK6",
+                "bigg_id": "rxn01678_c0",
                 "gene_reaction_rule": "b2518 or b0474",
                 "genes": [
                     {
@@ -862,19 +862,19 @@
                 "label_y": -1236.4270699367091,
                 "metabolites": [
                     {
-                        "bigg_id": "adp_c",
+                        "bigg_id": "cpd00008_c0",
                         "coefficient": 1
                     },
                     {
-                        "bigg_id": "atp_c",
+                        "bigg_id": "cpd00002_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "dudp_c",
+                        "bigg_id": "cpd00978_c0",
                         "coefficient": -1
                     },
                     {
-                        "bigg_id": "dutp_c",
+                        "bigg_id": "cpd00358_c0",
                         "coefficient": 1
                     }
                 ],
