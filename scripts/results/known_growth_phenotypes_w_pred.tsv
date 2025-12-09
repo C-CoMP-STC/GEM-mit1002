@@ -1,30 +1,53 @@
-minimal_media	c_source	met_id	bigg_id	growth	notes	ex_rxn_present	pred_growth
-mbm	Glucose 	cpd00027	glc__D	Yes		Yes	Yes
-l1	Glucose 	cpd00027	glc__D	Yes		Yes	Yes
-mbm	Acetate	cpd00029	ac	Yes		Yes	Yes
-l1	Acetate	cpd00029	ac	Yes		Yes	No
-mbm	Glycolate	cpd00139	glyclt	No		No	No
-mbm	Homarine	cpd00737		Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No	No
-mbm	3-hydroxybutyrate	cpd00797		Yes		Yes	Yes
-mbm	Choline	cpd00098	chol	No		Yes	No
-mbm	Ectoine	cpd03727	ectoine	No		No	No
-mbm	Alanine	cpd00035	ala__L	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	Yes	Yes
-l1	Alanine	cpd00035	ala__L	Yes		Yes	Yes
-mbm	Proline	cpd00129	pro__L	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	Yes	Yes
-l1	Proline	cpd00129	pro__L	Yes		Yes	Yes
-mbm	Sucrose	cpd00076	sucr	No		No	No
-mbm	Fructose	cpd00082	fru	No		No	No
-l1	Glycerol-3-phosphate	cpd00080	glyc3p	Yes		Yes	Yes
-l1	DHPS (dihydroxypropanesulfonate)	cpd23538		Yes		Yes	Yes
-l1	Tyrosine	cpd00069	tyr__L	Yes	Assumed we wanted L-tyrosine.	Yes	Yes
-l1	Glutamate	cpd00023	glu__L	Yes	Assumed we wanted L-glutamate.	Yes	Yes
-l1	Valine	cpd00156	val__L	Yes	Assumed we wanted L-valine.	Yes	Yes
-promm_no_c	Leucine	cpd00107		Yes		Yes	No
-promm_no_c	4-methyl-2-oxopentanoic acid	cpd00200		No		No	No
-promm_no_c	Isoleucine	cpd00322		Yes		Yes	No
-promm_no_c	3-methyl-2-oxopentanoic acid	cpd00508		No		No	No
-promm_no_c	Valine	cpd00156		Yes		Yes	Yes
-promm_no_c	3-methyl-2-oxobutanoic acid	cpd00123		Yes		Yes	Yes
-promm_no_c	Kynurenine	cpd00275		No	There are two kynurenine metabolites in the db ModelSEED	No	No
-promm_no_c	Thymidine	cpd00184		No		Yes	No
-promm_no_c	4-hydroxybenzoic acid	cpd00136		No		No	No
+minimal_media	c_source	met_id	bigg_id	growth	notes	all_ex_rxn_present	pred_growth
+mbm	Glucose 	['cpd00027']	glc__D	Yes		Yes	Yes
+l1	Glucose 	['cpd00027']	glc__D	Yes		Yes	Yes
+mbm	Acetate	['cpd00029']	ac	Yes		Yes	Yes
+l1	Acetate	['cpd00029']	ac	Yes		Yes	No
+mbm	Glycolate	['cpd00139']	glyclt	No		No	No
+mbm	Homarine	['cpd00737']		Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No	No
+mbm	3-hydroxybutyrate	['cpd00797']		Yes		Yes	Yes
+mbm	Choline	['cpd00098']	chol	No		Yes	No
+mbm	Ectoine	['cpd03727']	ectoine	No		No	No
+mbm	Alanine	['cpd00035']	ala__L	Unsure	Maybe. Only grows on first transfer from rich media but not subsequent; maybe using storage. Used the ModelSEED ID for L-alanine.	Yes	Yes
+l1	Alanine	['cpd00035']	ala__L	Yes		Yes	Yes
+mbm	Proline	['cpd00129']	pro__L	Unsure	Maybe. Took over a week for noticeable, but weak, growth; usually takes less than 12 h on glucose. Used the ModelSEED ID for L-proline.	Yes	Yes
+l1	Proline	['cpd00129']	pro__L	Yes		Yes	Yes
+mbm	Sucrose	['cpd00076']	sucr	No		No	No
+mbm	Fructose	['cpd00082']	fru	No		No	No
+l1	Glycerol-3-phosphate	['cpd00080']	glyc3p	Yes		Yes	Yes
+l1	DHPS (dihydroxypropanesulfonate)	['cpd23538']		Yes		Yes	Yes
+l1	Tyrosine	['cpd00069']	tyr__L	Yes	Assumed we wanted L-tyrosine.	Yes	Yes
+l1	Glutamate	['cpd00023']	glu__L	Yes	Assumed we wanted L-glutamate.	Yes	Yes
+l1	Valine	['cpd00156']	val__L	Yes	Assumed we wanted L-valine.	Yes	Yes
+promm_no_c	Leucine	['cpd00107']		Yes		Yes	Yes
+promm_no_c	4-methyl-2-oxopentanoic acid	['cpd00200']		No		No	No
+promm_no_c	Isoleucine	['cpd00322']		Yes		Yes	Yes
+promm_no_c	3-methyl-2-oxopentanoic acid	['cpd00508']		No		No	No
+promm_no_c	Valine	['cpd00156']		Yes		Yes	Yes
+promm_no_c	3-methyl-2-oxobutanoic acid	['cpd00123']		Yes		Yes	Yes
+promm_no_c	Kynurenine	['cpd00275']		No	There are two kynurenine metabolites in the db ModelSEED	No	No
+promm_no_c	Thymidine	['cpd00184']		No		Yes	No
+promm_no_c	4-hydroxybenzoic acid	['cpd00136']		No		No	No
+marine_broth_wo_yeast_and_peptone	Alanine	['cpd00035']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Alanine+Pyruvate	['cpd00035', 'cpd00020']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Arginine	['cpd00051']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Arginine+Pyruvate	['cpd00051', 'cpd00020']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Cystine	['cpd00381']		No		No	No
+marine_broth_wo_yeast_and_peptone	Cystine+Pyruvate	['cpd00381', 'cpd00020']		No		No	No
+marine_broth_wo_yeast_and_peptone	Glutamine	['cpd00053']		Yes		No	No
+marine_broth_wo_yeast_and_peptone	Glutamine+Pyruvate	['cpd00053', 'cpd00020']		Yes		No	No
+marine_broth_wo_yeast_and_peptone	Lysine	['cpd00039']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Lysine+Pyruvate	['cpd00039', 'cpd00020']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Methionine	['cpd00060']		No		No	No
+marine_broth_wo_yeast_and_peptone	Methionine+Pyruvate	['cpd00060', 'cpd00020']		Yes		No	No
+marine_broth_wo_yeast_and_peptone	Proline	['cpd00129']		No		Yes	No
+marine_broth_wo_yeast_and_peptone	Proline+Pyruvate	['cpd00129', 'cpd00020']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Ammonium+Glucose	['cpd00013', 'cpd00027']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Nitrate+Glucose	['cpd00209', 'cpd00027']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Urea+Glucose	['cpd00073', 'cpd00027']		Yes		No	No
+marine_broth_wo_yeast_and_peptone	Ammonium+Pyruvate	['cpd00013', 'cpd00020']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Nitrate+Pyruvate	['cpd00209', 'cpd00020']		Yes		Yes	No
+marine_broth_wo_yeast_and_peptone	Urea+Pyruvate	['cpd00073', 'cpd00020']		No		No	No
+marine_broth_wo_yeast_and_peptone	Ammonium+Succinate	['cpd00013', 'cpd00036']		No		Yes	No
+marine_broth_wo_yeast_and_peptone	Nitrate+Succinate	['cpd00209', 'cpd00036']		No		Yes	No
+marine_broth_wo_yeast_and_peptone	Urea+Succinate	['cpd00073', 'cpd00036']		No		No	No

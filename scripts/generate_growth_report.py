@@ -21,7 +21,9 @@ with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as
 def generate_growth_phenotype_report(model: cobra.Model):
     # Load the TSV of the growth phenotypes
     growth_phenotypes = pd.read_csv(
-        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+        sep="\t",
+        converters={"met_id": lambda x: x.split(",")},
     )
 
     # Loop through the growth phenotpes, and add the carbon source to the
@@ -31,9 +33,13 @@ def generate_growth_phenotype_report(model: cobra.Model):
     for index, row in growth_phenotypes.iterrows():
         minimal_media = media_definitions[row["minimal_media"]].copy()
         # Check if the model has an exchange reaction for the metabolite
-        if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
+        if all(
+            "EX_" + met_id + "_e0" in [r.id for r in model.reactions]
+            for met_id in row["met_id"]
+        ):
             # If it does, add the exchange reaction to the minimal media used
-            minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+            for met_id in row["met_id"]:
+                minimal_media["EX_" + met_id + "_e0"] = 1000.0
             # Mark the exchange reaction as present
             ex_rxn_present.append("Yes")
         else:
@@ -52,7 +58,7 @@ def generate_growth_phenotype_report(model: cobra.Model):
             pred_growth.append("No")
 
     # Add the lists as new columns in the dataframe
-    growth_phenotypes["ex_rxn_present"] = ex_rxn_present
+    growth_phenotypes["all_ex_rxn_present"] = ex_rxn_present
     growth_phenotypes["pred_growth"] = pred_growth
 
     # Save the dataframe as a TSV
@@ -81,8 +87,10 @@ def generate_growth_phenotype_report(model: cobra.Model):
 
     # Create an annotation data frame for the text labels on the heatmap
     annotation_key = {"No": "No Exchange", "Yes": ""}
-    annot_df = growth_phenotypes["ex_rxn_present"].replace(annotation_key).to_frame()
-    annot_df.rename(columns={"ex_rxn_present": "FBA"}, inplace=True)
+    annot_df = (
+        growth_phenotypes["all_ex_rxn_present"].replace(annotation_key).to_frame()
+    )
+    annot_df.rename(columns={"all_ex_rxn_present": "FBA"}, inplace=True)
     annot_df["Experimental"] = ""
     # Sort the columns to match the order of the heatmap
     annot_df = annot_df[["Experimental", "FBA"]]
@@ -103,8 +111,14 @@ def generate_growth_phenotype_report(model: cobra.Model):
     # cmap = ['gray', '#F18F01', '#399E5A'] # Gray, orange, green
     cmap = ["#5E5E5E", "#FF7D0A", "#024064"]  # C-CoMP gray, orange, and dark blue
 
+    # Dynamically set the figure height based on the number of rows
+    fig_height = max(10, len(growth_phenotypes) * 0.4)  # 0.4 inches per row
     # Plot the heatmap
-    fig, ax = plt.subplots()
+    # Use constrained_layout to prevent cutting off y-axis/colorbar labels
+    fig, ax = plt.subplots(
+        figsize=(8, fig_height),
+        constrained_layout=True,
+    )
     sns.heatmap(
         growth_phenotypes.replace(value_to_int),
         cmap=cmap,
@@ -137,9 +151,6 @@ def generate_growth_phenotype_report(model: cobra.Model):
     ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
     ax.set_yticklabels(growth_phenotypes.index, rotation=0)
 
-    # Make sure that the y-axis labels are not cut off
-    plt.tight_layout()
-
     # Save the figure
     plt.savefig(os.path.join(RESULTS_DIR, "exp_vs_pred_growth_phenotypes.png"))
 
@@ -147,7 +158,9 @@ def generate_growth_phenotype_report(model: cobra.Model):
 def generate_biomass_producibility_report(model: cobra.Model):
     # Load the TSV of the growth phenotypes
     growth_phenotypes = pd.read_csv(
-        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+        sep="\t",
+        converters={"met_id": lambda x: x.split(",")},
     )
 
     # Filter the growth phenotypes to only include the carbon sources that it can grow on
