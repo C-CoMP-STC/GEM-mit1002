@@ -69,5 +69,7 @@ comparison_df = pd.merge(
 comparison_df = comparison_df.rename(
     columns={"growth_rate": "growth_rate_With_dUTP_Nucleotidohydrolase"}
 )
+# Remove the "Model" column as it is redundant after the merges
+comparison_df = comparison_df.drop(columns=["Model"])
 # Print the comparison dataframe in markdown format
 print(comparison_df.to_markdown(index=False))
