@@ -26,7 +26,7 @@ python run_macaw.py
 ## To contribute to the model
 1. Make a GitHub account
 2. Make a fork/branch of this repo
-3. Make your edits
+3. Make your edits to the model on the XML file
 4. Open a pull request
 
 ## Setting Up the Environment
