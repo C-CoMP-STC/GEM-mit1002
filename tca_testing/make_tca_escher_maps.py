@@ -185,7 +185,7 @@ def main():
         else:
             print(f"Warning:{rxn_id} not found or ATP is not a reactant.")
 
-    # --- The (less) struct ATP production + lumped reactions ---
+    # --- The (less) strict ATP production + lumped reactions ---
     amac_model_strict_atp_w_lumped_rxns = amac_model_strict_atp.copy()
     # Remove (not just knockout) the original ICDH and AKGDH reactions
     amac_model_strict_atp_w_lumped_rxns.remove_reactions(
@@ -195,6 +195,25 @@ def main():
     amac_model_strict_atp_w_lumped_rxns.add_reactions(
         [lumped_icdh_reaction, lumped_akgdh_rxn]
     )
+
+    # --- The (less) strict ATP production + dUTP nucleotidohydrolase ---
+    # Make a copy of the original model to modify
+    amac_w_dut = amac_model_strict_atp.copy()
+    # Create the reaction
+    dut_rxn = cobra.Reaction("rxn01519_c0")
+    dut_rxn.name = "dUTP nucleotidohydrolase"
+    dut_rxn.lower_bound = 0
+    dut_rxn.upper_bound = 1000
+    dut_rxn.add_metabolites({
+        amac_w_dut.metabolites.cpd00001_c0: -1,  # H20
+        amac_w_dut.metabolites.cpd00358_c0: -1,  # dUTP
+        amac_w_dut.metabolites.cpd00012_c0: 1,  # PPi
+        amac_w_dut.metabolites.cpd00067_c0: 2,  # H+
+        amac_w_dut.metabolites.cpd00299_c0: 1,  # cUMP
+    })
+    # Add the reaction to the model
+    amac_w_dut.add_reactions([dut_rxn])
+
     # --- Make a dictionary of the models to test ---
     amac_models_to_test = {
         "Original": amac_model,
@@ -203,6 +222,7 @@ def main():
         "Strict_ATP_Production_Except_dUMP": amac_model_strict_atp_except_dUMP,
         "Strict_ATP_Production_Nucleotide_Balancing": amac_model_strict_nucleotide_balancing,
         "Strict_ATP_Production_With_Lumped_Reactions": amac_model_strict_atp_w_lumped_rxns,
+        "Strict_ATP_Production_With_dUTP_Nucleotidohydrolase": amac_w_dut,
     }
 
     ####################################################################
