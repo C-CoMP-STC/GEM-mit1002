@@ -8,9 +8,11 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Load the data
 data = pd.read_csv(os.path.join(FILE_DIR, "growth_match_summary.csv"))
 
-# Loop through the rows, if the row does not have a different number of
-# reactions, metabolites, or genes (i.e. if the model has not changed),
-# remove it
+# Removing this for when showing the Acetate/Leucine/Isoleucine problem since
+# a lot of Devlin's recent changes are for GPRs
+# # Loop through the rows, if the row does not have a different number of
+# # reactions, metabolites, or genes (i.e. if the model has not changed),
+# # remove it
 # data = data[
 #     (data["Reactions"] != data["Reactions"].shift(1))
 #     | (data["Metabolites"] != data["Metabolites"].shift(1))
@@ -37,8 +39,6 @@ plt.title("Percentage of Matches Over Time")
 plt.xlabel("Pull Request Number")
 # Make sure x ticks are integers
 plt.xticks(data["PR Number"].unique())
-# Turn x labels by 45 degrees
-plt.xticks(rotation=45)
 plt.ylabel("Percentage Match (%)")
 
 # Save the plot

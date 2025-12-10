@@ -28,9 +28,8 @@ def run_tests_on_prs():
 
     # List of PRs to evaluate
     # For the initial model construction to growing on everything use PRs 89 - 212
-    # To highlight the acetate/leucine/isolecuine fixes use PRs 273-310
-    # Going to 311 shows the decrease from adding new data from Franzi
-    pull_requests = list(range(273, 311))
+    # To highlight the acetate/leucine/isolecuine fixes use PRs 273-293
+    pull_requests = list(range(273, 294))
 
     # Prepare results as a list of dicts
     results_list = []
