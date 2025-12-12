@@ -6,91 +6,90 @@ from io import StringIO
 import pandas as pd
 from Bio import SeqIO
 
-# --- Configuration (Set these file paths and IDs based on your project) ---
-FASTA_FILE = "genome/Michelle_4106_gene_calls/MIT1002_anvio_prot_seqs.fa"
-ORG_BLAST_DB = "BLAST/dbs/amac_db"
-REF_BLAST_DB = "BLAST/dbs/ecoli_db"
-# This file contains the single E. coli dUTPase protein sequence
-QUERY_SEQ_FILE = "BLAST/rbh_for_dut/dut_seq.fa"
-BLAST_OUTPUT = "BLAST/rbh_for_dut/FBH_candidate.tsv"
-REVERSE_BLAST_OUTPUT = "BLAST/rbh_for_dut/RBH_check.tsv"
-# Output file for the extracted protein sequence of the FBH
-TARGET_OUTPUT = "BLAST/rbh_for_dut/AMAC_dut_candidate.fa"
-TARGET_ID = None
-n_hits = 10  # Number of top hits to retrieve
 
+def find_reciprocal_best_hits(
+    query_seq_file: str,
+    organism_fasta: str,
+    organism_db: str,
+    reference_db: str,
+    output_dir: str,
+    num_forward_hits: int = 10,
+) -> pd.DataFrame:
+    """
+    Performs a forward and reverse BLAST to find reciprocal best hits.
+    All file paths should be absolute or relative to the script's execution directory.
+    """
+    # --- Setup Paths ---
+    os.makedirs(output_dir, exist_ok=True)
+    forward_blast_output = os.path.join(output_dir, "forward_blast_hits.tsv")
+    candidate_seq_output = os.path.join(output_dir, "candidate_sequences.fa")
+    reverse_blast_output = os.path.join(output_dir, "reverse_blast_hits.tsv")
 
-def main():
-    # --- Run the Forward BLAST ---
-    print("Running Forward BLAST to find the FBH...")
+    # --- 1. Run the Forward BLAST ---
+    print("--- Step 1: Running Forward BLAST ---")
     candidate_hits_df = get_top_blast_hits_local(
-        query_file=QUERY_SEQ_FILE, db_path=ORG_BLAST_DB, num_hits=n_hits
+        query_file=query_seq_file, db_path=organism_db, num_hits=num_forward_hits
     )
-    # Save the forward BLAST results
-    candidate_hits_df.to_csv(BLAST_OUTPUT, sep="\t", index=False)
-    print(f"Forward BLAST results saved to {BLAST_OUTPUT}")
+    candidate_hits_df.to_csv(forward_blast_output, sep="\t", index=False)
+    print(f"Forward BLAST results saved to {forward_blast_output}")
 
-    # --- Parse the TSV to get the Forward Best Hit (FBH) ID ---
-    print("Parsing BLAST output to identify the Locus Tag...")
     if candidate_hits_df.empty:
-        print("No hits found in BLAST search. Exiting.")
-        sys.exit(1)
-    else:
-        print(f"{len(candidate_hits_df)} BLAST hits found:")
-        print(candidate_hits_df)
-        TARGET_ID = candidate_hits_df["sseqid"].astype(str).tolist()
-        print(f"Identified candidate IDs: {TARGET_ID}")
+        print("No hits found in forward BLAST search. Exiting.")
+        return pd.DataFrame()
 
-    # --- Extract the sequence using Biopython ---
-    if TARGET_ID:
-        record_dict = SeqIO.index(FASTA_FILE, "fasta")
-        with open(TARGET_OUTPUT, "w") as out_f:
-            for tid in TARGET_ID:
-                print(f"Extracting sequence for {tid}...")
-                SeqIO.write(record_dict[tid], out_f, "fasta")
-                print(f"Success! Sequence for {tid} saved to {out_f.name}")
-    else:
-        print("No TARGET_ID found. Exiting without extracting sequences.")
-        sys.exit(1)
+    candidate_ids = candidate_hits_df["sseqid"].astype(str).tolist()
 
-    # --- Run the Reverse BLAST ---
-    print("Running Reverse BLAST to confirm the FBH...")
+    # --- 2. Extract Candidate Sequences ---
+    print("\n--- Step 2: Extracting Candidate Sequences ---")
+    try:
+        record_dict = SeqIO.index(organism_fasta, "fasta")
+        with open(candidate_seq_output, "w") as out_f:
+            for tid in candidate_ids:
+                if tid in record_dict:
+                    SeqIO.write(record_dict[tid], out_f, "fasta")
+                else:
+                    print(f"Warning: ID {tid} not found in {organism_fasta}. Skipping.")
+        print(f"Candidate sequences saved to {candidate_seq_output}")
+    except FileNotFoundError:
+        print(f"Error: Fasta file not found at {organism_fasta}", file=sys.stderr)
+        return pd.DataFrame()
+
+    # --- 3. Run the Reverse BLAST ---
+    print("\n--- Step 3: Running Reverse BLAST ---")
     reverse_hits_df = get_top_blast_hits_local(
-        query_file=TARGET_OUTPUT,
-        db_path=REF_BLAST_DB,
-        num_hits=1,  # For the reverse, really only want the top hit
+        query_file=candidate_seq_output,
+        db_path=reference_db,
+        num_hits=1,
     )
-    # Save the reverse BLAST results
-    reverse_hits_df.to_csv(REVERSE_BLAST_OUTPUT, sep="\t", index=False)
-    print(f"Reverse BLAST results saved to {REVERSE_BLAST_OUTPUT}")
+    reverse_hits_df.to_csv(reverse_blast_output, sep="\t", index=False)
+    print(f"Reverse BLAST results saved to {reverse_blast_output}")
+
+    # --- 4. Combine and Return Results ---
+    print("\n--- Step 4: Combining Results ---")
+    original_query_id = SeqIO.read(query_seq_file, "fasta").id
+    final_df = pd.merge(
+        candidate_hits_df,
+        reverse_hits_df,
+        left_on="sseqid",
+        right_on="qseqid",
+        how="left",
+        suffixes=("_forward", "_reverse"),
+    )
+    final_df["is_rbh"] = final_df["sseqid_reverse"] == original_query_id
+    print(final_df.to_markdown(index=False))
+    return final_df
 
 
-# Helper Functions
 def get_top_blast_hits_local(
     query_file: str, db_path: str, num_hits: int = 10
 ) -> pd.DataFrame:
     """
     Runs a local BLAST search and returns the top N hits as a pandas DataFrame.
-
-    Args:
-        query_file: Path to the input FASTA file.
-        db_path: Path to the BLAST database.
-        num_hits: The maximum number of hits to return.
-
-    Returns:
-        A pandas DataFrame containing the top BLAST hits, or an empty DataFrame
-        if no hits are found.
     """
-    print(f"Running local BLAST for {query_file}... requesting top {num_hits} hits.")
-
-    # 1. Define the column headers for the tabular output format.
-    # This makes the code easier to read and maintain.'
     outfmt_spec = "6 qseqid sseqid pident length evalue bitscore"
-    outfmt_cols = outfmt_spec.split(" ")[1:]  # Skip the '6'
-
-    # 2. Build the BLAST command with the specified number of hits.
+    outfmt_cols = outfmt_spec.split(" ")[1:]
     cmd = [
-        "blastp",  # or blastn, etc.
+        "blastp",
         "-query",
         query_file,
         "-db",
@@ -98,32 +97,20 @@ def get_top_blast_hits_local(
         "-outfmt",
         outfmt_spec,
         "-max_target_seqs",
-        str(num_hits),  # Use the num_hits parameter here
+        str(num_hits),
     ]
-
     try:
-        # Execute the BLAST command
         result = subprocess.run(
             cmd, capture_output=True, text=True, check=True, encoding="utf-8"
         )
-
-        # Parse the multi-line output directly into a pandas DataFrame.
-        # Using StringIO is efficient as it treats the string output as a file.
         blast_output = result.stdout
         if not blast_output.strip():
-            print("No BLAST hits found.")
             return pd.DataFrame(columns=outfmt_cols)
-
-        df = pd.read_csv(
+        return pd.read_csv(
             StringIO(blast_output), sep="\t", header=None, names=outfmt_cols
         )
-        return df
-
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred during BLAST execution: {e}")
-        print(f"BLAST stderr:\n{e.stderr}")
+    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        print(f"An error occurred during BLAST execution: {e}", file=sys.stderr)
+        if hasattr(e, "stderr"):
+            print(f"BLAST stderr:\n{e.stderr}", file=sys.stderr)
         return pd.DataFrame(columns=outfmt_cols)
-
-
-if __name__ == "__main__":
-    main()
