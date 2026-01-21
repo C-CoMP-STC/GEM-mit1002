@@ -217,6 +217,9 @@ bashir_c_free = {
 # Define Franzi's media
 # Based on 2024-02-19_Kratzl_Marine_Pro_Medium.xlsx
 marine_broth_wo_yeast_and_peptone = {
+    # Testing if Cu rescues TPP prucution
+    "EX_cpd00058_e0": 1000,  # Cu2+_e0
+    # The actual definition
     "EX_cpd00007_e0": 20,  # O2_e0
     "EX_cpd00001_e0": 1000,  # H2O
     ################
