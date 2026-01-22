@@ -1,17 +1,17 @@
 [
     {
         "homepage": "https://escher.github.io",
-        "map_description": "A. macleodii MIT1002 TCA cycle map\nLast Modified Fri Jan 16 2026 14:52:13 GMT-0500 (Eastern Standard Time)",
+        "map_description": "A. macleodii MIT1002 TCA cycle map\nLast Modified Wed Jan 21 2026 19:56:30 GMT-0500 (Eastern Standard Time)",
         "map_id": "0df3827fde8464e80f455a773a52c274",
         "map_name": "MIT1002_glycolysis_and_tca_escher-map",
         "schema": "https://escher.github.io/escher/jsonschema/1-0-0#"
     },
     {
         "canvas": {
-            "height": 5715.0049499511715,
-            "width": 4708.531387424469,
-            "x": -16.605899143219176,
-            "y": -1453.6340515136717
+            "height": 5383.330511474609,
+            "width": 4427.883802509308,
+            "x": 264.04168577194196,
+            "y": -1121.9596130371092
         },
         "nodes": {
             "1576502": {
