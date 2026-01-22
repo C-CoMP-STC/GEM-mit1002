@@ -46,7 +46,14 @@ for index, row in growth_phenotypes.iterrows():
     ):
         # If it does, add the exchange reaction to the minimal media used
         for met_id in row["met_id"]:
-            minimal_media["EX_" + met_id + "_e0"] = 1000.0
+            met_obj = model.metabolites.get_by_id(met_id + "_c0")
+            # If the metabolite has carbon in it, handle the bounds
+            if "C" in met_obj.elements:
+                # Set the uptake rate to the equivalent of -10 for glucose
+                minimal_media["EX_" + met_id + "_e0"] = 60/met_obj.elements["C"]
+            # If not (e.g. it's a nitrogen source), add an unlimited amount
+            else:
+                minimal_media["EX_" + met_id + "_e0"] = 1000.0
     # Set the media
     model.medium = media.clean_media(model, minimal_media)
     # Run pFBA
