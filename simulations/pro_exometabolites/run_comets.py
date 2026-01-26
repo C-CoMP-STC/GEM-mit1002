@@ -1,4 +1,6 @@
 #!/Users/helenscott/opt/miniconda3/envs/med4-hot1a3/bin/python
+# OR
+#!/projectnb/cometsfba/hscott/env/run-comets/bin/python
 
 # This script is for setting up, running, and saving the results from a
 # COMETS simulation
