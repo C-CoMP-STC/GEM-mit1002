@@ -56,12 +56,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      # Generate the analysis reports
+      # Generate the reports (custom and memote)
       - name: Generate Analysis Reports
         run: |
           python scripts/generate_growth_report.py
           python scripts/generate_pathway_report.py
           python scripts/generate_biomass_table.py
+          memote report snapshot --filename "scripts/results/memote_report.html" model.xml
 
       - name: Mention PR# in README.md
         env:
