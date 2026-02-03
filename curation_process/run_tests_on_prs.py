@@ -29,7 +29,11 @@ def run_tests_on_prs():
     # List of PRs to evaluate
     # For the initial model construction to growing on everything use PRs 89 - 212
     # To highlight the acetate/leucine/isolecuine fixes use PRs 273-293
-    pull_requests = list(range(273, 294))
+    # For initial to after fixing the TCA cycle fluxes use PRs (89-344)
+    # but skip merges to the main branch (89, 91, 92, 93, 100, 107, 108, 109, 110, 112, 114, 115, 117, 203, 267, 273)
+    pull_requests = list(range(89, 344))
+    skip_prs = [89, 91, 92, 93, 100, 107, 108, 109, 110, 112, 114, 115, 117, 203, 267, 273]
+    pull_requests = [pr for pr in pull_requests if pr not in skip_prs]
 
     # Prepare results as a list of dicts
     results_list = []
