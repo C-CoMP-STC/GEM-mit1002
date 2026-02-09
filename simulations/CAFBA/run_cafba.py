@@ -1,7 +1,9 @@
 import cobra
 
 # Load the E. coli core model
-model = cobra.io.load_json_model("/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.json")
+model = cobra.io.load_json_model(
+    "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.json"
+)
 
 # Run normal FBA
 fba_sol = model.optimize()
@@ -17,7 +19,9 @@ glc_ex_name = "EX_glc__D_e"
 w_c = 0  # The proteime cost of the catabolic sector
 w_i = 8.3e-4  # The specific proteome cost for each enzyme (in gh/mmol)
 w_r = 0.169  # The cost of the ribosome sector (in h)
-phi_max = 0.484  # The total fraction of the proteome available for growth-dependent sectors
+phi_max = (
+    0.484  # The total fraction of the proteome available for growth-dependent sectors
+)
 
 # Create a variable to hold all of the proteome constraint
 total_proteome_cost_expression = 0
@@ -38,7 +42,8 @@ for reaction in model.reactions:
 
 # Add the CAFBA constraint
 cafba_constraint = model.problem.Constraint(
-    total_proteome_cost_expression, lb=phi_max, ub=phi_max)
+    total_proteome_cost_expression, lb=phi_max, ub=phi_max
+)
 model.add_cons_vars(cafba_constraint)
 
 # Optimize
