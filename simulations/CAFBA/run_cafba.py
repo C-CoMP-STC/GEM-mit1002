@@ -1,7 +1,7 @@
 import cobra
 
 # Load the E. coli core model
-model = cobra.io.read_sbml_model("/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.xml")
+model = cobra.io.load_json_model("/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.json")
 
 # Run normal FBA
 fba_sol = model.optimize()
