@@ -2,6 +2,19 @@ import cobra
 import numpy as np
 import pandas as pd
 
+# 1. Configuration Constants (from Paper/SI)
+W_I = 8.3e-4  # Average metabolic weight
+W_R = 0.17  # Ribosomal weight
+PHI_Q = 0.45  # Housekeeping offset
+PHI_R0 = 0.066  # Ribosomal offset
+PHI_MAX = 1 - PHI_Q - PHI_R0  # Total allocatable budget (~0.484)
+
+# Reaction IDs for iJO1366
+BIOMASS_ID = "BIOMASS_Ec_iJO1366_core_53p95M"
+GLC_ID = "EX_glc__D_e"
+PFK_ID = "PFK"  # EMP Pathway marker
+EDD_ID = "EDD"  # ED Pathway marker
+
 
 # Helper function to run CAFBA with specified parameters
 def run_cafba(
@@ -83,14 +96,43 @@ Npoints = 100
 w_vec = 0.01 * np.linspace(0, 1, Npoints) + 0.99 * np.power(
     np.linspace(0, 1, Npoints), 3
 )
-# Make a dictionary to store the results for different wc values
-results = {}
-# Loop through the values of wc and run CAFBA for each value, storing the results in the dictionary
+
+summary_data = []
+
+print("Starting sweep...")
 for wc in w_vec:
-    print(f"Running CAFBA with wc={wc:.2f}...")
-    cafba_solution = run_cafba(model, w_c=wc)
-    results[wc] = cafba_solution.fluxes
-# Convert the results dictionary to a DataFrame for easier analysis and visualization
-results_df = pd.DataFrame(results)
-# Save the results to a CSV file
-results_df.to_csv("cafba_results.csv")
+    sol = run_cafba(model, wc)
+
+    if sol.status == "optimal":
+        # Calculate Sectors
+        lambda_val = sol.objective_value
+        phi_R = PHI_R0 + (W_R * lambda_val)
+        phi_C = wc * abs(sol.fluxes[GLC_ID])
+
+        # Calculate phi_E by summing weighted fluxes of all internal rxns
+        internal_rxns = [
+            r.id
+            for r in model.reactions
+            if r.id not in [BIOMASS_ID, GLC_ID]
+            and not r.boundary
+            and len(r.metabolites) >= 2
+        ]
+        phi_E = (sol.fluxes[internal_rxns].abs() * W_I).sum()
+
+        # Save results
+        summary_data.append(
+            {
+                "w_c": wc,
+                "growth_rate": lambda_val,
+                "phi_C": phi_C,
+                "phi_E": phi_E,
+                "phi_R": phi_R,
+                "flux_PFK": sol.fluxes[PFK_ID],
+                "flux_EDD": sol.fluxes[EDD_ID],
+                "flux_glc": abs(sol.fluxes[GLC_ID]),
+            }
+        )
+
+df_final = pd.DataFrame(summary_data)
+df_final.to_csv("cafba_sweep_results.csv")
+print("Done! Results saved to cafba_sweep_results.csv")
