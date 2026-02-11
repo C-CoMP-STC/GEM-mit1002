@@ -15,6 +15,17 @@ with open("fba_fluxes.json", "w") as f:
 biomass_rxn_name = "BIOMASS_Ec_iJO1366_core_53p95M"
 glc_ex_name = "EX_glc__D_e"
 
+# TODO: Do I need this?
+# Make a list of subsystems to exclude from the phi_e calculation
+# (e.g., transport reactions, exchange reactions, etc.)
+# excluded_subsystems = [
+#     "Transport, Inner Membrane",
+#     "Transport, Outer Membrane",
+#     "Transport, Outer Membrane Porin",
+#     "Extracellular exchange",
+#     "Alternate Carbon Metabolism",
+# ]
+
 # Define the CAFBA parameters
 w_c = 0  # The proteime cost of the catabolic sector
 w_i = 8.3e-4  # The specific proteome cost for each enzyme (in gh/mmol)
@@ -36,6 +47,7 @@ total_proteome_cost_expression += w_c * carbon_uptake_rxn.flux_expression
 
 # Add enzyme costs for all other reactions
 # TODO: Should I exclude certain reactions here (e.g., exchange reactions, biomass reaction, etc.)?
+# TODO: Should I use subsystem or is_transport to exclude certain reactions?
 for reaction in model.reactions:
     if reaction.id not in [biomass_rxn_name, glc_ex_name]:
         total_proteome_cost_expression += w_i * reaction.flux_expression
