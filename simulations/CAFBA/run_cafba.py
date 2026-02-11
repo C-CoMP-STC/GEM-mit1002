@@ -71,6 +71,7 @@ wc_values = np.linspace(0, 1, 10)
 results = {}
 # Loop through the values of wc and run CAFBA for each value, storing the results in the dictionary
 for wc in wc_values:
+    print(f"Running CAFBA with wc={wc:.2f}...")
     cafba_solution = run_cafba(model, w_c=wc)
     results[wc] = cafba_solution.fluxes
 # Convert the results dictionary to a DataFrame for easier analysis and visualization
