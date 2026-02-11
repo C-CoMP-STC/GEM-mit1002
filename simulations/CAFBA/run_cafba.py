@@ -1,6 +1,9 @@
 import cobra
+import numpy as np
+import pandas as pd
 
 
+# Helper function to run CAFBA with specified parameters
 def run_cafba(
     model,
     w_c=0,
@@ -55,7 +58,22 @@ def run_cafba(
     return cafba_sol
 
 
+# Script to run CAFBA with different values of wc and save the results
 # Load the E. coli model
 model = cobra.io.load_json_model(
     "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.json"
 )
+
+# Carbon limitation
+# Vary the wc parameter to see how it affects the solution. Start with wc=0 (no cost for carbon uptake) and then increase it to see how the solution changes.
+wc_values = np.linspace(0, 1, 10)
+# Make a dictionary to store the results for different wc values
+results = {}
+# Loop through the values of wc and run CAFBA for each value, storing the results in the dictionary
+for wc in wc_values:
+    cafba_solution = run_cafba(model, w_c=wc)
+    results[wc] = cafba_solution.fluxes
+# Convert the results dictionary to a DataFrame for easier analysis and visualization
+results_df = pd.DataFrame(results)
+# Save the results to a CSV file
+results_df.to_csv("cafba_results.csv")
