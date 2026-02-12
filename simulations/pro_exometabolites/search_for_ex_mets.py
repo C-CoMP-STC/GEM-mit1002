@@ -30,6 +30,9 @@ def search_metabolites_in_model():
     # Merge dataframes to get IDs
     df_merged = pd.merge(df_ex, df_map, left_on="CleanName", right_on="name")
 
+    # Remove any whitespace from IDs
+    df_merged["id"] = df_merged["id"].str.strip()
+
     # 3. Search in model
     model = cobra.io.read_sbml_model(model_file)
     model_metabolite_ids = {met.id for met in model.metabolites}
