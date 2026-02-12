@@ -1,84 +1,85 @@
-name, replicateID3-phosphoglycerate
-a-ketoglutarate
-adenosine_5_monophosphate
-phosphoenolpyruvate
-glycerol_3_phosphate
-cysteate
-n_acetylglutamic_acid
-2_keto_3_deoxy_6_phosphogluconate
-glutamic_acid
-glutathione_oxidized
-uridine_5_monophosphate
-2_deoxyadenosine 
-5_deoxyadenosine 
-adenosine 
-alanine 
-aspartic_acid
-beta_alanine 
-citrulline
-cytosine
-ectoine
-glutamine
-glutathione
-glycine 
-inosine 
-isoleucine
-proline
-serine 
-threonine
-2_deoxycytidine
-arginine 
-cysteine
-cystine
-glucose_6_phosphate 
-glyphosate 
-pantothenic acid
-putrescine 
-trehalose 
-4_hydroxybenzoic_acid
-adenine
-chorismate
-citric_acid
-cytidine
-desthiobiotin
-fructose_1_6_bisphosphate
-guanine
-guanosine
-hemin
-hexose_6_phosphate
-homocysteine
-inosine_5_monophosphate
-kynurenine
-leucine
-lumichrome
-methionine
-MTA
-n-acetylglucosamine
-NAD
-NADP
-nicotinamide
-phenylalanine
-s_5_adenosyl_L_homocysteine
-s_adenosyl_l_methionine
-succinic_acid
-sucrose
-tetrahydrobiopterin
-thiamine
-thymidine
-tryptophan
-tyrosine
-UDP_glucose
-valine
-xanthosine
-2_deoxyuridine
-4_methyl_5_thiazoleethanol
-3_3_dimethyl_2oxobutanoic_acid
-3_methyl_2_oxopentanoic_acid
-4_methyl_2_oxopentanoic_acid
-adenosine
-anthranilate
-inosine
-pyridoxine
-riboflavin
-uridine
-3_methyl_2_oxobutanoic_acid
+name, ID,Notes
+3-phosphoglycerate,cpd00169,
+a-ketoglutarate, cpd00024,
+adenosine_5_monophosphate, cpd00018,
+phosphoenolpyruvate, cpd00061,
+glycerol_3_phosphate,cpd00080,
+cysteate,cpd00395,
+n_acetylglutamic_acid,cpd00477,
+2_keto_3_deoxy_6_phosphogluconate,cpd02711,
+glutamic_acid, cpd00023,
+glutathione_oxidized,cpd00111,
+uridine_5_monophosphate, cpd00091,
+2_deoxyadenosine ,cpd00438,
+5_deoxyadenosine ,cpd03091,
+adenosine ,cpd00182,
+alanine, cpd00035,
+aspartic_acid,cpd00041,
+beta_alanine ,cpd00085,
+citrulline,cpd00274,
+cytosine,cpd00307,
+ectoine,cpd03727,
+glutamine,cpd00053,
+glutathione,cpd00042,
+glycine ,cpd00033,
+inosine ,cpd00246,
+isoleucine,cpd00322,
+proline,cpd00129,
+serine ,cpd00054,
+threonine,cpd00161,
+2_deoxycytidine,cpd00654,
+arginine ,cpd00051,
+cysteine,cpd00084,
+cystine,cpd00381,
+glucose_6_phosphate ,cpd00079,
+glyphosate ,cpd01175,
+pantothenic acid,cpd00644,
+putrescine ,cpd00118,
+trehalose ,cpd00794,
+4_hydroxybenzoic_acid,cpd00136,
+adenine,cpd00128,
+chorismate,cpd00216,
+citric_acid,cpd00137,
+cytidine,cpd00367,
+desthiobiotin,cpd01311,
+fructose_1_6_bisphosphate,cpd00290,
+guanine,cpd00207,
+guanosine,cpd00311,
+hemin,cpd04145,
+hexose_6_phosphate,cpd01903,
+homocysteine,cpd00135,
+inosine_5_monophosphate,cpd00114,
+kynurenine,cpd00275,
+leucine,cpd00107,
+lumichrome,cpd01191,
+methionine,cpd00060,
+MTA,cpd00147,5-Methylthioadenosine
+n-acetylglucosamine,cpd02416,N-Acetyl-beta-D-glucosamine
+NAD,cpd00003,
+NADP,cpd00006,
+nicotinamide,cpd00133,
+phenylalanine,cpd00066,
+s_5_adenosyl_L_homocysteine,cpd00019,
+s_adenosyl_l_methionine,cpd00017,
+succinic_acid,cpd00036,
+sucrose,cpd00076,
+tetrahydrobiopterin,cpd00233,
+thiamine,cpd00305,
+thymidine,cpd00184,
+tryptophan,cpd00065,
+tyrosine,cpd00069,
+UDP_glucose,cpd00026,
+valine,cpd00156,
+xanthosine,cpd01217,
+2_deoxyuridine,cpd00412,
+4_methyl_5_thiazoleethanol,cpd02636,4-Methyl-5--2-hydroxyethyl-thiazole
+3_3_dimethyl_2oxobutanoic_acid,cpd00712,2-Dehydropantoate
+3_methyl_2_oxopentanoic_acid,cpd00508,
+4_methyl_2_oxopentanoic_acid,cpd00200,
+adenosine,cpd00182,
+anthranilate,cpd00093,
+inosine,cpd00246,
+pyridoxine,cpd00263,
+riboflavin,cpd00220,
+uridine,cpd00249,
+3_methyl_2_oxobutanoic_acid,cpd00123,
