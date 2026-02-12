@@ -1,0 +1,58 @@
+MetaboliteName,MetaboliteID,MaxConcentration_nM,Found_in_Cytoplasm_c0,Found_in_Extracellular_e0
+inosine ,cpd00246,3161.937622,True,True
+glutamic_acid, cpd00023,2044.407632,False,False
+3_methyl_2_oxobutanoic_acid,cpd00123,1441.8856049970852,True,True
+cystine,cpd00381,977.3349329,False,False
+thymidine,cpd00184,530.4825346110051,True,True
+2_deoxyadenosine ,cpd00438,525.6631901,True,True
+5_deoxyadenosine ,cpd03091,522.4337617,True,False
+tyrosine,cpd00069,193.58227090595832,True,True
+aspartic_acid,cpd00041,156.5015952,True,False
+leucine,cpd00107,122.82194458118268,True,True
+glutathione_oxidized,cpd00111,118.1380956,True,False
+isoleucine,cpd00322,52.21109144,True,True
+desthiobiotin,cpd01311,49.20747062310886,True,False
+4_methyl_2_oxopentanoic_acid,cpd00200,48.36099545002726,True,False
+a-ketoglutarate, cpd00024,38.71831636,False,False
+uridine,cpd00249,34.79451458650121,True,True
+arginine ,cpd00051,30.90154283,True,True
+trehalose ,cpd00794,30.22455457,True,False
+4_methyl_5_thiazoleethanol,cpd02636,27.688231747820097,False,False
+glutathione,cpd00042,24.78627501,True,False
+serine ,cpd00054,24.16744587,True,True
+2_deoxycytidine,cpd00654,23.75428819,True,True
+cytosine,cpd00307,22.5119547,True,True
+3_methyl_2_oxopentanoic_acid,cpd00508,21.484726333106984,True,False
+adenosine,cpd00182,21.043140148584467,True,False
+guanosine,cpd00311,20.692873961912593,True,True
+glycine ,cpd00033,19.6652952,True,True
+4_hydroxybenzoic_acid,cpd00136,17.356419262278003,True,False
+adenosine_5_monophosphate, cpd00018,15.92171107,False,False
+proline,cpd00129,14.15584577,True,True
+phosphoenolpyruvate, cpd00061,13.68201409,False,False
+2_keto_3_deoxy_6_phosphogluconate,cpd02711,12.44991537,True,False
+3-phosphoglycerate,cpd00169,12.16748177,True,False
+uridine_5_monophosphate, cpd00091,11.92085935,False,False
+glycerol_3_phosphate,cpd00080,9.410701746,True,True
+citrulline,cpd00274,9.372430452,True,False
+cysteate,cpd00395,9.250685855,True,False
+n_acetylglutamic_acid,cpd00477,8.796319402,True,False
+glutamine,cpd00053,8.245786999,True,False
+phenylalanine,cpd00066,6.300198655965561,True,False
+glyphosate ,cpd01175,5.252895015,False,False
+glucose_6_phosphate ,cpd00079,5.119374252,True,False
+threonine,cpd00161,3.972586159,True,True
+cysteine,cpd00084,3.19020629,True,False
+2_deoxyuridine,cpd00412,2.987920505532763,True,False
+adenosine ,cpd00182,2.886259149,True,False
+xanthosine,cpd01217,2.547080505065547,True,False
+ectoine,cpd03727,1.932085776,False,False
+anthranilate,cpd00093,1.654814411547612,True,False
+3_3_dimethyl_2oxobutanoic_acid,cpd00712,1.5124429155577093,True,False
+beta_alanine ,cpd00085,1.383151595,True,True
+inosine,cpd00246,0.9894007291103224,True,True
+pyridoxine,cpd00263,0.2885659530483306,False,False
+kynurenine,cpd00275,0.2850241094064261,True,False
+s_5_adenosyl_L_homocysteine,cpd00019,0.1166843366177005,True,False
+putrescine ,cpd00118,0.065102207,True,False
+riboflavin,cpd00220,0.0333743828585879,True,False
