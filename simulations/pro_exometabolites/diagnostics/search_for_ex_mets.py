@@ -13,12 +13,15 @@ def search_metabolites_in_model():
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Define file paths
-    data_file = os.path.join(script_dir, "ProDiel_quant_20260211.csv")
-    map_file = os.path.join(script_dir, "metabolite_id_map.csv")
+    data_file = os.path.join(script_dir, "../data/ProDiel_quant_20260211.csv")
+    map_file = os.path.join(script_dir, "../metabolite_id_map.csv")
     model_file = os.path.join(
-        script_dir, "../../model.xml"
+        script_dir, "../../../model.xml"
     )  # Go up two directories to find model.xml
-    output_file = os.path.join(script_dir, "ex_metabolite_search_results.csv")
+    output_file = os.path.join(script_dir, "results", "ex_metabolite_search_results.csv")
+
+    # If the output directory doesn't exist, create it
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
     # 1. Load "EX" metabolites
     df_data = pd.read_csv(data_file)
