@@ -78,13 +78,18 @@ def run_fba_for_each_timepoint():
             # Michaelis-Menten equation
             uptake_rate = Vmax * concentration_mM / (Km + concentration_mM)
 
+            # Account for "hot spots" within the bulk data by scaling the
+            # uptake rate by an arbitrary factor
+            hot_spot_factor = 1000
+            uptake_rate *= hot_spot_factor
+
             # Only set the bound if the uptake rate is above a small threshold to avoid numerical issues
-            # TODO: Should this be even lower? Maybe 0.01 or 0.001?
+            # TODO: Should this be even lower? Maybe 0.001?
             # I did this cause I was getting some very small uptake rates that
             # were causing issues with the solver. But maybe it's better to
             # just set a lower threshold or use a different approach to
             # handle small rates.
-            if uptake_rate > 1:
+            if uptake_rate > 0.01:
                 # Find the corresponding exchange reaction
                 exchange_reaction_id = f"EX_{met_id}_e0"
                 if exchange_reaction_id in model.reactions:
