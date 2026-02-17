@@ -1,4 +1,5 @@
 import cobra
+import json
 import numpy as np
 import pandas as pd
 
@@ -164,6 +165,11 @@ for wc in w_vec:
             }
         )
 
+        # Save all of the fluxes in a JSON file for Escher maps
+        flux_dict = sol.fluxes.to_dict()
+        with open(f"results/json_fluxes/cafba_fluxes_wc_{wc:.4f}.json", "w") as f:
+            json.dump(flux_dict, f, indent=4)
+
 df_final = pd.DataFrame(summary_data)
-df_final.to_csv("cafba_sweep_results.csv")
-print("Done! Results saved to cafba_sweep_results.csv")
+df_final.to_csv("results/cafba_sweep_results.csv")
+print("Done! Results saved to results/cafba_sweep_results.csv")
