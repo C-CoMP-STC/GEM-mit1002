@@ -25,6 +25,8 @@ def run_cafba(
     phi_max=0.484,
     biomass_id="BIOMASS_Ec_iJO1366_core_53p95M",
     glc_ex_id="EX_glc__D_e",
+    ed_reactions=["G6PDH2r", "PGL", "EDD", "EDA"],
+    ed_discount=3.5,
 ):
     """
     Run CAFBA on the given model with the specified parameters.
@@ -37,6 +39,8 @@ def run_cafba(
     - phi_max: The total fraction of the proteome available for growth-dependent sectors (default: 0.484).
     - biomass_id: The ID of the biomass reaction in the model (default: "BIOMASS_Ec_iJO1366_core_53p95M").
     - glc_ex_id: The ID of the glucose exchange reaction in the model (default: "EX_glc__D_e").
+    - ed_reactions: A list of reaction IDs that belong to the ED pathway (default: ["G6PDH2r", "PGL", "EDD", "EDA"]).
+    - ed_discount: The factor by which to discount the ED pathway enzymes' cost (default: 3.5).
 
     Returns:
     A COBRA solution containing the results from the CAFBA solution.
@@ -74,9 +78,16 @@ def run_cafba(
         if len(rxn.metabolites) < 2 or rxn.boundary:
             continue
 
+        # Apply a discount to ED pathway enzymes
+        # TODO: Have a better list of which reactions belong to the ED pathway
+        if rxn.id in ed_reactions:
+            w_i_effective = w_i / ed_discount
+        else:
+            w_i_effective = w_i
+
         # Add weight to both directions to handle |v|
-        coefficients[rxn.forward_variable] = w_i
-        coefficients[rxn.reverse_variable] = w_i
+        coefficients[rxn.forward_variable] = w_i_effective
+        coefficients[rxn.reverse_variable] = w_i_effective
 
     # 4. Apply all coefficients at once
     cafba_cons.set_linear_coefficients(coefficients)
