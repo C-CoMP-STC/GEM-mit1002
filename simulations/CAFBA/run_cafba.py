@@ -132,9 +132,7 @@ summary_data = []
 
 print("Starting sweep...")
 for wc in w_vec:
-    sol = run_cafba(
-        model, wc, biomass_id=BIOMASS_ID, glc_ex_id=GLC_ID, ed_reactions=[EDD_ID]
-    )
+    sol = run_cafba(model, wc, biomass_id=BIOMASS_ID, glc_ex_id=GLC_ID)
 
     if sol.status == "optimal":
         # Calculate Sectors
