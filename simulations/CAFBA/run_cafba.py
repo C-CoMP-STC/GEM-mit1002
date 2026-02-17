@@ -9,11 +9,11 @@ PHI_Q = 0.45  # Housekeeping offset
 PHI_R0 = 0.066  # Ribosomal offset
 PHI_MAX = 1 - PHI_Q - PHI_R0  # Total allocatable budget (~0.484)
 
-# Reaction IDs for iJO1366
-BIOMASS_ID = "BIOMASS_Ec_iJO1366_core_53p95M"
-GLC_ID = "EX_glc__D_e"
-PFK_ID = "PFK"  # EMP Pathway marker
-EDD_ID = "EDD"  # ED Pathway marker
+# Reaction IDs for my Amac model
+BIOMASS_ID = "bio1_biomass"
+GLC_ID = "EX_cpd00027_e0"
+PFK_ID = "rxn00545_c0"  # EMP Pathway marker
+EDD_ID = "rxn01477_c0"  # ED Pathway marker
 
 
 # Helper function to run CAFBA with specified parameters
@@ -25,7 +25,7 @@ def run_cafba(
     phi_max=0.484,
     biomass_id="BIOMASS_Ec_iJO1366_core_53p95M",
     glc_ex_id="EX_glc__D_e",
-    ed_reactions=["G6PDH2r", "PGL", "EDD", "EDA"],
+    ed_reactions=["rxn00604_c0", "rxn01476_c0", "rxn01477_c0", "rxn03884_c0"],
     ed_discount=3.5,
 ):
     """
@@ -79,7 +79,6 @@ def run_cafba(
             continue
 
         # Apply a discount to ED pathway enzymes
-        # TODO: Have a better list of which reactions belong to the ED pathway
         if rxn.id in ed_reactions:
             w_i_effective = w_i / ed_discount
         else:
@@ -97,10 +96,31 @@ def run_cafba(
 
 
 # --- Running the Carbon Limitation Simulation ---
-# Load the E. coli model
-model = cobra.io.load_json_model(
-    "/Users/helenscott/Documents/PhD/Segre-lab/GEM-repos/ecoli/iJO1366.json"
-)
+# Load the model
+model = cobra.io.read_sbml_model("../../model.xml")
+
+# Set a minimal medium with glucose as the sole carbon source
+minimal_media = {
+    "EX_cpd00027_e0": 10,  # Glucose_e0
+    "EX_cpd00058_e0": 1000,  # Cu2+_e0
+    "EX_cpd00007_e0": 20,  # O2_e0
+    "EX_cpd00971_e0": 1000,  # Na+_e0
+    "EX_cpd00063_e0": 1000,  # Ca2+_e0
+    "EX_cpd00048_e0": 1000,  # Sulfate_e0
+    "EX_cpd10516_e0": 1000,  # fe3_e0
+    "EX_cpd00254_e0": 1000,  # Mg_e0
+    "EX_cpd00009_e0": 1000,  # Phosphate_e0
+    "EX_cpd00205_e0": 1000,  # K+_e0
+    "EX_cpd00013_e0": 1000,  # NH3_e0
+    "EX_cpd00099_e0": 1000,  # Cl-_e0
+    "EX_cpd00030_e0": 1000,  # Mn2+_e0
+    "EX_cpd00075_e0": 1000,  # Nitrite_e0
+    "EX_cpd00001_e0": 1000,  # H2O_e0
+    "EX_cpd00034_e0": 1000,  # Zn2+_e0
+    "EX_cpd00149_e0": 1000,  # Co2+_e0
+}
+model.medium = minimal_media
+
 # Generate a list of w_c values to test, with more resolution at the low end (0 to 1)
 # Use the cubic mesh from the paper to get better resolution at the low end
 Npoints = 100
@@ -112,7 +132,9 @@ summary_data = []
 
 print("Starting sweep...")
 for wc in w_vec:
-    sol = run_cafba(model, wc)
+    sol = run_cafba(
+        model, wc, biomass_id=BIOMASS_ID, glc_ex_id=GLC_ID, ed_reactions=[EDD_ID]
+    )
 
     if sol.status == "optimal":
         # Calculate Sectors
