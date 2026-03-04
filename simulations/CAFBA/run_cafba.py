@@ -1,5 +1,6 @@
-import cobra
 import json
+
+import cobra
 import numpy as np
 import pandas as pd
 
@@ -99,6 +100,9 @@ def run_cafba(
 # --- Running the Carbon Limitation Simulation ---
 # Load the model
 model = cobra.io.read_sbml_model("../../model.xml")
+
+# Make rxn09295_c0 reversible
+model.reactions.rxn09295_c0.lower_bound = -1000
 
 # Set a minimal medium with glucose as the sole carbon source
 minimal_media = {
