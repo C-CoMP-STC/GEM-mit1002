@@ -35,3 +35,17 @@ class TestValidSBML(unittest.TestCase):
             0,
             msg=f"{len(isolated_mets)} isolated metabolite(s) found: {isolated_mets}",
         )
+
+    def test_mass_balance(self):
+        # Load the model
+        model = cobra.io.read_sbml_model("model.xml")
+
+        # Check for mass balance in each reaction
+        results = cobra.manipulation.check_mass_balance(model)
+
+        # Check that there are no reactions returned by the mass balance check
+        self.assertEqual(
+            len(results),
+            0,
+            msg=f"{len(results)} reactions are not mass balanced: {results}",
+        )
