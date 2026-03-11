@@ -1,4 +1,5 @@
 compounds	minFlux	maxFlux	name	formula	concentration
+cpd00067	-1000	1000	H+	H	1
 cpd00058	-1000	1000	Cu2+	Cu	1
 cpd00007	-20	1000	O2	O2	1
 cpd00971	-1000	1000	Na+	Na	1

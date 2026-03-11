@@ -17,6 +17,7 @@ mbm	Minimal Basal Medium (Moran Lab)	cpd28238	tris-hydrochloride
 mbm	Minimal Basal Medium (Moran Lab)	nh3	NH3
 mbm	Minimal Basal Medium (Moran Lab)	pi	Phosphate
 mbm	Minimal Basal Medium (Moran Lab)	h2o	H2O
+mbm	Minimal Basal Medium (Moran Lab)	h	H+
 mbm	Minimal Basal Medium (Moran Lab)	btn	BIOT
 mbm	Minimal Basal Medium (Moran Lab)	fol	Folate
 mbm	Minimal Basal Medium (Moran Lab)	pydxn	Pyridoxol
@@ -32,6 +33,7 @@ mbm	Minimal Basal Medium (Moran Lab)	zn2	Zn2+
 mbm	Minimal Basal Medium (Moran Lab)	cobalt2	Co2+
 l1	L1 Minimal Medium	o2	O2
 l1	L1 Minimal Medium	h2o	H2O
+l1	L1 Minimal Medium	h	H+
 l1	L1 Minimal Medium	na1	Na+
 l1	L1 Minimal Medium	no3	Nitrate
 l1	L1 Minimal Medium	pi	Phosphate
