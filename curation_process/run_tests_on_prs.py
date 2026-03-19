@@ -21,13 +21,13 @@ with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as
     media_definitions = pickle.load(f)
 minimal_media = media_definitions["minimal"]
 
+# Load the TSV of the growth phenotypes
+growth_phenotypes = pd.read_csv(
+    os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+)
+
 
 def run_tests_on_prs(pr_start=89, pr_end=None):
-    # Save current branch
-    original_branch = subprocess.check_output(
-        ["git", "rev-parse", "--abbrev-ref", "HEAD"], text=True
-    ).strip()
-
     # Get a list of PRs merged into the dev branch (could change to main, by
     # providing target_branch="main")
     all_prs = get_prs_by_target()
@@ -37,6 +37,7 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
     # For the initial model construction to growing on everything use PRs 89 - 212
     # To highlight the acetate/leucine/isolecuine fixes use PRs 273-293
     # For initial to after fixing the TCA cycle fluxes use PRs 89-344
+    # If no upper limit to the range is given, go to the latest version
     if pr_end is None:
         pr_end = max(model_prs)
     pull_requests = [pr for pr in model_prs if pr_start <= pr <= pr_end]
@@ -49,25 +50,17 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
         print(f"\n--- Evaluating PR #{pr} ---")
 
         try:
-            # Delete the branch if it already exists locally
+            # Use gh to get the content of model.xml for a specific PR
             subprocess.run(
-                ["git", "branch", "-D", branch_name],
-                check=False,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
+                [
+                    "gh",
+                    "api",
+                    f"repos/:owner/:repo/contents/model.xml?ref=pull/{pr}/head",
+                    "-H",
+                    "Accept: application/vnd.github.v3.raw",
+                ],
+                stdout=open("temp_model.xml", "w"),
             )
-
-            # Fetch and checkout PR
-            subprocess.run(
-                ["git", "fetch", REMOTE, f"pull/{pr}/head:{branch_name}"],
-                check=True,
-            )
-            subprocess.run(["git", "checkout", branch_name], check=True)
-
-            # Get commit hash
-            commit_hash = subprocess.check_output(
-                ["git", "rev-parse", "HEAD"], text=True
-            ).strip()
 
             # Run test_growth
             results = run_test_growth()
@@ -76,7 +69,6 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
             results_list.append(
                 {
                     "PR Number": pr,
-                    "Commit": commit_hash,
                     "Reactions": results.get("num_reactions"),
                     "Metabolites": results.get("num_metabolites"),
                     "Genes": results.get("num_genes"),
@@ -88,6 +80,7 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
                         / max(results.get("total", 1), 1),
                         2,
                     ),
+                    "Unbounded Flux Reactions": results.get("num_unbounded_rxns"),
                 }
             )
 
@@ -96,18 +89,19 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
             results_list.append(
                 {
                     "PR Number": pr,
-                    "Commit": "ERROR",
                     "Reactions": "ERROR",
                     "Metabolites": "ERROR",
                     "Genes": "ERROR",
                     "Matches": "ERROR",
                     "Total": "ERROR",
                     "% Match": "ERROR",
+                    "Unbounded Flux Reactions": "ERROR",
                 }
             )
 
-    # Return to original branch
-    subprocess.run(["git", "checkout", original_branch])
+    # Delete the temporary model file
+    if os.path.exists("temp_model.xml"):
+        os.remove("temp_model.xml")
 
     # Write results to CSV ONCE, after all PRs are processed
     summary_file = os.path.join(FILE_PATH, "growth_match_summary.csv")
@@ -139,12 +133,7 @@ def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_bioma
        tested, and the number of unique reactions with a flux above the
        unbounded_flux_limit across all simulations.
     """
-    model = cobra.io.read_sbml_model(os.path.join(REPO_PATH, "model.xml"))
-
-    # Load the TSV of the growth phenotypes
-    growth_phenotypes = pd.read_csv(
-        os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
-    )
+    model = cobra.io.read_sbml_model(os.path.join(REPO_PATH, "temp_model.xml"))
 
     # Count model components
     num_reactions = len(model.reactions)
@@ -224,11 +213,17 @@ def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_bioma
 def get_prs_by_target(target_branch="dev"):
     # This requires the GitHub CLI 'gh' to be installed and authenticated
     cmd = [
-        "gh", "pr", "list",
-        "--base", target_branch,
-        "--state", "merged",
-        "--limit", "1000",
-        "--json", "number"
+        "gh",
+        "pr",
+        "list",
+        "--base",
+        target_branch,
+        "--state",
+        "merged",
+        "--limit",
+        "1000",
+        "--json",
+        "number",
     ]
     output = subprocess.check_output(cmd, text=True)
     return [pr["number"] for pr in json.loads(output)]
@@ -244,9 +239,6 @@ def is_model_changed_in_pr(pr_number):
 
 
 if __name__ == "__main__":
-    # run_tests_on_prs()
-    # To debug: Run just the test function on the current branch
-    # 10 is way too low, but that way I can check that the counting of unbounded fluxes is working correctly
-    results = run_test_growth(unbounded_flux_limit=10)
+    run_tests_on_prs()
     print("Test results saved to growth_match_summary.csv")
     print("You can plot the results using the provided plotting script.")
