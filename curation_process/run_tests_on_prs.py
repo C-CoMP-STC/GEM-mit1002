@@ -24,7 +24,8 @@ growth_phenotypes = pd.read_csv(
     converters={"met_id": lambda x: x.split(",")},
 )
 
-def run_tests_on_prs(pr_start=89, pr_end=None):
+
+def run_tests_on_prs(pr_start=89, pr_end=None, unbounded_flux_limit: int = 999, biomass_rxn_id="bio1_biomass"):
     # Get a list of PRs merged into the dev branch (could change to main, by
     # providing target_branch="main")
     # By only looking at dev we miss a few PRs that were merged into main,
@@ -74,7 +75,7 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
             )
 
             # Run test_growth
-            results = run_test_growth()
+            results = run_test_growth(unbounded_flux_limit=unbounded_flux_limit, biomass_rxn_id=biomass_rxn_id)
 
             # Append results to list
             results_list.append(
@@ -124,7 +125,7 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
     df.to_csv(summary_file, index=False)
 
 
-def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_biomass"):
+def run_test_growth(unbounded_flux_limit: int = 999, biomass_rxn_id="bio1_biomass"):
     """
     On the current branch, this function re-runs the growth with pFBA, while
     holding the amount carbon constant across sources, and saves how many
@@ -135,7 +136,7 @@ def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_bioma
     ----------
     unbounded_flux_limit : int, optional
         The value at which a flux is considered problematically large, by
-        default 1000
+        default 999
     biomass_rxn_id : str, optional
         Reaction ID for the biomass reaction, by default "bio1_biomass"
 
@@ -259,6 +260,6 @@ def is_model_changed_in_pr(pr_number):
 
 
 if __name__ == "__main__":
-    run_tests_on_prs(pr_start=89)
+    run_tests_on_prs(pr_start=89, unbounded_flux_limit=100)
     print("Test results saved to growth_match_summary.csv")
     print("You can plot the results using the provided plotting script.")
