@@ -20,7 +20,7 @@ data = pd.read_csv(os.path.join(FILE_DIR, "growth_match_summary.csv"))
 data = data[data["% Match"] != "ERROR"]
 
 # Convert columns to numeric type
-# TODO: Do I need any other columns numerica? Are there any that can't be?
+# TODO: Do I need any other columns numerical? Are there any that can't be?
 cols_to_fix = ["Matches", "% Match", "PR Number", "Unbounded Flux Reactions"]
 data[cols_to_fix] = data[cols_to_fix].apply(pd.to_numeric, errors='coerce')
 
