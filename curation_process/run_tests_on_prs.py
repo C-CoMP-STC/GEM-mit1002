@@ -5,6 +5,7 @@ import warnings
 
 import cobra
 import pandas as pd
+from gem_utilities import media
 
 # Remote name
 REMOTE = "origin"
@@ -32,7 +33,24 @@ def run_tests_on_prs():
     # For initial to after fixing the TCA cycle fluxes use PRs (89-344)
     # but skip merges to the main branch (89, 91, 92, 93, 100, 107, 108, 109, 110, 112, 114, 115, 117, 203, 267, 273)
     pull_requests = list(range(89, 344))
-    skip_prs = [89, 91, 92, 93, 100, 107, 108, 109, 110, 112, 114, 115, 117, 203, 267, 273]
+    skip_prs = [
+        89,
+        91,
+        92,
+        93,
+        100,
+        107,
+        108,
+        109,
+        110,
+        112,
+        114,
+        115,
+        117,
+        203,
+        267,
+        273,
+    ]
     pull_requests = [pr for pr in pull_requests if pr not in skip_prs]
 
     # Prepare results as a list of dicts
@@ -109,7 +127,30 @@ def run_tests_on_prs():
     df.to_csv(summary_file, index=False)
 
 
-def run_test_growth():
+def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_biomass"):
+    """
+    On the current branch, this function re-runs the growth with pFBA, while
+    holding the amount carbon constant across sources, and saves how many
+    media conditions support growth, and how many reactions across all
+    simulations have a flux above an arbitrary threshold.
+
+    Parameters
+    ----------
+    unbounded_flux_limit : int, optional
+        The value at which a flux is considered problematically large, by
+        default 1000
+    biomass_rxn_id : str, optional
+        Reaction ID for the biomass reaction, by default "bio1_biomass"
+
+    Returns
+    -------
+    dict
+       Dictionary of the results for the model, including the number of
+       reactions, metabolites, and genes, the number of matches between
+       predicted and expected growth phenotypes, the total number of phenotypes
+       tested, and the number of unique reactions with a flux above the
+       unbounded_flux_limit across all simulations.
+    """
     model = cobra.io.read_sbml_model(os.path.join(REPO_PATH, "model.xml"))
 
     # Load the TSV of the growth phenotypes
@@ -122,8 +163,10 @@ def run_test_growth():
     num_metabolites = len(model.metabolites)
     num_genes = len(model.genes)
 
+    # Start counters
     matches = 0
     total = 0
+    unique_rxns_with_unbounded_flux = set()
 
     for _, row in growth_phenotypes.iterrows():
         # Get the expected growth phenotype
@@ -139,18 +182,34 @@ def run_test_growth():
         # Set the minimal media and exchange reactions
         minimal_media = media_definitions[row["minimal_media"]].copy()
 
+        # Does this handle multiple meatbolites correctly?
         # Check if the model has an exchange reaction for the metabolite
         if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
-            # If it does, add the exchange reaction to the minimal media used
-            minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+            # Get the metabolite object
+            met = model.metabolites.get_by_id(row["met_id"] + "_e0")
+            # Get the number of carbon atoms in the metabolite
+            n_carbons = met.elements.get("C", 0)
+            # If the metabolite has carbons, set the lower bound to be 60/n_carbons (equivalent to 10 for glucose)
+            # If the metabolite does not have carbon, set an unlimited amount
+            if n_carbons == 0:
+                # If it does, add the exchange reaction to the minimal media used
+                minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+            else:
+                minimal_media["EX_" + row["met_id"] + "_e0"] = 60 / n_carbons
             # Set the media
-            model.medium = clean_media(model, minimal_media)
-            # Run the model
-            sol = model.optimize()
+            model.medium = media.clean_media(model, minimal_media)
+            # Run pFBA on the model
+            sol = cobra.flux_analysis.pfba(model)
             # Check if the model grows
-            if sol.objective_value > 1e-3:
+            if sol.fluxes[biomass_rxn_id] > 1e-3:
                 # If it does, set to Yes
                 pred_growth = "Yes"
+                # Get the number of reactions in the solution with a flux above the unbounded_flux_limit
+                rxns_with_unbounded_flux = [
+                    r for r, flux in sol.fluxes.items() if abs(flux) > unbounded_flux_limit
+                ]
+                # Add the unique reactions with unbounded fluxes to the set
+                unique_rxns_with_unbounded_flux.update(rxns_with_unbounded_flux)
             else:
                 # If it doesn't, set to No
                 pred_growth = "No"
@@ -163,50 +222,19 @@ def run_test_growth():
         total += 1
 
     return {
-        "matches": matches,
-        "total": total,
         "num_reactions": num_reactions,
         "num_metabolites": num_metabolites,
         "num_genes": num_genes,
+        "matches": matches,
+        "total": total,
+        "num_unbounded_rxns": len(unique_rxns_with_unbounded_flux),
     }
 
 
-def clean_media(model: cobra.Model, media: dict) -> dict:
-    """clean_media
-    Removes exchange reactions from the media that are not present in the model
-
-    Parameters
-    ----------
-    model : cobra.Model
-        The model to set the media for.
-    media : dict
-        A dictionary where the keys are the exchange reactions for the metabolites
-        in the media, and the values are the lower bound for the exchange reaction.
-
-    Returns
-    -------
-    dict
-        A dictionary where the keys are the exchange reactions for the metabolites
-        in the media, and the values are the lower bound for the exchange reaction
-    """
-    # Make an empty dictionary for the media
-    clean_medium = {}
-    # Loop through the media and set the exchange reactions that are present
-    for ex_rxn, lb in media.items():
-        if ex_rxn in [r.id for r in model.reactions]:
-            clean_medium[ex_rxn] = lb
-        else:
-            warnings.warn(
-                "Model does not have the exchange reaction "
-                + ex_rxn
-                + ", so it was not set in the media."
-            )
-
-    # Return the clean medium
-    return clean_medium
-
-
 if __name__ == "__main__":
-    run_tests_on_prs()
+    # run_tests_on_prs()
+    # To debug: Run just the test function on the current branch
+    # 10 is way too low, but that way I can check that the counting of unbounded fluxes is working correctly
+    results = run_test_growth(unbounded_flux_limit=10)
     print("Test results saved to growth_match_summary.csv")
     print("You can plot the results using the provided plotting script.")
