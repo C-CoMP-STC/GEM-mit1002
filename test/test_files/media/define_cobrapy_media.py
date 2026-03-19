@@ -313,6 +313,12 @@ marine_broth_wo_yeast_and_peptone = {
     "EX_cpd00244_e0": 1000,  # Ni2+
 }
 
+# Remove all nitrogen sources from Franzi'e medium for the experiments
+# with nitrogen sources
+marine_broth_no_n = marine_broth_wo_yeast_and_peptone.copy()
+marine_broth_no_n.pop("EX_cpd00013_e0", None)  # Ammonia
+marine_broth_no_n.pop("EX_cpd00209_e0", None)  # NO3-
+
 # ProMM
 # Media definition from Osnat's KBase narrative
 # TODO: Check the media composition, by comparing to the media protocol
@@ -528,6 +534,7 @@ media = {
     "l1": l1_media,
     "bashir_c_free": bashir_c_free,
     "marine_broth_wo_yeast_and_peptone": marine_broth_wo_yeast_and_peptone,
+    "marine_broth_wo_yeast_and_peptone_no_n": marine_broth_no_n,
     "promm": promm,
     "promm_no_c": promm_no_c,
     "hmb": hmb,
