@@ -174,41 +174,42 @@ def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_bioma
         # Set the minimal media and exchange reactions
         minimal_media = media_definitions[row["minimal_media"]].copy()
 
-        # Does this handle multiple meatbolites correctly?
-        # Check if the model has an exchange reaction for the metabolite
-        if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
+        # Add the metabolite(s) specified in the row to the media
+        for met_id in row["met_id"]:
+            # Check that there is an exchange reaction for the metabolite in the model
+            if "EX_" + met_id + "_e0" not in [r.id for r in model.reactions]:
+                warnings.warn(
+                    f"Model does not have an exchange reaction for {met_id}."
+                )
+                continue
             # Get the metabolite object
-            met = model.metabolites.get_by_id(row["met_id"] + "_e0")
+            met = model.metabolites.get_by_id(met_id + "_e0")
             # Get the number of carbon atoms in the metabolite
             n_carbons = met.elements.get("C", 0)
             # If the metabolite has carbons, set the lower bound to be 60/n_carbons (equivalent to 10 for glucose)
             # If the metabolite does not have carbon, set an unlimited amount
             if n_carbons == 0:
-                # If it does, add the exchange reaction to the minimal media used
-                minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+                minimal_media["EX_" + met_id + "_e0"] = 1000.0
             else:
-                minimal_media["EX_" + row["met_id"] + "_e0"] = 60 / n_carbons
-            # Set the media
-            model.medium = media.clean_media(model, minimal_media)
-            # Run pFBA on the model
-            sol = cobra.flux_analysis.pfba(model)
-            # Check if the model grows
-            if sol.fluxes[biomass_rxn_id] > 1e-3:
-                # If it does, set to Yes
-                pred_growth = "Yes"
-                # Get the number of reactions in the solution with a flux above the unbounded_flux_limit
-                rxns_with_unbounded_flux = [
-                    r
-                    for r, flux in sol.fluxes.items()
-                    if abs(flux) > unbounded_flux_limit
-                ]
-                # Add the unique reactions with unbounded fluxes to the set
-                unique_rxns_with_unbounded_flux.update(rxns_with_unbounded_flux)
-            else:
-                # If it doesn't, set to No
-                pred_growth = "No"
+                minimal_media["EX_" + met_id + "_e0"] = 60 / n_carbons
+        # Set the media
+        model.medium = media.clean_media(model, minimal_media)
+        # Run pFBA on the model
+        sol = cobra.flux_analysis.pfba(model)
+        # Check if the model grows
+        if sol.fluxes[biomass_rxn_id] > 1e-3:
+            # If it does, set to Yes
+            pred_growth = "Yes"
+            # Get the number of reactions in the solution with a flux above the unbounded_flux_limit
+            rxns_with_unbounded_flux = [
+                r
+                for r, flux in sol.fluxes.items()
+                if abs(flux) > unbounded_flux_limit
+            ]
+            # Add the unique reactions with unbounded fluxes to the set
+            unique_rxns_with_unbounded_flux.update(rxns_with_unbounded_flux)
         else:
-            # If the exchange reaction is not present, we cannot test growth
+            # If it doesn't, set to No
             pred_growth = "No"
 
         if pred_growth == expected_growth:
