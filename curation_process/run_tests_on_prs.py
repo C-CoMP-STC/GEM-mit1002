@@ -249,7 +249,7 @@ def is_model_changed_in_pr(pr_number):
     # Get the list of files changed in the PR
     # Note: The diff has a maximum limit of 3000 files, but since most of the
     # PRs only change a few files, this should be sufficient. If there are more
-    # than 3000 files changed, we may need to use the GitHub API to get the
+    # than 300 files changed, we may need to use the GitHub API to get the
     # list of changed files instead.
     cmd = ["gh", "pr", "diff", str(pr_number), "--name-only"]
     output = subprocess.check_output(cmd, text=True)
