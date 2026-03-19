@@ -8,9 +8,6 @@ import cobra
 import pandas as pd
 from gem_utilities import media
 
-# Remote name
-REMOTE = "origin"
-
 # FILE PATHS
 FILE_PATH = os.path.dirname(os.path.abspath(__file__))
 REPO_PATH = os.path.dirname(FILE_PATH)
@@ -30,24 +27,38 @@ growth_phenotypes = pd.read_csv(
 def run_tests_on_prs(pr_start=89, pr_end=None):
     # Get a list of PRs merged into the dev branch (could change to main, by
     # providing target_branch="main")
-    all_prs = get_prs_by_target()
-    # Filter PRs to those that changed the model.xml file
-    model_prs = [pr for pr in all_prs if is_model_changed_in_pr(pr)]
+    # By only looking at dev we miss a few PRs that were merged into main,
+    # (89-117) but this is easier to automate and still captures the majority
+    # of changes to the model
+    all_pr_entries = get_prs_by_target()
+    # Hardcode PRs to skip because the diff is too large
+    # TODO: Instead of hardcoding, change is_model_changed_in_pr to use API
+    prs_to_skip = [327]  # Checked manually that the model file was not changed
     # Filter PRs for a specific range of interest
     # For the initial model construction to growing on everything use PRs 89 - 212
     # To highlight the acetate/leucine/isolecuine fixes use PRs 273-293
     # For initial to after fixing the TCA cycle fluxes use PRs 89-344
     # If no upper limit to the range is given, go to the latest version
     if pr_end is None:
-        pr_end = max(model_prs)
-    pull_requests = [pr for pr in model_prs if pr_start <= pr <= pr_end]
+        pr_end = max(all_pr_entries)
+    pr_entries_to_check = [
+        pr_entry
+        for pr_entry in all_pr_entries
+        if pr_start <= pr_entry["number"] <= pr_end
+        and pr_entry["number"] not in prs_to_skip
+    ]
+    # Filter PRs to those that changed the model.xml file
+    pull_requests = [
+        pr_entry
+        for pr_entry in pr_entries_to_check
+        if is_model_changed_in_pr(pr_entry["number"])
+    ]
 
     # Prepare results as a list of dicts
     results_list = []
 
     for pr in pull_requests:
-        branch_name = f"pr-{pr}"
-        print(f"\n--- Evaluating PR #{pr} ---")
+        print(f"\n--- Evaluating PR #{pr['number']} ---")
 
         try:
             # Use gh to get the content of model.xml for a specific PR
@@ -55,7 +66,7 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
                 [
                     "gh",
                     "api",
-                    f"repos/:owner/:repo/contents/model.xml?ref=pull/{pr}/head",
+                    f"repos/:owner/:repo/contents/model.xml?ref=pull/{pr['number']}/head",
                     "-H",
                     "Accept: application/vnd.github.v3.raw",
                 ],
@@ -68,7 +79,9 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
             # Append results to list
             results_list.append(
                 {
-                    "PR Number": pr,
+                    "PR Number": pr["number"],
+                    "Date Opened": pr["createdAt"],
+                    "Date Merged": pr["mergedAt"],
                     "Reactions": results.get("num_reactions"),
                     "Metabolites": results.get("num_metabolites"),
                     "Genes": results.get("num_genes"),
@@ -85,10 +98,12 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
             )
 
         except Exception as e:
-            print(f"Error with PR #{pr}: {e}")
+            print(f"Error with PR #{pr['number']}: {e}")
             results_list.append(
                 {
-                    "PR Number": pr,
+                    "PR Number": pr["number"],
+                    "Date Opened": pr["createdAt"],
+                    "Date Merged": pr["mergedAt"],
                     "Reactions": "ERROR",
                     "Metabolites": "ERROR",
                     "Genes": "ERROR",
@@ -223,14 +238,18 @@ def get_prs_by_target(target_branch="dev"):
         "--limit",
         "1000",
         "--json",
-        "number",
+        "number,createdAt,mergedAt",
     ]
     output = subprocess.check_output(cmd, text=True)
-    return [pr["number"] for pr in json.loads(output)]
+    return json.loads(output)
 
 
 def is_model_changed_in_pr(pr_number):
     # Get the list of files changed in the PR
+    # Note: The diff has a maximum limit of 3000 files, but since most of the
+    # PRs only change a few files, this should be sufficient. If there are more
+    # than 3000 files changed, we may need to use the GitHub API to get the
+    # list of changed files instead.
     cmd = ["gh", "pr", "diff", str(pr_number), "--name-only"]
     output = subprocess.check_output(cmd, text=True)
     changed_files = output.splitlines()
@@ -239,6 +258,6 @@ def is_model_changed_in_pr(pr_number):
 
 
 if __name__ == "__main__":
-    run_tests_on_prs()
+    run_tests_on_prs(pr_start=89)
     print("Test results saved to growth_match_summary.csv")
     print("You can plot the results using the provided plotting script.")
