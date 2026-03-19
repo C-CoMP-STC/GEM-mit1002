@@ -1,3 +1,4 @@
+import json
 import os
 import pickle
 import subprocess
@@ -21,37 +22,24 @@ with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as
 minimal_media = media_definitions["minimal"]
 
 
-def run_tests_on_prs():
+def run_tests_on_prs(pr_start=89, pr_end=None):
     # Save current branch
     original_branch = subprocess.check_output(
         ["git", "rev-parse", "--abbrev-ref", "HEAD"], text=True
     ).strip()
 
-    # List of PRs to evaluate
+    # Get a list of PRs merged into the dev branch (could change to main, by
+    # providing target_branch="main")
+    all_prs = get_prs_by_target()
+    # Filter PRs to those that changed the model.xml file
+    model_prs = [pr for pr in all_prs if is_model_changed_in_pr(pr)]
+    # Filter PRs for a specific range of interest
     # For the initial model construction to growing on everything use PRs 89 - 212
     # To highlight the acetate/leucine/isolecuine fixes use PRs 273-293
-    # For initial to after fixing the TCA cycle fluxes use PRs (89-344)
-    # but skip merges to the main branch (89, 91, 92, 93, 100, 107, 108, 109, 110, 112, 114, 115, 117, 203, 267, 273)
-    pull_requests = list(range(89, 344))
-    skip_prs = [
-        89,
-        91,
-        92,
-        93,
-        100,
-        107,
-        108,
-        109,
-        110,
-        112,
-        114,
-        115,
-        117,
-        203,
-        267,
-        273,
-    ]
-    pull_requests = [pr for pr in pull_requests if pr not in skip_prs]
+    # For initial to after fixing the TCA cycle fluxes use PRs 89-344
+    if pr_end is None:
+        pr_end = max(model_prs)
+    pull_requests = [pr for pr in model_prs if pr_start <= pr <= pr_end]
 
     # Prepare results as a list of dicts
     results_list = []
@@ -206,7 +194,9 @@ def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_bioma
                 pred_growth = "Yes"
                 # Get the number of reactions in the solution with a flux above the unbounded_flux_limit
                 rxns_with_unbounded_flux = [
-                    r for r, flux in sol.fluxes.items() if abs(flux) > unbounded_flux_limit
+                    r
+                    for r, flux in sol.fluxes.items()
+                    if abs(flux) > unbounded_flux_limit
                 ]
                 # Add the unique reactions with unbounded fluxes to the set
                 unique_rxns_with_unbounded_flux.update(rxns_with_unbounded_flux)
@@ -229,6 +219,28 @@ def run_test_growth(unbounded_flux_limit: int = 1000, biomass_rxn_id="bio1_bioma
         "total": total,
         "num_unbounded_rxns": len(unique_rxns_with_unbounded_flux),
     }
+
+
+def get_prs_by_target(target_branch="dev"):
+    # This requires the GitHub CLI 'gh' to be installed and authenticated
+    cmd = [
+        "gh", "pr", "list",
+        "--base", target_branch,
+        "--state", "merged",
+        "--limit", "1000",
+        "--json", "number"
+    ]
+    output = subprocess.check_output(cmd, text=True)
+    return [pr["number"] for pr in json.loads(output)]
+
+
+def is_model_changed_in_pr(pr_number):
+    # Get the list of files changed in the PR
+    cmd = ["gh", "pr", "diff", str(pr_number), "--name-only"]
+    output = subprocess.check_output(cmd, text=True)
+    changed_files = output.splitlines()
+    # Check if 'model.xml' is in the list of changed files
+    return "model.xml" in changed_files
 
 
 if __name__ == "__main__":
