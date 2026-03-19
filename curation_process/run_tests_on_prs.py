@@ -16,13 +16,13 @@ TESTFILE_DIR = os.path.join(REPO_PATH, "test", "test_files")
 # Load the media definitions
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
     media_definitions = pickle.load(f)
-minimal_media = media_definitions["minimal"]
 
 # Load the TSV of the growth phenotypes
 growth_phenotypes = pd.read_csv(
-    os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+    os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+    sep="\t",
+    converters={"met_id": lambda x: x.split(",")},
 )
-
 
 def run_tests_on_prs(pr_start=89, pr_end=None):
     # Get a list of PRs merged into the dev branch (could change to main, by
@@ -40,7 +40,7 @@ def run_tests_on_prs(pr_start=89, pr_end=None):
     # For initial to after fixing the TCA cycle fluxes use PRs 89-344
     # If no upper limit to the range is given, go to the latest version
     if pr_end is None:
-        pr_end = max(all_pr_entries)
+        pr_end = max(pr_entry["number"] for pr_entry in all_pr_entries)
     pr_entries_to_check = [
         pr_entry
         for pr_entry in all_pr_entries
