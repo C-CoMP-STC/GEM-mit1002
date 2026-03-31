@@ -18,6 +18,7 @@ import pandas as pd
 # The minimal media I initally used for simualtions/gap filling
 # Not necessarily based on anything used in the lab
 minimal_media = {
+    "EX_cpd00067_e0": 1000,  # H+_e0
     "EX_cpd00058_e0": 1000,  # Cu2+_e0
     "EX_cpd00007_e0": 20,  # O2_e0
     "EX_cpd00971_e0": 1000,  # Na+_e0
@@ -101,6 +102,7 @@ mbm_media = {
     # K (from K2HPO4) already included
     "EX_cpd00009_e0": 1000,  # Phosphate (HO4P) (in K2HPO4)
     "EX_cpd00001_e0": 1000,  # H2O (in H2O)
+    "EX_cpd00067_e0": 1000,  # H+_e0 (in H2O)
     # Vitamin Supplement
     # Water already included
     "EX_cpd00104_e0": 1000,  # Biotin (Vitamin H)
@@ -127,6 +129,7 @@ mbm_media = {
 l1_media = {
     "EX_cpd00007_e0": 20,  # O2_e0
     "EX_cpd00001_e0": 1000,  # H2O
+    "EX_cpd00067_e0": 1000,  # H+_e0
     # L1 salts
     "EX_cpd00971_e0": 1000,  # Na+_e0 (in NaNO3, NaH2PO4, NaSiO3, Na2EDTA, NaMoO4, Na3VO4)
     "EX_cpd00209_e0": 1000,  # NO3- (in NaNO3)
@@ -160,6 +163,7 @@ l1_media = {
 bashir_c_free = {
     "EX_cpd00007_e0": 20,  # O2_e0
     "EX_cpd00001_e0": 1000,  # H2O
+    "EX_cpd00067_e0": 1000,  # H+_e0
     ##################
     # Nitrogen Source
     ##################
@@ -222,6 +226,7 @@ marine_broth_wo_yeast_and_peptone = {
     # The actual definition
     "EX_cpd00007_e0": 20,  # O2_e0
     "EX_cpd00001_e0": 1000,  # H2O
+    "EX_cpd00067_e0": 1000,  # H+_e0
     ################
     # Salt Solution
     ################

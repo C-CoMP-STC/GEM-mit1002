@@ -10,9 +10,9 @@ from gem_utilities import biomass, media
 
 # Define paths relative to the script or project root
 # It's better practice to define a project root
-PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 TESTFILE_DIR = os.path.join(PROJECT_ROOT, "test", "test_files")
-RESULTS_DIR = os.path.join(PROJECT_ROOT, "simulations", "results")
+RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
 
 # Ensure the results directory exists
 os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -22,7 +22,7 @@ with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as
     media_definitions = pickle.load(f)
 
 # Load the model
-model = cobra.io.read_sbml_model("model.xml")
+model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
 
 # Load the TSV of the growth phenotypes
 growth_phenotypes = pd.read_csv(
@@ -50,7 +50,7 @@ for index, row in growth_phenotypes.iterrows():
             # If the metabolite has carbon in it, handle the bounds
             if "C" in met_obj.elements:
                 # Set the uptake rate to the equivalent of -10 for glucose
-                minimal_media["EX_" + met_id + "_e0"] = 60/met_obj.elements["C"]
+                minimal_media["EX_" + met_id + "_e0"] = 60 / met_obj.elements["C"]
             # If not (e.g. it's a nitrogen source), add an unlimited amount
             else:
                 minimal_media["EX_" + met_id + "_e0"] = 1000.0
