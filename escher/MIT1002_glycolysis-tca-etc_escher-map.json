@@ -1,7 +1,7 @@
 [
     {
         "homepage": "https://escher.github.io",
-        "map_description": "A. macleodii MIT1002 TCA cycle map\nLast Modified Tue Apr 21 2026 14:28:30 GMT-0400 (Eastern Daylight Time)",
+        "map_description": "A. macleodii MIT1002 TCA cycle map\nLast Modified Thu Apr 23 2026 15:24:28 GMT-0400 (Eastern Daylight Time)",
         "map_id": "0df3827fde8464e80f455a773a52c274",
         "map_name": "MIT1002_glycolysis-tca-etc_escher-map",
         "schema": "https://escher.github.io/escher/jsonschema/1-0-0#"
@@ -3148,6 +3148,71 @@
                 "node_type": "multimarker",
                 "x": 3205.272216796875,
                 "y": 1857.971923828125
+            },
+            "1577772": {
+                "bigg_id": "cpd00001_c0",
+                "label_x": 4317.09462890625,
+                "label_y": 4327.31494140625,
+                "name": "H2O",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4376.49462890625,
+                "y": 4287.31494140625
+            },
+            "1577773": {
+                "node_type": "multimarker",
+                "x": 4444.3125,
+                "y": 4208.63671875
+            },
+            "1577774": {
+                "node_type": "midmarker",
+                "x": 4464.3125,
+                "y": 4208.63671875
+            },
+            "1577775": {
+                "node_type": "multimarker",
+                "x": 4484.3125,
+                "y": 4208.63671875
+            },
+            "1577776": {
+                "bigg_id": "cpd00002_c0",
+                "label_x": 4227.2689453125,
+                "label_y": 4247.31494140625,
+                "name": "ATP",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 4286.6689453125,
+                "y": 4207.31494140625
+            },
+            "1577777": {
+                "bigg_id": "cpd00008_c0",
+                "label_x": 4599.7376953125,
+                "label_y": 4247.31494140625,
+                "name": "ADP",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 4659.1376953125,
+                "y": 4207.31494140625
+            },
+            "1577778": {
+                "bigg_id": "cpd00009_c0",
+                "label_x": 4527.09462890625,
+                "label_y": 4107.31494140625,
+                "name": "Phosphate",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4586.49462890625,
+                "y": 4127.31494140625
+            },
+            "1577779": {
+                "bigg_id": "cpd00067_c0",
+                "label_x": 4527.09462890625,
+                "label_y": 4327.31494140625,
+                "name": "H+",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4586.49462890625,
+                "y": 4287.31494140625
             }
         },
         "reactions": {
@@ -4687,8 +4752,8 @@
                 "bigg_id": "bio1_biomass",
                 "gene_reaction_rule": "",
                 "genes": [],
-                "label_x": 4376.838000760153,
-                "label_y": 3960.4170374283867,
+                "label_x": 4302.821399197653,
+                "label_y": 3963.0605921158867,
                 "metabolites": [
                     {
                         "bigg_id": "cpd00001_c0",
@@ -10896,6 +10961,111 @@
                         },
                         "from_node_id": "1577771",
                         "to_node_id": "1577622"
+                    }
+                }
+            },
+            "1577652": {
+                "bigg_id": "rxn00062_c0",
+                "gene_reaction_rule": "",
+                "genes": [],
+                "label_x": 4303.2880859375,
+                "label_y": 4160.70654296875,
+                "metabolites": [
+                    {
+                        "bigg_id": "cpd00001_c0",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "cpd00002_c0",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "cpd00008_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00009_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00067_c0",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "ATP hydrolysis",
+                "reversibility": false,
+                "segments": {
+                    "1157": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577773",
+                        "to_node_id": "1577774"
+                    },
+                    "1158": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577775",
+                        "to_node_id": "1577774"
+                    },
+                    "1159": {
+                        "b1": {
+                            "x": 4398.3125,
+                            "y": 4208.63671875
+                        },
+                        "b2": {
+                            "x": 4385.1318359375,
+                            "y": 4225.31494140625
+                        },
+                        "from_node_id": "1577773",
+                        "to_node_id": "1577772"
+                    },
+                    "1160": {
+                        "b1": {
+                            "x": 4402.3125,
+                            "y": 4208.63671875
+                        },
+                        "b2": {
+                            "x": 4345.4189453125,
+                            "y": 4207.31494140625
+                        },
+                        "from_node_id": "1577773",
+                        "to_node_id": "1577776"
+                    },
+                    "1161": {
+                        "b1": {
+                            "x": 4526.3125,
+                            "y": 4208.63671875
+                        },
+                        "b2": {
+                            "x": 4600.3876953125,
+                            "y": 4207.31494140625
+                        },
+                        "from_node_id": "1577775",
+                        "to_node_id": "1577777"
+                    },
+                    "1162": {
+                        "b1": {
+                            "x": 4530.3125,
+                            "y": 4208.63671875
+                        },
+                        "b2": {
+                            "x": 4552.74462890625,
+                            "y": 4189.31494140625
+                        },
+                        "from_node_id": "1577775",
+                        "to_node_id": "1577778"
+                    },
+                    "1163": {
+                        "b1": {
+                            "x": 4530.3125,
+                            "y": 4208.63671875
+                        },
+                        "b2": {
+                            "x": 4564.64013671875,
+                            "y": 4221.35009765625
+                        },
+                        "from_node_id": "1577775",
+                        "to_node_id": "1577779"
                     }
                 }
             }
