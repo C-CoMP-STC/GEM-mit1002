@@ -3253,7 +3253,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "(S)-malate hydro-lyase (fumarate-forming) [c0]",
                 "reversibility": true,
                 "segments": {
                     "314": {
@@ -3333,7 +3333,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "Isocitrate:NADP+ oxidoreductase (decarboxylating)",
                 "reversibility": true,
                 "segments": {
                     "318": {
@@ -3439,7 +3439,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "isocitrate glyoxylate-lyase (succinate-forming) [c0]",
                 "reversibility": false,
                 "segments": {
                     "357": {
@@ -3535,7 +3535,7 @@
                         "coefficient": 1
                     }
                 ],
-                "name": "",
+                "name": "Succinate:CoA ligase (ADP-forming) [c0]",
                 "reversibility": true,
                 "segments": {
                     "396": {
@@ -3669,7 +3669,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "2-Oxoglutarate dehydrogenase complex",
                 "reversibility": false,
                 "segments": {
                     "440": {
@@ -3799,7 +3799,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "acetyl-CoA:glyoxylate C-acetyltransferase (thioester-hydrolysing, carboxymethyl-forming) [c0]",
                 "reversibility": false,
                 "segments": {
                     "68": {
@@ -3933,7 +3933,7 @@
                         "coefficient": 1
                     }
                 ],
-                "name": "",
+                "name": "(S)-malate:NAD+ oxidoreductase [c0]",
                 "reversibility": true,
                 "segments": {
                     "127": {
@@ -4055,7 +4055,7 @@
                         "coefficient": 1
                     }
                 ],
-                "name": "",
+                "name": "citrate hydro-lyase (cis-aconitate-forming) [c0]",
                 "reversibility": true,
                 "segments": {
                     "507": {
@@ -4145,7 +4145,7 @@
                         "coefficient": 1
                     }
                 ],
-                "name": "",
+                "name": "Isocitrate:NADP+ oxidoreductase [c0]",
                 "reversibility": true,
                 "segments": {
                     "538": {
@@ -4243,7 +4243,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "oxalosuccinate carboxy-lyase (2-oxoglutarate-forming) [c0]",
                 "reversibility": false,
                 "segments": {
                     "545": {
@@ -4345,7 +4345,7 @@
                         "coefficient": 1
                     }
                 ],
-                "name": "",
+                "name": "R00621 [c0]",
                 "reversibility": false,
                 "segments": {
                     "551": {
@@ -4455,7 +4455,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "R03316 [c0]",
                 "reversibility": true,
                 "segments": {
                     "564": {
@@ -4553,7 +4553,7 @@
                         "coefficient": -1
                     }
                 ],
-                "name": "",
+                "name": "succinyl-CoA:enzyme N6-(dihydrolipoyl)lysine S-succinyltransferase [c0]",
                 "reversibility": true,
                 "segments": {
                     "570": {
