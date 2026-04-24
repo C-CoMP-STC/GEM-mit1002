@@ -587,6 +587,7 @@ media = {
     "mmb": mmb,
     "pro99": pro99,
     "lb": lb,
+    "swm": swm,
 }
 
 # Save a pickle file with the media definitions
