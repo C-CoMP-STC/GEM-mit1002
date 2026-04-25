@@ -389,7 +389,9 @@ swm = {
     # Already added Na as part of NaSO4
     # TODO: Should I add CO2?
     # 2.1 g FeSO4×7H2O (assuming this is iron(II))
+    # FIXME: It required Fe+3 to grow, so I am incluiding Fe+3 in addition to Fe+2, but I am not sure if this is correct
     "EX_cpd10515_e0": 1000,  # Fe+2
+    "EX_cpd10516_e0": 1000,  # Fe+3
     # Already added SO4 as part of NaSO4
     # 13.0 mL 25% HCl
     # Already added Cl as part of NH4Cl
