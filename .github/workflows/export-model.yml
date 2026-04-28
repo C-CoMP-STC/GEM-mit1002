@@ -39,7 +39,7 @@ jobs:
 
       # Export model file as json and excel file
       - name: Export Model
-        run: python export_model.py
+        run: python scripts/export_model.py
 
       # Auto-commit the changes directly without stashing
       - name: Auto-commit results
