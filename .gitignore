@@ -12,3 +12,5 @@ test/test_files/media/~$M_July22(Zac's Marine Broth Medium).docx
 env/*
 ~$*
 bigg_rxn_db.tsv
+BLAST/dbs/*
+simulations/CAFBA/results/json_fluxes/*

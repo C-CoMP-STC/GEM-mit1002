@@ -1,6 +1,7 @@
 compounds	minFlux	maxFlux	name	formula	concentration
 cpd00007	-20	1000	O2	O2	1
 cpd00001	-1000	1000	H2O	H2O	1
+cpd00067	-1000	1000	H+	H	1
 cpd00013	-1000	1000	NH3	H4N	1
 cpd00099	-1000	1000	Cl-	Cl	1
 cpd00009	-1000	1000	Phosphate	HO4P	1
