@@ -1,12 +1,17 @@
+#!/Users/helenscott/opt/miniconda3/envs/med4-hot1a3/bin/python
 import math
+import os
 
+import cometspy as c
 import matplotlib.pyplot as plt
 
-import comets as c
+os.environ["COMETS_HOME"] = "/Applications/COMETS"
+
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 # Load Prochlorococcus Genome-scale model
-model = c.model("iSO595v6.xml")
-model.initial_pop = [1, 1, 1e-7]
+model = c.model(os.path.join(SCRIPT_DIR, "iSO595v6.xml"))
+model.initial_pop = [0, 0, 1e-7]
 model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
 # The ratio of chlorophyll is extracted from the model biomass-function
@@ -88,11 +93,27 @@ sim_params.all_params["maxCycles"] = 480
 sim_params.all_params["timeStep"] = 0.1
 sim_params.all_params["defaultDiffConst"] = 0
 
-# Runs comets and produce the output files mediaLog.m and biomassLog.m
+# Run COMETS simulation
 simulation = c.comets(layout, sim_params)
-simulation.JAVA_CLASSPATH = "/home/djordje/Dropbox/COMETS_RUN/lib/jmatio.jar:/home/djordje/Dropbox/COMETS_RUN/lib/jdistlib-0.4.5-bin.jar:/home/djordje/Dropbox/COMETS_RUN/lib/commons-math3-3.6.1.jar:/home/djordje/Dropbox/COMETS_RUN/lib/commons-lang3-3.9.jar:/home/djordje/Dropbox/COMETS_RUN/lib/colt.jar:/home/djordje/Dropbox/COMETS_RUN/lib/concurrent.jar:/home/djordje/Dropbox/COMETS_RUN/bin/comets_2.8.2.jar:/opt/gurobi901/linux64/lib/gurobi.jar"
 simulation.run(delete_files=False)
 
 print(simulation.run_output)
 
 # Plot results
+fig, axes = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+
+time_hours = simulation.total_biomass["cycle"] * sim_params.all_params["timeStep"]
+axes[0].plot(time_hours, simulation.total_biomass.iloc[:, 1])
+axes[0].set_ylabel("Biomass (gDW)")
+axes[0].set_title("Prochlorococcus diel cycle simulation")
+
+photon_media = simulation.media[simulation.media["metabolite"] == "Photon[e]"]
+if not photon_media.empty:
+    photon_time = photon_media["cycle"] * sim_params.all_params["timeStep"]
+    axes[1].plot(photon_time, photon_media["conc_mmol"])
+    axes[1].set_ylabel("Photon concentration (mmol)")
+axes[1].set_xlabel("Time (hours)")
+
+plt.tight_layout()
+plt.savefig(os.path.join(SCRIPT_DIR, "diel_cycle_results.png"), dpi=150)
+plt.show()
