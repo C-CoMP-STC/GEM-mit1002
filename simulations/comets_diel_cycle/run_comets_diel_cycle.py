@@ -1,9 +1,11 @@
 #!/Users/helenscott/opt/miniconda3/envs/med4-hot1a3/bin/python
+import glob
 import math
 import os
 
 import cometspy as c
 import matplotlib.pyplot as plt
+import numpy as np
 
 os.environ["COMETS_HOME"] = "/Applications/COMETS"
 
@@ -92,28 +94,45 @@ sim_params = c.params()
 sim_params.all_params["maxCycles"] = 480
 sim_params.all_params["timeStep"] = 0.1
 sim_params.all_params["defaultDiffConst"] = 0
+sim_params.all_params["writeMediaLog"] = True
+sim_params.all_params["MediaLogRate"] = 1
 
 # Run COMETS simulation
 simulation = c.comets(layout, sim_params)
+simulation.parameters.set_param("TotalBiomassLogName", "totalbiomasslog")
+simulation.parameters.set_param("MediaLogName", "medialog")
 simulation.run(delete_files=False)
 
 print(simulation.run_output)
 
+# Remove COMETS temp files, keeping only the biomass/media logs and results
+for pattern in [".current_global_*", ".current_layout_*", ".current_script_*", ".current_package_*", "COBRAModel.cmd", "COMETS_manifest.txt"]:
+    for f in glob.glob(os.path.join(SCRIPT_DIR, pattern)):
+        os.remove(f)
+
 # Plot results
-fig, axes = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+# Identify media metabolites with meaningful concentration changes
+media = simulation.media.copy()
+media["time"] = media["cycle"] * sim_params.all_params["timeStep"]
+met_range = media.groupby("metabolite")["conc_mmol"].apply(lambda x: x.max() - x.min())
+active_mets = met_range[met_range > 1e-6].index.tolist()
+
+n_panels = 1 + len(active_mets)
+fig, axes = plt.subplots(n_panels, 1, figsize=(10, 3 * n_panels), sharex=True)
+if n_panels == 1:
+    axes = [axes]
 
 time_hours = simulation.total_biomass["cycle"] * sim_params.all_params["timeStep"]
 axes[0].plot(time_hours, simulation.total_biomass.iloc[:, 1])
 axes[0].set_ylabel("Biomass (gDW)")
 axes[0].set_title("Prochlorococcus diel cycle simulation")
 
-photon_media = simulation.media[simulation.media["metabolite"] == "Photon[e]"]
-if not photon_media.empty:
-    photon_time = photon_media["cycle"] * sim_params.all_params["timeStep"]
-    axes[1].plot(photon_time, photon_media["conc_mmol"])
-    axes[1].set_ylabel("Photon concentration (mmol)")
-axes[1].set_xlabel("Time (hours)")
+for ax, met in zip(axes[1:], active_mets):
+    met_data = media[media["metabolite"] == met]
+    ax.plot(met_data["time"], met_data["conc_mmol"])
+    ax.set_ylabel("mmol")
+    ax.set_title(met)
 
+axes[-1].set_xlabel("Time (hours)")
 plt.tight_layout()
 plt.savefig(os.path.join(SCRIPT_DIR, "diel_cycle_results.png"), dpi=150)
-plt.show()
