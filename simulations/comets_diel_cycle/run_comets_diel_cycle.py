@@ -103,10 +103,15 @@ simulation.parameters.set_param("TotalBiomassLogName", "totalbiomasslog")
 simulation.parameters.set_param("MediaLogName", "medialog")
 simulation.run(delete_files=False)
 
-print(simulation.run_output)
-
 # Remove COMETS temp files, keeping only the biomass/media logs and results
-for pattern in [".current_global_*", ".current_layout_*", ".current_script_*", ".current_package_*", "COBRAModel.cmd", "COMETS_manifest.txt"]:
+for pattern in [
+    ".current_global_*",
+    ".current_layout_*",
+    ".current_script_*",
+    ".current_package_*",
+    "COBRAModel.cmd",
+    "COMETS_manifest.txt",
+]:
     for f in glob.glob(os.path.join(SCRIPT_DIR, pattern)):
         os.remove(f)
 
