@@ -120,7 +120,7 @@ for pattern in [
 media = simulation.media.copy()
 media["time"] = media["cycle"] * sim_params.all_params["timeStep"]
 met_range = media.groupby("metabolite")["conc_mmol"].apply(lambda x: x.max() - x.min())
-active_mets = met_range[met_range > 1e-6].index.tolist()
+active_mets = met_range[met_range > 1e-10].index.tolist()
 
 n_panels = 1 + len(active_mets)
 fig, axes = plt.subplots(n_panels, 1, figsize=(10, 3 * n_panels), sharex=True)
