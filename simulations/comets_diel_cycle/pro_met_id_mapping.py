@@ -24,7 +24,6 @@ Notes
     S_Malate[e]        malate — not in Alt model
     Molybdenum[e]      molybdate — not in Alt model
     Selenate[e]        selenate — not in Alt model
-    Strontium_cation[e] strontium — not in Alt model
     Cadmium[e]         cadmium — not in Alt model
     Photon[e]          light (Pro-specific, not applicable to Alt)
 """
@@ -47,9 +46,11 @@ PRO_TO_MODELSEED: dict[str, str] = {
     "Cobalt_ion[e]": "cpd00149_e0",  # Co2+
     "Copper[e]": "cpd00058_e0",  # Cu2+
     "Zn2[e]": "cpd00034_e0",  # Zn2+
-    "Fe2[e]": "cpd10516_e0",  # Fe3+ (closest in Alt)
+    "Fe2[e]": "cpd10515_e0",  # Fe+2
+    "Strontium_cation[e]": "cpd09695_e0",  # Strontium (Not in Amac, but got the ID from ModelSEED)
     "Hydrogen_sulfide[e]": "cpd00239_e0",  # HS- / bisulfide
     "Thiosulfate[e]": "cpd00268_e0",  # S2O3
+    "Hydrogen_peroxide[e]": "cpd00025_e0",  # H2O2 (No extenal metabolite in Alt, but this is the ID for internal H2O2)
     # Carbon compounds
     "Acetate[e]": "cpd00029_e0",
     "D_Glucose[e]": "cpd00027_e0",
@@ -61,6 +62,7 @@ PRO_TO_MODELSEED: dict[str, str] = {
     "CO[e]": "cpd00204_e0",
     "Methanol[e]": "cpd00116_e0",
     "Citrate[e]": None,  # not in Alt
+    "Glycolaldehyde[e]": "cpd00229_e0",  # No extenal metabolite in Alt, but this is the ID for internal glycoladehyde, which is in the model)
     # Amino acids
     "Glycine[e]": "cpd00033_e0",
     "L_Alanine[e]": "cpd00035_e0",
