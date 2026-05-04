@@ -12,6 +12,7 @@ from pro_met_id_mapping import rename_pro_metabolites
 os.environ["COMETS_HOME"] = "/Applications/COMETS"
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 
 # Load Prochlorococcus Genome-scale model
 pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
@@ -19,6 +20,11 @@ rename_pro_metabolites(pro_cobra)
 model = c.model(pro_cobra)
 model.initial_pop = [0, 0, 1e-7]
 model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
+
+# Load the Alteromonas GEM and add it to the model as a second species
+amac_model = c.model(os.path.join(PROJECT_ROOT, "model.xml"))
+amac_model.initial_pop = [0, 0, 1e-7]
+amac_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
 # The ratio of chlorophyll is extracted from the model biomass-function
 ci_dvchla = 0.016  # gr/gDW (Partensky 1993 / Casey 2016)
