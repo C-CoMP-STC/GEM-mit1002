@@ -11,8 +11,8 @@ from pro_met_id_mapping import rename_pro_metabolites
 
 os.environ["COMETS_HOME"] = "/Applications/COMETS"
 
-SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
-PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+FILE_DIR = os.path.dirname(os.path.realpath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(FILE_DIR))
 
 # Load Prochlorococcus Genome-scale model
 pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
@@ -116,7 +116,13 @@ simulation.parameters.set_param("TotalBiomassLogName", "totalbiomasslog")
 simulation.parameters.set_param("MediaLogName", "medialog")
 simulation.run(delete_files=False)
 
-# Remove COMETS temp files, keeping only the biomass/media logs and results
+# Save the simulation results to a CSV file
+simulation.total_biomass.to_csv(
+    os.path.join(FILE_DIR, "total_biomass.csv"), index=False
+)
+simulation.media.to_csv(os.path.join(FILE_DIR, "media_log.csv"), index=False)
+
+# Remove COMETS temp files
 for pattern in [
     ".current_global_*",
     ".current_layout_*",
@@ -125,33 +131,8 @@ for pattern in [
     "COBRAModel.cmd",
     "iHS4156.cmd",
     "COMETS_manifest.txt",
+    "medialog",
+    "totalbiomasslog",
 ]:
-    for f in glob.glob(os.path.join(SCRIPT_DIR, pattern)):
+    for f in glob.glob(os.path.join(FILE_DIR, pattern)):
         os.remove(f)
-
-# Plot results
-# Identify media metabolites with meaningful concentration changes
-media = simulation.media.copy()
-media["time"] = media["cycle"] * sim_params.all_params["timeStep"]
-met_range = media.groupby("metabolite")["conc_mmol"].apply(lambda x: x.max() - x.min())
-active_mets = met_range[met_range > 1e-10].index.tolist()
-
-n_panels = 1 + len(active_mets)
-fig, axes = plt.subplots(n_panels, 1, figsize=(10, 3 * n_panels), sharex=True)
-if n_panels == 1:
-    axes = [axes]
-
-time_hours = simulation.total_biomass["cycle"] * sim_params.all_params["timeStep"]
-axes[0].plot(time_hours, simulation.total_biomass.iloc[:, 1])
-axes[0].set_ylabel("Biomass (gDW)")
-axes[0].set_title("Prochlorococcus diel cycle simulation")
-
-for ax, met in zip(axes[1:], active_mets):
-    met_data = media[media["metabolite"] == met]
-    ax.plot(met_data["time"], met_data["conc_mmol"])
-    ax.set_ylabel("mmol")
-    ax.set_title(f"{pro_cobra.metabolites.get_by_id(met).name} ({met})")
-
-axes[-1].set_xlabel("Time (hours)")
-plt.tight_layout()
-plt.savefig(os.path.join(SCRIPT_DIR, "diel_cycle_results.png"), dpi=150)
