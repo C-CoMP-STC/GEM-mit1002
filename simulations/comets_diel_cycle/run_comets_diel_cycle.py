@@ -19,15 +19,39 @@ RESULTS_DIR = os.path.join(FILE_DIR, "results")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # Load Prochlorococcus Genome-scale model
-pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
+pro_cobra = cobra.io.read_sbml_model(os.path.join(FILE_DIR, "iSO595v6.xml"))
 rename_pro_metabolites(pro_cobra)
 pro_model = c.model(pro_cobra)
 pro_model.id = "iSO595v6"
 pro_model.initial_pop = [0, 0, 1e-7]
 pro_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
-# Load the Alteromonas GEM and add it to the model as a second species
-amac_model = c.model(os.path.join(PROJECT_ROOT, "model.xml"))
+# Load the Alteromonas GEM and edit it to grow on glycoaldehyde
+amac_cobra = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
+# Make an external version of the glycoladehyde metabolite
+gcald_e0_met = cobra.Metabolite(
+    "cpd00229_e0",
+    compartment="e0",
+    name=amac_cobra.metabolites.cpd00229_c0.name,
+    formula=amac_cobra.metabolites.cpd00229_c0.formula,
+    charge=amac_cobra.metabolites.cpd00229_c0.charge,
+)
+# Add a transport reaction for glycoaldehyde
+gcald_trans = cobra.Reaction("Gcald_transport")
+gcald_trans.name = "Glycoaldehyde transport"
+gcald_trans.lower_bound = -1000  # Allow uptake
+gcald_trans.upper_bound = 1000  # Allow secretion
+gcald_trans.add_metabolites(
+    {
+        amac_cobra.metabolites.cpd00229_c0: -1,  # Glycoaldehyde in the cytosol
+        gcald_e0_met: 1,  # Glycoaldehyde in the extracellular space
+    }
+)
+amac_cobra.add_reactions([gcald_trans])
+# Add an exchange reaction for the external glycoaldehyde
+amac_cobra.add_boundary(amac_cobra.metabolites.cpd00229_e0, type="exchange")
+# Convert the edited Alteromonas model to a COMETS model
+amac_model = c.model(amac_cobra)
 amac_model.initial_pop = [0, 0, 1e-7]
 amac_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
@@ -69,6 +93,7 @@ layout.add_model(amac_model)
 
 # Define medium
 metabs = [
+    "cpd00007_e0",  # O2
     "cpd00013_e0",  # Ammonia
     "HCO3[e]",
     "cpd00011_e0",  # CO2
@@ -81,7 +106,9 @@ metabs = [
     "cpd00149_e0",  # Co2+
     "cpd00058_e0",  # Cu2+
     "cpd10515_e0",  # Fe+2
+    "cpd10516_e0",  # Fe+3
     "cpd00254_e0",  # Mg2+
+    "cpd00030_e0",  # Mn2+
     "Molybdenum[e]",
     "cpd00205_e0",  # K+
     "Selenate[e]",
