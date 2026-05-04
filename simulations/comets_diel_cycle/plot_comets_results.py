@@ -17,6 +17,8 @@ TIME_STEP = 0.1  # Make sure this matches the time step used in the COMETS simul
 # Load the simulation results
 biomass = pd.read_csv(os.path.join(RESULTS_DIR, "total_biomass.csv"))
 media = pd.read_csv(os.path.join(RESULTS_DIR, "media_log.csv"))
+pro_fluxes = pd.read_csv(os.path.join(RESULTS_DIR, "fluxlog_iSO595v6.csv"))
+amac_fluxes = pd.read_csv(os.path.join(RESULTS_DIR, "fluxlog_iHS4156.csv"))
 
 # Load the models (to get metabolite names)
 pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
@@ -70,5 +72,17 @@ plt.title("Biomass and Light over Diel Cycle")
 plt.tight_layout()
 plt.savefig(os.path.join(PLOTS_DIR, "diel_cycle_biomass_light.png"), dpi=150)
 
-# TODO: Plot the growth rate over time
-# I need to save the reaction fluxes to be able to do that
+# Plot the growth rate over time
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(
+    pro_fluxes["time"], pro_fluxes["BIOMASS"], label="Prochlorococcus", color="green"
+)
+ax.plot(
+    amac_fluxes["time"], amac_fluxes["bio1_biomass"], label="Alteromonas", color="blue"
+)
+ax.set_xlabel("Time (hours)")
+ax.set_ylabel("Growth rate (1/h)")
+ax.legend()
+plt.title("Growth Rate over Diel Cycle")
+plt.tight_layout()
+plt.savefig(os.path.join(PLOTS_DIR, "diel_cycle_growth_rate.png"), dpi=150)
