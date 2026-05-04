@@ -52,7 +52,7 @@ amac_cobra.add_reactions([gcald_trans])
 amac_cobra.add_boundary(amac_cobra.metabolites.cpd00229_e0, type="exchange")
 # Convert the edited Alteromonas model to a COMETS model
 amac_model = c.model(amac_cobra)
-amac_model.initial_pop = [0, 0, 1e-7]
+amac_model.initial_pop = [0, 0, 1e-10]
 amac_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
 # The ratio of chlorophyll is extracted from the model biomass-function
