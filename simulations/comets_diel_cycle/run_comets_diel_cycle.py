@@ -13,11 +13,16 @@ os.environ["COMETS_HOME"] = "/Applications/COMETS"
 
 FILE_DIR = os.path.dirname(os.path.realpath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(FILE_DIR))
+RESULTS_DIR = os.path.join(FILE_DIR, "results")
+
+# Make results directory if it doesn't exist
+os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # Load Prochlorococcus Genome-scale model
 pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
 rename_pro_metabolites(pro_cobra)
 pro_model = c.model(pro_cobra)
+pro_model.id = "iSO595v6"
 pro_model.initial_pop = [0, 0, 1e-7]
 pro_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
@@ -103,36 +108,23 @@ layout.set_global_periodic_media(
 
 # Set simulation parameters
 sim_params = c.params()
-
 sim_params.all_params["maxCycles"] = 480
 sim_params.all_params["timeStep"] = 0.1
 sim_params.all_params["defaultDiffConst"] = 0
 sim_params.all_params["writeMediaLog"] = True
 sim_params.all_params["MediaLogRate"] = 1
+sim_params.all_params["writeFluxLog"] = True
+sim_params.all_params["FluxLogRate"] = 1
 
 # Run COMETS simulation
 simulation = c.comets(layout, sim_params)
-simulation.parameters.set_param("TotalBiomassLogName", "totalbiomasslog")
-simulation.parameters.set_param("MediaLogName", "medialog")
-simulation.run(delete_files=False)
+simulation.run()
 
 # Save the simulation results to a CSV file
 simulation.total_biomass.to_csv(
-    os.path.join(FILE_DIR, "total_biomass.csv"), index=False
+    os.path.join(RESULTS_DIR, "total_biomass.csv"), index=False
 )
-simulation.media.to_csv(os.path.join(FILE_DIR, "media_log.csv"), index=False)
-
-# Remove COMETS temp files
-for pattern in [
-    ".current_global_*",
-    ".current_layout_*",
-    ".current_script_*",
-    ".current_package_*",
-    "COBRAModel.cmd",
-    "iHS4156.cmd",
-    "COMETS_manifest.txt",
-    "medialog",
-    "totalbiomasslog",
-]:
-    for f in glob.glob(os.path.join(FILE_DIR, pattern)):
-        os.remove(f)
+simulation.media.to_csv(os.path.join(RESULTS_DIR, "media_log.csv"), index=False)
+for model_id, flux_df in simulation.fluxes_by_species.items():
+    flux_df["time"] = flux_df["cycle"] * sim_params.all_params["timeStep"]
+    flux_df.to_csv(os.path.join(RESULTS_DIR, f"fluxlog_{model_id}.csv"), index=False)

@@ -6,12 +6,17 @@ import pandas as pd
 
 FILE_DIR = os.path.dirname(os.path.realpath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(FILE_DIR))
+RESULTS_DIR = os.path.join(FILE_DIR, "results")
+PLOTS_DIR = os.path.join(FILE_DIR, "plots")
+
+# Make plots directory if it doesn't exist
+os.makedirs(PLOTS_DIR, exist_ok=True)
 
 TIME_STEP = 0.1  # Make sure this matches the time step used in the COMETS simulation
 
 # Load the simulation results
-biomass = pd.read_csv(os.path.join(FILE_DIR, "total_biomass.csv"))
-media = pd.read_csv(os.path.join(FILE_DIR, "media_log.csv"))
+biomass = pd.read_csv(os.path.join(RESULTS_DIR, "total_biomass.csv"))
+media = pd.read_csv(os.path.join(RESULTS_DIR, "media_log.csv"))
 
 # Load the models (to get metabolite names)
 pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
@@ -41,11 +46,11 @@ for ax, met in zip(axes[0:], active_mets):
     ax.set_title(f"{met_names.get(met, met)} ({met})")
 axes[-1].set_xlabel("Time (hours)")
 plt.tight_layout()
-plt.savefig(os.path.join(FILE_DIR, "diel_cycle_individual_mets.png"), dpi=150)
+plt.savefig(os.path.join(PLOTS_DIR, "diel_cycle_individual_mets.png"), dpi=150)
 
 # Make a plot with biomass (for both models) and light on twin y-axes
 fig, ax1 = plt.subplots(figsize=(10, 6))
-ax1.plot(biomass["time"], biomass["COBRAModel"], label="Prochlorococcus", color="green")
+ax1.plot(biomass["time"], biomass["iSO595v6"], label="Prochlorococcus", color="green")
 ax1.plot(biomass["time"], biomass["iHS4156"], label="Alteromonas", color="blue")
 ax1.set_xlabel("Time (hours)")
 ax1.set_ylabel("Biomass (gDW)")
@@ -63,4 +68,7 @@ ax2.set_ylabel("Light intensity (umol photons m^-2 s^-1)")
 ax2.legend(loc="upper right")
 plt.title("Biomass and Light over Diel Cycle")
 plt.tight_layout()
-plt.savefig(os.path.join(FILE_DIR, "diel_cycle_biomass_light.png"), dpi=150)
+plt.savefig(os.path.join(PLOTS_DIR, "diel_cycle_biomass_light.png"), dpi=150)
+
+# TODO: Plot the growth rate over time
+# I need to save the reaction fluxes to be able to do that
