@@ -22,9 +22,9 @@ model.initial_pop = [0, 0, 1e-7]
 model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
 # Load the Alteromonas GEM and add it to the model as a second species
-amac_model = c.model(os.path.join(PROJECT_ROOT, "model.xml"))
-amac_model.initial_pop = [0, 0, 1e-7]
-amac_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
+# amac_model = c.model(os.path.join(PROJECT_ROOT, "model.xml"))
+# amac_model.initial_pop = [0, 0, 1e-7]
+# amac_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
 # The ratio of chlorophyll is extracted from the model biomass-function
 ci_dvchla = 0.016  # gr/gDW (Partensky 1993 / Casey 2016)
@@ -72,13 +72,13 @@ metabs = [
     "cpd00099_e0",  # Cl-
     "cpd00149_e0",  # Co2+
     "cpd00058_e0",  # Cu2+
-    "cpd10516_e0",  # Missmatch between Fe3+ (Alt) and Fe2 (Pro)
+    "cpd10515_e0",  # Fe+2
     "cpd00254_e0",  # Mg2+
     "Molybdenum[e]",
     "cpd00205_e0",  # K+
     "Selenate[e]",
     "cpd00971_e0",  # Na+
-    "Strontium_cation[e]",
+    "cpd09695_e0",  # Strontium
     "cpd00048_e0",  # Sulfate
     "cpd00034_e0",  # Zn2+
     "cpd00239_e0",  # HS- / bisulfide
