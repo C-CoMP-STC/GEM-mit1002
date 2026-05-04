@@ -3,6 +3,7 @@ import os
 import cobra
 import matplotlib.pyplot as plt
 import pandas as pd
+from pro_met_id_mapping import rename_pro_metabolites
 
 FILE_DIR = os.path.dirname(os.path.realpath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(FILE_DIR))
@@ -21,7 +22,8 @@ pro_fluxes = pd.read_csv(os.path.join(RESULTS_DIR, "fluxlog_iSO595v6.csv"))
 amac_fluxes = pd.read_csv(os.path.join(RESULTS_DIR, "fluxlog_iHS4156.csv"))
 
 # Load the models (to get metabolite names)
-pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
+pro_cobra = cobra.io.read_sbml_model(os.path.join(FILE_DIR, "iSO595v6.xml"))
+rename_pro_metabolites(pro_cobra)
 amac_cobra = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
 
 # Get a lookup dinctionary of metabolite IDs and names across both models
@@ -35,6 +37,14 @@ media["time"] = media["cycle"] * TIME_STEP
 # Identify media metabolites with meaningful concentration changes
 met_range = media.groupby("metabolite")["conc_mmol"].apply(lambda x: x.max() - x.min())
 active_mets = met_range[met_range > 1e-10].index.tolist()
+
+# Sort the active metabolites by their peak concentration (highest first)
+# So that the plot shows the most important mets at the top
+active_mets = sorted(
+    active_mets,
+    key=lambda x: media[media["metabolite"] == x]["conc_mmol"].max(),
+    reverse=True,
+)
 
 # Make one plot with a subplot for each active metabolite's concentration over time
 n_panels = len(active_mets)
