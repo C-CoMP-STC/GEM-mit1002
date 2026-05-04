@@ -3,16 +3,20 @@ import glob
 import math
 import os
 
+import cobra
 import cometspy as c
 import matplotlib.pyplot as plt
 import numpy as np
+from pro_met_id_mapping import rename_pro_metabolites
 
 os.environ["COMETS_HOME"] = "/Applications/COMETS"
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 # Load Prochlorococcus Genome-scale model
-model = c.model(os.path.join(SCRIPT_DIR, "iSO595v6.xml"))
+pro_cobra = cobra.io.read_sbml_model("iSO595v6.xml")
+rename_pro_metabolites(pro_cobra)
+model = c.model(pro_cobra)
 model.initial_pop = [0, 0, 1e-7]
 model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
@@ -51,27 +55,27 @@ layout = c.layout(model)
 
 # Define medium
 metabs = [
-    "Ammonia[e]",
+    "cpd00013_e0",  # Ammonia
     "HCO3[e]",
-    "CO2[e]",
-    "H[e]",
-    "Orthophosphate[e]",
-    "H2O[e]",
+    "cpd00011_e0",  # CO2
+    "cpd00067_e0",  # H+
+    "cpd00009_e0",  # Phosphate
+    "cpd00001_e0",  # H2O
     "Cadmium[e]",
-    "Calcium_cation[e]",
-    "Chloride_ion[e]",
-    "Cobalt_ion[e]",
-    "Copper[e]",
-    "Fe2[e]",
-    "Magnesium_cation[e]",
+    "cpd00063_e0",  # Ca2+
+    "cpd00099_e0",  # Cl-
+    "cpd00149_e0",  # Co2+
+    "cpd00058_e0",  # Cu2+
+    "cpd10516_e0",  # Missmatch between Fe3+ (Alt) and Fe2 (Pro)
+    "cpd00254_e0",  # Mg2+
     "Molybdenum[e]",
-    "K[e]",
+    "cpd00205_e0",  # K+
     "Selenate[e]",
-    "Sodium_cation[e]",
+    "cpd00971_e0",  # Na+
     "Strontium_cation[e]",
-    "Sulfate[e]",
-    "Zn2[e]",
-    "Hydrogen_sulfide[e]",
+    "cpd00048_e0",  # Sulfate
+    "cpd00034_e0",  # Zn2+
+    "cpd00239_e0",  # HS- / bisulfide
 ]
 
 for i in metabs:
@@ -136,7 +140,7 @@ for ax, met in zip(axes[1:], active_mets):
     met_data = media[media["metabolite"] == met]
     ax.plot(met_data["time"], met_data["conc_mmol"])
     ax.set_ylabel("mmol")
-    ax.set_title(met)
+    ax.set_title(f"{pro_cobra.metabolites.get_by_id(met).name} ({met})")
 
 axes[-1].set_xlabel("Time (hours)")
 plt.tight_layout()
