@@ -1,4 +1,5 @@
 .vscode
+.claude
 .venv
 */__pycache__
 *.fa
