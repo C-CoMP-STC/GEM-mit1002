@@ -20,11 +20,23 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # Load Prochlorococcus Genome-scale model
 pro_cobra = cobra.io.read_sbml_model(os.path.join(FILE_DIR, "iSO595v6.xml"))
+# The Pro model uses different IDs from the Amac model, so we this function
+# renames the external metabolties to match
 rename_pro_metabolites(pro_cobra)
+# Add glycogen secretion as a secondary objective term
+glycogen_ex = pro_cobra.reactions.get_by_id("GlycogenEX")
+biomass_ex = pro_cobra.reactions.get_by_id("BiomassEX")
+pro_cobra.objective = {biomass_ex: 1.0, glycogen_ex: 0.1}
+# Convert to a COBRA model
 pro_model = c.model(pro_cobra)
+# Set a model ID, otherwise it is called "COBRAmodel" in the results
 pro_model.id = "iSO595v6"
+# Set an initial population
 pro_model.initial_pop = [0, 0, 1e-7]
+# Set to use pFBA
 pro_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
+# To use FBA use:
+# pro_model.obj_style = "MAX_OBJECTIVE_FLUX"
 
 # Load the Alteromonas GEM and edit it to grow on glycoaldehyde
 amac_cobra = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
@@ -62,7 +74,7 @@ HCO3MAX = 18.43
 # Remove the bounds from glycogen exchange- will be set dynamically by COMETS
 pro_model.change_bounds("GlycogenEX", -1000, 1000)
 # Force uptake of HCO3-
-pro_model.change_bounds("HCO3EXcar", -HCO3MAX, -HCO3MAX)
+pro_model.change_bounds("HCO3EXcar", -HCO3MAX, 0)
 # Force CO2 flux
 # I believe this is a proxy for setting a maintenance flux
 # But the maintenance reaction ("Maintenance") already has a lower bound of 1?
