@@ -55,6 +55,37 @@ amac_model = c.model(amac_cobra)
 amac_model.initial_pop = [0, 0, 1e-10]
 amac_model.obj_style = "MAX_OBJECTIVE_MIN_TOTAL"
 
+# Set reaction bounds for "Push-FBA"
+# From https://github.com/segrelab/Prochlorococcus_Model/blob/master/COMETS_files/diurnal_cycle/diurnal_cycle.m
+CO2MAX = 0.818  # From environmental sampling
+HCO3MAX = 18.43
+# Remove the bounds from glycogen exchange- will be set dynamically by COMETS
+pro_model.change_bounds("GlycogenEX", -1000, 1000)
+# Force uptake of HCO3-
+pro_model.change_bounds("HCO3EXcar", -HCO3MAX, 0)
+# Force CO2 flux
+# FIXME: Ask Daniel why I am doing this? Seems to be in the opposite direction.
+pro_model.change_bounds("CO2EX", 0, CO2MAX)
+
+# Define kinetic parameters
+# From https://github.com/segrelab/Prochlorococcus_Model/blob/master/COMETS_files/diurnal_cycle/diurnal_cycle.m
+ammonium_Km = 0.39
+ammonium_Vmax = 0.9
+glycVmax = 0.5
+glycKm = 1e-4
+pro_model.change_vmax("AmmoniaEX", ammonium_Vmax)  # mmol/gDW/h
+pro_model.change_km(
+    "AmmoniaEX", ammonium_Km * 1e-3
+)  # Converting from mM to mmol/cm^3 is used in
+pro_model.change_vmax("HCO3EXcar", HCO3MAX)  # Default value
+pro_model.change_km("HCO3EXcar", 0.082 * 1e-3)  # From Hopkinson et al., 2014
+pro_model.change_vmax("FAKEOrthophosphateEX", 0.7575)  # From Krumhardt et al., 2013
+pro_model.change_km(
+    "FAKEOrthophosphateEX", 0.00053 * 1e-3
+)  # From Krumhardt et al., 2013
+pro_model.change_km("GlycogenEX", glycKm * 1e-3)
+pro_model.change_vmax("GlycogenEX", glycVmax)
+
 # The ratio of chlorophyll is extracted from the model biomass-function
 ci_dvchla = 0.016  # gr/gDW (Partensky 1993 / Casey 2016)
 ci_dvchlb = 0.0013  # gr/gDW (Partensky 1993 / Casey 2016)
