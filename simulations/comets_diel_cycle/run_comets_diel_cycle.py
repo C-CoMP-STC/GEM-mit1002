@@ -62,9 +62,11 @@ HCO3MAX = 18.43
 # Remove the bounds from glycogen exchange- will be set dynamically by COMETS
 pro_model.change_bounds("GlycogenEX", -1000, 1000)
 # Force uptake of HCO3-
-pro_model.change_bounds("HCO3EXcar", -HCO3MAX, 0)
+pro_model.change_bounds("HCO3EXcar", -HCO3MAX, -HCO3MAX)
 # Force CO2 flux
-# FIXME: Ask Daniel why I am doing this? Seems to be in the opposite direction.
+# I believe this is a proxy for setting a maintenance flux
+# But the maintenance reaction ("Maintenance") already has a lower bound of 1?
+# TODO: Ask Daniel/Ilija to double check
 pro_model.change_bounds("CO2EX", 0, CO2MAX)
 
 # Define kinetic parameters
@@ -114,6 +116,10 @@ absorption_biomass = packaging_effect * (
     ci_dvchla * 1e3 * absorption_dvchla_680 + ci_dvchlb * 1e3 * absorption_dvchlb_680
 )
 
+# Add light sets the maximum available light using Beer-Lambert
+# Arguments: reaction, abs_coefficient, and abs_base
+# Not technically a "pushed" flux, since the upper bound is calculated based
+# on the biomass and light, and the lower bound is still 0
 pro_model.add_light("LightEX", absorption_biomass, absorption_water_680)
 
 # Make an empty layout
