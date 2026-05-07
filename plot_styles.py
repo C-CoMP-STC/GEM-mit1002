@@ -1,11 +1,12 @@
 import matplotlib.pyplot as plt
 
 # Define the colors from the C-CoMP pallette
-LIGHT_BLUE = "#3CB3C0"
-DARK_BLUE = "#024064"
-ORANGE = "#FF6C2C"
-# Define light orange, used on ISME poster
-LIGHT_ORANGE = "#FFBB62"
+ccomp_colors = {
+    "light_blue": "#3CB3C0",
+    "dark_blue": "#024064",
+    "orange": "#FF6C2C",
+    "light_orange": "#FFBB62"  # Not technically a C-CoMP color, but I used it on my ISME poster
+}
 
 
 # Define the style for the plots (gray axes, no top or right axis lines)
