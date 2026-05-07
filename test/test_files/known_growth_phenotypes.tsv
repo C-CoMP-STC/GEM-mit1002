@@ -51,3 +51,5 @@ marine_broth_wo_yeast_and_peptone_no_n	Urea+Pyruvate	cpd00073,cpd00020		No
 marine_broth_wo_yeast_and_peptone_no_n	Ammonium+Succinate	cpd00013,cpd00036		No	
 marine_broth_wo_yeast_and_peptone_no_n	Nitrate+Succinate	cpd00209,cpd00036		No	
 marine_broth_wo_yeast_and_peptone_no_n	Urea+Succinate	cpd00073,cpd00036		No	
+swm	Phenol	cpd00127		Yes	From Koch 2020
+swm	alpha-Mannan	cpd11685		Yes	From Koch 2020

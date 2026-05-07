@@ -365,6 +365,61 @@ promm_no_c.pop("EX_cpd00029_e0")  # Acetate
 promm_no_c.pop("EX_cpd00100_e0")  # Glycerol
 promm_no_c.pop("EX_cpd00159_e0")  # L-Lactate
 
+# Seawater minimal medium (SWM)- for Koch 2020 phenotypes
+swm = {
+    "EX_cpd00007_e0": 20,  # O2_e0
+    "EX_cpd00067_e0": 1000,  # H+_e0
+    "EX_cpd00001_e0": 1000,  # H2Omp (membrane purified)
+    # 4.0 g NaSO4
+    "EX_cpd00971_e0": 1000,  # Na+_e0
+    "EX_cpd00048_e0": 1000,  # Sulfate (SO4)
+    # 0.2 g KH2PO4
+    "EX_cpd00205_e0": 1000,  # K+
+    "EX_cpd00009_e0": 1000,  # Phosphate
+    # 0.25 g NH4Cl
+    "EX_cpd00013_e0": 1000,  # Ammonia
+    "EX_cpd00099_e0": 1000,  # Cl-_e0
+    # 20.0 g NaCl
+    # Already added Na as part of NaSO4
+    # Already added Cl as part of NH4Cl
+    # 3.0 g MgCl2×6H2O
+    "EX_cpd00254_e0": 1000,  # Mg_e0
+    # Already added Cl as part of NH4Cl
+    # 0.5 g KCl
+    # Already added K+ as part of KH2PO4
+    # Already added Cl as part of NH4Cl
+    # 0.15 g CaCl2×2H2O
+    "EX_cpd00063_e0": 1000,  # Ca2+_e0
+    # Already added Cl as part of NH4Cl
+    # 0.19 g NaHCO3
+    # Already added Na as part of NaSO4
+    # TODO: Should I add CO2?
+    # 2.1 g FeSO4×7H2O (assuming this is iron(II))
+    # FIXME: It required Fe+3 to grow, so I am incluiding Fe+3 in addition to Fe+2, but I am not sure if this is correct
+    "EX_cpd10515_e0": 1000,  # Fe+2
+    "EX_cpd10516_e0": 1000,  # Fe+3
+    # Already added SO4 as part of NaSO4
+    # 13.0 mL 25% HCl
+    # Already added Cl as part of NH4Cl
+    # 5.2 g Titriplex-(III) (Na2-EDTA)
+    # Already added Na as part of NaSO4
+    "EX_cpd00240_e0": 1000,  # EDTA (in FeEDTA)
+    # 30.0 mg H3BO3
+    # TODO: Should I add anything?
+    # 100.0 mg MnCl2×4H2O
+    "EX_cpd00030_e0": 1000,  # Mn2+_e0
+    # 190.0 mg CoCl2×6H2O
+    "EX_cpd00149_e0": 1000,  # Co2+_e0
+    # 24.0 mg NiCl2×6H2O
+    "EX_cpd00244_e0": 100,  # Ni2+
+    # 2.0 mg CuCl2×2H2O
+    "EX_cpd00058_e0": 1000,  # Cu2+_e0
+    # 144.0 mg ZnSO4×7H2O
+    "EX_cpd00034_e0": 100,  # Zn2+
+    # 36.0 mg Na2MoO4×2H2O
+    "EX_cpd11574_e0": 100,  # Molybdate
+}
+
 # HMB
 # Media definition from Osnat's KBase narrative
 # TODO: Check the media composition, by comparing to the media protocol
@@ -541,6 +596,7 @@ media = {
     "mmb": mmb,
     "pro99": pro99,
     "lb": lb,
+    "swm": swm,
 }
 
 # Save a pickle file with the media definitions
