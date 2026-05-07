@@ -2,7 +2,7 @@ minimal_media	c_source	met_id	bigg_id	growth	notes	all_ex_rxn_present	pred_growt
 mbm	Glucose 	['cpd00027']	glc__D	Yes		Yes	Yes
 l1	Glucose 	['cpd00027']	glc__D	Yes		Yes	Yes
 mbm	Acetate	['cpd00029']	ac	Yes		Yes	Yes
-l1	Acetate	['cpd00029']	ac	Yes		Yes	No
+l1	Acetate	['cpd00029']	ac	Yes		Yes	Yes
 mbm	Glycolate	['cpd00139']	glyclt	No		No	No
 mbm	Homarine	['cpd00737']		Unsure	Not sure about metabolite ID. Called gynesine in ModelSEED.	No	No
 mbm	3-hydroxybutyrate	['cpd00797']		Yes		Yes	Yes
@@ -51,3 +51,5 @@ marine_broth_wo_yeast_and_peptone	Urea+Pyruvate	['cpd00073', 'cpd00020']		No		No
 marine_broth_wo_yeast_and_peptone	Ammonium+Succinate	['cpd00013', 'cpd00036']		No		Yes	Yes
 marine_broth_wo_yeast_and_peptone	Nitrate+Succinate	['cpd00209', 'cpd00036']		No		Yes	Yes
 marine_broth_wo_yeast_and_peptone	Urea+Succinate	['cpd00073', 'cpd00036']		No		No	No
+swm	Phenol	['cpd00127']		Yes	From Koch 2020	Yes	Yes
+swm	alpha-Mannan	['cpd11685']		Yes	From Koch 2020	No	No
