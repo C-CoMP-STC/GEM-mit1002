@@ -142,7 +142,7 @@ for key, fba_result in cobra_results.items():
 results = pd.DataFrame(results_list)
 
 # Save the results
-results.to_csv(os.path.join(OUT_DIR, "results.csv"), index=False)
+results.to_csv(os.path.join(OUT_DIR, "glc_ace_mixes_cue.csv"), index=False)
 
 # ============================================================================
 # Generate plots
@@ -151,7 +151,7 @@ results.to_csv(os.path.join(OUT_DIR, "results.csv"), index=False)
 data = results.set_index("sim_name")[["biomass", "organic_c", "co2"]]
 g = carbon_fates_bar(data)
 plt.tight_layout()
-plt.savefig(os.path.join(OUT_DIR, "carbon_fates.png"))
+plt.savefig(os.path.join(OUT_DIR, "glc_ace_mixes_carbon_fates.png"))
 
 # Stacked bar plot of the normalized carbon fates for the different conditions
 data_norm = results.set_index("sim_name")[
@@ -161,7 +161,7 @@ data_norm = results.set_index("sim_name")[
 data_norm.columns = ["biomass", "organic_c", "co2"]
 g_norm = carbon_fates_bar(data_norm)
 plt.tight_layout()
-plt.savefig(os.path.join(OUT_DIR, "carbon_fates_norm.png"))
+plt.savefig(os.path.join(OUT_DIR, "glc_ace_mixes_carbon_fates_norm.png"))
 
 # Subset the results to only include the pFBA on realistic O2
 clean_data = data_norm[data_norm.index.str.contains("real_o2_pfba")]
@@ -171,4 +171,4 @@ g_clean.set_xticklabels(
     ["Glucose", "Acetate", "Heavy Glucose Mix", "Heavy Acetate Mix"]
 )
 plt.tight_layout()
-plt.savefig(os.path.join(OUT_DIR, "carbon_fates_norm_clean.png"))
+plt.savefig(os.path.join(OUT_DIR, "glc_ace_mixes_carbon_fates_norm_real_o2_only.png"))
