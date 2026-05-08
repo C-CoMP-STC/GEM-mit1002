@@ -34,6 +34,16 @@ growth_phenotypes = pd.read_csv(
 # Loop through the growth phenotpes, and add the carbon source to the
 # minimal media, run pFBA and save the fluxes
 for index, row in growth_phenotypes.iterrows():
+    # Create a safe filename for the media
+    media_name = row["minimal_media"] + "_" + row["c_source"]
+    file_name = os.path.join(RESULTS_DIR, f"{media_name}_pfba_fluxes.json")
+    # If the file already exists, delete it
+    if os.path.exists(file_name):
+        os.remove(file_name)
+    # For debugging, print the media being processed
+    print(
+        f"Processing media: {row['minimal_media']} with carbon source: {row['c_source']}"
+    )
     # If the model cannot grow on the media, skip it
     if row["growth"] == "No":
         continue
@@ -56,10 +66,12 @@ for index, row in growth_phenotypes.iterrows():
                 minimal_media["EX_" + met_id + "_e0"] = 1000.0
     # Set the media
     model.medium = media.clean_media(model, minimal_media)
-    # Run pFBA
-    pfba_solution = cobra.flux_analysis.pfba(model)
-    # Create a safe filename for the media
-    media_name = row["minimal_media"] + "_" + row["c_source"]
+    # Try to run pFBA
+    try:
+        pfba_solution = cobra.flux_analysis.pfba(model)
+    except Exception as e:
+        print(f"Error running pFBA for media {row['minimal_media']} with carbon source {row['c_source']}: {e}")
+        continue
     # Save the fluxes to a json file for use with Escher
-    with open(os.path.join(RESULTS_DIR, f"{media_name}_pfba_fluxes.json"), "w") as f:
+    with open(file_name, "w") as f:
         json.dump(pfba_solution.fluxes.to_dict(), f)

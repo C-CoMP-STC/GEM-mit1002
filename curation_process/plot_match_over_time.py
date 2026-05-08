@@ -1,45 +1,71 @@
 import os
+import sys
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 import pandas as pd
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
+
+# Add the project root to the system path to import my plot_styles file
+sys.path.append(PROJECT_ROOT)
+# Import the plot style from the plot_styles.py file
+from plot_styles import ccomp_colors
 
 # Load the data
 data = pd.read_csv(os.path.join(FILE_DIR, "growth_match_summary.csv"))
 
-# Removing this for when showing the Acetate/Leucine/Isoleucine problem since
-# a lot of Devlin's recent changes are for GPRs
-# # Loop through the rows, if the row does not have a different number of
-# # reactions, metabolites, or genes (i.e. if the model has not changed),
-# # remove it
-# data = data[
-#     (data["Reactions"] != data["Reactions"].shift(1))
-#     | (data["Metabolites"] != data["Metabolites"].shift(1))
-#     | (data["Genes"] != data["Genes"].shift(1))
-# ]
-
 # Skip rows that say "Error" in the % Match column
 data = data[data["% Match"] != "ERROR"]
 
-# Convert the % Match and the PR number columns to numeric
-data["% Match"] = pd.to_numeric(data["% Match"])
-data["PR Number"] = pd.to_numeric(data["PR Number"])
+# Convert columns to numeric type
+# TODO: Do I need any other columns numerical? Are there any that can't be?
+cols_to_fix = ["Matches", "% Match", "PR Number", "Unbounded Flux Reactions"]
+data[cols_to_fix] = data[cols_to_fix].apply(pd.to_numeric, errors='coerce')
 
-# Plot the percentage of matches
-plt.figure(figsize=(10, 6))
-plt.plot(
-    data["PR Number"],
-    data["% Match"],
+# Sort the data by PR number and reset the index
+data = data.sort_values("PR Number").reset_index(drop=True)
+
+# Create a figure with twin y axes
+fig, ax1 = plt.subplots(figsize=(10, 6))
+ax2 = ax1.twinx()
+# Scale the unbounded flux axis to show detail near zero
+ax2.set_yscale('symlog', linthresh=1)
+
+# Plot the number of matches on the left axis
+ax1.plot(
+    data.index,
+    data["Matches"],
     marker="o",
     linestyle="-",
-    color="blue",
+    color=ccomp_colors["dark_blue"],
 )
-plt.title("Percentage of Matches Over Time")
+
+# Plot the number of arbitrarily large reactions on the right axis
+ax2.plot(
+    data.index,
+    data["Unbounded Flux Reactions"],
+    marker="o",
+    linestyle="-",
+    color=ccomp_colors["orange"],
+)
+
+# Make it so it looks like the matches line is "on top"
+# Move ax1 to a higher z-order than ax2
+ax1.set_zorder(ax2.get_zorder() + 1)
+# Make ax1's background transparent so ax2 is still visible behind it
+ax1.patch.set_visible(False)
+
+# Titles
+plt.title("Model Performace Over Time")
 plt.xlabel("Pull Request Number")
-# Make sure x ticks are integers
-plt.xticks(data["PR Number"].unique())
-plt.ylabel("Percentage Match (%)")
+# Show x-ticks for every point, but label them with the actual PR number not the index in the df
+plt.xticks(data.index, data["PR Number"], rotation=90)
+# Set y axes labels
+ax1.set_ylabel("Number of Growth Phenotypes Matching Experimental Data")
+ax1.set_ylim(0, 50)  # See the full range
+ax2.set_ylabel("Number of Unique Reactions with Flux > 100 (Log Scale)")
 
 # Save the plot
 plt.savefig(
