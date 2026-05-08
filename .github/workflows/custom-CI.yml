@@ -62,6 +62,7 @@ jobs:
           python scripts/generate_growth_report.py
           python scripts/generate_pathway_report.py
           python scripts/generate_biomass_table.py
+          python scripts/check_cue_values.py
           memote report snapshot --filename "scripts/results/memote_report.html" model.xml
 
       - name: Mention PR# in README.md

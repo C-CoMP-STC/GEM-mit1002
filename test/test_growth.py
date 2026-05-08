@@ -101,14 +101,14 @@ class TestGrowthPhenotypes(unittest.TestCase):
                 "\nPredicted growth phenotypes do not match experimental data for the following conditions:"
             ]
             # Add a header for the output table
-            header = f"{'Carbon Source':<25} | {'Experimental':<12} | {'Predicted':<12} | {'Ex Rxn Present':<10}"
+            header = f"{'Media':<35} | {'Carbon Source':<25} | {'Experimental':<12} | {'Predicted':<12} | {'Ex Rxn Present':<10}"
             error_message.append(header)
             error_message.append("-" * len(header))
 
             # Add a row for each mismatch
             for index, row in mismatches.iterrows():
                 # Note: Assuming you have a 'c_source' column as in your original file
-                line = f"{row['c_source']:<25} | {row['growth']:<12} | {row['pred_growth']:<12} | {row['all_ex_rxn_present']:<10}"
+                line = f"{row['minimal_media']:<35} | {row['c_source']:<25} | {row['growth']:<12} | {row['pred_growth']:<12} | {row['all_ex_rxn_present']:<10}"
                 error_message.append(line)
 
             # Combine the list into a single string and fail the test
