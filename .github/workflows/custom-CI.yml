@@ -64,6 +64,7 @@ jobs:
           python scripts/generate_biomass_table.py
           python scripts/check_cue_values.py
           memote report snapshot --filename "scripts/results/memote_report.html" model.xml
+          memote run --report markdown --filename memote-report.md
 
       - name: Mention PR# in README.md
         env:
