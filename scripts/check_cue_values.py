@@ -121,6 +121,9 @@ for key, fba_result in cobra_results.items():
     # Calculate GGE from the c fates (not using my function)
     gge = 1 - (co2 + organic_c) / uptake
 
+    # Calculat BGE from the c fates (not using my function)
+    bge = biomass + (biomass + co2)
+
     results_list.append(
         {
             "sim_name": key,
@@ -135,6 +138,7 @@ for key, fba_result in cobra_results.items():
             "biomass_norm": round(abs(biomass_norm), 3),
             "cue": round(cue, 3),
             "gge": round(gge, 3),
+            "bge": round(bge, 3),
         }
     )
 
