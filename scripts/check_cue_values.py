@@ -4,287 +4,86 @@ import sys
 import warnings
 
 import cobra
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 from gem2cue import utils
+from gem_utilities import media
 
 # Import the plot styles (has global variables for colors)
-sys.path.append(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-)
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from plot_styles import *
 
 # Set the output directory
-OUT_DIR = os.path.dirname(os.path.realpath(__file__))
-
-# Set a folder for the plots
-output_folder = os.path.join(OUT_DIR, "plots")
+FILE_DIR = os.path.dirname(os.path.realpath(__file__))
+# Set a folder for the results
+OUT_DIR = os.path.join(FILE_DIR, "results")
 # Check if the folder exists, if not, create it
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
+if not os.path.exists(OUT_DIR):
+    os.makedirs(OUT_DIR)
 
 # ============================================================================
-# SECTION 1: Load model and define media conditions
+# Load model and define media conditions
 # ============================================================================
 
 # Load in the ALT model using COBRApy
 alt_cobra = cobra.io.read_sbml_model("model.xml")
 
-# Make a medium with just glucose
-# TODO: Use an uptake rate based on the NMR data
-glc_medium_inf_o2 = {
-    "EX_cpd00027_e0": 10,  # D-Glucose_e0
-    "EX_cpd00007_e0": 1000,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
+# Base minimal media (no carbon source, no O2 — added per condition below)
+BASE_MEDIUM = {
+    "EX_cpd00067_e0": 1000,  # H+  This has a really big effect on the exudation
+    "EX_cpd00058_e0": 1000,  # Cu2+
+    "EX_cpd00971_e0": 1000,  # Na+
+    "EX_cpd00063_e0": 1000,  # Ca2+
+    "EX_cpd00048_e0": 1000,  # Sulfate
+    "EX_cpd10516_e0": 1000,  # Fe3+
+    "EX_cpd00254_e0": 1000,  # Mg
+    "EX_cpd00009_e0": 1000,  # Phosphate
+    "EX_cpd00205_e0": 1000,  # K+
+    "EX_cpd00013_e0": 1000,  # NH3
+    "EX_cpd00099_e0": 1000,  # Cl-
+    "EX_cpd00030_e0": 1000,  # Mn2+
+    "EX_cpd00001_e0": 1000,  # H2O
+    "EX_cpd00635_e0": 1000,  # Cbl
+    "EX_cpd00034_e0": 1000,  # Zn2+
+    "EX_cpd00149_e0": 1000,  # Co2+
 }
 
-# Make a medium with just acetate
-# TODO: Use an uptake rate based on the NMR data
-ace_medium_inf_o2 = {
-    "EX_cpd00029_e0": 30,  # Acetate_e0
-    "EX_cpd00007_e0": 1000,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
+# Carbon source conditions
+# TODO: Use uptake rates based on NMR data
+# FIXME: Mix conditions need equivalent carbon amounts
+CARBON_SOURCES = {
+    "glc": {"EX_cpd00027_e0": 10},  # D-Glucose only
+    "ace": {"EX_cpd00029_e0": 30},  # Acetate only
+    "glc_heavy_mix": {
+        "EX_cpd00027_e0": 6.667,  # 2/3 glucose,
+        "EX_cpd00029_e0": 10,
+    },  # 1/3 acetate
+    "ace_heavy_mix": {
+        "EX_cpd00027_e0": 3.333,  # 1/3 glucose,
+        "EX_cpd00029_e0": 20,
+    },  # 2/3 acetate
 }
 
-# Make a medium with 2/3 glucose and 1/3 acetate
-# FIXME: Need the equivalent amount of carbon available in the medium
-glc_heavy_mix_medium_inf_o2 = {
-    "EX_cpd00027_e0": 6.667,  # D-Glucose_e0
-    "EX_cpd00029_e0": 10,  # Acetate_e0
-    "EX_cpd00007_e0": 1000,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
+# Oxygen conditions
+O2_CONDITIONS = {
+    "inf_o2": {"EX_cpd00007_e0": 1000},  # Unconstrained O2
+    "real_o2": {"EX_cpd00007_e0": 20},  # Realistic O2 uptake
 }
 
-# Make a medium with 1/3 glucose and 2/3 acetate
-# FIXME: Need the equivalent amount of carbon available in the medium
-ace_heavy_mix_medium_inf_o2 = {
-    "EX_cpd00027_e0": 3.333,  # D-Glucose_e0
-    "EX_cpd00029_e0": 20,  # Acetate_e0
-    "EX_cpd00007_e0": 1000,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
-}
-
-# Make a medium with just glucose
-# TODO: Use an uptake rate based on the NMR data
-glc_medium_real_o2 = {
-    "EX_cpd00027_e0": 10,  # D-Glucose_e0
-    "EX_cpd00007_e0": 20,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
-}
-
-# Make a medium with just acetate
-# TODO: Use an uptake rate based on the NMR data
-ace_medium_real_o2 = {
-    "EX_cpd00029_e0": 30,  # Acetate_e0
-    "EX_cpd00007_e0": 20,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
-}
-
-# Make a medium with 2/3 glucose and 1/3 acetate
-# FIXME: Need the equivalent amount of carbon available in the medium
-glc_heavy_mix_medium_real_o2 = {
-    "EX_cpd00027_e0": 6.667,  # D-Glucose_e0
-    "EX_cpd00029_e0": 10,  # Acetate_e0
-    "EX_cpd00007_e0": 20,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
-}
-
-# Make a medium with 1/3 glucose and 2/3 acetate
-# FIXME: Need the equivalent amount of carbon available in the medium
-ace_heavy_mix_medium_real_o2 = {
-    "EX_cpd00027_e0": 3.333,  # D-Glucose_e0
-    "EX_cpd00029_e0": 20,  # Acetate_e0
-    "EX_cpd00007_e0": 20,  # O2_e0
-    # Remaining minimal media components
-    "EX_cpd00067_e0": 1000,  # H+_e0
-    "EX_cpd00058_e0": 1000,  # Cu2+_e0
-    "EX_cpd00971_e0": 1000,  # Na+_e0
-    "EX_cpd00063_e0": 1000,  # Ca2+_e0
-    "EX_cpd00048_e0": 1000,  # Sulfate_e0
-    "EX_cpd10516_e0": 1000,  # fe3_e0
-    "EX_cpd00254_e0": 1000,  # Mg_e0
-    "EX_cpd00009_e0": 1000,  # Phosphate_e0
-    "EX_cpd00205_e0": 1000,  # K+_e0
-    "EX_cpd00013_e0": 1000,  # NH3_e0
-    "EX_cpd00099_e0": 1000,  # Cl-_e0
-    "EX_cpd00030_e0": 1000,  # Mn2+_e0
-    "EX_cpd00001_e0": 1000,  # H2O_e0
-    "EX_cpd00635_e0": 1000,  # Cbl_e0
-    "EX_cpd00034_e0": 1000,  # Zn2+_e0
-    "EX_cpd00149_e0": 1000,  # Co2+_e0
-}
-
-# Helper function for setting the media regardless if the exchange reaction is
-# present in the model
-# TODO: Move this to a helper file
-def clean_media(model, media):
-    """clean_media
-    Removes exchange reactions from the media that are not present in the model
-
-    Parameters
-    ----------
-    model : cobra.Model
-        The model to set the media for.
-    media : dict
-        A dictionary where the keys are the exchange reactions for the metabolites
-        in the media, and the values are the lower bound for the exchange reaction.
-
-    Returns
-    -------
-    dict
-        A dictionary where the keys are the exchange reactions for the metabolites
-        in the media, and the values are the lower bound for the exchange reaction
-    """
-    # Make an empty dictionary for the media
-    clean_medium = {}
-    # Loop through the media and set the exchange reactions that are present
-    for ex_rxn, lb in media.items():
-        if ex_rxn in [r.id for r in model.reactions]:
-            clean_medium[ex_rxn] = lb
-        else:
-            warnings.warn(
-                "Model does not have the exchange reaction "
-                + ex_rxn
-                + ", so it was not set in the media."
-            )
-
-    # Return the clean medium
-    return clean_medium
-
-
-# Make a dictionary of the media with names
-media = {
-    "glc_medium_inf_o2": glc_medium_inf_o2,
-    "ace_medium_inf_o2": ace_medium_inf_o2,
-    "glc_heavy_mix_medium_inf_o2": glc_heavy_mix_medium_inf_o2,
-    "ace_heavy_mix_medium_inf_o2": ace_heavy_mix_medium_inf_o2,
-    "glc_medium_real_o2": glc_medium_real_o2,
-    "ace_medium_real_o2": ace_medium_real_o2,
-    "glc_heavy_mix_medium_real_o2": glc_heavy_mix_medium_real_o2,
-    "ace_heavy_mix_medium_real_o2": ace_heavy_mix_medium_real_o2,
+# Build all media combinations by crossing carbon sources with O2 conditions
+media_dict = {
+    f"{c_name}_medium_{o2_name}": {**BASE_MEDIUM, **c_fluxes, **o2_fluxes}
+    for c_name, c_fluxes in CARBON_SOURCES.items()
+    for o2_name, o2_fluxes in O2_CONDITIONS.items()
 }
 
 # ============================================================================
-# SECTION 2: Run FBA and pFBA simulations
+# Run FBA and pFBA simulations
 # ============================================================================
-
-print("Running FBA and pFBA simulations...")
 cobra_results = {}
-for name, medium in media.items():
+for name, medium in media_dict.items():
     # Run FBA
-    alt_cobra.medium = clean_media(alt_cobra, medium)
+    alt_cobra.medium = media.clean_media(alt_cobra, medium)
     fba_result = alt_cobra.optimize()
     cobra_results[name + "_fba"] = fba_result
     # Run pFBA
@@ -292,11 +91,8 @@ for name, medium in media.items():
     cobra_results[name + "_pfba"] = pfba_result
 
 # ============================================================================
-# SECTION 3: Calculate CUE and other metrics
+# Calculate CUE and other metrics
 # ============================================================================
-
-print("Calculating CUE and related metrics...")
-
 # Load the model and get the exchange reactions
 c_ex_rxns = utils.get_c_ex_rxns(alt_cobra)
 
@@ -304,13 +100,17 @@ c_ex_rxns = utils.get_c_ex_rxns(alt_cobra)
 results_list = []
 for key, fba_result in cobra_results.items():
     # Extract the carbon fates for the solution (both normalized and not normalized)
-    c_fates = utils.extract_c_fates_from_solution(fba_result, c_ex_rxns, co2_ex_rxn='EX_cpd00011_e0', norm=False)
+    c_fates = utils.extract_c_fates_from_solution(
+        fba_result, c_ex_rxns, co2_ex_rxn="EX_cpd00011_e0", norm=False
+    )
     uptake = c_fates[0]
     co2 = c_fates[1]
     organic_c = c_fates[2]
     biomass = c_fates[3]
 
-    c_fates_norm = utils.extract_c_fates_from_solution(fba_result, c_ex_rxns, co2_ex_rxn='EX_cpd00011_e0', norm=True)
+    c_fates_norm = utils.extract_c_fates_from_solution(
+        fba_result, c_ex_rxns, co2_ex_rxn="EX_cpd00011_e0", norm=True
+    )
     co2_norm = c_fates_norm[0]
     organic_c_norm = c_fates_norm[1]
     biomass_norm = c_fates_norm[2]
@@ -343,14 +143,10 @@ results = pd.DataFrame(results_list)
 
 # Save the results
 results.to_csv(os.path.join(OUT_DIR, "results.csv"), index=False)
-print(f"Results saved to {os.path.join(OUT_DIR, 'results.csv')}")
 
 # ============================================================================
-# SECTION 4: Generate plots
+# Generate plots
 # ============================================================================
-
-print("Generating plots...")
-
 # Stacked bar plot of the carbon fates for the different conditions
 data = results.set_index("sim_name")[["biomass", "organic_c", "co2"]]
 g = carbon_fates_bar(data)
@@ -359,13 +155,14 @@ plt.savefig(os.path.join(output_folder, "carbon_fates.png"))
 print(f"Saved plot: {os.path.join(output_folder, 'carbon_fates.png')}")
 
 # Stacked bar plot of the normalized carbon fates for the different conditions
-data_norm = results.set_index("sim_name")[["biomass_norm", "organic_c_norm", "co2_norm"]]
+data_norm = results.set_index("sim_name")[
+    ["biomass_norm", "organic_c_norm", "co2_norm"]
+]
 # Rename the columns to match the function
 data_norm.columns = ["biomass", "organic_c", "co2"]
 g_norm = carbon_fates_bar(data_norm)
 plt.tight_layout()
 plt.savefig(os.path.join(output_folder, "carbon_fates_norm.png"))
-print(f"Saved plot: {os.path.join(output_folder, 'carbon_fates_norm.png')}")
 
 # Subset the results to only include the pFBA on realistic O2
 clean_data = data_norm[data_norm.index.str.contains("real_o2_pfba")]
@@ -376,6 +173,3 @@ g_clean.set_xticklabels(
 )
 plt.tight_layout()
 plt.savefig(os.path.join(output_folder, "carbon_fates_norm_clean.png"))
-print(f"Saved plot: {os.path.join(output_folder, 'carbon_fates_norm_clean.png')}")
-
-print("\nAnalysis complete!")
