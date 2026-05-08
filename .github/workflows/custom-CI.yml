@@ -65,7 +65,7 @@ jobs:
           python scripts/generate_biomass_table.py
           python scripts/check_cue_values.py
           memote report snapshot --filename "scripts/results/memote-report.html" model.xml
-          pandoc scripts/results/memote-report.html -f html -t markdown -o scripts/results/memote-report.md
+          sed 's/<link rel="icon"[^>]*>//g' scripts/results/memote-report.html | pandoc -f html -t markdown -o scripts/results/memote-report.md
 
       - name: Mention PR# in README.md
         env:
