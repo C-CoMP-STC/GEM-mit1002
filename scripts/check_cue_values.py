@@ -125,14 +125,14 @@ for key, fba_result in cobra_results.items():
         {
             "sim_name": key,
             "oxygen_flux": fba_result.fluxes["EX_cpd00007_e0"],
-            "uptake": uptake,
+            "uptake": round(abs(uptake, 3)),
             "uptake_norm": 1,  # This is always 1 because the uptake is the reference
-            "co2": co2,
-            "co2_norm": co2_norm,
-            "organic_c": organic_c,
-            "organic_c_norm": organic_c_norm,
-            "biomass": biomass,
-            "biomass_norm": biomass_norm,
+            "co2": round(abs(co2, 3)),
+            "co2_norm": round(abs(co2_norm, 3)),
+            "organic_c": round(abs(organic_c, 3)),
+            "organic_c_norm": round(abs(organic_c_norm, 3)),
+            "biomass": round(abs(biomass, 3)),
+            "biomass_norm": round(abs(biomass_norm, 3)),
             "cue": cue,
             "gge": gge,
         }
