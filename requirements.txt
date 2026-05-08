@@ -1,5 +1,5 @@
 importlib-resources==5.13.0
-numpy==1.23.5
+numpy==1.24.4
 memote
 cobra
 pytest
