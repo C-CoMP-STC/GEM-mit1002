@@ -61,6 +61,8 @@ jobs:
         run: |
           python scripts/generate_growth_report.py
           python scripts/generate_pathway_report.py
+          python scripts/generate_biomass_table.py
+          python scripts/check_cue_values.py
 
       - name: Mention PR# in README.md
         env:

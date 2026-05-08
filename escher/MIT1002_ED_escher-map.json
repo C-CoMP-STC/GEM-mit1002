@@ -1,1 +1,586 @@
-[{"map_name":"new_map","map_id":"HPYesc4pAzAX","map_description":"","homepage":"https://escher.github.io","schema":"https://escher.github.io/escher/jsonschema/1-0-0#"},{"reactions":{"1577550":{"name":"D-glucose-6-phosphate:NADP+ 1-oxidoreductase [c0]","bigg_id":"rxn00604_c0","reversibility":false,"label_x":3015.41181640625,"label_y":1478.440673828125,"gene_reaction_rule":"WP_049587589.1","genes":[{"name":"zwf","annotation":{"refseq":"WP_049587589.1","sbo":"SBO:0000243"},"bigg_id":"WP_049587589.1"}],"metabolites":[{"bigg_id":"cpd00005_c0","coefficient":1},{"bigg_id":"cpd00006_c0","coefficient":-1},{"bigg_id":"cpd00067_c0","coefficient":1},{"bigg_id":"cpd00079_c0","coefficient":-1},{"bigg_id":"cpd00911_c0","coefficient":1}],"segments":{"517":{"from_node_id":"1577108","to_node_id":"1577109","b1":null,"b2":null},"518":{"from_node_id":"1577110","to_node_id":"1577109","b1":null,"b2":null},"519":{"from_node_id":"1577110","to_node_id":"1577111","b1":{"x":2991.594677734375,"y":1533.379638671875},"b2":{"x":2955.7639586401974,"y":1548.7439137025162}},"520":{"from_node_id":"1577108","to_node_id":"1577107","b1":{"x":2991.594677734375,"y":1409.379638671875},"b2":{"x":2956.5096362601384,"y":1367.586877722403}},"521":{"from_node_id":"1577110","to_node_id":"1577112","b1":{"x":2991.594677734375,"y":1537.379638671875},"b2":{"x":3012.7919921875,"y":1542.629638671875}},"522":{"from_node_id":"1577108","to_node_id":"1577113","b1":{"x":2991.594677734375,"y":1405.379638671875},"b2":{"x":2991.594677734375,"y":1284.0372314453125}},"523":{"from_node_id":"1577110","to_node_id":"1577114","b1":{"x":2991.594677734375,"y":1537.379638671875},"b2":{"x":2991.594677734375,"y":1641.087890625}}}},"1577551":{"name":"6-Phospho-D-glucono-1,5-lactone lactonohydrolase [c0]","bigg_id":"rxn01476_c0","reversibility":false,"label_x":3006.594677734375,"label_y":1859.837890625,"gene_reaction_rule":"WP_014979596.1 or WP_014979596.1","genes":[{"name":"pgl","annotation":{"refseq":"WP_014979596.1","sbo":"SBO:0000243"},"bigg_id":"WP_014979596.1"}],"metabolites":[{"bigg_id":"cpd00001_c0","coefficient":-1},{"bigg_id":"cpd00067_c0","coefficient":1},{"bigg_id":"cpd00284_c0","coefficient":1},{"bigg_id":"cpd00911_c0","coefficient":-1}],"segments":{"524":{"from_node_id":"1577115","to_node_id":"1577116","b1":null,"b2":null},"525":{"from_node_id":"1577117","to_node_id":"1577116","b1":null,"b2":null},"526":{"from_node_id":"1577115","to_node_id":"1577118","b1":{"x":2991.594677734375,"y":1783.837890625},"b2":{"x":2973.594677734375,"y":1778.587890625}},"527":{"from_node_id":"1577117","to_node_id":"1577119","b1":{"x":2991.594677734375,"y":1915.837890625},"b2":{"x":2973.594677734375,"y":1921.087890625}},"528":{"from_node_id":"1577117","to_node_id":"1577120","b1":{"x":2991.594677734375,"y":1911.837890625},"b2":{"x":2991.594677734375,"y":1966.087890625}},"529":{"from_node_id":"1577115","to_node_id":"1577114","b1":{"x":2991.594677734375,"y":1787.837890625},"b2":{"x":2991.594677734375,"y":1733.587890625}}}},"1577554":{"name":"6-Phospho-D-gluconate hydro-lyase(2-dehydro-3-deoxy-6-phospho-D-gluconate-forming) [c0]","bigg_id":"rxn01477_c0","reversibility":false,"label_x":3006.594677734375,"label_y":2209.837890625,"gene_reaction_rule":"WP_014998717.1","genes":[{"name":"edd","annotation":{"refseq":"WP_014998717.1","sbo":"SBO:0000243"},"bigg_id":"WP_014998717.1"}],"metabolites":[{"bigg_id":"cpd00001_c0","coefficient":1},{"bigg_id":"cpd00284_c0","coefficient":-1},{"bigg_id":"cpd02711_c0","coefficient":1}],"segments":{"542":{"from_node_id":"1577133","to_node_id":"1577134","b1":null,"b2":null},"543":{"from_node_id":"1577135","to_node_id":"1577134","b1":null,"b2":null},"544":{"from_node_id":"1577135","to_node_id":"1577136","b1":{"x":2991.594677734375,"y":2265.837890625},"b2":{"x":2973.594677734375,"y":2271.087890625}},"545":{"from_node_id":"1577133","to_node_id":"1577120","b1":{"x":2991.594677734375,"y":2137.837890625},"b2":{"x":2991.594677734375,"y":2083.587890625}},"546":{"from_node_id":"1577135","to_node_id":"1577137","b1":{"x":2991.594677734375,"y":2261.837890625},"b2":{"x":2991.594677734375,"y":2316.087890625}}}},"1577555":{"name":"2-dehydro-3-deoxy-D-gluconate-6-phosphate D-glyceraldehyde-3-phosphate-lyase [c0]","bigg_id":"rxn03884_c0","reversibility":false,"label_x":3006.594677734375,"label_y":2559.837890625,"gene_reaction_rule":"WP_014949849.1 and WP_014979614.1","genes":[{"name":"algpul_eda","annotation":{"refseq":"WP_014949849.1","sbo":"SBO:0000243"},"bigg_id":"WP_014949849.1"},{"name":"eda","annotation":{"refseq":"WP_014979614.1","sbo":"SBO:0000243"},"bigg_id":"WP_014979614.1"}],"metabolites":[{"bigg_id":"cpd00020_c0","coefficient":1},{"bigg_id":"cpd00102_c0","coefficient":1},{"bigg_id":"cpd02711_c0","coefficient":-1}],"segments":{"547":{"from_node_id":"1577138","to_node_id":"1577139","b1":null,"b2":null},"548":{"from_node_id":"1577140","to_node_id":"1577139","b1":null,"b2":null},"549":{"from_node_id":"1577140","to_node_id":"1577141","b1":{"x":2991.594677734375,"y":2611.837890625},"b2":{"x":3046.206092909567,"y":2648.9972616424384}},"550":{"from_node_id":"1577140","to_node_id":"1577142","b1":{"x":2991.594677734375,"y":2615.837890625},"b2":{"x":2947.14326171875,"y":2648.0054931640625}},"551":{"from_node_id":"1577138","to_node_id":"1577137","b1":{"x":2991.594677734375,"y":2487.837890625},"b2":{"x":2991.594677734375,"y":2433.587890625}}}}},"nodes":{"1577107":{"node_type":"metabolite","x":2897.803466796875,"y":1369.8558349609375,"bigg_id":"cpd00006_c0","name":"NADP","label_x":2740.582275390625,"label_y":1378.6729736328125,"node_is_primary":false},"1577108":{"node_type":"multimarker","x":2991.594677734375,"y":1451.379638671875},"1577109":{"node_type":"midmarker","x":2991.594677734375,"y":1471.379638671875},"1577110":{"node_type":"multimarker","x":2991.594677734375,"y":1491.379638671875},"1577111":{"node_type":"metabolite","x":2902.21142578125,"y":1572.903564453125,"bigg_id":"cpd00005_c0","name":"NADPH","label_x":2739.112060546875,"label_y":1574.3729248046875,"node_is_primary":false},"1577112":{"node_type":"metabolite","x":3074.7919921875,"y":1576.379638671875,"bigg_id":"cpd00067_c0","name":"H+","label_x":3089.7919921875,"label_y":1576.379638671875,"node_is_primary":false},"1577113":{"node_type":"metabolite","x":2991.594677734375,"y":1250.2872314453125,"bigg_id":"cpd00079_c0","name":"D-glucose-6-phosphate","label_x":3024.852001953125,"label_y":1252.3660888671875,"node_is_primary":true},"1577114":{"node_type":"metabolite","x":2991.594677734375,"y":1674.837890625,"bigg_id":"cpd00911_c0","name":"6-phospho-D-glucono-1-5-lactone","label_x":2804.423291015625,"label_y":1685.7340087890625,"node_is_primary":true},"1577115":{"node_type":"multimarker","x":2991.594677734375,"y":1829.837890625},"1577116":{"node_type":"midmarker","x":2991.594677734375,"y":1849.837890625},"1577117":{"node_type":"multimarker","x":2991.594677734375,"y":1869.837890625},"1577118":{"node_type":"metabolite","x":2911.594677734375,"y":1744.837890625,"bigg_id":"cpd00001_c0","name":"H2O","label_x":2812.594677734375,"label_y":1774.837890625,"node_is_primary":false},"1577119":{"node_type":"metabolite","x":2911.594677734375,"y":1954.837890625,"bigg_id":"cpd00067_c0","name":"H+","label_x":2812.594677734375,"label_y":1984.837890625,"node_is_primary":false},"1577120":{"node_type":"metabolite","x":2991.594677734375,"y":2024.837890625,"bigg_id":"cpd00284_c0","name":"6-Phospho-D-gluconate","label_x":3016.594677734375,"label_y":2024.837890625,"node_is_primary":true},"1577133":{"node_type":"multimarker","x":2991.594677734375,"y":2179.837890625},"1577134":{"node_type":"midmarker","x":2991.594677734375,"y":2199.837890625},"1577135":{"node_type":"multimarker","x":2991.594677734375,"y":2219.837890625},"1577136":{"node_type":"metabolite","x":2911.594677734375,"y":2304.837890625,"bigg_id":"cpd00001_c0","name":"H2O","label_x":2812.594677734375,"label_y":2334.837890625,"node_is_primary":false},"1577137":{"node_type":"metabolite","x":2991.594677734375,"y":2374.837890625,"bigg_id":"cpd02711_c0","name":"2-Keto-3-deoxy-6-phosphogluconate","label_x":3016.594677734375,"label_y":2374.837890625,"node_is_primary":true},"1577138":{"node_type":"multimarker","x":2991.594677734375,"y":2529.837890625},"1577139":{"node_type":"midmarker","x":2991.594677734375,"y":2549.837890625},"1577140":{"node_type":"multimarker","x":2991.594677734375,"y":2569.837890625},"1577141":{"node_type":"metabolite","x":3095.931103515625,"y":2680.2860107421875,"bigg_id":"cpd00020_c0","name":"Pyruvate","label_x":3126.809033203125,"label_y":2694.9813232421875,"node_is_primary":true},"1577142":{"node_type":"metabolite","x":2885.14326171875,"y":2681.7554931640625,"bigg_id":"cpd00102_c0","name":"Glyceraldehyde3-phosphate","label_x":2786.14326171875,"label_y":2711.7554931640625,"node_is_primary":true}},"text_labels":{},"canvas":{"x":2501.2812168121336,"y":997.092236328125,"width":1093.1899257659916,"height":2070.1966308593746}}]
+[
+    {
+        "homepage": "https://escher.github.io",
+        "map_description": "",
+        "map_id": "HPYesc4pAzAX",
+        "map_name": "MIT1002_",
+        "schema": "https://escher.github.io/escher/jsonschema/1-0-0#"
+    },
+    {
+        "canvas": {
+            "height": 2070.1966308593746,
+            "width": 1093.1899257659916,
+            "x": 2501.2812168121336,
+            "y": 997.092236328125
+        },
+        "nodes": {
+            "1577107": {
+                "bigg_id": "cpd00006_c0",
+                "label_x": 2740.582275390625,
+                "label_y": 1378.6729736328125,
+                "name": "NADP",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2897.803466796875,
+                "y": 1369.8558349609375
+            },
+            "1577108": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 1451.379638671875
+            },
+            "1577109": {
+                "node_type": "midmarker",
+                "x": 2991.594677734375,
+                "y": 1471.379638671875
+            },
+            "1577110": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 1491.379638671875
+            },
+            "1577111": {
+                "bigg_id": "cpd00005_c0",
+                "label_x": 2739.112060546875,
+                "label_y": 1574.3729248046875,
+                "name": "NADPH",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2902.21142578125,
+                "y": 1572.903564453125
+            },
+            "1577112": {
+                "bigg_id": "cpd00067_c0",
+                "label_x": 3089.7919921875,
+                "label_y": 1576.379638671875,
+                "name": "H+",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3074.7919921875,
+                "y": 1576.379638671875
+            },
+            "1577113": {
+                "bigg_id": "cpd00079_c0",
+                "label_x": 3024.852001953125,
+                "label_y": 1252.3660888671875,
+                "name": "D-glucose-6-phosphate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 2991.594677734375,
+                "y": 1250.2872314453125
+            },
+            "1577114": {
+                "bigg_id": "cpd00911_c0",
+                "label_x": 2804.423291015625,
+                "label_y": 1685.7340087890625,
+                "name": "6-phospho-D-glucono-1-5-lactone",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 2991.594677734375,
+                "y": 1674.837890625
+            },
+            "1577115": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 1829.837890625
+            },
+            "1577116": {
+                "node_type": "midmarker",
+                "x": 2991.594677734375,
+                "y": 1849.837890625
+            },
+            "1577117": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 1869.837890625
+            },
+            "1577118": {
+                "bigg_id": "cpd00001_c0",
+                "label_x": 2812.594677734375,
+                "label_y": 1774.837890625,
+                "name": "H2O",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2911.594677734375,
+                "y": 1744.837890625
+            },
+            "1577119": {
+                "bigg_id": "cpd00067_c0",
+                "label_x": 2812.594677734375,
+                "label_y": 1984.837890625,
+                "name": "H+",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2911.594677734375,
+                "y": 1954.837890625
+            },
+            "1577120": {
+                "bigg_id": "cpd00284_c0",
+                "label_x": 3016.594677734375,
+                "label_y": 2024.837890625,
+                "name": "6-Phospho-D-gluconate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 2991.594677734375,
+                "y": 2024.837890625
+            },
+            "1577133": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 2179.837890625
+            },
+            "1577134": {
+                "node_type": "midmarker",
+                "x": 2991.594677734375,
+                "y": 2199.837890625
+            },
+            "1577135": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 2219.837890625
+            },
+            "1577136": {
+                "bigg_id": "cpd00001_c0",
+                "label_x": 2812.594677734375,
+                "label_y": 2334.837890625,
+                "name": "H2O",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2911.594677734375,
+                "y": 2304.837890625
+            },
+            "1577137": {
+                "bigg_id": "cpd02711_c0",
+                "label_x": 3016.594677734375,
+                "label_y": 2374.837890625,
+                "name": "2-Keto-3-deoxy-6-phosphogluconate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 2991.594677734375,
+                "y": 2374.837890625
+            },
+            "1577138": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 2529.837890625
+            },
+            "1577139": {
+                "node_type": "midmarker",
+                "x": 2991.594677734375,
+                "y": 2549.837890625
+            },
+            "1577140": {
+                "node_type": "multimarker",
+                "x": 2991.594677734375,
+                "y": 2569.837890625
+            },
+            "1577141": {
+                "bigg_id": "cpd00020_c0",
+                "label_x": 3126.809033203125,
+                "label_y": 2694.9813232421875,
+                "name": "Pyruvate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3095.931103515625,
+                "y": 2680.2860107421875
+            },
+            "1577142": {
+                "bigg_id": "cpd00102_c0",
+                "label_x": 2786.14326171875,
+                "label_y": 2711.7554931640625,
+                "name": "Glyceraldehyde3-phosphate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 2885.14326171875,
+                "y": 2681.7554931640625
+            }
+        },
+        "reactions": {
+            "1577550": {
+                "bigg_id": "rxn00604_c0",
+                "gene_reaction_rule": "WP_049587589.1",
+                "genes": [
+                    {
+                        "annotation": {
+                            "refseq": "WP_049587589.1",
+                            "sbo": "SBO:0000243"
+                        },
+                        "bigg_id": "WP_049587589.1",
+                        "name": "zwf"
+                    }
+                ],
+                "label_x": 3015.41181640625,
+                "label_y": 1478.440673828125,
+                "metabolites": [
+                    {
+                        "bigg_id": "cpd00005_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00006_c0",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "cpd00067_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00079_c0",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "cpd00911_c0",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "D-glucose-6-phosphate:NADP+ 1-oxidoreductase [c0]",
+                "reversibility": false,
+                "segments": {
+                    "517": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577108",
+                        "to_node_id": "1577109"
+                    },
+                    "518": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577110",
+                        "to_node_id": "1577109"
+                    },
+                    "519": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1533.379638671875
+                        },
+                        "b2": {
+                            "x": 2955.7639586401974,
+                            "y": 1548.7439137025162
+                        },
+                        "from_node_id": "1577110",
+                        "to_node_id": "1577111"
+                    },
+                    "520": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1409.379638671875
+                        },
+                        "b2": {
+                            "x": 2956.5096362601384,
+                            "y": 1367.586877722403
+                        },
+                        "from_node_id": "1577108",
+                        "to_node_id": "1577107"
+                    },
+                    "521": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1537.379638671875
+                        },
+                        "b2": {
+                            "x": 3012.7919921875,
+                            "y": 1542.629638671875
+                        },
+                        "from_node_id": "1577110",
+                        "to_node_id": "1577112"
+                    },
+                    "522": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1405.379638671875
+                        },
+                        "b2": {
+                            "x": 2991.594677734375,
+                            "y": 1284.0372314453125
+                        },
+                        "from_node_id": "1577108",
+                        "to_node_id": "1577113"
+                    },
+                    "523": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1537.379638671875
+                        },
+                        "b2": {
+                            "x": 2991.594677734375,
+                            "y": 1641.087890625
+                        },
+                        "from_node_id": "1577110",
+                        "to_node_id": "1577114"
+                    }
+                }
+            },
+            "1577551": {
+                "bigg_id": "rxn01476_c0",
+                "gene_reaction_rule": "WP_014979596.1 or WP_014979596.1",
+                "genes": [
+                    {
+                        "annotation": {
+                            "refseq": "WP_014979596.1",
+                            "sbo": "SBO:0000243"
+                        },
+                        "bigg_id": "WP_014979596.1",
+                        "name": "pgl"
+                    }
+                ],
+                "label_x": 3006.594677734375,
+                "label_y": 1859.837890625,
+                "metabolites": [
+                    {
+                        "bigg_id": "cpd00001_c0",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "cpd00067_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00284_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00911_c0",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "6-Phospho-D-glucono-1,5-lactone lactonohydrolase [c0]",
+                "reversibility": false,
+                "segments": {
+                    "524": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577115",
+                        "to_node_id": "1577116"
+                    },
+                    "525": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577117",
+                        "to_node_id": "1577116"
+                    },
+                    "526": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1783.837890625
+                        },
+                        "b2": {
+                            "x": 2973.594677734375,
+                            "y": 1778.587890625
+                        },
+                        "from_node_id": "1577115",
+                        "to_node_id": "1577118"
+                    },
+                    "527": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1915.837890625
+                        },
+                        "b2": {
+                            "x": 2973.594677734375,
+                            "y": 1921.087890625
+                        },
+                        "from_node_id": "1577117",
+                        "to_node_id": "1577119"
+                    },
+                    "528": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1911.837890625
+                        },
+                        "b2": {
+                            "x": 2991.594677734375,
+                            "y": 1966.087890625
+                        },
+                        "from_node_id": "1577117",
+                        "to_node_id": "1577120"
+                    },
+                    "529": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 1787.837890625
+                        },
+                        "b2": {
+                            "x": 2991.594677734375,
+                            "y": 1733.587890625
+                        },
+                        "from_node_id": "1577115",
+                        "to_node_id": "1577114"
+                    }
+                }
+            },
+            "1577554": {
+                "bigg_id": "rxn01477_c0",
+                "gene_reaction_rule": "WP_014998717.1",
+                "genes": [
+                    {
+                        "annotation": {
+                            "refseq": "WP_014998717.1",
+                            "sbo": "SBO:0000243"
+                        },
+                        "bigg_id": "WP_014998717.1",
+                        "name": "edd"
+                    }
+                ],
+                "label_x": 3006.594677734375,
+                "label_y": 2209.837890625,
+                "metabolites": [
+                    {
+                        "bigg_id": "cpd00001_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00284_c0",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "cpd02711_c0",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "6-Phospho-D-gluconate hydro-lyase(2-dehydro-3-deoxy-6-phospho-D-gluconate-forming) [c0]",
+                "reversibility": false,
+                "segments": {
+                    "542": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577133",
+                        "to_node_id": "1577134"
+                    },
+                    "543": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577135",
+                        "to_node_id": "1577134"
+                    },
+                    "544": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 2265.837890625
+                        },
+                        "b2": {
+                            "x": 2973.594677734375,
+                            "y": 2271.087890625
+                        },
+                        "from_node_id": "1577135",
+                        "to_node_id": "1577136"
+                    },
+                    "545": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 2137.837890625
+                        },
+                        "b2": {
+                            "x": 2991.594677734375,
+                            "y": 2083.587890625
+                        },
+                        "from_node_id": "1577133",
+                        "to_node_id": "1577120"
+                    },
+                    "546": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 2261.837890625
+                        },
+                        "b2": {
+                            "x": 2991.594677734375,
+                            "y": 2316.087890625
+                        },
+                        "from_node_id": "1577135",
+                        "to_node_id": "1577137"
+                    }
+                }
+            },
+            "1577555": {
+                "bigg_id": "rxn03884_c0",
+                "gene_reaction_rule": "WP_014949849.1 and WP_014979614.1",
+                "genes": [
+                    {
+                        "annotation": {
+                            "refseq": "WP_014949849.1",
+                            "sbo": "SBO:0000243"
+                        },
+                        "bigg_id": "WP_014949849.1",
+                        "name": "algpul_eda"
+                    },
+                    {
+                        "annotation": {
+                            "refseq": "WP_014979614.1",
+                            "sbo": "SBO:0000243"
+                        },
+                        "bigg_id": "WP_014979614.1",
+                        "name": "eda"
+                    }
+                ],
+                "label_x": 3006.594677734375,
+                "label_y": 2559.837890625,
+                "metabolites": [
+                    {
+                        "bigg_id": "cpd00020_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd00102_c0",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cpd02711_c0",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "2-dehydro-3-deoxy-D-gluconate-6-phosphate D-glyceraldehyde-3-phosphate-lyase [c0]",
+                "reversibility": false,
+                "segments": {
+                    "547": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577138",
+                        "to_node_id": "1577139"
+                    },
+                    "548": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "1577140",
+                        "to_node_id": "1577139"
+                    },
+                    "549": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 2611.837890625
+                        },
+                        "b2": {
+                            "x": 3046.206092909567,
+                            "y": 2648.9972616424384
+                        },
+                        "from_node_id": "1577140",
+                        "to_node_id": "1577141"
+                    },
+                    "550": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 2615.837890625
+                        },
+                        "b2": {
+                            "x": 2947.14326171875,
+                            "y": 2648.0054931640625
+                        },
+                        "from_node_id": "1577140",
+                        "to_node_id": "1577142"
+                    },
+                    "551": {
+                        "b1": {
+                            "x": 2991.594677734375,
+                            "y": 2487.837890625
+                        },
+                        "b2": {
+                            "x": 2991.594677734375,
+                            "y": 2433.587890625
+                        },
+                        "from_node_id": "1577138",
+                        "to_node_id": "1577137"
+                    }
+                }
+            }
+        },
+        "text_labels": {}
+    }
+]
