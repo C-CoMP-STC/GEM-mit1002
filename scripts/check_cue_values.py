@@ -133,8 +133,8 @@ for key, fba_result in cobra_results.items():
             "organic_c_norm": round(abs(organic_c_norm), 3),
             "biomass": round(abs(biomass), 3),
             "biomass_norm": round(abs(biomass_norm), 3),
-            "cue": cue,
-            "gge": gge,
+            "cue": round(cue, 3),
+            "gge": round(gge, 3),
         }
     )
 
