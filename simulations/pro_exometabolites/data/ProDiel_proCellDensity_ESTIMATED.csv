@@ -1,0 +1,49 @@
+# ProDiel_proCellDensity_ESTIMATED.csv
+#
+# Prochlorococcus MIT9301 cell density over 48 h diel light:dark cycle.
+#
+# *** THESE VALUES ARE ESTIMATES READ FROM FIGURE 4.1 OF KATIE'S CHAPTER ***
+# *** REPLACE WITH ACTUAL FLOW CYTOMETRY DATA BEFORE USE IN MANUSCRIPT ***
+#
+# Two values are anchored to the chapter text (source = anchor_from_text):
+#   t = 12 h: 6.73e7 cells/mL
+#   t = 46 h: 2.0e8 cells/mL
+#
+# Values for t = 0 through t = 10 h are EXTRAPOLATED. The chapter notes
+# that cell count samples before t = 12 h were lost due to instrument
+# error. The starting inoculum is reported as 5e7 cells/mL.
+#
+# Pattern follows chapter description: cell division restricted to dark
+# period, primarily in first ~8 h after sunset; generally constant during
+# day. Dark periods are approximately t = 9.5-20.8 h and t = 33.5-44.8 h.
+#
+# Columns:
+#   timepoint: hours since experiment start
+#   cells_per_mL: estimated Prochlorococcus cell density
+#   source: one of {anchor_from_text, figure_estimate, extrapolated}
+#   log10_cells_per_mL: log10 of cells_per_mL, for plotting
+timepoint,cells_per_mL,source,log10_cells_per_mL
+0,63000000.0,extrapolated,7.799
+2,63000000.0,extrapolated,7.799
+4,63000000.0,extrapolated,7.799
+6,63000000.0,extrapolated,7.799
+8,65000000.0,extrapolated,7.813
+10,70000000.0,extrapolated,7.845
+12,67000000.0,anchor_from_text,7.826
+14,85000000.0,figure_estimate,7.929
+16,100000000.0,figure_estimate,8.0
+18,120000000.0,figure_estimate,8.079
+20,130000000.0,figure_estimate,8.114
+22,130000000.0,figure_estimate,8.114
+24,130000000.0,figure_estimate,8.114
+26,130000000.0,figure_estimate,8.114
+28,130000000.0,figure_estimate,8.114
+30,130000000.0,figure_estimate,8.114
+32,130000000.0,figure_estimate,8.114
+34,140000000.0,figure_estimate,8.146
+36,160000000.0,figure_estimate,8.204
+38,180000000.0,figure_estimate,8.255
+40,190000000.0,figure_estimate,8.279
+42,200000000.0,figure_estimate,8.301
+44,200000000.0,figure_estimate,8.301
+46,200000000.0,anchor_from_text,8.301
