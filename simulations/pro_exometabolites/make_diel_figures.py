@@ -75,14 +75,18 @@ def load_cell_density() -> pd.DataFrame:
 # ── Figure 1: Headline growth rate ──────────────────────────────────────────────
 
 
-def figure1(growth_df: pd.DataFrame, cell_density: pd.DataFrame, out_path: Path) -> None:
+def figure1(
+    growth_df: pd.DataFrame, cell_density: pd.DataFrame, out_path: Path
+) -> None:
     """Predicted MIT1002 growth rate vs. time, one line per f, Pro density overlay."""
     fig, ax1 = plt.subplots(figsize=(9, 4))
     ax2 = ax1.twinx()
 
     # Interval midpoints
     growth_df = growth_df.copy()
-    growth_df["midpoint_h"] = (growth_df["interval_start_h"] + growth_df["interval_end_h"]) / 2
+    growth_df["midpoint_h"] = (
+        growth_df["interval_start_h"] + growth_df["interval_end_h"]
+    ) / 2
 
     # Growth rate lines (one per f)
     f_values = sorted(growth_df["f"].unique())
@@ -136,14 +140,7 @@ def figure1(growth_df: pd.DataFrame, cell_density: pd.DataFrame, out_path: Path)
     labels1 = [l for l in labels1 if not l.startswith("_")]
     handles2, labels2 = ax2.get_legend_handles_labels()
     dark_patch = plt.Rectangle((0, 0), 1, 1, fc="gray", alpha=0.3, label="Dark period")
-    ax1.legend(
-        handles=handles1 + handles2 + [dark_patch],
-        labels=labels1 + labels2 + ["Dark period"],
-        fontsize=8,
-        loc="upper left",
-        ncol=2,
-        framealpha=0.8,
-    )
+    # Create a figure-level vertical legend placed in the left margin
 
     ax1.set_title(
         "Predicted Alteromonas MIT1002 growth on Pro-released exometabolites",
@@ -151,6 +148,18 @@ def figure1(growth_df: pd.DataFrame, cell_density: pd.DataFrame, out_path: Path)
         pad=8,
     )
     fig.tight_layout()
+    ncol = max(1, len(labels1 + labels2 + ["Dark period"]))
+    ncol = min(ncol, 6)
+    fig.subplots_adjust(left=0.28)
+    fig.legend(
+        handles=handles1 + handles2 + [dark_patch],
+        labels=labels1 + labels2 + ["Dark period"],
+        loc="center left",
+        bbox_to_anchor=(0.02, 0.5),
+        ncol=1,
+        fontsize=8,
+        framealpha=0.8,
+    )
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
     plt.close(fig)
     print(f"Saved {out_path}")
@@ -167,7 +176,9 @@ def figure2(binding_df: pd.DataFrame, out_path: Path, f_rep: float = 1.0) -> Non
         return
 
     sub["midpoint_h"] = (sub["interval_start_h"] + sub["interval_end_h"]) / 2
-    sub["met_label"] = sub["exchange_reaction"].map(MET_LABELS).fillna(sub["exchange_reaction"])
+    sub["met_label"] = (
+        sub["exchange_reaction"].map(MET_LABELS).fillna(sub["exchange_reaction"])
+    )
 
     # Pivot: rows = metabolite, cols = timepoint, values = |flux|
     piv = sub.pivot_table(
@@ -247,7 +258,9 @@ def figure3(flux_df: pd.DataFrame, out_path: Path) -> None:
 
     ax.axhline(0, color="black", linewidth=0.5)
     ax.set_xlabel("Time (h)", fontsize=11)
-    ax.set_ylabel("ec7211_c0 flux (mmol gDW⁻¹ hr⁻¹)\n(NaNQR, Na⁺-translocating NQR)", fontsize=10)
+    ax.set_ylabel(
+        "ec7211_c0 flux (mmol gDW⁻¹ hr⁻¹)\n(NaNQR, Na⁺-translocating NQR)", fontsize=10
+    )
     ax.set_xlim(0, 46)
     ax.set_xticks(range(0, 47, 4))
 
@@ -255,16 +268,23 @@ def figure3(flux_df: pd.DataFrame, out_path: Path) -> None:
     handles, labels = ax.get_legend_handles_labels()
     handles = [h for h, l in zip(handles, labels) if not l.startswith("_")]
     labels = [l for l in labels if not l.startswith("_")]
-    ax.legend(
+    # Create a figure-level vertical legend placed in the left margin
+    ncol = max(1, len(labels + ["Dark period"]))
+    ncol = min(ncol, 6)
+    fig.tight_layout()
+    fig.subplots_adjust(left=0.28)
+    fig.legend(
         handles=handles + [dark_patch],
         labels=labels + ["Dark period"],
+        loc="center left",
+        bbox_to_anchor=(0.02, 0.5),
+        ncol=1,
         fontsize=8,
-        loc="upper right",
-        ncol=2,
         framealpha=0.8,
     )
-    ax.set_title("Na⁺-translocating NQR (ec7211_c0) flux over the diel cycle", fontsize=11, pad=8)
-    fig.tight_layout()
+    ax.set_title(
+        "Na⁺-translocating NQR (ec7211_c0) flux over the diel cycle", fontsize=11, pad=8
+    )
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
     plt.close(fig)
     print(f"Saved {out_path}")
