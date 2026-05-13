@@ -14,6 +14,7 @@ Dark periods: t = 10–22 h and t = 34–46 h (Katie's Figure 4.3 shading).
 
 from pathlib import Path
 
+import cobra
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
@@ -22,6 +23,7 @@ import pandas as pd
 # ── Paths ───────────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR = Path(__file__).parent
+REPO_DIR = SCRIPT_DIR.parent.parent
 RESULTS_DIR = SCRIPT_DIR / "results"
 CELL_DENSITY_FILE = SCRIPT_DIR / "data/extrapolated_cellcounts.csv"
 FIG_DIR = SCRIPT_DIR / "figs"
@@ -73,8 +75,6 @@ def load_cell_density() -> pd.DataFrame:
 
 
 # ── Figure 1: Headline growth rate ──────────────────────────────────────────────
-
-
 def figure1(
     growth_df: pd.DataFrame, cell_density: pd.DataFrame, out_path: Path
 ) -> None:
@@ -166,8 +166,6 @@ def figure1(
 
 
 # ── Figure 2: Substrate hierarchy ───────────────────────────────────────────────
-
-
 def figure2(binding_df: pd.DataFrame, out_path: Path, f_rep: float = 1.0) -> None:
     """Heatmap: which exchange bounds are binding at each interval (at f=f_rep)."""
     sub = binding_df[binding_df["f"] == f_rep].copy()
@@ -224,8 +222,6 @@ def figure2(binding_df: pd.DataFrame, out_path: Path, f_rep: float = 1.0) -> Non
 
 
 # ── Figure 3: Na⁺ pump activity ─────────────────────────────────────────────────
-
-
 def figure3(flux_df: pd.DataFrame, out_path: Path) -> None:
     """Flux through Na⁺-translocating NQR (ec7211_c0) vs. time, one line per f."""
     if flux_df.empty:
@@ -290,9 +286,92 @@ def figure3(flux_df: pd.DataFrame, out_path: Path) -> None:
     print(f"Saved {out_path}")
 
 
+# Line graph on exchange fluxes over time, one graph per f value, with dark periods shaded
+def figure4(flux_df: pd.DataFrame, model: cobra.Model, out_dir: Path) -> None:
+    """Line graph: fluxes of all exchange reactions over time, one graph per f."""
+    if flux_df.empty:
+        print("No flux data — skipping Figure 4")
+        return
+
+    # Filter for exchange reactions
+    exch_df = flux_df[flux_df["reaction_id"].str.startswith("EX_")].copy()
+    if exch_df.empty:
+        print("No exchange reactions found in flux data — skipping Figure 4")
+        return
+    # Add columns for the midpoint hr and the human-readable metabolite label
+    exch_df["midpoint_h"] = (
+        exch_df["interval_start_h"] + exch_df["interval_end_h"]
+    ) / 2
+    exch_df["met_name"] = exch_df["reaction_id"].map(
+        lambda rxn_id: model.metabolites.get_by_id(rxn_id[3:-3] + "_c0").name
+    )
+
+    f_values = sorted(exch_df["f"].unique())
+    for f in f_values:
+        # Make an outpath for this f value (e.g. "fig4_exchange_fluxes_f1.0.png")
+        out_path = out_dir / f"fig4_exchange_fluxes_f{f}.png"
+        # Filter for this f value
+        sub = exch_df[exch_df["f"] == f].copy()
+
+        # Keep all rows for metabolites that exceed the threshold at any timepoint
+        above_thresh = sub.groupby("met_name")["flux"].transform(
+            lambda s: s.abs().max() > 0.01
+        )
+        sub = sub[above_thresh]
+
+        # Make a figure
+        fig, ax = plt.subplots(figsize=(9, 4))
+        # Shade dark periods
+        shade_dark(ax)
+
+        # Plot line for each metabolite
+        for met in sub["met_name"].unique():
+            met_sub = sub[sub["met_name"] == met].sort_values("midpoint_h")
+            ax.plot(
+                met_sub["midpoint_h"],
+                met_sub["flux"],
+                "o-",
+                linewidth=1.5,
+                markersize=4,
+                label=met,
+                zorder=3,
+            )
+
+        # Style
+        ax.axhline(0, color="black", linewidth=0.5)
+        ax.set_xlabel("Time (h)", fontsize=11)
+        ax.set_ylabel("Exchange flux (mmol gDW⁻¹ hr⁻¹)", fontsize=10)
+        ax.set_xlim(0, 46)
+        ax.set_xticks(range(0, 47, 4))
+
+        # Add legend with one entry per metabolite + dark period, placed in the left margin
+        dark_patch = plt.Rectangle(
+            (0, 0), 1, 1, fc="gray", alpha=0.3, label="Dark period"
+        )
+        handles, labels = ax.get_legend_handles_labels()
+        handles = [h for h, l in zip(handles, labels) if not l.startswith("_")]
+        labels = [l for l in labels if not l.startswith("_")]
+        ncol = max(1, len(labels + ["Dark period"]))
+        ncol = min(ncol, 6)
+        fig.tight_layout()
+        fig.subplots_adjust(left=0.28)
+        fig.legend(
+            handles=handles + [dark_patch],
+            labels=labels + ["Dark period"],
+            loc="center left",
+            bbox_to_anchor=(0.02, 0.5),
+            ncol=1,
+            fontsize=8,
+            framealpha=0.8,
+        )
+
+        # Save the figure
+        fig.savefig(out_path, dpi=150, bbox_inches="tight")
+        plt.close(fig)
+        print(f"Saved {out_path}")
+
+
 # ── Main ────────────────────────────────────────────────────────────────────────
-
-
 def main() -> None:
     growth_file = RESULTS_DIR / "growth_rates.csv"
     flux_file = RESULTS_DIR / "fluxes_long.csv"
@@ -302,6 +381,9 @@ def main() -> None:
     growth_df = pd.read_csv(growth_file)
     binding_df = pd.read_csv(binding_file)
     flux_df = pd.read_csv(flux_file) if flux_file.exists() else pd.DataFrame()
+
+    # Load the model
+    model = cobra.io.read_sbml_model(REPO_DIR / "model.xml")
 
     cell_density = load_cell_density()
 
@@ -317,6 +399,9 @@ def main() -> None:
 
     print("Generating Figure 3 (NaNQR flux)...")
     figure3(flux_df, FIG_DIR / "fig3_nanqr_flux.png")
+
+    print("Generating Figure 4 (exchange fluxes over time)...")
+    figure4(flux_df, model, FIG_DIR)
 
 
 if __name__ == "__main__":
