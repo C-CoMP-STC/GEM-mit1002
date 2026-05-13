@@ -66,6 +66,7 @@ OUT_DIR.mkdir(exist_ok=True)
 
 BASAL_MEDIUM = {
     "EX_cpd00007_e0": 20,  # O2
+    "EX_cpd00067_e0": 1000,  # H+  # FIXME: Should I remove this?
     "EX_cpd00013_e0": 1000,  # NH3
     "EX_cpd00058_e0": 1000,  # Cu2+
     "EX_cpd00971_e0": 1000,  # Na+
