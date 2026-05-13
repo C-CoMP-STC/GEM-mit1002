@@ -149,7 +149,7 @@ def main() -> None:
 
     # Run simulations
     print(
-        f"\nRunning pFBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves..."
+        f"\nRunning FBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves..."
     )
     growth_df, flux_df, binding_df = run_simulations(model, rates, met_map, F_VALUES)
 
@@ -271,7 +271,7 @@ def run_simulations(
     met_map: dict[str, str],
     f_values: list[float],
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """Run pFBA for every (interval, f) combination.
+    """Run FBA for every (interval, f) combination.
 
     Returns three tidy DataFrames:
       growth_rates:        interval_start_h, interval_end_h, f, growth_rate, status
