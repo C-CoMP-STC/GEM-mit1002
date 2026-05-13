@@ -100,9 +100,101 @@ MISSING_TRANSPORTS = {
 }
 
 
-# ── Model augmentation ──────────────────────────────────────────────────────────
+def main() -> None:
+    print("=" * 60)
+    print("Diel FBA — Alteromonas MIT1002 on Pro exometabolites")
+    print("=" * 60)
+
+    print(f"\nAlteromonas dry weight: {ALT_DW_G:.2e} g ({ALT_DW_G * 1e15:.0f} fg)")
+    print(f"f values: {F_VALUES}")
+    print(f"NGAM lb: {NGAM_LB} mmol/gDW/hr (original lab value = 6.86; set to 0 for in-situ)")
+
+    # Load model
+    print("\nLoading model (iHS4156)...")
+    model = cobra.io.read_sbml_model(str(MODEL_FILE))
+    print(f"  {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
+
+    # Set NGAM
+    ngam_rxn = model.reactions.get_by_id(NGAM_RXN_ID)
+    original_ngam_lb = ngam_rxn.lower_bound
+    ngam_rxn.lower_bound = NGAM_LB
+    print(f"\nNGAM ({NGAM_RXN_ID}): lb {original_ngam_lb} → {NGAM_LB}")
+
+    # Configure GLPK: enable presolve and per-solve timeout.
+    # Without presolve, GLPK simplex hangs indefinitely on some intervals due to
+    # warm-start state from a previous LP interacting badly with very small bounds
+    # (rates × f can produce bounds ~1e-7 mmol/gDW/hr). Timeout caps any runaway.
+    model.solver.configuration.presolve = True
+    model.solver.configuration.timeout = SOLVER_TIMEOUT_S
+    print(f"GLPK: presolve=True, per-solve timeout={SOLVER_TIMEOUT_S}s")
+
+    # Add in-memory transport reactions
+    print("\nAdding transport reactions for metabolites absent from extracellular space...")
+    added = add_transport_reactions(model)
+    print(f"  Model after additions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
+
+    # Sanity check: basal medium → zero growth
+    print("\nSanity check: basal medium alone should yield zero growth...")
+    with model:
+        model.medium = BASAL_MEDIUM
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            basal_sol = model.optimize()
+        mu_basal = basal_sol.objective_value if basal_sol.status != "infeasible" else 0.0
+    if mu_basal > 1e-6:
+        print(f"  WARNING: model grows on basal medium! μ = {mu_basal:.4f}")
+        print("  The Pro-release signal cannot be attributed cleanly — investigate before continuing.")
+    else:
+        print(f"  OK: μ = {mu_basal:.6f} (infeasible or zero — no carbon source)")
+
+    # Load rates and map
+    print("\nLoading rates and metabolite→cpd map...")
+    rates, met_map = load_inputs(RATES_FILE, MAP_FILE)
+    n_intervals = rates.groupby(["interval_start_h", "interval_end_h"]).ngroups
+    print(f"  {len(rates)} rows, {rates['metabolite'].nunique()} metabolites, {n_intervals} intervals")
+
+    # Audit: which metabolites in the rates file map to exchange reactions?
+    print("\nMetabolite → exchange reaction audit:")
+    for met_name in sorted(rates["metabolite"].unique()):
+        cpd_id = met_map.get(met_name)
+        if cpd_id is None:
+            print(f"  {met_name:45s} ✗  no cpd ID in map")
+            continue
+        ex_rxn_id = f"EX_{cpd_id}_e0"
+        found = ex_rxn_id in model.reactions
+        flag = "✓" if found else "✗ MISSING"
+        print(f"  {met_name:45s} → {ex_rxn_id}  {flag}")
+
+    # Run simulations
+    print(f"\nRunning pFBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves...")
+    growth_df, flux_df, binding_df = run_simulations(model, rates, met_map, F_VALUES)
+
+    # Save outputs
+    growth_file = OUT_DIR / "growth_rates.csv"
+    flux_file = OUT_DIR / "fluxes_long.csv"
+    binding_file = OUT_DIR / "binding_constraints.csv"
+
+    growth_df.to_csv(growth_file, index=False)
+    flux_df.to_csv(flux_file, index=False)
+    binding_df.to_csv(binding_file, index=False)
+
+    print("\nOutputs saved:")
+    print(f"  {growth_file}  ({len(growth_df)} rows)")
+    print(f"  {flux_file}  ({len(flux_df):,} rows)")
+    print(f"  {binding_file}  ({len(binding_df)} rows)")
+
+    # Summary table
+    print("\nGrowth rate summary by f (across all intervals):")
+    summary = (
+        growth_df[growth_df["status"] == "optimal"]
+        .groupby("f")["growth_rate"]
+        .agg(mean="mean", min="min", max="max", n_feasible="count")
+    )
+    print(summary.to_string())
+    print(f"\nTotal intervals: {n_intervals}  (infeasible at f=0 expected)")
 
 
+# Helper functions
 def add_transport_reactions(model: cobra.Model) -> list[str]:
     """Add exchange + uptake transport reactions for metabolites absent from
     the extracellular space. Modifies the model in-place; model.xml is unchanged.
@@ -300,104 +392,6 @@ def run_simulations(
                     )
 
     return pd.DataFrame(growth_rows), pd.DataFrame(flux_rows), pd.DataFrame(binding_rows)
-
-
-# ── Main ────────────────────────────────────────────────────────────────────────
-
-
-def main() -> None:
-    print("=" * 60)
-    print("Diel FBA — Alteromonas MIT1002 on Pro exometabolites")
-    print("=" * 60)
-
-    print(f"\nAlteromonas dry weight: {ALT_DW_G:.2e} g ({ALT_DW_G * 1e15:.0f} fg)")
-    print(f"f values: {F_VALUES}")
-    print(f"NGAM lb: {NGAM_LB} mmol/gDW/hr (original lab value = 6.86; set to 0 for in-situ)")
-
-    # Load model
-    print("\nLoading model (iHS4156)...")
-    model = cobra.io.read_sbml_model(str(MODEL_FILE))
-    print(f"  {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
-
-    # Set NGAM
-    ngam_rxn = model.reactions.get_by_id(NGAM_RXN_ID)
-    original_ngam_lb = ngam_rxn.lower_bound
-    ngam_rxn.lower_bound = NGAM_LB
-    print(f"\nNGAM ({NGAM_RXN_ID}): lb {original_ngam_lb} → {NGAM_LB}")
-
-    # Configure GLPK: enable presolve and per-solve timeout.
-    # Without presolve, GLPK simplex hangs indefinitely on some intervals due to
-    # warm-start state from a previous LP interacting badly with very small bounds
-    # (rates × f can produce bounds ~1e-7 mmol/gDW/hr). Timeout caps any runaway.
-    model.solver.configuration.presolve = True
-    model.solver.configuration.timeout = SOLVER_TIMEOUT_S
-    print(f"GLPK: presolve=True, per-solve timeout={SOLVER_TIMEOUT_S}s")
-
-    # Add in-memory transport reactions
-    print("\nAdding transport reactions for metabolites absent from extracellular space...")
-    added = add_transport_reactions(model)
-    print(f"  Model after additions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
-
-    # Sanity check: basal medium → zero growth
-    print("\nSanity check: basal medium alone should yield zero growth...")
-    with model:
-        model.medium = BASAL_MEDIUM
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            basal_sol = model.optimize()
-        mu_basal = basal_sol.objective_value if basal_sol.status != "infeasible" else 0.0
-    if mu_basal > 1e-6:
-        print(f"  WARNING: model grows on basal medium! μ = {mu_basal:.4f}")
-        print("  The Pro-release signal cannot be attributed cleanly — investigate before continuing.")
-    else:
-        print(f"  OK: μ = {mu_basal:.6f} (infeasible or zero — no carbon source)")
-
-    # Load rates and map
-    print("\nLoading rates and metabolite→cpd map...")
-    rates, met_map = load_inputs(RATES_FILE, MAP_FILE)
-    n_intervals = rates.groupby(["interval_start_h", "interval_end_h"]).ngroups
-    print(f"  {len(rates)} rows, {rates['metabolite'].nunique()} metabolites, {n_intervals} intervals")
-
-    # Audit: which metabolites in the rates file map to exchange reactions?
-    print("\nMetabolite → exchange reaction audit:")
-    for met_name in sorted(rates["metabolite"].unique()):
-        cpd_id = met_map.get(met_name)
-        if cpd_id is None:
-            print(f"  {met_name:45s} ✗  no cpd ID in map")
-            continue
-        ex_rxn_id = f"EX_{cpd_id}_e0"
-        found = ex_rxn_id in model.reactions
-        flag = "✓" if found else "✗ MISSING"
-        print(f"  {met_name:45s} → {ex_rxn_id}  {flag}")
-
-    # Run simulations
-    print(f"\nRunning pFBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves...")
-    growth_df, flux_df, binding_df = run_simulations(model, rates, met_map, F_VALUES)
-
-    # Save outputs
-    growth_file = OUT_DIR / "growth_rates.csv"
-    flux_file = OUT_DIR / "fluxes_long.csv"
-    binding_file = OUT_DIR / "binding_constraints.csv"
-
-    growth_df.to_csv(growth_file, index=False)
-    flux_df.to_csv(flux_file, index=False)
-    binding_df.to_csv(binding_file, index=False)
-
-    print("\nOutputs saved:")
-    print(f"  {growth_file}  ({len(growth_df)} rows)")
-    print(f"  {flux_file}  ({len(flux_df):,} rows)")
-    print(f"  {binding_file}  ({len(binding_df)} rows)")
-
-    # Summary table
-    print("\nGrowth rate summary by f (across all intervals):")
-    summary = (
-        growth_df[growth_df["status"] == "optimal"]
-        .groupby("f")["growth_rate"]
-        .agg(mean="mean", min="min", max="max", n_feasible="count")
-    )
-    print(summary.to_string())
-    print(f"\nTotal intervals: {n_intervals}  (infeasible at f=0 expected)")
-
 
 if __name__ == "__main__":
     main()
