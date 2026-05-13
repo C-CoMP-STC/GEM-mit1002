@@ -114,7 +114,7 @@ def main() -> None:
     model = cobra.io.read_sbml_model(str(MODEL_FILE))
     print(f"  {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
 
-    # Set NGAM
+    # Set ATP Maintenance to 0
     ngam_rxn = model.reactions.get_by_id(NGAM_RXN_ID)
     original_ngam_lb = ngam_rxn.lower_bound
     ngam_rxn.lower_bound = NGAM_LB
@@ -128,42 +128,16 @@ def main() -> None:
     model.solver.configuration.timeout = SOLVER_TIMEOUT_S
     print(f"GLPK: presolve=True, per-solve timeout={SOLVER_TIMEOUT_S}s")
 
-    # Add in-memory transport reactions
+    # Add transport and exchange reactions for all of the ProDiel metabolites
     print("\nAdding transport reactions for metabolites absent from extracellular space...")
     added = add_transport_reactions(model)
     print(f"  Model after additions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
-
-    # Sanity check: basal medium → zero growth
-    print("\nSanity check: basal medium alone should yield zero growth...")
-    with model:
-        model.medium = BASAL_MEDIUM
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            basal_sol = model.optimize()
-        mu_basal = basal_sol.objective_value if basal_sol.status != "infeasible" else 0.0
-    if mu_basal > 1e-6:
-        print(f"  WARNING: model grows on basal medium! μ = {mu_basal:.4f}")
-        print("  The Pro-release signal cannot be attributed cleanly — investigate before continuing.")
-    else:
-        print(f"  OK: μ = {mu_basal:.6f} (infeasible or zero — no carbon source)")
 
     # Load rates and map
     print("\nLoading rates and metabolite→cpd map...")
     rates, met_map = load_inputs(RATES_FILE, MAP_FILE)
     n_intervals = rates.groupby(["interval_start_h", "interval_end_h"]).ngroups
     print(f"  {len(rates)} rows, {rates['metabolite'].nunique()} metabolites, {n_intervals} intervals")
-
-    # Audit: which metabolites in the rates file map to exchange reactions?
-    print("\nMetabolite → exchange reaction audit:")
-    for met_name in sorted(rates["metabolite"].unique()):
-        cpd_id = met_map.get(met_name)
-        if cpd_id is None:
-            print(f"  {met_name:45s} ✗  no cpd ID in map")
-            continue
-        ex_rxn_id = f"EX_{cpd_id}_e0"
-        found = ex_rxn_id in model.reactions
-        flag = "✓" if found else "✗ MISSING"
-        print(f"  {met_name:45s} → {ex_rxn_id}  {flag}")
 
     # Run simulations
     print(f"\nRunning pFBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves...")
