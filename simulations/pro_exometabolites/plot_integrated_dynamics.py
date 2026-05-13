@@ -48,8 +48,9 @@ FIG_DIR.mkdir(exist_ok=True)
 
 F_PLOT = 10.0
 ALT_DW_G = 2.5e-13                                        # g/cell
-INIT_AMAC_CELLS_PER_ML = 1e5
-X0_GDW_PER_L = INIT_AMAC_CELLS_PER_ML * ALT_DW_G * 1000   # gDW/L
+# Initial Amac biomass is set to be self-consistent with f: the FBA bound
+# at f=10 implicitly assumes 10 Pro per Amac, so Amac inoculum = Pro(t=0) / f.
+# Computed below from the measured initial Pro density.
 
 DT_H = 2.0
 DARK_PERIODS = [(10, 22), (34, 46)]
@@ -89,6 +90,12 @@ def main() -> None:
     times = np.concatenate(([t_starts[0]], t_ends))   # length n+1
 
     mu = g["growth_rate"].fillna(0.0).to_numpy()
+
+    # Self-consistent initial Amac biomass: Pro(t=0) / f cells/mL
+    pro_dedup = pro_density.drop_duplicates("time_h").sort_values("time_h")
+    init_pro_cells_per_ml = float(pro_dedup["cell_count_mean"].iloc[0])
+    init_amac_cells_per_ml = init_pro_cells_per_ml / F_PLOT
+    X0_GDW_PER_L = init_amac_cells_per_ml * ALT_DW_G * 1000
 
     # Amac biomass at each timepoint
     X = np.empty(n + 1)
@@ -142,8 +149,10 @@ def main() -> None:
     )
 
     # Diagnostic print
+    print(f"Initial Pro density:         {init_pro_cells_per_ml:.2e} cells/mL")
+    print(f"Initial Amac density (= Pro/f): {init_amac_cells_per_ml:.2e} cells/mL")
     print(f"Initial Amac biomass:        {X0_GDW_PER_L*1e6:.2f} μg/L "
-          f"({INIT_AMAC_CELLS_PER_ML:.0e} cells/mL × {ALT_DW_G*1e15:.0f} fg/cell)")
+          f"({ALT_DW_G*1e15:.0f} fg/cell)")
     print(f"Final Amac biomass:          {X[-1]*1e6:.2f} μg/L")
     print(f"Total glutamate consumed:    {glu_uptake_cum_nM[-1]:.1f} nM")
     print(f"Total NH3 produced:          {nh3_cum_nM[-1]:.1f} nM")
