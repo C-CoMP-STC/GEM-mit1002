@@ -30,7 +30,7 @@ import pandas as pd
 
 ALT_DW_G = 2.5e-13  # 250 fg, Alteromonas dry weight per cell
 
-F_VALUES = [0.0, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
+F_VALUES = [10.0]  # interception fraction × Pro:Alt cell ratio
 
 # ── NGAM handling ───────────────────────────────────────────────────────────────
 # The model's ATP maintenance reaction (rxn00062_c0, ATP hydrolysis) has lb=6.86
@@ -65,7 +65,7 @@ OUT_DIR.mkdir(exist_ok=True)
 # ── Basal inorganic medium ──────────────────────────────────────────────────────
 
 BASAL_MEDIUM = {
-    "EX_cpd00007_e0": 20,    # O2
+    "EX_cpd00007_e0": 20,  # O2
     "EX_cpd00013_e0": 1000,  # NH3
     "EX_cpd00058_e0": 1000,  # Cu2+
     "EX_cpd00971_e0": 1000,  # Na+
@@ -107,7 +107,9 @@ def main() -> None:
 
     print(f"\nAlteromonas dry weight: {ALT_DW_G:.2e} g ({ALT_DW_G * 1e15:.0f} fg)")
     print(f"f values: {F_VALUES}")
-    print(f"NGAM lb: {NGAM_LB} mmol/gDW/hr (original lab value = 6.86; set to 0 for in-situ)")
+    print(
+        f"NGAM lb: {NGAM_LB} mmol/gDW/hr (original lab value = 6.86; set to 0 for in-situ)"
+    )
 
     # Load model
     print("\nLoading model (iHS4156)...")
@@ -129,18 +131,26 @@ def main() -> None:
     print(f"GLPK: presolve=True, per-solve timeout={SOLVER_TIMEOUT_S}s")
 
     # Add transport and exchange reactions for all of the ProDiel metabolites
-    print("\nAdding transport reactions for metabolites absent from extracellular space...")
+    print(
+        "\nAdding transport reactions for metabolites absent from extracellular space..."
+    )
     added = add_transport_reactions(model)
-    print(f"  Model after additions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
+    print(
+        f"  Model after additions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites"
+    )
 
     # Load rates and map
     print("\nLoading rates and metabolite→cpd map...")
     rates, met_map = load_inputs(RATES_FILE, MAP_FILE)
     n_intervals = rates.groupby(["interval_start_h", "interval_end_h"]).ngroups
-    print(f"  {len(rates)} rows, {rates['metabolite'].nunique()} metabolites, {n_intervals} intervals")
+    print(
+        f"  {len(rates)} rows, {rates['metabolite'].nunique()} metabolites, {n_intervals} intervals"
+    )
 
     # Run simulations
-    print(f"\nRunning pFBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves...")
+    print(
+        f"\nRunning pFBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves..."
+    )
     growth_df, flux_df, binding_df = run_simulations(model, rates, met_map, F_VALUES)
 
     # Save outputs
@@ -231,7 +241,9 @@ def add_transport_reactions(model: cobra.Model) -> list[str]:
 # ── Data loading ────────────────────────────────────────────────────────────────
 
 
-def load_inputs(rates_file: Path, map_file: Path) -> tuple[pd.DataFrame, dict[str, str]]:
+def load_inputs(
+    rates_file: Path, map_file: Path
+) -> tuple[pd.DataFrame, dict[str, str]]:
     """Load per-Pro-cell release rates and metabolite name → cpd ID mapping."""
     rates = pd.read_csv(rates_file)
     met_map_df = pd.read_csv(map_file)
@@ -323,7 +335,9 @@ def run_simulations(
                     fluxes = None
 
             mu_str = f"{growth_rate:.5f}" if not np.isnan(growth_rate) else "infeasible"
-            print(f"  [{n:3d}/{total}]  t={t_start:2g}-{t_end:2g}h  f={f:4g}  μ={mu_str}")
+            print(
+                f"  [{n:3d}/{total}]  t={t_start:2g}-{t_end:2g}h  f={f:4g}  μ={mu_str}"
+            )
 
             growth_rows.append(
                 {
@@ -365,7 +379,12 @@ def run_simulations(
                         }
                     )
 
-    return pd.DataFrame(growth_rows), pd.DataFrame(flux_rows), pd.DataFrame(binding_rows)
+    return (
+        pd.DataFrame(growth_rows),
+        pd.DataFrame(flux_rows),
+        pd.DataFrame(binding_rows),
+    )
+
 
 if __name__ == "__main__":
     main()
