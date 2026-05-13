@@ -152,12 +152,17 @@ def main() -> None:
     print(
         f"\nRunning FBA: {n_intervals} intervals × {len(F_VALUES)} f values = {n_intervals * len(F_VALUES)} solves..."
     )
-    growth_df, flux_df, binding_df = run_simulations(model, rates, met_map, F_VALUES)
+    growth_df, flux_df, flux_jsons, binding_df = run_simulations(
+        model, rates, met_map, F_VALUES
+    )
 
     # Save outputs
     growth_file = OUT_DIR / "growth_rates.csv"
     flux_file = OUT_DIR / "fluxes_long.csv"
     binding_file = OUT_DIR / "binding_constraints.csv"
+    for key, flux_dict in flux_jsons.items():
+        flux_json_file = OUT_DIR / f"fluxes_{key}.json"
+        pd.Series(flux_dict).to_json(flux_json_file)
 
     growth_df.to_csv(growth_file, index=False)
     flux_df.to_csv(flux_file, index=False)
@@ -271,7 +276,7 @@ def run_simulations(
     rates: pd.DataFrame,
     met_map: dict[str, str],
     f_values: list[float],
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+) -> tuple[pd.DataFrame, pd.DataFrame, dict, pd.DataFrame]:
     """Run FBA for every (interval, f) combination.
 
     Returns three tidy DataFrames:
@@ -380,9 +385,21 @@ def run_simulations(
                         }
                     )
 
+    # Convery flux rows into a pandas dataframe
+    flux_rows = pd.DataFrame(flux_rows)
+
+    # Make a dictionary of fluxes in JSON-serializable format for quick lookup in plotting
+    flux_jsons = {}
+    for (t_start, t_end, f), group in flux_rows.groupby(
+        ["interval_start_h", "interval_end_h", "f"]
+    ):
+        key = f"{t_start}_{t_end}_{f}"
+        flux_jsons[key] = dict(zip(group["reaction_id"], group["flux"]))
+
     return (
         pd.DataFrame(growth_rows),
-        pd.DataFrame(flux_rows),
+        flux_rows,
+        flux_jsons,
         pd.DataFrame(binding_rows),
     )
 
