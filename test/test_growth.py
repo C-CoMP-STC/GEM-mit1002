@@ -36,13 +36,13 @@ class TestGrowthPhenotypes(unittest.TestCase):
         # Check that no biomass is produced
         self.assertEqual(sol.objective_value, 0)
 
-    # Test that there is growth on the expected pheontypes, and that there
-    # is no growth on the expected phenotypes. Make a plot of the growth
-    # phenotypes.
+    # Test that there is growth or no growth as expected on different media
     def test_expected_growth_phenotypes(self):
         # Load the TSV of the growth phenotypes
         growth_phenotypes = pd.read_csv(
-            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"),
+            sep="\t",
+            converters={"met_id": lambda x: x.split(",")},
         )
 
         # Load the model
@@ -54,10 +54,14 @@ class TestGrowthPhenotypes(unittest.TestCase):
         pred_growth = []
         for index, row in growth_phenotypes.iterrows():
             minimal_media = media_definitions[row["minimal_media"]].copy()
-            # Check if the model has an exchange reaction for the metabolite
-            if "EX_" + row["met_id"] + "_e0" in [r.id for r in model.reactions]:
+            # Check if the model has an exchange reaction for the metabolite(s)
+            if all(
+                "EX_" + met_id + "_e0" in [r.id for r in model.reactions]
+                for met_id in row["met_id"]
+            ):
                 # If it does, add the exchange reaction to the minimal media used
-                minimal_media["EX_" + row["met_id"] + "_e0"] = 1000.0
+                for met_id in row["met_id"]:
+                    minimal_media["EX_" + met_id + "_e0"] = 1000.0
                 # Mark the exchange reaction as present
                 ex_rxn_present.append("Yes")
             else:
@@ -76,126 +80,39 @@ class TestGrowthPhenotypes(unittest.TestCase):
                 pred_growth.append("No")
 
         # Add the lists as new columns in the dataframe
-        growth_phenotypes["ex_rxn_present"] = ex_rxn_present
+        growth_phenotypes["all_ex_rxn_present"] = ex_rxn_present
         growth_phenotypes["pred_growth"] = pred_growth
 
-        # Save the dataframe as a TSV
-        growth_phenotypes.to_csv(
-            os.path.join(RESULTS_DIR, "known_growth_phenotypes_w_pred.tsv"),
-            sep="\t",
-            index=False,
-        )
+        # Filter for only the phenotypes that are explicitly "Yes" or "No"
+        # Since these are the only ones we can test
+        testable_phenotypes = growth_phenotypes[
+            growth_phenotypes["growth"].isin(["Yes", "No"])
+        ].copy()
 
-        # Plot a categorical heatmap of the growth phenotypes, where the rows
-        # are the metabolites and the columns are the experimental and predicted
-        # growth phenotypes. Show growth as blue and no growth as orange, and
-        # unsure as gray
-        # First, make a new dataframe with the metabolites as the rows and the
-        # experimental and predicted growth phenotypes as the columns
-        # Combine the values of "minimal_media" and "c_source" into one column
-        growth_phenotypes["c_source"] = (
-            growth_phenotypes["minimal_media"] + " " + growth_phenotypes["c_source"]
-        )
-        # And set it as the index
-        growth_phenotypes = growth_phenotypes.set_index("c_source")
+        # Find all rows where the experimental and predicted growth do not match
+        mismatches = testable_phenotypes[
+            testable_phenotypes["growth"] != testable_phenotypes["pred_growth"]
+        ]
 
-        # Make a dictionary for the phenotypes to numbers
-        value_to_int = {"Unsure": 0, "No": 1, "Yes": 2}
-        n = len(value_to_int)
+        # If the mismatches DataFrame is not empty, the test fails.
+        if not mismatches.empty:
+            # Format a detailed error message
+            error_message = [
+                "\nPredicted growth phenotypes do not match experimental data for the following conditions:"
+            ]
+            # Add a header for the output table
+            header = f"{'Media':<35} | {'Carbon Source':<25} | {'Experimental':<12} | {'Predicted':<12} | {'Ex Rxn Present':<10}"
+            error_message.append(header)
+            error_message.append("-" * len(header))
 
-        # Create an annotation data frame for the text labels on the heatmap
-        annotation_key = {"No": "No Exchange", "Yes": ""}
-        annot_df = growth_phenotypes['ex_rxn_present'].replace(annotation_key).to_frame()
-        annot_df.rename(columns={'ex_rxn_present': 'FBA'}, inplace=True)
-        annot_df['Experimental'] = ""
-        # Sort the columns to match the order of the heatmap
-        annot_df = annot_df[["Experimental", "FBA"]]
+            # Add a row for each mismatch
+            for index, row in mismatches.iterrows():
+                # Note: Assuming you have a 'c_source' column as in your original file
+                line = f"{row['minimal_media']:<35} | {row['c_source']:<25} | {row['growth']:<12} | {row['pred_growth']:<12} | {row['all_ex_rxn_present']:<10}"
+                error_message.append(line)
 
-        # Subset the other columns, to have just the growth and predicted growth
-        growth_phenotypes = growth_phenotypes[["growth", "pred_growth"]]
-
-        # Rename the columns and the index to be longer/more descriptive
-        growth_phenotypes.index.name = "Media/Carbon Source"
-        growth_phenotypes = growth_phenotypes.rename(
-            columns={
-                "growth": "Experimental",
-                "pred_growth": "FBA",
-            }
-        )
-
-        # Make a colormap of specified colors (in numerical order for the phenotypes)
-        # cmap = ['gray', '#F18F01', '#399E5A'] # Gray, orange, green
-        cmap = ["#5E5E5E", "#FF7D0A", "#024064"]  # C-CoMP gray, orange, and dark blue
-
-        # Plot the heatmap
-        fig, ax = plt.subplots()
-        sns.heatmap(
-            growth_phenotypes.replace(value_to_int),
-            cmap=cmap,
-            linewidths=4,
-            linecolor="white",
-            annot=annot_df,
-            fmt="",
-            annot_kws={"fontsize": 8},  # Smaller font size for annotation
-            ax=ax,
-        )
-
-        # Modify colorbar:
-        colorbar = ax.collections[0].colorbar
-        r = colorbar.vmax - colorbar.vmin
-        colorbar.set_ticks([colorbar.vmin + r / n * (0.5 + i) for i in range(n)])
-        colorbar.set_ticklabels(list(value_to_int.keys()))
-
-        # Move the x-axis labels to the top
-        plt.tick_params(
-            axis="both",
-            which="major",
-            labelsize=10,
-            labelbottom=False,
-            bottom=False,
-            top=True,
-            labeltop=True,
-        )
-
-        # Make sure that every y-tick is shown
-        ax.set_yticks([i + 0.5 for i in range(len(growth_phenotypes))])
-        ax.set_yticklabels(growth_phenotypes.index, rotation=0)
-
-        # Make sure that the y-axis labels are not cut off
-        plt.tight_layout()
-
-        # Save the figure
-        plt.savefig(os.path.join(RESULTS_DIR, "exp_vs_pred_growth_phenotypes.png"))
-
-    # Test which biomass components are producible by the model
-    # It doesn't really test anyything, as in there is no way to pass or fail,
-    # but it generates a heatmap of the producibility of the biomass components
-    def test_biomass_component_producibility(self):
-        # Load the TSV of the growth phenotypes
-        growth_phenotypes = pd.read_csv(
-            os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
-        )
-
-        # Load the model
-        model = cobra.io.read_sbml_model("model.xml")
-
-        # Filter the growth phenotypes to only include the carbon sources that it can grow on
-        growth_phenotypes = growth_phenotypes[growth_phenotypes["growth"] == "Yes"]
-
-        # Load the media definitions
-        with open(
-            os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb"
-        ) as f:
-            media_definitions = pickle.load(f)
-
-        # Run the biomass producibility function on each of the models
-        sink_options = [False, True]
-        for option in sink_options:
-            biomass.check_biomass_producibility(model,
-                                                growth_phenotypes,
-                                                media_definitions,
-                                                sinks_for_all=option,
-                                                out_dir=RESULTS_DIR)
+            # Combine the list into a single string and fail the test
+            self.fail("\n".join(error_message))
 
 
 if __name__ == "__main__":

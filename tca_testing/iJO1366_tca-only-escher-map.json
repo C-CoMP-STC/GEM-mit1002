@@ -1,0 +1,2795 @@
+[
+    {
+        "homepage": "https://escher.github.io",
+        "map_description": "Central metabolism (iJO1366)\nLast Modified Thu Nov 13 2025 11:00:45 GMT-0500 (Eastern Standard Time)",
+        "map_id": "c50080dc494c0686982966090cefc2de",
+        "map_name": "iJO1366.Central metabolism",
+        "schema": "https://escher.github.io/escher/jsonschema/1-0-0#"
+    },
+    {
+        "canvas": {
+            "height": 1862.3392721601563,
+            "width": 2032.6788085703115,
+            "x": 2523.5477748359376,
+            "y": 3021.446673871094
+        },
+        "nodes": {
+            "2075291": {
+                "bigg_id": "mal__L_c",
+                "label_x": 3033.7652265625,
+                "label_y": 3621.384496875,
+                "name": "L-Malate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3006.858,
+                "y": 3627.7302
+            },
+            "2075292": {
+                "bigg_id": "nad_c",
+                "label_x": 3025.973234375,
+                "label_y": 3827.157934375,
+                "name": "Nicotinamide adenine dinucleotide",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3048.1480390625,
+                "y": 3786.964575
+            },
+            "2075293": {
+                "bigg_id": "nadh_c",
+                "label_x": 3028.356046875,
+                "label_y": 4028.0163328125,
+                "name": "Nicotinamide adenine dinucleotide - reduced",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3065.1851484375,
+                "y": 4046.6335203125
+            },
+            "2075294": {
+                "bigg_id": "h_c",
+                "label_x": 3044.2222578125,
+                "label_y": 3951.997778125,
+                "name": "H+",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3058.6460859375,
+                "y": 3978.652075
+            },
+            "2075295": {
+                "bigg_id": "oaa_c",
+                "label_x": 3078.3413984375,
+                "label_y": 4166.88234375,
+                "name": "Oxaloacetate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3048.858,
+                "y": 4170.73
+            },
+            "2075333": {
+                "bigg_id": "acon_C_c",
+                "label_x": 3629.7281171875,
+                "label_y": 4536.88966796875,
+                "name": "Cis-Aconitate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3607.858,
+                "y": 4514.73
+            },
+            "2075345": {
+                "bigg_id": "h2o_c",
+                "label_x": 3609.051359375,
+                "label_y": 3847.1686765625,
+                "name": "H2O",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3589.051359375,
+                "y": 3847.1686765625
+            },
+            "2075346": {
+                "bigg_id": "accoa_c",
+                "label_x": 3544.051359375,
+                "label_y": 3769.1686765625,
+                "name": "Acetyl-CoA",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3524.051359375,
+                "y": 3769.1686765625
+            },
+            "2075347": {
+                "bigg_id": "glx_c",
+                "label_x": 3633.9585859375,
+                "label_y": 3931.3991453125,
+                "name": "Glyoxylate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3599.051359375,
+                "y": 3937.1686765625
+            },
+            "2075348": {
+                "bigg_id": "h_c",
+                "label_x": 3269.6871015625,
+                "label_y": 3603.9382078125,
+                "name": "H+",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3262.051359375,
+                "y": 3611.1686765625
+            },
+            "2075349": {
+                "bigg_id": "coa_c",
+                "label_x": 3192.4566328125,
+                "label_y": 3578.3991453125,
+                "name": "Coenzyme A",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3182.051359375,
+                "y": 3593.1686765625
+            },
+            "2075365": {
+                "bigg_id": "fum_c",
+                "label_x": 3210.3003828125,
+                "label_y": 3399.849340625,
+                "name": "Fumarate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3232.858,
+                "y": 3354.7302
+            },
+            "2075382": {
+                "bigg_id": "accoa_c",
+                "label_x": 2628.699552734375,
+                "label_y": 4275.8950390625,
+                "name": "Acetyl-CoA",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 2702.065763671875,
+                "y": 4303.9565625
+            },
+            "2075383": {
+                "bigg_id": "h2o_c",
+                "label_x": 3042.858,
+                "label_y": 4328.73,
+                "name": "H2O",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3032.858,
+                "y": 4308.73
+            },
+            "2075384": {
+                "bigg_id": "cit_c",
+                "label_x": 3382.858,
+                "label_y": 4438.73,
+                "name": "Citrate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3354.858,
+                "y": 4456.73
+            },
+            "2075385": {
+                "bigg_id": "h_c",
+                "label_x": 3248.354826171875,
+                "label_y": 4555.34279296875,
+                "name": "H+",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3272.858,
+                "y": 4521.73
+            },
+            "2075386": {
+                "bigg_id": "coa_c",
+                "label_x": 3194.858,
+                "label_y": 4481.73,
+                "name": "Coenzyme A",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3212.858,
+                "y": 4471.73
+            },
+            "2075440": {
+                "bigg_id": "akg_c",
+                "label_x": 4059.047697265625,
+                "label_y": 4047.652075,
+                "name": "2-Oxoglutarate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 4153.858,
+                "y": 4070.7302
+            },
+            "2075544": {
+                "bigg_id": "2dmmql8_c",
+                "label_x": 3315.936125,
+                "label_y": 3145.536840625,
+                "name": "2-Demethylmenaquinol 8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3294.858,
+                "y": 3139.7302
+            },
+            "2075545": {
+                "bigg_id": "succ_c",
+                "label_x": 3724.77596875,
+                "label_y": 3293.154028125,
+                "name": "Succinate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3812.858,
+                "y": 3307.7302
+            },
+            "2075546": {
+                "bigg_id": "2dmmq8_c",
+                "label_x": 3835.8394453125,
+                "label_y": 3145.306371875,
+                "name": "2-Demethylmenaquinone 8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3812.858,
+                "y": 3138.7302
+            },
+            "2075563": {
+                "bigg_id": "h2o_c",
+                "label_x": 3605.742765625,
+                "label_y": 4400.4809765625,
+                "name": "H2O",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3605.742765625,
+                "y": 4420.4809765625
+            },
+            "2075564": {
+                "bigg_id": "icit_c",
+                "label_x": 3741.969328125,
+                "label_y": 4406.3618359375,
+                "name": "Isocitrate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 3812.858,
+                "y": 4428.73
+            },
+            "2075574": {
+                "bigg_id": "h2o_c",
+                "label_x": 3067.895109375,
+                "label_y": 3337.306371875,
+                "name": "H2O",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3113.858,
+                "y": 3361.7302
+            },
+            "2075604": {
+                "bigg_id": "mql8_c",
+                "label_x": 3409.8765546875,
+                "label_y": 3250.075903125,
+                "name": "Menaquinol 8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3402.858,
+                "y": 3258.7302
+            },
+            "2075605": {
+                "bigg_id": "mqn8_c",
+                "label_x": 3598.047453125,
+                "label_y": 3251.5182859375,
+                "name": "Menaquinone 8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3684.3970625,
+                "y": 3258.7302
+            },
+            "2075645": {
+                "bigg_id": "nadp_c",
+                "label_x": 3983.485685546875,
+                "label_y": 4447.7544140625,
+                "name": "Nicotinamide adenine dinucleotide phosphate",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3976.20809765625,
+                "y": 4419.91115234375
+            },
+            "2075646": {
+                "bigg_id": "co2_c",
+                "label_x": 4149.3374921875,
+                "label_y": 4265.808125,
+                "name": "CO2",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4129.3374921875,
+                "y": 4255.808125
+            },
+            "2075647": {
+                "bigg_id": "nadph_c",
+                "label_x": 4198.3374921875,
+                "label_y": 4190.808125,
+                "name": "Nicotinamide adenine dinucleotide phosphate - reduced",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4168.3374921875,
+                "y": 4190.808125
+            },
+            "2075649": {
+                "bigg_id": "mqn8_c",
+                "label_x": 3159.3189375,
+                "label_y": 3844.310278125,
+                "name": "Menaquinone 8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3169.051359375,
+                "y": 3805.4440671875
+            },
+            "2075650": {
+                "bigg_id": "mql8_c",
+                "label_x": 3218.6460859375,
+                "label_y": 4055.4770703124996,
+                "name": "Menaquinol 8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3199.6460859375,
+                "y": 4068.4770703124996
+            },
+            "2075676": {
+                "bigg_id": "coa_c",
+                "label_x": 3882.334806640625,
+                "label_y": 3440.776342578125,
+                "name": "Coenzyme A",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3912.858,
+                "y": 3414.7302
+            },
+            "2075677": {
+                "bigg_id": "atp_c",
+                "label_x": 3922.60751171875,
+                "label_y": 3499.70822734375,
+                "name": "ATP",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3960.858,
+                "y": 3468.7302
+            },
+            "2075678": {
+                "bigg_id": "pi_c",
+                "label_x": 4202.858,
+                "label_y": 3511.7302,
+                "name": "Phosphate",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4172.858,
+                "y": 3511.7302
+            },
+            "2075679": {
+                "bigg_id": "succoa_c",
+                "label_x": 4160.53915234375,
+                "label_y": 3625.070776171875,
+                "name": "Succinyl-CoA",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 4133.858,
+                "y": 3635.7302
+            },
+            "2075680": {
+                "bigg_id": "adp_c",
+                "label_x": 4202.858,
+                "label_y": 3561.7302,
+                "name": "ADP",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4172.858,
+                "y": 3561.7302
+            },
+            "2075717": {
+                "bigg_id": "q8_c",
+                "label_x": 2899.858,
+                "label_y": 3773.458715625,
+                "name": "Ubiquinone-8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2931.4937421875,
+                "y": 3793.845434375
+            },
+            "2075718": {
+                "bigg_id": "q8h2_c",
+                "label_x": 2882.4527265625,
+                "label_y": 4053.9421140625,
+                "name": "Ubiquinol-8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2921.4937421875,
+                "y": 4023.845434375
+            },
+            "2075754": {
+                "bigg_id": "ac_c",
+                "label_x": 3182.858,
+                "label_y": 4193.73,
+                "name": "Acetate",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3162.858,
+                "y": 4193.73
+            },
+            "2075759": {
+                "bigg_id": "q8_c",
+                "label_x": 3726.858,
+                "label_y": 3481.7302,
+                "name": "Ubiquinone-8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3726.858,
+                "y": 3461.7302
+            },
+            "2075760": {
+                "bigg_id": "q8h2_c",
+                "label_x": 3347.4156171875,
+                "label_y": 3488.923559375,
+                "name": "Ubiquinol-8",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 3348.858,
+                "y": 3448.7302
+            },
+            "2075762": {
+                "bigg_id": "nad_c",
+                "label_x": 4292.858,
+                "label_y": 3998.7302,
+                "name": "Nicotinamide adenine dinucleotide",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4270.858,
+                "y": 3998.7302
+            },
+            "2075763": {
+                "bigg_id": "coa_c",
+                "label_x": 4294.858,
+                "label_y": 3946.7302,
+                "name": "Coenzyme A",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4270.858,
+                "y": 3946.7302
+            },
+            "2075764": {
+                "bigg_id": "nadh_c",
+                "label_x": 4238.858,
+                "label_y": 3673.7302,
+                "name": "Nicotinamide adenine dinucleotide - reduced",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4218.858,
+                "y": 3673.7302
+            },
+            "2075765": {
+                "bigg_id": "co2_c",
+                "label_x": 4290.858,
+                "label_y": 3725.7302,
+                "name": "CO2",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 4270.858,
+                "y": 3725.7302
+            },
+            "2075784": {
+                "bigg_id": "o2_c",
+                "label_x": 2753.2183515625,
+                "label_y": 3860.6784421875,
+                "name": "O2",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2782.1626875,
+                "y": 3821.6374265625
+            },
+            "2075785": {
+                "bigg_id": "h2o2_c",
+                "label_x": 2697.8355390625,
+                "label_y": 3988.7448484375,
+                "name": "Hydrogen peroxide",
+                "node_is_primary": false,
+                "node_type": "metabolite",
+                "x": 2775.5308515625,
+                "y": 4007.495825
+            },
+            "2076047": {
+                "node_type": "midmarker",
+                "x": 2996.16659375,
+                "y": 3900.7116453125
+            },
+            "2076048": {
+                "node_type": "multimarker",
+                "x": 2996.7242109375,
+                "y": 3932.1315671875
+            },
+            "2076049": {
+                "node_type": "multimarker",
+                "x": 2996.16659375,
+                "y": 3852.079809375
+            },
+            "2076083": {
+                "node_type": "multimarker",
+                "x": 3262.051359375,
+                "y": 3707.1686765625
+            },
+            "2076084": {
+                "node_type": "midmarker",
+                "x": 3331.051359375,
+                "y": 3754.1686765625
+            },
+            "2076085": {
+                "node_type": "multimarker",
+                "x": 3414.051359375,
+                "y": 3812.1686765625
+            },
+            "2076112": {
+                "node_type": "multimarker",
+                "x": 3227.858,
+                "y": 4375.73
+            },
+            "2076113": {
+                "node_type": "midmarker",
+                "x": 3183.858,
+                "y": 4342.73
+            },
+            "2076114": {
+                "node_type": "multimarker",
+                "x": 3128.858,
+                "y": 4290.73
+            },
+            "2076245": {
+                "node_type": "multimarker",
+                "x": 3382.858,
+                "y": 3208.7302
+            },
+            "2076246": {
+                "node_type": "multimarker",
+                "x": 3712.858,
+                "y": 3208.7302
+            },
+            "2076247": {
+                "node_type": "midmarker",
+                "x": 3562.858,
+                "y": 3208.7302
+            },
+            "2076263": {
+                "node_type": "multimarker",
+                "x": 3692.858,
+                "y": 4478.73
+            },
+            "2076264": {
+                "node_type": "midmarker",
+                "x": 3752.858,
+                "y": 4458.73
+            },
+            "2076269": {
+                "node_type": "multimarker",
+                "x": 3113.858,
+                "y": 3452.7302
+            },
+            "2076270": {
+                "node_type": "midmarker",
+                "x": 3073.858,
+                "y": 3510.7302
+            },
+            "2076298": {
+                "node_type": "multimarker",
+                "x": 3592.858,
+                "y": 3313.7302
+            },
+            "2076299": {
+                "node_type": "multimarker",
+                "x": 3468.858,
+                "y": 3313.7302
+            },
+            "2076300": {
+                "node_type": "midmarker",
+                "x": 3572.858,
+                "y": 3313.7302
+            },
+            "2076341": {
+                "node_type": "midmarker",
+                "x": 3812.858,
+                "y": 4298.73
+            },
+            "2076342": {
+                "node_type": "multimarker",
+                "x": 3812.858,
+                "y": 4228.73
+            },
+            "2076343": {
+                "node_type": "multimarker",
+                "x": 4051.3374921875,
+                "y": 4255.808125
+            },
+            "2076344": {
+                "node_type": "multimarker",
+                "x": 3980.7652265625,
+                "y": 4316.919453125
+            },
+            "2076345": {
+                "node_type": "midmarker",
+                "x": 4009.858,
+                "y": 4291.73
+            },
+            "2076347": {
+                "node_type": "midmarker",
+                "x": 3120.3003828125,
+                "y": 3915.693090625
+            },
+            "2076348": {
+                "node_type": "multimarker",
+                "x": 3119.858,
+                "y": 3850.11691875
+            },
+            "2076349": {
+                "node_type": "multimarker",
+                "x": 3117.973234375,
+                "y": 3985.72629375
+            },
+            "2076377": {
+                "node_type": "multimarker",
+                "x": 4008.858,
+                "y": 3445.7302
+            },
+            "2076378": {
+                "node_type": "midmarker",
+                "x": 4037.858,
+                "y": 3476.7302
+            },
+            "2076379": {
+                "node_type": "multimarker",
+                "x": 4062.858,
+                "y": 3504.7302
+            },
+            "2076381": {
+                "node_type": "multimarker",
+                "x": 3496.7984296875,
+                "y": 4495.2876171875
+            },
+            "2076382": {
+                "node_type": "midmarker",
+                "x": 3468.62753125,
+                "y": 4488.73
+            },
+            "2076415": {
+                "node_type": "midmarker",
+                "x": 2961.4937421875,
+                "y": 3913.845434375
+            },
+            "2076416": {
+                "node_type": "multimarker",
+                "x": 2961.4937421875,
+                "y": 3853.845434375
+            },
+            "2076417": {
+                "node_type": "multimarker",
+                "x": 2961.4937421875,
+                "y": 3953.845434375
+            },
+            "2076456": {
+                "node_type": "multimarker",
+                "x": 3174.858,
+                "y": 4266.73
+            },
+            "2076457": {
+                "node_type": "midmarker",
+                "x": 3227.858,
+                "y": 4311.73
+            },
+            "2076463": {
+                "node_type": "multimarker",
+                "x": 3422.858,
+                "y": 3388.7302
+            },
+            "2076464": {
+                "node_type": "midmarker",
+                "x": 3542.858,
+                "y": 3388.7302
+            },
+            "2076465": {
+                "node_type": "multimarker",
+                "x": 3652.858,
+                "y": 3388.7302
+            },
+            "2076474": {
+                "node_type": "multimarker",
+                "x": 4178.4156171875,
+                "y": 3899.0944578125
+            },
+            "2076475": {
+                "node_type": "midmarker",
+                "x": 4175.5308515625,
+                "y": 3842.7302
+            },
+            "2076476": {
+                "node_type": "multimarker",
+                "x": 4171.858,
+                "y": 3771.7302
+            },
+            "2076495": {
+                "node_type": "multimarker",
+                "x": 2848.3189375,
+                "y": 3951.919653125
+            },
+            "2076496": {
+                "node_type": "multimarker",
+                "x": 2849.664640625,
+                "y": 3877.4069578125
+            },
+            "2076497": {
+                "node_type": "midmarker",
+                "x": 2849.7613203125,
+                "y": 3916.8268796875
+            },
+            "2076662": {
+                "node_type": "multimarker",
+                "x": 3838.4574400753913,
+                "y": 4788.584327591767
+            },
+            "2076663": {
+                "node_type": "midmarker",
+                "x": 3858.4571778068935,
+                "y": 4788.584327591767
+            },
+            "2076664": {
+                "node_type": "multimarker",
+                "x": 3878.4569155383956,
+                "y": 4788.584327591767
+            },
+            "2076719": {
+                "bigg_id": "pi_c",
+                "label_x": 4459.960986473162,
+                "label_y": 4828.584327591767,
+                "name": "Phosphate",
+                "node_is_primary": true,
+                "node_type": "metabolite",
+                "x": 4486.960986473162,
+                "y": 4788.584327591767
+            }
+        },
+        "reactions": {
+            "2075839": {
+                "bigg_id": "MDH",
+                "gene_reaction_rule": "b3236",
+                "genes": [
+                    {
+                        "bigg_id": "b3236",
+                        "name": "mdh"
+                    }
+                ],
+                "label_x": 3019.1480390625,
+                "label_y": 3883.49973125,
+                "metabolites": [
+                    {
+                        "bigg_id": "mal__L_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "h_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "nad_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "oaa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "nadh_c",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "Malate dehydrogenase",
+                "reversibility": true,
+                "segments": {
+                    "675": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076049",
+                        "to_node_id": "2076047"
+                    },
+                    "676": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076047",
+                        "to_node_id": "2076048"
+                    },
+                    "677": {
+                        "b1": {
+                            "x": 3014.9175703125,
+                            "y": 3678.094009828363
+                        },
+                        "b2": {
+                            "x": 2996.16659375,
+                            "y": 3828.010534354759
+                        },
+                        "from_node_id": "2075291",
+                        "to_node_id": "2076049"
+                    },
+                    "678": {
+                        "b1": {
+                            "x": 3009.1480390625,
+                            "y": 3815.769549805468
+                        },
+                        "b2": {
+                            "x": 2996.16659375,
+                            "y": 3840.3213018166402
+                        },
+                        "from_node_id": "2075292",
+                        "to_node_id": "2076049"
+                    },
+                    "679": {
+                        "b1": {
+                            "x": 2997.086199423056,
+                            "y": 3948.7830375230687
+                        },
+                        "b2": {
+                            "x": 3008.0275189101862,
+                            "y": 4033.7927183060624
+                        },
+                        "from_node_id": "2076048",
+                        "to_node_id": "2075293"
+                    },
+                    "680": {
+                        "b1": {
+                            "x": 2997.010450627502,
+                            "y": 3945.298592927578
+                        },
+                        "b2": {
+                            "x": 3004.890257300006,
+                            "y": 3991.887863925259
+                        },
+                        "from_node_id": "2076048",
+                        "to_node_id": "2075294"
+                    },
+                    "681": {
+                        "b1": {
+                            "x": 2997.385174856572,
+                            "y": 3962.535907464812
+                        },
+                        "b2": {
+                            "x": 2994.6002755635736,
+                            "y": 4013.2860087368736
+                        },
+                        "from_node_id": "2076048",
+                        "to_node_id": "2075295"
+                    }
+                }
+            },
+            "2075853": {
+                "bigg_id": "MALS",
+                "gene_reaction_rule": "b4014 or b2976",
+                "genes": [
+                    {
+                        "bigg_id": "b4014",
+                        "name": "aceB"
+                    },
+                    {
+                        "bigg_id": "b2976",
+                        "name": "glcB"
+                    }
+                ],
+                "label_x": 3341.051359375,
+                "label_y": 3744.1686765625,
+                "metabolites": [
+                    {
+                        "bigg_id": "h_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "glx_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "mal__L_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "coa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "accoa_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "h2o_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Malate synthase",
+                "reversibility": false,
+                "segments": {
+                    "757": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076085",
+                        "to_node_id": "2076084"
+                    },
+                    "758": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076084",
+                        "to_node_id": "2076083"
+                    },
+                    "759": {
+                        "b1": {
+                            "x": 3487.1951285723717,
+                            "y": 3863.2811899775306
+                        },
+                        "b2": {
+                            "x": 3435.9944901342114,
+                            "y": 3827.5024305870093
+                        },
+                        "from_node_id": "2075345",
+                        "to_node_id": "2076085"
+                    },
+                    "760": {
+                        "b1": {
+                            "x": 3462.45679747978,
+                            "y": 3845.9941634309002
+                        },
+                        "b2": {
+                            "x": 3428.572990806434,
+                            "y": 3822.31632262302
+                        },
+                        "from_node_id": "2075346",
+                        "to_node_id": "2076085"
+                    },
+                    "761": {
+                        "b1": {
+                            "x": 3505.558545180982,
+                            "y": 3876.1134570052345
+                        },
+                        "b2": {
+                            "x": 3441.503515116795,
+                            "y": 3831.3521106953203
+                        },
+                        "from_node_id": "2075347",
+                        "to_node_id": "2076085"
+                    },
+                    "762": {
+                        "b1": {
+                            "x": 3250.1500376973145,
+                            "y": 3699.0619791878444
+                        },
+                        "b2": {
+                            "x": 3222.380287116048,
+                            "y": 3680.146351980315
+                        },
+                        "from_node_id": "2076083",
+                        "to_node_id": "2075348"
+                    },
+                    "763": {
+                        "b1": {
+                            "x": 3227.2874071167475,
+                            "y": 3683.4888829952843
+                        },
+                        "b2": {
+                            "x": 3213.9635107016584,
+                            "y": 3671.5075157134484
+                        },
+                        "from_node_id": "2076083",
+                        "to_node_id": "2075291"
+                    },
+                    "764": {
+                        "b1": {
+                            "x": 3244.7858240463024,
+                            "y": 3695.4080945270102
+                        },
+                        "b2": {
+                            "x": 3204.499574946007,
+                            "y": 3667.9667364442007
+                        },
+                        "from_node_id": "2076083",
+                        "to_node_id": "2075349"
+                    }
+                }
+            },
+            "2075864": {
+                "bigg_id": "CS",
+                "gene_reaction_rule": "b0720",
+                "genes": [
+                    {
+                        "bigg_id": "b0720",
+                        "name": "gltA"
+                    }
+                ],
+                "label_x": 3124.623625,
+                "label_y": 4378.88625,
+                "metabolites": [
+                    {
+                        "bigg_id": "cit_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "oaa_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "h_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "coa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "accoa_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "h2o_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Citrate synthase",
+                "reversibility": false,
+                "segments": {
+                    "825": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076114",
+                        "to_node_id": "2076113"
+                    },
+                    "826": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076113",
+                        "to_node_id": "2076112"
+                    },
+                    "827": {
+                        "b1": {
+                            "x": 2819.181198331562,
+                            "y": 4201.119797847283
+                        },
+                        "b2": {
+                            "x": 2958.789554226031,
+                            "y": 4155.766006736997
+                        },
+                        "from_node_id": "2075382",
+                        "to_node_id": "2076114"
+                    },
+                    "828": {
+                        "b1": {
+                            "x": 3067.808862219809,
+                            "y": 4242.1498421782735
+                        },
+                        "b2": {
+                            "x": 3113.1382293690676,
+                            "y": 4275.867671403482
+                        },
+                        "from_node_id": "2075295",
+                        "to_node_id": "2076114"
+                    },
+                    "829": {
+                        "b1": {
+                            "x": 3090.4878476443187,
+                            "y": 4259.1011581563325
+                        },
+                        "b2": {
+                            "x": 3118.2119445276708,
+                            "y": 4280.664638462525
+                        },
+                        "from_node_id": "2075383",
+                        "to_node_id": "2076114"
+                    },
+                    "830": {
+                        "b1": {
+                            "x": 3245.9338402294334,
+                            "y": 4389.286880172074
+                        },
+                        "b2": {
+                            "x": 3288.110800764778,
+                            "y": 4420.919600573583
+                        },
+                        "from_node_id": "2076112",
+                        "to_node_id": "2075384"
+                    },
+                    "831": {
+                        "b1": {
+                            "x": 3246.1913139393837,
+                            "y": 4389.479985454537
+                        },
+                        "b2": {
+                            "x": 3288.9690464646123,
+                            "y": 4421.563284848458
+                        },
+                        "from_node_id": "2076112",
+                        "to_node_id": "2075385"
+                    },
+                    "832": {
+                        "b1": {
+                            "x": 3239.5177770133055,
+                            "y": 4384.474832759978
+                        },
+                        "b2": {
+                            "x": 3266.723923377684,
+                            "y": 4404.879442533263
+                        },
+                        "from_node_id": "2076112",
+                        "to_node_id": "2075386"
+                    }
+                }
+            },
+            "2075921": {
+                "bigg_id": "FRD3",
+                "gene_reaction_rule": "b4151 and b4152 and b4153 and b4154",
+                "genes": [
+                    {
+                        "bigg_id": "b4151",
+                        "name": "frdD"
+                    },
+                    {
+                        "bigg_id": "b4152",
+                        "name": "frdC"
+                    },
+                    {
+                        "bigg_id": "b4153",
+                        "name": "frdB"
+                    },
+                    {
+                        "bigg_id": "b4154",
+                        "name": "frdA"
+                    }
+                ],
+                "label_x": 3572.858,
+                "label_y": 3198.7302,
+                "metabolites": [
+                    {
+                        "bigg_id": "2dmmql8_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "2dmmq8_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "fum_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "succ_c",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "Fumarate reductase",
+                "reversibility": false,
+                "segments": {
+                    "1122": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076245",
+                        "to_node_id": "2076247"
+                    },
+                    "1123": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076247",
+                        "to_node_id": "2076246"
+                    },
+                    "1124": {
+                        "b1": {
+                            "x": 3278.1966413235527,
+                            "y": 3208.7302
+                        },
+                        "b2": {
+                            "x": 3351.459592397066,
+                            "y": 3208.7302
+                        },
+                        "from_node_id": "2075365",
+                        "to_node_id": "2076245"
+                    },
+                    "1125": {
+                        "b1": {
+                            "x": 3326.945121340428,
+                            "y": 3208.7302
+                        },
+                        "b2": {
+                            "x": 3366.0841364021285,
+                            "y": 3208.7302
+                        },
+                        "from_node_id": "2075544",
+                        "to_node_id": "2076245"
+                    },
+                    "1126": {
+                        "b1": {
+                            "x": 3733.965403914267,
+                            "y": 3208.7302
+                        },
+                        "b2": {
+                            "x": 3783.216013047556,
+                            "y": 3208.7302
+                        },
+                        "from_node_id": "2076246",
+                        "to_node_id": "2075545"
+                    },
+                    "1127": {
+                        "b1": {
+                            "x": 3731.1678334236008,
+                            "y": 3208.7302
+                        },
+                        "b2": {
+                            "x": 3773.8907780786685,
+                            "y": 3208.7302
+                        },
+                        "from_node_id": "2076246",
+                        "to_node_id": "2075546"
+                    }
+                }
+            },
+            "2075927": {
+                "bigg_id": "ACONTb",
+                "gene_reaction_rule": "b0118 or b1276",
+                "genes": [
+                    {
+                        "bigg_id": "b0118",
+                        "name": "acnB"
+                    },
+                    {
+                        "bigg_id": "b1276",
+                        "name": "acnA"
+                    }
+                ],
+                "label_x": 3699.39315625,
+                "label_y": 4513.6372265625,
+                "metabolites": [
+                    {
+                        "bigg_id": "acon_C_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "h2o_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "icit_c",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "Aconitase (half-reaction B, Isocitrate hydro-lyase)",
+                "reversibility": true,
+                "segments": {
+                    "24": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076263",
+                        "to_node_id": "2076264"
+                    },
+                    "25": {
+                        "b1": {
+                            "x": 3761.858,
+                            "y": 4454.23
+                        },
+                        "b2": {
+                            "x": 3782.858,
+                            "y": 4443.73
+                        },
+                        "from_node_id": "2076264",
+                        "to_node_id": "2075564"
+                    },
+                    "26": {
+                        "b1": {
+                            "x": 3654.8414033097497,
+                            "y": 4493.325375980083
+                        },
+                        "b2": {
+                            "x": 3679.722161617925,
+                            "y": 4483.108612794024
+                        },
+                        "from_node_id": "2075333",
+                        "to_node_id": "2076263"
+                    },
+                    "27": {
+                        "b1": {
+                            "x": 3665.5226961998214,
+                            "y": 4478.706676787559
+                        },
+                        "b2": {
+                            "x": 3676.0031119849464,
+                            "y": 4484.348296005018
+                        },
+                        "from_node_id": "2075563",
+                        "to_node_id": "2076263"
+                    }
+                }
+            },
+            "2075930": {
+                "bigg_id": "FUM",
+                "gene_reaction_rule": "b1612 or b4122 or b1611",
+                "genes": [
+                    {
+                        "bigg_id": "b1612",
+                        "name": "fumA"
+                    },
+                    {
+                        "bigg_id": "b1611",
+                        "name": "fumC"
+                    },
+                    {
+                        "bigg_id": "b4122",
+                        "name": "fumB"
+                    }
+                ],
+                "label_x": 3105.4937421875,
+                "label_y": 3518.03879375,
+                "metabolites": [
+                    {
+                        "bigg_id": "mal__L_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "h2o_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "fum_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Fumarase",
+                "reversibility": true,
+                "segments": {
+                    "39": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076269",
+                        "to_node_id": "2076270"
+                    },
+                    "40": {
+                        "b1": {
+                            "x": 3063.808,
+                            "y": 3528.2802
+                        },
+                        "b2": {
+                            "x": 3040.358,
+                            "y": 3569.2302
+                        },
+                        "from_node_id": "2076270",
+                        "to_node_id": "2075291"
+                    },
+                    "41": {
+                        "b1": {
+                            "x": 3157.6185748702346,
+                            "y": 3389.27736643816
+                        },
+                        "b2": {
+                            "x": 3126.9861724610705,
+                            "y": 3433.694349931448
+                        },
+                        "from_node_id": "2075365",
+                        "to_node_id": "2076269"
+                    },
+                    "42": {
+                        "b1": {
+                            "x": 3139.6898494890665,
+                            "y": 3415.2740182408534
+                        },
+                        "b2": {
+                            "x": 3121.60755484672,
+                            "y": 3441.493345472256
+                        },
+                        "from_node_id": "2075574",
+                        "to_node_id": "2076269"
+                    }
+                }
+            },
+            "2075942": {
+                "bigg_id": "FRD2",
+                "gene_reaction_rule": "b4151 and b4152 and b4153 and b4154",
+                "genes": [
+                    {
+                        "bigg_id": "b4152",
+                        "name": "frdC"
+                    },
+                    {
+                        "bigg_id": "b4153",
+                        "name": "frdB"
+                    },
+                    {
+                        "bigg_id": "b4154",
+                        "name": "frdA"
+                    },
+                    {
+                        "bigg_id": "b4151",
+                        "name": "frdD"
+                    }
+                ],
+                "label_x": 3484.858,
+                "label_y": 3303.7302,
+                "metabolites": [
+                    {
+                        "bigg_id": "fum_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "succ_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "mql8_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "mqn8_c",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "Fumarate reductase",
+                "reversibility": false,
+                "segments": {
+                    "105": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076299",
+                        "to_node_id": "2076300"
+                    },
+                    "106": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076300",
+                        "to_node_id": "2076298"
+                    },
+                    "107": {
+                        "b1": {
+                            "x": 3349.0905169338525,
+                            "y": 3313.7302
+                        },
+                        "b2": {
+                            "x": 3432.9277550801557,
+                            "y": 3313.7302
+                        },
+                        "from_node_id": "2075365",
+                        "to_node_id": "2076299"
+                    },
+                    "108": {
+                        "b1": {
+                            "x": 3425.9016267825136,
+                            "y": 3313.7302
+                        },
+                        "b2": {
+                            "x": 3455.9710880347543,
+                            "y": 3313.7302
+                        },
+                        "from_node_id": "2075604",
+                        "to_node_id": "2076299"
+                    },
+                    "109": {
+                        "b1": {
+                            "x": 3625.8702704460025,
+                            "y": 3313.7302
+                        },
+                        "b2": {
+                            "x": 3702.8989014866747,
+                            "y": 3313.7302
+                        },
+                        "from_node_id": "2076298",
+                        "to_node_id": "2075545"
+                    },
+                    "110": {
+                        "b1": {
+                            "x": 3607.4203658792107,
+                            "y": 3313.7302
+                        },
+                        "b2": {
+                            "x": 3652.938282097369,
+                            "y": 3313.7302
+                        },
+                        "from_node_id": "2076298",
+                        "to_node_id": "2075605"
+                    }
+                }
+            },
+            "2075959": {
+                "bigg_id": "ICL",
+                "gene_reaction_rule": "b4015",
+                "genes": [
+                    {
+                        "bigg_id": "b4015",
+                        "name": "aceA"
+                    }
+                ],
+                "label_x": 3822.858,
+                "label_y": 4288.73,
+                "metabolites": [
+                    {
+                        "bigg_id": "succ_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "glx_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "icit_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Isocitrate lyase",
+                "reversibility": false,
+                "segments": {
+                    "200": {
+                        "b1": {
+                            "x": 3812.858,
+                            "y": 4409.23
+                        },
+                        "b2": {
+                            "x": 3812.858,
+                            "y": 4363.73
+                        },
+                        "from_node_id": "2075564",
+                        "to_node_id": "2076341"
+                    },
+                    "201": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076341",
+                        "to_node_id": "2076342"
+                    },
+                    "202": {
+                        "b1": {
+                            "x": 3812.858,
+                            "y": 4090.5800299999996
+                        },
+                        "b2": {
+                            "x": 3812.858,
+                            "y": 3768.2300999999998
+                        },
+                        "from_node_id": "2076342",
+                        "to_node_id": "2075545"
+                    },
+                    "203": {
+                        "b1": {
+                            "x": 3812.858,
+                            "y": 4180.758153694058
+                        },
+                        "b2": {
+                            "x": 3833.051359375,
+                            "y": 3995.2623222093603
+                        },
+                        "from_node_id": "2076342",
+                        "to_node_id": "2075347"
+                    }
+                }
+            },
+            "2075960": {
+                "bigg_id": "ICDHyr",
+                "gene_reaction_rule": "b1136",
+                "genes": [
+                    {
+                        "bigg_id": "b1136",
+                        "name": "icd"
+                    }
+                ],
+                "label_x": 4022.742765625,
+                "label_y": 4329.3286328125,
+                "metabolites": [
+                    {
+                        "bigg_id": "akg_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "nadph_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "co2_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "icit_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "nadp_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Isocitrate dehydrogenase (NADP)",
+                "reversibility": true,
+                "segments": {
+                    "204": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076344",
+                        "to_node_id": "2076345"
+                    },
+                    "205": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076345",
+                        "to_node_id": "2076343"
+                    },
+                    "206": {
+                        "b1": {
+                            "x": 3946.5018723454746,
+                            "y": 4329.916450480579
+                        },
+                        "b2": {
+                            "x": 3965.2533589692675,
+                            "y": 4330.121042566048
+                        },
+                        "from_node_id": "2075645",
+                        "to_node_id": "2076344"
+                    },
+                    "207": {
+                        "b1": {
+                            "x": 3871.033788934875,
+                            "y": 4409.878264736277
+                        },
+                        "b2": {
+                            "x": 3967.3179632429624,
+                            "y": 4328.363932545883
+                        },
+                        "from_node_id": "2075564",
+                        "to_node_id": "2076344"
+                    },
+                    "208": {
+                        "b1": {
+                            "x": 4071.444583707176,
+                            "y": 4237.833603793017
+                        },
+                        "b2": {
+                            "x": 4116.91874777392,
+                            "y": 4204.547351185057
+                        },
+                        "from_node_id": "2076343",
+                        "to_node_id": "2075440"
+                    },
+                    "209": {
+                        "b1": {
+                            "x": 4060.060271279037,
+                            "y": 4248.010489145444
+                        },
+                        "b2": {
+                            "x": 4080.413422492623,
+                            "y": 4229.816005484814
+                        },
+                        "from_node_id": "2076343",
+                        "to_node_id": "2075646"
+                    },
+                    "210": {
+                        "b1": {
+                            "x": 4066.305243408833,
+                            "y": 4242.427862544566
+                        },
+                        "b2": {
+                            "x": 4101.229996258609,
+                            "y": 4211.207250148554
+                        },
+                        "from_node_id": "2076343",
+                        "to_node_id": "2075647"
+                    }
+                }
+            },
+            "2075962": {
+                "bigg_id": "MDH3",
+                "gene_reaction_rule": "b2210",
+                "genes": [
+                    {
+                        "bigg_id": "b2210",
+                        "name": "mqo"
+                    }
+                ],
+                "label_x": 3131.742765625,
+                "label_y": 3933.0983640625,
+                "metabolites": [
+                    {
+                        "bigg_id": "mal__L_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "mql8_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "oaa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "mqn8_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Malate dehydrogenase (menaquinone 8 as acceptor)",
+                "reversibility": false,
+                "segments": {
+                    "213": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076348",
+                        "to_node_id": "2076347"
+                    },
+                    "214": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076347",
+                        "to_node_id": "2076349"
+                    },
+                    "215": {
+                        "b1": {
+                            "x": 3111.1001314446685,
+                            "y": 3758.878239114042
+                        },
+                        "b2": {
+                            "x": 3120.2596433396507,
+                            "y": 3817.9854515779625
+                        },
+                        "from_node_id": "2075291",
+                        "to_node_id": "2076348"
+                    },
+                    "216": {
+                        "b1": {
+                            "x": 3124.540986659862,
+                            "y": 3811.5531812735485
+                        },
+                        "b2": {
+                            "x": 3119.9647514667085,
+                            "y": 3841.5768014133146
+                        },
+                        "from_node_id": "2075649",
+                        "to_node_id": "2076348"
+                    },
+                    "217": {
+                        "b1": {
+                            "x": 3118.1612927879873,
+                            "y": 4001.80528806041
+                        },
+                        "b2": {
+                            "x": 3114.2729473141244,
+                            "y": 4049.419621138867
+                        },
+                        "from_node_id": "2076349",
+                        "to_node_id": "2075650"
+                    },
+                    "218": {
+                        "b1": {
+                            "x": 3118.2038650222903,
+                            "y": 4005.4452140933004
+                        },
+                        "b2": {
+                            "x": 3117.2996203868006,
+                            "y": 4096.169895415168
+                        },
+                        "from_node_id": "2076349",
+                        "to_node_id": "2075295"
+                    }
+                }
+            },
+            "2075973": {
+                "bigg_id": "SUCOAS",
+                "gene_reaction_rule": "b0728 and b0729",
+                "genes": [
+                    {
+                        "bigg_id": "b0728",
+                        "name": "sucC"
+                    },
+                    {
+                        "bigg_id": "b0729",
+                        "name": "sucD"
+                    }
+                ],
+                "label_x": 4047.858,
+                "label_y": 3466.7302,
+                "metabolites": [
+                    {
+                        "bigg_id": "succoa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "coa_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "adp_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "atp_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "succ_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "pi_c",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "Succinyl-CoA synthetase (ADP-forming)",
+                "reversibility": true,
+                "segments": {
+                    "278": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076377",
+                        "to_node_id": "2076378"
+                    },
+                    "279": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076378",
+                        "to_node_id": "2076379"
+                    },
+                    "280": {
+                        "b1": {
+                            "x": 3934.1907463016614,
+                            "y": 3372.6280212082415
+                        },
+                        "b2": {
+                            "x": 3984.2942496717487,
+                            "y": 3419.4723979249725
+                        },
+                        "from_node_id": "2075545",
+                        "to_node_id": "2076377"
+                    },
+                    "281": {
+                        "b1": {
+                            "x": 3974.3991724871157,
+                            "y": 3408.894901624158
+                        },
+                        "b2": {
+                            "x": 3998.520351746135,
+                            "y": 3434.6796104872474
+                        },
+                        "from_node_id": "2075676",
+                        "to_node_id": "2076377"
+                    },
+                    "282": {
+                        "b1": {
+                            "x": 3990.677162037068,
+                            "y": 3426.295511143072
+                        },
+                        "b2": {
+                            "x": 4003.4037486111206,
+                            "y": 3439.8997933429214
+                        },
+                        "from_node_id": "2075677",
+                        "to_node_id": "2076377"
+                    },
+                    "283": {
+                        "b1": {
+                            "x": 4073.869488693657,
+                            "y": 3517.0630673368955
+                        },
+                        "b2": {
+                            "x": 4099.5629623121895,
+                            "y": 3545.839757789652
+                        },
+                        "from_node_id": "2076379",
+                        "to_node_id": "2075678"
+                    },
+                    "284": {
+                        "b1": {
+                            "x": 4077.743787683115,
+                            "y": 3521.4022822050883
+                        },
+                        "b2": {
+                            "x": 4112.477292277049,
+                            "y": 3560.303807350295
+                        },
+                        "from_node_id": "2076379",
+                        "to_node_id": "2075679"
+                    },
+                    "285": {
+                        "b1": {
+                            "x": 4075.235012063024,
+                            "y": 3518.5924535105864
+                        },
+                        "b2": {
+                            "x": 4104.114706876746,
+                            "y": 3550.937711701955
+                        },
+                        "from_node_id": "2076379",
+                        "to_node_id": "2075680"
+                    }
+                }
+            },
+            "2075975": {
+                "bigg_id": "ACONTa",
+                "gene_reaction_rule": "b0118 or b1276",
+                "genes": [
+                    {
+                        "bigg_id": "b0118",
+                        "name": "acnB"
+                    },
+                    {
+                        "bigg_id": "b1276",
+                        "name": "acnA"
+                    }
+                ],
+                "label_x": 3439.6831953125,
+                "label_y": 4536.4253125,
+                "metabolites": [
+                    {
+                        "bigg_id": "acon_C_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "h2o_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cit_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Aconitase (half-reaction A, Citrate hydro-lyase)",
+                "reversibility": true,
+                "segments": {
+                    "288": {
+                        "b1": {
+                            "x": 3427.3109296875,
+                            "y": 4478.83859375
+                        },
+                        "b2": {
+                            "x": 3439.1480390625,
+                            "y": 4481.384296875
+                        },
+                        "from_node_id": "2075384",
+                        "to_node_id": "2076382"
+                    },
+                    "289": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076382",
+                        "to_node_id": "2076381"
+                    },
+                    "290": {
+                        "b1": {
+                            "x": 3508.293070294817,
+                            "y": 4496.601290399764
+                        },
+                        "b2": {
+                            "x": 3526.4596015035563,
+                            "y": 4501.108910707549
+                        },
+                        "from_node_id": "2076381",
+                        "to_node_id": "2075333"
+                    },
+                    "291": {
+                        "b1": {
+                            "x": 3514.3845894648116,
+                            "y": 4497.297464019192
+                        },
+                        "b2": {
+                            "x": 3546.764665403539,
+                            "y": 4517.853317563975
+                        },
+                        "from_node_id": "2076381",
+                        "to_node_id": "2075563"
+                    }
+                }
+            },
+            "2075989": {
+                "bigg_id": "MDH2",
+                "gene_reaction_rule": "b2210",
+                "genes": [
+                    {
+                        "bigg_id": "b2210",
+                        "name": "mqo"
+                    }
+                ],
+                "label_x": 2863.31503125,
+                "label_y": 3921.154028125,
+                "metabolites": [
+                    {
+                        "bigg_id": "mal__L_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "q8h2_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "oaa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "q8_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Malate dehydrogenase (ubiquinone 8 as acceptor)",
+                "reversibility": false,
+                "segments": {
+                    "363": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076416",
+                        "to_node_id": "2076415"
+                    },
+                    "364": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076415",
+                        "to_node_id": "2076417"
+                    },
+                    "365": {
+                        "b1": {
+                            "x": 2961.4937421875,
+                            "y": 3820.3044147125033
+                        },
+                        "b2": {
+                            "x": 2961.4937421875,
+                            "y": 3843.783128476251
+                        },
+                        "from_node_id": "2075717",
+                        "to_node_id": "2076416"
+                    },
+                    "366": {
+                        "b1": {
+                            "x": 2962.936125,
+                            "y": 3770.604962776359
+                        },
+                        "b2": {
+                            "x": 2961.4937421875,
+                            "y": 3818.0554218016578
+                        },
+                        "from_node_id": "2075291",
+                        "to_node_id": "2076416"
+                    },
+                    "367": {
+                        "b1": {
+                            "x": 2961.4937421875,
+                            "y": 3989.869462106514
+                        },
+                        "b2": {
+                            "x": 2962.936125,
+                            "y": 4066.71361275088
+                        },
+                        "from_node_id": "2076417",
+                        "to_node_id": "2075295"
+                    },
+                    "368": {
+                        "b1": {
+                            "x": 2961.4937421875,
+                            "y": 3965.9388209974477
+                        },
+                        "b2": {
+                            "x": 2961.4937421875,
+                            "y": 3994.1567231164927
+                        },
+                        "from_node_id": "2076417",
+                        "to_node_id": "2075718"
+                    }
+                }
+            },
+            "2076004": {
+                "bigg_id": "CITL",
+                "gene_reaction_rule": "(b0615 and b0616 and b0617) and b0614",
+                "genes": [
+                    {
+                        "bigg_id": "b0617",
+                        "name": "citD"
+                    },
+                    {
+                        "bigg_id": "b0614",
+                        "name": "citX"
+                    },
+                    {
+                        "bigg_id": "b0615",
+                        "name": "citF"
+                    },
+                    {
+                        "bigg_id": "b0616",
+                        "name": "citE"
+                    }
+                ],
+                "label_x": 3221.991544921875,
+                "label_y": 4281.536640625,
+                "metabolites": [
+                    {
+                        "bigg_id": "ac_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "oaa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "cit_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Citrate lyase",
+                "reversibility": false,
+                "segments": {
+                    "454": {
+                        "b1": {
+                            "x": 3335.808,
+                            "y": 4434.98
+                        },
+                        "b2": {
+                            "x": 3291.358,
+                            "y": 4384.23
+                        },
+                        "from_node_id": "2075384",
+                        "to_node_id": "2076457"
+                    },
+                    "455": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076457",
+                        "to_node_id": "2076456"
+                    },
+                    "456": {
+                        "b1": {
+                            "x": 3156.7453729404388,
+                            "y": 4251.351354383391
+                        },
+                        "b2": {
+                            "x": 3114.4825764681286,
+                            "y": 4215.467847944637
+                        },
+                        "from_node_id": "2076456",
+                        "to_node_id": "2075295"
+                    },
+                    "457": {
+                        "b1": {
+                            "x": 3166.3988538248095,
+                            "y": 4259.547706077668
+                        },
+                        "b2": {
+                            "x": 3146.6608460826988,
+                            "y": 4242.789020258894
+                        },
+                        "from_node_id": "2076456",
+                        "to_node_id": "2075754"
+                    }
+                }
+            },
+            "2076008": {
+                "bigg_id": "SUCDi",
+                "gene_reaction_rule": "b0721 and b0722 and b0723 and b0724",
+                "genes": [
+                    {
+                        "bigg_id": "b0724",
+                        "name": "sdhB"
+                    },
+                    {
+                        "bigg_id": "b0721",
+                        "name": "sdhC"
+                    },
+                    {
+                        "bigg_id": "b0722",
+                        "name": "sdhD"
+                    },
+                    {
+                        "bigg_id": "b0723",
+                        "name": "sdhA"
+                    }
+                ],
+                "label_x": 3509.070890625,
+                "label_y": 3430.937963671875,
+                "metabolites": [
+                    {
+                        "bigg_id": "fum_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "q8_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "succ_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "q8h2_c",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "Succinate dehydrogenase (irreversible)",
+                "reversibility": false,
+                "segments": {
+                    "468": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076465",
+                        "to_node_id": "2076464"
+                    },
+                    "469": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076464",
+                        "to_node_id": "2076463"
+                    },
+                    "470": {
+                        "b1": {
+                            "x": 3742.5254411366805,
+                            "y": 3388.7302
+                        },
+                        "b2": {
+                            "x": 3679.7582323410043,
+                            "y": 3388.7302
+                        },
+                        "from_node_id": "2075545",
+                        "to_node_id": "2076465"
+                    },
+                    "471": {
+                        "b1": {
+                            "x": 3704.831550965852,
+                            "y": 3388.7302
+                        },
+                        "b2": {
+                            "x": 3668.450065289756,
+                            "y": 3388.7302
+                        },
+                        "from_node_id": "2075759",
+                        "to_node_id": "2076465"
+                    },
+                    "472": {
+                        "b1": {
+                            "x": 3408.5677935634226,
+                            "y": 3388.7302
+                        },
+                        "b2": {
+                            "x": 3375.223978544742,
+                            "y": 3388.7302
+                        },
+                        "from_node_id": "2076463",
+                        "to_node_id": "2075760"
+                    },
+                    "473": {
+                        "b1": {
+                            "x": 3393.905279920533,
+                            "y": 3388.7302
+                        },
+                        "b2": {
+                            "x": 3326.348933068442,
+                            "y": 3388.7302
+                        },
+                        "from_node_id": "2076463",
+                        "to_node_id": "2075365"
+                    }
+                }
+            },
+            "2076013": {
+                "bigg_id": "AKGDH",
+                "gene_reaction_rule": "b0116 and b0726 and b0727",
+                "genes": [
+                    {
+                        "bigg_id": "b0116",
+                        "name": "lpd"
+                    },
+                    {
+                        "bigg_id": "b0726",
+                        "name": "sucA"
+                    },
+                    {
+                        "bigg_id": "b0727",
+                        "name": "sucB"
+                    }
+                ],
+                "label_x": 4185.5308515625,
+                "label_y": 3832.7302,
+                "metabolites": [
+                    {
+                        "bigg_id": "succoa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "nad_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "coa_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "akg_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "nadh_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "co2_c",
+                        "coefficient": 1
+                    }
+                ],
+                "name": "2-Oxogluterate dehydrogenase",
+                "reversibility": false,
+                "segments": {
+                    "490": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076474",
+                        "to_node_id": "2076475"
+                    },
+                    "491": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076475",
+                        "to_node_id": "2076476"
+                    },
+                    "492": {
+                        "b1": {
+                            "x": 4179.858,
+                            "y": 3980.657238972404
+                        },
+                        "b2": {
+                            "x": 4178.4156171875,
+                            "y": 3917.072569504221
+                        },
+                        "from_node_id": "2075762",
+                        "to_node_id": "2076474"
+                    },
+                    "493": {
+                        "b1": {
+                            "x": 4179.858,
+                            "y": 3968.0509142803235
+                        },
+                        "b2": {
+                            "x": 4178.4156171875,
+                            "y": 3913.290672096597
+                        },
+                        "from_node_id": "2075763",
+                        "to_node_id": "2076474"
+                    },
+                    "494": {
+                        "b1": {
+                            "x": 4179.858,
+                            "y": 3996.84852893594
+                        },
+                        "b2": {
+                            "x": 4178.4156171875,
+                            "y": 3921.929956493282
+                        },
+                        "from_node_id": "2075440",
+                        "to_node_id": "2076474"
+                    },
+                    "495": {
+                        "b1": {
+                            "x": 4169.486375381713,
+                            "y": 3750.682031512696
+                        },
+                        "b2": {
+                            "x": 4163.952584605708,
+                            "y": 3701.5696383756535
+                        },
+                        "from_node_id": "2076476",
+                        "to_node_id": "2075679"
+                    },
+                    "496": {
+                        "b1": {
+                            "x": 4170.032577182598,
+                            "y": 3755.529572495557
+                        },
+                        "b2": {
+                            "x": 4165.773257275327,
+                            "y": 3717.728108318524
+                        },
+                        "from_node_id": "2076476",
+                        "to_node_id": "2075764"
+                    },
+                    "497": {
+                        "b1": {
+                            "x": 4170.024559407168,
+                            "y": 3755.458414738617
+                        },
+                        "b2": {
+                            "x": 4165.7465313572275,
+                            "y": 3717.4909157953903
+                        },
+                        "from_node_id": "2076476",
+                        "to_node_id": "2075765"
+                    }
+                }
+            },
+            "2076023": {
+                "bigg_id": "MOX",
+                "gene_reaction_rule": "",
+                "genes": [],
+                "label_x": 2740.043546875,
+                "label_y": 3950.0983640625,
+                "metabolites": [
+                    {
+                        "bigg_id": "h2o2_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "oaa_c",
+                        "coefficient": 1
+                    },
+                    {
+                        "bigg_id": "o2_c",
+                        "coefficient": -1
+                    },
+                    {
+                        "bigg_id": "mal__L_c",
+                        "coefficient": -1
+                    }
+                ],
+                "name": "Malate oxidase",
+                "reversibility": true,
+                "segments": {
+                    "542": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076496",
+                        "to_node_id": "2076497"
+                    },
+                    "543": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076497",
+                        "to_node_id": "2076495"
+                    },
+                    "544": {
+                        "b1": {
+                            "x": 2842.4689679323483,
+                            "y": 3842.6273566140176
+                        },
+                        "b2": {
+                            "x": 2850.5349427234546,
+                            "y": 3868.703936827955
+                        },
+                        "from_node_id": "2075784",
+                        "to_node_id": "2076496"
+                    },
+                    "545": {
+                        "b1": {
+                            "x": 2849.340181405218,
+                            "y": 3762.3761593853214
+                        },
+                        "b2": {
+                            "x": 2853.0290216090657,
+                            "y": 3843.7631479718466
+                        },
+                        "from_node_id": "2075291",
+                        "to_node_id": "2076496"
+                    },
+                    "546": {
+                        "b1": {
+                            "x": 2846.8765546875,
+                            "y": 4088.979131114459
+                        },
+                        "b2": {
+                            "x": 2851.203703125,
+                            "y": 4090.0179781940296
+                        },
+                        "from_node_id": "2076495",
+                        "to_node_id": "2075295"
+                    },
+                    "547": {
+                        "b1": {
+                            "x": 2846.8765546875,
+                            "y": 3979.403934344102
+                        },
+                        "b2": {
+                            "x": 2849.7613203125,
+                            "y": 4012.282296251173
+                        },
+                        "from_node_id": "2076495",
+                        "to_node_id": "2075785"
+                    }
+                }
+            },
+            "2076053": {
+                "bigg_id": "BIOMASS_Ec_iJO1366_core_53p95M",
+                "gene_reaction_rule": "",
+                "genes": [],
+                "label_x": 3880.1654297600185,
+                "label_y": 4750.522315873017,
+                "metabolites": [
+                    {
+                        "bigg_id": "10fthf_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "2fe2s_c",
+                        "coefficient": -0.000026
+                    },
+                    {
+                        "bigg_id": "2ohph_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "4fe4s_c",
+                        "coefficient": -0.00026
+                    },
+                    {
+                        "bigg_id": "adp_c",
+                        "coefficient": 53.95
+                    },
+                    {
+                        "bigg_id": "ala__L_c",
+                        "coefficient": -0.513689
+                    },
+                    {
+                        "bigg_id": "amet_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "arg__L_c",
+                        "coefficient": -0.295792
+                    },
+                    {
+                        "bigg_id": "asn__L_c",
+                        "coefficient": -0.241055
+                    },
+                    {
+                        "bigg_id": "asp__L_c",
+                        "coefficient": -0.241055
+                    },
+                    {
+                        "bigg_id": "atp_c",
+                        "coefficient": -54.124831
+                    },
+                    {
+                        "bigg_id": "bmocogdp_c",
+                        "coefficient": -0.000122
+                    },
+                    {
+                        "bigg_id": "btn_c",
+                        "coefficient": -0.000002
+                    },
+                    {
+                        "bigg_id": "ca2_c",
+                        "coefficient": -0.005205
+                    },
+                    {
+                        "bigg_id": "cl_c",
+                        "coefficient": -0.005205
+                    },
+                    {
+                        "bigg_id": "coa_c",
+                        "coefficient": -0.000576
+                    },
+                    {
+                        "bigg_id": "cobalt2_c",
+                        "coefficient": -0.000025
+                    },
+                    {
+                        "bigg_id": "ctp_c",
+                        "coefficient": -0.133508
+                    },
+                    {
+                        "bigg_id": "cu2_c",
+                        "coefficient": -0.000709
+                    },
+                    {
+                        "bigg_id": "cys__L_c",
+                        "coefficient": -0.09158
+                    },
+                    {
+                        "bigg_id": "datp_c",
+                        "coefficient": -0.026166
+                    },
+                    {
+                        "bigg_id": "dctp_c",
+                        "coefficient": -0.027017
+                    },
+                    {
+                        "bigg_id": "dgtp_c",
+                        "coefficient": -0.027017
+                    },
+                    {
+                        "bigg_id": "dttp_c",
+                        "coefficient": -0.026166
+                    },
+                    {
+                        "bigg_id": "fad_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "fe2_c",
+                        "coefficient": -0.006715
+                    },
+                    {
+                        "bigg_id": "fe3_c",
+                        "coefficient": -0.007808
+                    },
+                    {
+                        "bigg_id": "gln__L_c",
+                        "coefficient": -0.26316
+                    },
+                    {
+                        "bigg_id": "glu__L_c",
+                        "coefficient": -0.26316
+                    },
+                    {
+                        "bigg_id": "gly_c",
+                        "coefficient": -0.612638
+                    },
+                    {
+                        "bigg_id": "gtp_c",
+                        "coefficient": -0.215096
+                    },
+                    {
+                        "bigg_id": "h2o_c",
+                        "coefficient": -48.601527
+                    },
+                    {
+                        "bigg_id": "h_c",
+                        "coefficient": 53.95
+                    },
+                    {
+                        "bigg_id": "his__L_c",
+                        "coefficient": -0.094738
+                    },
+                    {
+                        "bigg_id": "ile__L_c",
+                        "coefficient": -0.290529
+                    },
+                    {
+                        "bigg_id": "k_c",
+                        "coefficient": -0.195193
+                    },
+                    {
+                        "bigg_id": "kdo2lipid4_e",
+                        "coefficient": -0.019456
+                    },
+                    {
+                        "bigg_id": "leu__L_c",
+                        "coefficient": -0.450531
+                    },
+                    {
+                        "bigg_id": "lys__L_c",
+                        "coefficient": -0.343161
+                    },
+                    {
+                        "bigg_id": "met__L_c",
+                        "coefficient": -0.153686
+                    },
+                    {
+                        "bigg_id": "mg2_c",
+                        "coefficient": -0.008675
+                    },
+                    {
+                        "bigg_id": "mlthf_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "mn2_c",
+                        "coefficient": -0.000691
+                    },
+                    {
+                        "bigg_id": "mobd_c",
+                        "coefficient": -0.000007
+                    },
+                    {
+                        "bigg_id": "murein5px4p_p",
+                        "coefficient": -0.013894
+                    },
+                    {
+                        "bigg_id": "nad_c",
+                        "coefficient": -0.001831
+                    },
+                    {
+                        "bigg_id": "nadp_c",
+                        "coefficient": -0.000447
+                    },
+                    {
+                        "bigg_id": "nh4_c",
+                        "coefficient": -0.013013
+                    },
+                    {
+                        "bigg_id": "ni2_c",
+                        "coefficient": -0.000323
+                    },
+                    {
+                        "bigg_id": "pe160_c",
+                        "coefficient": -0.017868
+                    },
+                    {
+                        "bigg_id": "pe160_p",
+                        "coefficient": -0.045946
+                    },
+                    {
+                        "bigg_id": "pe161_c",
+                        "coefficient": -0.054154
+                    },
+                    {
+                        "bigg_id": "pe161_p",
+                        "coefficient": -0.02106
+                    },
+                    {
+                        "bigg_id": "phe__L_c",
+                        "coefficient": -0.185265
+                    },
+                    {
+                        "bigg_id": "pheme_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "pi_c",
+                        "coefficient": 53.945662
+                    },
+                    {
+                        "bigg_id": "ppi_c",
+                        "coefficient": 0.773903
+                    },
+                    {
+                        "bigg_id": "pro__L_c",
+                        "coefficient": -0.221055
+                    },
+                    {
+                        "bigg_id": "pydx5p_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "ribflv_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "ser__L_c",
+                        "coefficient": -0.215792
+                    },
+                    {
+                        "bigg_id": "sheme_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "so4_c",
+                        "coefficient": -0.004338
+                    },
+                    {
+                        "bigg_id": "thf_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "thmpp_c",
+                        "coefficient": -0.000223
+                    },
+                    {
+                        "bigg_id": "thr__L_c",
+                        "coefficient": -0.253687
+                    },
+                    {
+                        "bigg_id": "trp__L_c",
+                        "coefficient": -0.056843
+                    },
+                    {
+                        "bigg_id": "tyr__L_c",
+                        "coefficient": -0.137896
+                    },
+                    {
+                        "bigg_id": "udcpdp_c",
+                        "coefficient": -0.000055
+                    },
+                    {
+                        "bigg_id": "utp_c",
+                        "coefficient": -0.144104
+                    },
+                    {
+                        "bigg_id": "val__L_c",
+                        "coefficient": -0.423162
+                    },
+                    {
+                        "bigg_id": "zn2_c",
+                        "coefficient": -0.000341
+                    }
+                ],
+                "name": "E. coli biomass objective function (iJO1366) - core - with 53.95 GAM estimate",
+                "reversibility": false,
+                "segments": {
+                    "1243": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076663",
+                        "to_node_id": "2076662"
+                    },
+                    "1244": {
+                        "b1": null,
+                        "b2": null,
+                        "from_node_id": "2076664",
+                        "to_node_id": "2076663"
+                    },
+                    "1300": {
+                        "b1": {
+                            "x": 3920.45636477455,
+                            "y": 4788.584327591767
+                        },
+                        "b2": {
+                            "x": 4428.211756886874,
+                            "y": 4788.584327591767
+                        },
+                        "from_node_id": "2076664",
+                        "to_node_id": "2076719"
+                    }
+                }
+            }
+        },
+        "text_labels": {}
+    }
+]
