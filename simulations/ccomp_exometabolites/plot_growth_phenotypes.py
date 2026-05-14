@@ -10,11 +10,10 @@ from gem2cue import (
 )
 
 FILE_DIR = os.path.dirname(__file__)
+REPO_DIR = os.path.dirname(os.path.dirname(FILE_DIR))
 
 # Set path to the `test_files` directory
-TESTFILE_DIR = os.path.join(
-    os.path.dirname(os.path.dirname(FILE_DIR)), "test", "test_files"
-)
+TESTFILE_DIR = os.path.join(REPO_DIR, "test", "test_files")
 
 # Load the media definitions
 with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
@@ -22,7 +21,7 @@ with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as
 minimal_media = media_definitions["minimal"]
 
 # Load the model with cobrapy
-model_orig = cobra.io.read_sbml_model("model.xml")
+model_orig = cobra.io.read_sbml_model(os.path.join(REPO_DIR, "model.xml"))
 c_ex_rxns = utils.get_c_ex_rxns(model_orig)
 
 # Load the top 10 metabolite file
