@@ -119,11 +119,6 @@ def main() -> None:
     glu_uptake_per_int = -glu_flux * int_X  # mmol/L (uptake is positive here)
     glu_uptake_cum_nM = np.concatenate(([0.0], np.cumsum(glu_uptake_per_int))) * 1e6
 
-    # Cumulative NH3 release (mmol/L → nM); starts at 0
-    # TODO: Remove to make graph simpler?
-    nh3_release_per_int = nh3_flux * int_X
-    nh3_cum_nM = np.concatenate(([0.0], np.cumsum(nh3_release_per_int))) * 1e6
-
     # Experimental glutamate (smooth here so we don't depend on convert_data_to_rates outputs)
     glu_exp = (
         glu_means[glu_means["CleanName"] == "glutamic_acid"]
@@ -158,7 +153,6 @@ def main() -> None:
     )
     print(f"Final Amac biomass:          {X[-1]*1e6:.2f} μg/L")
     print(f"Total glutamate consumed:    {glu_uptake_cum_nM[-1]:.1f} nM")
-    print(f"Total NH3 produced:          {nh3_cum_nM[-1]:.1f} nM")
     print(
         f"Peak experimental glutamate: {np.nanmax(glu_exp_at_times):.1f} nM "
         f"at t={times[int(np.nanargmax(glu_exp_at_times))]:g} h"
@@ -179,21 +173,6 @@ def main() -> None:
     c_pro = "#7570b3"  # purple (Pro)
     c_amac = "#33a02c"  # green (Amac)
 
-    # Replicate scatter (if available)
-    # TODO: Remove to make cleaner
-    if glu_reps is not None:
-        glu_reps_sub = glu_reps[glu_reps["CleanName"] == "glutamic_acid"]
-        if len(glu_reps_sub) > 0 and "nM" in glu_reps_sub.columns:
-            ax1.scatter(
-                glu_reps_sub["timepoint"],
-                glu_reps_sub["nM"],
-                color=c_glu_exp,
-                alpha=0.30,
-                s=16,
-                zorder=2,
-                label="Glu (replicate measurements)",
-            )
-
     ax1.plot(
         times,
         glu_exp_at_times,
@@ -212,16 +191,6 @@ def main() -> None:
         lw=2,
         ms=4,
         label="Glu — simulated (exp − Amac uptake)",
-        zorder=4,
-    )
-    ax1.plot(
-        times,
-        nh3_cum_nM,
-        "^-",
-        color=c_nh4,
-        lw=2,
-        ms=4,
-        label="NH₄⁺ — integrated Amac release",
         zorder=4,
     )
 
