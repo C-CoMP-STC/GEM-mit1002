@@ -19,12 +19,10 @@ top_10_metabolites = top_10_metabolites[
 
 # Sort the dataframe by the metabolite concentration
 # Descending so that in the bar chart the largest metabolite will be on the left
-top_10_metabolites.sort_values(
-    "metabolite_concentration", ascending=False, inplace=True
-)
+top_10_metabolites.sort_values("carbon_concentration", ascending=False, inplace=True)
 
 # Transpose the data so that I have the metabolites as columns
-df_plot = top_10_metabolites.set_index("metabolite")[["metabolite_concentration"]].T
+df_plot = top_10_metabolites.set_index("metabolite")[["carbon_concentration"]].T
 
 # Plot a horizontal stacked bar graph of the top 10 metabolites of their metabolite concentations
 # Just one bar for the whole organism, the width of the segment will correspond to the concentration of that metabolite, and the color will correspond to the metabolite class
