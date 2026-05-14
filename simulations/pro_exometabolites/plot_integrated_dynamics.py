@@ -47,7 +47,7 @@ FIG_DIR = SCRIPT_DIR / "figs"
 FIG_DIR.mkdir(exist_ok=True)
 
 F_PLOT = 10.0
-ALT_DW_G = 2.5e-13                                        # g/cell
+ALT_DW_G = 2.5e-13  # g/cell
 # Initial Amac biomass is set to be self-consistent with f: the FBA bound
 # at f=10 implicitly assumes 10 Pro per Amac, so Amac inoculum = Pro(t=0) / f.
 # Computed below from the measured initial Pro density.
@@ -87,7 +87,7 @@ def main() -> None:
     t_starts = g["interval_start_h"].to_numpy()
     t_ends = g["interval_end_h"].to_numpy()
     n = len(t_starts)
-    times = np.concatenate(([t_starts[0]], t_ends))   # length n+1
+    times = np.concatenate(([t_starts[0]], t_ends))  # length n+1
 
     mu = g["growth_rate"].fillna(0.0).to_numpy()
 
@@ -116,10 +116,11 @@ def main() -> None:
     nh3_flux = np.array([v_nh3_by_t.get(t, 0.0) for t in t_starts])
 
     # Cumulative glutamate uptake (mmol/L → nM)
-    glu_uptake_per_int = -glu_flux * int_X            # mmol/L (uptake is positive here)
+    glu_uptake_per_int = -glu_flux * int_X  # mmol/L (uptake is positive here)
     glu_uptake_cum_nM = np.concatenate(([0.0], np.cumsum(glu_uptake_per_int))) * 1e6
 
     # Cumulative NH3 release (mmol/L → nM); starts at 0
+    # TODO: Remove to make graph simpler?
     nh3_release_per_int = nh3_flux * int_X
     nh3_cum_nM = np.concatenate(([0.0], np.cumsum(nh3_release_per_int))) * 1e6
 
@@ -151,45 +152,78 @@ def main() -> None:
     # Diagnostic print
     print(f"Initial Pro density:         {init_pro_cells_per_ml:.2e} cells/mL")
     print(f"Initial Amac density (= Pro/f): {init_amac_cells_per_ml:.2e} cells/mL")
-    print(f"Initial Amac biomass:        {X0_GDW_PER_L*1e6:.2f} μg/L "
-          f"({ALT_DW_G*1e15:.0f} fg/cell)")
+    print(
+        f"Initial Amac biomass:        {X0_GDW_PER_L*1e6:.2f} μg/L "
+        f"({ALT_DW_G*1e15:.0f} fg/cell)"
+    )
     print(f"Final Amac biomass:          {X[-1]*1e6:.2f} μg/L")
     print(f"Total glutamate consumed:    {glu_uptake_cum_nM[-1]:.1f} nM")
     print(f"Total NH3 produced:          {nh3_cum_nM[-1]:.1f} nM")
-    print(f"Peak experimental glutamate: {np.nanmax(glu_exp_at_times):.1f} nM "
-          f"at t={times[int(np.nanargmax(glu_exp_at_times))]:g} h")
+    print(
+        f"Peak experimental glutamate: {np.nanmax(glu_exp_at_times):.1f} nM "
+        f"at t={times[int(np.nanargmax(glu_exp_at_times))]:g} h"
+    )
 
     # ── Plot ────────────────────────────────────────────────────────────────────
     fig, ax1 = plt.subplots(figsize=(11.5, 5.2))
-    ax2 = ax1.twinx()                               # Pro density (×10⁶ cells/mL)
-    ax3 = ax1.twinx()                               # Amac biomass (μg/L)
+    ax2 = ax1.twinx()  # Pro density (×10⁶ cells/mL)
+    ax3 = ax1.twinx()  # Amac biomass (μg/L)
     ax3.spines["right"].set_position(("outward", 60))
 
     shade_dark(ax1)
     ax1.axhline(0, color="black", lw=0.5, zorder=1)
 
-    c_glu_exp = "#1f78b4"   # blue (experimental)
-    c_glu_sim = "#a6cee3"   # light blue (simulated)
-    c_nh4 = "#e31a1c"       # red (NH4)
-    c_pro = "#7570b3"       # purple (Pro)
-    c_amac = "#33a02c"      # green (Amac)
+    c_glu_exp = "#1f78b4"  # blue (experimental)
+    c_glu_sim = "#a6cee3"  # light blue (simulated)
+    c_nh4 = "#e31a1c"  # red (NH4)
+    c_pro = "#7570b3"  # purple (Pro)
+    c_amac = "#33a02c"  # green (Amac)
 
     # Replicate scatter (if available)
+    # TODO: Remove to make cleaner
     if glu_reps is not None:
         glu_reps_sub = glu_reps[glu_reps["CleanName"] == "glutamic_acid"]
         if len(glu_reps_sub) > 0 and "nM" in glu_reps_sub.columns:
             ax1.scatter(
-                glu_reps_sub["timepoint"], glu_reps_sub["nM"],
-                color=c_glu_exp, alpha=0.30, s=16, zorder=2,
+                glu_reps_sub["timepoint"],
+                glu_reps_sub["nM"],
+                color=c_glu_exp,
+                alpha=0.30,
+                s=16,
+                zorder=2,
                 label="Glu (replicate measurements)",
             )
 
-    ax1.plot(times, glu_exp_at_times, "o-", color=c_glu_exp, lw=2, ms=5,
-             label="Glu — experimental (smoothed)", zorder=4)
-    ax1.plot(times, glu_sim, "s--", color=c_glu_sim, lw=2, ms=4,
-             label="Glu — simulated (exp − Amac uptake)", zorder=4)
-    ax1.plot(times, nh3_cum_nM, "^-", color=c_nh4, lw=2, ms=4,
-             label="NH₄⁺ — integrated Amac release", zorder=4)
+    ax1.plot(
+        times,
+        glu_exp_at_times,
+        "o-",
+        color=c_glu_exp,
+        lw=2,
+        ms=5,
+        label="Glu — experimental (smoothed)",
+        zorder=4,
+    )
+    ax1.plot(
+        times,
+        glu_sim,
+        "s--",
+        color=c_glu_sim,
+        lw=2,
+        ms=4,
+        label="Glu — simulated (exp − Amac uptake)",
+        zorder=4,
+    )
+    ax1.plot(
+        times,
+        nh3_cum_nM,
+        "^-",
+        color=c_nh4,
+        lw=2,
+        ms=4,
+        label="NH₄⁺ — integrated Amac release",
+        zorder=4,
+    )
 
     ax1.set_xlabel("Time (h)", fontsize=11)
     ax1.set_ylabel("Concentration (nM)", fontsize=11)
@@ -197,14 +231,21 @@ def main() -> None:
     ax1.set_xticks(range(0, 47, 4))
 
     # Pro density (right inner)
-    ax2.plot(pro["time_h"], pro["cell_count_mean"] / 1e6, ":", color=c_pro,
-             lw=2.2, label="Pro density")
+    ax2.plot(
+        pro["time_h"],
+        pro["cell_count_mean"] / 1e6,
+        ":",
+        color=c_pro,
+        lw=2.2,
+        label="Pro density",
+    )
     if "cell_count_sd" in pro.columns:
         ax2.fill_between(
             pro["time_h"],
             (pro["cell_count_mean"] - pro["cell_count_sd"].fillna(0)) / 1e6,
             (pro["cell_count_mean"] + pro["cell_count_sd"].fillna(0)) / 1e6,
-            color=c_pro, alpha=0.10,
+            color=c_pro,
+            alpha=0.10,
         )
     ax2.set_ylabel("Pro density (×10⁶ cells mL⁻¹)", color=c_pro, fontsize=10)
     ax2.tick_params(axis="y", labelcolor=c_pro)
@@ -222,7 +263,10 @@ def main() -> None:
     ax1.legend(
         handles=h1 + h2 + h3 + [dark_patch],
         labels=l1 + l2 + l3 + ["Dark period"],
-        fontsize=8, loc="upper right", ncol=2, framealpha=0.85,
+        fontsize=8,
+        loc="upper right",
+        ncol=2,
+        framealpha=0.85,
     )
 
     fig.suptitle(
