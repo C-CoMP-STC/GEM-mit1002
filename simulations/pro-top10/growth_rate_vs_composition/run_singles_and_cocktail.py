@@ -79,7 +79,25 @@ for index, row in top_10_exometabolites.iterrows():
         }
     )
 
-#
+# Create a cocktail condition
+# All thes substrates are available in their ratio in the top 10 exometabolites
+cocktail_media = minimal_media.copy()
+for index, row in top_10_exometabolites.iterrows():
+    cocktail_media[row["exchange_id"]] = (
+        TOTAL_UPTAKE
+        * row["carbon_concentration"]
+        / top_10_exometabolites["carbon_concentration"].sum()
+    )
+model.medium = cocktail_media
+solution = cobra.flux_analysis.pfba(model)
+growth = solution.fluxes[BIOMASS_REACTION_ID]
+results.append(
+    {
+        "condition": "cocktail",
+        "substrate": "cocktail",
+        "growth_rate": growth,
+    }
+)
 
 # Convert the results to a dataframe and save it
 results_df = pd.DataFrame(results)
