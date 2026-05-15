@@ -1,16 +1,13 @@
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
-FILE_DIR = os.path.dirname(__file__)
-REPO_DIR = os.path.dirname(os.path.dirname(FILE_DIR))
-OUT_DIR = FILE_DIR
-# Make the output directory if it doesn't exist
-os.makedirs(OUT_DIR, exist_ok=True)
+FILE_DIR = Path(__file__).resolve().parent
+REPO_DIR = FILE_DIR.parents[2]
 
 # Load the top 10 metabolite file
-top_10_metabolites = pd.read_csv(os.path.join(FILE_DIR, "top10_exometabolites.csv"))
+top_10_metabolites = pd.read_csv(FILE_DIR / "top10_exometabolites.csv")
 
 # Filter the top 10 metabolites to only include those from Prochlorococcus marinus
 top_10_metabolites = top_10_metabolites[
@@ -32,4 +29,4 @@ df_plot.plot(kind="barh", stacked=True, legend=True, figsize=(10, 2))
 plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
 
 # Save
-plt.savefig(os.path.join(OUT_DIR, "top10_metabolites.png"), bbox_inches="tight")
+plt.savefig(FILE_DIR / "top10_metabolites.png", bbox_inches="tight")

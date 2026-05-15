@@ -1,5 +1,5 @@
-import os
 import pickle
+from pathlib import Path
 
 import cobra
 import matplotlib.pyplot as plt
@@ -9,29 +9,30 @@ from gem2cue import (
     utils,  # Import the working version (works with the med4-hot1a3 conda env)
 )
 
-FILE_DIR = os.path.dirname(__file__)
-REPO_DIR = os.path.dirname(os.path.dirname(FILE_DIR))
+FILE_DIR = Path(__file__).resolve().parent
+TOP_10_DIR = FILE_DIR.parent
+REPO_DIR = FILE_DIR.parents[2]
 
 # Set path to the `test_files` directory
-TESTFILE_DIR = os.path.join(REPO_DIR, "test", "test_files")
+TESTFILE_DIR = REPO_DIR / "test" / "test_files"
 
 # Load the media definitions
-with open(os.path.join(TESTFILE_DIR, "media", "media_definitions.pkl"), "rb") as f:
+with open(TESTFILE_DIR / "media" / "media_definitions.pkl", "rb") as f:
     media_definitions = pickle.load(f)
 minimal_media = media_definitions["minimal"]
 
 # Load the model with cobrapy
-model_orig = cobra.io.read_sbml_model(os.path.join(REPO_DIR, "model.xml"))
+model_orig = cobra.io.read_sbml_model(REPO_DIR / "model.xml")
 c_ex_rxns = utils.get_c_ex_rxns(model_orig)
 
 # Load the top 10 metabolite file
 top_10_metabolites = pd.read_csv(
-    os.path.join(FILE_DIR, "top10_exometabolites.csv"), sep=","
+    TOP_10_DIR / "data" / "top10_exometabolites.csv", sep=","
 )
 
 # Load the known growth phenotype file
 known_growth_phenotypes = pd.read_csv(
-    os.path.join(TESTFILE_DIR, "known_growth_phenotypes.tsv"), sep="\t"
+    TESTFILE_DIR / "known_growth_phenotypes.tsv", sep="\t"
 )
 
 # Subset the top 10 metabolites to only include the ones that are from PRO
@@ -218,7 +219,7 @@ ax.set_yticklabels(growth_phenotypes_to_plot.index, rotation=0)
 plt.tight_layout()
 
 # Save the figure
-plt.savefig(os.path.join(FILE_DIR, "pro_exomet_growth_phenotypes.png"))
+plt.savefig(FILE_DIR / "pro_exomet_growth_phenotypes.png")
 
 # Define the single color (e.g., the C-CoMP theme's green)
 single_color = "#38A85E"
@@ -242,7 +243,7 @@ ax.set_yticklabels(growth_phenotypes.index, rotation=0)
 # Make sure that the y-axis labels are not cut off
 plt.tight_layout()
 # Save the figure
-plt.savefig(os.path.join(FILE_DIR, "pro_exomet_cue.png"))
+plt.savefig(FILE_DIR / "pro_exomet_cue.png")
 
 # Plot a heatmap of the bge values
 fig, ax = plt.subplots(figsize=(3, 4))
@@ -260,4 +261,4 @@ ax.set_yticklabels(growth_phenotypes.index, rotation=0)
 # Make sure that the y-axis labels are not cut off
 plt.tight_layout()
 # Save the figure
-plt.savefig(os.path.join(FILE_DIR, "pro_exomet_bge.png"))
+plt.savefig(FILE_DIR / "pro_exomet_bge.png")
