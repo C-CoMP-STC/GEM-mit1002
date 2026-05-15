@@ -9,9 +9,35 @@ import pandas as pd
 # Set file paths
 FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
+TOP_10_DIR = FILE_PATH.parent
 
 # Make the results directory if it doesn't exist
 OUT_PATH.mkdir(exist_ok=True)
+
+# Load the original metabolite list to get their concentrations to sort by
+TOP_10_PATH = TOP_10_DIR / "data" / "top10_exometabolites.csv"
+top_10_exometabolites = pd.read_csv(TOP_10_PATH)
+# Filter the data to only include the Prochlorococcus marinus metabolites
+top_10_exometabolites = top_10_exometabolites[
+    top_10_exometabolites["organism"] == "Prochlorococcus marinus"
+].copy()
+# Remove the metabolites that don't support growth/that I didn't test
+# In other scripts I use the model to check this, but I don't want to have to
+# load the model here just for that, and I know from before that it's just Met
+# and Phe that don't have exchanges
+top_10_exometabolites = top_10_exometabolites[
+    ~top_10_exometabolites["metabolite"].isin(["methionine", "phenylalanine"])
+].copy()
+# Sort that list by the carbon concentration
+top_10_exometabolites = top_10_exometabolites.sort_values(
+    by="carbon_concentration", ascending=False
+).copy()
+
+# Get the desired order of substrates
+substrate_order = top_10_exometabolites["metabolite"].tolist()
+
+# Load the results from the pairwise simulations and the single substrate
+# simulations from the single + cocktail simulations
 pairs = pd.read_csv(OUT_PATH / "pairwise.csv")
 singles = pd.read_csv(OUT_PATH / "single_substrate_results_total_c_60.csv")
 singles = singles[singles["condition"] == "single"]
@@ -29,8 +55,7 @@ pairs["expected"] = pairs.apply(
 pairs["epistasis"] = pairs["growth_rate"] - pairs["expected"]
 
 # Reshape into 9x9 matrix
-substrates = sorted(set(pairs["substrate_a"]) | set(pairs["substrate_b"]))
-matrix = pd.DataFrame(index=substrates, columns=substrates, dtype=float)
+matrix = pd.DataFrame(index=substrate_order, columns=substrate_order, dtype=float)
 for _, row in pairs.iterrows():
     matrix.loc[row["substrate_a"], row["substrate_b"]] = row["epistasis"]
     matrix.loc[row["substrate_b"], row["substrate_a"]] = row["epistasis"]
@@ -44,10 +69,10 @@ im = ax.imshow(
     vmin=-matrix.abs().max().max(),
     vmax=matrix.abs().max().max(),
 )
-ax.set_xticks(range(len(substrates)))
-ax.set_yticks(range(len(substrates)))
-ax.set_xticklabels(substrates, rotation=45, ha="right")
-ax.set_yticklabels(substrates)
+ax.set_xticks(range(len(substrate_order)))
+ax.set_yticks(range(len(substrate_order)))
+ax.set_xticklabels(substrate_order, rotation=45, ha="right")
+ax.set_yticklabels(substrate_order)
 fig.colorbar(im, label="Growth rate excess over expected")
 plt.tight_layout()
 fig.savefig(OUT_PATH / "figure_epistasis.png", dpi=150)
