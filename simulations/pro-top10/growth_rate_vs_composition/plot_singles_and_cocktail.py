@@ -20,7 +20,7 @@ import plot_styles  # Import the plot styles from the repo
 OUT_PATH.mkdir(exist_ok=True)
 
 # Load the results from the single substrate and cocktail simulations
-results = pd.read_csv(OUT_PATH / "single_substrate_results.csv")
+results = pd.read_csv(OUT_PATH / "single_substrate_results_total_c_60.csv")
 
 # Select the colors I want to use from the color palette
 colors = [

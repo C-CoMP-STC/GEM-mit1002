@@ -1,0 +1,11 @@
+condition,substrate,growth_rate
+single,glutamic acid,1.017720376179805
+single,valine,0.6340673653793483
+single,isoleucine,0.7419365994930904
+single,alanine,0.7791953123605181
+single,leucine,0.6007717987927503
+single,aspartate,0.9856870834359787
+single,proline,1.0015412593945598
+single,glycine,0.8677033465280337
+cocktail,cocktail,0.8884721872619523
+sum_of_parts,sum_of_parts,0.8697623118590179

@@ -20,7 +20,7 @@ OUT_PATH.mkdir(exist_ok=True)
 # Set a total ammount of carbon to take up
 # Same number regardless if growing on a single substrate or a mix
 # 60 matches a glucose bound of 10
-TOTAL_UPTAKE = 60.0  # mmol C / gDW / hr
+TOTAL_UPTAKE = [30, 60, 120]  # mmol C / gDW / hr
 
 # DEFINE THE BIOMASS REACTION ID
 BIOMASS_REACTION_ID = "bio1_biomass"
@@ -56,75 +56,80 @@ with open(TEST_FILE_DIR / "media" / "media_definitions.pkl", "rb") as f:
     media_definitions = pkl.load(f)
 minimal_media = media_definitions["minimal"]
 
-# Make a list to hold the results
-results = []
+# Loop through all of the TOTAL_UPTAKE values and run the simulations for each one
+for total_uptake in TOTAL_UPTAKE:
+    # Make a list to hold the results
+    results = []
 
-# Test each exometabolite in the top10 df at the full TOTAL_UPTAKE
-for index, row in top_10_exometabolites.iterrows():
-    # Make the exchange reaction string
-    exchange_id = "EX_" + row["met_id"] + "_e0"
-    # Make a copy of the minimal media and add the current substrate to it
-    media = minimal_media.copy()
-    # The substrate uptake is the total uptake divided by the number of carbons
-    # So that every metabolite has the same amount of carbon
-    media[exchange_id] = TOTAL_UPTAKE / row["n_c"]
-    # Set the media
-    model.medium = media
+    # Test each exometabolite in the top10 df at the full TOTAL_UPTAKE
+    for index, row in top_10_exometabolites.iterrows():
+        # Make the exchange reaction string
+        exchange_id = "EX_" + row["met_id"] + "_e0"
+        # Make a copy of the minimal media and add the current substrate to it
+        media = minimal_media.copy()
+        # The substrate uptake is the total uptake divided by the number of carbons
+        # So that every metabolite has the same amount of carbon
+        media[exchange_id] = total_uptake / row["n_c"]
+        # Set the media
+        model.medium = media
 
-    # Run pFBA
+        # Run pFBA
+        solution = cobra.flux_analysis.pfba(model)
+        growth = solution.fluxes[BIOMASS_REACTION_ID]
+
+        # Add the results to the list
+        results.append(
+            {
+                "condition": "single",
+                "substrate": row["metabolite"],
+                "growth_rate": growth,
+            }
+        )
+
+    # Create a cocktail condition
+    # All thes substrates are available in their ratio in the top 10 exometabolites
+    cocktail_media = minimal_media.copy()
+    for index, row in top_10_exometabolites.iterrows():
+        cocktail_media[row["exchange_id"]] = (
+            total_uptake
+            * row["carbon_concentration"]
+            / top_10_exometabolites["carbon_concentration"].sum()
+        ) / row["n_c"]
+    model.medium = cocktail_media
     solution = cobra.flux_analysis.pfba(model)
     growth = solution.fluxes[BIOMASS_REACTION_ID]
-
-    # Add the results to the list
     results.append(
         {
-            "condition": "single",
-            "substrate": row["metabolite"],
+            "condition": "cocktail",
+            "substrate": "cocktail",
             "growth_rate": growth,
         }
     )
 
-# Create a cocktail condition
-# All thes substrates are available in their ratio in the top 10 exometabolites
-cocktail_media = minimal_media.copy()
-for index, row in top_10_exometabolites.iterrows():
-    cocktail_media[row["exchange_id"]] = (
-        TOTAL_UPTAKE
-        * row["carbon_concentration"]
-        / top_10_exometabolites["carbon_concentration"].sum()
-    ) / row["n_c"]
-model.medium = cocktail_media
-solution = cobra.flux_analysis.pfba(model)
-growth = solution.fluxes[BIOMASS_REACTION_ID]
-results.append(
-    {
-        "condition": "cocktail",
-        "substrate": "cocktail",
-        "growth_rate": growth,
-    }
-)
-
-# Compute the sum of parts
-single_growth_sum = sum(
-    r["growth_rate"]
-    * (
-        top_10_exometabolites[top_10_exometabolites["metabolite"] == r["substrate"]][
-            "carbon_concentration"
-        ].iloc[0]
-        / top_10_exometabolites["carbon_concentration"].sum()
+    # Compute the sum of parts
+    single_growth_sum = sum(
+        r["growth_rate"]
+        * (
+            top_10_exometabolites[
+                top_10_exometabolites["metabolite"] == r["substrate"]
+            ]["carbon_concentration"].iloc[0]
+            / top_10_exometabolites["carbon_concentration"].sum()
+        )
+        for r in results
+        if r["condition"] == "single"
     )
-    for r in results
-    if r["condition"] == "single"
-)
-# Add the sum of parts to the results
-results.append(
-    {
-        "condition": "sum_of_parts",
-        "substrate": "sum_of_parts",
-        "growth_rate": single_growth_sum,
-    }
-)
+    # Add the sum of parts to the results
+    results.append(
+        {
+            "condition": "sum_of_parts",
+            "substrate": "sum_of_parts",
+            "growth_rate": single_growth_sum,
+        }
+    )
 
-# Convert the results to a dataframe and save it
-results_df = pd.DataFrame(results)
-results_df.to_csv(OUT_PATH / "single_substrate_results.csv", index=False)
+    # Convert the results to a dataframe and save it
+    results_df = pd.DataFrame(results)
+    results_df.to_csv(
+        OUT_PATH / ("single_substrate_results_total_c_" + str(total_uptake) + ".csv"),
+        index=False,
+    )
