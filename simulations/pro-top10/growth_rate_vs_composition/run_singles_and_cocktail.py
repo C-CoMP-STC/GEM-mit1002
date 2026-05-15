@@ -63,13 +63,11 @@ for total_uptake in TOTAL_UPTAKE:
 
     # Test each exometabolite in the top10 df at the full TOTAL_UPTAKE
     for index, row in top_10_exometabolites.iterrows():
-        # Make the exchange reaction string
-        exchange_id = "EX_" + row["met_id"] + "_e0"
         # Make a copy of the minimal media and add the current substrate to it
         media = minimal_media.copy()
         # The substrate uptake is the total uptake divided by the number of carbons
         # So that every metabolite has the same amount of carbon
-        media[exchange_id] = total_uptake / row["n_c"]
+        media[row["exchange_id"]] = total_uptake / row["n_c"]
         # Set the media
         model.medium = media
 
