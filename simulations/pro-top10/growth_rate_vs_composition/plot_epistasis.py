@@ -5,6 +5,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 # Set file paths
 FILE_PATH = Path(__file__).resolve().parent
@@ -60,19 +61,26 @@ for _, row in pairs.iterrows():
     matrix.loc[row["substrate_a"], row["substrate_b"]] = row["epistasis"]
     matrix.loc[row["substrate_b"], row["substrate_a"]] = row["epistasis"]
 
+# Create a mask for the upper triangle
+mask = np.triu(np.ones_like(matrix, dtype=bool))
+
 # Plot with diverging colormap centered at zero
 # (positive = synergy, negative = antagonism)
 fig, ax = plt.subplots(figsize=(8, 7))
-im = ax.imshow(
-    matrix.values,
+sns.heatmap(
+    matrix,
+    mask=mask,  # Apply the mask
     cmap="RdBu_r",
-    vmin=-matrix.abs().max().max(),
     vmax=matrix.abs().max().max(),
+    vmin=-matrix.abs().max().max(),
+    annot=True,  # Optionally, show the values in the cells
+    fmt=".2f",  # Format annotations to 2 decimal places
+    linewidths=0.5,
+    ax=ax,
 )
-ax.set_xticks(range(len(substrate_order)))
-ax.set_yticks(range(len(substrate_order)))
-ax.set_xticklabels(substrate_order, rotation=45, ha="right")
-ax.set_yticklabels(substrate_order)
-fig.colorbar(im, label="Growth rate excess over expected")
-plt.tight_layout()
+
+ax.set_title("Pairwise Growth Epistasis")
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+
+fig.tight_layout()
 fig.savefig(OUT_PATH / "figure_epistasis.png", dpi=150)
