@@ -64,23 +64,27 @@ for _, row in pairs.iterrows():
 # Create a mask for the upper triangle
 mask = np.triu(np.ones_like(matrix, dtype=bool))
 
-# Plot with diverging colormap centered at zero
+# Create a custom sequential colormap
+# TODO: Acuatlly import plot_styles, rather than copying a hexcode
+custom_cmap = sns.light_palette("#024064", as_cmap=True)
+
+# Plot with diverging colormap that begins at 0
 # (positive = synergy, negative = antagonism)
 fig, ax = plt.subplots(figsize=(8, 7))
 sns.heatmap(
     matrix,
     mask=mask,  # Apply the mask
-    cmap="RdBu_r",
-    vmax=matrix.abs().max().max(),
-    vmin=-matrix.abs().max().max(),
+    cmap=custom_cmap,
+    vmin=0,
     annot=True,  # Optionally, show the values in the cells
     fmt=".2f",  # Format annotations to 2 decimal places
     linewidths=0.5,
     ax=ax,
 )
 
-ax.set_title("Pairwise Growth Epistasis")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+ax.set_title("Pairwise Growth Epistasis", color="gray")
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right", color="gray")
+ax.set_yticklabels(ax.get_yticklabels(), color="gray")
 
 fig.tight_layout()
 fig.savefig(OUT_PATH / "figure_epistasis.png", dpi=150)
