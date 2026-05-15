@@ -99,6 +99,27 @@ results.append(
     }
 )
 
+# Compute the sum of parts
+single_growth_sum = sum(
+    r["growth_rate"]
+    * (
+        top_10_exometabolites[top_10_exometabolites["metabolite"] == r["substrate"]][
+            "carbon_concentration"
+        ].iloc[0]
+        / top_10_exometabolites["carbon_concentration"].sum()
+    )
+    for r in results
+    if r["condition"] == "single"
+)
+# Add the sum of parts to the results
+results.append(
+    {
+        "condition": "sum_of_parts",
+        "substrate": "sum_of_parts",
+        "growth_rate": single_growth_sum,
+    }
+)
+
 # Convert the results to a dataframe and save it
 results_df = pd.DataFrame(results)
 results_df.to_csv(OUT_PATH / "single_substrate_results.csv", index=False)
