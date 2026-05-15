@@ -87,7 +87,7 @@ for index, row in top_10_exometabolites.iterrows():
         TOTAL_UPTAKE
         * row["carbon_concentration"]
         / top_10_exometabolites["carbon_concentration"].sum()
-    )
+    ) / row["n_c"]
 model.medium = cocktail_media
 solution = cobra.flux_analysis.pfba(model)
 growth = solution.fluxes[BIOMASS_REACTION_ID]
