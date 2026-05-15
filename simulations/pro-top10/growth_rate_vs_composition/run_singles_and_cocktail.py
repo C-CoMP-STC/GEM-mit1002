@@ -33,6 +33,11 @@ model = cobra.io.read_sbml_model(MODEL_PATH)
 TOP_10_PATH = TOP_10_DIR / "data" / "top10_exometabolites.csv"
 top_10_exometabolites = pd.read_csv(TOP_10_PATH)
 
+# Sort by the carbon concentration
+top_10_exometabolites = top_10_exometabolites.sort_values(
+    by="carbon_concentration", ascending=False
+).copy()
+
 # Filter the data to only include the Prochlorococcus marinus metabolites
 top_10_exometabolites = top_10_exometabolites[
     top_10_exometabolites["organism"] == "Prochlorococcus marinus"
