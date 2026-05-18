@@ -6,6 +6,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from scipy.stats import spearmanr
 import seaborn as sns
 
 # Set file paths
@@ -51,18 +52,45 @@ singles = singles.merge(
     left_on="substrate",
     right_on="metabolite",
 )
-plt.figure(figsize=(6, 4))
+
+# Calculate the Spearman correlation
+rho, pval = spearmanr(singles["carbon_concentration"], singles["growth_rate"])
+
+# Make the figure
+fig, ax = plt.subplots(figsize=(8, 6))
+# Draw the scatterplot with different colors for each point/metabolite
 sns.scatterplot(
     data=singles,
     x="carbon_concentration",
     y="growth_rate",
-    color="gray",
-    edgecolor="black",
+    hue="substrate",
+    palette="tab10",
     s=100,
+    edgecolor="black",
+    linewidth=0.5,
 )
+# Draw a single regression line for all data (disable scatter to avaoid overlapping the colored points)
+sns.regplot(
+    data=singles,
+    x="carbon_concentration",
+    y="growth_rate",
+    scatter=False,  # Disable the scatter points for the regression line
+    line_kws={"color": "gray", "linestyle": "--"},
+    ci=None,  # Don't plot the confidence interval for the regression line
+)
+# Annotate the plot with the Spearman correlation coefficient and p-value
+plt.text(
+    0.05,
+    0.95,
+    f"Spearman ρ = {rho:.2f} (p = {pval:.2f})",
+    transform=ax.transAxes,
+    color="gray",
+)
+# Style
 plt.xlabel("Carbon Concentration in Cocktail (mM)", color="gray")
 plt.ylabel("Growth Rate on Single Substrate (1/hr)", color="gray")
 plt.title("Growth Rate vs Carbon Concentration of Substrate", color="gray")
+# Save
 plt.savefig(
     OUT_PATH / "growth_rate_vs_carbon_concentration.png", dpi=150, bbox_inches="tight"
 )
