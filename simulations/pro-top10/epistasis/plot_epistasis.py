@@ -60,6 +60,9 @@ pairs["expected"] = pairs.apply(
 pairs["epistasis"] = pairs["growth_rate"] - pairs["expected"]
 
 # Reshape into 9x9 matrix
+# TODO: Since I reorder based on the clustering, I don't need to use the
+# substrate order here, that would help me remove unneccesarry code loading and
+# sorting the metabolite data
 matrix = pd.DataFrame(index=substrate_order, columns=substrate_order, dtype=float)
 for _, row in pairs.iterrows():
     matrix.loc[row["substrate_a"], row["substrate_b"]] = row["epistasis"]
