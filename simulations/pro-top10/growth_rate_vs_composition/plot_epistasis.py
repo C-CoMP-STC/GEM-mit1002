@@ -61,6 +61,12 @@ for _, row in pairs.iterrows():
     matrix.loc[row["substrate_a"], row["substrate_b"]] = row["epistasis"]
     matrix.loc[row["substrate_b"], row["substrate_a"]] = row["epistasis"]
 
+# Round anything with an absolute value less than 0.001 to 0, to make the plot cleaner
+matrix = matrix.map(lambda x: 0 if abs(x) < 0.001 else x)
+
+# Save the matrix to a csv file
+matrix.to_csv(OUT_PATH / "epistasis_matrix.csv")
+
 # Create a mask for the upper triangle
 mask = np.triu(np.ones_like(matrix, dtype=bool))
 
@@ -77,7 +83,7 @@ sns.heatmap(
     cmap=custom_cmap,
     vmin=0,
     annot=True,  # Optionally, show the values in the cells
-    fmt=".2f",  # Format annotations to 2 decimal places
+    fmt=".3f",  # Format annotations to 3 decimal places
     linewidths=0.5,
     ax=ax,
 )
