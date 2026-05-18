@@ -48,7 +48,6 @@ singles_lookup = dict(zip(singles["substrate"], singles["growth_rate"]))
 # epistasis = growth(A+B) - (growth(A) + growth(B)) / 2
 # (The /2 is because in the pair, each substrate is at half its single dose;
 #  alternative is to compare to max or to a specific null model)
-
 pairs["expected"] = pairs.apply(
     lambda r: (singles_lookup[r["substrate_a"]] + singles_lookup[r["substrate_b"]]) / 2,
     axis=1,
@@ -64,33 +63,52 @@ for _, row in pairs.iterrows():
 # Round anything with an absolute value less than 0.001 to 0, to make the plot cleaner
 matrix = matrix.map(lambda x: 0 if abs(x) < 0.001 else x)
 
+# Fill the diagnonal with 0s (the epistasis of a substrate with itself is 0)
+np.fill_diagonal(matrix.values, 0)
+
 # Save the matrix to a csv file
 matrix.to_csv(OUT_PATH / "epistasis_matrix.csv")
-
-# Create a mask for the upper triangle
-mask = np.triu(np.ones_like(matrix, dtype=bool))
 
 # Create a custom sequential colormap
 # TODO: Acuatlly import plot_styles, rather than copying a hexcode
 custom_cmap = sns.light_palette("#024064", as_cmap=True)
 
-# Plot with diverging colormap that begins at 0
+# Plot with colormap that begins at 0
 # (positive = synergy, negative = antagonism)
-fig, ax = plt.subplots(figsize=(8, 7))
-sns.heatmap(
+g = sns.clustermap(
     matrix,
-    mask=mask,  # Apply the mask
     cmap=custom_cmap,
     vmin=0,
-    annot=True,  # Optionally, show the values in the cells
+    annot=True,  # Show the values in the cells
     fmt=".3f",  # Format annotations to 3 decimal places
     linewidths=0.5,
-    ax=ax,
+    method="average",  # Clustering method
+    metric="euclidean",  # Distance metric for clustering
+    figsize=(10, 10),
+    cbar_kws={"label": "Epistasis Score (Growth Rate Difference)"},
 )
 
-ax.set_title("Pairwise Growth Epistasis", color="gray")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right", color="gray")
-ax.set_yticklabels(ax.get_yticklabels(), color="gray")
+# Style the axes
+g.ax_heatmap.set_xticklabels(
+    g.ax_heatmap.get_xticklabels(), rotation=45, ha="right", color="gray"
+)
+g.ax_heatmap.set_yticklabels(g.ax_heatmap.get_yticklabels(), color="gray")
 
-fig.tight_layout()
-fig.savefig(OUT_PATH / "figure_epistasis.png", dpi=150)
+# Move the colorbar
+# Get the heatmap's position
+heatmap_pos = g.ax_heatmap.get_position()
+# Move the colorbar to be flush with the right side of the heatmap, full height
+g.cax.set_position(
+    [
+        heatmap_pos.x1 + 0.12,  # left: 10% right of heatmap's right edge
+        heatmap_pos.y0,  # bottom: aligned with heatmap's bottom
+        0.02,  # width: 2% of figure
+        heatmap_pos.height,  # height: matches heatmap exactly
+    ]
+)
+
+# Change the colorbar title, ticks, and tick labels to be gray
+g.cax.tick_params(colors="gray")  # Set the ticks and tick labels
+g.cax.yaxis.label.set_color("gray")  # Set the label text
+
+g.savefig(OUT_PATH / "figure_epistasis.png", dpi=150, bbox_inches="tight")
