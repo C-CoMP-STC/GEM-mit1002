@@ -40,7 +40,12 @@ substrate_order = top_10_exometabolites["metabolite"].tolist()
 # Load the results from the pairwise simulations and the single substrate
 # simulations from the single + cocktail simulations
 pairs = pd.read_csv(OUT_PATH / "pairwise.csv")
-singles = pd.read_csv(OUT_PATH / "single_substrate_results_total_c_60.csv")
+singles = pd.read_csv(
+    TOP_10_DIR
+    / "single_and_cocktail_sims"
+    / "results"
+    / "single_and_cocktail_results.csv"
+)
 singles = singles[singles["condition"] == "single"]
 singles_lookup = dict(zip(singles["substrate"], singles["growth_rate"]))
 
