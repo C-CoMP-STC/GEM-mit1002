@@ -53,6 +53,19 @@ H2O_COLOR = summer_colors["light_tan"]
 CARBON_SOURCE_COLOR = summer_colors["dark_tan"]  # all substrate carbon sources
 OTHER_COLOR = "#bdbdbd"  # grey — collapsed trace metabolites
 
+# Define which metabolites were measured in Prochlorococcus exometabolome
+# So we can separate those from the rest in the bars
+PRO_METABOLITES = [
+    "Isoleucine",
+    "Leucine",
+    "Valine",
+    "Proline",
+    "Alanine",
+    "Glutamate",
+    "Aspartate",
+    "Glycine",
+]
+
 
 def main():
     # Load the exchange fluxes (indexed by substrate and O2 level)
@@ -69,6 +82,13 @@ def main():
     # Load the substrate panel to get the names of the carbon sources
     substrate_df = pd.read_csv(IN_PATH / "substrate_panel.csv")
     carbon_source_names = substrate_df["name_in_model"].tolist()
+
+    # Re-order the rows (i.e. the bars) so the substrates that are also
+    # Prochlorococcus exometabolites are last (furthest right on the plot),
+    # in the order they are listed in PRO_METABOLITES.
+    pro_rows = [r for r in PRO_METABOLITES if r in ex_df.index]
+    other_rows = [r for r in ex_df.index if r not in pro_rows]
+    ex_df = ex_df.loc[other_rows + pro_rows]
 
     # Plot
     plot_exchange_stacks(ex_df, carbon_source_names, OUT_PATH)
