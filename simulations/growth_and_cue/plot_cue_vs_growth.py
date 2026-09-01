@@ -15,15 +15,6 @@ from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.lines import Line2D
 from scipy import stats
 
-matplotlib.rcParams.update(
-    {
-        "font.size": 11,
-        "axes.linewidth": 0.8,
-        "axes.spines.top": False,
-        "axes.spines.right": False,
-    }
-)
-
 FILE_PATH = Path(__file__).resolve().parent
 REPO_ROOT = FILE_PATH.parents[1]
 IN_PATH = FILE_PATH / "results"
@@ -43,9 +34,14 @@ sys.path.append(str(REPO_ROOT))
 from tools.plot_styles import (
     carbon_fates_bar,
     ccomp_colors,
+    set_manuscript_style,
     set_plot_style,
     summer_colors,
 )
+
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 
 # Anchor colours drawn from the "Summer I Turned Pretty" palette (plus a muted
 # mauve), ordered to flow as a gradient. build_palette() uses these directly
