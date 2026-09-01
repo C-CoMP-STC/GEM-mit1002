@@ -18,18 +18,25 @@ Figures produced:
   mechanism_vs_dissipation.png  -- ATP synthase and Na+/H+ antiporter fluxes (the why)
 """
 
+import sys
 from pathlib import Path
 
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-matplotlib.rcParams.update({"font.size": 9, "axes.linewidth": 0.8})
-
 FILE_PATH = Path(__file__).resolve().parent
+REPO_ROOT = FILE_PATH.parents[2]
 OUT_PATH = FILE_PATH / "results"
 CSV_PATH = OUT_PATH / "smf_sweep_results.csv"
+
+# Import the shared plot styles from tools/
+sys.path.insert(0, str(REPO_ROOT))
+from tools.plot_styles import set_manuscript_style  # noqa: E402
+
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 
 # ---------------------------------------------------------------------------
 # Load results
