@@ -34,7 +34,6 @@ from pathlib import Path
 
 import cobra
 import cobra.flux_analysis
-import matplotlib
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
@@ -44,18 +43,11 @@ import pandas as pd
 sys.path.append(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 )
-from tools.plot_styles import set_plot_style, summer_colors
+from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
 
-matplotlib.rcParams.update(
-    {
-        "font.size": 11,
-        "axes.linewidth": 0.8,
-        "axes.spines.top": False,
-        "axes.spines.right": False,
-        "pdf.fonttype": 42,  # editable text in Illustrator
-        "ps.fonttype": 42,
-    }
-)
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 
 # ---------------------------------------------------------------------------
 # Config
