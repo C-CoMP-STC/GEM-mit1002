@@ -1,4 +1,69 @@
+from pathlib import Path
+
+import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
+
+# Directory holding the vendored Source Sans 3 faces (SIL Open Font License,
+# see tools/fonts/LICENSE.md). Shipping the font files in the repo means a
+# fresh clone renders figures identically instead of silently falling back to
+# matplotlib's default DejaVu Sans.
+FONT_DIR = Path(__file__).resolve().parent / "fonts"
+
+_FONTS_REGISTERED = False
+
+
+def _register_fonts():
+    """Add the vendored font files to matplotlib's font manager (idempotent)."""
+    global _FONTS_REGISTERED
+    if _FONTS_REGISTERED:
+        return
+    for ttf in sorted(FONT_DIR.glob("*.ttf")):
+        font_manager.fontManager.addfont(str(ttf))
+    _FONTS_REGISTERED = True
+
+
+def set_manuscript_style(font_size=9):
+    """Set the global rcParams shared by every manuscript figure.
+
+    Call this once at the top of a plotting script, BEFORE creating any
+    figures or axes. It cannot live inside `set_plot_style` because that
+    function takes an Axes that already exists: matplotlib reads rcParams
+    when an artist is created, so changing "font.size" afterwards would
+    leave the tick labels at whatever size was in effect when the axes were
+    drawn. The two functions are deliberately different scopes -- this one
+    is global and runs first, `set_plot_style` is per-axes and runs last.
+
+    Sets three things that used to be copy-pasted (inconsistently) across
+    the plotting scripts:
+
+    1. Font family. Source Sans 3, vendored under tools/fonts/. It is the
+       open-licensed sibling of Myriad Pro (same designer, same humanist
+       skeleton), which is what ASM journals use for body text and figure
+       captions. Myriad Pro itself is kept as the second choice for anyone
+       who has it installed, with DejaVu Sans as the last resort.
+    2. Font size. Default 9 pt. Aim for 7-8 pt on the printed page after
+       the figure is scaled to column width, so in-figure text sits close
+       to the ~7.5 pt of the journal's typeset caption. Pass `font_size` to
+       override for a figure that is scaled unusually.
+    3. Vector text output. `pdf.fonttype`/`ps.fonttype` 42 embeds TrueType
+       rather than converting text to Type 3 subsets, which keeps the text
+       selectable and editable in Illustrator and avoids the Type 3
+       rejections some journals issue at submission.
+    """
+    _register_fonts()
+    matplotlib.rcParams.update(
+        {
+            "font.family": "sans-serif",
+            "font.sans-serif": ["Source Sans 3", "Myriad Pro", "DejaVu Sans"],
+            "font.size": font_size,
+            "axes.linewidth": 0.8,
+            "axes.spines.top": False,
+            "axes.spines.right": False,
+            "pdf.fonttype": 42,  # editable text in Illustrator
+            "ps.fonttype": 42,
+        }
+    )
 
 # Define the colors from the C-CoMP pallette
 ccomp_colors = {
