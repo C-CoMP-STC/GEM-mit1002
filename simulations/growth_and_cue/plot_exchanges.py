@@ -10,15 +10,6 @@ import numpy as np
 import pandas as pd
 from matplotlib.lines import Line2D
 
-matplotlib.rcParams.update(
-    {
-        "font.size": 11,
-        "axes.linewidth": 0.8,
-        "axes.spines.top": False,
-        "axes.spines.right": False,
-    }
-)
-
 FILE_PATH = Path(__file__).resolve().parent
 REPO_ROOT = FILE_PATH.parents[1]
 IN_PATH = FILE_PATH / "results"
@@ -27,7 +18,11 @@ OUT_PATH.mkdir(exist_ok=True)
 
 # Import the shared plot styles from tools/
 sys.path.append(str(REPO_ROOT))
-from tools.plot_styles import set_plot_style, summer_colors
+from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
+
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 
 # Color palette for exchange metabolites
 # The "Summer" color palette with a few extra colors to avoid repeats
