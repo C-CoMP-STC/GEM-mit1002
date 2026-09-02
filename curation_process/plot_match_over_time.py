@@ -80,14 +80,27 @@ flux_color = summer_colors["yellow"]
 matches_marker = "o"
 flux_marker = "s"
 
-# Create a figure with twin y axes
-fig, ax1 = plt.subplots(figsize=(8, 5))
-ax2 = ax1.twinx()
+# Two stacked panels sharing one x axis, rather than the twin y axes this used
+# to have. The growth-match line gets the taller panel because it is the result
+# the figure is about; the unbounded-flux line is a diagnostic, so it gets a
+# short panel underneath. Giving each line its own panel also means each y axis
+# belongs to exactly one series, so the axes no longer have to be color-coded
+# to say which line they describe.
+#
+# 8.5 in is the full width of the figure as submitted, labels and legends
+# included, so nothing gets scaled (and no in-figure text shrinks) afterwards.
+fig, (ax_match, ax_flux) = plt.subplots(
+    2,
+    1,
+    sharex=True,
+    figsize=(8.5, 5.5),
+    height_ratios=[2.5, 1],
+)
 # Scale the unbounded flux axis to show detail near zero
-ax2.set_yscale("symlog", linthresh=1)
+ax_flux.set_yscale("symlog", linthresh=1)
 
-# Plot the number of matches on the left axis
-ax1.plot(
+# Plot the number of matches on the top panel
+ax_match.plot(
     data.index,
     data["Matches"],
     marker=matches_marker,
@@ -99,12 +112,14 @@ ax1.plot(
     color=matches_color,
 )
 
-# Plot the number of arbitrarily large reactions on the right axis
-ax2.plot(
+# Plot the number of arbitrarily large reactions on the bottom panel
+ax_flux.plot(
     data.index,
     data["Unbounded Flux Reactions"],
     marker=flux_marker,
-    markersize=4,
+    # Smaller than the top panel's markers: this panel is a third the height,
+    # so markers at the same size merge into a solid slab along the zero line
+    markersize=2.5,
     linestyle="-",
     # Slightly heavier than the default: the yellow of this palette is light
     # against white, and a hairline in it disappears at figure scale
@@ -112,49 +127,40 @@ ax2.plot(
     color=flux_color,
 )
 
-# Make it so it looks like the matches line is "on top"
-# Move ax1 to a higher z-order than ax2
-ax1.set_zorder(ax2.get_zorder() + 1)
-# Make ax1's background transparent so ax2 is still visible behind it
-ax1.patch.set_visible(False)
+# Apply the shared style (gray axis lines, no top/right spines, gray text)
+set_plot_style(ax_match)
+set_plot_style(ax_flux)
 
-# Apply the shared style (gray bottom axis, no top/right spines, gray text)
-set_plot_style(ax1)
-
-# Titles and labels (set on ax1 so set_plot_style's gray text applies)
-ax1.set_title("Model Performance Over Time")
-ax1.set_xlabel("Pull Request Number")
+# Titles and labels
+ax_match.set_title("Model Performance Over Time")
 if n_interpretable:
-    ax1.set_ylabel(
-        f"Growth Phenotypes Matching Experimental Data (of {n_interpretable})"
+    ax_match.set_ylabel(
+        f"Growth Phenotypes Matching\nExperimental Data (of {n_interpretable})"
     )
 else:
-    ax1.set_ylabel("Growth Phenotypes Matching Experimental Data")
+    ax_match.set_ylabel("Growth Phenotypes Matching\nExperimental Data")
 # Full range of the metric, so the height of the line reads as a fraction of
-# what could be matched rather than being rescaled to whatever was achieved
-ax1.set_ylim(0, (n_interpretable or 55))
-ax2.set_ylabel("Unique Reactions with Flux > 100 (Log Scale)")
+# what could be matched rather than being rescaled to whatever was achieved.
+# The extra 6% is headroom for the PR labels.
+ax_match.set_ylim(0, (n_interpretable or 55) * 1.06)
+
+ax_flux.set_ylabel("Reactions with\nFlux > 100 (Log Scale)")
+# Headroom above the tallest spike for that panel's PR labels. Set explicitly
+# rather than as a multiple of the data: on a log scale a proportional margin
+# is an extra decade or nothing at all depending on where the maximum falls.
+# The bottom goes slightly below zero so the stars on the highlighted PRs that
+# sit at zero (PR 344) are drawn whole rather than clipped by the x axis. Safe
+# on this scale because symlog is linear within +/-linthresh, so a small
+# negative bottom is a small amount of space, not a decade.
+ax_flux.set_ylim(-0.55, 300)
+ax_flux.set_xlabel("Pull Request Number")
 
 # Thin out the x-tick labels: with ~120 points, labeling every PR is unreadable,
-# so show every Nth PR number instead
+# so show every Nth PR number instead. Set on the shared (bottom) axis.
 step = max(1, len(data) // 15)
 tick_positions = data.index[::step]
-ax1.set_xticks(tick_positions)
-ax1.set_xticklabels(data["PR Number"].iloc[::step], rotation=45, ha="right")
-
-# Color the left axis to match the matches line
-ax1.spines["left"].set_color(matches_color)
-ax1.tick_params(axis="y", colors=matches_color)
-ax1.yaxis.label.set_color(matches_color)
-
-# Color the right axis to match the unbounded flux line.
-# set_plot_style hides ax2's spines, and its right spine is the one we want, so
-# style ax2 by hand instead of calling set_plot_style on it.
-ax2.spines["top"].set_visible(False)
-ax2.spines["left"].set_visible(False)
-ax2.spines["right"].set_color(flux_color)
-ax2.tick_params(axis="y", colors=flux_color)
-ax2.yaxis.label.set_color(flux_color)
+ax_flux.set_xticks(tick_positions)
+ax_flux.set_xticklabels(data["PR Number"].iloc[::step], rotation=45, ha="right")
 
 # ---- Annotate the highlighted PRs -------------------------------------------
 # The x-axis is the row index, not the PR number, so map PR number -> x position
@@ -172,22 +178,25 @@ def darken(color, factor=0.65):
     return (r * factor, g * factor, b * factor)
 
 
-# Give the top of the growth axis a little headroom for the PR labels
-ax1.set_ylim(0, (n_interpretable or 55) * 1.06)
-# Finalize the layout first so the data->display transforms used below (to put
-# the flux labels into ax1's coordinate system) are correct.
+# One left edge for both y-axis labels, instead of each sitting wherever its
+# own tick labels end
+fig.align_ylabels([ax_match, ax_flux])
+
+# Finalize the layout before annotating so adjustText sees the axes at their
+# final size
 fig.tight_layout()
 fig.canvas.draw()
 
-# Collect all highlight labels in ONE coordinate system (ax1) so adjustText can
-# place growth and flux labels together without them colliding. Stars are drawn
-# on each series' own axis; the flux point position is transformed into ax1
-# coords only so its label and leader line land in the right place.
-label_texts = []
 
+def add_highlights(ax, y_col, highlights, series_color, expand=(1.4, 1.8)):
+    """Star the highlighted PRs on `ax` and lay their labels out around them.
 
-def add_highlights(source_ax, y_col, highlights, series_color):
+    Each panel is laid out on its own: the labels only ever have to avoid the
+    one line drawn in that panel, which is the part that got simpler by
+    splitting the twin axes into two panels.
+    """
     star_color = darken(series_color)
+    label_texts = []
     for pr in highlights:
         if pr not in pr_to_index:
             warnings.warn(f"Highlight PR #{pr} is not in the plotted data; skipping.")
@@ -195,7 +204,7 @@ def add_highlights(source_ax, y_col, highlights, series_color):
         x = pr_to_index[pr]
         y = data.loc[x, y_col]
         # Bigger star, darker shade of the line color, white halo to separate it
-        source_ax.plot(
+        ax.plot(
             x,
             y,
             marker="*",
@@ -205,13 +214,10 @@ def add_highlights(source_ax, y_col, highlights, series_color):
             markeredgewidth=1.4,
             zorder=7,
         )
-        # Position the label in ax1 data coords (transform if it's a flux point)
-        disp = source_ax.transData.transform((x, y))
-        x1, y1 = ax1.transData.inverted().transform(disp)
         label_texts.append(
-            ax1.text(
-                x1,
-                y1,
+            ax.text(
+                x,
+                y,
                 f"PR {pr}",
                 color=star_color,
                 fontsize=12,
@@ -221,30 +227,31 @@ def add_highlights(source_ax, y_col, highlights, series_color):
                 zorder=8,
             )
         )
+    # Points for the labels to avoid: every plotted marker of this panel's series
+    adjust_text(
+        label_texts,
+        x=list(data.index),
+        y=list(data[y_col]),
+        ax=ax,
+        arrowprops=dict(arrowstyle="-", color="0.5", lw=0.8),
+        expand=expand,
+        force_text=(0.4, 0.7),
+        ensure_inside_axes=True,
+        min_arrow_len=6,
+    )
 
 
-add_highlights(ax1, "Matches", GROWTH_HIGHLIGHT_PRS, matches_color)
-add_highlights(ax2, "Unbounded Flux Reactions", FLUX_HIGHLIGHT_PRS, flux_color)
-
-# Points for the labels to avoid: every plotted marker of both series, all in
-# ax1 coords so labels don't sit on either line.
-avoid_x, avoid_y = [], []
-for col, src in (("Matches", ax1), ("Unbounded Flux Reactions", ax2)):
-    for x, y in zip(data.index, data[col]):
-        dx, dy = ax1.transData.inverted().transform(src.transData.transform((x, y)))
-        avoid_x.append(dx)
-        avoid_y.append(dy)
-
-adjust_text(
-    label_texts,
-    x=avoid_x,
-    y=avoid_y,
-    ax=ax1,
-    arrowprops=dict(arrowstyle="-", color="0.5", lw=0.8),
-    expand=(1.4, 1.8),
-    force_text=(0.4, 0.7),
-    ensure_inside_axes=True,
-    min_arrow_len=6,
+add_highlights(ax_match, "Matches", GROWTH_HIGHLIGHT_PRS, matches_color)
+# The flux line sits on zero almost everywhere, so its labels start out on top
+# of it and the whole panel above is empty. Push them further vertically than
+# the top panel's, where space is tighter and a big shove would strand a label
+# far from its star.
+add_highlights(
+    ax_flux,
+    "Unbounded Flux Reactions",
+    FLUX_HIGHLIGHT_PRS,
+    flux_color,
+    expand=(1.4, 4.0),
 )
 
 # Save the plot
