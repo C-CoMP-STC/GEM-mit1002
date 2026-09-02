@@ -13,7 +13,11 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 # Add the repo root to the system path so tools/ is importable
 sys.path.append(PROJECT_ROOT)
 # Import the shared plot styles
-from tools.plot_styles import set_plot_style, summer_colors
+from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
+
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 
 # Define which PRs to highlight on the plot
 # These are PRs that caused a significant change in the number of matches or unbounded flux reactions
