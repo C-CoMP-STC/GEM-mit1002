@@ -51,7 +51,11 @@ FIG_DIR.mkdir(exist_ok=True)
 
 # Import the shared plot styles from tools/
 sys.path.append(str(REPO_ROOT))
-from tools.plot_styles import set_plot_style, summer_colors
+from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
+
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 
 F_PLOT = 10.0
 ALT_DW_G = 2.5e-13  # g/cell
@@ -123,9 +127,7 @@ def fit_layout(fig, panels) -> None:
         )
         bottom_deco = ax_y0 - span(left_axes[-1].xaxis)[2]
 
-        axes_w = (
-            fig_w - left_deco - right_deco - LEGEND_GAP_IN - legend_w - 2 * PAD_IN
-        )
+        axes_w = fig_w - left_deco - right_deco - LEGEND_GAP_IN - legend_w - 2 * PAD_IN
         axes_h = (fig_h - bottom_deco - 2 * PAD_IN - PANEL_GAP_IN) / len(panels)
         fig.subplots_adjust(
             left=(PAD_IN + left_deco) / fig_w,
