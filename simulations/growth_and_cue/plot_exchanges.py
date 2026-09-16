@@ -180,7 +180,7 @@ def plot_exchange_stacks(ex_df, carbon_source_names, out_dir):
     _stacked_bar(
         exud[ex_cols],
         colors,
-        "MIT1002 exudation fluxes across substrates (saturating O2)",
+        "Predicted MIT1002 Exudations When Grown on Different Carbon Sources (With Non-Limiting O2)",
         "Sole Carbon Source in Substrate",
         "Exudation flux (mmol gDW⁻¹ h⁻¹)",
         out_dir / "exudation_fluxes.png",
