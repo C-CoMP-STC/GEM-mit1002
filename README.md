@@ -56,44 +56,6 @@ yeast-GEM and Human-GEM follow, asks for a single `code/` directory instead. The
 split above is a deliberate refinement of that; `code/` is also a poor Python
 package name because it shadows a standard-library module.
 
-## To contribute to the model
-1. Make a GitHub account
-2. Make a fork/branch of this repo
-3. Make your edits to the model on the XML file
-4. If you are *removing* a reaction or metabolite, use the deprecation helper rather than deleting it by hand (see below)
-5. Open a pull request
-
-## Removing reactions and metabolites
-
-Reactions and metabolites that have been removed from the model are recorded in
-[`data/deprecated_identifiers/`](data/deprecated_identifiers/). Removal is a
-curation decision with as much information content as an addition, and recording
-it stops the same identifier being re-added or hunted for by someone who found it
-in an older figure or script.
-
-Remove things with the helper, which edits the model and updates the list in one
-step, and cleans up any metabolite or gene the removal orphaned:
-
-```
-python -m tools.deprecate reaction rxn00196_c0 \
-    --reason no_genomic_evidence --dry-run
-```
-
-Drop `--dry-run` to actually apply it. `--reason` takes a fixed vocabulary
-documented in
-[`data/deprecated_identifiers/README.md`](data/deprecated_identifiers/README.md);
-the full reasoning still belongs in the pull request description, which the list
-links back to.
-
-You do not need to pass a PR number — you do not have one yet when you are
-working on your branch. CI fills it in on every pull request and commits the
-result, the same way it stamps the PR number into `scripts/results/README.md`.
-
-The identifier lists are also mirrored into the SBML model's `<notes>`, so a
-person who downloads only `model.xml` can still tell that those identifiers were
-deliberately removed and where to find the reasons. `test/test_deprecated.py`
-fails if the model and the lists disagree.
-
 ## Setting Up the Environment
 To ensure a smooth setup and avoid system conflicts, follow these steps to create and activate a Python virtual environment before installing dependencies.
 
