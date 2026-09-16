@@ -14,8 +14,7 @@ irreversible (uptake-only): cpd_e0 --> cpd_c0.
 Flux bound formula:
     bound [mmol/gDW/hr] = f × rate [nmol/Pro-cell/hr] × 1e-6 / alt_dw [g]
 
-Alteromonas dry weight: 250 fg = 2.5e-13 g (placeholder; see Pedler et al.
-2014 PNAS for MIT1002; flag for literature review).
+Alteromonas dry weight: 280 fg = 2.8e-13 g (https://bionumbers.hms.harvard.edu/bionumber.aspx?s=n&v=7&id=100008)
 """
 
 import warnings
@@ -28,7 +27,7 @@ import pandas as pd
 
 # ── Parameters ─────────────────────────────────────────────────────────────────
 
-ALT_DW_G = 2.5e-13  # 250 fg, Alteromonas dry weight per cell
+ALT_DW_G = 2.8e-13  # 280 fg, Alteromonas dry weight per cell
 
 F_VALUES = [10.0]  # interception fraction × Pro:Alt cell ratio
 
@@ -66,7 +65,7 @@ OUT_DIR.mkdir(exist_ok=True)
 
 BASAL_MEDIUM = {
     "EX_cpd00007_e0": 20,  # O2
-    "EX_cpd00067_e0": 1000,  # H+  # FIXME: Should I remove this?
+    "EX_cpd00067_e0": 1000,  # H+
     # "EX_cpd00013_e0": 1000,  # NH3  (Remove to see if Amac can recycle N from Pro)
     "EX_cpd00058_e0": 1000,  # Cu2+
     "EX_cpd00971_e0": 1000,  # Na+
@@ -84,7 +83,7 @@ BASAL_MEDIUM = {
 }
 
 # ── Metabolites needing in-memory transport reactions ───────────────────────────
-# These have cytosolic forms in iHS4156 but no extracellular metabolite,
+# These have cytosolic forms in the model but no extracellular metabolite,
 # exchange reaction, or transport reaction.
 
 MISSING_TRANSPORTS = {
@@ -113,7 +112,7 @@ def main() -> None:
     )
 
     # Load model
-    print("\nLoading model (iHS4156)...")
+    print("\nLoading model...")
     model = cobra.io.read_sbml_model(str(MODEL_FILE))
     print(f"  {len(model.reactions)} reactions, {len(model.metabolites)} metabolites")
 
