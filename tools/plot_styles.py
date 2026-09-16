@@ -23,7 +23,7 @@ def _register_fonts():
     _FONTS_REGISTERED = True
 
 
-def set_manuscript_style(font_size=9):
+def set_manuscript_style(font_size=12):
     """Set the global rcParams shared by every manuscript figure.
 
     Call this once at the top of a plotting script, BEFORE creating any
@@ -65,6 +65,7 @@ def set_manuscript_style(font_size=9):
         }
     )
 
+
 # Define the colors from the C-CoMP pallette
 ccomp_colors = {
     "light_blue": "#3CB3C0",
@@ -87,23 +88,24 @@ summer_colors = {
 
 
 # Define the style for the plots (gray axes, no top or right axis lines)
-def set_plot_style(g):
-    # Make the axis lines gray
-    g.spines["bottom"].set_color("gray")
-    g.spines["left"].set_color("gray")
-    # Make the tick marks gray
-    g.tick_params(axis="x", colors="gray")
-    g.tick_params(axis="y", colors="gray")
+def set_plot_style(g, color="gray"):
+    # Make the axis lines the defined color
+    g.spines["bottom"].set_color(color)
+    g.spines["left"].set_color(color)
+    # Make the tick marks the defined color
+    g.tick_params(axis="x", colors=color)
+    g.tick_params(axis="y", colors=color)
     # Remove the top and right axis lines
     g.spines["top"].set_visible(False)
     g.spines["right"].set_visible(False)
-    # Make all text (axis labels, tick labels, title, and legend) gray
-    g.xaxis.label.set_color("gray")
-    g.yaxis.label.set_color("gray")
-    g.title.set_color("gray")
+    # Make all text (axis labels, tick labels, title, and legend) the defined color
+    g.xaxis.label.set_color(color)
+    g.yaxis.label.set_color(color)
+    g.title.set_color(color)
     if g.get_legend() is not None:
+        g.get_legend().get_title().set_color(color)
         for text in g.get_legend().get_texts():
-            text.set_color("gray")
+            text.set_color(color)
 
 
 def carbon_fates_bar(data, byproduct_colors=None):
@@ -127,9 +129,9 @@ def carbon_fates_bar(data, byproduct_colors=None):
         byproduct_cols = [c for c in byproduct_colors if c in data.columns]
         # Check that there aren't any unexpected byproduct columns
         extra_cols = set(data.columns) - set(byproduct_cols) - {"biomass", "co2"}
-        assert not extra_cols, (
-            f"Columns not found in byproduct_colors palette: {extra_cols}"
-        )
+        assert (
+            not extra_cols
+        ), f"Columns not found in byproduct_colors palette: {extra_cols}"
         # Set the column order
         data = data[["biomass"] + byproduct_cols + ["co2"]]
         colors = (

@@ -173,6 +173,7 @@ def plot_exchange_stacks(ex_df, carbon_source_names, out_dir):
         uptake[up_cols],
         colors,
         "MIT1002 uptake fluxes across substrates (saturating O2)",
+        "Sole Carbon Source in Substrate",
         "Uptake flux (mmol gDW⁻¹ h⁻¹)",
         out_dir / "uptake_fluxes.png",
     )
@@ -180,6 +181,7 @@ def plot_exchange_stacks(ex_df, carbon_source_names, out_dir):
         exud[ex_cols],
         colors,
         "MIT1002 exudation fluxes across substrates (saturating O2)",
+        "Sole Carbon Source in Substrate",
         "Exudation flux (mmol gDW⁻¹ h⁻¹)",
         out_dir / "exudation_fluxes.png",
     )
@@ -208,7 +210,7 @@ def _ordered_cols(df, pin_first=None, pin_last=None):
     return head + middle + tail
 
 
-def _stacked_bar(df, colors, title, ylabel, out_path):
+def _stacked_bar(df, colors, title, xlabel, ylabel, out_path):
     fig, ax = plt.subplots(figsize=(13, 7))
     x = np.arange(len(df.index))
     bottom = np.zeros(len(df))
@@ -226,16 +228,15 @@ def _stacked_bar(df, colors, title, ylabel, out_path):
         bottom += vals
     ax.axhline(0, color="black", lw=0.6)
     ax.set_xticks(x)
-    ax.set_xticklabels(df.index, rotation=45, ha="right", fontsize=8)
+    ax.set_xticklabels(df.index, rotation=45, ha="right")
+    ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
-    ax.set_title(title, fontsize=12, pad=8)
+    ax.set_title(title, pad=10)
     ax.margins(x=0.01)
     ax.legend(
         title="Metabolite",
         bbox_to_anchor=(1.01, 1),
         loc="upper left",
-        fontsize=7,
-        title_fontsize=8.5,
         frameon=False,
     )
     fig.tight_layout()
