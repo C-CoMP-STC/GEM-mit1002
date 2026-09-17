@@ -14,8 +14,17 @@ import sys
 
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from docx import Document  # noqa: E402
+from docx.enum.section import WD_ORIENT  # noqa: E402
+from docx.oxml import OxmlElement  # noqa: E402
+from docx.oxml.ns import qn  # noqa: E402
+from docx.shared import Emu, Pt  # noqa: E402
+from openpyxl import load_workbook  # noqa: E402
+from openpyxl.styles import PatternFill  # noqa: E402
+
 from tools.media import MEDIA  # noqa: E402
 from tools.phenotypes import evaluate_phenotypes  # noqa: E402
+from tools.plot_styles import summer_colors  # noqa: E402
 
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 RESULTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "results")
@@ -34,6 +43,70 @@ media_names = {
     "marine_broth_wo_yeast_and_peptone_no_n": "Marine Broth (No Nitrogen)",
     "swm": "Seawater Medium",
 }
+
+# Human-readable labels for the verdicts tools/phenotypes.py assigns. The
+# vocabulary is deliberately the same one figure 2 plots, so the table and the
+# figure cannot drift apart. "Positive" means the model predicted growth.
+RESULT_LABELS = {
+    "true_positive": "True Positive",
+    "true_negative": "True Negative",
+    "false_positive": "False Positive",
+    "false_negative": "False Negative",
+    "unsure": "Unsure",
+    "invalid_solve": "Invalid Solve",
+    "excluded": "Excluded",
+}
+
+# Row order: everything that is scored first, then the rows that cannot be
+# interpreted, then the rows excluded for a stated reason. Within a group the
+# media/metabolite ordering is kept, so the scored block still reads
+# alphabetically.
+RESULT_ORDER = {
+    "True Positive": 0,
+    "True Negative": 0,
+    "False Positive": 0,
+    "False Negative": 0,
+    "Unsure": 1,
+    "Invalid Solve": 1,
+    "Excluded": 2,
+}
+
+# Rows the reader should stop on get a fill; the rest do not. See
+# color_result_rows for why true positives and true negatives are left white.
+RESULT_FILLS = {
+    "mismatch": ("False Positive", "False Negative"),
+    "unscored": ("Unsure", "Invalid Solve", "Excluded"),
+}
+# Light gray for the unscored block, and a tint of the manuscript palette's
+# pink for the disagreements, so the table matches the figures.
+UNSCORED_FILL = "FFE0E0E0"
+
+
+def _lighten(hex_color: str, amount: float) -> str:
+    """Blend ``#RRGGBB`` that far toward white, as an openpyxl aRGB string.
+
+    The palette colours are chosen to be read as a line or a patch, and are too
+    saturated to put black text on top of. Deriving the fill from the palette
+    rather than hard-coding a second pink means a palette change carries here.
+    """
+    channels = [int(hex_color.lstrip("#")[i : i + 2], 16) for i in (0, 2, 4)]
+    blended = [round(c + amount * (255 - c)) for c in channels]
+    return "FF" + "".join(f"{c:02X}" for c in blended)
+
+
+MISMATCH_FILL = _lighten(summer_colors["pink"], 0.55)
+
+# Eight columns of 61 rows does not fit a portrait page at a readable size, so
+# the Word version is landscape and set small. Word tables are not typeset by
+# ASM at a fixed size, so this only has to be legible, not exact.
+DOCX_FONT_SIZE = Pt(8)
+
+# Column widths are shared out in proportion to how much text each column
+# actually holds. The clamps stop the two long free-text columns from taking
+# the whole page and stop the narrow ones from collapsing, both in characters.
+DOCX_MIN_COL_CHARS = 8
+DOCX_MAX_COL_CHARS = 30
+DOCX_HEADER_PADDING = 4
 
 
 def generate_growth_phenotype_report(model: cobra.Model):
@@ -59,8 +132,7 @@ def generate_growth_phenotype_report(model: cobra.Model):
     # An unevaluable solve has predicted=None; render it as "Unsure" (gray)
     # rather than silently as no growth.
     growth_phenotypes["all_ex_rxn_present"] = [
-        "No" if missing else "Yes"
-        for missing in growth_phenotypes["missing_exchanges"]
+        "No" if missing else "Yes" for missing in growth_phenotypes["missing_exchanges"]
     ]
     growth_phenotypes["pred_growth"] = growth_phenotypes["predicted"].fillna("Unsure")
 
@@ -204,6 +276,9 @@ def beautify_table(exp_pred_table: pd.DataFrame):
     # Round the FBA predicted growth rates to 3 decimal places for easier readability
     exp_pred_table["fba_growth_rate"] = exp_pred_table["fba_growth_rate"].round(3)
 
+    # Spell out the scorer's verdict for each row.
+    exp_pred_table["result"] = exp_pred_table["category"].map(RESULT_LABELS)
+
     # Subset the columns we want
     exp_pred_table = exp_pred_table[
         [
@@ -212,11 +287,20 @@ def beautify_table(exp_pred_table: pd.DataFrame):
             "c_source",
             "growth",
             "reference",
+            "exclude_reason",
             "fba_growth_rate",
+            "result",
         ]
     ]
-    # Sort the table by the minimal media and then the carbon source
-    exp_pred_table = exp_pred_table.sort_values(by=["minimal_media", "c_source"])
+    # Sort the scored rows to the top and the excluded rows to the bottom, then
+    # by minimal media and carbon source within each of those groups.
+    exp_pred_table = (
+        exp_pred_table.assign(
+            _group=exp_pred_table["result"].map(RESULT_ORDER),
+        )
+        .sort_values(by=["_group", "minimal_media", "c_source"])
+        .drop(columns="_group")
+    )
     # And rename the columns to be more descriptive
     exp_pred_table = exp_pred_table.rename(
         columns={
@@ -224,7 +308,9 @@ def beautify_table(exp_pred_table: pd.DataFrame):
             "c_source": "Added Metabolite(s)",
             "growth": "Experimental Growth",
             "reference": "Reference",
+            "exclude_reason": "Reason for Exclusion",
             "fba_growth_rate": "FBA Predicted Growth Rate",
+            "result": "Result",
         }
     )
     # Save as a tsv
@@ -233,10 +319,179 @@ def beautify_table(exp_pred_table: pd.DataFrame):
         index=False,
         sep="\t",
     )
-    # Save as excel
-    exp_pred_table.to_excel(
-        os.path.join(RESULTS_DIR, "known_growth_phenotypes_w_pred.xlsx"), index=False
+    # Save as excel, then shade the rows by their verdict
+    xlsx_path = os.path.join(RESULTS_DIR, "known_growth_phenotypes_w_pred.xlsx")
+    exp_pred_table.to_excel(xlsx_path, index=False)
+    color_result_rows(xlsx_path)
+
+    # And as Word, which is the format ASM wants for a main-text table
+    save_as_docx(
+        exp_pred_table,
+        os.path.join(RESULTS_DIR, "known_growth_phenotypes_w_pred.docx"),
     )
+
+
+def color_result_rows(path: str):
+    """Shade each row of the saved workbook according to its Result value.
+
+    Only the rows a reader should stop on are filled: the disagreements, and
+    the rows that are not scored at all. True positives and true negatives are
+    the large majority of the table, so filling those too would leave the
+    shading carrying no information.
+
+    The colour is never the only signal -- the Result column says the same
+    thing in text, so the table survives being printed in black and white, or
+    being stripped of formatting by a journal's production process.
+
+    Read back from the sheet rather than from the dataframe so the fill cannot
+    drift out of step with the row it is describing.
+    """
+    workbook = load_workbook(path)
+    sheet = workbook.active
+    header = [cell.value for cell in sheet[1]]
+    result_column = header.index("Result") + 1
+
+    fills = {
+        label: PatternFill("solid", start_color=color, end_color=color)
+        for group, color in (
+            ("mismatch", MISMATCH_FILL),
+            ("unscored", UNSCORED_FILL),
+        )
+        for label in RESULT_FILLS[group]
+    }
+
+    for row in sheet.iter_rows(min_row=2, max_col=len(header)):
+        fill = fills.get(sheet.cell(row=row[0].row, column=result_column).value)
+        if fill is None:
+            continue
+        for cell in row:
+            cell.fill = fill
+
+    workbook.save(path)
+
+
+def _shade_cell(cell, fill: str):
+    """Give a table cell a solid background.
+
+    python-docx has no API for cell shading, so the ``w:shd`` element goes in
+    by hand. ``w:val="clear"`` means a plain background; the pattern values
+    render as black in some viewers.
+    """
+    shading = OxmlElement("w:shd")
+    shading.set(qn("w:val"), "clear")
+    shading.set(qn("w:color"), "auto")
+    shading.set(qn("w:fill"), fill)
+    cell._tc.get_or_add_tcPr().append(shading)
+
+
+def _repeat_header_row(row):
+    """Mark a table row as a header so Word repeats it on every page."""
+    tr_pr = row._tr.get_or_add_trPr()
+    header = OxmlElement("w:tblHeader")
+    header.set(qn("w:val"), "true")
+    tr_pr.append(header)
+
+
+def _column_widths(exp_pred_table: pd.DataFrame, total_width):
+    """Share ``total_width`` across the columns in proportion to their content.
+
+    Word's own autofit sizes a column to its widest cell, which here gives most
+    of the page to the two long free-text columns and wraps
+    "Minimal Basal Medium (Moran Lab)" over three lines in every row of the
+    medium. Measuring the content and clamping it keeps the table one page
+    shorter. Headers are measured by their longest single word, since a header
+    is expected to wrap.
+    """
+    weights = []
+    for column_name in exp_pred_table.columns:
+        longest_value = max(
+            (len(str(value)) for value in exp_pred_table[column_name] if pd.notna(value)),
+            default=0,
+        )
+        # Headers are bold, so they run wider than a character count suggests;
+        # without the padding "Experimental" breaks mid-word in its own column.
+        longest_header_word = (
+            max(len(word) for word in str(column_name).split()) + DOCX_HEADER_PADDING
+        )
+        weights.append(
+            min(
+                max(longest_value, longest_header_word, DOCX_MIN_COL_CHARS),
+                DOCX_MAX_COL_CHARS,
+            )
+        )
+    total_weight = sum(weights)
+    return [Emu(round(total_width * weight / total_weight)) for weight in weights]
+
+
+def save_as_docx(exp_pred_table: pd.DataFrame, path: str):
+    """Write the table as a Word document.
+
+    ASM wants main-text tables in Microsoft Word format, not Excel -- Excel is
+    only accepted for supplemental material. This writes the same dataframe the
+    TSV and the workbook come from, so the three cannot disagree.
+
+    No caption is written. The table legend is manuscript text and belongs to
+    the author; add it in Word above the table.
+
+    Shading matches the workbook, but production restyles main-text tables, so
+    it may not survive typesetting. The Result column says the same thing in
+    text, which is what the table actually relies on.
+    """
+    document = Document()
+
+    # Landscape, US Letter. python-docx does not swap the page dimensions when
+    # the orientation changes, so both have to be set.
+    section = document.sections[0]
+    section.orientation = WD_ORIENT.LANDSCAPE
+    section.page_width, section.page_height = (
+        section.page_height,
+        section.page_width,
+    )
+
+    widths = _column_widths(
+        exp_pred_table,
+        section.page_width - section.left_margin - section.right_margin,
+    )
+
+    table = document.add_table(rows=1, cols=len(exp_pred_table.columns))
+    table.style = "Table Grid"
+    # Word only honours the widths if autofit is off and every cell carries
+    # one, so they are set per cell as each row is built as well.
+    table.autofit = False
+    for column, width in zip(table.columns, widths):
+        column.width = width
+
+    header_cells = table.rows[0].cells
+    for cell, column_name, width in zip(header_cells, exp_pred_table.columns, widths):
+        cell.width = width
+        run = cell.paragraphs[0].add_run(str(column_name))
+        run.bold = True
+        run.font.size = DOCX_FONT_SIZE
+    _repeat_header_row(table.rows[0])
+
+    # The fill is keyed off the Result column exactly as color_result_rows does,
+    # so the Word file and the workbook shade the same rows.
+    fills = {
+        label: color
+        for group, color in (
+            ("mismatch", MISMATCH_FILL[2:]),
+            ("unscored", UNSCORED_FILL[2:]),
+        )
+        for label in RESULT_FILLS[group]
+    }
+
+    for record in exp_pred_table.to_dict("records"):
+        cells = table.add_row().cells
+        for cell, column_name, width in zip(cells, exp_pred_table.columns, widths):
+            cell.width = width
+            value = record[column_name]
+            text = "" if pd.isna(value) else str(value)
+            cell.paragraphs[0].add_run(text).font.size = DOCX_FONT_SIZE
+            fill = fills.get(record["Result"])
+            if fill is not None:
+                _shade_cell(cell, fill)
+
+    document.save(path)
 
 
 def generate_biomass_producibility_report(model: cobra.Model):
