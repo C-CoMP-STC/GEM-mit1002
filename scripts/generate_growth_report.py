@@ -4,7 +4,7 @@ import cobra
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from gem_utilities import biomass, media
+from gem_utilities import biomass
 
 # Define paths relative to the script or project root
 # It's better practice to define a project root
@@ -15,6 +15,7 @@ import sys
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from tools.media import MEDIA  # noqa: E402
+from tools.phenotypes import evaluate_phenotypes  # noqa: E402
 
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 RESULTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "results")
@@ -34,68 +35,34 @@ media_names = {
     "swm": "Seawater Medium",
 }
 
-# Define the total uptake to use for the simulations, in mmol C / gDW / hr
-TOTAL_UPTAKE = 60.0  # Matches a glucose uptake of 10 mmol / gDW / hr
-
 
 def generate_growth_phenotype_report(model: cobra.Model):
-    # Load the TSV of the growth phenotypes
-    growth_phenotypes = pd.read_csv(
-        os.path.join(DATA_DIR, "known_growth_phenotypes.tsv"),
-        sep="\t",
-        converters={"met_id": lambda x: x.split(",")},
-    )
+    # Evaluate every condition with the shared scorer in tools/phenotypes.py,
+    # the same one used by test/test_growth.py and by the figure 2 pipeline in
+    # curation_process/run_tests_on_prs.py.
+    #
+    # This function used to carry its own copy of the simulation loop, which
+    # disagreed with that scorer in three ways:
+    #   * it added a row's metabolites to the medium only when *every* one of
+    #     them had an exchange reaction, so "Methionine, Pyruvate" was simulated
+    #     on a carbon-free medium rather than on the pyruvate;
+    #   * it never checked the solution status, and the model's forced ATP
+    #     maintenance bound makes a medium with no usable carbon infeasible
+    #     rather than zero-growth, so those rows reported whatever the solver
+    #     had left in the primal -- the negative "growth rates" in the table;
+    #   * it therefore could not distinguish an infeasible solve from a genuine
+    #     prediction of no growth.
+    # See the module docstring of tools/phenotypes.py for the full rationale.
+    growth_phenotypes = evaluate_phenotypes(model)
 
-    # Loop through the growth phenotpes, and add the carbon source to the
-    # minimal media, run FBA and check if the model grows
-    ex_rxn_present = []
-    fba_growth_rate = []
-    pred_growth = []
-    for index, row in growth_phenotypes.iterrows():
-        minimal_media = media_definitions[row["minimal_media"]].copy()
-        # Check if the model has an exchange reaction for the metabolite
-        if all(
-            "EX_" + met_id + "_e0" in [r.id for r in model.reactions]
-            for met_id in row["met_id"]
-        ):
-            # If it does, add the exchange reaction to the minimal media used
-            # Control the ammount of carbon taken up by dividing the total
-            # uptake by the number of carbons in the metabolite, so that every
-            # metabolite has the same ammount of carbon
-            for met_id in row["met_id"]:
-                # Get the metabolite object from the model
-                # Assuming the cytosolic version has a formula
-                met = model.metabolites.get_by_id(met_id + "_c0")
-                # Get the number of carbons in the metabolite from its formula
-                n_c = met.elements.get("C", 0)
-                # Set the uptake for the exchange reaction for this metabolite
-                if n_c > 0:
-                    minimal_media["EX_" + met_id + "_e0"] = TOTAL_UPTAKE / n_c
-                else:
-                    minimal_media["EX_" + met_id + "_e0"] = 1000.0
-            # Mark the exchange reaction as present
-            ex_rxn_present.append("Yes")
-        else:
-            # Mark the exchange reaction as not present
-            ex_rxn_present.append("No")
-        # Set the media
-        model.medium = media.clean_media(model, minimal_media)
-        # Run the model
-        sol = model.optimize()
-        # Save the growth rate
-        fba_growth_rate.append(sol.objective_value)
-        # Save the
-        if sol.objective_value > 1e-3:
-            # If it does, add 'Y' to the list
-            pred_growth.append("Yes")
-        else:
-            # If it doesn't, add 'N' to the list
-            pred_growth.append("No")
-
-    # Add the lists as new columns in the dataframe
-    growth_phenotypes["all_ex_rxn_present"] = ex_rxn_present
-    growth_phenotypes["pred_growth"] = pred_growth
-    growth_phenotypes["fba_growth_rate"] = fba_growth_rate
+    # Re-expose the two columns under the names the heatmap below expects.
+    # An unevaluable solve has predicted=None; render it as "Unsure" (gray)
+    # rather than silently as no growth.
+    growth_phenotypes["all_ex_rxn_present"] = [
+        "No" if missing else "Yes"
+        for missing in growth_phenotypes["missing_exchanges"]
+    ]
+    growth_phenotypes["pred_growth"] = growth_phenotypes["predicted"].fillna("Unsure")
 
     # Beautify and save the table
     beautify_table(growth_phenotypes)

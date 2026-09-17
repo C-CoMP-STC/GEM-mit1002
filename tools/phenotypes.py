@@ -11,13 +11,12 @@ Current callers:
   mismatch baseline.
 * ``curation_process/run_tests_on_prs.py`` -- the same evaluation replayed
   across every merged PR, which is what figure 2B of the manuscript plots.
+* ``scripts/generate_growth_report.py`` -- the supplementary table and the
+  experimental-vs-predicted heatmap. Migrated 2026-09-17; it previously
+  carried its own inlined copy of this loop, with all three bugs below.
 
-``scripts/generate_growth_report.py`` still carries its own inlined copy of
-this loop and therefore still has all three bugs listed below. It only feeds a
-human-read heatmap, not a number in the paper, but it should be migrated.
-
-Three things this does that the loop inlined in ``generate_growth_report.py``
-does not:
+Three things this does that the loop formerly inlined in
+``generate_growth_report.py`` did not:
 
 1. Metabolites are added to the medium one at a time. The original guarded
    the whole row with ``if all(exchange present for every metabolite)``, so a
