@@ -2,6 +2,8 @@
 
 GEMs are, at their heart, a software product, and we took lessons from software development and applied them to the model curation process. We term this constant testing and iterative model improvement strategy “continuous curation”, inspired by continuous integration/continuous delivery (CI/CD) for traditional software. This included tracking all changes using version control (i.e., Git), having multiple curators collaborate and propose changes by working on branches and opening pull requests (i.e., trunk-based development), testing changes for the model with defined pass/fail tests (i.e., unit tests), and automatically generating artifacts for curator inspection.
 
+None of this is really new, the field is crystallizing
+
 ## Motivation
 ### Why do we need this?
 
@@ -22,9 +24,14 @@ Local vs Remote, basic terminology (commit, push, pull, etc.)
 
 #### Diffs
 * How to read a diff
+
+![](./figures/png/diff-sbml.png)
+
 * Not all diffs are equally helpful
     * File types to avoid
         * Microsoft office files: e.g., xlsx
+
+![](./figures/png/diff-excel-vs-csv.png)
 
 For a more in depth coverage, see...
 
