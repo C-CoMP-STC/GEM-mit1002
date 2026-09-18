@@ -116,8 +116,8 @@ Also ran through GitHub actions, were a set of “scripts”. These differ from 
   * *In software engineering*:
   * *In continuous curation*:
 * **Branch**: A branch is a parallel version of a repository. It is contained within the repository, but does not affect the primary or main branch allowing you to work freely without disrupting the "live" version. [^gh-glossary].
-* **Commit**: The process of saving changes to the repository [^harvard].
-* **Commit Message**: Short, descriptive text that accompanies a commit and communicates the change the commit is introducing.
+* **Commit**: A commit, or "revision", is an individual change to a file (or set of files). When you make a commit to save your work, Git creates a unique ID (a.k.a. the "SHA" or "hash") that allows you to keep record of the specific changes committed along with who made them and when. Commits usually contain a commit message which is a brief description of what changes were made. [^gh-glossary].
+* **Commit Message**: Short, descriptive text that accompanies a commit and communicates the change the commit is introducing [^gh-glossary].
 * **Conflict**: A situation where two branches have changes in a file that Git cannot automatically merge, requiring manual resolution [^harvard].
 * **Continuous Integration (CI)**:A development practice where team members frequently integrate their code into a shared repository, often multiple times a day. Each integration is verified by automated builds and tests to detect errors early [^agile].
 * **Continuous Delivery**: A software development practice where teams keep their product in a deployable state at all times, but deployment still requires a manual decision [^agile].
@@ -126,28 +126,28 @@ Also ran through GitHub actions, were a set of “scripts”. These differ from 
   * *In continuous curation*:
 * **Diff**: A diff is the difference in changes between two commits, or saved changes. The diff will visually describe what was added or removed from a file since its last commit [^gh-glossary].
 * **Feature Branch**: A branch used to experiment with a new feature or fix an issue that is not in production. Also called a topic branch [^gh-glossary].
-* **Git**: Software for version control, which keeps track of changes to files in a given directory [^harvard].
+* **Git**: Git is an open source program for tracking changes in text files [^gh-glossary].
 * **GitFlow**:
 * **GitHub**: A web-based platform that facilitates Git's use for collaboration between individuals. Other web-based platforms include GitLab  and BitBucket [^harvard].
 * **GitHub Actions**:
 * **Issue**: Issues are suggested improvements, tasks or questions related to the repository. Issues can be created by anyone (for public repositories), and are moderated by repository collaborators. Each issue contains its own discussion thread. You can also categorize an issue with labels and assign it to someone [^gh-glossary].
 * **JSON**:
 * **Local**: 
-* **Merge**: The process of combining changes from one branch into another branch, typically done as part of a pull request [^harvard].
+* **Merge**: Merging takes the changes from one branch (in the same repository or from a fork), and applies them into another. This often happens as a "pull request" (which can be thought of as a request to merge), or via the command line [^harvard].
 * **Monitor**:
   * *In software engineering*:
   * *In continuous curation*:
 * **Pull**: The process of integrating changes from one version of a repository to another (e.g. from a fork back to the original repo, or from a branch back to the main branch). There are two general use cases: 1) When the owner of a repository makes changes to it, you pull those changes into your local copy. 2) When you make changes to a forked repository or a branch of a repository and want to incorporate the changes back to the original repo or branch, you initiate a pull request, and then whoever is in charge of the original repository can pull those changes in  [^harvard].
-* **Pull Request**: When someone has made changes to a fork or a branch that they wish the owner's or the original repository to incorporate, they initiate a pull request so the owner can review and potentially pull the changes [^harvard].
-* **Push**: The process of uploading committed changes from a local repository to a remote repository to a remote platform (e.g. Github) [^harvard].
+* **Pull Request**: Pull requests are proposed changes to a repository submitted by a user and accepted or rejected by a repository's collaborators [^gh-glossary].
+* **Push**: To push means to send your committed changes to a remote repository on GitHub.com. For instance, if you change something locally, you can push those changes so that others may access them [^gh-glossary].
 * **Release**:
   * *In software engineering*:
   * *In continuous curation*:
-* **Remote Repository**: A repository that is hosted on a server, typically on a web-based platform like Github [^harvard].
+* **Remote Repository**: This is the version of a repository or branch that is hosted on a server, most likely GitHub.com [^gh-glossary].
 * **Report**:
   * *In software engineering*:
   * *In continuous curation*:
-* **Repository/Repo**: A directory of files that has been initialized by Git for syncing, possibly including code, documentation, or data [^harvard].
+* **Repository/Repo**: A repository is the most basic element of GitHub. They're easiest to imagine as a project's folder. A repository contains all of the project files (including documentation), and stores each file's revision history. Repositories can have multiple collaborators and can be either public or private [^gh-glossary].
 * **Run**:
   * *In software engineering*:
   * *In continuous curation*:
