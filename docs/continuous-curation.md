@@ -2,23 +2,48 @@
 
 GEMs are, at their heart, a software product, and we took lessons from software development and applied them to the model curation process. We term this constant testing and iterative model improvement strategy “continuous curation”, inspired by continuous integration/continuous delivery (CI/CD) for traditional software. This included tracking all changes using version control (i.e., Git), having multiple curators collaborate and propose changes by working on branches and opening pull requests (i.e., trunk-based development), testing changes for the model with defined pass/fail tests (i.e., unit tests), and automatically generating artifacts for curator inspection.
 
-None of this is really new, the field is crystallizing
+* None of this is really new
+    * we borrowed all of this from software engineering
+    * other groups do or are devloping similar things
+        * we took some things directly from human-GEM and standard-GEM
+    * the field is crystallizing
+    * but the field lacks a single reference point for guidelines
 
 ## Motivation
 ### Why do we need this?
+* GEMs are important tools
+    * But their quality is often questioned
+* Manual curation is hard/messy
+    * Manual curation can be an overwhelming task- the typical adivcoe of just go "pathway by pathway" can be paralyzingly large
+* Manual curation can last for a long time (including decades, spanning many people and projects)
+    * Often one group publishes a model, then another may find it, modify it, and publish a new paper, resulting in branching sets of models
+
 
 ### What have people been doing before this?
+#### MEMOTE
+* MEMOTE exists
+    * but it's more of a benchmarking tool- a lot of things is just about the file
+        * test what the custom tests ever did
 #### standard-GEM
+* no tests
+#### human-GEM and yeast-GEM
+* some tests
+* A lot of things were not enforced, just reminders and check boxes
 
 ### What's new here
+* Our specific unittests- not relaly clear who go to running it as CI first...
+* Biomass component producibility heatmaps
+* Improved tracking removed reactions/metabolites
+
 
 ## Set-Up
 ### What is GitHub?
-Version control keeps a historical record of changes made to tracked files in a specialized database called a repository (or “repo”).  Git is the software tool that enables version control, and GitHub is one popular cloud-based platform to host Git repositories, that also offers other functionalities such as issue tracking and wiki hosting. While we used GitHub, and will use GitHub-focused terminology (e.g., pull requests, actions) it not the only option for hosting Git repositories, other popular options include GitLab, Bitbucket and Azure DevOps, each of which have analogous tools to those we describe here and could similarly be used for a continuous curation pipeline.
-
 Version control is critical for model curation because it tracks the “who”, “what”, and “when” of all changes made to the model. Who edited the model file, when did they make the edits, and what exactly was changed. It also maintains the historical versions of the model file, so at any time you can revert changes and return to an older version of the model.
 
-Local vs Remote, basic terminology (commit, push, pull, etc.)
+Version control keeps a historical record of changes made to tracked files in a specialized database called a repository (or “repo”). Git is the software tool that enables version control, and GitHub is one popular cloud-based platform to host Git repositories, that also offers other functionalities such as issue tracking and wiki hosting. While we used GitHub, and will use GitHub-focused terminology (e.g., pull requests, actions) it not the only option for hosting Git repositories, other popular options include GitLab, Bitbucket and Azure DevOps, each of which have analogous tools to those we describe here and could similarly be used for a continuous curation pipeline.
+
+A Git repository lives in two places...
+* Local vs Remote, basic terminology (commit, push, pull, etc.)
 
 ![An introduction to basic Git terminology: Local and remote repositories, commit, push, and pull](./figures/png/github-intro.png)
 
@@ -69,6 +94,15 @@ The Continuous Curation loop consists of 6 steps:
 ### Step 1) Curate
 *NOTE: We do not discuss here how to make curation decisions, but rather how to implement them*
 * How big is one curation task?
+#### Removing Reactions/Metabolites
+* Palsson said to do it
+* What we took from human-GEM: the table
+* What is new
+    * The standard vocabulary of reason
+    * The list of removed things in the model file itself
+        * And the test to make sure it does not drift
+    * The test that no old reactions are still in the model file
+#### Pull Requests
 One critical component of the history of changes to the model is the “why”- why was a change to the model made (e.g., was a reaction found to have genomic evidence, was there a mistake in the biochemistry database, etc.). There are text fields in the model file itself where this information can be stored, and there have been cases in the past of defined “codes” used to represent different types of evidence that support each reaction (CITE EXAMPLES) however we have found that these are not well used, lack standardization across the community, and are often not comprehensive enough to fully explain the reasoning behind each change. We instead elected to documented these in issues and pull requests on the repository. Issues can be used as a sort of electronic lab notebook. To ensure that all curators (present and future) are reminded to document their reasoning, a pull request template was used.
 * Open a pull request, that starts the cycle
 
