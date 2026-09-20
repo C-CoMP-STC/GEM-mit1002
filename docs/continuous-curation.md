@@ -107,10 +107,96 @@ One critical component of the history of changes to the model is the “why”- 
 * Open a pull request, that starts the cycle
 
 ### Step 2) Test
+* Testing code is important, testing the model is just as important
+* Typical software tools can be used, but some concepts need to generalized
+* Unit tests are considered critical to the success of any project
 #### What is a Unit Test?
+* Unit tests are a common software development practice in which the smallest individual parts of the code (called units) are individually tested, to ensure each gived the expected outcome
+##### Software example
+* Imagine you have a python module called `hello` with a single function, also called `hello`, that says "Hello" to a person, given their name:
+```python
+def hello(name: str):
+    message = 'Hello, ' + name + '!'
+
+    return message
+```
+* To write the unit test, you would make a new file, by convention in a directory named "test" or "tests", and name the file "test_[module name]", for that individual python module, so in our case "test_hello"
+* While there are other testing frameworks, we show the python standard-library testing framework, unittest
+* In your test, you first import unittest, and your function that you are testing
+```python
+import unittest
+
+from hello import hello
+```
+* All tests are put within a class
+```python
+class TestHello(unittest.TestCase):
+```
+* Within that class you can write multiple tests
+* For example, first test an expected input, e.g., "Helen"
+    * ```python
+        def test_helen(self):
+            # Define a name
+            name = 'Helen'
+            # Call the function
+            message = hello(name)
+
+            # Assert that the function returns the correct string
+            self.assertEqual(message, 'Hello, Helen!')
+        ```
+    * You define if the output is correct or not with an assert statement
+    * There are other options for assert statements that make sense for different kinds of tests
+        * Table/list of assert statements
+* Then test an edge case, something that could return a bad output if your function is not properly written, e.g. a number
+```python
+    # Add a test checking that the function fails when an integer is passed
+    def test_integer(self):
+        # Define a name
+        name = 123
+        # Call the function
+        with self.assertRaises(TypeError):
+            message = hello.hello(name)
+```
+* At the end of the file- set it to run all of the classes
+```python
+if __name__ == '__main__':
+    unittest.main()
+```
+* Unit tests can be run manually- e.g., a developer runs them on their own computer and verrifies that they all pass before pushing code
+* Or they can be run automaticallly (e.g., as part of a GitHub action)
+* In GEM-MIT1002 we run them all automatically in the CI-workflow, finding and executing tests with `pytest`
 #### What makes a Good Unit Test?
+* Needs to pass/fail, have an expected outcome, not generate an artifact
+    * Boolean result- pass or fail
+* Self-validating — it returns pass or fail, not output a human must inspect
+* One reason to fail — a test asserting five things tells you "something broke," not what
+* Fast — slow tests don't get run, and a suite people skip provides no safety
+* Independent — no test depends on another's state or on run order
+* Repeatable — same result on any machine, any time; no network, no clock, no randomness
+* Deterministic — the intermittent test is worse than no test, because it trains people to re-run until green
+* No logic in the test — conditionals and loops inside a test can themselves be buggy, and then you're debugging your test
+Tests behavior, not implementation — a test that breaks when you refactor without changing behavior is a liability
+* A name that says what broke without opening the file
+* Table with columns:
+    * Example of good unit tests
+        * Test that a script generate the correct data and saves a plot with the correct path
+    * Example of bad unit tests
+        * Generate a figure, that you need to look at
+        * A test you know will fail, and you will just ignore it (skip the test or mark it a known failure instead)
 #### Examples of Unit Tests for Model Curation
-Tests were written using the unittest framework and gave a Boolean result- pass or fail. We added additional tests as we went on, and the ones we present here are by no means an exhaustive list of everything that could or should be tested. We tested that the biomass metabolite (cpd11416_c0) added up to 1 g, this is important for dFBA simulations. We tested that there were no erroneous energy generating cycles capable of regenerating ATP without an input carbon source. We checked that there were no dead-end transporters (i.e. external metabolites without an exchange reaction). We checked that the model was not capable of growth without a carbon source in the medium. And that the model recapitulated all known experimental growth phenotypes (depending on exactly how you implement this, it might “fail” for the majority of time of curation. We tested that the SBML file was valid- important as COBRApy may fail to load a model with a malformed fail, and KBase created such files. We tested for isolated genes and metabolites. We tested that all reactions were mass and charge balances. Many of these tests use previously published tools (e.g. MEMOTE), but we found that buy implementing them with unittests on a GitHub action it was easier to track model performance over time and recognize errors introduced into the model quickly.
+* In traditional software engineering, the unit being tested is often a function, however for the case of model curation, we are testing the model as a whole, but can write tests to focus on individual aspects of the model
+* The ones we present here are by no means an exhaustive list of everything that could or should be tested.
+* Many of these tests use previously published tools (e.g. MEMOTE), but we found that buy implementing them with unittests on a GitHub action it was easier to track model performance over time and recognize errors introduced into the model quickly.
+* `test/test_`: Tests that the biomass metabolite (`cpd11416_c0`) added up to 1 g, this is important for dFBA simulations. 
+* `test/test_`: We tested that there were no erroneous energy generating cycles capable of regenerating ATP without an input carbon source.
+* `test/test_`: We checked that there were no dead-end transporters (i.e. external metabolites without an exchange reaction).
+* `test/test_`: We checked that the model was not capable of growth without a carbon source in the medium.
+* `test/test_`: We tested that the SBML file was valid- important as COBRApy may fail to load a model with a malformed fail, and KBase created such files.
+* `test/test_`: We tested for isolated genes and metabolites.
+* `test/test_`: We tested that all reactions were mass and charge balances. 
+* `test/test_`: And that the model recapitulated all known experimental growth phenotypes
+    * depending on exactly how you implement this, it might “fail” for the majority of time of curation.
+    * We made sure that the model never got worse by...
 #### Examples of Unit Tests for Enforcement
 
 ### Step 3) Report
