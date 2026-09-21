@@ -21,11 +21,12 @@ GEMs are, at their heart, a software product, and we took lessons from software 
 
 ### What have people been doing before this?
 #### MEMOTE
-* MEMOTE exists
+* MEMOTE exists [@lieven2020memote]
     * but it's more of a benchmarking tool- a lot of things is just about the file
         * test what the custom tests ever did
 
 #### standard-GEM
+* standard-GEM is... [@anton2023standardgem]
 * no tests
 
 #### human-GEM and yeast-GEM
@@ -100,7 +101,7 @@ The Continuous Curation loop consists of 6 steps:
 * How big is one curation task?
 
 #### Removing Reactions/Metabolites
-* Palsson said to do it
+* Palsson said to do it [@thiele2010protocol]
 * What we took from human-GEM: the table
 * What is new
     * The standard vocabulary of reason
@@ -312,8 +313,8 @@ For example:
 * What counts as a new version
 * Chores upon release
     * different file types
-    * MEMOTE
-    * MACAW
+    * MEMOTE [@lieven2020memote]
+    * MACAW [@moyer2025macaw]
 * GitHub release
 * Zenodo release
 
