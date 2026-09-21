@@ -196,12 +196,9 @@ if __name__ == '__main__':
         * Generate a figure, that you need to look at
         * A test you know will fail, and you will just ignore it (skip the test or mark it a known failure instead)
 
-#### Examples of Unit Tests for Tool Testing
-Part of the GEM-MIT1002 repo is helper functions (i.e. for XXX), these functions, just like any other functions in a python module should be tested.
-For example:
-* ...
+* We can differentiate the tests used in GEM-MIT1002 by what they tested, the model, the data files, the helper tools, or consistency between two things.
 
-#### Examples of Unit Tests for Model Curation
+#### Examples of Unit Tests on the Model
 * In traditional software engineering, the unit being tested is often a function, however for the case of model curation, we are testing the model as a whole, but can write tests to focus on individual aspects of the model
 * The ones we present here are by no means an exhaustive list of everything that could or should be tested.
 * Many of these tests use previously published tools (e.g. MEMOTE), but we found that by implementing them with unit tests on a GitHub action it was easier to track model performance over time and recognize errors introduced into the model quickly.
@@ -230,15 +227,6 @@ For example:
         * `test_mismatch_categories_are_unchanged`
         * `test_excluded_rows_are_not_scored`
         * `test_every_phenotype_was_evaluated`
-    * `TestSummaryArithmetic`
-        * `test_every_row_gets_a_known_category`
-        * `test_categories_partition_the_table`
-        * `test_no_uptake_route_is_a_subset_of_the_negative_predictions`
-        * `test_a_missing_exchange_does_not_by_itself_decide_the_verdict`
-        * `test_confusion_matrix_sums_to_the_scored_rows`
-        * `test_matches_are_the_concordant_cells`
-        * `test_matches_never_exceed_the_interpretable_denominator`
-        * `test_excluded_rows_keep_their_underlying_verdict`
 * `test_sbml.py`:
     * `TestValidSBML`
         * `test_valid_sbml`
@@ -248,11 +236,8 @@ For example:
         * `test_mass_balance`
             * We tested that all reactions were mass and charge balanced. 
 
-#### Examples of Unit Tests for Enforcement
+#### Examples of Unit Tests on the Data Files
 * `test_deprecated.py`
-    * `TestDeprecatedNotInModel`
-        * `test_deprecated_reactions_absent`
-        * `test_deprecated_metabolites_absent`
     * `TestDeprecatedSchema`
         * `test_headers_exact`
         * `test_no_duplicate_ids`
@@ -269,21 +254,6 @@ For example:
         * `test_required_when_reason_is_relative`
         * `test_not_self_referential`
         * `test_targets_resolve`
-    * `TestNotesMirror`
-        * `test_mirror_matches_tsv`
-        * `test_pointer_present`
-        * `test_mirror_survives_cobrapy_round_trip`
-    * `TestStampPrNumber`
-        * `test_fills_blanks_and_preserves_existing`
-        * `test_is_idempotent`
-        * `test_rejects_non_numeric`
-    * `TestIdentifierListParsing`
-        * `test_accepts_common_separators`
-        * `test_strips_sbml_prefixes`
-        * `test_empty_is_empty`
-        * `test_normalizes_to_semicolons`
-        * `test_record_normalizes_on_construction`
-        * `test_preserves_gene_style_identifiers`
     * `TestVocabularyDocumented`
         * `test_every_reason_in_readme`
 * `test_phenotype_data`
@@ -301,6 +271,43 @@ For example:
         * `test_baseline_has_the_expected_columns`
         * `test_baseline_rows_refer_to_real_conditions`
         * `test_baseline_does_not_list_excluded_conditions`
+
+#### Examples of Unit Tests on Tools
+Part of the GEM-MIT1002 repo is helper functions (i.e. for XXX), these functions, just like any other functions in a python module should be tested.
+For example:
+* `test_growth.py`
+    * `TestSummaryArithmetic`
+        * `test_every_row_gets_a_known_category`
+        * `test_categories_partition_the_table`
+        * `test_no_uptake_route_is_a_subset_of_the_negative_predictions`
+        * `test_a_missing_exchange_does_not_by_itself_decide_the_verdict`
+        * `test_confusion_matrix_sums_to_the_scored_rows`
+        * `test_matches_are_the_concordant_cells`
+        * `test_matches_never_exceed_the_interpretable_denominator`
+        * `test_excluded_rows_keep_their_underlying_verdict`
+* `test_deprecated.py`
+    * `TestStampPrNumber`
+        * `test_fills_blanks_and_preserves_existing`
+        * `test_is_idempotent`
+        * `test_rejects_non_numeric`
+
+#### Examples of Unit Tests on Consistency Between Two Objects
+* `test_deprecated.py`
+    * `TestDeprecatedNotInModel`
+        * `test_deprecated_reactions_absent`
+        * `test_deprecated_metabolites_absent`
+    * `TestNotesMirror`
+        * `test_mirror_matches_tsv`
+        * `test_pointer_present`
+        * `test_mirror_survives_cobrapy_round_trip`
+    * `TestIdentifierListParsing`
+        * `test_accepts_common_separators`
+        * `test_strips_sbml_prefixes`
+        * `test_empty_is_empty`
+        * `test_normalizes_to_semicolons`
+        * `test_record_normalizes_on_construction`
+        * `test_preserves_gene_style_identifiers`
+
 
 ### Step 3) Report
 #### Scripts vs Tests
