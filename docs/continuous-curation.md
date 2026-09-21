@@ -4,7 +4,7 @@ GEMs are, at their heart, a software product, and we took lessons from software 
 
 * None of this is really new
     * we borrowed all of this from software engineering
-    * other groups do or are devloping similar things
+    * other groups do or are developing similar things
         * we took some things directly from human-GEM and standard-GEM
     * the field is crystallizing
     * but the field lacks a single reference point for guidelines
@@ -14,7 +14,7 @@ GEMs are, at their heart, a software product, and we took lessons from software 
 * GEMs are important tools
     * But their quality is often questioned
 * Manual curation is hard/messy
-    * Manual curation can be an overwhelming task- the typical adivcoe of just go "pathway by pathway" can be paralyzingly large
+    * Manual curation can be an overwhelming task- the typical advice of just go "pathway by pathway" can be paralyzingly large
 * Manual curation can last for a long time (including decades, spanning many people and projects)
     * Often one group publishes a model, then another may find it, modify it, and publish a new paper, resulting in branching sets of models
 
@@ -24,14 +24,16 @@ GEMs are, at their heart, a software product, and we took lessons from software 
 * MEMOTE exists
     * but it's more of a benchmarking tool- a lot of things is just about the file
         * test what the custom tests ever did
+
 #### standard-GEM
 * no tests
+
 #### human-GEM and yeast-GEM
 * some tests
 * A lot of things were not enforced, just reminders and check boxes
 
 ### What's new here
-* Our specific unittests- not relaly clear who go to running it as CI first...
+* Our specific unit tests- not really clear who go to running it as CI first...
 * Biomass component producibility heatmaps
 * Improved tracking removed reactions/metabolites
 
@@ -42,7 +44,7 @@ Version control is critical for model curation because it tracks the “who”, 
 
 Version control keeps a historical record of changes made to tracked files in a specialized database called a repository (or “repo”). Git is the software tool that enables version control, and GitHub is one popular cloud-based platform to host Git repositories, that also offers other functionalities such as issue tracking and wiki hosting. While we used GitHub, and will use GitHub-focused terminology (e.g., pull requests, actions) it not the only option for hosting Git repositories, other popular options include GitLab, Bitbucket and Azure DevOps, each of which have analogous tools to those we describe here and could similarly be used for a continuous curation pipeline.
 
-A Git repository lives in two places...
+* A Git repository lives in two places...
 * Local vs Remote, basic terminology (commit, push, pull, etc.)
 
 ![An introduction to basic Git terminology: Local and remote repositories, commit, push, and pull](./figures/png/github-intro.png)
@@ -76,12 +78,14 @@ Branching is a key feature of Git- it allows developers to isolate their changes
 
 ### GitHub Actions
 We used automation through GitHub actions to run tests and scripts upon the opening of a pull request.
+
 #### Defining an Action with a YML file
 
 
 ## The Continuous Curation Loop
 
-**PUT CONTINUOUS CURATION LOOP HERE**
+![Continuous Curation is an iterative process with the following steps: Curate, Test, Report, Release, Run, and Monitor.
+](./figures/png/continuous-curation-loop.png)
 
 The Continuous Curation loop consists of 6 steps:
 1. Curate
@@ -94,6 +98,7 @@ The Continuous Curation loop consists of 6 steps:
 ### Step 1) Curate
 *NOTE: We do not discuss here how to make curation decisions, but rather how to implement them*
 * How big is one curation task?
+
 #### Removing Reactions/Metabolites
 * Palsson said to do it
 * What we took from human-GEM: the table
@@ -102,16 +107,20 @@ The Continuous Curation loop consists of 6 steps:
     * The list of removed things in the model file itself
         * And the test to make sure it does not drift
     * The test that no old reactions are still in the model file
+
 #### Pull Requests
 One critical component of the history of changes to the model is the “why”- why was a change to the model made (e.g., was a reaction found to have genomic evidence, was there a mistake in the biochemistry database, etc.). There are text fields in the model file itself where this information can be stored, and there have been cases in the past of defined “codes” used to represent different types of evidence that support each reaction (CITE EXAMPLES) however we have found that these are not well used, lack standardization across the community, and are often not comprehensive enough to fully explain the reasoning behind each change. We instead elected to document these in issues and pull requests on the repository. Issues can be used as a sort of electronic lab notebook. To ensure that all curators (present and future) are reminded to document their reasoning, a pull request template was used.
+
 * Open a pull request, that starts the cycle
 
 ### Step 2) Test
 * Testing code is important, testing the model is just as important
 * Typical software tools can be used, but some concepts need to generalized
 * Unit tests are considered critical to the success of any project
+
 #### What is a Unit Test?
 * Unit tests are a common software development practice in which the smallest individual parts of the code (called units) are individually tested, to ensure each gives the expected outcome
+
 ##### Software example
 * Imagine you have a python module called `hello` with a single function, also called `hello`, that says "Hello" to a person, given their name:
 ```python
@@ -165,46 +174,139 @@ if __name__ == '__main__':
 * Unit tests can be run manually- e.g., a developer runs them on their own computer and verifies that they all pass before pushing code
 * Or they can be run automatically (e.g., as part of a GitHub action)
 * In GEM-MIT1002 we run them all automatically in the CI-workflow, finding and executing tests with `pytest`
+
 #### What makes a Good Unit Test?
 * Needs to pass/fail, have an expected outcome, not generate an artifact
     * Boolean result- pass or fail
-* Self-validating — it returns pass or fail, not output a human must inspect
+    * Self-validating — it returns pass or fail, not output a human must inspect
 * One reason to fail — a test asserting five things tells you "something broke," not what
 * Fast — slow tests don't get run, and a suite people skip provides no safety
 * Independent — no test depends on another's state or on run order
 * Repeatable — same result on any machine, any time; no network, no clock, no randomness
 * Deterministic — the intermittent test is worse than no test, because it trains people to re-run until green
 * No logic in the test — conditionals and loops inside a test can themselves be buggy, and then you're debugging your test
-Tests behavior, not implementation — a test that breaks when you refactor without changing behavior is a liability
+* Tests behavior, not implementation — a test that breaks when you refactor without changing behavior is a liability
 * A name that says what broke without opening the file
+
 * Table with columns:
     * Example of good unit tests
         * Test that a script generate the correct data and saves a plot with the correct path
     * Example of bad unit tests
         * Generate a figure, that you need to look at
         * A test you know will fail, and you will just ignore it (skip the test or mark it a known failure instead)
+
+#### Examples of Unit Tests for Tool Testing
+Part of the GEM-MIT1002 repo is helper functions (i.e. for XXX), these functions, just like any other functions in a python module should be tested.
+For example:
+* ...
+
 #### Examples of Unit Tests for Model Curation
 * In traditional software engineering, the unit being tested is often a function, however for the case of model curation, we are testing the model as a whole, but can write tests to focus on individual aspects of the model
 * The ones we present here are by no means an exhaustive list of everything that could or should be tested.
-* Many of these tests use previously published tools (e.g. MEMOTE), but we found that by implementing them with unittests on a GitHub action it was easier to track model performance over time and recognize errors introduced into the model quickly.
-* `test/test_`: Tests that the biomass metabolite (`cpd11416_c0`) added up to 1 g, this is important for dFBA simulations. 
-* `test/test_`: We tested that there were no erroneous energy generating cycles capable of regenerating ATP without an input carbon source.
-* `test/test_`: We checked that there were no dead-end transporters (i.e. external metabolites without an exchange reaction).
-* `test/test_`: We checked that the model was not capable of growth without a carbon source in the medium.
-* `test/test_`: We tested that the SBML file was valid- important as COBRApy may fail to load a model with a malformed file, and KBase created such files.
-* `test/test_`: We tested for isolated genes and metabolites.
-* `test/test_`: We tested that all reactions were mass and charge balanced. 
-* `test/test_`: And that the model recapitulated all known experimental growth phenotypes
-    * depending on exactly how you implement this, it might “fail” for the majority of time of curation.
-    * We made sure that the model never got worse by...
+* Many of these tests use previously published tools (e.g. MEMOTE), but we found that by implementing them with unit tests on a GitHub action it was easier to track model performance over time and recognize errors introduced into the model quickly.
+* `test_biomass.py`
+    * `TestBiomass`
+        * `test_biomass_weight`:
+            * Tests that the biomass metabolite (`cpd11416_c0`) added up to 1 g, this is important for dFBA simulations. 
+* `test_cycles.py`:
+    * `TestCycles`
+        * `test_atp_generating_cycles`
+            * Tests that there are no erroneous energy generating cycles capable of regenerating ATP without an input carbon source, using the MEMOTE function `consistency.detect_energy_generating_cycles()`
+* `test_exchanges.py`:
+    * `TestExchanges`
+        * `test_dead_end_transporters`
+            * Checks that there are no dead-end transporters (i.e., external metabolites without an exchange reaction).
+* `test_growth.py`:
+    * `TestGrowthWithoutCarbon`
+        * `test_no_growth_without_carbon`
+            * We checked that the model was not capable of growth without a carbon source in the medium.
+    * `TestExpectedGrowthPhenotypes`
+        * `test_no_new_mismatches`
+            * And that the model recapitulated all known experimental growth phenotypes
+                * depending on exactly how you implement this, it might “fail” for the majority of time of curation.
+                * We made sure that the model never got worse by...
+        * `test_no_stale_baseline_entries`
+        * `test_mismatch_categories_are_unchanged`
+        * `test_excluded_rows_are_not_scored`
+        * `test_every_phenotype_was_evaluated`
+    * `TestSummaryArithmetic`
+        * `test_every_row_gets_a_known_category`
+        * `test_categories_partition_the_table`
+        * `test_no_uptake_route_is_a_subset_of_the_negative_predictions`
+        * `test_a_missing_exchange_does_not_by_itself_decide_the_verdict`
+        * `test_confusion_matrix_sums_to_the_scored_rows`
+        * `test_matches_are_the_concordant_cells`
+        * `test_matches_never_exceed_the_interpretable_denominator`
+        * `test_excluded_rows_keep_their_underlying_verdict`
+* `test_sbml.py`:
+    * `TestValidSBML`
+        * `test_valid_sbml`
+            * We tested that the SBML file was valid- important as COBRApy may fail to load a model with a malformed file, and KBase created such files.
+        * `test_isolated_genes_and_mets`
+            * We tested for isolated genes and metabolites.
+        * `test_mass_balance`
+            * We tested that all reactions were mass and charge balanced. 
+
 #### Examples of Unit Tests for Enforcement
+* `test_deprecated.py`
+    * `TestDeprecatedNotInModel`
+        * `test_deprecated_reactions_absent`
+        * `test_deprecated_metabolites_absent`
+    * `TestDeprecatedSchema`
+        * `test_headers_exact`
+        * `test_no_duplicate_ids`
+        * `test_reasons_in_vocabulary`
+        * `test_ids_have_no_sbml_prefix`
+        * `test_dates_are_iso`
+        * `test_pr_format`
+        * `test_notes_are_single_line`
+    * `TestReplacedBy`
+        * `test_separator_is_semicolon`
+        * `test_targets_look_like_identifiers`
+        * `test_no_sbml_prefix_on_targets`
+        * `test_no_duplicate_targets`
+        * `test_required_when_reason_is_relative`
+        * `test_not_self_referential`
+        * `test_targets_resolve`
+    * `TestNotesMirror`
+        * `test_mirror_matches_tsv`
+        * `test_pointer_present`
+        * `test_mirror_survives_cobrapy_round_trip`
+    * `TestStampPrNumber`
+        * `test_fills_blanks_and_preserves_existing`
+        * `test_is_idempotent`
+        * `test_rejects_non_numeric`
+    * `TestIdentifierListParsing`
+        * `test_accepts_common_separators`
+        * `test_strips_sbml_prefixes`
+        * `test_empty_is_empty`
+        * `test_normalizes_to_semicolons`
+        * `test_record_normalizes_on_construction`
+        * `test_preserves_gene_style_identifiers`
+    * `TestVocabularyDocumented`
+        * `test_every_reason_in_readme`
+* `test_phenotype_data`
+    * `TestPhenotypeSchema`
+        * `test_growth_column_vocabulary`
+        * `test_exclude_reason_vocabulary`
+        * `test_every_reason_is_documented`
+        * `test_condition_keys_are_unique`
+        * `test_met_ids_are_present_and_well_formed`
+    * `TestInterpretableCount`
+        * `test_categories_are_distinct`
+        * `test_interpretable_excludes_unsure_and_excluded_rows`
+        * `test_interpretable_is_a_strict_subset_when_rows_are_held_out`
+    * `TestExpectedMisMatches`
+        * `test_baseline_has_the_expected_columns`
+        * `test_baseline_rows_refer_to_real_conditions`
+        * `test_baseline_does_not_list_excluded_conditions`
 
 ### Step 3) Report
 #### Scripts vs Tests
 #### Examples of Scripts Used for Model Curation
-Also ran through GitHub actions, were a set of “scripts”. These differ from tests because they cannot “pass” or “fail”, and instead generate artifacts (e.g., plots) for a human curator to look at. Using the same underlying code as the growth test, we generated a plot of which experimentally known growth phenotypes the model matched or not. The heatmap visualization was useful for sharing results. While this graph is useful to grasp model performance at a glance, it was not the most instructive when gapfilling the model (just knowing that the model does not grow does not help you find a gap). Instead we checked the model’s ability to produce each individual biomass component (i.e., we added a demand/sink reaction for each biomass component that take the metabolite and removes it from the system (similar to an exchange reaction), and looped through the list of biomass components and set each as the objective, maximizing the flux through that sink reaction. A positive value indicated that the model was capable of producing that biomass component. This helped narrow down searches for gaps (e.g., could say that a subset of amino acids was not producible, therefore there must be a gap in that pathway). When using an objective other than the biomass, we considered if there should be free transport/exchange/sinks for all biomass components simultaneously or if only the one being maximized should have a sink. Theoretically, there could be components whose production is tied and without flux through the biomass reaction, dead ends could appear that block flux.
-##### Biomass Component Producibility
-##### Growth Reports
+* Also ran through GitHub actions, were a set of “scripts”. These differ from tests because they cannot “pass” or “fail”, and instead generate artifacts (e.g., plots) for a human curator to look at.
+* Using the same underlying code as the growth test, we generated a plot of which experimentally known growth phenotypes the model matched or not. The heatmap visualization was useful for sharing results.
+* While this graph is useful to grasp model performance at a glance, it was not the most instructive when gap-filling the model (just knowing that the model does not grow does not help you find a gap). Instead we checked the model’s ability to produce each individual biomass component (i.e., we added a demand/sink reaction for each biomass component that take the metabolite and removes it from the system (similar to an exchange reaction), and looped through the list of biomass components and set each as the objective, maximizing the flux through that sink reaction. A positive value indicated that the model was capable of producing that biomass component. This helped narrow down searches for gaps (e.g., could say that a subset of amino acids was not producible, therefore there must be a gap in that pathway). When using an objective other than the biomass, we considered if there should be free transport/exchange/sinks for all biomass components simultaneously or if only the one being maximized should have a sink. Theoretically, there could be components whose production is tied and without flux through the biomass reaction, dead ends could appear that block flux.
 
 ### Step 4) Release
 * What counts as a new version
