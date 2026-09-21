@@ -41,7 +41,9 @@ pandoc "$SRC" \
     --citeproc \
     --bibliography=references.bib \
     --csl=asm.csl \
-    --metadata title="Continuous Curation" \
+    --metadata-file=metadata.yaml \
+    --lua-filter=promote-headings.lua \
+    --include-in-header=latex-header.tex \
     --toc \
     --number-sections \
     -V geometry:margin=1in \
