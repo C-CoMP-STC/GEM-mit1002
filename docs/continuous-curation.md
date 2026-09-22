@@ -317,9 +317,13 @@ For example:
 * `test_growth.py`
     * `TestSummaryArithmetic`
         * `test_every_row_gets_a_known_category`
+            * Tests that every row in the expected growth phenotype table gets one of the categories defined in `tools.phenotypes.CATEGORIES`: "true_positive", "true_negative", "false_positive", "false_negative", "unsure", "invalid_solve", "excluded"
         * `test_categories_partition_the_table`
+            * Tests that `tools.phenotypes.summarise()` does not count any row twice: the total number of rows in the phenotype table matches the sum of scored rows and unscored rows
         * `test_no_uptake_route_is_a_subset_of_the_negative_predictions`
+            * Tests that the number of phenotpyes with "no_uptake_route" is less than the total number of phenotypes marked as false negative and tue negative, since a metabolite with no uptake route can never have positive growth
         * `test_a_missing_exchange_does_not_by_itself_decide_the_verdict`
+            * Test that no growth phenotypes where the model is missing an exchange, but still grows, is not marked as "no_uptake_route"
         * `test_confusion_matrix_sums_to_the_scored_rows`
         * `test_matches_are_the_concordant_cells`
         * `test_matches_never_exceed_the_interpretable_denominator`
