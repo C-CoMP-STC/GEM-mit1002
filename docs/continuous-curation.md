@@ -304,8 +304,12 @@ if __name__ == '__main__':
             * Note, this only works if the model is in the ModelSEED ID namespace, and that all metabolites tested were present in the ModelSEED database (e.g., nothing had to be custom defined)
     * `TestExpectedMisMatches`
         * `test_baseline_has_the_expected_columns`
+            * Tests that the baseline mismatch file contains the columns defined in `tools.phenotypes.MISMATCH_COLUMNS`: "minimal_media", "c_source", "category", "notes"
         * `test_baseline_rows_refer_to_real_conditions`
+            * Tests that the mismatches listed in the baseline mismatch file exist in the phenotype data file
         * `test_baseline_does_not_list_excluded_conditions`
+            * Tests that excluded rows of the phenotype data are not listed in the baseline file
+            * Excluded rows are not scored, so they cannot be mismatches, so they should not be in the baseline
 
 #### Examples of Unit Tests on Tools
 Part of the GEM-MIT1002 repo is helper functions (i.e. for XXX), these functions, just like any other functions in a python module should be tested.
@@ -358,8 +362,19 @@ For example:
 
 ### Step 3) Report
 #### Scripts vs Tests
+* Scripts differ from tests because they cannot “pass” or “fail”, and instead generate artifacts (e.g., plots) for a human curator to look at
+* If you can state in advance what is right or wrong- make a test
+* If you can use the information, but you're not sure what is right- make a scripts
+* Tests can block a merge- you need to pass all tests before you can merge a PR
+* Scripts don't block anything
+* Automated- also ran through GitHub actions
+    * Doesn't include any arguments or hand editing
+* Should be something you need continually- not just a one off for a specific question
+    * If no one is looking at the artifact- you don't need the script
+* They might share code with tests
+    * E.g. the growth phenotype plot uses the same code as the growth phenotype ratchet test
+    * Make sure shared code lives in tools, not recreated in both files
 #### Examples of Scripts Used for Model Curation
-* Also ran through GitHub actions, were a set of “scripts”. These differ from tests because they cannot “pass” or “fail”, and instead generate artifacts (e.g., plots) for a human curator to look at.
 * Using the same underlying code as the growth test, we generated a plot of which experimentally known growth phenotypes the model matched or not. The heatmap visualization was useful for sharing results.
 * While this graph is useful to grasp model performance at a glance, it was not the most instructive when gap-filling the model (just knowing that the model does not grow does not help you find a gap). Instead we checked the model’s ability to produce each individual biomass component (i.e., we added a demand/sink reaction for each biomass component that take the metabolite and removes it from the system (similar to an exchange reaction), and looped through the list of biomass components and set each as the objective, maximizing the flux through that sink reaction. A positive value indicated that the model was capable of producing that biomass component. This helped narrow down searches for gaps (e.g., could say that a subset of amino acids was not producible, therefore there must be a gap in that pathway). When using an objective other than the biomass, we considered if there should be free transport/exchange/sinks for all biomass components simultaneously or if only the one being maximized should have a sink. Theoretically, there could be components whose production is tied and without flux through the biomass reaction, dead ends could appear that block flux.
 
