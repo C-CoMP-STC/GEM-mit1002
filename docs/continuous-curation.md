@@ -72,11 +72,11 @@ For a more in depth coverage, see...
         * M stands from Jonathan Monk, L stands for Colton Lloyd
     * iJO1366 is by Jeffrey Orth
 * But this naming is inherently a snapshot, and would have to be continuously updated as the model evolved
-    * Everytime you add or remove a gene you would need to change the number
+    * Every time you add or remove a gene you would need to change the number
     * As new curators contribute to the model or take over, the author list may expand or change, or people may be annoyed to leave an old authors name at the prime spot
 * It would be better instead to have a single name that is not dependent on the author or gene list, that is specific to the organism
     * It would be nice to instead have on model with different versions
-    * e.g. evolo model v1, e.coli model v2, to make it clear the lineage of the model
+    * e.g. e.coli model v1, e.coli model v2, to make it clear the lineage of the model
 * The recommendation from standard-GEM is to name the repository and model {something}-GEM, a common name, KEGG organism, or taxonomy-derived short name
     * e.g. Human-GEM and yeast-GEM
     * We followed that advice, and named the model MIT1002-GEM
@@ -218,7 +218,7 @@ if __name__ == '__main__':
 #### Examples of Unit Tests on the Model
 * In traditional software engineering, the unit being tested is often a function, however for the case of model curation, we are testing the model as a whole, but can write tests to focus on individual aspects of the model
 * The ones we present here are by no means an exhaustive list of everything that could or should be tested.
-* Many of these tests use previously published tools (e.g. MEMOTE), but we found that by implementing them with unit tests on a GitHub action it was easier to track model performance over time and recognize errors introduced into the model quickly.
+* Many of these tests use previously published tools (e.g., MEMOTE), but we found that by implementing them with unit tests on a GitHub action it was easier to track model performance over time and recognize errors introduced into the model quickly.
 * `test_biomass.py`
     * `TestBiomass`
         * `test_biomass_weight`:
@@ -335,7 +335,7 @@ For example:
         * `test_categories_partition_the_table`
             * Tests that `tools.phenotypes.summarise()` does not count any row twice: the total number of rows in the phenotype table matches the sum of scored rows and unscored rows
         * `test_no_uptake_route_is_a_subset_of_the_negative_predictions`
-            * Tests that the number of phenotpyes with "no_uptake_route" is less than the total number of phenotypes marked as false negative and tue negative, since a metabolite with no uptake route can never have positive growth
+            * Tests that the number of phenotypes with "no_uptake_route" is less than the total number of phenotypes marked as false negative and tue negative, since a metabolite with no uptake route can never have positive growth
         * `test_a_missing_exchange_does_not_by_itself_decide_the_verdict`
             * Test that no growth phenotypes where the model is missing an exchange, but still grows, is not marked as "no_uptake_route"
         * `test_confusion_matrix_sums_to_the_scored_rows`
@@ -421,7 +421,7 @@ For example:
 
 ### Step 6) Monitor
 * Typically there is limited feedback after publication- someone might try to recreate your results or use your model, but if it fails, they have no where to turn
-* GitHub issues ecan be used to plan, discuss, and track work
+* GitHub issues can be used to plan, discuss, and track work
 * anyone can open an issue
 * Use issues to keep track of bugs, enhancements, or other requests
 * When to open an issue
@@ -446,7 +446,7 @@ For example:
         * Step-by-step instructions for replicating the bug
             * include code, logs, or screenshots
         * Environment details
-            * What OS are you using, what version of tools (e.g., COBRApy) are you using, what verion of the model are you using, did you start from a release, from the main branch, from the dev branch
+            * What OS are you using, what version of tools (e.g., COBRApy) are you using, what version of the model are you using, did you start from a release, from the main branch, from the dev branch
     * Note your issue is public, so don't include anything you don't want shared
     * Other repos (Human-GEM) have templates for reporting bugs, which can be helpful to ensure that someone gives all of the information needed to recreate and investigate the bug
 * Anyone can comment on issues
