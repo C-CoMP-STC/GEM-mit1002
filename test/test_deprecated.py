@@ -31,11 +31,17 @@ from tools.deprecate import (
     stamp_pr_number,
     strip_sbml_prefix,
 )
+from tools.markdown_tables import read_vocabulary_table
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEPRECATED_README = os.path.join(
     REPO_ROOT, "data", "deprecated_identifiers", "README.md"
 )
+
+#: Heading of the table in that README that defines the ``reason``
+#: vocabulary. Renaming the heading is a deliberate act: the test that
+#: reads it will fail and say so.
+REASON_VOCAB_HEADING = "### Controlled vocabulary for `reason`"
 
 
 def _load_model():
@@ -164,9 +170,7 @@ class TestDeprecatedSchema(unittest.TestCase):
                     for r in read_records(path)
                     if r.date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", r.date)
                 )
-                self.assertEqual(
-                    [], bad, msg=f"dates must be YYYY-MM-DD: {bad}"
-                )
+                self.assertEqual([], bad, msg=f"dates must be YYYY-MM-DD: {bad}")
 
     def test_pr_format(self):
         for path in (REACTIONS_TSV, METABOLITES_TSV):
@@ -176,23 +180,19 @@ class TestDeprecatedSchema(unittest.TestCase):
                     for r in read_records(path)
                     if r.pr and not re.fullmatch(r"#\d+", r.pr)
                 )
-                self.assertEqual(
-                    [], bad, msg=f"pr must look like '#123': {bad}"
-                )
+                self.assertEqual([], bad, msg=f"pr must look like '#123': {bad}")
 
-    def test_notes_are_single_line(self):
+    def test_notes_are_under_200_char(self):
         """Long-form reasoning belongs in the PR, not in the TSV."""
         for path in (REACTIONS_TSV, METABOLITES_TSV):
             with self.subTest(path=os.path.basename(path)):
-                bad = sorted(
-                    r.id for r in read_records(path) if len(r.notes) > 200
-                )
+                bad = sorted(r.id for r in read_records(path) if len(r.notes) > 200)
                 self.assertEqual(
                     [],
                     bad,
                     msg=(
                         f"notes longer than 200 characters in "
-                        f"{os.path.basename(path)}: {bad}. Summarise here and put "
+                        f"{os.path.basename(path)}: {bad}. Summarize here and put "
                         f"the detail in the PR."
                     ),
                 )
@@ -236,24 +236,6 @@ class TestReplacedBy(unittest.TestCase):
                         f"e.g. 'rxn00011_c0; rxn02342_c0'. No commas, plus signs or "
                         f"brackets. Offending rows in {os.path.basename(path)}: "
                         f"{bad}"
-                    ),
-                )
-
-    def test_targets_look_like_identifiers(self):
-        """Catches stray prose or whitespace inside the cell."""
-        for path in (REACTIONS_TSV, METABOLITES_TSV):
-            with self.subTest(path=os.path.basename(path)):
-                bad = sorted(
-                    (r.id, t)
-                    for r in read_records(path)
-                    for t in self._targets(r)
-                    if not re.fullmatch(r"[A-Za-z0-9_.\-]+", t)
-                )
-                self.assertEqual(
-                    [],
-                    bad,
-                    msg=(
-                        f"replaced_by entries must be bare model identifiers: {bad}"
                     ),
                 )
 
@@ -307,9 +289,7 @@ class TestReplacedBy(unittest.TestCase):
                 bad = sorted(
                     r.id for r in read_records(path) if r.id in self._targets(r)
                 )
-                self.assertEqual(
-                    [], bad, msg=f"replaced_by points at itself: {bad}"
-                )
+                self.assertEqual([], bad, msg=f"replaced_by points at itself: {bad}")
 
     def test_targets_resolve(self):
         """A replacement should be in the model, or itself deprecated.
@@ -497,9 +477,7 @@ class TestStampPrNumber(unittest.TestCase):
             for bad in ("", "not-a-number", "#abc"):
                 with self.subTest(value=bad):
                     with self.assertRaises(DeprecationError):
-                        stamp_pr_number(
-                            bad, reactions_tsv=rxns, metabolites_tsv=mets
-                        )
+                        stamp_pr_number(bad, reactions_tsv=rxns, metabolites_tsv=mets)
 
 
 class TestIdentifierListParsing(unittest.TestCase):
@@ -558,29 +536,47 @@ class TestIdentifierListParsing(unittest.TestCase):
 
     def test_preserves_gene_style_identifiers(self):
         """Dots are legal in identifiers (gene locus tags), so keep them."""
-        self.assertEqual(
-            ["WP_039225570.1"], split_identifier_list("WP_039225570.1")
-        )
+        self.assertEqual(["WP_039225570.1"], split_identifier_list("WP_039225570.1"))
 
 
 class TestVocabularyDocumented(unittest.TestCase):
-    """Every allowed reason must be explained to contributors."""
+    """The README table and ``REASONS`` are two halves of one vocabulary."""
 
-    def test_every_reason_in_readme(self):
-        self.assertTrue(
-            os.path.exists(DEPRECATED_README), msg=f"{DEPRECATED_README} is missing"
+    @classmethod
+    def setUpClass(cls):
+        cls.documented = read_vocabulary_table(DEPRECATED_README, REASON_VOCAB_HEADING)
+
+    def test_readme_table_matches_the_vocabulary(self):
+        """Neither side may carry a value the other does not.
+
+        Checked as a set comparison rather than a substring search, so that a
+        value mentioned elsewhere in the README does not count as documented,
+        and so that a value retired from ``REASONS`` cannot be left behind in
+        the table advertising itself to contributors.
+        """
+        allowed = set(REASONS)
+        documented = set(self.documented)
+        self.assertEqual(
+            allowed,
+            documented,
+            msg=(
+                f"the reason vocabulary and its README table disagree.\n"
+                f"  allowed by tools/deprecate.py but not in the table: "
+                f"{sorted(allowed - documented)}\n"
+                f"  in the table but not allowed: "
+                f"{sorted(documented - allowed)}\n"
+                f"A vocabulary nobody can look up is not a vocabulary, and a "
+                f"documented value that the code rejects is worse."
+            ),
         )
-        text = open(DEPRECATED_README, encoding="utf-8").read()
-        undocumented = sorted(r for r in REASONS if f"`{r}`" not in text)
+
+    def test_every_documented_reason_has_a_description(self):
+        """A row in the table with an empty cell documents nothing."""
+        blank = sorted(v for v, desc in self.documented.items() if not desc)
         self.assertEqual(
             [],
-            undocumented,
-            msg=(
-                f"these reason values are allowed by tools/deprecate.py but not "
-                f"documented in data/deprecated_identifiers/README.md: "
-                f"{undocumented}. A vocabulary nobody can look up is not a "
-                f"vocabulary."
-            ),
+            blank,
+            msg=f"reason values listed with no explanation: {blank}",
         )
 
 

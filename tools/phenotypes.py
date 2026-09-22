@@ -143,6 +143,16 @@ UNSCORED = ("unsure", "invalid_solve", "excluded")
 #: ``test_phenotype_data.py`` enforces that, because a figure caption that says
 #: "54 growth phenotypes" is only defensible if the categories add up.
 CATEGORIES = CONCORDANT + DISCORDANT + UNSCORED
+# Asserted here rather than in a test: the groups above are hand-maintained,
+# and a name in two of them would mean a category had been classed as, say,
+# both unscored and discordant. Nothing downstream currently breaks on a
+# duplicate -- the one consumer takes a set -- but it would be a modelling
+# mistake, and checking it at import catches it for scripts too, not just
+# under pytest.
+assert len(CATEGORIES) == len(set(CATEGORIES)), (
+    "a category name appears in more than one of CONCORDANT, DISCORDANT, "
+    "UNSCORED"
+)
 
 #: Column naming a reason the row is not scored. Empty means "score this row".
 EXCLUSION_COLUMN = "exclude_reason"
@@ -296,9 +306,11 @@ def _large_flux_reactions(model, flux_limit: float) -> frozenset:
     )
 
 
-def _classify(experimental: str, predicted_growth: bool | None) -> str:
-    if predicted_growth is None:
-        return "no_exchange"
+def _classify(experimental: str, predicted_growth: bool) -> str:
+    # No ``no_exchange`` branch: that category was retired (see the module
+    # docstring and :data:`UNSCORED`), and a row whose solve was invalid is
+    # given ``invalid_solve`` by the caller rather than reaching this function.
+    # Every value returned here must be in :data:`CATEGORIES`.
     if experimental not in ("Yes", "No"):
         return "unsure"
     observed_growth = experimental == "Yes"
@@ -602,8 +614,8 @@ def compare_to_baseline(
 
     Returns ``new`` (mismatches not in the baseline), ``resolved`` (baseline
     entries that now agree, or that no longer exist in the phenotype table),
-    and ``changed`` (still mismatching, but as a different category -- a false
-    positive that became a false negative is worth noticing).
+    and ``changed`` (still mismatching, but recorded in the baseline under a
+    different category than it has now).
     """
     if expected is None:
         expected = load_expected_mismatches()

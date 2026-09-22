@@ -515,10 +515,20 @@ def main():
             )
         )
 
-    unrepresentable = results[results["category"] == "no_exchange"]
-    if not unrepresentable.empty:
-        print("\nNot representable (no exchange reaction):")
-        print(unrepresentable[["c_source", "missing_exchanges"]].to_string(index=False))
+    # Filter on the column, not on a category: ``no_exchange`` was retired as a
+    # category (see tools/phenotypes.py), so this test matched nothing and the
+    # block silently never printed. A missing exchange no longer holds a row
+    # out of scoring -- it is scored as the no-growth prediction it is -- so
+    # ``no_uptake_route`` says which of these had the verdict decided by it,
+    # as opposed to growing anyway on their other metabolites.
+    missing_exchange = results[results["missing_exchanges"] != ""]
+    if not missing_exchange.empty:
+        print("\nNo exchange reaction for at least one metabolite:")
+        print(
+            missing_exchange[
+                ["c_source", "missing_exchanges", "no_uptake_route", "category"]
+            ].to_string(index=False)
+        )
 
 
 if __name__ == "__main__":

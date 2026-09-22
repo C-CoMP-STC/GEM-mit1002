@@ -122,11 +122,12 @@ class TestExpectedGrowthPhenotypes(unittest.TestCase):
         self.fail("\n".join(lines))
 
     def test_mismatch_categories_are_unchanged(self):
-        """A false positive turning into a false negative is a real change.
+        """The category recorded in the baseline must be the current one.
 
-        The condition still disagrees either way, so a test keyed only on
-        which conditions mismatch would miss it -- but the two need opposite
-        fixes, so it should not pass silently.
+        The baseline says each accepted mismatch is a false positive or a
+        false negative. This fails when that label is no longer right -- in
+        practice, because the file was edited by hand instead of being
+        regenerated with ``scripts/update_phenotype_baseline.py``.
         """
         changed = self.diff["changed"]
         if not changed:
