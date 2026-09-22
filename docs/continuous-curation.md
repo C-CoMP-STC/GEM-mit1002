@@ -64,8 +64,22 @@ Version control keeps a historical record of changes made to tracked files in a 
 For a more in depth coverage, see...
 
 ### What's in a Name?: Choosing your Model and Repository Name
-* What does BiGG/Palsson do
-* What does standard-GEM do
+* BiGG names models following a pattern, of i{Author's Initials}{Number of genes in the model} [@reed2003ijr904]
+    * the i in the name refers to an in silico model (that is, a computer model)
+    * e.g., iJR904 is an in silico model (i), built by Jennifer Reed (JR), containing 904 genes (904)
+    * The 'i' in the name refers to an in silico model (that is, a computer model). This 'i' is followed by the initials (XX) of the person who developed the model and then the number of genes (xxx) included in the model. [@reed2003ijr904]
+    * i.e. the current E. coli model is iML1515
+        * M stands from Jonathan Monk, L stands for Colton Lloyd
+    * iJO1366 is by Jeffrey Orth
+* But this naming is inherently a snapshot, and would have to be continuously updated as the model evolved
+    * Everytime you add or remove a gene you would need to change the number
+    * As new curators contribute to the model or take over, the author list may expand or change, or people may be annoyed to leave an old authors name at the prime spot
+* It would be better instead to have a single name that is not dependent on the author or gene list, that is specific to the organism
+    * It would be nice to instead have on model with different versions
+    * e.g. evolo model v1, e.coli model v2, to make it clear the lineage of the model
+* The recommendation from standard-GEM is to name the repository and model {something}-GEM, a common name, KEGG organism, or taxonomy-derived short name
+    * e.g. Human-GEM and yeast-GEM
+    * We followed that advice, and named the model MIT1002-GEM
 
 ### Branches
 Branching is a key feature of Git- it allows developers to isolate their changes so that the main version of the repository is not affected. This allows multiple developers to work simultaneously, and allows developers to test out changes where they will not affect anyone else. We chose to use a branching strategy based on the popular GitFlow strategy. We had two long-lived branches, “main”, the main branch, which had the official releases of the model, and “dev”, the development branch, where all accepted changes to the model were integrate before an official release. All changes made the model were made on feature branches that branched off of and were merged back into the dev branch. This ensured that any new feature development did not disturb the main model. Early on in development, branching is critical to XXX, and later branching became increasingly important to differentiate the version of model from users vs from developers.
