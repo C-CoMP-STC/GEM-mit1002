@@ -115,6 +115,7 @@ The Continuous Curation loop consists of 6 steps:
 
 ### Step 1) Curate
 *NOTE: We do not discuss here how to make curation decisions, but rather how to implement them*
+
 * How big is one curation task?
 
 #### Removing Reactions/Metabolites
@@ -125,6 +126,39 @@ The Continuous Curation loop consists of 6 steps:
     * The list of removed things in the model file itself
         * And the test to make sure it does not drift
     * The test that no old reactions are still in the model file
+
+#### Commits
+* Commit often- don't just wait until the end of all your changes
+* Use concise descriptive commit messages
+* Use semantic commits
+    * <type>[optional scope]: <description>
+
+    * We got this from standard-GEM
+    * type
+        * chore: updating toolbox, data files, etc.
+        * doc: updating documentation or explanatory comments in functions.
+        * feat: new feature added, e.g. new reaction / metabolite / function / etc.
+        * fix: something that was incorrect in the model and now has been corrected.
+        * refactor: see code refactoring.
+        * style: minor format changes of model, functions or data (spaces, semi-colons, etc., no code change)
+    * scope
+        * optional
+        * refers to the receiver of the action, i.e. what part of the model/data are you modifying
+    * description
+        * concise description of what you did
+    * some examples (direct copy from yeat-GEM contributing guidelines)
+        |commit|commit message|
+        |:---:|:---:|
+        |Add new rxns|`feat-rxn: methanol pathway`|
+        |Remove a metabolite|`fix-met: duplicated citrate`|
+        |Add metabolite formula|`feat-met.prop: carbohydrate formulas`|
+        |Fix rxn stoichiometry|`fix-rxn.prop: complex V stoich coeffs`|
+        |Update gene IDs|`fix-gene.annot: update IDs from SWISSPROT`|
+        |Format name of compartment|`style-comp.annot: remove uppercases`|
+        |Split a rxn in 2|`refactor-rxn: split isomerase in 2 steps`|
+        |Add some data|`feat-data: metabolomics data`|
+        |Update documentation of function|`doc: addDBnewRxn.m`|
+        |Update toolbox|`chore: update RAVEN version`|
 
 #### Pull Requests
 One critical component of the history of changes to the model is the “why”- why was a change to the model made (e.g., was a reaction found to have genomic evidence, was there a mistake in the biochemistry database, etc.). There are text fields in the model file itself where this information can be stored, and there have been cases in the past of defined “codes” used to represent different types of evidence that support each reaction (CITE EXAMPLES) however we have found that these are not well used, lack standardization across the community, and are often not comprehensive enough to fully explain the reasoning behind each change. We instead elected to document these in issues and pull requests on the repository. Issues can be used as a sort of electronic lab notebook. To ensure that all curators (present and future) are reminded to document their reasoning, a pull request template was used.
