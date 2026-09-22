@@ -407,13 +407,56 @@ For example:
 
 ### Step 5) Run
 * This is the fun part, where you, or others, actually try to use the model
+* Who might be using the model
+    * Yourself- as the person making the model- you probably have questions you are interested in and simulations you would like to run
+    * Your collaborators
+    * Strangers- people who read your paper and want to use your model- potentially years after initial publication
+* Making the model available to run throughout the curation process is what makes our curation "continuous", we aren't trying to finish the model before every using it, but will update the model as issues are found in use
+* This means that you can curate the model in order of scientific questions- curating the pathways relevant to specific questions first, rather than in an arbitrary order
+    * This means that the model will be better in regions of the metabolic network of previous interest
+* This helps discover unexpected problems in the model- tests can only catch expected problems
+* For tutorials on how to use a GEM to run FBA, see COBRA tutorials
+    * MATLAB: https://opencobra.github.io/cobratoolbox/stable/tutorials/
+    * COBRApy: https://cobrapy.readthedocs.io/en/latest/
 
 ### Step 6) Monitor
+* Typically there is limited feedback after publication- someone might try to recreate your results or use your model, but if it fails, they have no where to turn
+* GitHub issues ecan be used to plan, discuss, and track work
+* anyone can open an issue
+* Use issues to keep track of bugs, enhancements, or other requests
+* When to open an issue
+    * You find something wrong
+    * Bug/weird simulation results
+    * New data to add
+    * Missing feature you would like the model to have
+    * Documentation confusing or unclear
+    * Any type of feedback
 * Open an issue
+    * How to open an issue
+        1. Go to the main page of the repository
+        2. Click Issues
+        3. Click New Issue
+    * GitHub issues are written in [GitHub Flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 * What belongs in an issue
+    * A concise and descriptive title
+        * e.g. model does not grow on glucose, not model wrong, or "I tried to simulate growth on glucose, and got 0.00"
+    * In the description
+        * Detailed description
+        * Provide context- including what you expected to happen versus what actually occurred
+        * Step-by-step instructions for replicating the bug
+            * include code, logs, or screenshots
+        * Environment details
+            * What OS are you using, what version of tools (e.g., COBRApy) are you using, what verion of the model are you using, did you start from a release, from the main branch, from the dev branch
+    * Note your issue is public, so don't include anything you don't want shared
+    * Other repos (Human-GEM) have templates for reporting bugs, which can be helpful to ensure that someone gives all of the information needed to recreate and investigate the bug
+* Anyone can comment on issues
+* Unlike in traditional software this is a more human-dependent step- we aren't just getting crash reports, we require people to really run the model and manually open issues
+* While this might seem trivial, this is a critical step, because without opening issues curation becomes a straight line, not a loop, and can't be continuous any more- so all issues are welcome!
 
 ## Why can't you just make it for me?
 * Can't you just make an installable tool that makes all of this for me?
+* Everyone will have different data
+* It is very possible to make a template- i.e. Standard-GEM
 
 ## What's the cost?
 
