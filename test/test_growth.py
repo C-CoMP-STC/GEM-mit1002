@@ -197,11 +197,17 @@ class TestSummaryArithmetic(unittest.TestCase):
         )
 
     def test_no_uptake_route_is_a_subset_of_the_negative_predictions(self):
-        """The reported count must be reconcilable with the confusion matrix.
+        """``n_no_uptake_route`` must fit inside the confusion matrix.
 
-        These rows are scored, so each one sits inside a true negative or a
-        false negative. If the count exceeds TN + FN it is picking up unsure or
-        excluded rows and cannot be quoted alongside the matrix.
+        The count is reported alongside the true and false positives and
+        negatives, so it has to reconcile with them. Every row it counts is a
+        scored row whose no-growth prediction rests on an absent uptake route,
+        which places it in either ``true_negative`` or ``false_negative``.
+
+        What holds it there is :func:`summarise` restricting the count to
+        scored rows. Without that restriction unsure and excluded conditions
+        are counted too, the total exceeds ``TN + FN``, and the number can no
+        longer be quoted next to the matrix.
         """
         self.assertLessEqual(
             self.summary["n_no_uptake_route"],
