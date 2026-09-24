@@ -10,7 +10,7 @@ e.g. This PR improves/fixes # by ...
 <!-- *Note: replace [ ] with [X] to check the box. -->
 - [ ] Made my edits to the model on the XML file
 - [ ] Tested my code on my own computer for running the model
-- [ ] Selected `dev` as a target branch
+- [ ] Selected `develop` as a target branch
 - [ ] Removed any reactions/metabolites using `python -m tools.deprecate`, so they are recorded in `data/deprecated_identifiers/` (see the [README](../data/deprecated_identifiers/README.md) there). Nothing to remove in this PR? Check the box.
 
 <!-- The deprecate helper removes the entity and logs it in one step, and cleans
