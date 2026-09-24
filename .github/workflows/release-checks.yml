@@ -1,0 +1,110 @@
+name: Release-Checks
+
+# Extra checks on the release PR (develop -> main), on top of Custom-CI, which
+# runs on every PR. They are here rather than in Custom-CI because they are
+# slow and only matter for what gets released.
+#
+# release-check  Is version.txt one correct step past the last release, with a
+#                CHANGELOG entry, and is the bump big enough for the changes?
+#                Fails the PR if not, and posts the report as a comment.
+# memote         Full MEMOTE snapshot report, uploaded as an artifact. The
+#                released report is published to GitHub Pages by Publish.
+# macaw          The full MACAW suite, including the slow dilution test,
+#                uploaded as an artifact. Records how long it took so we can
+#                decide whether it belongs here.
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+# A new push to the release PR makes older runs pointless.
+concurrency:
+  group: release-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  release-check:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # tags: the check compares with the last release
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Verify the release
+        env:
+          PYTHONPATH: code
+        run: |
+          set +e
+          python -m tools.release verify --report "$RUNNER_TEMP/release_check.md"
+          status=$?
+          cat "$RUNNER_TEMP/release_check.md" >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+      - name: Post the report on the PR
+        if: always()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: release-check
+          path: ${{ runner.temp }}/release_check.md
+
+  memote:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          # The newest pandera, which memote pulls in, needs numpy >= 1.24.4,
+          # but requirements.txt pins numpy 1.23.5. 0.22.1 works with both.
+          python -m pip install pandera==0.22.1
+
+      - name: MEMOTE snapshot report
+        run: |
+          mkdir -p "$RUNNER_TEMP/memote"
+          memote report snapshot --filename "$RUNNER_TEMP/memote/index.html" model/MIT1002-GEM.xml
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: memote-report
+          path: ${{ runner.temp }}/memote/index.html
+
+  macaw:
+    runs-on: ubuntu-22.04
+    # GitHub-hosted runners stop jobs at 6 hours; the dilution test is slow.
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          # Same commit as the local environment. MACAW's setup.py does not
+          # declare Pebble and networkx, so they are installed explicitly.
+          python -m pip install "git+https://github.com/Devlin-Moyer/macaw.git@667347a0c4454c088240399079d824317dec2c3a"
+          python -m pip install Pebble==5.0.7 networkx==3.1
+
+      - name: Run MACAW
+        run: |
+          start=$(date +%s)
+          python code/scripts/run_macaw.py
+          minutes=$(( ($(date +%s) - start) / 60 ))
+          echo "MACAW took ${minutes} minutes." >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macaw-results
+          path: |
+            code/scripts/results/macaw_results.csv
+            code/scripts/results/macaw_edge_list.csv
