@@ -169,6 +169,16 @@ class TestChangelog(unittest.TestCase):
         self.assertIn("fix typos", other_part)
         self.assertIn("### Growth calls changed since 3.1.0", entry)
 
+    def test_changelog_section_is_one_entry(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "CHANGELOG.md")
+            release.prepend_changelog("## 1.0.0 - 2026-01-01\n\nold\n", path)
+            release.prepend_changelog("## 1.1.0 - 2026-02-01\n\nnew\n", path)
+            self.assertEqual(release.changelog_section("1.1.0", path), "new\n")
+            self.assertEqual(release.changelog_section("1.0.0", path), "old\n")
+            with self.assertRaises(LookupError):
+                release.changelog_section("2.0.0", path)
+
     def test_prepend_newest_first(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = os.path.join(tmp, "CHANGELOG.md")

@@ -530,6 +530,24 @@ def changelog_entry(
     return "\n".join(lines).rstrip() + "\n"
 
 
+def changelog_section(version: str, path: str | os.PathLike = CHANGELOG_PATH) -> str:
+    """The body of the ``CHANGELOG.md`` entry for ``version``, for release notes.
+
+    Raises:
+        LookupError: If the changelog has no entry for ``version``.
+    """
+    with open(path, encoding="utf-8") as handle:
+        text = handle.read()
+    match = re.search(
+        rf"^## {re.escape(version)}(?: [^\n]*)?\n(.*?)(?=^## |\Z)",
+        text,
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    if not match:
+        raise LookupError(f"CHANGELOG.md has no entry for {version}")
+    return match.group(1).strip() + "\n"
+
+
 def prepend_changelog(entry: str, path: str | os.PathLike = CHANGELOG_PATH) -> None:
     """Insert ``entry`` at the top of the changelog, creating it if needed."""
     try:
@@ -709,6 +727,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     nxt = sub.add_parser("next-version", help="print the version after version.txt")
     nxt.add_argument("--bump", choices=BUMPS, required=True)
 
+    notes = sub.add_parser(
+        "notes", help="print the CHANGELOG.md entry for a version (release notes)"
+    )
+    notes.add_argument("--version", help="default: the version in version.txt")
+
     ver = sub.add_parser(
         "verify", help="check a prepared release (run on the release PR)"
     )
@@ -730,6 +753,14 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.command == "next-version":
         print(bump_version(read_version(), args.bump))
+        return 0
+
+    if args.command == "notes":
+        try:
+            print(changelog_section(args.version or read_version()), end="")
+        except LookupError as error:
+            print(error, file=sys.stderr)
+            return 1
         return 0
 
     if args.command == "verify":
