@@ -1,6 +1,6 @@
 [![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://hgscott.github.io/mit1002-model)
 
-# MIT1002-model
+# MIT1002-GEM: A manually curated metabolic model for *Alteromonas macleodii* MIT1002
 
 This repo contains the *Alteromonas macleodii* MIT1002 model, and code associated with its creation, curation, and testing.
 
