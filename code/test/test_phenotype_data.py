@@ -56,7 +56,7 @@ class TestPhenotypeSchema(unittest.TestCase):
             bad,
             f"{EXCLUSION_COLUMN} values not in the controlled vocabulary: {bad}. "
             f"Allowed: {sorted(EXCLUSION_REASONS)}. Adding a category means "
-            f"updating tools/phenotypes.py and data/README.md together.",
+            f"updating code/tools/phenotypes.py and data/README.md together.",
         )
 
     def test_readme_table_matches_the_exclusion_vocabulary(self):
@@ -193,7 +193,7 @@ class TestExpectedMismatches(unittest.TestCase):
             f"columns {missing}. load_expected_mismatches fills them in with "
             f"empty strings, so the file would load without complaint and "
             f"match nothing. Regenerate it with "
-            f"scripts/update_phenotype_baseline.py.",
+            f"code/scripts/update_phenotype_baseline.py.",
         )
 
     def test_baseline_rows_refer_to_real_conditions(self):
@@ -208,7 +208,7 @@ class TestExpectedMismatches(unittest.TestCase):
         self.assertFalse(
             orphaned,
             f"baseline entries with no matching phenotype row: {orphaned}. "
-            f"Regenerate with scripts/update_phenotype_baseline.py.",
+            f"Regenerate with code/scripts/update_phenotype_baseline.py.",
         )
 
     def test_baseline_does_not_list_excluded_conditions(self):

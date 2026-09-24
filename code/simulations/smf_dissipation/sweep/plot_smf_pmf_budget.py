@@ -14,7 +14,7 @@ the Na+/H+ antiporter flips from a PMF *producer* (forward, using SMF) to a PMF
 *consumer* (reverse, spending PMF to re-export the forced Na+), and ATP synthase's
 share of PMF shrinks accordingly.
 
-Modelled on simulations/pro-top10/pmf_vs_smf/plot_smf_pmf_for_single_and_cocktail.py
+Modelled on code/simulations/pro-top10/pmf_vs_smf/plot_smf_pmf_for_single_and_cocktail.py
 but (a) sweeps dissipation for one substrate and (b) splits production/consumption
 into separate bars instead of +/- halves of one bar.
 """

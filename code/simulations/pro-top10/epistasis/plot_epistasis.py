@@ -16,7 +16,7 @@ import sys  # noqa: E402
 
 sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
 
-# Import the shared plot styles from tools/
+# Import the shared plot styles from code/tools/
 from tools.plot_styles import ccomp_colors  # noqa: E402
 
 # Make the results directory if it doesn't exist

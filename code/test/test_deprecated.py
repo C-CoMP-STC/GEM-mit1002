@@ -141,7 +141,7 @@ class TestDeprecatedSchema(unittest.TestCase):
                         f"reason values outside the controlled vocabulary in "
                         f"{os.path.basename(path)}: {bad}. Allowed: "
                         f"{', '.join(REASONS)}. To add a category, update REASONS "
-                        f"in tools/deprecate.py and the table in the README."
+                        f"in code/tools/deprecate.py and the table in the README."
                     ),
                 )
 
@@ -326,7 +326,7 @@ class TestReplacedBy(unittest.TestCase):
 class TestNotesMirror(unittest.TestCase):
     """The model's <notes> mirror must agree with the TSVs.
 
-    ``scripts/export_model.py`` regenerates it, so a failure here means the
+    ``code/scripts/export_model.py`` regenerates it, so a failure here means the
     model file was edited without re-running the export.
     """
 
@@ -357,7 +357,7 @@ class TestNotesMirror(unittest.TestCase):
                         f"model notes {key} disagrees with the TSV. Missing from "
                         f"the model: {sorted(expected - actual)}; unexpectedly "
                         f"present: {sorted(actual - expected)}. Run "
-                        f"`python -m tools.deprecate sync-notes` to regenerate."
+                        f"`PYTHONPATH=code python -m tools.deprecate sync-notes` to regenerate."
                     ),
                 )
 
@@ -370,7 +370,7 @@ class TestNotesMirror(unittest.TestCase):
             msg=(
                 "the model notes should point at the full table, so someone with "
                 "only model/MIT1002-GEM.xml can find the reasons. Run "
-                "`python -m tools.deprecate sync-notes`."
+                "`PYTHONPATH=code python -m tools.deprecate sync-notes`."
             ),
         )
 
@@ -561,7 +561,7 @@ class TestVocabularyDocumented(unittest.TestCase):
             documented,
             msg=(
                 f"the reason vocabulary and its README table disagree.\n"
-                f"  allowed by tools/deprecate.py but not in the table: "
+                f"  allowed by code/tools/deprecate.py but not in the table: "
                 f"{sorted(allowed - documented)}\n"
                 f"  in the table but not allowed: "
                 f"{sorted(documented - allowed)}\n"

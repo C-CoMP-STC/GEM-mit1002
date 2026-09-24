@@ -1,6 +1,6 @@
 """Consistency checks on the committed curation time series.
 
-``curation_process/phenotype_confusion_over_time.csv`` is the file figure 2 of
+``code/curation_process/phenotype_confusion_over_time.csv`` is the file figure 2 of
 the manuscript is read off: panel B plots its match counts and panel A quotes
 two of its rows as confusion matrices. Nothing recomputes it in CI -- producing
 it needs the GitHub API and a solve per PR -- so what is checked here is that
@@ -67,7 +67,7 @@ def _load(path):
 @unittest.skipUnless(
     os.path.exists(CONFUSION_CSV),
     "phenotype_confusion_over_time.csv has not been generated yet; run "
-    "curation_process/run_tests_on_prs.py",
+    "code/curation_process/run_tests_on_prs.py",
 )
 class TestConfusionTimeline(unittest.TestCase):
     @classmethod
@@ -83,7 +83,7 @@ class TestConfusionTimeline(unittest.TestCase):
             [EXPECTED_SCORING_VERSION],
             "the time series mixes scoring definitions (or predates the "
             "version stamp), so its points are not comparable with each other. "
-            "Re-run curation_process/run_tests_on_prs.py.",
+            "Re-run code/curation_process/run_tests_on_prs.py.",
         )
 
     def test_scoring_version_matches_the_script(self):
@@ -209,7 +209,7 @@ class TestConfusionTimeline(unittest.TestCase):
         self.assertFalse(
             unexplained,
             f"PR(s) {unexplained} failed to evaluate and are missing from the "
-            f"series; re-run curation_process/run_tests_on_prs.py. If the "
+            f"series; re-run code/curation_process/run_tests_on_prs.py. If the "
             f"model at that PR cannot be read, add it to KNOWN_INVALID_MODELS "
             f"with the reason.",
         )

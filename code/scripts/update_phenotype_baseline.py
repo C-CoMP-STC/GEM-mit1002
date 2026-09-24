@@ -1,7 +1,7 @@
 """Record the current phenotype mismatches as the accepted baseline.
 
-``test/test_growth.py`` compares the model against
-``test/test_files/expected_phenotype_mismatches.tsv`` rather than demanding a
+``code/test/test_growth.py`` compares the model against
+``code/test/test_files/expected_phenotype_mismatches.tsv`` rather than demanding a
 perfect match, because a model under curation always has some conditions wrong
 and the useful question is whether that set changed.
 
@@ -13,8 +13,8 @@ of what a curation step did to the model's agreement with experiment.
 Never run this from CI. Automatically accepting whatever the model currently
 does would turn the test into a rubber stamp.
 
-    python scripts/update_phenotype_baseline.py
-    python scripts/update_phenotype_baseline.py --dry-run
+    python code/scripts/update_phenotype_baseline.py
+    python code/scripts/update_phenotype_baseline.py --dry-run
 """
 
 import argparse
@@ -37,7 +37,7 @@ from tools.phenotypes import (  # noqa: E402
 
 def main(argv=None):
     parser = argparse.ArgumentParser(
-        prog="python scripts/update_phenotype_baseline.py",
+        prog="python code/scripts/update_phenotype_baseline.py",
         description=__doc__.split("\n\n")[0],
     )
     parser.add_argument(

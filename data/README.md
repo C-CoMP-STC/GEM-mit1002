@@ -8,8 +8,8 @@ which asks that it carry a README describing how it is organised.
 
 | Path | What it is |
 | --- | --- |
-| `known_growth_phenotypes.tsv` | Experimentally observed growth or no-growth for a carbon source in a given medium, with a literature or lab reference. The basis of `test/test_growth.py` and the growth report. |
-| `media_sources/` | Primary documents for the growth media — published recipes and lab protocols. Provenance for the definitions in `tools/media.py`. |
+| `known_growth_phenotypes.tsv` | Experimentally observed growth or no-growth for a carbon source in a given medium, with a literature or lab reference. The basis of `code/test/test_growth.py` and the growth report. |
+| `media_sources/` | Primary documents for the growth media — published recipes and lab protocols. Provenance for the definitions in `code/tools/media.py`. |
 | `deprecated_identifiers/` | Reactions and metabolites removed from the model, and why. See the README there. |
 
 ## `known_growth_phenotypes.tsv`
@@ -30,7 +30,7 @@ left out of sensitivity and specificity, because comparing the model against it
 would not tell you anything about the model.
 
 `reason` is a closed vocabulary so the file stays queryable and the categories
-stay meaningful; `test/test_phenotype_data.py` fails on any value not listed
+stay meaningful; `code/test/test_phenotype_data.py` fails on any value not listed
 here, so adding a category is a deliberate act that touches this README too.
 
 | Value | Use when |
@@ -84,17 +84,17 @@ Other rows worth considering for exclusion, left alone for now: `homarine` in
 
 ## Expected mismatches
 
-`test/test_files/expected_phenotype_mismatches.tsv` records the mismatches that
+`code/test/test_files/expected_phenotype_mismatches.tsv` records the mismatches that
 are known and accepted at the current state of curation. `test_growth.py` fails
 on a mismatch that is not listed, and equally on a listed mismatch that has
 started passing — so an accidental fix is surfaced rather than silently rotting
 the baseline. Regenerate it deliberately with
-`python scripts/update_phenotype_baseline.py`, never automatically.
+`python code/scripts/update_phenotype_baseline.py`, never automatically.
 
 ## Media: definitions live in code, not here
 
 The media *definitions* are Python dictionaries in
-[`tools/media.py`](../tools/media.py), not data files:
+[`code/tools/media.py`](../code/tools/media.py), not data files:
 
 ```python
 from tools.media import MEDIA
@@ -109,13 +109,13 @@ nothing here.
 
 What lives in this directory is the media *provenance*: the published recipes and
 lab protocols in `media_sources/` that the definitions were transcribed from. If
-you change a medium in `tools/media.py`, the source document here is what a
+you change a medium in `code/tools/media.py`, the source document here is what a
 reviewer should be able to check it against.
 
 ### There used to be a pickle
 
 Until recently the definitions were also serialised to
-`test/test_files/media/media_definitions.pkl` and loaded with `pickle.load` from
+`code/test/test_files/media/media_definitions.pkl` and loaded with `pickle.load` from
 22 places. That was removed because it was a cache of literal dicts — no
 computation was being saved, so it bought nothing while costing three things: it
 was a tracked binary so media changes could not be reviewed in a diff (and media
@@ -130,7 +130,7 @@ similar means writing it fresh against `tools.media.MEDIA`.
 
 ## A note on two key mismatches
 
-`biomass/check_producibility.py` looks up media under the names `"mbm_media"` and
+`code/biomass/check_producibility.py` looks up media under the names `"mbm_media"` and
 `"l1_media"`, but the registry keys — and the values in the `minimal_media`
 column of `known_growth_phenotypes.tsv` — are `"mbm"` and `"l1"`. That lookup
 could not have been matching before this refactor either; those names were never

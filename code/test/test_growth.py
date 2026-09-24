@@ -14,7 +14,7 @@ without it an accidental fix goes unnoticed and the baseline slowly becomes a
 list of things that are no longer true.
 
 The simulation itself is not implemented here. It lives in ``tools.phenotypes``
-and is shared with ``scripts/generate_growth_report.py``, so the test and the
+and is shared with ``code/scripts/generate_growth_report.py``, so the test and the
 report cannot disagree about the same model. They previously did: this file set
 every uptake to a flat 1000 while the report divided a fixed carbon budget by
 the carbon count, so the same condition could pass one and fail the other.
@@ -92,7 +92,7 @@ class TestExpectedGrowthPhenotypes(unittest.TestCase):
             "",
             "Either fix the model, or -- if this is an accepted consequence of "
             "a deliberate change -- record it with:",
-            "    python scripts/update_phenotype_baseline.py",
+            "    python code/scripts/update_phenotype_baseline.py",
             "",
             format_summary(self.summary),
         ]
@@ -115,7 +115,7 @@ class TestExpectedGrowthPhenotypes(unittest.TestCase):
         lines += [
             "",
             "Refresh the baseline to record the improvement:",
-            "    python scripts/update_phenotype_baseline.py",
+            "    python code/scripts/update_phenotype_baseline.py",
         ]
         self.fail("\n".join(lines))
 
@@ -125,7 +125,7 @@ class TestExpectedGrowthPhenotypes(unittest.TestCase):
         The baseline says each accepted mismatch is a false positive or a
         false negative. This fails when that label is no longer right -- in
         practice, because the file was edited by hand instead of being
-        regenerated with ``scripts/update_phenotype_baseline.py``.
+        regenerated with ``code/scripts/update_phenotype_baseline.py``.
         """
         changed = self.diff["changed"]
         if not changed:
@@ -134,7 +134,7 @@ class TestExpectedGrowthPhenotypes(unittest.TestCase):
         lines += [
             f"  {condition}: {was} -> {now}" for condition, was, now in changed
         ]
-        lines += ["", "    python scripts/update_phenotype_baseline.py"]
+        lines += ["", "    python code/scripts/update_phenotype_baseline.py"]
         self.fail("\n".join(lines))
 
     def test_excluded_rows_are_not_scored(self):

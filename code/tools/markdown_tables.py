@@ -8,7 +8,7 @@ words -- a substring search passes when a value happens to be mentioned
 somewhere else, which is how ``duplicate`` and ``id_changed`` stayed
 "documented" while nothing verified their table rows existed.
 
-Used by ``test/test_deprecated.py`` and ``test/test_phenotype_data.py``.
+Used by ``code/test/test_deprecated.py`` and ``code/test/test_phenotype_data.py``.
 """
 
 from __future__ import annotations

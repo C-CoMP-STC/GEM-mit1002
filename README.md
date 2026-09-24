@@ -21,9 +21,9 @@ Upon every push, pull request, manual trigger:
 Note: MACAW is **not** run as part of the action due to the longer run time of the dilution test.
 To run MACAW use:
 ```
-python scripts/run_macaw.py
+python code/scripts/run_macaw.py
 ```
-Its results are written to `scripts/results/` with the other generated reports.
+Its results are written to `code/scripts/results/` with the other generated reports.
 
 ## Repository layout
 
@@ -32,23 +32,23 @@ code does*, not what it is about. Please put new code in the matching one.
 
 | Directory | Contains | How it runs |
 | --- | --- | --- |
-| `test/` | Checks that assert something about the model and pass or fail | Automatically, via `pytest` in CI. A failure blocks the PR |
-| `scripts/` | Code that generates an artifact for a person to look at — a table, a plot, an exported file. No pass/fail | Automatically in CI, writing to `scripts/results/` |
-| `tools/` | Importable functions and definitions, and command-line utilities a curator runs deliberately | By hand, or imported by the above |
+| `code/test/` | Checks that assert something about the model and pass or fail | Automatically, via `pytest` in CI. A failure blocks the PR |
+| `code/scripts/` | Code that generates an artifact for a person to look at — a table, a plot, an exported file. No pass/fail | Automatically in CI, writing to `code/scripts/results/` |
+| `code/tools/` | Importable functions and definitions, and command-line utilities a curator runs deliberately | By hand, or imported by the above |
 | `data/` | Experimental observations, media provenance, and derived tables. See [`data/README.md`](data/README.md) | Read by the above |
 
 Examples of the third kind:
 
-* `tools/deprecate.py` — you invoke it yourself when removing a reaction, and
-  `scripts/export_model.py` and `test/test_deprecated.py` both import from it
-* `tools/media.py` — defines the growth media as importable dictionaries, so
+* `code/tools/deprecate.py` — you invoke it yourself when removing a reaction, and
+  `code/scripts/export_model.py` and `code/test/test_deprecated.py` both import from it
+* `code/tools/media.py` — defines the growth media as importable dictionaries, so
   anything needing a medium does `from tools.media import MEDIA`
-* `tools/plot_styles.py` — shared colour palettes and figure styling, imported by
+* `code/tools/plot_styles.py` — shared colour palettes and figure styling, imported by
   every plotting script so figures stay consistent
 
-Two other directories hold code that is neither of these: `curation_process/`
+Two other directories hold code that is neither of these: `code/curation_process/`
 analyses the history of the curation effort itself across past PRs, and
-`biomass/`, `genome/`, `escher/` and similar hold the exploratory work behind
+`code/biomass/`, `data/genome/`, `code/escher/` and similar hold the exploratory work behind
 particular parts of the model.
 
 Note that [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM), which

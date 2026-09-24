@@ -21,8 +21,8 @@ produced the version that did not add up.
 ## Regenerating
 
 ```bash
-python curation_process/run_tests_on_prs.py   # needs `gh` authenticated
-python curation_process/plot_match_over_time.py
+python code/curation_process/run_tests_on_prs.py   # needs `gh` authenticated
+python code/curation_process/plot_match_over_time.py
 ```
 
 Both are safe to re-run. `run_tests_on_prs.py` is incremental: it only evaluates
@@ -33,12 +33,12 @@ stored result was scored under an older `SCORING_VERSION`. Set
 **Re-run it after editing `data/known_growth_phenotypes.tsv`.** The stored rows
 were scored against the table as it stood when they were computed, so adding a
 condition leaves the early points on the line answering a different question
-from the late ones. `test/test_curation_timeline.py` fails when that has
+from the late ones. `code/test/test_curation_timeline.py` fails when that has
 happened, by comparing each row's `Conditions` count against the current file.
 
 ## What counts as a match
 
-Scoring lives in `tools/phenotypes.py`, shared with `test/test_growth.py`, so
+Scoring lives in `code/tools/phenotypes.py`, shared with `code/test/test_growth.py`, so
 the figure and the CI test cannot disagree.
 
 A **match** is a true positive or a true negative. Only two kinds of condition
@@ -59,7 +59,7 @@ as an automatic "No" — those are different, because a multi-compound condition
 can still grow on the compounds that are present. `Methionine, Pyruvate` and
 `Cystine, Pyruvate` are both in that state and the shortcut gets both of them
 backwards. See the "Missing exchange reactions" section of
-`tools/phenotypes.py`.
+`code/tools/phenotypes.py`.
 
 `No Uptake Route` in the CSV counts how many of the model's no-growth
 predictions rest on an absent transporter. It is a subset of `Scored`, not

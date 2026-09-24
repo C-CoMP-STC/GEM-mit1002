@@ -1,4 +1,4 @@
-"""Tests for tools/annotations.py.
+"""Tests for code/tools/annotations.py.
 
 These use a small hand-written cross-reference file, so they do not need the
 70 MB ``reac_xref.tsv`` to be downloaded.

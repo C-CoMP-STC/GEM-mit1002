@@ -10,7 +10,7 @@ FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 TOP_10_DIR = FILE_PATH.parent
 
-# Add the repo root to the system path so tools/ is importable
+# Add the repo root to the system path so code/tools/ is importable
 sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
 from tools import plot_styles  # Import the plot styles from the repo
 

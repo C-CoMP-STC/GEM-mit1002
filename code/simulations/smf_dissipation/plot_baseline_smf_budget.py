@@ -39,7 +39,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-# Import the shared plot styles from tools/
+# Import the shared plot styles from code/tools/
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # make `tools` importable
 from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
 

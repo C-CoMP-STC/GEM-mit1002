@@ -10,7 +10,7 @@ FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 OUT_PATH.mkdir(exist_ok=True)
 
-# Import the shared plot styles from tools/
+# Import the shared plot styles from code/tools/
 sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
 from tools.plot_styles import set_plot_style, summer_colors
 

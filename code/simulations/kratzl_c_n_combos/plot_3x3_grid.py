@@ -28,7 +28,7 @@ unrelated curation change.
 
 Run from the repository root::
 
-    python simulations/kratzl_c_n_combos/plot_3x3_grid.py
+    python code/simulations/kratzl_c_n_combos/plot_3x3_grid.py
 """
 
 import os
@@ -515,7 +515,7 @@ def main():
         )
 
     # Filter on the column, not on a category: ``no_exchange`` was retired as a
-    # category (see tools/phenotypes.py), so this test matched nothing and the
+    # category (see code/tools/phenotypes.py), so this test matched nothing and the
     # block silently never printed. A missing exchange no longer holds a row
     # out of scoring -- it is scored as the no-growth prediction it is -- so
     # ``no_uptake_route`` says which of these had the verdict decided by it,

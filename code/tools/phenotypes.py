@@ -7,11 +7,11 @@ cannot drift apart, and a fix lands in all of them at once.
 
 Current callers:
 
-* ``test/test_growth.py`` -- the CI regression test against the accepted
+* ``code/test/test_growth.py`` -- the CI regression test against the accepted
   mismatch baseline.
-* ``curation_process/run_tests_on_prs.py`` -- the same evaluation replayed
+* ``code/curation_process/run_tests_on_prs.py`` -- the same evaluation replayed
   across every merged PR, which is what figure 2B of the manuscript plots.
-* ``scripts/generate_growth_report.py`` -- the supplementary table and the
+* ``code/scripts/generate_growth_report.py`` -- the supplementary table and the
   experimental-vs-predicted heatmap. Migrated 2026-09-17; it previously
   carried its own inlined copy of this loop, with all three bugs below.
 
@@ -108,7 +108,7 @@ NEAR_THRESHOLD_FACTOR = 10.0
 #: magnitude more flux than the carbon supply, so a reaction above this is
 #: almost always a thermodynamically infeasible loop rather than biology.
 #: Used by :func:`evaluate_phenotypes` when ``flux_limit`` is requested and by
-#: ``curation_process/run_tests_on_prs.py``.
+#: ``code/curation_process/run_tests_on_prs.py``.
 DEFAULT_FLUX_LIMIT = 100.0
 
 #: Compounds supplied as nitrogen sources rather than as carbon sources. These

@@ -152,9 +152,9 @@ deprecate_reactions(
 Note the absence of a `pr` argument above. You remove things on your branch
 *before* you open the pull request, so the number does not exist yet. Leave it
 blank and CI fills it in: the `Custom-CI` workflow runs
-`python -m tools.deprecate stamp-pr "$PR_NUMBER"` on every pull request and
+`PYTHONPATH=code python -m tools.deprecate stamp-pr "$PR_NUMBER"` on every pull request and
 commits the result, exactly as it already stamps the PR number into
-`scripts/results/README.md`.
+`code/scripts/results/README.md`.
 
 Stamping only fills **blank** cells. If you already know the relevant number —
 usually because the removal closes an issue — pass it and CI will leave it
@@ -168,19 +168,19 @@ The helper removes the reaction from `model/MIT1002-GEM.xml`, appends a row here
 cascades to any metabolite or gene that the removal orphaned — logging the
 orphaned metabolites with `reason="orphaned"` and an empty `replaced_by`, since
 the model genuinely no longer represents them. This matters because
-`test/test_sbml.py` already fails on isolated metabolites and genes, so a removal
+`code/test/test_sbml.py` already fails on isolated metabolites and genes, so a removal
 that does not cascade breaks CI.
 
 Run `--help` on the module for the metabolite equivalent and for a dry-run flag:
 
 ```bash
-python -m tools.deprecate --help
+PYTHONPATH=code python -m tools.deprecate --help
 ```
 
 ## Why the model file also carries this information
 
 A separate TSV has one real weakness: someone who downloads only `model/MIT1002-GEM.xml`
-loses it. So `scripts/export_model.py` mirrors the identifier lists into the
+loses it. So `code/scripts/export_model.py` mirrors the identifier lists into the
 SBML model's `<notes>` element, as:
 
 ```xml

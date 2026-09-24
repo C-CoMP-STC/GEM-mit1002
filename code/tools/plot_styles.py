@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
 # Directory holding the vendored Source Sans 3 faces (SIL Open Font License,
-# see tools/fonts/LICENSE.md). Shipping the font files in the repo means a
+# see code/tools/fonts/LICENSE.md). Shipping the font files in the repo means a
 # fresh clone renders figures identically instead of silently falling back to
 # matplotlib's default DejaVu Sans.
 FONT_DIR = Path(__file__).resolve().parent / "fonts"
@@ -37,7 +37,7 @@ def set_manuscript_style(font_size=12):
     Sets three things that used to be copy-pasted (inconsistently) across
     the plotting scripts:
 
-    1. Font family. Source Sans 3, vendored under tools/fonts/. It is the
+    1. Font family. Source Sans 3, vendored under code/tools/fonts/. It is the
        open-licensed sibling of Myriad Pro (same designer, same humanist
        skeleton), which is what ASM journals use for body text and figure
        captions. Myriad Pro itself is kept as the second choice for anyone

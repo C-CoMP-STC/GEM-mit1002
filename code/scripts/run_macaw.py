@@ -1,12 +1,12 @@
 """Run the MACAW test suite against the model.
 
-Writes ``macaw_results.csv`` and ``macaw_edge_list.csv`` to ``scripts/results/``
+Writes ``macaw_results.csv`` and ``macaw_edge_list.csv`` to ``code/scripts/results/``
 alongside the other generated reports.
 
 This is *not* run in CI, because the dilution test takes too long. Run it by hand
 from anywhere:
 
-    python scripts/run_macaw.py
+    python code/scripts/run_macaw.py
 """
 
 import os

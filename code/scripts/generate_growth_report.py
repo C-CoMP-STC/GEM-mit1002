@@ -42,7 +42,7 @@ media_names = {
     "swm": "Seawater Medium",
 }
 
-# Human-readable labels for the verdicts tools/phenotypes.py assigns. The
+# Human-readable labels for the verdicts code/tools/phenotypes.py assigns. The
 # vocabulary is deliberately the same one figure 2 plots, so the table and the
 # figure cannot drift apart. "Positive" means the model predicted growth.
 RESULT_LABELS = {
@@ -108,9 +108,9 @@ DOCX_HEADER_PADDING = 4
 
 
 def generate_growth_phenotype_report(model: cobra.Model):
-    # Evaluate every condition with the shared scorer in tools/phenotypes.py,
-    # the same one used by test/test_growth.py and by the figure 2 pipeline in
-    # curation_process/run_tests_on_prs.py.
+    # Evaluate every condition with the shared scorer in code/tools/phenotypes.py,
+    # the same one used by code/test/test_growth.py and by the figure 2 pipeline in
+    # code/curation_process/run_tests_on_prs.py.
     #
     # This function used to carry its own copy of the simulation loop, which
     # disagreed with that scorer in three ways:
@@ -123,7 +123,7 @@ def generate_growth_phenotype_report(model: cobra.Model):
     #     had left in the primal -- the negative "growth rates" in the table;
     #   * it therefore could not distinguish an infeasible solve from a genuine
     #     prediction of no growth.
-    # See the module docstring of tools/phenotypes.py for the full rationale.
+    # See the module docstring of code/tools/phenotypes.py for the full rationale.
     growth_phenotypes = evaluate_phenotypes(model)
 
     # Re-expose the two columns under the names the heatmap below expects.

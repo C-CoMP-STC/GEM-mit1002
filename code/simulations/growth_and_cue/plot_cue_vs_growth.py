@@ -27,7 +27,7 @@ FATES_OUT_PATH.mkdir(exist_ok=True)
 # carbon fates bars, keeping trace byproducts out of the legend/palette.
 BYPRODUCT_FLUX_THRESHOLD = 1.0
 
-# Import the shared plot styles from tools/
+# Import the shared plot styles from code/tools/
 sys.path.insert(0, str(FILE_PATH.parents[1]))  # make `tools` importable
 from tools.paths import MODEL_PATH  # noqa: E402
 from tools.plot_styles import (

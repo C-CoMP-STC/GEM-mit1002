@@ -1,6 +1,6 @@
-"""Check that tools/paths.py points at folders that exist.
+"""Check that code/tools/paths.py points at folders that exist.
 
-If a folder is moved and ``tools/paths.py`` is not updated, every script
+If a folder is moved and ``code/tools/paths.py`` is not updated, every script
 fails with a confusing "file not found". These tests fail first, and say why.
 """
 

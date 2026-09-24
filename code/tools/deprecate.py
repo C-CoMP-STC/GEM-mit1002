@@ -20,12 +20,12 @@ it in -- see :func:`stamp_pr_number`.
 
 or from the command line::
 
-    python -m tools.deprecate reaction rxn00196_c0 \
+    PYTHONPATH=code python -m tools.deprecate reaction rxn00196_c0 \
         --reason no_genomic_evidence --dry-run
 
 Both entry points cascade: metabolites and genes left with no reactions after a
 removal are cleaned up too, and the orphaned metabolites are logged with
-``reason="orphaned"``. That cascade is not a nicety -- ``test/test_sbml.py``
+``reason="orphaned"``. That cascade is not a nicety -- ``code/test/test_sbml.py``
 fails on isolated metabolites and genes, so a removal that skips it breaks CI.
 
 The model is edited with libSBML rather than COBRApy so that formatting,
@@ -581,7 +581,7 @@ def stamp_pr_number(
     so ``--pr`` is optional when you deprecate something. CI closes the loop:
     the ``Custom-CI`` workflow runs this on every pull request and commits the
     result, the same way it already stamps the PR number into
-    ``scripts/results/README.md``.
+    ``code/scripts/results/README.md``.
 
     Only blank cells are filled, so re-running is safe and a row that was
     deliberately attributed to a different PR or issue is never overwritten.
@@ -608,7 +608,7 @@ def stamp_pr_number(
 
 
 # --------------------------------------------------------------------------
-# Notes mirror (shared with scripts/export_model.py)
+# Notes mirror (shared with code/scripts/export_model.py)
 # --------------------------------------------------------------------------
 
 NOTES_REACTION_KEY = "DEPRECATED_REACTIONS"
@@ -689,7 +689,7 @@ def _escape(text: str) -> str:
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="python -m tools.deprecate",
+        prog="PYTHONPATH=code python -m tools.deprecate",
         description=(
             "Remove reactions or metabolites from model/MIT1002-GEM.xml and record them in "
             "data/deprecated_identifiers/ in one step."

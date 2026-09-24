@@ -18,7 +18,7 @@ Two outputs, written from the same in-memory record so they cannot disagree:
     The narrow view the plotting script reads. A subset of the same numbers.
 
 The scoring itself is NOT implemented here. It lives in ``tools.phenotypes``
-and is shared with ``test/test_growth.py``, so the time series and the CI test
+and is shared with ``code/test/test_growth.py``, so the time series and the CI test
 cannot disagree about what a match is. They previously did, and the old inlined
 loop here got three things wrong that mattered for the figure:
 
@@ -33,7 +33,7 @@ loop here got three things wrong that mattered for the figure:
    now, but on the model's actual solution -- which is not the same thing,
    because a multi-compound condition can still grow on the compounds that
    *are* present. See the "Missing exchange reactions" section of
-   ``tools/phenotypes.py`` for the two rows where this changes the verdict.
+   ``code/tools/phenotypes.py`` for the two rows where this changes the verdict.
 
 3. Results were cached per PR with no record of how they were scored, so a
    change to the scoring rules left a file mixing old and new numbers. Hence
