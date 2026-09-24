@@ -8,10 +8,9 @@ import pandas as pd
 from adjustText import adjust_text
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
-# Add the repo root to the system path so tools/ is importable
-sys.path.append(PROJECT_ROOT)
+# Make tools/ importable (it sits next to this script's folder)
+sys.path.append(os.path.dirname(FILE_DIR))
 # Import the shared plot styles
 from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
 

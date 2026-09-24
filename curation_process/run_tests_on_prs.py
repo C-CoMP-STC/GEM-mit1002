@@ -83,10 +83,11 @@ SCORING_VERSION = 3
 
 # FILE PATHS
 FILE_PATH = os.path.dirname(os.path.abspath(__file__))
-REPO_PATH = os.path.dirname(FILE_PATH)
 
-sys.path.insert(0, str(REPO_PATH))
+# Make `tools` importable; repo locations come from tools.paths.
+sys.path.insert(0, os.path.dirname(FILE_PATH))
 
+from tools.paths import MODEL_RELPATH, REPO_ROOT  # noqa: E402
 from tools.phenotypes import (  # noqa: E402
     DEFAULT_FLUX_LIMIT,
     count_interpretable,
@@ -99,11 +100,11 @@ from tools.phenotypes import (  # noqa: E402
 SUMMARY_FILE = os.path.join(FILE_PATH, "growth_match_summary.csv")
 CONFUSION_FILE = os.path.join(FILE_PATH, "phenotype_confusion_over_time.csv")
 
-TEMP_MODEL = os.path.join(REPO_PATH, "temp_model.xml")
+TEMP_MODEL = os.path.join(REPO_ROOT, "temp_model.xml")
 
 #: Where the model file has lived, newest first. It was ``model.xml`` at the
 #: repo root until the standard-GEM rename; historical PRs still have it there.
-MODEL_PATHS = ("model/MIT1002-GEM.xml", "model.xml")
+MODEL_PATHS = (MODEL_RELPATH, "model.xml")
 
 #: Column order of the confusion-matrix file. Explicit so the file's schema is
 #: reviewable in a diff instead of following whatever order a dict happened to
