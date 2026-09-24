@@ -5,7 +5,7 @@ import warnings
 import cobra
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.dirname(os.path.dirname(FILE_DIR)))  # make `tools` importable
+sys.path.insert(0, os.path.dirname(FILE_DIR))  # make `tools` importable
 from tools.paths import MODEL_PATH  # noqa: E402
 
 OUT_DIR = os.path.join(FILE_DIR, "results")

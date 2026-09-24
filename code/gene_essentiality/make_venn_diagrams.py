@@ -1,4 +1,5 @@
 import os
+import sys
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -6,7 +7,10 @@ from matplotlib_venn import venn2, venn3
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUT_DIR = os.path.join(FILE_DIR, "results")
-MUTANT_LIB_DIR = os.path.dirname(FILE_DIR)
+sys.path.insert(0, os.path.dirname(FILE_DIR))  # make `tools` importable
+from tools.paths import DATA_DIR  # noqa: E402
+
+MUTANT_LIB_DIR = os.path.join(DATA_DIR, "mutant_library")
 
 ########################################################################
 # Venn Diagram of the gene locus tags from the genomes from the mutant

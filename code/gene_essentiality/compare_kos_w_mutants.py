@@ -1,10 +1,14 @@
 import os
+import sys
 
 import pandas as pd
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUT_DIR = os.path.join(FILE_DIR, "results")
-MUTANT_LIB_DIR = os.path.dirname(FILE_DIR)
+sys.path.insert(0, os.path.dirname(FILE_DIR))  # make `tools` importable
+from tools.paths import DATA_DIR  # noqa: E402
+
+MUTANT_LIB_DIR = os.path.join(DATA_DIR, "mutant_library")
 
 # Define the file paths for your input files
 lookup_file = os.path.join(MUTANT_LIB_DIR, "MIT1002_mutant-library-gene-lookup.csv")
