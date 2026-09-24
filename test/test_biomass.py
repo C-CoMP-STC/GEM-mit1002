@@ -3,12 +3,14 @@ import unittest
 import cobra
 from gem_utilities.biomass import calculate_biomass_weight
 
+from tools.paths import MODEL_PATH
+
 
 class TestBiomass(unittest.TestCase):
     def test_biomass_weight(self):
         """Test that the model's biomass metabolite is defined to be 1 g"""
         # Load the model
-        model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+        model = cobra.io.read_sbml_model(MODEL_PATH)
 
         # Calculate the biomass weight
         biomass_weight = calculate_biomass_weight(

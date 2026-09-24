@@ -5,9 +5,8 @@ This file exists so that tests can import repo modules, e.g.
 containing the rootdir ``conftest.py`` to ``sys.path``, which makes ``scripts``
 and ``test`` importable as packages regardless of where pytest is invoked from.
 
-The tests also read ``model/MIT1002-GEM.xml`` by relative path, so they assume the repo root
-is the working directory. That is what CI does and what ``pytest`` from the repo
-root does.
+Tests get file locations from ``tools.paths`` (e.g. ``MODEL_PATH``) rather than
+relative paths, so they do not depend on the working directory.
 """
 
 import os

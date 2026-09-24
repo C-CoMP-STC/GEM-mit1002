@@ -18,6 +18,7 @@ import unittest
 import pandas as pd
 
 from tools.markdown_tables import read_vocabulary_table
+from tools.paths import DATA_DIR, REPO_ROOT
 from tools.phenotypes import (
     EXCLUSION_COLUMN,
     EXPECTED_MISMATCHES_TSV,
@@ -29,8 +30,7 @@ from tools.phenotypes import (
     load_phenotypes,
 )
 
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_README = os.path.join(REPO_ROOT, "data", "README.md")
+DATA_README = os.path.join(DATA_DIR, "README.md")
 
 #: Heading of the table in data/README.md that defines the
 #: ``exclude_reason`` vocabulary.

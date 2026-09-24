@@ -20,13 +20,13 @@ every uptake to a flat 1000 while the report divided a fixed carbon budget by
 the carbon count, so the same condition could pass one and fail the other.
 """
 
-import os
 import unittest
 
 import cobra
 from gem_utilities import media
 
 from tools.media import MEDIA
+from tools.paths import MODEL_PATH
 from tools.phenotypes import (
     CATEGORIES,
     EXCLUSION_COLUMN,
@@ -39,8 +39,6 @@ from tools.phenotypes import (
     summarise,
 )
 
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(REPO_ROOT, "model/MIT1002-GEM.xml")
 
 #: Loaded once. Reading and parsing the SBML is far slower than solving it.
 _MODEL = None

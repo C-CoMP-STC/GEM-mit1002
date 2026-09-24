@@ -20,13 +20,13 @@ import unittest
 
 import pandas as pd
 
+from tools.paths import CODE_DIR
 from tools.phenotypes import count_interpretable, load_phenotypes
 
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFUSION_CSV = os.path.join(
-    REPO_ROOT, "curation_process", "phenotype_confusion_over_time.csv"
+    CODE_DIR, "curation_process", "phenotype_confusion_over_time.csv"
 )
-SUMMARY_CSV = os.path.join(REPO_ROOT, "curation_process", "growth_match_summary.csv")
+SUMMARY_CSV = os.path.join(CODE_DIR, "curation_process", "growth_match_summary.csv")
 
 #: Kept in sync with ``run_tests_on_prs.SCORING_VERSION`` by
 #: :meth:`TestConfusionTimeline.test_scoring_version_matches_the_script`, rather
@@ -89,7 +89,7 @@ class TestConfusionTimeline(unittest.TestCase):
     def test_scoring_version_matches_the_script(self):
         """Catch the stamp and the constant drifting apart."""
         script = os.path.join(
-            REPO_ROOT, "curation_process", "run_tests_on_prs.py"
+            CODE_DIR, "curation_process", "run_tests_on_prs.py"
         )
         with open(script, encoding="utf-8") as handle:
             source = handle.read()

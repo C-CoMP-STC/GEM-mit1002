@@ -2,11 +2,13 @@ import unittest
 
 import cobra
 
+from tools.paths import MODEL_PATH
+
 
 class TestValidSBML(unittest.TestCase):
     def test_valid_sbml(self):
         # Validate the SBML file with COBRApy
-        results = cobra.io.validate_sbml_model("model/MIT1002-GEM.xml")
+        results = cobra.io.validate_sbml_model(MODEL_PATH)
 
         # Check that the SBML file is valid
         # By checking that there are no errors in the 'SBML_ERROR' key
@@ -18,7 +20,7 @@ class TestValidSBML(unittest.TestCase):
 
     def test_isolated_genes_and_mets(self):
         # Load the model
-        model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+        model = cobra.io.read_sbml_model(MODEL_PATH)
 
         # Check for isolated genes
         isolated_genes = [g.id for g in model.genes if len(g.reactions) == 0]
@@ -38,7 +40,7 @@ class TestValidSBML(unittest.TestCase):
 
     def test_mass_balance(self):
         # Load the model
-        model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+        model = cobra.io.read_sbml_model(MODEL_PATH)
 
         # Check for mass balance in each reaction
         results = cobra.manipulation.check_mass_balance(model)

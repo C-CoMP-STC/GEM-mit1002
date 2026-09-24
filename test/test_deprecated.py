@@ -32,10 +32,10 @@ from tools.deprecate import (
     strip_sbml_prefix,
 )
 from tools.markdown_tables import read_vocabulary_table
+from tools.paths import DATA_DIR, REPO_ROOT
 
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEPRECATED_README = os.path.join(
-    REPO_ROOT, "data", "deprecated_identifiers", "README.md"
+    DATA_DIR, "deprecated_identifiers", "README.md"
 )
 
 #: Heading of the table in that README that defines the ``reason``
