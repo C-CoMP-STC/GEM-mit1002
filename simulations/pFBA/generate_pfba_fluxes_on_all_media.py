@@ -26,7 +26,7 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 media_definitions = MEDIA
 
 # Load the model
-model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
+model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))
 
 # Load the TSV of the growth phenotypes
 growth_phenotypes = pd.read_csv(

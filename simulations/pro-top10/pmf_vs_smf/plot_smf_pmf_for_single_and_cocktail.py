@@ -19,7 +19,7 @@ REPO_ROOT = FILE_PATH.parents[2]
 OUT_PATH.mkdir(exist_ok=True)
 
 # Load the model
-MODEL = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+MODEL = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
 
 # Load the results from the simulations from the single + cocktail simulations
 # Read the "fluxes" column as a dictionary

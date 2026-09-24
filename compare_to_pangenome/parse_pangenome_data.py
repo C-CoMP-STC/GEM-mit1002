@@ -35,7 +35,7 @@ modelseed_rxns_all = pd.read_csv(
     'reversibility' : 'rev_dir',
     'ec_numbers' : 'ecs_modelseed'
 })
-model = cobra.io.load_json_model('../model.json')
+model = cobra.io.load_json_model('../model/MIT1002-GEM.json')
 
 # start by mapping the arbitrary largely meaningless "Gene.Call.ID"s to
 # NCBI protein accessions and dropping everything that didn't have a

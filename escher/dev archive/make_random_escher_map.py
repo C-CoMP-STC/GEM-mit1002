@@ -25,7 +25,7 @@ map_file.append({"canvas": {
         "text_labels": {}})
 
 # Load the ALT model
-with open('model.json') as f:
+with open('model/MIT1002-GEM.json') as f:
     model = json.load(f)
 
 # Start a node counter

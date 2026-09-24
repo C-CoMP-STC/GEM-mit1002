@@ -20,7 +20,7 @@ OUT_PATH.mkdir(exist_ok=True)
 
 # Load the model
 # So I can get metabolite names from reaction IDs
-model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
 
 # Load the results from the simulations from the single + cocktail simulations
 # Read the "fluxes" column as a dictionary

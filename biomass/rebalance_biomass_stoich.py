@@ -6,7 +6,7 @@ from gem_utilities.biomass import calculate_biomass_weight
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
 # Run the biomass weight calculation on the model
-model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
+model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))
 weight = calculate_biomass_weight(
     model,
     mets_to_ignore=["cpd11416_c0"],
@@ -33,4 +33,4 @@ if weight != 1.000:
     )
 
 # Save the updated model
-cobra.io.write_sbml_model(model, os.path.join(PROJECT_ROOT, "model.xml"))
+cobra.io.write_sbml_model(model, os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))

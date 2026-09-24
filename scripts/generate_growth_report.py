@@ -522,7 +522,7 @@ if __name__ == "__main__":
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
     # Load the model
-    model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
+    model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))
 
     # Generate the reports
     generate_growth_phenotype_report(model)

@@ -369,7 +369,7 @@ class TestNotesMirror(unittest.TestCase):
             self.model.notes,
             msg=(
                 "the model notes should point at the full table, so someone with "
-                "only model.xml can find the reasons. Run "
+                "only model/MIT1002-GEM.xml can find the reasons. Run "
                 "`python -m tools.deprecate sync-notes`."
             ),
         )

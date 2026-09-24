@@ -8,7 +8,7 @@ to FBA exchange bounds and runs pFBA.
 
 Ten of the twelve measured metabolites lack extracellular forms in iHS4156.
 This script adds exchange + uptake transport reactions for those ten in-memory
-only — model.xml is never modified. All new transport reactions are
+only — model/MIT1002-GEM.xml is never modified. All new transport reactions are
 irreversible (uptake-only): cpd_e0 --> cpd_c0.
 
 Flux bound formula:
@@ -55,7 +55,7 @@ SOLVER_TIMEOUT_S = 30
 # ── Paths ───────────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR = Path(__file__).parent
-MODEL_FILE = SCRIPT_DIR / "../../model.xml"
+MODEL_FILE = SCRIPT_DIR / "../../model/MIT1002-GEM.xml"
 RATES_FILE = SCRIPT_DIR / "results/ProDiel_per_pro_cell_rates.csv"
 MAP_FILE = SCRIPT_DIR / "metabolite_id_map.csv"
 OUT_DIR = SCRIPT_DIR / "results"
@@ -186,7 +186,7 @@ def main() -> None:
 # Helper functions
 def add_transport_reactions(model: cobra.Model) -> list[str]:
     """Add exchange + uptake transport reactions for metabolites absent from
-    the extracellular space. Modifies the model in-place; model.xml is unchanged.
+    the extracellular space. Modifies the model in-place; model/MIT1002-GEM.xml is unchanged.
 
     For each cpd in MISSING_TRANSPORTS:
       - Creates cpd_e0 metabolite (formula/charge copied from cytosolic form)

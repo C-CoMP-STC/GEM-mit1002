@@ -33,7 +33,7 @@ SUMMARY_CSV = os.path.join(REPO_ROOT, "curation_process", "growth_match_summary.
 #: than imported, so that this file does not need cobra installed.
 EXPECTED_SCORING_VERSION = 3
 
-#: PRs whose ``model.xml`` cannot be read by cobra, so they are recorded as
+#: PRs whose model file cannot be read by cobra, so they are recorded as
 #: ERROR on every run. These are real gaps in the history, not failed
 #: downloads, and re-running the script will not fill them. Each entry says why,
 #: so that the gap in figure 2B can be explained.

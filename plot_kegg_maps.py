@@ -10,7 +10,7 @@ OUT_DIR = os.path.join(FILE_DIR, 'kegg_maps')
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # Load the model
-model = cobra.io.read_sbml_model(os.path.join(FILE_DIR, 'model.xml'))
+model = cobra.io.read_sbml_model(os.path.join(FILE_DIR, 'model/MIT1002-GEM.xml'))
 
 # Extract the KO IDs from the model
 ko_ids = set()

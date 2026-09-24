@@ -26,7 +26,7 @@ media_definitions = MEDIA
 minimal_media = media_definitions["minimal"]
 
 # Load the model with cobrapy
-model_orig = cobra.io.read_sbml_model(REPO_DIR / "model.xml")
+model_orig = cobra.io.read_sbml_model(REPO_DIR / "model/MIT1002-GEM.xml")
 c_ex_rxns = utils.get_c_ex_rxns(model_orig)
 
 # Load the top 10 metabolite file

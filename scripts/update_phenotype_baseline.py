@@ -34,7 +34,7 @@ from tools.phenotypes import (  # noqa: E402
     write_expected_mismatches,
 )
 
-MODEL_PATH = os.path.join(PROJECT_ROOT, "model.xml")
+MODEL_PATH = os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml")
 
 
 def main(argv=None):

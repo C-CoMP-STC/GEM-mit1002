@@ -134,7 +134,7 @@ requires it.
 
 ## How to remove something from the model
 
-Do not hand-edit these files and do not hand-edit `model.xml` to delete an
+Do not hand-edit these files and do not hand-edit `model/MIT1002-GEM.xml` to delete an
 entity. Use the helper, which does both halves in one step:
 
 ```python
@@ -164,7 +164,7 @@ alone:
 deprecate_reactions(["rxn08703_c0"], reason="no_genomic_evidence", pr="#316")
 ```
 
-The helper removes the reaction from `model.xml`, appends a row here, and
+The helper removes the reaction from `model/MIT1002-GEM.xml`, appends a row here, and
 cascades to any metabolite or gene that the removal orphaned — logging the
 orphaned metabolites with `reason="orphaned"` and an empty `replaced_by`, since
 the model genuinely no longer represents them. This matters because
@@ -179,7 +179,7 @@ python -m tools.deprecate --help
 
 ## Why the model file also carries this information
 
-A separate TSV has one real weakness: someone who downloads only `model.xml`
+A separate TSV has one real weakness: someone who downloads only `model/MIT1002-GEM.xml`
 loses it. So `scripts/export_model.py` mirrors the identifier lists into the
 SBML model's `<notes>` element, as:
 

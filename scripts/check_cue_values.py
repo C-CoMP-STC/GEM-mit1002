@@ -26,7 +26,7 @@ if not os.path.exists(OUT_DIR):
 # ============================================================================
 
 # Load in the ALT model using COBRApy
-alt_cobra = cobra.io.read_sbml_model("model.xml")
+alt_cobra = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
 
 # Base minimal media (no carbon source, no O2 — added per condition below)
 BASE_MEDIUM = {

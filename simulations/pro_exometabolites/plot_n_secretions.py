@@ -25,7 +25,7 @@ RESULTS_DIR = SCRIPT_DIR / "results"
 FIG_DIR = SCRIPT_DIR / "figs"
 FIG_DIR.mkdir(exist_ok=True)
 
-MODEL_FILE = SCRIPT_DIR / "../../model.xml"
+MODEL_FILE = SCRIPT_DIR / "../../model/MIT1002-GEM.xml"
 FLUX_FILE = RESULTS_DIR / "fluxes_long.csv"
 
 DARK_PERIODS = [(10, 22), (34, 46)]

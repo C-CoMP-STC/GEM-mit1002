@@ -56,7 +56,7 @@ except ImportError as exc:  # pragma: no cover
 # --------------------------------------------------------------------------
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(REPO_ROOT, "model.xml")
+MODEL_PATH = os.path.join(REPO_ROOT, "model/MIT1002-GEM.xml")
 DEPRECATED_DIR = os.path.join(REPO_ROOT, "data", "deprecated_identifiers")
 REACTIONS_TSV = os.path.join(DEPRECATED_DIR, "deprecated_reactions.tsv")
 METABOLITES_TSV = os.path.join(DEPRECATED_DIR, "deprecated_metabolites.tsv")
@@ -689,7 +689,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="python -m tools.deprecate",
         description=(
-            "Remove reactions or metabolites from model.xml and record them in "
+            "Remove reactions or metabolites from model/MIT1002-GEM.xml and record them in "
             "data/deprecated_identifiers/ in one step."
         ),
     )

@@ -535,7 +535,7 @@ def plot_loadings(
 
 def main():
     print("Loading model...")
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
 
     print("Loading media definitions...")
     media_defs = MEDIA

@@ -15,7 +15,7 @@ from tools.media import MEDIA  # noqa: E402
 media_definitions = MEDIA
 
 # Load the model
-model = cobra.io.read_sbml_model(os.path.join(REPO_DIR, "model.xml"))
+model = cobra.io.read_sbml_model(os.path.join(REPO_DIR, "model/MIT1002-GEM.xml"))
 
 ####################################
 # Glucose as sole carbon source

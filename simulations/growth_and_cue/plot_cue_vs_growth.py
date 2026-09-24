@@ -22,7 +22,7 @@ OUT_PATH = FILE_PATH / "figures"
 OUT_PATH.mkdir(exist_ok=True)
 FATES_OUT_PATH = OUT_PATH / "carbon_fates"
 FATES_OUT_PATH.mkdir(exist_ok=True)
-MODEL_PATH = REPO_ROOT / "model.xml"
+MODEL_PATH = REPO_ROOT / "model/MIT1002-GEM.xml"
 
 # Organic byproducts whose max carbon flux (mmol C/gDW/h) across the *whole*
 # dataset is below this are lumped into a single grey "Other" segment in the

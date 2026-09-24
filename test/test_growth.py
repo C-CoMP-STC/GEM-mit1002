@@ -40,7 +40,7 @@ from tools.phenotypes import (
 )
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(REPO_ROOT, "model.xml")
+MODEL_PATH = os.path.join(REPO_ROOT, "model/MIT1002-GEM.xml")
 
 #: Loaded once. Reading and parsing the SBML is far slower than solving it.
 _MODEL = None

@@ -110,7 +110,7 @@ def short_label(rxn_id: str, model: cobra.Model) -> str:
 
 
 def build_model() -> cobra.Model:
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
     rxn = cobra.Reaction(FLAGELLA_RXN)
     rxn.name = "Flagella Na+ import (SMF dissipation)"
     rxn.add_metabolites({

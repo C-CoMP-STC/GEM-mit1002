@@ -53,7 +53,7 @@ O2_LEVELS = [20, 1000]
 
 def main():
     # Load the model and set the minimal glucose medium
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
     media_definitions = MEDIA
     model.medium = media_definitions["minimal_glucose"]
 

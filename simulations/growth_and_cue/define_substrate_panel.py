@@ -79,7 +79,7 @@ TOTAL_UPTAKE = 60  # mmol C / gDW / hr
 
 def main():
     # Load the model
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
 
     # Load the media definitions
     media_defs = MEDIA

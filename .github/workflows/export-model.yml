@@ -38,7 +38,7 @@ jobs:
         with:
           commit_user_name: action-bot
           commit_message: "chore: export to other formats"
-          file_pattern: model*
+          file_pattern: model/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.number }}

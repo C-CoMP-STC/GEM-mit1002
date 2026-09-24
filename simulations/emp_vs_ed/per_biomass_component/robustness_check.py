@@ -75,7 +75,7 @@ TOL = 1e-6        # treat |flux| below this as zero
 
 
 def build_model():
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
     model.medium = MEDIUM
     # Add sink reactions (lb=0) for every metabolite, as in the notebook
     existing = {r.id for r in model.reactions}

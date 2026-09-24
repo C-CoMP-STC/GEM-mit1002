@@ -63,7 +63,7 @@ all_met_info = pd.read_csv(
     'modelseed_metabolites_all.tsv', sep = '\t', low_memory = False
 )
 all_gene_info = pd.read_csv('pangenome_gene_info.csv')
-model = cobra.io.load_json_model('../model.json')
+model = cobra.io.load_json_model('../model/MIT1002-GEM.json')
 
 rxns_to_make = all_rxns[all_rxns['manual_curation'] == 'pass']
 # adding each reaction object as we create it is slower than making them all
@@ -133,4 +133,4 @@ print('\nreaction ID | equation | GPR\n---|---|---')
 for r in rxns_to_add:
     print(f'{r.id} | {r.build_reaction_string(True)} | {r.gene_name_reaction_rule} ({r.gene_reaction_rule})')
 
-cobra.io.save_json_model(model, '../model.json')
+cobra.io.save_json_model(model, '../model/MIT1002-GEM.json')

@@ -12,7 +12,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 def main():
     """Loads model, performs gene deletions, and saves results."""
     # Load the model
-    model = cobra.io.read_sbml_model(os.path.join(REPO_DIR, "model.xml"))
+    model = cobra.io.read_sbml_model(os.path.join(REPO_DIR, "model/MIT1002-GEM.xml"))
 
     # Set the model's media (e.g., minimal media)
     glc_medium = {

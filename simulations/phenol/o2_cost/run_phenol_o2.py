@@ -68,7 +68,7 @@ def build_medium(model, base, exchange_id, uptake, o2):
 
 
 def main():
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
     media_defs = MEDIA
     base = media_defs["minimal"]  # minimal medium, no carbon source
 

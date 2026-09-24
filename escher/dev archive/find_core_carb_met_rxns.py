@@ -2,7 +2,7 @@ import cobra
 import json
 
 # Load the model
-model = cobra.io.read_sbml_model('model.xml')
+model = cobra.io.read_sbml_model('model/MIT1002-GEM.xml')
 
 # Load the map json file
 with open('iJO1366.Central metabolism.json') as f:

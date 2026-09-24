@@ -17,7 +17,7 @@ from macaw.main import run_all_tests
 # import py4cytoscape as p4c
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(REPO_ROOT, "model.xml")
+MODEL_PATH = os.path.join(REPO_ROOT, "model/MIT1002-GEM.xml")
 RESULTS_DIR = os.path.join(REPO_ROOT, "scripts", "results")
 
 

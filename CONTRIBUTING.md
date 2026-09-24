@@ -36,6 +36,6 @@ working on your branch. CI fills it in on every pull request and commits the
 result, the same way it stamps the PR number into `scripts/results/README.md`.
 
 The identifier lists are also mirrored into the SBML model's `<notes>`, so a
-person who downloads only `model.xml` can still tell that those identifiers were
+person who downloads only `model/MIT1002-GEM.xml` can still tell that those identifiers were
 deliberately removed and where to find the reasons. `test/test_deprecated.py`
 fails if the model and the lists disagree.

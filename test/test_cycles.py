@@ -8,7 +8,7 @@ class TestCycles(unittest.TestCase):
     # Check that there are no ATP generating cycles
     def test_atp_generating_cycles(self):
         # Load the model
-        model = cobra.io.read_sbml_model("model.xml")
+        model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
 
         # Set the metabolite to ATP
         met = "MNXM3"  # ATP

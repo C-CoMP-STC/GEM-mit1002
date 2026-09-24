@@ -383,7 +383,7 @@ def main() -> None:
     flux_df = pd.read_csv(flux_file) if flux_file.exists() else pd.DataFrame()
 
     # Load the model
-    model = cobra.io.read_sbml_model(REPO_DIR / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_DIR / "model/MIT1002-GEM.xml")
 
     cell_density = load_cell_density()
 

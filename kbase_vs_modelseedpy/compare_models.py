@@ -3,7 +3,7 @@ import pandas as pd
 
 # Load the two models
 modelseedpy_model = cobra.io.read_sbml_model("modelseedpy_model.xml")
-kbase_model = cobra.io.read_sbml_model("model.xml")
+kbase_model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
 
 # Make a set of the reactions IDs for any reaction that is in either model
 modelseedpy_reactions = set([reaction.id for reaction in modelseedpy_model.reactions])

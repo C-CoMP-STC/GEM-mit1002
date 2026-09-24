@@ -99,7 +99,7 @@ def run_cafba(
 
 # --- Running the Carbon Limitation Simulation ---
 # Load the model
-model = cobra.io.read_sbml_model("../../model.xml")
+model = cobra.io.read_sbml_model("../../model/MIT1002-GEM.xml")
 
 # Make rxn09295_c0 reversible
 model.reactions.rxn09295_c0.lower_bound = -1000

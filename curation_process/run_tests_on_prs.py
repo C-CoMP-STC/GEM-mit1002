@@ -2,8 +2,9 @@
 
 This is what figure 2B of the manuscript plots: how the model's agreement with
 the known growth phenotypes moved as curation proceeded. For each merged PR
-that touched ``model.xml``, the model at that PR is fetched from GitHub,
-scored, and one row is written per PR.
+that touched the model file (``model/MIT1002-GEM.xml``, formerly
+``model.xml``), the model at that PR is fetched from GitHub, scored, and one
+row is written per PR.
 
 Two outputs, written from the same in-memory record so they cannot disagree:
 
@@ -99,6 +100,10 @@ SUMMARY_FILE = os.path.join(FILE_PATH, "growth_match_summary.csv")
 CONFUSION_FILE = os.path.join(FILE_PATH, "phenotype_confusion_over_time.csv")
 
 TEMP_MODEL = os.path.join(REPO_PATH, "temp_model.xml")
+
+#: Where the model file has lived, newest first. It was ``model.xml`` at the
+#: repo root until the standard-GEM rename; historical PRs still have it there.
+MODEL_PATHS = ("model/MIT1002-GEM.xml", "model.xml")
 
 #: Column order of the confusion-matrix file. Explicit so the file's schema is
 #: reviewable in a diff instead of following whatever order a dict happened to
@@ -342,26 +347,34 @@ def run_tests_on_prs(
 
 
 def fetch_model_at_pr(pr_number: int) -> None:
-    """Download ``model.xml`` as of ``pr_number`` into ``temp_model.xml``.
+    """Download the model as of ``pr_number`` into ``temp_model.xml``.
+
+    The model file was renamed from ``model.xml`` to ``model/MIT1002-GEM.xml``
+    for standard-GEM compliance, so older PRs only have it at the legacy path.
+    Each path in :data:`MODEL_PATHS` is tried in turn.
 
     ``subprocess.run`` is checked here. It was not, so a failed download left
     the *previous* PR's model on disk and the run silently scored the same
     model twice.
     """
-    with open(TEMP_MODEL, "w") as handle:
-        subprocess.run(
-            [
-                "gh",
-                "api",
-                f"repos/:owner/:repo/contents/model.xml?ref=pull/{pr_number}/head",
-                "-H",
-                "Accept: application/vnd.github.v3.raw",
-            ],
-            stdout=handle,
-            check=True,
-        )
-    if os.path.getsize(TEMP_MODEL) == 0:
-        raise RuntimeError(f"downloaded model.xml for PR #{pr_number} is empty")
+    for model_path in MODEL_PATHS:
+        with open(TEMP_MODEL, "w") as handle:
+            result = subprocess.run(
+                [
+                    "gh",
+                    "api",
+                    f"repos/:owner/:repo/contents/{model_path}?ref=pull/{pr_number}/head",
+                    "-H",
+                    "Accept: application/vnd.github.v3.raw",
+                ],
+                stdout=handle,
+            )
+        if result.returncode == 0 and os.path.getsize(TEMP_MODEL) > 0:
+            return
+    raise RuntimeError(
+        f"could not download a non-empty model for PR #{pr_number} "
+        f"from any of {MODEL_PATHS}"
+    )
 
 
 #: Columns that hold counts. Written as integers rather than letting pandas
@@ -469,8 +482,8 @@ def is_model_changed_in_pr(pr_number):
         )
         return False
     changed_files = output.splitlines()
-    # Check if 'model.xml' is in the list of changed files
-    return "model.xml" in changed_files
+    # Check if the model file (at its current or legacy path) was changed
+    return any(path in changed_files for path in MODEL_PATHS)
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 RESULTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "results")
 
 # Load the model
-model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
+model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))
 
 # Save the biomass composition table
 save_biomass_composition_work_table(

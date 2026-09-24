@@ -155,7 +155,7 @@ def infeasible_row(substrate_name: str, dissipation_lb: float) -> dict:
 # Load model and media
 # ---------------------------------------------------------------------------
 print("Loading model...")
-model_base = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+model_base = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
 add_flagella_reaction(model_base)
 
 media_defs = MEDIA

@@ -11,7 +11,7 @@ filtered_data = pd.read_csv(FILE_DIR / "ProDiel_filtered_meanByTimepoint.csv")
 # Load my mapping of met IDs to names
 met_mapping = pd.read_csv(FILE_DIR.parent / "metabolite_id_map.csv")
 # Load the model
-model = cobra.io.read_sbml_model(REPO_DIR / "model.xml")
+model = cobra.io.read_sbml_model(REPO_DIR / "model/MIT1002-GEM.xml")
 
 # Make a new df, with the column "name" being all of the unique names in the filtered data
 met_info_table = pd.DataFrame()

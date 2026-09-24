@@ -3,7 +3,7 @@ import cobra
 import pickle
 
 # Load in the ALT model using COBRApy
-alt_cobra = cobra.io.read_sbml_model("model.xml")
+alt_cobra = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
 
 ########################################################################
 # Glucose Only

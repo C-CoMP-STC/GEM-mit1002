@@ -53,7 +53,7 @@ def main():
     )
 
     # Load the model
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
 
     # Get the carbon exchange reactions
     c_ex_rxns = utils.get_c_ex_rxns(model)

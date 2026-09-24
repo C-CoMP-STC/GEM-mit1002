@@ -38,9 +38,9 @@ def add_all_mnx_ids(model, source):
 
 # Load my model files and add the annotation if the MetaNetX ID is currently
 # missing
-model = cobra.io.read_sbml_model("model.xml")
+model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
 model = add_all_mnx_ids(model, 'seed.reaction')
-cobra.io.write_sbml_model(model, "model.xml")
+cobra.io.write_sbml_model(model, "model/MIT1002-GEM.xml")
 
 # Do the same for the ModelSEEDpy model
 modelseedpy_model = cobra.io.read_sbml_model("modelseedpy_model.xml")

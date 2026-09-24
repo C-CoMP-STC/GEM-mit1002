@@ -40,7 +40,7 @@ def search_dict(dictionary, search):
 db = pd.read_csv('Pangenome from Michelle/Database_MIT1002GeneCalls.csv')
 
 # Load in my KBase model
-model = cobra.io.read_sbml_model("model.xml")
+model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
 
 # Read in the MetaNetX reactions xref spreadsheet
 mnx_xref = pd.read_csv('reac_xref.tsv', sep='\t', comment='#', header=None)

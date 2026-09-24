@@ -7,7 +7,7 @@ known growth phenotypes moved over the course of curation.
 
 | File | What it is |
 | --- | --- |
-| `run_tests_on_prs.py` | Fetches `model.xml` as of each merged PR and scores it. Writes the two CSVs below. |
+| `run_tests_on_prs.py` | Fetches `model/MIT1002-GEM.xml` as of each merged PR and scores it. Writes the two CSVs below. |
 | `phenotype_confusion_over_time.csv` | **Source of truth.** One row per PR: the confusion matrix, every unscored category, sensitivity, specificity, model size. |
 | `growth_match_summary.csv` | Narrow view of the same numbers, read by the plotting script. |
 | `plot_match_over_time.py` | Draws figure 2B from `growth_match_summary.csv`. |

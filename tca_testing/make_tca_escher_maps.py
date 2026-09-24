@@ -45,7 +45,7 @@ def main():
     os.makedirs(PNG_DIR, exist_ok=True) # Added for PNG output
 
     # Load models and define map paths
-    amac_model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model.xml"))
+    amac_model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))
     ecoli_model = cobra.io.read_sbml_model(
         os.path.join(E_COLI_MODEL_PATH, "iJO1366.xml")
     )

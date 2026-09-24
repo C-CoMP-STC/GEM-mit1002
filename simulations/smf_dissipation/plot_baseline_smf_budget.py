@@ -250,7 +250,7 @@ def plot_budget(ax, df, title, ylabel):
 
 
 def main():
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
     minimal_media = MEDIA["minimal"]
 
     print(

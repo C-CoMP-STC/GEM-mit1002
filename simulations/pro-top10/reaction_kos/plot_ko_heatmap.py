@@ -68,7 +68,7 @@ PATHWAY_ORDER = [
 ]
 
 # Load the model
-MODEL = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+MODEL = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
 
 
 def build_label(rxn_id, model):

@@ -101,7 +101,7 @@ def add_nadph_drain(model):
 
 def main():
     # Load the model and add the NADPH drain reaction
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model.xml")
+    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
     add_nadph_drain(model)
 
     # Load the media definitions
