@@ -56,5 +56,4 @@ MODEL_RELPATH = MODEL_PATH.relative_to(REPO_ROOT).as_posix()
 DATA_DIR = REPO_ROOT / "data"
 
 #: Genome sequences, gene calls and functional annotations of MIT1002.
-#: Moves to ``DATA_DIR / "genome"`` in the standard-GEM reorganisation.
-GENOME_DIR = REPO_ROOT / "genome"
+GENOME_DIR = DATA_DIR / "genome"
