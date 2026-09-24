@@ -33,13 +33,35 @@ SUMMARY_CSV = os.path.join(REPO_ROOT, "curation_process", "growth_match_summary.
 #: than imported, so that this file does not need cobra installed.
 EXPECTED_SCORING_VERSION = 3
 
+#: PRs whose ``model.xml`` cannot be read by cobra, so they are recorded as
+#: ERROR on every run. These are real gaps in the history, not failed
+#: downloads, and re-running the script will not fill them. Each entry says why,
+#: so that the gap in figure 2B can be explained.
+#:
+#: 285-289: commit 3a146b7 (in #285) added the 1,2-ethanediol transporter and
+#: EX_cpd00992_e0 but not the species M_cpd00992_e0, so reading the SBML fails
+#: with KeyError 'cpd00992_e0'. #286, #288 and #289 branched from dev after #285
+#: and inherited it. Fixed by e65558b in #290.
+KNOWN_INVALID_MODELS = {
+    285: "M_cpd00992_e0 referenced but not defined; fixed in #290",
+    286: "M_cpd00992_e0 referenced but not defined (inherited from #285); fixed in #290",
+    288: "M_cpd00992_e0 referenced but not defined (inherited from #285); fixed in #290",
+    289: "M_cpd00992_e0 referenced but not defined (inherited from #285); fixed in #290",
+}
+
 
 def _load(path):
     table = pd.read_csv(path)
     # Rows whose evaluation failed are recorded as ERROR on purpose; they carry
     # no counts to check, and dropping them here is not hiding anything because
     # test_no_errored_rows reports them separately.
-    return table[table["Matches"].astype(str) != "ERROR"].copy()
+    table = table[table["Matches"].astype(str) != "ERROR"].copy()
+    # A single ERROR row makes pandas read every column after it as strings,
+    # and filtering the row out does not change the dtype back. Without this,
+    # the arithmetic below concatenates ("19" + "33") instead of adding.
+    numeric = table.columns.difference(["Date Opened", "Date Merged"])
+    table[numeric] = table[numeric].apply(pd.to_numeric)
+    return table
 
 
 @unittest.skipUnless(
@@ -176,14 +198,45 @@ class TestConfusionTimeline(unittest.TestCase):
 
         Not fatal to the analysis, but it should be visible rather than sitting
         in the file unnoticed -- re-running the script retries them.
+
+        PRs in :data:`KNOWN_INVALID_MODELS` are allowed: their models cannot be
+        read, so ERROR is the correct record for them.
         """
         errored = self.raw.loc[
             self.raw["Matches"].astype(str) == "ERROR", "PR Number"
         ].tolist()
+        unexplained = [pr for pr in errored if pr not in KNOWN_INVALID_MODELS]
         self.assertFalse(
-            errored,
-            f"PR(s) {errored} failed to evaluate and are missing from the "
-            f"series; re-run curation_process/run_tests_on_prs.py",
+            unexplained,
+            f"PR(s) {unexplained} failed to evaluate and are missing from the "
+            f"series; re-run curation_process/run_tests_on_prs.py. If the "
+            f"model at that PR cannot be read, add it to KNOWN_INVALID_MODELS "
+            f"with the reason.",
+        )
+
+    def test_known_invalid_models_are_still_errored(self):
+        """Keep KNOWN_INVALID_MODELS from going stale.
+
+        If one of these PRs now has scores, either the model became readable
+        (e.g. a cobra update) or the history was rewritten. Either way the
+        entry no longer describes the file and should be removed.
+        """
+        rows = self.raw.set_index("PR Number")
+        missing = [pr for pr in KNOWN_INVALID_MODELS if pr not in rows.index]
+        self.assertFalse(
+            missing,
+            f"KNOWN_INVALID_MODELS lists PR(s) {missing} that are not in the "
+            f"time series at all",
+        )
+        scored = [
+            pr
+            for pr in KNOWN_INVALID_MODELS
+            if str(rows.loc[pr, "Matches"]) != "ERROR"
+        ]
+        self.assertFalse(
+            scored,
+            f"PR(s) {scored} are listed in KNOWN_INVALID_MODELS but now have "
+            f"scores; remove them from the list",
         )
 
     def test_summary_view_agrees_with_the_full_record(self):
