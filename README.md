@@ -1,5 +1,5 @@
-[![Version](https://img.shields.io/github/v/release/C-CoMP-STC/GEM-mit1002?sort=semver&label=version)](https://github.com/C-CoMP-STC/GEM-mit1002/releases/latest)
-[![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://hgscott.github.io/mit1002-model)
+[![Version](https://img.shields.io/github/v/release/C-CoMP-STC/MIT1002-GEM?sort=semver&label=version)](https://github.com/C-CoMP-STC/MIT1002-GEM/releases/latest)
+[![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://c-comp-stc.github.io/MIT1002-GEM/)
 
 # MIT1002-GEM: A manually curated metabolic model for *Alteromonas macleodii* MIT1002
 
