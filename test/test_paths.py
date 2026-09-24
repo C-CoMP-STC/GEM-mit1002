@@ -28,6 +28,7 @@ class TestPaths(unittest.TestCase):
     def test_model_and_data_exist(self):
         self.assertTrue(paths.MODEL_PATH.is_file(), f"missing {paths.MODEL_PATH}")
         self.assertTrue(paths.DATA_DIR.is_dir(), f"missing {paths.DATA_DIR}")
+        self.assertTrue(paths.GENOME_DIR.is_dir(), f"missing {paths.GENOME_DIR}")
 
     def test_model_relpath(self):
         self.assertEqual(paths.MODEL_RELPATH, "model/MIT1002-GEM.xml")
