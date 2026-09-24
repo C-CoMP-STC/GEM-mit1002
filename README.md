@@ -46,15 +46,20 @@ Examples of the third kind:
 * `code/tools/plot_styles.py` — shared colour palettes and figure styling, imported by
   every plotting script so figures stay consistent
 
-Two other directories hold code that is neither of these: `code/curation_process/`
-analyses the history of the curation effort itself across past PRs, and
-`code/biomass/`, `data/genome/`, `code/escher/` and similar hold the exploratory work behind
-particular parts of the model.
+The rest of `code/` is curation and analysis work, one folder per piece of work,
+each kept together with its own inputs and results:
+`code/curation_process/` (the curation history across past PRs),
+`code/simulations/`, `code/biomass/`, `code/blast/`, `code/escher/`,
+`code/gene_essentiality/`, `code/kegg_maps/` and `code/pangenome/`.
+`data/` holds only external inputs -- things received or downloaded, sometimes
+with the small script that fetched or cleaned them.
 
-Note that [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM), which
-yeast-GEM and Human-GEM follow, asks for a single `code/` directory instead. The
-split above is a deliberate refinement of that; `code/` is also a poor Python
-package name because it shadows a standard-library module.
+The layout follows [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM).
+`code/` is a plain folder, not a Python package, because a package named `code`
+would shadow a standard-library module. `pytest.ini` puts `code/` on the path for
+the tests and each script adds it itself, so imports stay `from tools.paths
+import MODEL_PATH`. Repo locations are defined once, in `code/tools/paths.py`.
+The deprecate CLI is run as `PYTHONPATH=code python -m tools.deprecate`.
 
 ## Setting Up the Environment
 To ensure a smooth setup and avoid system conflicts, follow these steps to create and activate a Python virtual environment before installing dependencies.
