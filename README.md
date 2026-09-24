@@ -126,3 +126,18 @@ python --version  # Should be 3.11 or 3.10
 pip list  # Should show installed dependencies
 ```
 If everything looks good, you're ready to start using the project! 🎉
+
+## License
+
+- **Model and data** (`model/`, `data/` and everything else not listed below):
+  [CC BY 4.0](LICENSE.md).
+- **Code** (`code/`): [MIT](code/LICENSE).
+
+Files obtained from other sources keep their original terms, including:
+
+- the Source Sans 3 fonts in `code/tools/fonts/` (SIL Open Font License; see
+  [`code/tools/fonts/LICENSE.md`](code/tools/fonts/LICENSE.md))
+- the published media recipes and protocols in `data/media_sources/`
+- the supplementary data of Xavier et al. (2017) in `code/biomass/`
+- MetaNetX cross-references in the model annotations (CC BY 4.0,
+  [MetaNetX](https://www.metanetx.org))
