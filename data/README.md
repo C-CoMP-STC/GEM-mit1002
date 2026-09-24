@@ -11,6 +11,9 @@ which asks that it carry a README describing how it is organised.
 | `known_growth_phenotypes.tsv` | Experimentally observed growth or no-growth for a carbon source in a given medium, with a literature or lab reference. The basis of `code/test/test_growth.py` and the growth report. |
 | `media_sources/` | Primary documents for the growth media — published recipes and lab protocols. Provenance for the definitions in `code/tools/media.py`. |
 | `deprecated_identifiers/` | Reactions and metabolites removed from the model, and why. See the README there. |
+| `genome/` | MIT1002 genome sequences, the four sets of gene calls (RefSeq, RAST via KBase, Michelle's 4106 and Zac's 4116) and eggNOG annotations, with the scripts that produced or cleaned them. The model uses the RefSeq (`WP_`) protein IDs. |
+| `mutant_library/` | Mutant library tables from the Moran lab, compared against model gene essentiality in `code/gene_essentiality/`. See the README there. |
+| `pangenome/` | Provenance for the *Alteromonas* pangenome files used by `code/pangenome/`. The files themselves are not in git. See the README there. |
 
 ## `known_growth_phenotypes.tsv`
 
