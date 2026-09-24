@@ -18,12 +18,16 @@ Alteromonas dry weight: 280 fg = 2.8e-13 g (https://bionumbers.hms.harvard.edu/b
 """
 
 import warnings
+import sys
 from pathlib import Path
 
 import cobra
 import cobra.flux_analysis
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 # ── Parameters ─────────────────────────────────────────────────────────────────
 
@@ -55,7 +59,7 @@ SOLVER_TIMEOUT_S = 30
 # ── Paths ───────────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR = Path(__file__).parent
-MODEL_FILE = SCRIPT_DIR / "../../model/MIT1002-GEM.xml"
+MODEL_FILE = MODEL_PATH
 RATES_FILE = SCRIPT_DIR / "results/ProDiel_per_pro_cell_rates.csv"
 MAP_FILE = SCRIPT_DIR / "metabolite_id_map.csv"
 OUT_DIR = SCRIPT_DIR / "results"

@@ -20,11 +20,11 @@ import pandas as pd
 from gem_utilities import media as media_utils
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import CODE_DIR, MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 OUT_PATH = FILE_PATH / "results"
@@ -101,7 +101,7 @@ def add_nadph_drain(model):
 
 def main():
     # Load the model and add the NADPH drain reaction
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
     add_nadph_drain(model)
 
     # Load the media definitions
@@ -110,7 +110,7 @@ def main():
     # Load the substrate panel and pick glucose (EMP-preferring) plus
     # galacturonic acid (ED-obligate control)
     substrate_df = pd.read_csv(
-        REPO_ROOT / "simulations" / "growth_and_cue" / "results" / "substrate_panel.csv"
+        CODE_DIR / "simulations" / "growth_and_cue" / "results" / "substrate_panel.csv"
     )
     substrates = substrate_df[
         substrate_df["name"].isin(["Glucose", "Galacturonic Acid"])

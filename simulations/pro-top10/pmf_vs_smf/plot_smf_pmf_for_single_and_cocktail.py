@@ -1,6 +1,7 @@
 """Make a stacked barchart of the exudation fluxes on the single substrates and
 the cocktail."""
 
+import sys
 from pathlib import Path
 
 import cobra
@@ -13,13 +14,14 @@ import seaborn as sns
 FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 TOP_10_DIR = FILE_PATH.parent
-REPO_ROOT = FILE_PATH.parents[2]
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 # Make the results directory if it doesn't exist
 OUT_PATH.mkdir(exist_ok=True)
 
 # Load the model
-MODEL = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+MODEL = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Load the results from the simulations from the single + cocktail simulations
 # Read the "fluxes" column as a dictionary

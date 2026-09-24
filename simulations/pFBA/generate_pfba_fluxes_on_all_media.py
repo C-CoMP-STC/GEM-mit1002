@@ -7,16 +7,15 @@ import pandas as pd
 import seaborn as sns
 from gem_utilities import biomass, media
 
-# Define paths relative to the script or project root
-# It's better practice to define a project root
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-
 import sys
 
-sys.path.insert(0, str(PROJECT_ROOT))
+# Make `tools` importable; repo locations come from tools.paths.
+sys.path.insert(
+    0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+)
 
 from tools.media import MEDIA  # noqa: E402
-DATA_DIR = os.path.join(PROJECT_ROOT, "data")
+from tools.paths import DATA_DIR, MODEL_PATH  # noqa: E402
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
 
 # Ensure the results directory exists
@@ -26,7 +25,7 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 media_definitions = MEDIA
 
 # Load the model
-model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))
+model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Load the TSV of the growth phenotypes
 growth_phenotypes = pd.read_csv(

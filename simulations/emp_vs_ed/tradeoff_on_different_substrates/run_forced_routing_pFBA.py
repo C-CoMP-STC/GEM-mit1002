@@ -6,11 +6,11 @@ from gem_utilities import media as media_utils
 from yaml import warnings
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import CODE_DIR, MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 OUT_PATH = FILE_PATH / "results"
@@ -28,14 +28,14 @@ biomass_rxn_id = "bio1_biomass"
 TOTAL_UPTAKE = 60  # mmol C / gDW / hr
 
 # Load the model
-model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Load the media definitions
 media_defs = MEDIA
 
 # Load the same substrate panel that was used for the growth and CUE analysis
 substrate_df = pd.read_csv(
-    REPO_ROOT / "simulations" / "growth_and_cue" / "results" / "substrate_panel.csv"
+    CODE_DIR / "simulations" / "growth_and_cue" / "results" / "substrate_panel.csv"
 )
 
 # Subset the substrate panel to only include substrates whose entry points are

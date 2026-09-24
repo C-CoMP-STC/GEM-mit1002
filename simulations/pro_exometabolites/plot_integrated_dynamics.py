@@ -43,14 +43,13 @@ import pandas as pd
 # ── Paths and parameters ────────────────────────────────────────────────────────
 
 SCRIPT_DIR = Path(__file__).parent
-REPO_ROOT = SCRIPT_DIR.parents[1]
 RESULTS_DIR = SCRIPT_DIR / "results"
 DATA_DIR = SCRIPT_DIR / "data"
 FIG_DIR = SCRIPT_DIR / "figs"
 FIG_DIR.mkdir(exist_ok=True)
 
 # Import the shared plot styles from tools/
-sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(SCRIPT_DIR.parents[1]))  # make `tools` importable
 from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
 
 # Global figure style (font, sizes, vector text) -- must run before any

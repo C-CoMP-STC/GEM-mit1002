@@ -9,9 +9,14 @@
 
 import os
 import pickle
+import sys
+from pathlib import Path
 
 import cobra
 import cometspy as c
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 # Set the output directory (where the results.pkl file will be saved)
 OUT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -48,7 +53,7 @@ test_tube.set_specific_metabolite("cpd00034_e0", 1000)  # Zn2+_e0
 test_tube.set_specific_metabolite("cpd00149_e0", 1000)  # Co2+_e0
 
 # Load in the ALT model using COBRApy
-alt_cobra = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+alt_cobra = cobra.io.read_sbml_model(MODEL_PATH)
 
 # use the loaded model to build a comets model
 alt = c.model(alt_cobra)

@@ -1,6 +1,7 @@
 """Make a scatter plot of the growth rate/yield/CUE for each single substrate
 vs the abundance of that substrate in the cocktail."""
 
+import sys
 from pathlib import Path
 
 import cobra
@@ -16,7 +17,8 @@ import seaborn as sns
 FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 TOP_10_DIR = FILE_PATH.parent
-REPO_ROOT = FILE_PATH.parents[2]
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 # Make the results directory if it doesn't exist
 OUT_PATH.mkdir(exist_ok=True)
@@ -53,7 +55,7 @@ def main():
     )
 
     # Load the model
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
 
     # Get the carbon exchange reactions
     c_ex_rxns = utils.get_c_ex_rxns(model)

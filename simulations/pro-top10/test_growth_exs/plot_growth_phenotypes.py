@@ -10,23 +10,22 @@ from gem2cue import (
 
 FILE_DIR = Path(__file__).resolve().parent
 TOP_10_DIR = FILE_DIR.parent
-REPO_DIR = FILE_DIR.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_DIR))
+sys.path.insert(0, str(FILE_DIR.parents[2]))  # make `tools` importable
+from tools.paths import DATA_DIR, MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 
 # Set path to the `test_files` directory
-DATA_DIR = REPO_DIR / "data"
 
 # Load the media definitions
 media_definitions = MEDIA
 minimal_media = media_definitions["minimal"]
 
 # Load the model with cobrapy
-model_orig = cobra.io.read_sbml_model(REPO_DIR / "model/MIT1002-GEM.xml")
+model_orig = cobra.io.read_sbml_model(MODEL_PATH)
 c_ex_rxns = utils.get_c_ex_rxns(model_orig)
 
 # Load the top 10 metabolite file

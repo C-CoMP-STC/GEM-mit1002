@@ -16,13 +16,11 @@ from matplotlib.lines import Line2D
 from scipy import stats
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[1]
 IN_PATH = FILE_PATH / "results"
 OUT_PATH = FILE_PATH / "figures"
 OUT_PATH.mkdir(exist_ok=True)
 FATES_OUT_PATH = OUT_PATH / "carbon_fates"
 FATES_OUT_PATH.mkdir(exist_ok=True)
-MODEL_PATH = REPO_ROOT / "model/MIT1002-GEM.xml"
 
 # Organic byproducts whose max carbon flux (mmol C/gDW/h) across the *whole*
 # dataset is below this are lumped into a single grey "Other" segment in the
@@ -30,7 +28,8 @@ MODEL_PATH = REPO_ROOT / "model/MIT1002-GEM.xml"
 BYPRODUCT_FLUX_THRESHOLD = 1.0
 
 # Import the shared plot styles from tools/
-sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[1]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 from tools.plot_styles import (
     carbon_fates_bar,
     ccomp_colors,

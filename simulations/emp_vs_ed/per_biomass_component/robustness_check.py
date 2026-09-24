@@ -19,6 +19,7 @@ Setup mirrors per_biomass_component.ipynb: glucose minimal medium, sink reaction
 (lb=0) added for every metabolite, objective = maximize the sink of the target.
 """
 
+import sys
 from pathlib import Path
 
 import cobra
@@ -26,7 +27,8 @@ import pandas as pd
 from cobra.flux_analysis import flux_variability_analysis, loopless_solution, pfba
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 OUT_PATH = FILE_PATH / "robustness_results"
 OUT_PATH.mkdir(exist_ok=True)
 
@@ -75,7 +77,7 @@ TOL = 1e-6        # treat |flux| below this as zero
 
 
 def build_model():
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
     model.medium = MEDIUM
     # Add sink reactions (lb=0) for every metabolite, as in the notebook
     existing = {r.id for r in model.reactions}

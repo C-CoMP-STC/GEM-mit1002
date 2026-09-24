@@ -11,11 +11,11 @@ import pandas as pd
 FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 TOP_10_DIR = FILE_PATH.parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 
@@ -31,7 +31,6 @@ TOTAL_UPTAKE = 60  # mmol C / gDW / hr
 BIOMASS_REACTION_ID = "bio1_biomass"
 
 # Load the model
-MODEL_PATH = REPO_ROOT / "model/MIT1002-GEM.xml"
 model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Load the list of top 10 exometabolites

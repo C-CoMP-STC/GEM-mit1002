@@ -39,9 +39,9 @@ import pandas as pd
 from matplotlib.patches import Patch, Polygon, Rectangle
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
-sys.path.insert(0, PROJECT_ROOT)
+sys.path.insert(0, os.path.dirname(os.path.dirname(SCRIPT_DIR)))  # make `tools` importable
 
+from tools.paths import MODEL_PATH  # noqa: E402
 from tools.phenotypes import (  # noqa: E402
     C_SOURCE_IDS,
     GROWTH_THRESHOLD,
@@ -54,7 +54,6 @@ from tools.phenotypes import (  # noqa: E402
 from tools.plot_styles import summer_colors  # noqa: E402
 
 FIGURES_DIR = os.path.join(SCRIPT_DIR, "figures")
-MODEL_PATH = os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml")
 
 #: The medium this screen was run in. Both the carbon and the nitrogen source
 #: come from the condition rather than the base medium.

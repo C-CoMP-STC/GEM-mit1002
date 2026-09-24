@@ -11,11 +11,10 @@ import seaborn as sns
 FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 TOP_10_DIR = FILE_PATH.parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys  # noqa: E402
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
 
 # Import the shared plot styles from tools/
 from tools.plot_styles import ccomp_colors  # noqa: E402

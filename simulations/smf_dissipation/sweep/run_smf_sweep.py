@@ -25,11 +25,11 @@ import pandas as pd
 # Paths
 # ---------------------------------------------------------------------------
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 OUT_PATH = FILE_PATH / "results"
@@ -155,7 +155,7 @@ def infeasible_row(substrate_name: str, dissipation_lb: float) -> dict:
 # Load model and media
 # ---------------------------------------------------------------------------
 print("Loading model...")
-model_base = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+model_base = cobra.io.read_sbml_model(MODEL_PATH)
 add_flagella_reaction(model_base)
 
 media_defs = MEDIA

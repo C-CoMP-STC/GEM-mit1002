@@ -1,9 +1,11 @@
+import sys
 import cobra
 import pandas as pd
 from pathlib import Path
 
 FILE_DIR = Path(__file__).parent
-REPO_DIR = FILE_DIR.parent.parent.parent
+sys.path.insert(0, str(FILE_DIR.parent.parent.parent))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 # Load all of the the required files
 # Load the filtered data
@@ -11,7 +13,7 @@ filtered_data = pd.read_csv(FILE_DIR / "ProDiel_filtered_meanByTimepoint.csv")
 # Load my mapping of met IDs to names
 met_mapping = pd.read_csv(FILE_DIR.parent / "metabolite_id_map.csv")
 # Load the model
-model = cobra.io.read_sbml_model(REPO_DIR / "model/MIT1002-GEM.xml")
+model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Make a new df, with the column "name" being all of the unique names in the filtered data
 met_info_table = pd.DataFrame()

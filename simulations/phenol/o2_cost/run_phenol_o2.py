@@ -20,11 +20,11 @@ import numpy as np
 import pandas as pd
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import CODE_DIR, MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 OUT_PATH = FILE_PATH / "results"
@@ -68,12 +68,12 @@ def build_medium(model, base, exchange_id, uptake, o2):
 
 
 def main():
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
     media_defs = MEDIA
     base = media_defs["minimal"]  # minimal medium, no carbon source
 
     panel = pd.read_csv(
-        REPO_ROOT / "simulations" / "growth_and_cue" / "results" / "substrate_panel.csv"
+        CODE_DIR / "simulations" / "growth_and_cue" / "results" / "substrate_panel.csv"
     ).set_index("name")
 
     # --- 1. Growth vs O2 supply ---

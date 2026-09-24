@@ -7,11 +7,11 @@ import pandas as pd
 from gem_utilities import biomass
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 OUT_PATH = FILE_PATH / "results"
@@ -22,7 +22,7 @@ OUT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
 # Load the model
-model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Load the media definitions
 media_defs = MEDIA

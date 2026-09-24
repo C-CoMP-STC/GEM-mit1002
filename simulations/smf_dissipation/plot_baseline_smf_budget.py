@@ -40,9 +40,7 @@ import numpy as np
 import pandas as pd
 
 # Import the shared plot styles from tools/
-sys.path.append(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-)
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # make `tools` importable
 from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
 
 # Global figure style (font, sizes, vector text) -- must run before any
@@ -63,13 +61,9 @@ SUBSTRATES = [
 ]
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[1]
-
-import sys
-
-sys.path.insert(0, str(REPO_ROOT))
 
 from tools.media import MEDIA  # noqa: E402
+from tools.paths import MODEL_PATH  # noqa: E402
 
 OUT_PATH = FILE_PATH / "results"
 OUT_PATH.mkdir(exist_ok=True)
@@ -250,7 +244,7 @@ def plot_budget(ax, df, title, ylabel):
 
 
 def main():
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
     minimal_media = MEDIA["minimal"]
 
     print(

@@ -12,6 +12,7 @@ Figure 3 — Na⁺-cycling activity: flux through the Na⁺-translocating NADH:u
 Dark periods: t = 10–22 h and t = 34–46 h (Katie's Figure 4.3 shading).
 """
 
+import sys
 from pathlib import Path
 
 import cobra
@@ -23,7 +24,8 @@ import pandas as pd
 # ── Paths ───────────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR = Path(__file__).parent
-REPO_DIR = SCRIPT_DIR.parent.parent
+sys.path.insert(0, str(SCRIPT_DIR.parent.parent))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 RESULTS_DIR = SCRIPT_DIR / "results"
 CELL_DENSITY_FILE = SCRIPT_DIR / "data/extrapolated_cellcounts.csv"
 FIG_DIR = SCRIPT_DIR / "figs"
@@ -383,7 +385,7 @@ def main() -> None:
     flux_df = pd.read_csv(flux_file) if flux_file.exists() else pd.DataFrame()
 
     # Load the model
-    model = cobra.io.read_sbml_model(REPO_DIR / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
 
     cell_density = load_cell_density()
 

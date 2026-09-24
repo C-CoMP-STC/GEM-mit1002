@@ -7,14 +7,13 @@ import pandas as pd
 from gem_utilities import media as media_utils
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[1]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[1]))  # make `tools` importable
+from tools.paths import DATA_DIR, MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
-DATA_DIR = REPO_ROOT / "data"
 OUT_PATH = FILE_PATH / "results"
 OUT_PATH.mkdir(exist_ok=True)
 
@@ -79,7 +78,7 @@ TOTAL_UPTAKE = 60  # mmol C / gDW / hr
 
 def main():
     # Load the model
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
 
     # Load the media definitions
     media_defs = MEDIA

@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 FILE_DIR = Path(__file__).resolve().parent
-REPO_DIR = FILE_DIR.parents[2]
 
 # Load the top 10 metabolite file
 top_10_metabolites = pd.read_csv(FILE_DIR / "top10_exometabolites.csv")

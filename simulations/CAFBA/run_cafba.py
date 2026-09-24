@@ -1,8 +1,13 @@
 import json
+import sys
+from pathlib import Path
 
 import cobra
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 # 1. Configuration Constants (from Paper/SI)
 W_I = 8.3e-4  # Average metabolic weight
@@ -99,7 +104,7 @@ def run_cafba(
 
 # --- Running the Carbon Limitation Simulation ---
 # Load the model
-model = cobra.io.read_sbml_model("../../model/MIT1002-GEM.xml")
+model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Make rxn09295_c0 reversible
 model.reactions.rxn09295_c0.lower_bound = -1000

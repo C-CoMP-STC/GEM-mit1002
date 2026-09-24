@@ -36,11 +36,11 @@ SWEEP_LEVELS = list(range(0, 220, 20))   # dissipation lower bounds to show
 RATE_THRESHOLD = 0.4                      # mmol/gDW/hr; smaller contributions -> "other"
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 from tools.plot_styles import set_manuscript_style  # noqa: E402
@@ -110,7 +110,7 @@ def short_label(rxn_id: str, model: cobra.Model) -> str:
 
 
 def build_model() -> cobra.Model:
-    model = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
     rxn = cobra.Reaction(FLAGELLA_RXN)
     rxn.name = "Flagella Na+ import (SMF dissipation)"
     rxn.add_metabolites({

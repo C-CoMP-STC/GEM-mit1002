@@ -13,6 +13,7 @@ N-containing carbon substrates (glutamate, etc.) are catabolised with biomass
 C:N higher than substrate C:N, the model should predict NH3 secretion.
 """
 
+import sys
 from pathlib import Path
 
 import cobra
@@ -20,12 +21,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
+
 SCRIPT_DIR = Path(__file__).parent
 RESULTS_DIR = SCRIPT_DIR / "results"
 FIG_DIR = SCRIPT_DIR / "figs"
 FIG_DIR.mkdir(exist_ok=True)
 
-MODEL_FILE = SCRIPT_DIR / "../../model/MIT1002-GEM.xml"
+MODEL_FILE = MODEL_PATH
 FLUX_FILE = RESULTS_DIR / "fluxes_long.csv"
 
 DARK_PERIODS = [(10, 22), (34, 46)]

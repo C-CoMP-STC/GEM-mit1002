@@ -13,11 +13,10 @@ import numpy as np
 import pandas as pd
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[2]
 OUT_PATH = FILE_PATH / "results"
 OUT_PATH.mkdir(exist_ok=True)
 
-sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
 from tools.plot_styles import set_plot_style, summer_colors  # noqa: E402
 
 SUBSTRATE_COLORS = {

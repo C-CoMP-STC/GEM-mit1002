@@ -1,7 +1,12 @@
 import os
+import sys
+from pathlib import Path
 
 import cobra
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 
 def search_metabolites_in_model():
@@ -15,9 +20,7 @@ def search_metabolites_in_model():
     # Define file paths
     data_file = os.path.join(script_dir, "../data/ProDiel_quant_20260211.csv")
     map_file = os.path.join(script_dir, "../metabolite_id_map.csv")
-    model_file = os.path.join(
-        script_dir, "../../../model/MIT1002-GEM.xml"
-    )  # Go up two directories to find model/MIT1002-GEM.xml
+    model_file = MODEL_PATH
     output_file = os.path.join(script_dir, "results", "ex_metabolite_search_results.csv")
 
     # If the output directory doesn't exist, create it

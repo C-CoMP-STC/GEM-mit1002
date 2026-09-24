@@ -46,12 +46,11 @@ from matplotlib.lines import Line2D
 from scipy import stats
 
 FILE_PATH = Path(__file__).resolve().parent
-REPO_ROOT = FILE_PATH.parents[1]
 IN_PATH = FILE_PATH / "results"
 OUT_PATH = FILE_PATH / "figures"
 OUT_PATH.mkdir(exist_ok=True)
 
-sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[1]))  # make `tools` importable
 from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
 
 # Global figure style (font, sizes, vector text) -- must run before any figure

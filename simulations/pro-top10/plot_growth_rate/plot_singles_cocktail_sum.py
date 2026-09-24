@@ -9,10 +9,9 @@ import seaborn as sns
 FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 TOP_10_DIR = FILE_PATH.parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 # Add the repo root to the system path so tools/ is importable
-sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
 from tools import plot_styles  # Import the plot styles from the repo
 
 # Make the results directory if it doesn't exist

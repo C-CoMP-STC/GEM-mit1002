@@ -11,11 +11,11 @@ import pandas as pd
 FILE_PATH = Path(__file__).resolve().parent
 OUT_PATH = FILE_PATH / "results"
 TOP_10_DIR = FILE_PATH.parent
-REPO_ROOT = FILE_PATH.parents[2]
 
 import sys
 
-sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(FILE_PATH.parents[2]))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
 
@@ -28,7 +28,7 @@ OUT_PATH.mkdir(exist_ok=True)
 TOTAL_UPTAKE = 60  # mmol C / gDW / hr
 
 # Load the model
-MODEL = cobra.io.read_sbml_model(REPO_ROOT / "model/MIT1002-GEM.xml")
+MODEL = cobra.io.read_sbml_model(MODEL_PATH)
 
 
 def main():
