@@ -1,0 +1,52 @@
+name: Standard-GEM-Update
+
+# Once a month, compare the version line of our .standard-GEM.md with the
+# latest one in the standard-GEM template. If upstream is newer, open an issue
+# (once) with the steps to update. See "standard-GEM" in .github/CONTRIBUTING.md.
+#
+# Scheduled workflows only run from the default branch (main), so this starts
+# checking after the next release.
+on:
+  schedule:
+    - cron: "0 13 1 * *" # 13:00 UTC on the 1st of every month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compare with the latest standard-GEM
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/upstream.md" \
+            https://raw.githubusercontent.com/MetabolicAtlas/standard-GEM/main/.standard-GEM.md
+          ours=$(head -n 1 .standard-GEM.md | tr -d '\r')
+          theirs=$(head -n 1 "$RUNNER_TEMP/upstream.md" | tr -d '\r')
+          echo "Ours: $ours. Upstream: $theirs." >> "$GITHUB_STEP_SUMMARY"
+          if [ "$ours" = "$theirs" ]; then
+            exit 0
+          fi
+
+          title="Update .standard-GEM.md to $theirs"
+          if gh issue list --state open --search "\"$title\" in:title" --json number --jq 'length' | grep -qv '^0$'; then
+            echo "An issue is already open." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          {
+            echo "The standard-GEM template now says **$theirs**; this repo follows **$ours**."
+            echo
+            echo "1. Copy the new upstream file over ours:"
+            echo '   `curl -o .standard-GEM.md https://raw.githubusercontent.com/MetabolicAtlas/standard-GEM/main/.standard-GEM.md`'
+            echo '2. `git diff .standard-GEM.md` shows every changed item and every tick the copy removed.'
+            echo "3. Re-tick what still holds, work through new or reworded items, and make any repo changes in their own commits."
+            echo "4. Commit the checklist last: \`chore: update .standard-GEM.md to $theirs\`."
+          } > "$RUNNER_TEMP/body.md"
+          gh issue create --title "$title" --body-file "$RUNNER_TEMP/body.md"

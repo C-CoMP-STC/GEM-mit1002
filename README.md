@@ -1,29 +1,31 @@
-[![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://hgscott.github.io/mit1002-model)
+[![Version](https://img.shields.io/github/v/release/C-CoMP-STC/MIT1002-GEM?sort=semver&label=version)](https://github.com/C-CoMP-STC/MIT1002-GEM/releases/latest)
+[![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://c-comp-stc.github.io/MIT1002-GEM/)
 
-# MIT1002-model
+# MIT1002-GEM: A manually curated metabolic model for *Alteromonas macleodii* MIT1002
 
 This repo contains the *Alteromonas macleodii* MIT1002 model, and code associated with its creation, curation, and testing.
 
 The model was generated using GenBank genome for MIT1002 (Accession Number: NZ_JXRW01000001), accessible via KBase.
 The narrative for generating the draft model, is available here: https://narrative.kbase.us/narrative/208605
 
-This repo uses GtiHub actions to automatically test the model.
-Upon every push, pull request, manual trigger:
-1. A new MEMOTE report is generated, and saved as "index.html"
-2. Run custom tests
-    * Validate the SBML file
-    * Test for growth on no carbon sources
-    * Test known growth phenotypes, and regenerate the experimental vs predicted growth heatmap figure
-    * Run the MEMOTE test to search for ATP generating cycles
-    * Check that nothing in the deprecated identifier lists is back in the model
-3. The model is exported to JSON and excel formats
+This repo uses GitHub Actions to test and release the model:
 
-Note: MACAW is **not** run as part of the action due to the longer run time of the dilution test.
-To run MACAW use:
+1. **Every pull request** (Custom-CI) runs the tests in `code/test/` -- SBML
+   validity, no growth without carbon, the known growth phenotypes, ATP-generating
+   cycles, and that no deprecated identifier is back in the model -- and
+   regenerates the reports in `code/scripts/results/`.
+2. **Release PRs into `main`** (Release-Checks) also check the version bump and
+   changelog, build the full MEMOTE report, and run the full MACAW suite.
+3. **Merging a release into `main`** (Publish) exports the model to every
+   format, tags and creates the GitHub release, and publishes the MEMOTE report
+   to GitHub Pages.
+
+See "Versioning and releases" in [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md).
+To run MACAW locally:
 ```
-python scripts/run_macaw.py
+python code/scripts/run_macaw.py
 ```
-Its results are written to `scripts/results/` with the other generated reports.
+Its results are written to `code/scripts/results/` with the other generated reports.
 
 ## Repository layout
 
@@ -32,29 +34,34 @@ code does*, not what it is about. Please put new code in the matching one.
 
 | Directory | Contains | How it runs |
 | --- | --- | --- |
-| `test/` | Checks that assert something about the model and pass or fail | Automatically, via `pytest` in CI. A failure blocks the PR |
-| `scripts/` | Code that generates an artifact for a person to look at — a table, a plot, an exported file. No pass/fail | Automatically in CI, writing to `scripts/results/` |
-| `tools/` | Importable functions and definitions, and command-line utilities a curator runs deliberately | By hand, or imported by the above |
+| `code/test/` | Checks that assert something about the model and pass or fail | Automatically, via `pytest` in CI. A failure blocks the PR |
+| `code/scripts/` | Code that generates an artifact for a person to look at — a table, a plot, an exported file. No pass/fail | Automatically in CI, writing to `code/scripts/results/` |
+| `code/tools/` | Importable functions and definitions, and command-line utilities a curator runs deliberately | By hand, or imported by the above |
 | `data/` | Experimental observations, media provenance, and derived tables. See [`data/README.md`](data/README.md) | Read by the above |
 
 Examples of the third kind:
 
-* `tools/deprecate.py` — you invoke it yourself when removing a reaction, and
-  `scripts/export_model.py` and `test/test_deprecated.py` both import from it
-* `tools/media.py` — defines the growth media as importable dictionaries, so
+* `code/tools/deprecate.py` — you invoke it yourself when removing a reaction, and
+  `code/scripts/export_model.py` and `code/test/test_deprecated.py` both import from it
+* `code/tools/media.py` — defines the growth media as importable dictionaries, so
   anything needing a medium does `from tools.media import MEDIA`
-* `tools/plot_styles.py` — shared colour palettes and figure styling, imported by
+* `code/tools/plot_styles.py` — shared colour palettes and figure styling, imported by
   every plotting script so figures stay consistent
 
-Two other directories hold code that is neither of these: `curation_process/`
-analyses the history of the curation effort itself across past PRs, and
-`biomass/`, `genome/`, `escher/` and similar hold the exploratory work behind
-particular parts of the model.
+The rest of `code/` is curation and analysis work, one folder per piece of work,
+each kept together with its own inputs and results:
+`code/curation_process/` (the curation history across past PRs),
+`code/simulations/`, `code/biomass/`, `code/blast/`, `code/escher/`,
+`code/gene_essentiality/`, `code/kegg_maps/` and `code/pangenome/`.
+`data/` holds only external inputs -- things received or downloaded, sometimes
+with the small script that fetched or cleaned them.
 
-Note that [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM), which
-yeast-GEM and Human-GEM follow, asks for a single `code/` directory instead. The
-split above is a deliberate refinement of that; `code/` is also a poor Python
-package name because it shadows a standard-library module.
+The layout follows [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM).
+`code/` is a plain folder, not a Python package, because a package named `code`
+would shadow a standard-library module. `pytest.ini` puts `code/` on the path for
+the tests and each script adds it itself, so imports stay `from tools.paths
+import MODEL_PATH`. Repo locations are defined once, in `code/tools/paths.py`.
+The deprecate CLI is run as `PYTHONPATH=code python -m tools.deprecate`.
 
 ## Setting Up the Environment
 To ensure a smooth setup and avoid system conflicts, follow these steps to create and activate a Python virtual environment before installing dependencies.
@@ -121,3 +128,18 @@ python --version  # Should be 3.11 or 3.10
 pip list  # Should show installed dependencies
 ```
 If everything looks good, you're ready to start using the project! 🎉
+
+## License
+
+- **Model and data** (`model/`, `data/` and everything else not listed below):
+  [CC BY 4.0](LICENSE.md).
+- **Code** (`code/`): [MIT](code/LICENSE).
+
+Files obtained from other sources keep their original terms, including:
+
+- the Source Sans 3 fonts in `code/tools/fonts/` (SIL Open Font License; see
+  [`code/tools/fonts/LICENSE.md`](code/tools/fonts/LICENSE.md))
+- the published media recipes and protocols in `data/media_sources/`
+- the supplementary data of Xavier et al. (2017) in `code/biomass/`
+- MetaNetX cross-references in the model annotations (CC BY 4.0,
+  [MetaNetX](https://www.metanetx.org))

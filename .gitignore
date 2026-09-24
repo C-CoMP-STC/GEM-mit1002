@@ -11,18 +11,25 @@ __pycache__/
 .DS_Store
 
 *.fa
-genome/RefSeq_genome_from_KBase/*.gff
-genome/RefSeq_genome_from_KBase/KBase_object_details_hgsco_narrative_1741199302047_Alteromonas_macleodii_v1.json
-genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_protein.faa
-genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_genomic.fna
-genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_protein.gpff
-Pangenome from Michelle/*
+data/genome/RefSeq_genome_from_KBase/*.gff
+data/genome/RefSeq_genome_from_KBase/KBase_object_details_hgsco_narrative_1741199302047_Alteromonas_macleodii_v1.json
+data/genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_protein.faa
+data/genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_genomic.fna
+data/genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_protein.gpff
+data/pangenome/digital_microbe/
 reac_xref.tsv
 test/test_files/media/~$M_July22(Zac's Marine Broth Medium).docx
 env/*
 ~$*
 bigg_rxn_db.tsv
-BLAST/dbs/*
-simulations/CAFBA/results/json_fluxes/*
-simulations/smf_dissipation/sweep/results/flux_distributions/*
+code/blast/dbs/*
+code/simulations/CAFBA/results/json_fluxes/*
+code/simulations/smf_dissipation/sweep/results/flux_distributions/*
 .claude
+# Model exports. They live only on main, where Publish commits them with
+# `git add -f`; standard-GEM forbids the binary ones on any other branch.
+model/MIT1002-GEM.json
+model/MIT1002-GEM.yml
+model/MIT1002-GEM.txt
+model/MIT1002-GEM.xlsx
+model/MIT1002-GEM.mat
