@@ -43,6 +43,7 @@ from dataclasses import dataclass, field
 
 import pandas as pd
 from tools.paths import (
+    CHANGELOG_PATH,
     MODEL_PATH,
     MODEL_RELPATH,
     MODEL_RELPATH_HISTORY,
@@ -315,6 +316,22 @@ def _cell(text: str) -> str:
     return str(text).replace("|", "\\|")
 
 
+def flips_table(flips: pd.DataFrame) -> list[str]:
+    """The flipped growth calls as Markdown table lines."""
+    lines = [
+        "| Condition | Previous | Now | Experiment | Agrees now | Excluded |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for row in flips.itertuples():
+        lines.append(
+            f"| {_cell(row.condition)} | {row.previous or 'invalid'} | "
+            f"{row.current or 'invalid'} | {row.experimental} | "
+            f"{'yes' if row.agrees_now else 'no'} | "
+            f"{'yes' if row.excluded else ''} |"
+        )
+    return lines
+
+
 def format_report(result: ReleaseCheck) -> str:
     """A Markdown report, readable in a terminal and as a PR comment."""
     lines = [f"## Release check against `{result.against}`", ""]
@@ -329,20 +346,7 @@ def format_report(result: ReleaseCheck) -> str:
     lines.append("")
 
     if len(result.flips):
-        lines += [
-            "### Flipped growth calls",
-            "",
-            "| Condition | Previous | Now | Experiment | Agrees now | Excluded |",
-            "| --- | --- | --- | --- | --- | --- |",
-        ]
-        for row in result.flips.itertuples():
-            lines.append(
-                f"| {_cell(row.condition)} | {row.previous or 'invalid'} | "
-                f"{row.current or 'invalid'} | {row.experimental} | "
-                f"{'yes' if row.agrees_now else 'no'} | "
-                f"{'yes' if row.excluded else ''} |"
-            )
-        lines.append("")
+        lines += ["### Flipped growth calls", "", *flips_table(result.flips), ""]
 
     lines += [
         "### Identifier changes",
@@ -365,6 +369,225 @@ def format_report(result: ReleaseCheck) -> str:
             f"- {label} ({len(ids)}): {shown}{more}" if ids else f"- {label}: none"
         )
     return "\n".join(lines) + "\n"
+
+
+# --------------------------------------------------------------------------
+# Changelog
+# --------------------------------------------------------------------------
+
+#: The top of ``CHANGELOG.md``; entries are inserted below it, newest first.
+CHANGELOG_HEADER = (
+    "# Changelog\n\n"
+    "All notable changes to MIT1002-GEM, newest first. The versioning rules are in\n"
+    "[`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md). Each entry is generated\n"
+    "by `python -m tools.release prepare` when the release is prepared.\n"
+)
+
+_PR_MERGE_RE = re.compile(r"^Merge pull request #(\d+) from [^/\s]+/(\S+)")
+_CONVENTIONAL_RE = re.compile(
+    r"^(?P<kind>[A-Za-z]+)(\([^)]*\))?(?P<bang>!)?: ?(?P<text>.+)"
+)
+
+#: Change kinds left out of the changelog when they are direct commits rather
+#: than pull requests: CI bookkeeping ("chore: add custom-CI test result") and
+#: the version bump itself ("release: 4.0.0").
+SKIPPED_DIRECT_KINDS = ("chore", "release")
+
+
+@dataclass
+class Change:
+    """One line of the changelog: a merged pull request or a direct commit."""
+
+    kind: str
+    title: str
+    pr: int | None
+    touches_model: bool
+    breaking: bool = False
+
+    def markdown(self) -> str:
+        ref = f" (#{self.pr})" if self.pr else ""
+        flag = " **(breaking)**" if self.breaking else ""
+        return f"- **{self.kind}**: {self.title}{ref}{flag}"
+
+
+def parse_conventional(subject: str) -> tuple[str, str, bool]:
+    """Split ``"fix!: drop rxn00001"`` into ``("fix", "drop rxn00001", True)``.
+
+    Subjects that are not conventional commits come back with kind ``"other"``.
+    """
+    match = _CONVENTIONAL_RE.match(subject.strip())
+    if not match:
+        return "other", subject.strip(), False
+    return match["kind"].lower(), match["text"].strip(), bool(match["bang"])
+
+
+def parse_pr_title(body: str, branch: str) -> tuple[str, str, bool]:
+    """Kind, title and breaking flag of a merged PR, from its merge commit.
+
+    GitHub puts the PR title in the first line of the merge commit's body. A
+    title GitHub made up from the branch name ("Feat/gapfill pep") is not a
+    conventional commit, so the kind is taken from the branch prefix instead.
+    """
+    title = next((line.strip() for line in body.splitlines() if line.strip()), branch)
+    kind, text, breaking = parse_conventional(title)
+    if kind == "other" and "/" in branch:
+        kind = branch.split("/", 1)[0].lower()
+        text = re.sub(r"^[A-Za-z]+/", "", title).strip()
+    return kind, text, breaking
+
+
+def _touches_model(parent: str, commit: str) -> bool:
+    changed = _git("diff", "--name-only", parent, commit, "--", *MODEL_RELPATH_HISTORY)
+    return bool(changed.stdout.strip())
+
+
+def changes_since(ref: str, until: str = "HEAD") -> list[Change]:
+    """What was merged into the current branch since ``ref``.
+
+    Walks the first-parent history, so each merged pull request is one entry
+    (titled with the PR title, which GitHub puts in the merge commit's body)
+    rather than one per commit inside it. Commits pushed directly to the
+    branch are listed on their own, except bookkeeping kinds in
+    :data:`SKIPPED_DIRECT_KINDS`. ``Merge branch ...`` commits are skipped.
+    """
+    log = _git(
+        "log", "--first-parent", "--format=%H%x1f%P%x1f%s%x1f%b%x1e", f"{ref}..{until}"
+    )
+    changes = []
+    for record in filter(None, (r.strip("\n") for r in log.stdout.split("\x1e"))):
+        sha, parents, subject, body = record.split("\x1f")
+        parents = parents.split()
+        merge = _PR_MERGE_RE.match(subject)
+        if merge:
+            pr, branch = int(merge[1]), merge[2]
+            kind, text, breaking = parse_pr_title(body, branch)
+            changes.append(
+                Change(kind, text, pr, _touches_model(parents[0], sha), breaking)
+            )
+        elif len(parents) > 1 or subject.startswith("Merge "):
+            continue
+        else:
+            kind, text, breaking = parse_conventional(subject)
+            if kind in SKIPPED_DIRECT_KINDS:
+                continue
+            parent = parents[0] if parents else ref
+            changes.append(
+                Change(kind, text, None, _touches_model(parent, sha), breaking)
+            )
+    return changes
+
+
+def changelog_entry(
+    version: str, date: str, changes: Sequence[Change], check: ReleaseCheck
+) -> str:
+    """The ``CHANGELOG.md`` section for one release."""
+    previous = check.against.removeprefix("v")
+    lines = [f"## {version} - {date}", ""]
+    lines.append(f"Compared with {previous}: **{check.required}** release.")
+    lines.append("")
+    if check.major_reasons:
+        lines += [f"- {reason}" for reason in check.major_reasons]
+        lines.append("")
+
+    model = [c for c in changes if c.touches_model]
+    other = [c for c in changes if not c.touches_model]
+    if model:
+        lines += ["### Changes to the model", "", *(c.markdown() for c in model), ""]
+    if other:
+        lines += ["### Other changes", "", *(c.markdown() for c in other), ""]
+    if len(check.flips):
+        lines += [
+            f"### Growth calls changed since {previous}",
+            "",
+            *flips_table(check.flips),
+            "",
+        ]
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def prepend_changelog(entry: str, path: str | os.PathLike = CHANGELOG_PATH) -> None:
+    """Insert ``entry`` at the top of the changelog, creating it if needed."""
+    try:
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+    except FileNotFoundError:
+        text = CHANGELOG_HEADER
+    first = text.find("\n## ")
+    if first == -1:
+        text = text.rstrip() + "\n\n" + entry
+    else:
+        text = text[: first + 1] + entry + "\n" + text[first + 1 :]
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(text)
+
+
+@dataclass
+class PreparedRelease:
+    """What :func:`prepare_release` decided and wrote."""
+
+    version: str
+    check: ReleaseCheck
+    entry: str
+
+    @property
+    def pr_body(self) -> str:
+        """Release PR description: the changelog entry, then the full check."""
+        return (
+            f"Release {self.version}. Merging this into `main` publishes it.\n\n"
+            f"{self.entry}\n---\n\n{format_report(self.check)}"
+        )
+
+
+class BumpTooSmall(Exception):
+    """The requested bump is smaller than the changes require."""
+
+
+def prepare_release(
+    bump: str,
+    against: str | None = None,
+    date: str | None = None,
+    write: bool = True,
+) -> PreparedRelease:
+    """Check the changes, then bump ``version.txt`` and add the changelog entry.
+
+    Args:
+        bump: ``"major"``, ``"minor"`` or ``"patch"``, chosen by the person
+            releasing. It must be at least what :func:`check_release` requires.
+        against: Ref of the previous release; defaults to its tag.
+        date: Release date for the changelog, ``YYYY-MM-DD``; defaults to today.
+        write: False to compute everything but change no files.
+
+    Raises:
+        BumpTooSmall: If ``bump`` is smaller than the changes require.
+        ValueError: If the new version is already tagged.
+    """
+    import datetime as dt
+
+    current = read_version()
+    if against is None:
+        against = release_tag(current)
+    check = check_release(against)
+    if not is_at_least(bump, check.required):
+        raise BumpTooSmall(
+            f"a {bump} release is too small: the changes since {against} need at "
+            f"least {check.required} ({'; '.join(check.major_reasons) or 'model changed'})"
+        )
+
+    version = bump_version(current, bump)
+    try:
+        existing = release_tag(version)
+    except LookupError:
+        existing = None
+    if existing:
+        raise ValueError(f"{version} is already released (tag {existing})")
+
+    date = date or dt.datetime.now(dt.timezone.utc).date().isoformat()
+    entry = changelog_entry(version, date, changes_since(against), check)
+    if write:
+        with open(VERSION_PATH, "w", encoding="utf-8") as handle:
+            handle.write(version + "\n")
+        prepend_changelog(entry)
+    return PreparedRelease(version, check, entry)
 
 
 # --------------------------------------------------------------------------
@@ -394,10 +617,38 @@ def main(argv: Sequence[str] | None = None) -> int:
     nxt = sub.add_parser("next-version", help="print the version after version.txt")
     nxt.add_argument("--bump", choices=BUMPS, required=True)
 
+    prep = sub.add_parser(
+        "prepare",
+        help="check, then bump version.txt and add the CHANGELOG.md entry",
+    )
+    prep.add_argument("--bump", choices=BUMPS, required=True)
+    prep.add_argument("--against", help="git ref of the previous release")
+    prep.add_argument("--date", help="release date, YYYY-MM-DD (default: today)")
+    prep.add_argument("--pr-body", help="write the release PR description here")
+    prep.add_argument(
+        "--dry-run", action="store_true", help="print the entry and change no files"
+    )
+
     args = parser.parse_args(argv)
 
     if args.command == "next-version":
         print(bump_version(read_version(), args.bump))
+        return 0
+
+    if args.command == "prepare":
+        try:
+            prepared = prepare_release(
+                args.bump, args.against, args.date, write=not args.dry_run
+            )
+        except (BumpTooSmall, ValueError) as error:
+            print(f"Not preparing a release: {error}", file=sys.stderr)
+            return 1
+        print(prepared.entry)
+        if args.pr_body:
+            with open(args.pr_body, "w", encoding="utf-8") as handle:
+                handle.write(prepared.pr_body)
+        if not args.dry_run:
+            print(f"Wrote version.txt ({prepared.version}) and CHANGELOG.md.")
         return 0
 
     result = check_release(args.against)

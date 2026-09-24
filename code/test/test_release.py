@@ -1,5 +1,7 @@
 """Tests for tools/release.py, the check that decides the release bump."""
 
+import os
+import tempfile
 import unittest
 
 import pandas as pd
@@ -118,6 +120,59 @@ class TestRequiredBump(unittest.TestCase):
         self.assertIn("mbm \\| Glucose", report)
 
 
+class TestChangelog(unittest.TestCase):
+    def test_parse_conventional(self):
+        self.assertEqual(
+            release.parse_conventional("fix(model)!: drop rxn00001"),
+            ("fix", "drop rxn00001", True),
+        )
+        self.assertEqual(
+            release.parse_conventional("Untrack cache files"),
+            ("other", "Untrack cache files", False),
+        )
+
+    def test_pr_title_from_merge_body(self):
+        self.assertEqual(
+            release.parse_pr_title(
+                "fix: Ignore pseudoreactions\n", "fix/mass-imbalance"
+            ),
+            ("fix", "Ignore pseudoreactions", False),
+        )
+
+    def test_pr_title_made_from_branch_takes_kind_from_branch(self):
+        self.assertEqual(
+            release.parse_pr_title("Feat/gapfill pep", "feat/gapfill-pep"),
+            ("feat", "gapfill pep", False),
+        )
+
+    def test_entry_splits_model_and_other_changes(self):
+        changes = [
+            release.Change("feat", "gapfill lysine", 425, touches_model=True),
+            release.Change("docs", "fix typos", None, touches_model=False),
+        ]
+        flips = release.diff_growth_calls(
+            _evaluation({"mbm | Lysine": "No"}), _evaluation({"mbm | Lysine": "Yes"})
+        )
+        check = _check(against="v3.1.0", model_changed=True, flips=flips)
+        entry = release.changelog_entry("4.0.0", "2026-10-01", changes, check)
+        self.assertTrue(entry.startswith("## 4.0.0 - 2026-10-01"))
+        self.assertIn("Compared with 3.1.0: **major** release.", entry)
+        model_part, other_part = entry.split("### Other changes")
+        self.assertIn("gapfill lysine (#425)", model_part)
+        self.assertIn("fix typos", other_part)
+        self.assertIn("### Growth calls changed since 3.1.0", entry)
+
+    def test_prepend_newest_first(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "CHANGELOG.md")
+            release.prepend_changelog("## 1.0.0 - 2026-01-01\n", path)
+            release.prepend_changelog("## 1.1.0 - 2026-02-01\n", path)
+            with open(path, encoding="utf-8") as handle:
+                text = handle.read()
+        self.assertTrue(text.startswith("# Changelog"))
+        self.assertLess(text.index("## 1.1.0"), text.index("## 1.0.0"))
+
+
 class TestAgainstGit(unittest.TestCase):
     """End to end, against the last commit, so it needs git but no tags."""
 
@@ -126,6 +181,10 @@ class TestAgainstGit(unittest.TestCase):
         self.assertEqual(result.previous_path, MODEL_RELPATH)
         self.assertEqual(len(result.flips), 0)
         self.assertEqual(result.removed_reactions, [])
+
+    def test_changes_since_parent_is_the_last_commit(self):
+        changes = release.changes_since("HEAD~1")
+        self.assertLessEqual(len(changes), 1)
 
 
 if __name__ == "__main__":
