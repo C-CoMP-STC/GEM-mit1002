@@ -24,12 +24,9 @@ from pathlib import Path
 
 import cobra
 import cobra.flux_analysis
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
-matplotlib.rcParams.update({"font.size": 9, "axes.linewidth": 0.8})
 
 # ---------------------------------------------------------------------------
 # Config -- change SUBSTRATE to run for a different carbon source
@@ -46,6 +43,11 @@ import sys
 sys.path.insert(0, str(REPO_ROOT))
 
 from tools.media import MEDIA  # noqa: E402
+from tools.plot_styles import set_manuscript_style  # noqa: E402
+
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 OUT_PATH = FILE_PATH / "results"
 OUT_PATH.mkdir(exist_ok=True)
 

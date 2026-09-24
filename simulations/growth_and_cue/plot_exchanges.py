@@ -10,15 +10,6 @@ import numpy as np
 import pandas as pd
 from matplotlib.lines import Line2D
 
-matplotlib.rcParams.update(
-    {
-        "font.size": 11,
-        "axes.linewidth": 0.8,
-        "axes.spines.top": False,
-        "axes.spines.right": False,
-    }
-)
-
 FILE_PATH = Path(__file__).resolve().parent
 REPO_ROOT = FILE_PATH.parents[1]
 IN_PATH = FILE_PATH / "results"
@@ -27,7 +18,11 @@ OUT_PATH.mkdir(exist_ok=True)
 
 # Import the shared plot styles from tools/
 sys.path.append(str(REPO_ROOT))
-from tools.plot_styles import summer_colors
+from tools.plot_styles import set_manuscript_style, set_plot_style, summer_colors
+
+# Global figure style (font, sizes, vector text) -- must run before any
+# figure or axes is created, see set_manuscript_style's docstring.
+set_manuscript_style()
 
 # Color palette for exchange metabolites
 # The "Summer" color palette with a few extra colors to avoid repeats
@@ -58,14 +53,42 @@ H2O_COLOR = summer_colors["light_tan"]
 CARBON_SOURCE_COLOR = summer_colors["dark_tan"]  # all substrate carbon sources
 OTHER_COLOR = "#bdbdbd"  # grey — collapsed trace metabolites
 
+# Define which metabolites were measured in Prochlorococcus exometabolome
+# So we can separate those from the rest in the bars
+PRO_METABOLITES = [
+    "Isoleucine",
+    "Leucine",
+    "Valine",
+    "Proline",
+    "Alanine",
+    "Glutamate",
+    "Aspartate",
+    "Glycine",
+]
+
 
 def main():
-    # Load the exchange fluxes
-    ex_df = pd.read_csv(IN_PATH / "exchange_fluxes.csv", index_col=0)
+    # Load the exchange fluxes (indexed by substrate and O2 level)
+    ex_df = pd.read_csv(IN_PATH / "exchange_fluxes.csv", index_col=[0, 1])
+
+    # Keep only the "anchor" O2 level: the highest bound tested, which is
+    # saturating for every substrate in the panel. This is the same anchor
+    # level used in plot_cue_vs_growth.py, so all the figures in this
+    # directory describe the same condition.
+    anchor_level = ex_df.index.get_level_values("o2_bound").max()
+    ex_df = ex_df.xs(anchor_level, level="o2_bound")
+    print(f"Plotting exchange fluxes at the anchor O2 bound ({anchor_level:g})")
 
     # Load the substrate panel to get the names of the carbon sources
     substrate_df = pd.read_csv(IN_PATH / "substrate_panel.csv")
     carbon_source_names = substrate_df["name_in_model"].tolist()
+
+    # Re-order the rows (i.e. the bars) so the substrates that are also
+    # Prochlorococcus exometabolites are last (furthest right on the plot),
+    # in the order they are listed in PRO_METABOLITES.
+    pro_rows = [r for r in PRO_METABOLITES if r in ex_df.index]
+    other_rows = [r for r in ex_df.index if r not in pro_rows]
+    ex_df = ex_df.loc[other_rows + pro_rows]
 
     # Plot
     plot_exchange_stacks(ex_df, carbon_source_names, OUT_PATH)
@@ -99,6 +122,7 @@ def main():
 def plot_exchange_stacks(ex_df, carbon_source_names, out_dir):
     """Two stacked-bar charts, both drawn upward, with shared metabolite colours.
 
+    `ex_df` is expected to hold a single O2 condition, one row per substrate.
     Uptake fluxes are negated so they read as positive bars. All substrate
     carbon sources are merged into one 'Carbon source' segment in the uptake
     chart (each appears on a single bar). Byproducts/co-substrates keep
@@ -148,14 +172,16 @@ def plot_exchange_stacks(ex_df, carbon_source_names, out_dir):
     _stacked_bar(
         uptake[up_cols],
         colors,
-        "MIT1002 uptake fluxes across substrates",
+        "MIT1002 uptake fluxes across substrates (saturating O2)",
+        "Sole Carbon Source in Substrate",
         "Uptake flux (mmol gDW⁻¹ h⁻¹)",
         out_dir / "uptake_fluxes.png",
     )
     _stacked_bar(
         exud[ex_cols],
         colors,
-        "MIT1002 exudation fluxes across substrates",
+        "Predicted MIT1002 Exudations When Grown on Different Carbon Sources (With Non-Limiting O2)",
+        "Sole Carbon Source in Substrate",
         "Exudation flux (mmol gDW⁻¹ h⁻¹)",
         out_dir / "exudation_fluxes.png",
     )
@@ -184,7 +210,7 @@ def _ordered_cols(df, pin_first=None, pin_last=None):
     return head + middle + tail
 
 
-def _stacked_bar(df, colors, title, ylabel, out_path):
+def _stacked_bar(df, colors, title, xlabel, ylabel, out_path):
     fig, ax = plt.subplots(figsize=(13, 7))
     x = np.arange(len(df.index))
     bottom = np.zeros(len(df))
@@ -202,19 +228,23 @@ def _stacked_bar(df, colors, title, ylabel, out_path):
         bottom += vals
     ax.axhline(0, color="black", lw=0.6)
     ax.set_xticks(x)
-    ax.set_xticklabels(df.index, rotation=45, ha="right", fontsize=8)
+    ax.set_xticklabels(df.index, rotation=45, ha="right")
+    ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
-    ax.set_title(title, fontsize=12, pad=8)
+    ax.set_title(title, pad=10)
     ax.margins(x=0.01)
     ax.legend(
         title="Metabolite",
         bbox_to_anchor=(1.01, 1),
         loc="upper left",
-        fontsize=7,
-        title_fontsize=8.5,
         frameon=False,
     )
     fig.tight_layout()
+
+    # Set the plot style
+    set_plot_style(ax)
+
+    # Save the figure
     fig.savefig(out_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
     print(f"  Saved: {out_path.name}")

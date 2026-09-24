@@ -1,4 +1,70 @@
+from pathlib import Path
+
+import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
+
+# Directory holding the vendored Source Sans 3 faces (SIL Open Font License,
+# see tools/fonts/LICENSE.md). Shipping the font files in the repo means a
+# fresh clone renders figures identically instead of silently falling back to
+# matplotlib's default DejaVu Sans.
+FONT_DIR = Path(__file__).resolve().parent / "fonts"
+
+_FONTS_REGISTERED = False
+
+
+def _register_fonts():
+    """Add the vendored font files to matplotlib's font manager (idempotent)."""
+    global _FONTS_REGISTERED
+    if _FONTS_REGISTERED:
+        return
+    for ttf in sorted(FONT_DIR.glob("*.ttf")):
+        font_manager.fontManager.addfont(str(ttf))
+    _FONTS_REGISTERED = True
+
+
+def set_manuscript_style(font_size=12):
+    """Set the global rcParams shared by every manuscript figure.
+
+    Call this once at the top of a plotting script, BEFORE creating any
+    figures or axes. It cannot live inside `set_plot_style` because that
+    function takes an Axes that already exists: matplotlib reads rcParams
+    when an artist is created, so changing "font.size" afterwards would
+    leave the tick labels at whatever size was in effect when the axes were
+    drawn. The two functions are deliberately different scopes -- this one
+    is global and runs first, `set_plot_style` is per-axes and runs last.
+
+    Sets three things that used to be copy-pasted (inconsistently) across
+    the plotting scripts:
+
+    1. Font family. Source Sans 3, vendored under tools/fonts/. It is the
+       open-licensed sibling of Myriad Pro (same designer, same humanist
+       skeleton), which is what ASM journals use for body text and figure
+       captions. Myriad Pro itself is kept as the second choice for anyone
+       who has it installed, with DejaVu Sans as the last resort.
+    2. Font size. Default 9 pt. Aim for 7-8 pt on the printed page after
+       the figure is scaled to column width, so in-figure text sits close
+       to the ~7.5 pt of the journal's typeset caption. Pass `font_size` to
+       override for a figure that is scaled unusually.
+    3. Vector text output. `pdf.fonttype`/`ps.fonttype` 42 embeds TrueType
+       rather than converting text to Type 3 subsets, which keeps the text
+       selectable and editable in Illustrator and avoids the Type 3
+       rejections some journals issue at submission.
+    """
+    _register_fonts()
+    matplotlib.rcParams.update(
+        {
+            "font.family": "sans-serif",
+            "font.sans-serif": ["Source Sans 3", "Myriad Pro", "DejaVu Sans"],
+            "font.size": font_size,
+            "axes.linewidth": 0.8,
+            "axes.spines.top": False,
+            "axes.spines.right": False,
+            "pdf.fonttype": 42,  # editable text in Illustrator
+            "ps.fonttype": 42,
+        }
+    )
+
 
 # Define the colors from the C-CoMP pallette
 ccomp_colors = {
@@ -22,23 +88,24 @@ summer_colors = {
 
 
 # Define the style for the plots (gray axes, no top or right axis lines)
-def set_plot_style(g):
-    # Make the axis lines gray
-    g.spines["bottom"].set_color("gray")
-    g.spines["left"].set_color("gray")
-    # Make the tick marks gray
-    g.tick_params(axis="x", colors="gray")
-    g.tick_params(axis="y", colors="gray")
+def set_plot_style(g, color="gray"):
+    # Make the axis lines the defined color
+    g.spines["bottom"].set_color(color)
+    g.spines["left"].set_color(color)
+    # Make the tick marks the defined color
+    g.tick_params(axis="x", colors=color)
+    g.tick_params(axis="y", colors=color)
     # Remove the top and right axis lines
     g.spines["top"].set_visible(False)
     g.spines["right"].set_visible(False)
-    # Make all text (axis labels, tick labels, title, and legend) gray
-    g.xaxis.label.set_color("gray")
-    g.yaxis.label.set_color("gray")
-    g.title.set_color("gray")
+    # Make all text (axis labels, tick labels, title, and legend) the defined color
+    g.xaxis.label.set_color(color)
+    g.yaxis.label.set_color(color)
+    g.title.set_color(color)
     if g.get_legend() is not None:
+        g.get_legend().get_title().set_color(color)
         for text in g.get_legend().get_texts():
-            text.set_color("gray")
+            text.set_color(color)
 
 
 def carbon_fates_bar(data, byproduct_colors=None):
@@ -62,9 +129,9 @@ def carbon_fates_bar(data, byproduct_colors=None):
         byproduct_cols = [c for c in byproduct_colors if c in data.columns]
         # Check that there aren't any unexpected byproduct columns
         extra_cols = set(data.columns) - set(byproduct_cols) - {"biomass", "co2"}
-        assert not extra_cols, (
-            f"Columns not found in byproduct_colors palette: {extra_cols}"
-        )
+        assert (
+            not extra_cols
+        ), f"Columns not found in byproduct_colors palette: {extra_cols}"
         # Set the column order
         data = data[["biomass"] + byproduct_cols + ["co2"]]
         colors = (
