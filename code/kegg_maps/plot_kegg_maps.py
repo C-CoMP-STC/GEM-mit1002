@@ -5,10 +5,10 @@ import cobra
 from gem_utilities.maps import map_ko_ids
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, FILE_DIR)  # make `tools` importable
+sys.path.insert(0, os.path.dirname(FILE_DIR))  # make `tools` importable
 from tools.paths import MODEL_PATH  # noqa: E402
 
-OUT_DIR = os.path.join(FILE_DIR, 'kegg_maps')
+OUT_DIR = FILE_DIR
 
 # If the outpath doesn't exist, create it
 os.makedirs(OUT_DIR, exist_ok=True)
