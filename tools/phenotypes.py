@@ -82,11 +82,10 @@ import numpy as np
 import pandas as pd
 
 from tools.media import MEDIA
-
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from tools.paths import CODE_DIR, DATA_DIR
 
 #: Default location of the curated phenotype table.
-PHENOTYPE_TSV = os.path.join(PROJECT_ROOT, "data", "known_growth_phenotypes.tsv")
+PHENOTYPE_TSV = os.path.join(DATA_DIR, "known_growth_phenotypes.tsv")
 
 #: Total carbon made available, in mmol C / gDW / hr. Uptake of each carbon
 #: source is set to this divided by its number of carbons, so every condition
@@ -187,7 +186,7 @@ EXCLUSION_REASONS = {
 #: Baseline of mismatches that are known and accepted at the current state of
 #: curation. See :func:`load_expected_mismatches`.
 EXPECTED_MISMATCHES_TSV = os.path.join(
-    PROJECT_ROOT, "test", "test_files", "expected_phenotype_mismatches.tsv"
+    CODE_DIR, "test", "test_files", "expected_phenotype_mismatches.tsv"
 )
 
 MISMATCH_COLUMNS = ["minimal_media", "c_source", "category", "notes"]

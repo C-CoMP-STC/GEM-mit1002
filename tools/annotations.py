@@ -10,8 +10,9 @@ Typical use, from the repo root::
 
     import cobra
     from tools.annotations import add_all_mnx_ids
+    from tools.paths import MODEL_PATH
 
-    model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
     added = add_all_mnx_ids(model)
     print(f"added MetaNetX IDs to {len(added)} reactions")
 
@@ -38,11 +39,11 @@ from collections.abc import Mapping
 
 import cobra
 
+from tools.paths import REPO_ROOT
+
 # --------------------------------------------------------------------------
 # MetaNetX release and file location
 # --------------------------------------------------------------------------
-
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #: MetaNetX release the annotations are taken from. Read from the ``#VERSION:``
 #: line of the file and checked on load.

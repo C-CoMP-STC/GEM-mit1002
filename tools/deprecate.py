@@ -43,6 +43,8 @@ import sys
 from dataclasses import dataclass, field, asdict
 from typing import Iterable, Sequence
 
+from tools import paths
+
 try:
     import libsbml
 except ImportError as exc:  # pragma: no cover
@@ -55,9 +57,9 @@ except ImportError as exc:  # pragma: no cover
 # Layout and schema
 # --------------------------------------------------------------------------
 
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(REPO_ROOT, "model/MIT1002-GEM.xml")
-DEPRECATED_DIR = os.path.join(REPO_ROOT, "data", "deprecated_identifiers")
+# libSBML needs a plain string, not a Path.
+MODEL_PATH = str(paths.MODEL_PATH)
+DEPRECATED_DIR = os.path.join(paths.DATA_DIR, "deprecated_identifiers")
 REACTIONS_TSV = os.path.join(DEPRECATED_DIR, "deprecated_reactions.tsv")
 METABOLITES_TSV = os.path.join(DEPRECATED_DIR, "deprecated_metabolites.tsv")
 
