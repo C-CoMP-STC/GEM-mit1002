@@ -39,3 +39,22 @@ The identifier lists are also mirrored into the SBML model's `<notes>`, so a
 person who downloads only `model/MIT1002-GEM.xml` can still tell that those identifiers were
 deliberately removed and where to find the reasons. `code/test/test_deprecated.py`
 fails if the model and the lists disagree.
+
+## Versioning and releases
+
+Releases follow [semantic versioning](https://semver.org), `MAJOR.MINOR.PATCH`,
+and are tagged without a leading `v` (e.g. `4.0.0`), as standard-GEM requires.
+The version of the latest release is in [`version.txt`](../version.txt). Only
+the release process changes it; do not edit it in a feature branch.
+
+| Bump | The release... | For example |
+| --- | --- | --- |
+| **Major** | changes something users of the model rely on: it breaks an identifier or the file layout, **or it flips any growth call** in [`data/known_growth_phenotypes.tsv`](../data/known_growth_phenotypes.tsv) (a condition the previous release predicted growth on now shows no growth, or the reverse) | renaming the model files; a curation that makes the model grow on acetate |
+| **Minor** | changes the model without flipping any growth call | fixing GPRs, adding annotations, adding or removing reactions that do not change a call, changing flux values |
+| **Patch** | leaves the model file unchanged | code, tests, documentation, CI |
+
+A flipped growth call counts as major because growth predictions are what most
+people use a GEM for: a change in one can change someone's downstream result
+even when every identifier is the same. It is also checkable, so the bump does
+not rest on memory. The release checks will compare every condition's predicted
+call against the previous release and report the bump the changes require.
