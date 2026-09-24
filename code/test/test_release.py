@@ -46,6 +46,13 @@ class TestVersions(unittest.TestCase):
         self.assertTrue(release.is_at_least("minor", "minor"))
         self.assertFalse(release.is_at_least("patch", "minor"))
 
+    def test_bump_between(self):
+        self.assertEqual(release.bump_between("3.1.0", "4.0.0"), "major")
+        self.assertEqual(release.bump_between("3.1.0", "3.2.0"), "minor")
+        self.assertEqual(release.bump_between("3.1.0", "3.1.1"), "patch")
+        self.assertIsNone(release.bump_between("3.1.0", "3.3.0"))
+        self.assertIsNone(release.bump_between("3.1.0", "3.1.0"))
+
     def test_version_file_is_valid(self):
         release.read_version()  # raises if version.txt is malformed
 

@@ -140,6 +140,31 @@ def release_tag(version: str) -> str:
     )
 
 
+def latest_release_tag() -> tuple[str, str]:
+    """The most recent release, as ``(tag, version)``.
+
+    "Most recent" means the highest version number among tags that look like
+    ``X.Y.Z`` or ``vX.Y.Z``, not the newest tag by date.
+
+    Raises:
+        LookupError: If there are no release tags in this clone.
+    """
+    best = None
+    for tag in _git("tag", "--list").stdout.split():
+        try:
+            number = parse_version(tag)
+        except ValueError:
+            continue
+        if best is None or number > best[0]:
+            best = (number, tag)
+    if best is None:
+        raise LookupError(
+            "no release tags in this clone; fetch them with `git fetch --tags`"
+        )
+    number, tag = best
+    return tag, ".".join(str(part) for part in number)
+
+
 def model_file_at(ref: str) -> tuple[str, bytes]:
     """The SBML model as committed at ``ref``, and the path it was at.
 
@@ -590,6 +615,73 @@ def prepare_release(
     return PreparedRelease(version, check, entry)
 
 
+def bump_between(previous: str, new: str) -> str | None:
+    """Which bump turns ``previous`` into ``new``, or None if none does exactly."""
+    for bump in BUMPS:
+        if bump_version(previous, bump) == new:
+            return bump
+    return None
+
+
+@dataclass
+class Verification:
+    """The result of :func:`verify_release`: what was checked, and what failed."""
+
+    previous_tag: str
+    version: str
+    bump: str | None
+    check: ReleaseCheck | None
+    problems: list[str]
+
+    def report(self) -> str:
+        if self.problems:
+            head = ["## Release checks failed", ""]
+            head += [f"- {problem}" for problem in self.problems]
+        else:
+            head = [f"## Release {self.version} is ready ({self.bump})", ""]
+        body = format_report(self.check) if self.check else ""
+        return "\n".join(head) + "\n\n" + body
+
+
+def verify_release(changelog: str | os.PathLike = CHANGELOG_PATH) -> Verification:
+    """Check a prepared release before it is merged into ``main``.
+
+    Fails when ``version.txt`` is not exactly one bump past the latest release,
+    that version is already tagged, ``CHANGELOG.md`` has no entry for it, or the
+    bump is smaller than the changes since the latest release require.
+    """
+    problems = []
+    previous_tag, previous = latest_release_tag()
+    version = read_version()
+
+    bump = bump_between(previous, version)
+    if bump is None:
+        problems.append(
+            f"version.txt says {version}, which is not one major, minor or patch "
+            f"step after the latest release {previous}. Run Prepare-Release."
+        )
+    try:
+        problems.append(f"{version} is already released (tag {release_tag(version)}).")
+    except LookupError:
+        pass
+
+    try:
+        with open(changelog, encoding="utf-8") as handle:
+            entries = handle.read()
+    except FileNotFoundError:
+        entries = ""
+    if not re.search(rf"^## {re.escape(version)}( |$)", entries, flags=re.MULTILINE):
+        problems.append(f"CHANGELOG.md has no entry for {version}.")
+
+    check = check_release(previous_tag)
+    if bump and not is_at_least(bump, check.required):
+        problems.append(
+            f"a {bump} release is too small: the changes since {previous} need at "
+            f"least {check.required}."
+        )
+    return Verification(previous_tag, version, bump, check, problems)
+
+
 # --------------------------------------------------------------------------
 # CLI
 # --------------------------------------------------------------------------
@@ -617,6 +709,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     nxt = sub.add_parser("next-version", help="print the version after version.txt")
     nxt.add_argument("--bump", choices=BUMPS, required=True)
 
+    ver = sub.add_parser(
+        "verify", help="check a prepared release (run on the release PR)"
+    )
+    ver.add_argument("--report", help="also write the Markdown report to this file")
+
     prep = sub.add_parser(
         "prepare",
         help="check, then bump version.txt and add the CHANGELOG.md entry",
@@ -634,6 +731,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.command == "next-version":
         print(bump_version(read_version(), args.bump))
         return 0
+
+    if args.command == "verify":
+        verification = verify_release()
+        report = verification.report()
+        print(report)
+        if args.report:
+            with open(args.report, "w", encoding="utf-8") as handle:
+                handle.write(report)
+        return 1 if verification.problems else 0
 
     if args.command == "prepare":
         try:
