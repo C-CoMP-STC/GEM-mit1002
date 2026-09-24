@@ -1,3 +1,19 @@
+"""Export the SBML model to every format standard-GEM asks for on ``main``.
+
+Writes, next to ``model/MIT1002-GEM.xml``:
+
+* ``.json`` -- COBRApy / Escher
+* ``.yml``  -- COBRApy YAML, a diff-friendly text format
+* ``.txt``  -- one tab-separated line per reaction, for reading without tools
+* ``.xlsx`` -- metabolites, reactions, genes and the deprecated identifiers
+* ``.mat``  -- COBRA Toolbox (MATLAB)
+
+The binary formats (``.xlsx``, ``.mat``) must only ever be committed to
+``main``; the Publish workflow runs this there. Run it by hand only to look at
+the output, and do not commit it on another branch.
+"""
+
+import csv
 import json
 import os
 import sys
@@ -31,10 +47,48 @@ if notes:
 # Load the model from the SBML file
 model = cobra.io.read_sbml_model(MODEL_PATH)
 
-# Export the model to JSON
 JSON_PATH = MODEL_DIR / f"{MODEL_NAME}.json"
+YML_PATH = MODEL_DIR / f"{MODEL_NAME}.yml"
+TXT_PATH = MODEL_DIR / f"{MODEL_NAME}.txt"
 XLSX_PATH = MODEL_DIR / f"{MODEL_NAME}.xlsx"
+MAT_PATH = MODEL_DIR / f"{MODEL_NAME}.mat"
+
+TXT_COLUMNS = [
+    "id",
+    "name",
+    "equation",
+    "equation_with_names",
+    "lower_bound",
+    "upper_bound",
+    "gene_reaction_rule",
+    "subsystem",
+]
+
+
+def write_reaction_table(model, path):
+    """One tab-separated row per reaction: what someone without COBRA needs."""
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle, delimiter="\t", lineterminator="\n")
+        writer.writerow(TXT_COLUMNS)
+        for reaction in model.reactions:
+            writer.writerow(
+                [
+                    reaction.id,
+                    reaction.name,
+                    reaction.build_reaction_string(),
+                    reaction.build_reaction_string(use_metabolite_names=True),
+                    reaction.lower_bound,
+                    reaction.upper_bound,
+                    reaction.gene_reaction_rule,
+                    reaction.subsystem,
+                ]
+            )
+
+
 cobra.io.save_json_model(model, JSON_PATH)
+cobra.io.save_yaml_model(model, YML_PATH)
+write_reaction_table(model, TXT_PATH)
+cobra.io.save_matlab_model(model, MAT_PATH)
 
 # Convert to excel file
 # Load the json model
