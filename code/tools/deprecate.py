@@ -617,7 +617,7 @@ NOTES_INFO_KEY = "DEPRECATED_INFO"
 NOTES_INFO_VALUE = (
     "reactions and metabolites listed above were deliberately removed during "
     "curation; full table with reasons at "
-    "https://github.com/C-CoMP-STC/GEM-mit1002/tree/main/data/deprecated_identifiers"
+    "https://github.com/C-CoMP-STC/MIT1002-GEM/tree/main/data/deprecated_identifiers"
 )
 
 

@@ -188,7 +188,7 @@ SBML model's `<notes>` element, as:
   <html xmlns="http://www.w3.org/1999/xhtml">
     <p>DEPRECATED_REACTIONS: rxn00196_c0; rxn01032_c0; ...</p>
     <p>DEPRECATED_METABOLITES: cpd00225_c0; ...</p>
-    <p>DEPRECATED_INFO: full table with reasons at https://github.com/C-CoMP-STC/GEM-mit1002/tree/main/data/deprecated_identifiers</p>
+    <p>DEPRECATED_INFO: full table with reasons at https://github.com/C-CoMP-STC/MIT1002-GEM/tree/main/data/deprecated_identifiers</p>
   </html>
 </notes>
 ```
