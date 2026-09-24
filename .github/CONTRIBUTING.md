@@ -66,3 +66,17 @@ It compares every condition's predicted growth call with the previous release,
 reports the smallest bump allowed, and lists added and removed reaction and
 metabolite IDs. A rename looks like a removal plus an addition and cannot be
 detected automatically, so check that list: a renamed ID is a major change too.
+
+### Making a release
+
+1. Make sure everything for the release is merged into `develop`.
+2. Optionally, preview it locally:
+   `PYTHONPATH=code python -m tools.release prepare --bump <kind> --dry-run`.
+3. On GitHub, go to **Actions → Prepare-Release → Run workflow**, choose the
+   `develop` branch and the kind of release. It refuses a bump smaller than the
+   changes need. Otherwise it commits the new `version.txt` and a
+   [`CHANGELOG.md`](../CHANGELOG.md) entry to `develop`, and opens a PR from
+   `develop` into `main` titled `release: X.Y.Z`.
+4. Review the PR: its description lists every merged PR, the growth calls that
+   flipped, and the reaction and metabolite IDs added and removed.
+5. Merge it into `main` (with a merge commit, not squash).
