@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the database with the comparison to the ModelSEEDpy model
-db = pd.read_csv("Pangenome from Michelle/database_w_MSP.csv")
+db = pd.read_csv("digital_microbe/database_w_MSP.csv")
 
 # Filter the database to only have rows that are present in the pangenome
 # (1 in the "Inferred Presenece" column) OR are present in the ModelSEEDpy model
@@ -96,4 +96,4 @@ for metanetx_id in unique_metanetx_ids:
     clean_db = clean_db.append(new_row, ignore_index=True)
 
 # Save the cleaned database
-clean_db.to_csv("Pangenome from Michelle/clean_compariosn.csv", index=False)
+clean_db.to_csv("digital_microbe/clean_compariosn.csv", index=False)

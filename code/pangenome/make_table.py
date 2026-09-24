@@ -36,8 +36,8 @@ def search_dict(dictionary, search):
     return keys
 
 
-# Read in Michelle's pangenome table
-db = pd.read_csv('Pangenome from Michelle/Database_MIT1002GeneCalls.csv')
+# Read in the pangenome table
+db = pd.read_csv('digital_microbe/Database_MIT1002GeneCalls.csv')
 
 # Load in my KBase model
 model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
@@ -78,10 +78,10 @@ for index, row in db.iterrows():
     db.at[index, 'ModelSEED ID'] = list(seed_id)
 
 # Save the database with the new columns
-db.to_csv('Pangenome from Michelle/database_w_MNX_SEED.csv', index=False)
+db.to_csv('digital_microbe/database_w_MNX_SEED.csv', index=False)
 
 # # Load in the cleaned up database
-# db = pd.read_csv('Pangenome from Michelle/database_w_MNX.csv')
+# db = pd.read_csv('digital_microbe/database_w_MNX.csv')
 
 # # Add a column for presence in the KBase model
 # db['In KBase Model'] = 0
@@ -111,10 +111,10 @@ db.to_csv('Pangenome from Michelle/database_w_MNX_SEED.csv', index=False)
 #     db.at[index, 'Gene Call in KBase Model'] = [model.reactions.get_by_id(seed_id).gene_reaction_rule for seed_id in seed_ids]
 
 # # Save the database with the new columns
-# db.to_csv('Pangenome from Michelle/database_w_KBase.csv', index=False)
+# db.to_csv('digital_microbe/database_w_KBase.csv', index=False)
 
 # Load in the database with the KBase model information
-db = pd.read_csv('Pangenome from Michelle/database_w_KBase.csv')
+db = pd.read_csv('digital_microbe/database_w_KBase.csv')
 
 # Do the same comparison with the ModelSEEDpy model
 # Load in the ModelSEEDpy model
@@ -146,4 +146,4 @@ for index, row in db.iterrows():
     db.at[index, 'Gene Call in ModelSEEDpy Model'] = [modelseedpy_model.reactions.get_by_id(seed_id).gene_reaction_rule for seed_id in seed_ids]
 
 # Save the database with the new columns
-db.to_csv('Pangenome from Michelle/database_w_MSP.csv', index=False)
+db.to_csv('digital_microbe/database_w_MSP.csv', index=False)
