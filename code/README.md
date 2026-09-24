@@ -4,11 +4,6 @@ All code used to build, curate, test and analyse MIT1002-GEM. This folder is
 required by [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM),
 which asks that it carry a README describing how it is organised.
 
-`code/` is a plain folder, not a Python package. It is put on the Python path
-by `pytest.ini` for the tests, and by each script for itself, so imports look
-like `from tools.paths import MODEL_PATH`. Every repo location (the model,
-`data/`, ...) is defined once, in `tools/paths.py`.
-
 ## Shared code
 
 | Folder | Contains | How it runs |
