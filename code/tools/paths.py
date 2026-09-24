@@ -30,13 +30,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
-#: The folder that holds ``tools/``, ``scripts/`` and ``test/``.
+#: The ``code/`` folder, which holds ``tools/``, ``scripts/`` and ``test/``.
 CODE_DIR = Path(__file__).resolve().parents[1]
 
-#: Root of the git repository. Currently the same as :data:`CODE_DIR`; when
-#: the code moves into ``code/`` for standard-GEM, this becomes
-#: ``CODE_DIR.parent``.
-REPO_ROOT = CODE_DIR
+#: Root of the git repository.
+REPO_ROOT = CODE_DIR.parent
 
 #: Name shared by the repository, the model files and (with ``_`` for ``-``)
 #: the model ID, as standard-GEM requires.
