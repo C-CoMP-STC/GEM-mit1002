@@ -56,5 +56,13 @@ the release process changes it; do not edit it in a feature branch.
 A flipped growth call counts as major because growth predictions are what most
 people use a GEM for: a change in one can change someone's downstream result
 even when every identifier is the same. It is also checkable, so the bump does
-not rest on memory. The release checks will compare every condition's predicted
-call against the previous release and report the bump the changes require.
+not rest on memory. To see what the changes since the last release require:
+
+```
+PYTHONPATH=code python -m tools.release check
+```
+
+It compares every condition's predicted growth call with the previous release,
+reports the smallest bump allowed, and lists added and removed reaction and
+metabolite IDs. A rename looks like a removal plus an addition and cannot be
+detected automatically, so check that list: a renamed ID is a major change too.
