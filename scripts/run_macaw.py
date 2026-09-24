@@ -10,15 +10,18 @@ from anywhere:
 """
 
 import os
+import sys
 
 import cobra
 from macaw.main import run_all_tests
 
 # import py4cytoscape as p4c
 
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(REPO_ROOT, "model/MIT1002-GEM.xml")
-RESULTS_DIR = os.path.join(REPO_ROOT, "scripts", "results")
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from tools.paths import MODEL_PATH  # noqa: E402
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+RESULTS_DIR = os.path.join(SCRIPT_DIR, "results")
 
 
 # Run the MACAW pipeline

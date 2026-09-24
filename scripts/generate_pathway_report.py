@@ -1,4 +1,5 @@
 import os
+import sys
 
 import cobra
 import matplotlib.pyplot as plt
@@ -7,9 +8,12 @@ import seaborn as sns
 from matplotlib.patches import Patch
 
 # Define paths relative to the project root
-PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
-INPUTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "inputs")
-RESULTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "results")
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from tools.paths import MODEL_PATH  # noqa: E402
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+INPUTS_DIR = os.path.join(SCRIPT_DIR, "inputs")
+RESULTS_DIR = os.path.join(SCRIPT_DIR, "results")
 
 
 # Define the colors that will go with present/absent
@@ -93,7 +97,7 @@ if __name__ == "__main__":
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
     # Load the model
-    model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+    model = cobra.io.read_sbml_model(MODEL_PATH)
 
     # Generate the reports
     test_pathway_reactions_present(model)

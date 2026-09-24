@@ -11,6 +11,7 @@ from gem_utilities import media
 
 # Import the plot styles (has global variables for colors)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from tools.paths import MODEL_PATH
 from tools.plot_styles import *
 
 # Set the output directory
@@ -26,7 +27,7 @@ if not os.path.exists(OUT_DIR):
 # ============================================================================
 
 # Load in the ALT model using COBRApy
-alt_cobra = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+alt_cobra = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Base minimal media (no carbon source, no O2 — added per condition below)
 BASE_MEDIUM = {

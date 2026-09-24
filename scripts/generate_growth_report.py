@@ -6,13 +6,10 @@ import pandas as pd
 import seaborn as sns
 from gem_utilities import biomass
 
-# Define paths relative to the script or project root
-# It's better practice to define a project root
-PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
-
+# Make `tools` importable; everything else comes from tools.paths.
 import sys
 
-sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from docx import Document  # noqa: E402
 from docx.enum.section import WD_ORIENT  # noqa: E402
@@ -23,11 +20,12 @@ from openpyxl import load_workbook  # noqa: E402
 from openpyxl.styles import PatternFill  # noqa: E402
 
 from tools.media import MEDIA  # noqa: E402
+from tools.paths import DATA_DIR, MODEL_PATH  # noqa: E402
 from tools.phenotypes import evaluate_phenotypes  # noqa: E402
 from tools.plot_styles import summer_colors  # noqa: E402
 
-DATA_DIR = os.path.join(PROJECT_ROOT, "data")
-RESULTS_DIR = os.path.join(PROJECT_ROOT, "scripts", "results")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+RESULTS_DIR = os.path.join(SCRIPT_DIR, "results")
 
 # Load the media definitions
 media_definitions = MEDIA
@@ -522,7 +520,7 @@ if __name__ == "__main__":
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
     # Load the model
-    model = cobra.io.read_sbml_model(os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml"))
+    model = cobra.io.read_sbml_model(MODEL_PATH)
 
     # Generate the reports
     generate_growth_phenotype_report(model)

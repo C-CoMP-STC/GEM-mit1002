@@ -21,9 +21,9 @@ import argparse
 import os
 import sys
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, PROJECT_ROOT)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tools.paths import MODEL_PATH, REPO_ROOT  # noqa: E402
 from tools.phenotypes import (  # noqa: E402
     EXPECTED_MISMATCHES_TSV,
     compare_to_baseline,
@@ -33,8 +33,6 @@ from tools.phenotypes import (  # noqa: E402
     summarise,
     write_expected_mismatches,
 )
-
-MODEL_PATH = os.path.join(PROJECT_ROOT, "model/MIT1002-GEM.xml")
 
 
 def main(argv=None):
@@ -88,7 +86,7 @@ def main(argv=None):
     written = write_expected_mismatches(
         results, EXPECTED_MISMATCHES_TSV, notes=args.notes
     )
-    rel = os.path.relpath(EXPECTED_MISMATCHES_TSV, PROJECT_ROOT)
+    rel = os.path.relpath(EXPECTED_MISMATCHES_TSV, REPO_ROOT)
     print(f"\nWrote {len(written)} accepted mismatch(es) to {rel}")
     print("Commit this alongside the change that caused it.")
     return 0

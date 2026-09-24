@@ -13,6 +13,7 @@ from tools.deprecate import (  # noqa: E402
     read_records,
     sync_model_notes,
 )
+from tools.paths import MODEL_DIR, MODEL_NAME, MODEL_PATH  # noqa: E402
 
 # Mirror the deprecated identifier lists into the model's <notes> before
 # anything else reads the file. This is what lets someone who downloads only
@@ -28,14 +29,16 @@ if notes:
     print(f"Synced deprecated identifier mirror into model notes: {', '.join(notes)}")
 
 # Load the model from the SBML file
-model = cobra.io.read_sbml_model("model/MIT1002-GEM.xml")
+model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Export the model to JSON
-cobra.io.save_json_model(model, "model/MIT1002-GEM.json")
+JSON_PATH = MODEL_DIR / f"{MODEL_NAME}.json"
+XLSX_PATH = MODEL_DIR / f"{MODEL_NAME}.xlsx"
+cobra.io.save_json_model(model, JSON_PATH)
 
 # Convert to excel file
 # Load the json model
-with open("model/MIT1002-GEM.json") as f:
+with open(JSON_PATH) as f:
     model_json = json.load(f)
 
 # Make pandas data frames for the three main components of the model
@@ -94,7 +97,7 @@ deprecated_rxn_df = pd.DataFrame([r.as_row() for r in read_records(REACTIONS_TSV
 deprecated_met_df = pd.DataFrame([r.as_row() for r in read_records(METABOLITES_TSV)])
 
 # Save to excel
-with pd.ExcelWriter("model/MIT1002-GEM.xlsx") as writer:
+with pd.ExcelWriter(XLSX_PATH) as writer:
     met_df.to_excel(writer, sheet_name="metabolites", index=False)
     rxn_df.to_excel(writer, sheet_name="reactions", index=False)
     gene_df.to_excel(writer, sheet_name="genes", index=False)
