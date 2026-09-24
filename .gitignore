@@ -16,7 +16,7 @@ data/genome/RefSeq_genome_from_KBase/KBase_object_details_hgsco_narrative_174119
 data/genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_protein.faa
 data/genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_genomic.fna
 data/genome/RefSeq_genome/GCF_001077695.1_ASM107769v1_protein.gpff
-Pangenome from Michelle/*
+data/pangenome/Pangenome from Michelle/
 reac_xref.tsv
 test/test_files/media/~$M_July22(Zac's Marine Broth Medium).docx
 env/*
