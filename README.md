@@ -7,19 +7,20 @@ This repo contains the *Alteromonas macleodii* MIT1002 model, and code associate
 The model was generated using GenBank genome for MIT1002 (Accession Number: NZ_JXRW01000001), accessible via KBase.
 The narrative for generating the draft model, is available here: https://narrative.kbase.us/narrative/208605
 
-This repo uses GtiHub actions to automatically test the model.
-Upon every push, pull request, manual trigger:
-1. A new MEMOTE report is generated, and saved as "index.html"
-2. Run custom tests
-    * Validate the SBML file
-    * Test for growth on no carbon sources
-    * Test known growth phenotypes, and regenerate the experimental vs predicted growth heatmap figure
-    * Run the MEMOTE test to search for ATP generating cycles
-    * Check that nothing in the deprecated identifier lists is back in the model
-3. The model is exported to JSON and excel formats
+This repo uses GitHub Actions to test and release the model:
 
-Note: MACAW is **not** run as part of the action due to the longer run time of the dilution test.
-To run MACAW use:
+1. **Every pull request** (Custom-CI) runs the tests in `code/test/` -- SBML
+   validity, no growth without carbon, the known growth phenotypes, ATP-generating
+   cycles, and that no deprecated identifier is back in the model -- and
+   regenerates the reports in `code/scripts/results/`.
+2. **Release PRs into `main`** (Release-Checks) also check the version bump and
+   changelog, build the full MEMOTE report, and run the full MACAW suite.
+3. **Merging a release into `main`** (Publish) exports the model to every
+   format, tags and creates the GitHub release, and publishes the MEMOTE report
+   to GitHub Pages.
+
+See "Versioning and releases" in [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md).
+To run MACAW locally:
 ```
 python code/scripts/run_macaw.py
 ```

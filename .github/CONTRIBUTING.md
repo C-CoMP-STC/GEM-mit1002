@@ -79,4 +79,8 @@ detected automatically, so check that list: a renamed ID is a major change too.
    `develop` into `main` titled `release: X.Y.Z`.
 4. Review the PR: its description lists every merged PR, the growth calls that
    flipped, and the reaction and metabolite IDs added and removed.
-5. Merge it into `main` (with a merge commit, not squash).
+5. Wait for Release-Checks to pass on the PR. The MACAW job can take hours.
+6. Merge it into `main` (with a merge commit, not squash). Publish then exports
+   the model to every format, tags the release `X.Y.Z`, creates the GitHub
+   release with the model files attached, and updates the MEMOTE report on
+   GitHub Pages.
