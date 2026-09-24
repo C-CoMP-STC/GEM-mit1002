@@ -8,4 +8,4 @@ module load miniconda
 conda activate /projectnb/cometsfba/hscott/envs/eggnog
 
 # Run EggNOG-mapper
-emapper.py -i genome/MIT1002_anvio_prot_seqs.fa --output genome/eggnog_output --cpu 16
+emapper.py -i data/genome/MIT1002_anvio_prot_seqs.fa --output data/genome/eggnog_output --cpu 16
