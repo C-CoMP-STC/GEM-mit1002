@@ -84,3 +84,15 @@ detected automatically, so check that list: a renamed ID is a major change too.
    the model to every format, tags the release `X.Y.Z`, creates the GitHub
    release with the model files attached, and updates the MEMOTE report on
    GitHub Pages.
+
+## standard-GEM
+
+[`.standard-GEM.md`](../.standard-GEM.md) is the
+[standard-GEM](https://github.com/MetabolicAtlas/standard-GEM) checklist, and
+its first line says which version this repo follows. Edit it only by ticking
+or unticking boxes: tick an item once the repo meets it.
+
+When standard-GEM releases a new version, the Standard-GEM-Update workflow
+opens an issue (it checks monthly). To update, copy the new upstream file over
+ours, use `git diff` to see what changed, re-tick what still holds, work
+through the new or reworded items, and commit the checklist last.
