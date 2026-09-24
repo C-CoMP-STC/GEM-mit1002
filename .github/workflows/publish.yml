@@ -1,0 +1,143 @@
+name: Publish
+
+# Runs on every push to main, which should only ever be a merged release PR
+# (see "Making a release" in .github/CONTRIBUTING.md). Replaces Export-Model.
+#
+# 1. Exports the model to every format standard-GEM wants on main (.yml, .txt,
+#    .json, .xlsx, .mat) and commits them to main.
+# 2. If version.txt holds a version that is not tagged yet: tags the export
+#    commit X.Y.Z (no leading v) and creates the GitHub release, with the
+#    CHANGELOG.md entry as its notes and every model file attached. Zenodo
+#    archives it from there once the Zenodo GitHub integration is switched on.
+# 3. Publishes the MEMOTE report for the release to GitHub Pages.
+#
+# The tag goes on the export commit, not the merge commit, so a release always
+# contains the exported files.
+on:
+  push:
+    branches:
+      - main
+
+# Never publish twice at once.
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      released: ${{ steps.release.outputs.released }}
+    steps:
+      # RELEASE_TOKEN is used if it exists, in case main is branch-protected
+      # against pushes from the default GITHUB_TOKEN.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Read the version
+        id: version
+        run: |
+          VERSION=$(tr -d '[:space:]' < version.txt)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if git rev-parse --quiet --verify "refs/tags/$VERSION" > /dev/null; then
+            echo "tagged=true" >> "$GITHUB_OUTPUT"
+            echo "$VERSION is already released: exporting only." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "tagged=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Export the model to all formats
+        run: python code/scripts/export_model.py
+
+      # The export must never change the SBML itself: main's model has to be
+      # the one that was reviewed on develop, or the next release check would
+      # see a change that nobody made.
+      - name: Check the SBML was not modified
+        run: |
+          if ! git diff --exit-code --stat -- model/MIT1002-GEM.xml; then
+            echo "::error::Exporting changed model/MIT1002-GEM.xml (probably the deprecated-identifier notes were out of sync on develop). Fix it on develop and release again."
+            exit 1
+          fi
+
+      - name: Commit the exports to main
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Exports from before the standard-GEM rename; a no-op once they are gone.
+          git rm --quiet --ignore-unmatch model.json model.xlsx
+          # -f: the exports are gitignored so they cannot be committed on develop.
+          git add -f model/MIT1002-GEM.json model/MIT1002-GEM.yml model/MIT1002-GEM.txt \
+            model/MIT1002-GEM.xlsx model/MIT1002-GEM.mat
+          if git diff --cached --quiet; then
+            echo "Exports unchanged."
+          else
+            git commit -m "chore: export model $VERSION to all formats"
+            git push origin HEAD:main
+          fi
+
+      - name: Tag and create the GitHub release
+        id: release
+        if: steps.version.outputs.tagged == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          PYTHONPATH: code
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          python -m tools.release notes --version "$VERSION" > "$RUNNER_TEMP/notes.md"
+          git tag -a "$VERSION" -m "MIT1002-GEM $VERSION"
+          git push origin "$VERSION"
+          gh release create "$VERSION" \
+            --title "MIT1002-GEM $VERSION" \
+            --notes-file "$RUNNER_TEMP/notes.md" \
+            model/MIT1002-GEM.xml model/MIT1002-GEM.yml model/MIT1002-GEM.txt \
+            model/MIT1002-GEM.json model/MIT1002-GEM.xlsx model/MIT1002-GEM.mat
+          echo "released=true" >> "$GITHUB_OUTPUT"
+          echo "Released $VERSION." >> "$GITHUB_STEP_SUMMARY"
+
+  # Needs Settings -> Pages -> Source set to "GitHub Actions".
+  memote-pages:
+    needs: publish
+    if: needs.publish.outputs.released == 'true'
+    runs-on: ubuntu-22.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.publish.outputs.version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          # See Release-Checks: newer pandera needs a newer numpy than we pin.
+          python -m pip install pandera==0.22.1
+
+      - name: MEMOTE snapshot report
+        run: |
+          mkdir -p _site
+          memote report snapshot --filename _site/index.html model/MIT1002-GEM.xml
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
