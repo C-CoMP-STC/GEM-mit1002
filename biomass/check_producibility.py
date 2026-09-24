@@ -7,16 +7,15 @@ import pandas as pd
 import seaborn as sns
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-REPO_DIR = os.path.dirname(FILE_DIR)
 
 import sys
 
-sys.path.insert(0, str(REPO_DIR))
+sys.path.insert(0, os.path.dirname(FILE_DIR))  # make `tools` importable
 
 from tools.media import MEDIA  # noqa: E402
-DATA_DIR = os.path.join(REPO_DIR, "data")
+from tools.paths import DATA_DIR, REPO_ROOT  # noqa: E402
 # Define the directory containing the files
-gapfill_dir = os.path.join(REPO_DIR, "modelseedpy_gapfill_per_biomass_cmpt")
+gapfill_dir = os.path.join(REPO_ROOT, "modelseedpy_gapfill_per_biomass_cmpt")
 
 OUT_DIR = os.path.join(FILE_DIR, "component_producibility_results")
 # If the output directory doesn't exist, create it
@@ -27,12 +26,12 @@ if not os.path.exists(OUT_DIR):
 def main():
     # Make a dctionary of the model IDs and the file paths
     model_files = {
-        # "Base Model (ModelSEEDpy)": os.path.join(REPO_DIR, "modelseedpy_model_01.xml"),
+        # "Base Model (ModelSEEDpy)": os.path.join(REPO_ROOT, "modelseedpy_model_01.xml"),
         # "Glucose Gapfilled (ModelSEEDpy)": os.path.join(
-        #     REPO_DIR, "modelseedpy_model_04.xml"
+        #     REPO_ROOT, "modelseedpy_model_04.xml"
         # ),
         "KBase Model, ModelSEEDpy Gapfilled": os.path.join(
-            REPO_DIR, "2025-01-08_Scott_draft-model-from-KBase-MSP-gapfilled.xml"
+            REPO_ROOT, "2025-01-08_Scott_draft-model-from-KBase-MSP-gapfilled.xml"
         ),
     }
 

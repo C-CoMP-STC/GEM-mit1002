@@ -1,10 +1,13 @@
 import os
+import sys
 import warnings
 
 import cobra
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-REPO_DIR = os.path.dirname(os.path.dirname(FILE_DIR))
+sys.path.insert(0, os.path.dirname(os.path.dirname(FILE_DIR)))  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
+
 OUT_DIR = os.path.join(FILE_DIR, "results")
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -12,7 +15,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 def main():
     """Loads model, performs gene deletions, and saves results."""
     # Load the model
-    model = cobra.io.read_sbml_model(os.path.join(REPO_DIR, "model/MIT1002-GEM.xml"))
+    model = cobra.io.read_sbml_model(MODEL_PATH)
 
     # Set the model's media (e.g., minimal media)
     glc_medium = {

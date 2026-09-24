@@ -1,16 +1,20 @@
 import os
+import sys
 
 import cobra
 from gem_utilities.maps import map_ko_ids
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, FILE_DIR)  # make `tools` importable
+from tools.paths import MODEL_PATH  # noqa: E402
+
 OUT_DIR = os.path.join(FILE_DIR, 'kegg_maps')
 
 # If the outpath doesn't exist, create it
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # Load the model
-model = cobra.io.read_sbml_model(os.path.join(FILE_DIR, 'model/MIT1002-GEM.xml'))
+model = cobra.io.read_sbml_model(MODEL_PATH)
 
 # Extract the KO IDs from the model
 ko_ids = set()
