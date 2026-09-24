@@ -64,14 +64,40 @@ def _load(path):
     return table
 
 
-@unittest.skipUnless(
-    os.path.exists(CONFUSION_CSV),
-    "phenotype_confusion_over_time.csv has not been generated yet; run "
-    "code/curation_process/run_tests_on_prs.py",
+#: What to tell someone when a timeline file is missing. These files are
+#: committed and figure 2 is read off them, so a missing file means a broken
+#: path or a bad commit, never "not generated yet" -- and it must fail, not skip.
+MISSING_FILE_HELP = (
+    "{name} is missing from code/curation_process/. It is committed and "
+    "figure 2 depends on it, so either it was deleted or tools.paths no longer "
+    "points at it. Restore it from git, or regenerate it by running "
+    "code/curation_process/run_tests_on_prs.py (needs `gh` authenticated)."
 )
+
+
+class TestTimelineFilesExist(unittest.TestCase):
+    """Fail loudly, with one clear message, if a timeline file is missing."""
+
+    def test_confusion_csv_exists(self):
+        self.assertTrue(
+            os.path.isfile(CONFUSION_CSV),
+            MISSING_FILE_HELP.format(name=os.path.basename(CONFUSION_CSV)),
+        )
+
+    def test_summary_csv_exists(self):
+        self.assertTrue(
+            os.path.isfile(SUMMARY_CSV),
+            MISSING_FILE_HELP.format(name=os.path.basename(SUMMARY_CSV)),
+        )
+
+
 class TestConfusionTimeline(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        if not os.path.isfile(CONFUSION_CSV):
+            raise FileNotFoundError(
+                MISSING_FILE_HELP.format(name=os.path.basename(CONFUSION_CSV))
+            )
         cls.raw = pd.read_csv(CONFUSION_CSV)
         cls.data = _load(CONFUSION_CSV)
         cls.phenotypes = load_phenotypes()
@@ -241,8 +267,8 @@ class TestConfusionTimeline(unittest.TestCase):
 
     def test_summary_view_agrees_with_the_full_record(self):
         """``growth_match_summary.csv`` is a view, so it must not disagree."""
-        if not os.path.exists(SUMMARY_CSV):
-            self.skipTest("growth_match_summary.csv not generated yet")
+        if not os.path.isfile(SUMMARY_CSV):
+            self.fail(MISSING_FILE_HELP.format(name=os.path.basename(SUMMARY_CSV)))
         summary = _load(SUMMARY_CSV).set_index("PR Number")
         full = self.data.set_index("PR Number")
         shared = summary.index.intersection(full.index)
