@@ -50,6 +50,14 @@ MODEL_PATH = MODEL_DIR / f"{MODEL_NAME}.xml"
 #: see it.
 MODEL_RELPATH = MODEL_PATH.relative_to(REPO_ROOT).as_posix()
 
+#: Every repo-relative path the SBML model has had, newest first. It was
+#: ``model.xml`` at the repo root until the standard-GEM rename, so anything
+#: reading the model from an older commit or tag has to try both.
+MODEL_RELPATH_HISTORY = (MODEL_RELPATH, "model.xml")
+
+#: Version of the latest release, as standard-GEM requires.
+VERSION_PATH = REPO_ROOT / "version.txt"
+
 #: Experimental data, media provenance and derived tables.
 DATA_DIR = REPO_ROOT / "data"
 

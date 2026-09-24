@@ -32,6 +32,10 @@ class TestPaths(unittest.TestCase):
 
     def test_model_relpath(self):
         self.assertEqual(paths.MODEL_RELPATH, "model/MIT1002-GEM.xml")
+        self.assertEqual(paths.MODEL_RELPATH_HISTORY[0], paths.MODEL_RELPATH)
+
+    def test_version_file_exists(self):
+        self.assertTrue(paths.VERSION_PATH.is_file(), f"missing {paths.VERSION_PATH}")
 
 
 if __name__ == "__main__":
