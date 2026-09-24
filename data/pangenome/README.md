@@ -1,15 +1,18 @@
-# pangenome
+# Alteromonas pangenome
 
 Pangenome data for *Alteromonas* used to add reactions to the MIT1002 model
 (see [`code/pangenome/`](../../code/pangenome/)).
 
+The data comes from [(Veseli, 2024)](https://www.nature.com/articles/s41597-024-03778-z):
+> Veseli, I., DeMers, M. A., Cooper, Z. S., Schechter, M. S., Miller, S., Weber, L., ... & Braakman, R. (2024). Digital Microbe: a genome-informed data integration framework for team science on emerging model organisms. Scientific Data, 11(1), 967.
+
+All data is available via via https://doi.org/10.5281/zenodo.7430118/
+
 ## Not in git
 
-The raw files came from Michelle and live in `Pangenome from Michelle/` in
-this folder, which is gitignored. Anyone reproducing the pangenome step needs
-to get them from her.
+The raw files are not tracked here, due to their size and previous publication above.
 
-<!-- TODO(Helen): add Michelle's full name, the date you received the files, and how. File dates suggest Feb–Apr 2024. -->
+To recreate the analyses, create a folder called `digital_microbe` here and in it, download the following files:
 
 What the folder holds:
 
