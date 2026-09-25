@@ -225,7 +225,7 @@ if __name__ == '__main__':
 ```
 * Unit tests can be run manually- e.g., a developer runs them on their own computer and verifies that they all pass before pushing code
 * Or they can be run automatically (e.g., as part of a GitHub action)
-* In GEM-MIT1002 we run them all automatically in the CI-workflow, finding and executing tests with `pytest`
+* In MIT1002-GEM we run them all automatically in the CI-workflow, finding and executing tests with `pytest`
 
 #### What makes a Good Unit Test?
 * Needs to pass/fail, have an expected outcome, not generate an artifact
@@ -247,7 +247,7 @@ if __name__ == '__main__':
         * Generate a figure, that you need to look at
         * A test you know will fail, and you will just ignore it (skip the test or mark it a known failure instead)
 
-* We can differentiate the tests used in GEM-MIT1002 by what they tested, the model, the data files, the helper tools, or consistency between two things. A single test file can contain multiple different kinds of tests, so some file names may repeat across the list.
+* We can differentiate the tests used in MIT1002-GEM by what they tested, the model, the data files, the helper tools, or consistency between two things. A single test file can contain multiple different kinds of tests, so some file names may repeat across the list.
 
 #### Examples of Unit Tests on the Model
 * In traditional software engineering, the unit being tested is often a function, however for the case of model curation, we are testing the model as a whole, but can write tests to focus on individual aspects of the model
@@ -360,7 +360,7 @@ if __name__ == '__main__':
             * Excluded rows are not scored, so they cannot be mismatches, so they should not be in the baseline
 
 #### Examples of Unit Tests on Tools
-Part of the GEM-MIT1002 repo is helper functions (i.e. for XXX), these functions, just like any other functions in a python module should be tested.
+Part of the MIT1002-GEM repo is helper functions (i.e. for XXX), these functions, just like any other functions in a python module should be tested.
 For example:
 * `test_growth.py`
     * `TestSummaryArithmetic`
