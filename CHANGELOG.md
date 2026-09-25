@@ -4,6 +4,14 @@ All notable changes to MIT1002-GEM, newest first. The versioning rules are in
 [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md). Each entry is generated
 by `python -m tools.release prepare` when the release is prepared.
 
+## 4.0.1 - 2026-09-25
+
+Compared with 4.0.0: **patch** release.
+
+### Other changes
+
+- **fix**: stop Publish from triggering itself on its own export commit (#455)
+
 ## 4.0.0 - 2026-09-24
 
 Compared with 3.1.0: **major** release.
