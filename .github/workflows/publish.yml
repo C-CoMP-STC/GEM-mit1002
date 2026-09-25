@@ -25,6 +25,8 @@ concurrency:
 
 jobs:
   publish:
+    # Never run on Publish's own export commit (that caused a loop in 4.0.0).
+    if: "!startsWith(github.event.head_commit.message, 'chore: export model')"
     runs-on: ubuntu-22.04
     permissions:
       contents: write
@@ -84,7 +86,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Exports unchanged."
           else
-            git commit -m "chore: export model $VERSION to all formats"
+            git commit -m "chore: export model $VERSION to all formats [skip ci]"
             git push origin HEAD:main
           fi
 
