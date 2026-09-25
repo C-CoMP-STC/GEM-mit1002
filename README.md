@@ -1,4 +1,4 @@
-[![Version](https://img.shields.io/github/v/release/C-CoMP-STC/MIT1002-GEM?sort=semver&label=version)](https://github.com/C-CoMP-STC/MIT1002-GEM/releases/latest)
+[![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FC-CoMP-STC%2FMIT1002-GEM%2Freleases%2Flatest&query=%24.tag_name&label=version&color=blue)](https://github.com/C-CoMP-STC/MIT1002-GEM/releases/latest)
 [![DOI](https://zenodo.org/badge/514348089.svg)](https://doi.org/10.5281/zenodo.20559168)
 [![memote tested](https://img.shields.io/badge/memote-tested-blue.svg?style=plastic)](https://c-comp-stc.github.io/MIT1002-GEM/)
 
